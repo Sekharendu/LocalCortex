@@ -31,3 +31,13 @@ export interface LoadResult {
   documents: LoadedDocument[];
   source: string;
 }
+
+/**
+ * A text chunk emitted by the chunker. `chunkIndex` is sequential within a single
+ * document, assigned in document order. Downstream embedders attach it to the
+ * vector-store payload as the citation handle.
+ */
+export interface Chunk {
+  text: string;
+  chunkIndex: number;
+}
