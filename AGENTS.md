@@ -23,7 +23,7 @@ Guidance for AI agents working on this repo.
 - `pnpm install` — install deps
 - `pnpm dev` — start Express API with hot reload (tsx watch)
 - `pnpm run typecheck` — `tsc --noEmit`
-- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/vectorStore.test.ts`, `tests/pipeline.test.ts` (the latter two skip cleanly when Qdrant / Ollama is not reachable)
+- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts` (the latter three skip cleanly when Qdrant / Ollama is not reachable)
 - `docker compose up -d` — start Qdrant (6333) + Ollama (11434)
 
 ## Conventions
