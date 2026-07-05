@@ -12,6 +12,10 @@ Guidance for AI agents working on this repo.
 - **Vector store:** wrapped over **`@qdrant/js-client-rest`** (official Qdrant SDK, not the
   LangChain `@langchain/qdrant` integration, which depends on the archived community
   package transitively). Source of truth: `src/retrieval/vectorStore.ts`.
+- **Document store:** a leaf separate from the vector store, JSON-file backed on disk
+  (`data/documents.json` by default, configurable via `DOC_STORE_PATH`). Source of truth:
+  `src/documentStore.ts`. Tracks ingested document records (id, source, ingestedAt,
+  chunkCount) so the upcoming DELETE route can hydrate the response.
 - Loaders are hand-rolled and return LangChain `Document<LoadedMetadata>` shapes so downstream components plug in cleanly. Sources of truth: `src/ingest/loader.ts`, `src/types.ts`.
 
 ## Commands
@@ -19,7 +23,7 @@ Guidance for AI agents working on this repo.
 - `pnpm install` — install deps
 - `pnpm dev` — start Express API with hot reload (tsx watch)
 - `pnpm run typecheck` — `tsc --noEmit`
-- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/vectorStore.test.ts` (the latter skips cleanly when Qdrant is not reachable)
+- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/vectorStore.test.ts`, `tests/pipeline.test.ts` (the latter two skip cleanly when Qdrant / Ollama is not reachable)
 - `docker compose up -d` — start Qdrant (6333) + Ollama (11434)
 
 ## Conventions
