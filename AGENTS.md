@@ -18,6 +18,11 @@ Guidance for AI agents working on this repo.
   chunkCount) so the upcoming DELETE route can hydrate the response.
 - Loaders are hand-rolled and return LangChain `Document<LoadedMetadata>` shapes so downstream components plug in cleanly. Sources of truth: `src/ingest/loader.ts`, `src/types.ts`.
 
+## Generation
+
+- `src/generation/llm.ts` exports `RAG_SYSTEM_PROMPT` (the universal baseline persona -- editable single source of truth for instruction wording) and `generate(prompt)` which calls Ollama's `/api/generate` with the local generation model (default `llama3`, env `OLLAMA_GEN_MODEL`), `system: RAG_SYSTEM_PROMPT`, `stream: false`. Throws `GenerationError` on any failure (network, non-2xx, malformed body, missing `response`, model error field).
+- `src/generation/promptBuilder.ts` exports `buildPrompt(question, chunks)` and the situation-specific instruction constants `WITH_CONTEXT_INSTRUCTION` / `NO_CONTEXT_INSTRUCTION`. Empty chunks produce a distinct prompt variant that tells the model no relevant context was found and instructs it to say so -- it does NOT emit an empty "Context:" block. Non-empty chunks emit one passage per entry with light `[1] (source: file, page: N)` citation tags so the model can ground cited answers.
+
 ## Commands
 
 - `pnpm install` — install deps
@@ -30,7 +35,7 @@ Guidance for AI agents working on this repo.
 
 - ESM (`"type": "module"`), `NodeNext` module resolution
 - TypeScript strict mode
-- Typed errors live in `src/errors.ts` (`UnsupportedFileTypeError`, `DocumentReadError`)
+- Typed errors live in `src/errors.ts` (`UnsupportedFileTypeError`, `DocumentReadError`, `EmbeddingError`, `CollectionError`, `GenerationError`)
 - Tests use `node:test` + `node:assert/strict` (no external runner dependency)
 - Run `pnpm run typecheck` and `pnpm test` before declaring a component done
 
