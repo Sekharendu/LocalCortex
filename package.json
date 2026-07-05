@@ -11,11 +11,12 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test tests/loader.test.ts tests/chunker.test.ts"
+    "test": "node --import tsx --test tests/loader.test.ts tests/chunker.test.ts tests/vectorStore.test.ts"
   },
   "dependencies": {
     "@langchain/core": "^1.2.1",
     "@langchain/textsplitters": "^1.0.1",
+    "@qdrant/js-client-rest": "^1.18.0",
     "express": "^4.19.2",
     "mammoth": "^1.12.0",
     "pdfjs-dist": "^6.1.200"

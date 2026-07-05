@@ -20,3 +20,10 @@ export class EmbeddingError extends Error {
     this.name = "EmbeddingError";
   }
 }
+
+export class CollectionError extends Error {
+  constructor(message: string, options?: { cause?: unknown }) {
+    super(message, options);
+    this.name = "CollectionError";
+  }
+}
