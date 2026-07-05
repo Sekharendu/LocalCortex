@@ -13,3 +13,10 @@ export class DocumentReadError extends Error {
     this.name = "DocumentReadError";
   }
 }
+
+export class EmbeddingError extends Error {
+  constructor(message: string, options?: { cause?: unknown }) {
+    super(message, options);
+    this.name = "EmbeddingError";
+  }
+}
