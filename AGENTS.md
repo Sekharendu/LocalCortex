@@ -22,13 +22,23 @@ Guidance for AI agents working on this repo.
 
 - `src/generation/llm.ts` exports `RAG_SYSTEM_PROMPT` (the universal baseline persona -- editable single source of truth for instruction wording) and `generate(prompt)` which calls Ollama's `/api/generate` with the local generation model (default `llama3`, env `OLLAMA_GEN_MODEL`), `system: RAG_SYSTEM_PROMPT`, `stream: false`. Throws `GenerationError` on any failure (network, non-2xx, malformed body, missing `response`, model error field).
 - `src/generation/promptBuilder.ts` exports `buildPrompt(question, chunks)` and the situation-specific instruction constants `WITH_CONTEXT_INSTRUCTION` / `NO_CONTEXT_INSTRUCTION`. Empty chunks produce a distinct prompt variant that tells the model no relevant context was found and instructs it to say so -- it does NOT emit an empty "Context:" block. Non-empty chunks emit one passage per entry with light `[1] (source: file, page: N)` citation tags so the model can ground cited answers.
+- `src/generation/llm.ts` also exports `generateStream(prompt): AsyncGenerator<string>` (stream:true) and `parseNdjsonStream(chunks): AsyncGenerator<GenerateResponse>` (exported for unit testing). The NJSON parser maintains a string buffer across reads, splits on `\n`, parses every complete line, and carries any trailing incomplete line over to be prepended to the next chunk -- a naive `JSON.parse(chunk)` implementation fails on objects split across chunks and on multiple objects concatenated in one chunk.
+- `src/rag.ts` exports `retrieveForQuestion(question, opts): Promise<{ prompt, chunks }>` -- the shared orchestration helper so the API route's streaming and non-streaming branches don't duplicate retrieve+buildPrompt logic.
+
+## API contract (`src/server.ts`)
+
+- `GET /health` -> `{ ollama: boolean, qdrant: boolean }` (probes `/api/tags` and `/readyz`).
+- `POST /query` body: `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }`.
+  - `stream` falsy (default): returns `JSON { answer, chunks: RetrievedChunk[] }`.
+  - `stream: true`: returns `text/plain; charset=utf-8` streamed token-by-token; status cannot change once headers flush, so a mid-stream generation error surfaces as a trailing `\n\n[generation error: msg]` footer.
+  - Pre-first-token errors (retrieval infra-down, missing question): normal status-coded JSON envelope (`400` validation, `503` retrieval failure, `502` non-streaming generation failure).
 
 ## Commands
 
 - `pnpm install` — install deps
 - `pnpm dev` — start Express API with hot reload (tsx watch)
 - `pnpm run typecheck` — `tsc --noEmit`
-- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts` (the latter three skip cleanly when Qdrant / Ollama is not reachable)
+- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts`, `tests/ndjson.test.ts` (the latter three skip cleanly when Qdrant / Ollama is not reachable; `tests/ndjson.test.ts` is offline-only and always runs)
 - `docker compose up -d` — start Qdrant (6333) + Ollama (11434)
 
 ## Conventions
