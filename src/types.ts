@@ -41,3 +41,16 @@ export interface Chunk {
   text: string;
   chunkIndex: number;
 }
+
+/**
+ * Payload shape stored on every Qdrant point in a RAG collection. Mirrors the fields
+ * required for citation: source file, page (for PDFs), chunkIndex within the doc,
+ * and the documentId used to group all chunks of one document together (for delete).
+ */
+export interface ChunkPayload {
+  text: string;
+  source: string;
+  page?: number;
+  chunkIndex: number;
+  documentId: string;
+}

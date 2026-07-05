@@ -9,7 +9,9 @@ Guidance for AI agents working on this repo.
   - `@langchain/core` — `Document`, base abstractions, runnable types
   - `@langchain/textsplitters` — chunkers (direct successor to the deprecated community splitters)
   - `@langchain/ollama` — Ollama chat models / embeddings (when we reach the generation/retrieval steps)
-  - `@langchain/qdrant` — Qdrant vector store (when we reach the retrieval step)
+- **Vector store:** wrapped over **`@qdrant/js-client-rest`** (official Qdrant SDK, not the
+  LangChain `@langchain/qdrant` integration, which depends on the archived community
+  package transitively). Source of truth: `src/retrieval/vectorStore.ts`.
 - Loaders are hand-rolled and return LangChain `Document<LoadedMetadata>` shapes so downstream components plug in cleanly. Sources of truth: `src/ingest/loader.ts`, `src/types.ts`.
 
 ## Commands
@@ -17,7 +19,7 @@ Guidance for AI agents working on this repo.
 - `pnpm install` — install deps
 - `pnpm dev` — start Express API with hot reload (tsx watch)
 - `pnpm run typecheck` — `tsc --noEmit`
-- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`
+- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/vectorStore.test.ts` (the latter skips cleanly when Qdrant is not reachable)
 - `docker compose up -d` — start Qdrant (6333) + Ollama (11434)
 
 ## Conventions
