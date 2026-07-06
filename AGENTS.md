@@ -69,7 +69,8 @@ curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
 - `pnpm install` — install deps
 - `pnpm dev` — start Express API with hot reload (tsx watch)
 - `pnpm run typecheck` — `tsc --noEmit`
-- `pnpm test` — Node's built-in test runner via tsx: `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts`, `tests/ndjson.test.ts` (the latter three skip cleanly when Qdrant / Ollama is not reachable; `tests/ndjson.test.ts` is offline-only and always runs)
+- `pnpm test` — `vitest run` (one-shot). Live-stack tests in `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts`, `tests/rag.test.ts` skip cleanly when Qdrant / Ollama is not reachable via `test.skipIf`. Offline tests in `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/ndjson.test.ts` always run.
+- `pnpm test:watch` — `vitest` (watch mode for dev iteration)
 - `docker compose up -d` — start Qdrant (6333) + Ollama (11434)
 
 ## Conventions
@@ -77,7 +78,7 @@ curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
 - ESM (`"type": "module"`), `NodeNext` module resolution
 - TypeScript strict mode
 - Typed errors live in `src/errors.ts` (`UnsupportedFileTypeError`, `DocumentReadError`, `EmbeddingError`, `CollectionError`, `GenerationError`)
-- Tests use `node:test` + `node:assert/strict` (no external runner dependency)
+- Tests use `vitest` 4.x (TS/ESM-native via Vite, no `tsx --import` loader needed); `test.skipIf` guards the live-stack tests so the suite stays green offline
 - Run `pnpm run typecheck` and `pnpm test` before declaring a component done
 
 ## Sample fixtures

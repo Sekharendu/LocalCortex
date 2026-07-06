@@ -1,5 +1,4 @@
-import { test, before, after } from "node:test";
-import assert from "node:assert/strict";
+import { describe, test, expect, beforeAll, afterAll } from "vitest";
 import { QdrantClient } from "@qdrant/js-client-rest";
 import { retrieve } from "../src/retrieval/retriever.js";
 import { ingestDocument } from "../src/ingest/pipeline.js";
@@ -14,7 +13,7 @@ const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 let stackUp = false;
 let documentId: string | null = null;
 
-before(async () => {
+beforeAll(async () => {
   try {
     const [qRes, oRes] = await Promise.all([
       fetch(`${QDRANT_URL}/readyz`, { signal: AbortSignal.timeout(2000) }),
@@ -36,51 +35,55 @@ before(async () => {
   } catch {
     stackUp = false;
   }
-});
+}, 180_000);
 
-after(async () => {
+afterAll(async () => {
   if (!stackUp) return;
   if (documentId) await deleteByDocumentId(TEST_COLLECTION, documentId).catch(() => {});
   await client.deleteCollection(TEST_COLLECTION).catch(() => {});
 });
 
-test("retrieve on a matching question returns relevant chunks ranked by score descending", async (t) => {
-  if (!stackUp || !documentId) { t.skip("Ollama or Qdrant not reachable, or ingest failed"); return; }
+describe("retrieve", () => {
+  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+    "(a) clear match returns relevant chunks ranked by score descending",
+    async () => {
+      const chunks = await retrieve("What does the sample say about a quick brown fox?", {
+        collection: TEST_COLLECTION,
+      });
 
-  const chunks = await retrieve("What does the quick brown fox do?", { collection: TEST_COLLECTION });
-
-  assert.ok(chunks.length > 0, "expected at least one chunk for a matching question");
-  const topHasPhrase = chunks[0].text.includes("quick brown fox");
-  assert.ok(topHasPhrase, `top chunk text should include 'quick brown fox'; got: ${JSON.stringify(chunks[0].text.slice(0, 80))}`);
-  for (let i = 1; i < chunks.length; i++) {
-    assert.ok(
-      chunks[i - 1].score >= chunks[i].score,
-      `chunks must be score-descending: ${chunks[i - 1].score} < ${chunks[i].score} at index ${i}`,
-    );
-  }
-  console.log(`  matching  -> ${chunks.length} hits, top score=${chunks[0].score.toFixed(4)}`);
-});
-
-test("retrieve on an absent topic returns empty array at default threshold", async (t) => {
-  if (!stackUp || !documentId) { t.skip("Ollama or Qdrant not reachable, or ingest failed"); return; }
-
-  const chunks = await retrieve(
-    "Quantum chromodynamics gauge invariance and the strong nuclear force confinement hypothesis",
-    { collection: TEST_COLLECTION },
+      expect(chunks.length).toBeGreaterThan(0);
+      expect(chunks[0].text).toContain("quick brown fox");
+      for (let i = 1; i < chunks.length; i++) {
+        expect(chunks[i - 1].score).toBeGreaterThanOrEqual(chunks[i].score);
+      }
+    },
   );
 
-  assert.equal(chunks.length, 0, `expected zero hits for an absent topic at threshold 0.7, got ${chunks.length}`);
-  console.log("  absent    -> 0 hits at default threshold (0.7)");
-});
-
-test("lowering the threshold to 0 on the same absent-topic question returns results anyway", async (t) => {
-  if (!stackUp || !documentId) { t.skip("Ollama or Qdrant not reachable, or ingest failed"); return; }
-
-  const chunks = await retrieve(
-    "Quantum chromodynamics gauge invariance and the strong nuclear force confinement hypothesis",
-    { scoreThreshold: 0, collection: TEST_COLLECTION },
+  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+    "(b) unrelated query with default threshold returns nothing",
+    async () => {
+      const chunks = await retrieve(
+        "Quantum chromodynamics gauge invariance and the strong nuclear force confinement hypothesis",
+        { collection: TEST_COLLECTION },
+      );
+      expect(chunks).toHaveLength(0);
+    },
   );
 
-  assert.ok(chunks.length > 0, "expected >0 hits when threshold is 0 (proving threshold, not luck, filtered the prior test)");
-  console.log(`  absent@0  -> ${chunks.length} hits, top score=${chunks[0].score.toFixed(4)}`);
+  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+    "(c) topK: 1 vs topK: 5 on the same query returns the right count",
+    async () => {
+      const question = "What does the sample text mention about a fox?";
+      const one = await retrieve(question, { topK: 1, scoreThreshold: 0, collection: TEST_COLLECTION });
+      const five = await retrieve(question, { topK: 5, scoreThreshold: 0, collection: TEST_COLLECTION });
+
+      expect(one).toHaveLength(1);
+      expect(five.length).toBeLessThanOrEqual(5);
+      // The top-1 result should match the top result of the top-5 query
+      // (Qdrant's deterministic search for the same query vector).
+      if (five.length > 0) {
+        expect(five[0].text).toBe(one[0].text);
+      }
+    },
+  );
 });

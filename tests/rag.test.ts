@@ -1,0 +1,88 @@
+import { describe, test, expect, beforeAll, afterAll } from "vitest";
+import { QdrantClient } from "@qdrant/js-client-rest";
+import { answerQuestion } from "../src/rag.js";
+import { ingestDocument } from "../src/ingest/pipeline.js";
+import { deleteByDocumentId } from "../src/retrieval/vectorStore.js";
+
+const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
+const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
+const TEST_COLLECTION = `rag-test-${process.pid}`;
+
+const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
+
+let stackUp = false;
+let documentId: string | null = null;
+
+beforeAll(async () => {
+  try {
+    const [qRes, oRes] = await Promise.all([
+      fetch(`${QDRANT_URL}/readyz`, { signal: AbortSignal.timeout(2000) }),
+      fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(2000) }),
+    ]);
+    stackUp = qRes.ok && oRes.ok;
+  } catch {
+    stackUp = false;
+  }
+  if (!stackUp) return;
+
+  try {
+    await client.deleteCollection(TEST_COLLECTION).catch(() => {});
+    const r = await ingestDocument("data/sample.txt", {
+      strategy: "recursive",
+      collection: TEST_COLLECTION,
+    });
+    if (r.success) documentId = r.documentId;
+  } catch {
+    stackUp = false;
+  }
+}, 180_000);
+
+afterAll(async () => {
+  if (!stackUp) return;
+  if (documentId) await deleteByDocumentId(TEST_COLLECTION, documentId).catch(() => {});
+  await client.deleteCollection(TEST_COLLECTION).catch(() => {});
+});
+
+describe("answerQuestion — end-to-end", () => {
+  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+    "an answerable question yields an answer containing the key phrase",
+    async () => {
+      const { answer } = await answerQuestion("What does the sample text say about a fox?", {
+        collection: TEST_COLLECTION,
+      });
+
+      const lowered = answer.toLowerCase();
+      // keyword-level assertion: llama3 paraphrases; "fox" is the corpus's central noun.
+      expect(lowered).toContain("fox");
+      // negative assertion: should NOT decline when the question is answerable.
+      expect(lowered).not.toMatch(/\b(insufficient|could ?n'?t find|not (found|relevant))\b/);
+    },
+  );
+
+  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+    "an absent-topic question yields an explicit admission, not fabricated content",
+    async () => {
+      const { answer } = await answerQuestion("What is the capital of France?", {
+        collection: TEST_COLLECTION,
+      });
+
+      const lowered = answer.toLowerCase();
+      // The prompt's NO_CONTEXT_INSTRUCTION explicitly tells the model to say no
+      // relevant information was found; this test asserts the system prompt is
+      // honored. We match a set of admission phrasings broadly.
+      const admissionPatterns = [
+        /\bnot (found|relevant|available|in the (knowledge|context|knowledge base|provided context))\b/,
+        /\bcould ?n'?t (find|locate) (any )?relevant/,
+        /\bno (relevant|matching|related) (information|context|documents)\b/,
+        /\binsufficient (context|information)\b/,
+        /\b(don'?t have|cannot|can'?t (answer|provide))\b/,
+      ];
+      const admits = admissionPatterns.some((p) => p.test(lowered));
+      expect(admits, `expected an admission phrasing; got: ${JSON.stringify(answer)}`).toBe(true);
+
+      // The cheap-failure case is the model just answering "Paris is the capital
+      // of France" without admitting it's general knowledge. Catches that.
+      expect(lowered).not.toContain("paris");
+    },
+  );
+});
