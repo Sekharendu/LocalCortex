@@ -27,11 +27,42 @@ Guidance for AI agents working on this repo.
 
 ## API contract (`src/server.ts`)
 
-- `GET /health` -> `{ ollama: boolean, qdrant: boolean }` (probes `/api/tags` and `/readyz`).
+- `GET /health` -> `{ ollama: boolean, qdrant: boolean, collection: string | null, chunkCount: number | null }` (probes `/api/tags` and `/readyz`; when Qdrant is reachable, additionally reports the configured collection name and live point count via `QdrantClient.count(..., { exact: true })`). `null` for unknown/unreachable; never `0` since `0` is a valid count distinct from "unknown".
+- `POST /ingest` (multipart/form-data, field `file`, optional field `strategy` ∈ {fixed, semantic, recursive}; defaults `recursive`) -> `JSON { documentId, chunkCount }` on success. Uploads land in the OS temp dir and are auto-cleaned after ingest. `400` if no file attached; `413` if exceeds `MAX_INGEST_BYTES` (default 50MB, env-overridable); `502 { error: "Ingest failed at stage 'X': ..." }` on pipeline failure (names the stage so failures triage by root cause).
 - `POST /query` body: `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }`.
-  - `stream` falsy (default): returns `JSON { answer, chunks: RetrievedChunk[] }`.
-  - `stream: true`: returns `text/plain; charset=utf-8` streamed token-by-token; status cannot change once headers flush, so a mid-stream generation error surfaces as a trailing `\n\n[generation error: msg]` footer.
-  - Pre-first-token errors (retrieval infra-down, missing question): normal status-coded JSON envelope (`400` validation, `503` retrieval failure, `502` non-streaming generation failure).
+  - `stream` falsy (default): returns `JSON { answer, chunks: RetrievedChunk[] }`. `400` missing question; `503` infra failure.
+  - `stream: true`: returns `text/plain; charset=utf-8` streamed token-by-token; retrieval+buildPrompt run EAGERLY so pre-stream infra failures return a normal `503` JSON envelope before any bytes are written. Once streaming begins the status is immutable -- a mid-stream generation error surfaces as a trailing `\n\n[generation error: msg]` footer.
+- `GET /documents` -> `JSON { documents: DocumentRecord[] }` (sorted by `ingestedAt` desc). `500` on document-store read failure.
+- `DELETE /documents/:id` -> `JSON { deleted: DocumentRecord }` on success. `404` if id not in store. **Sync guarantee**: deletes the document-store record first, then `deleteByDocumentId` from Qdrant; if the Qdrant delete fails the document-store record is RE-ADDED and the response is `502` with `"... record restored"`. The two stores never drift out of sync even on partial infra failure.
+- All error paths return `JSON { error: string }` -- never Express's default HTML stack trace. 404 for unknown routes (`{ error: "route not found: METHOD /path" }`); 400 for malformed JSON body; 413 for oversized uploads; 500 catch-all for anything unhandled, server-side logged.
+
+## curl recipes (manual smoke)
+
+```bash
+# 1. Health -- reports ollama/qdrant reachability + active collection name + chunk count
+curl -s localhost:3000/health | jq
+
+# 2. Ingest a file (chunking strategy defaults to recursive)
+curl -s -X POST localhost:3000/ingest \
+  -F "file=@data/sample.txt" \
+  -F "strategy=recursive" | jq
+
+# 3. Query (non-streaming) -- returns { answer, chunks }
+curl -s -X POST localhost:3000/query \
+  -H 'content-type: application/json' \
+  -d '{"question":"What does the sample say about a fox?"}' | jq
+
+# 4. Query (streaming) -- token-by-token text/plain sideways to terminal
+curl -N -X POST localhost:3000/query \
+  -H 'content-type: application/json' \
+  -d '{"question":"What does the sample say about a fox?","stream":true}'
+
+# 5. List ingested documents
+curl -s localhost:3000/documents | jq
+
+# 6. Delete a document (replace with a real documentId from /documents)
+curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
+```
 
 ## Commands
 
