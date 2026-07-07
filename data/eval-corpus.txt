@@ -1,0 +1,61 @@
+# Employee Handbook (Sample)
+
+## Vacation Policy
+
+Full-time employees accrue 15 days of paid vacation per year during their first five years of service. After five years, the accrual rate increases to 20 days per year. Vacation requests must be submitted at least two weeks in advance through the company portal.
+
+## Remote Work
+
+Employees may work remotely up to three days per week, with manager approval. Core hours are 10am to 3pm in the employee's local timezone, during which they must be reachable. Remote work arrangements are reviewed quarterly.
+
+## Health Insurance
+
+The company offers a comprehensive health insurance plan covering medical, dental, and vision. The employer pays 80% of the premium for the employee and 50% for dependents. Coverage begins on the first day of the month following the hire date.
+
+## Retirement Plan
+
+All employees are eligible for the 401(k) retirement plan after 90 days of employment. The company matches employee contributions up to 5% of base salary. Vested immediately, and rollovers into the plan from previous employers are supported.
+
+## Parental Leave
+
+New parents are eligible for 12 weeks of paid parental leave following the birth, adoption, or foster placement of a child. This leave is available to both primary and secondary caregivers and must be taken within the first year of the event.
+
+## Code of Conduct
+
+Professional behavior is expected at all times. This includes respectful communication with colleagues and external clients, confidentiality of company information, and avoidance of conflicts of interest. Violations are handled through the people-ops team.
+
+## Office Hours
+
+The corporate headquarters in Austin, Texas observes business hours of 8:30am to 5:30pm Central Time, Monday through Friday, excluding the company's published holiday calendar. Engineering teams operate on a flexible schedule within core hours.
+
+## Expense Reimbursement
+
+Business expenses such as travel, lodging, and client meals are reimbursed when accompanied by an itemized receipt and a valid business justification. Reimbursements are processed within two pay cycles and submitted through the expense management system.
+
+## Travel Policy
+
+Travel for business must be booked at least two weeks in advance when possible and booked through the approved travel platform. Economy class is required for flights under four hours. Business class is permitted only for international flights exceeding six hours.
+
+## Training Stipend
+
+Every permanent employee receives an annual training budget of 2000 dollars for professional development. Approved uses include conference attendance, online courses, certification exam fees, and workshop enrollment. Unused funds do not rollover.
+
+## Equipment and Workstations
+
+Engineering staff receive a workstation of their choice up to a defined budget threshold, refreshed every three years. Optional peripherals such as ergonomic keyboards and standing desk converters can be requested via the procurement portal.
+
+## Termination Procedures
+
+Employment can be terminated by either party with two weeks notice for non-cause terminations. Immediate termination is reserved for cause, defined as gross misconduct, security violations, or material breach of contract. Final paychecks are issued within three business days.
+
+## Performance Reviews
+
+Formal performance reviews are conducted twice annually, in March and September. Each review covers goal achievement, peer feedback, and growth areas. The manager-of-managers review precedes the leadership review to ensure calibration across teams.
+
+## Security and Access
+
+Building access is provisioned via a physical badge and digital credentials. Badges are required at all times in the workplace and must be returned upon termination. Lost badges must be reported to security within four hours to enable revocation.
+
+## Open Source Contributions
+
+Employees are encouraged to contribute to open-source projects as part of their professional development, subject to disclosure of any repository with a license conflict with company work. All contributions during business hours must be reviewed by immediate managers for appropriateness of time allocation.

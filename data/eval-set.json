@@ -1,0 +1,102 @@
+[
+  {
+    "question": "How many vacation days do I get per year?",
+    "expectedSubstrings": ["15 days of paid vacation"],
+    "notes": "vacation accrual rate"
+  },
+  {
+    "question": "What is the accrual rate after five years of service?",
+    "expectedSubstrings": ["20 days per year"],
+    "notes": "vacation rate increase"
+  },
+  {
+    "question": "Do I need manager approval to work remotely?",
+    "expectedSubstrings": ["three days per week, with manager approval"],
+    "notes": "remote work approval"
+  },
+  {
+    "question": "What are the core hours for remote employees?",
+    "expectedSubstrings": ["Core hours are 10am to 3pm"],
+    "notes": "remote core hours"
+  },
+  {
+    "question": "How much of the health insurance premium does the employer pay?",
+    "expectedSubstrings": ["80% of the premium"],
+    "notes": "health insurance employer share"
+  },
+  {
+    "question": "When does health coverage begin?",
+    "expectedSubstrings": ["first day of the month following the hire date"],
+    "notes": "coverage start"
+  },
+  {
+    "question": "How long do I have to wait before joining the 401(k)?",
+    "expectedSubstrings": ["90 days of employment"],
+    "notes": "retirement eligibility"
+  },
+  {
+    "question": "What is the company match on retirement contributions?",
+    "expectedSubstrings": ["up to 5% of base salary"],
+    "notes": "retirement match"
+  },
+  {
+    "question": "How long is paid parental leave?",
+    "expectedSubstrings": ["12 weeks of paid parental leave"],
+    "notes": "parental leave duration"
+  },
+  {
+    "question": "Where is the corporate headquarters located?",
+    "expectedSubstrings": ["headquarters in Austin, Texas"],
+    "notes": "office location"
+  },
+  {
+    "question": "What are the business hours of the headquarters?",
+    "expectedSubstrings": ["8:30am to 5:30pm Central Time"],
+    "notes": "office hours"
+  },
+  {
+    "question": "How long does expense reimbursement take to process?",
+    "expectedSubstrings": ["two pay cycles"],
+    "notes": "expense processing time"
+  },
+  {
+    "question": "What class of flight is required for short trips under four hours?",
+    "expectedSubstrings": ["Economy class is required for flights under four hours"],
+    "notes": "travel flight class"
+  },
+  {
+    "question": "What is the annual training budget for employees?",
+    "expectedSubstrings": ["2000 dollars for professional development"],
+    "notes": "training stipend amount"
+  },
+  {
+    "question": "Do unused training funds roll over to the next year?",
+    "expectedSubstrings": ["Unused funds do not rollover"],
+    "notes": "training funds rollover"
+  },
+  {
+    "question": "How often are engineering workstations refreshed?",
+    "expectedSubstrings": ["refreshed every three years"],
+    "notes": "equipment refresh cycle"
+  },
+  {
+    "question": "How much notice is required for a non-cause termination?",
+    "expectedSubstrings": ["two weeks notice for non-cause terminations"],
+    "notes": "termination notice"
+  },
+  {
+    "question": "When are final paychecks issued after termination?",
+    "expectedSubstrings": ["Final paychecks are issued within three business days"],
+    "notes": "final paycheck timing"
+  },
+  {
+    "question": "How often are performance reviews conducted?",
+    "expectedSubstrings": ["twice annually, in March and September"],
+    "notes": "review cadence"
+  },
+  {
+    "question": "What needs to happen with a lost building badge?",
+    "expectedSubstrings": ["Lost badges must be reported to security within four hours"],
+    "notes": "lost badge reporting"
+  }
+]
