@@ -89,6 +89,12 @@ npx tsx scripts/test-hallucination.ts --compare data/halluc-results-<prev-ts>.js
 ```
 Eval corpus: `data/eval-corpus.txt` (handwritten 15-section employee handbook — ingest with `curl -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt"` before running either script).
 
+End-to-end API smoke (`scripts/smoke-test.ts`) — exercises every route against a running `pnpm dev` server: `/health` green → `/ingest data/sample.txt` → confirm `/health` chunkCount > 0 → `/query` for an answerable question asserts the answer references "fox" → `DELETE /documents/:id` cleanup asserts no DocumentStore↔Qdrant drift. Each step fails loudly with a step-specific message (never a generic timeout) and a hint about which component to check.
+```bash
+npx tsx scripts/smoke-test.ts
+# Prereq: docker compose up -d + models pulled + pnpm dev running on localhost:3000
+```
+
 ## Conventions
 
 - ESM (`"type": "module"`), `NodeNext` module resolution
@@ -101,3 +107,13 @@ Eval corpus: `data/eval-corpus.txt` (handwritten 15-section employee handbook �
 
 - `data/sample.txt` — plain-text fixture
 - `data/sample.pdf` — 2-page fixture, regenerable via `node scripts/gen-sample-pdf.mjs`
+- `data/eval-corpus.txt` — 15-section handwritten employee handbook; corpus for both `evaluate-retrieval.ts` and `test-hallucination.ts`
+- `data/eval-set.json` — 20 labeled (question, expectedSubstrings) entries; regenerable starter set via `scripts/gen-eval-set.ts`
+
+## Live-stack test files
+
+- `tests/vectorStore.test.ts` — Qdrant round-trip (upsert/search/delete/dimension gate)
+- `tests/pipeline.test.ts` — `ingestDocument` end-to-end against the real stack + a missing-file local test
+- `tests/retriever.test.ts` — `retrieve()` clear-match / absent-at-default-threshold / topK-count tests
+- `tests/rag.test.ts` — `answerQuestion` answerable + absent-topic (single) + **absent-topic STRESS (3 cases)** end-to-end; the stress test is the multi-question vitest-side counterpart of `scripts/test-hallucination.ts` (kept short to stay under the vitest per-test timeout on CPU llama3)
+- All four use `test.skipIf` to skip cleanly when Qdrant / Ollama is not reachable
