@@ -84,5 +84,53 @@ describe("answerQuestion — end-to-end", () => {
       // of France" without admitting it's general knowledge. Catches that.
       expect(lowered).not.toContain("paris");
     },
+    120_000,
   );
+});
+
+/**
+ * Absent-topic STRESS test: multiple deliberately-unanswerable questions across
+ * distinct topic areas (geography, astronomy, cooking). Each must trigger an admission,
+ * not a fabricated answer. This is the multi-question version of the single-case test
+ * above -- it's the vitest-side counterpart of scripts/test-hallucination.ts, kept
+ * shorter (3 cases) so the live-stack vitest run stays under the per-test timeout on
+ * CPU-bound llama3.
+ *
+ * Wired through scripts/test-hallucination.ts is the full standalone runner with 10
+ * cases (7 subtle + 3 obvious) for deeper manual investigation when needed.
+ */
+describe("answerQuestion — absent-topic stress (multiple questions)", () => {
+  const ABSENT_CASES = [
+    { q: "What is the capital of France?", fabricationMarker: "paris" },
+    { q: "What is the distance from Earth to the Moon?", fabricationMarker: "kilometers" },
+    { q: "How do I bake a chocolate cake?", fabricationMarker: "preheat" },
+  ];
+  const admissionPatterns = [
+    /\bnot (found|relevant|available|in the (knowledge|context|knowledge base|provided context))\b/,
+    /\bcould ?n'?t (find|locate) (any )?relevant/,
+    /\bno (relevant|matching|related) (information|context|documents)\b/,
+    /\binsufficient (context|information)\b/,
+    /\b(don'?t have|cannot|can'?t (answer|provide))\b/,
+  ];
+
+  for (const c of ABSENT_CASES) {
+    test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+      `absent-topic stress: "${c.q}"`,
+      async () => {
+        const { answer } = await answerQuestion(c.q, { collection: TEST_COLLECTION });
+        const lowered = answer.toLowerCase();
+
+        const admits = admissionPatterns.some((p) => p.test(lowered));
+        expect(
+          admits,
+          `expected admission phrasing for absent question "${c.q}"; got: ${JSON.stringify(answer)}`,
+        ).toBe(true);
+        expect(
+          lowered,
+          `expected "${c.fabricationMarker}" not in answer (would signal fabrication); got: ${JSON.stringify(answer)}`,
+        ).not.toContain(c.fabricationMarker);
+      },
+      60_000,
+    );
+  }
 });

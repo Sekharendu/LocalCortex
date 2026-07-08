@@ -6,6 +6,17 @@ services:
       - "6333:6333"
     volumes:
       - qdrant_data:/qdrant/storage
+    healthcheck:
+      # Raw TCP + HTTP line via bash -- the base image ships no curl/wget.
+      # Probes /readyz which Qdrant responds to with 200 once ready.
+      test:
+        - "CMD-SHELL"
+        - "bash -c 'exec 3<>/dev/tcp/localhost/6333 && echo -e \"GET /readyz HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\" >&3 && cat <&3 | head -1 | grep -q 200' || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
 
   ollama:
     image: ollama/ollama:latest
@@ -14,6 +25,21 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+    healthcheck:
+      # Probes "/" which Ollama responds to with "Ollama is running" (200).
+      test:
+        - "CMD-SHELL"
+        - "bash -c 'exec 3<>/dev/tcp/localhost/11434 && echo -e \"GET / HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\" >&3 && cat <&3 | head -1 | grep -q 200' || exit 1"
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    # NOTE: Ollama models are NOT baked into the base image. After `docker compose up -d`
+    # and the ollama container is healthy, pull the two models the RAG pipeline needs:
+    #   docker exec -it local-rag-ollama ollama pull nomic-embed-text
+    #   docker exec -it local-rag-ollama ollama pull llama3
+    # Pulls are persisted to the ollama_data volume so you only do this once per machine.
 
 volumes:
   qdrant_data:
