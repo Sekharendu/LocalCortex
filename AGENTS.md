@@ -73,6 +73,22 @@ curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
 - `pnpm test:watch` — `vitest` (watch mode for dev iteration)
 - `docker compose up -d` — start Qdrant (6333) + Ollama (11434)
 
+## Standalone evaluation scripts
+
+Retrieval quality (`scripts/evaluate-retrieval.ts`) — measures Recall@{1,3,5} and MRR against `data/eval-set.json` (20 entries). Starter-set generator: `scripts/gen-eval-set.ts` (uses `llama3` to author questions from each chunk). Run:
+```bash
+npx tsx scripts/evaluate-retrieval.ts                          # measures current run, writes data/eval-results-<ts>.json
+npx tsx scripts/gen-eval-set.ts --doc data/eval-corpus.txt     # regenerate starter eval set via llama3
+```
+Low-score diagnosis: a wide Recall@1 → Recall@5 gap means ranking is mediocre but retrieval is happening (suspect embedding/prompt phrasing). Low Recall@5 means right chunk isn't in top-5 → start by re-tuning chunking strategy/size, NOT the embedding model (most retrieval failures are chunking failures in disguise).
+
+Hallucination stress test (`scripts/test-hallucination.ts`) — directly tests "say so if context is insufficient" with 10 absent-topic questions (7 subtle + 3 obvious). Pre-flight refuses to run against an empty collection (which would test the wrong thing). Three-bucket classifier: PASS (admission pattern), FAIL (fabrication marker hits), AMBIGUOUS (flagged for manual judgment, never silently forced). On FAIL, prints suggested `RAG_SYSTEM_PROMPT` adjustments but **does not apply them** -- re-run with `--compare` after manual editing to see before/after:
+```bash
+npx tsx scripts/test-hallucination.ts                            # run
+npx tsx scripts/test-hallucination.ts --compare data/halluc-results-<prev-ts>.json
+```
+Eval corpus: `data/eval-corpus.txt` (handwritten 15-section employee handbook — ingest with `curl -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt"` before running either script).
+
 ## Conventions
 
 - ESM (`"type": "module"`), `NodeNext` module resolution

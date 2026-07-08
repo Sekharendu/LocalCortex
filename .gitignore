@@ -3,5 +3,6 @@ dist/
 # ignore runtime artifacts in data/, keep fixtures + eval set + corpus committed
 data/documents.json
 data/eval-results-*.json
+data/halluc-results-*.json
 *.log
 .env
