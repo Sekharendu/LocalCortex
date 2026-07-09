@@ -125,8 +125,8 @@ app.post("/query", async (req: Request, res: Response) => {
 
   if (!wantStream) {
     try {
-      const { answer, chunks } = await answerQuestion(question, opts);
-      res.json({ answer, chunks });
+      const { answer, chunks, citations } = await answerQuestion(question, opts);
+      res.json({ answer, chunks, citations });
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
       res.status(503).json({ error: `Failed to answer question: ${msg}` });
@@ -135,13 +135,20 @@ app.post("/query", async (req: Request, res: Response) => {
   }
 
   // Streaming branch -- once we flush headers, status is immutable. Run the
-  // retrieval+buildPrompt setup EAGERLY (inside answerQuestionStream's returned
+  // retrieval+buildPrompt+citations setup EAGERLY (inside answerQuestionStream's returned
   // promise) so pre-stream infra failures surface as a normal 503 JSON envelope
   // before any bytes have been written; a post-setup mid-stream generation failure
   // surfaces as a trailing `\n\n[generation error: msg]` footer.
+  //
+  // Citations are emitted as an `X-Citations` response header rather than a trailing
+  // SSE event so the streamed body stays pure text/plain tokens for existing clients
+  // that just consume tokens -- citation metadata is a side channel clients opt into.
   let tokenStream: AsyncGenerator<string>;
+  let citations: { source: string; page?: number }[];
   try {
-    tokenStream = await answerQuestionStream(question, opts);
+    const setup = await answerQuestionStream(question, opts);
+    tokenStream = setup.tokens;
+    citations = setup.citations;
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
     res.status(503).json({ error: `Failed to answer question: ${msg}` });
@@ -152,6 +159,9 @@ app.post("/query", async (req: Request, res: Response) => {
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
   res.setHeader("X-Accel-Buffering", "no");
+  // Citations in a metadata header -- zero body-format change for token-only clients.
+  // Header values can't contain raw newlines; JSON.stringify escapes them safely.
+  res.setHeader("X-Citations", JSON.stringify(citations));
   res.flushHeaders();
 
   let firstToken = true;

@@ -55,7 +55,7 @@ Every route returns JSON `{ error: string }` on failure — never Express's defa
 |---|---|---|---|---|
 | `GET` | `/health` | — | `{ ollama, qdrant, collection, chunkCount }` | `200` |
 | `POST` | `/ingest` | `multipart/form-data`: `file` (required), `strategy` ∈ {fixed, semantic, recursive} (default `recursive`) | `{ documentId, chunkCount }` | `200`, `400` (no file), `413` (too large), `502` (pipeline failed, names the stage) |
-| `POST` | `/query` | `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }` | non-stream: `{ answer, chunks: RetrievedChunk[] }`; stream: `text/plain; charset=utf-8` token-by-token | `200`, `400` (missing question), `503` (infra failure) |
+| `POST` | `/query` | `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }` | non-stream: `{ answer, chunks, citations }`; stream: `text/plain; charset=utf-8` token-by-token + `X-Citations` response header (JSON array) | `200`, `400` (missing question), `503` (infra failure) |
 | `GET` | `/documents` | — | `{ documents: DocumentRecord[] }` (newest first) | `200`, `500` (store read failure) |
 | `DELETE` | `/documents/:id` | — | `{ deleted: DocumentRecord }` | `200`, `404` (id not in store), `502` (Qdrant delete failed — store record restored to keep drift-free) |
 
@@ -70,13 +70,16 @@ curl -s -X POST localhost:3000/ingest \
   -F "file=@data/sample.txt" \
   -F "strategy=recursive" | jq
 
-# 3. Query (non-streaming) -- returns { answer, chunks }
+# 3. Query (non-streaming) -- returns { answer, chunks, citations }
 curl -s -X POST localhost:3000/query \
   -H 'content-type: application/json' \
   -d '{"question":"What does the sample say about a fox?"}' | jq
 
-# 4. Query (streaming) -- token-by-token text/plain sideways to terminal
-curl -N -X POST localhost:3000/query \
+# 4. Query (streaming) -- token-by-token text/plain sideways to terminal.
+#    Citations for the streamed answer arrive in the X-Citations response header
+#    (JSON array of { source, page? } pairs -- only chunks that cleared the
+#    retrieval threshold and went into the prompt context). Use curl -i to see it:
+curl -i -N -X POST localhost:3000/query \
   -H 'content-type: application/json' \
   -d '{"question":"What does the sample say about a fox?","stream":true}'
 
