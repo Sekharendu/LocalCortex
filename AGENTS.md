@@ -23,15 +23,15 @@ Guidance for AI agents working on this repo.
 - `src/generation/llm.ts` exports `RAG_SYSTEM_PROMPT` (the universal baseline persona -- editable single source of truth for instruction wording) and `generate(prompt)` which calls Ollama's `/api/generate` with the local generation model (default `llama3`, env `OLLAMA_GEN_MODEL`), `system: RAG_SYSTEM_PROMPT`, `stream: false`. Throws `GenerationError` on any failure (network, non-2xx, malformed body, missing `response`, model error field).
 - `src/generation/promptBuilder.ts` exports `buildPrompt(question, chunks)` and the situation-specific instruction constants `WITH_CONTEXT_INSTRUCTION` / `NO_CONTEXT_INSTRUCTION`. Empty chunks produce a distinct prompt variant that tells the model no relevant context was found and instructs it to say so -- it does NOT emit an empty "Context:" block. Non-empty chunks emit one passage per entry with light `[1] (source: file, page: N)` citation tags so the model can ground cited answers.
 - `src/generation/llm.ts` also exports `generateStream(prompt): AsyncGenerator<string>` (stream:true) and `parseNdjsonStream(chunks): AsyncGenerator<GenerateResponse>` (exported for unit testing). The NJSON parser maintains a string buffer across reads, splits on `\n`, parses every complete line, and carries any trailing incomplete line over to be prepended to the next chunk -- a naive `JSON.parse(chunk)` implementation fails on objects split across chunks and on multiple objects concatenated in one chunk.
-- `src/rag.ts` exports `retrieveForQuestion(question, opts): Promise<{ prompt, chunks }>` -- the shared orchestration helper so the API route's streaming and non-streaming branches don't duplicate retrieve+buildPrompt logic.
+- `src/rag.ts` exports `retrieveForQuestion(question, opts): Promise<{ prompt, chunks }>` (the shared prep helper), `answerQuestion(question, opts): Promise<{ answer, chunks, citations }>` (non-streaming orchestrator) and `answerQuestionStream(question, opts): Promise<{ tokens, citations }>` (streaming). `buildCitations(chunks)` dedupes the chunks that cleared threshold into the returned `{ source, page? }` digest -- only sources that actually went into the prompt context are surfaced.
 
 ## API contract (`src/server.ts`)
 
 - `GET /health` -> `{ ollama: boolean, qdrant: boolean, collection: string | null, chunkCount: number | null }` (probes `/api/tags` and `/readyz`; when Qdrant is reachable, additionally reports the configured collection name and live point count via `QdrantClient.count(..., { exact: true })`). `null` for unknown/unreachable; never `0` since `0` is a valid count distinct from "unknown".
 - `POST /ingest` (multipart/form-data, field `file`, optional field `strategy` ∈ {fixed, semantic, recursive}; defaults `recursive`) -> `JSON { documentId, chunkCount }` on success. Uploads land in the OS temp dir and are auto-cleaned after ingest. `400` if no file attached; `413` if exceeds `MAX_INGEST_BYTES` (default 50MB, env-overridable); `502 { error: "Ingest failed at stage 'X': ..." }` on pipeline failure (names the stage so failures triage by root cause).
 - `POST /query` body: `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }`.
-  - `stream` falsy (default): returns `JSON { answer, chunks: RetrievedChunk[] }`. `400` missing question; `503` infra failure.
-  - `stream: true`: returns `text/plain; charset=utf-8` streamed token-by-token; retrieval+buildPrompt run EAGERLY so pre-stream infra failures return a normal `503` JSON envelope before any bytes are written. Once streaming begins the status is immutable -- a mid-stream generation error surfaces as a trailing `\n\n[generation error: msg]` footer.
+  - `stream` falsy (default): returns `JSON { answer, chunks: RetrievedChunk[], citations: Citation[] }`. `citations` is the deduped `{ source, page? }` pairs from chunks that actually cleared the retrieval threshold and went into the prompt context -- never fabricated. `400` missing question; `503` infra failure.
+  - `stream: true`: returns `text/plain; charset=utf-8` streamed token-by-token; citations are emitted as an `X-Citations` response header (JSON array) set before the stream starts so body-only clients keep working unchanged and citation-metadata clients read the side channel. retrieval+buildPrompt+citations setup run EAGERLY so pre-stream infra failures return a normal `503` JSON envelope before any bytes are written. Once streaming begins the status is immutable -- a mid-stream generation error surfaces as a trailing `\n\n[generation error: msg]` footer.
 - `GET /documents` -> `JSON { documents: DocumentRecord[] }` (sorted by `ingestedAt` desc). `500` on document-store read failure.
 - `DELETE /documents/:id` -> `JSON { deleted: DocumentRecord }` on success. `404` if id not in store. **Sync guarantee**: deletes the document-store record first, then `deleteByDocumentId` from Qdrant; if the Qdrant delete fails the document-store record is RE-ADDED and the response is `502` with `"... record restored"`. The two stores never drift out of sync even on partial infra failure.
 - All error paths return `JSON { error: string }` -- never Express's default HTML stack trace. 404 for unknown routes (`{ error: "route not found: METHOD /path" }`); 400 for malformed JSON body; 413 for oversized uploads; 500 catch-all for anything unhandled, server-side logged.
@@ -52,8 +52,10 @@ curl -s -X POST localhost:3000/query \
   -H 'content-type: application/json' \
   -d '{"question":"What does the sample say about a fox?"}' | jq
 
-# 4. Query (streaming) -- token-by-token text/plain sideways to terminal
-curl -N -X POST localhost:3000/query \
+# 4. Query (streaming) -- token-by-token text/plain sideways to terminal.
+#    Citations arrive in the X-Citations response header (JSON array of
+#    { source, page? } pairs from chunks that cleared threshold). Use -i to see it:
+curl -i -N -X POST localhost:3000/query \
   -H 'content-type: application/json' \
   -d '{"question":"What does the sample say about a fox?","stream":true}'
 

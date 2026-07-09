@@ -54,3 +54,15 @@ export interface ChunkPayload {
   chunkIndex: number;
   documentId: string;
 }
+
+/**
+ * A deduplicated { source, page } pair derived from the chunks that cleared the
+ * retrieval threshold for a given answer. Surfaces to API callers as the citations
+ * array -- only sources that actually contributed to the prompt context appear, never
+ * fabricated. Stable ordering mirrors first-appearance order in the prompt so a
+ * reader can map citations to the order passages were presented to the model.
+ */
+export interface Citation {
+  source: string;
+  page?: number;
+}

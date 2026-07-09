@@ -46,6 +46,7 @@ interface IngestResponse {
 interface QueryResponse {
   answer: string;
   chunks: Array<{ text: string; source: string; page?: number; score: number }>;
+  citations: Array<{ source: string; page?: number }>;
 }
 
 interface DeleteResponse {
@@ -183,7 +184,24 @@ async function main(): Promise<void> {
       `  Suspect: retrieval missed the relevant chunk (check scoreThreshold), OR\n` +
       `           llama3 didn't ground on context (tighten RAG_SYSTEM_PROMPT in src/generation/llm.ts)`,
   );
-  console.log(`  ✓ answer references "fox" (chunks returned: ${query.chunks.length})`);
+  // Citations contract: answerable question grounded in sample.txt should produce a
+  // citations array containing at least one entry whose source is "sample.txt".
+  assert(
+    Array.isArray(query.citations) && query.citations.length > 0,
+    "4",
+    `POST /query returned 200 but missing/empty citations array: ${JSON.stringify(query.citations)}.\n` +
+      `  Expected: non-empty citations computed from chunks that cleared the threshold.\n` +
+      `  Suspect: buildCitations in src/rag.ts regressed OR the response is dropping it.`,
+  );
+  assert(
+    query.citations.some((c) => c.source.endsWith("sample.txt")),
+    "4",
+    `Citations array doesn't include sample.txt: ${JSON.stringify(query.citations)}.\n` +
+      `  Expected: source ending in "sample.txt" (the only ingested document).`,
+  );
+  console.log(
+    `  ✓ answer references "fox" (chunks: ${query.chunks.length}, citations: ${query.citations.length})`,
+  );
 
   // --- Step 5: cleanup DELETE the ingested document
   console.log("\nStep 5: DELETE /documents/:id (cleanup) ...");

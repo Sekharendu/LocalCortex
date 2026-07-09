@@ -47,7 +47,7 @@ describe("answerQuestion — end-to-end", () => {
   test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
     "an answerable question yields an answer containing the key phrase",
     async () => {
-      const { answer } = await answerQuestion("What does the sample text say about a fox?", {
+      const { answer, citations } = await answerQuestion("What does the sample text say about a fox?", {
         collection: TEST_COLLECTION,
       });
 
@@ -56,20 +56,26 @@ describe("answerQuestion — end-to-end", () => {
       expect(lowered).toContain("fox");
       // negative assertion: should NOT decline when the question is answerable.
       expect(lowered).not.toMatch(/\b(insufficient|could ?n'?t find|not (found|relevant))\b/);
+
+      // Citations: only chunks that cleared the retrieval threshold (the ones that
+      // actually appeared in the prompt context) contribute their { source, page }.
+      // The sample.txt fixture is the only ingested document, so the answer should be
+      // grounded in citations.matiching its source filename -- never fabricated.
+      expect(Array.isArray(citations)).toBe(true);
+      expect(citations.length).toBeGreaterThan(0);
+      const sources = citations.map((c) => c.source);
+      expect(sources.some((s) => s.endsWith("sample.txt")), `expected a citation whose source ends with sample.txt; got: ${JSON.stringify(citations)}`).toBe(true);
     },
   );
 
   test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
     "an absent-topic question yields an explicit admission, not fabricated content",
     async () => {
-      const { answer } = await answerQuestion("What is the capital of France?", {
+      const { answer, citations } = await answerQuestion("What is the capital of France?", {
         collection: TEST_COLLECTION,
       });
 
       const lowered = answer.toLowerCase();
-      // The prompt's NO_CONTEXT_INSTRUCTION explicitly tells the model to say no
-      // relevant information was found; this test asserts the system prompt is
-      // honored. We match a set of admission phrasings broadly.
       const admissionPatterns = [
         /\bnot (found|relevant|available|in the (knowledge|context|knowledge base|provided context))\b/,
         /\bcould ?n'?t (find|locate) (any )?relevant/,
@@ -83,6 +89,11 @@ describe("answerQuestion — end-to-end", () => {
       // The cheap-failure case is the model just answering "Paris is the capital
       // of France" without admitting it's general knowledge. Catches that.
       expect(lowered).not.toContain("paris");
+
+      // Citations contract: an unanswerable question that retrieved nothing above
+      // threshold should produce an EMPTY citations array (never fabricated sources).
+      expect(Array.isArray(citations)).toBe(true);
+      expect(citations).toHaveLength(0);
     },
     120_000,
   );
