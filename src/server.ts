@@ -1,7 +1,6 @@
 import express, { type Express, type Request, type Response, type NextFunction } from "express";
 import multer, { MulterError } from "multer";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
 import { unlink } from "node:fs/promises";
 import { QdrantClient } from "@qdrant/js-client-rest";
 import { answerQuestion, answerQuestionStream } from "./rag.js";

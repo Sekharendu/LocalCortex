@@ -55,14 +55,14 @@ function assertDim(vec: number[], label: string): void {
     const got = Array.isArray(vec) ? vec.length : typeof vec;
     throw new EmbeddingError(
       `Embedding dimension mismatch for ${label}: expected ${embedConfig.dim}, got ${got}. Model: ${embedConfig.model}. ` +
-        `If you changed OLLAMA_embedConfig.model, also set OLLAMA_embedConfig.dim to match.`,
+        `If you changed OLLAMA_EMBED_MODEL, also set OLLAMA_EMBED_DIM to match.`,
     );
   }
 }
 
 /**
  * Embed a single text via Ollama's /api/embed endpoint. Returns a number[] of length
- * OLLAMA_embedConfig.dim (default 768). Throws EmbeddingError on network failure, non-2xx
+ * OLLAMA_EMBED_DIM (default 768). Throws EmbeddingError on network failure, non-2xx
  * response, malformed body, or dimension mismatch.
  */
 export async function embed(text: string): Promise<number[]> {
