@@ -1,5 +1,5 @@
 import express, { type Express, type Request, type Response, type NextFunction } from "express";
-import multer from "multer";
+import multer, { MulterError } from "multer";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { unlink } from "node:fs/promises";
@@ -86,7 +86,10 @@ app.post("/ingest", upload.single("file"), async (req: Request, res: Response) =
       : "recursive";
 
   try {
-    const result = await ingestDocument(req.file.path, { strategy });
+    const result = await ingestDocument(req.file.path, {
+      strategy,
+      originalName: req.file.originalname,
+    });
     if (!result.success) {
       res.status(502).json({ error: `Ingest failed at stage '${result.stage}': ${result.error}` });
       return;
@@ -234,7 +237,7 @@ app.use((req, res) => {
 
 // ----- centralized error middleware ---------------------------------------------
 app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
-  if (err instanceof multer.MulterError && err.code === "LIMIT_FILE_SIZE") {
+  if (err instanceof MulterError && err.code === "LIMIT_FILE_SIZE") {
     res.status(413).json({ error: `upload too large (max ${MAX_INGEST_BYTES} bytes)` });
     return;
   }

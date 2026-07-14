@@ -44,7 +44,7 @@ afterAll(async () => {
 });
 
 describe("answerQuestion — end-to-end", () => {
-  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+  test.skipIf(!stackUp || documentId === null)(
     "an answerable question yields an answer containing the key phrase",
     async () => {
       const { answer, citations } = await answerQuestion("What does the sample text say about a fox?", {
@@ -68,7 +68,7 @@ describe("answerQuestion — end-to-end", () => {
     },
   );
 
-  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+  test.skipIf(!stackUp || documentId === null)(
     "an absent-topic question yields an explicit admission, not fabricated content",
     async () => {
       const { answer, citations } = await answerQuestion("What is the capital of France?", {
@@ -125,7 +125,7 @@ describe("answerQuestion — absent-topic stress (multiple questions)", () => {
   ];
 
   for (const c of ABSENT_CASES) {
-    test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+    test.skipIf(!stackUp || documentId === null)(
       `absent-topic stress: "${c.q}"`,
       async () => {
         const { answer } = await answerQuestion(c.q, { collection: TEST_COLLECTION });

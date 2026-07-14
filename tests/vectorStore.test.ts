@@ -54,7 +54,7 @@ function cosine(v1: number[], v2: number[]): number {
 }
 
 describe("vectorStore", () => {
-  test.skipIf(!qdrantUp, "Qdrant not reachable")("upsert + search retrieves the close-by chunk above threshold", async () => {
+  test.skipIf(!qdrantUp)("upsert + search retrieves the close-by chunk above threshold", async () => {
     const vA = vecAt(0);
     const vB = vecAt(1);
     const vC = (() => { const v = new Array<number>(DIM).fill(0); v[0] = 0.7; v[1] = 0.7; return v; })();
@@ -78,7 +78,7 @@ describe("vectorStore", () => {
     expect(top.payload?.chunkIndex).toBe(0);
   });
 
-  test.skipIf(!qdrantUp, "Qdrant not reachable")("search with unrelated vector + high threshold returns zero results", async () => {
+  test.skipIf(!qdrantUp)("search with unrelated vector + high threshold returns zero results", async () => {
     // Already-upserted chunks have nonzero components only on axes 0 and 1.
     // Anti-vector flips all axes so cosine similarity is <= 0 against all of them.
     const anti = new Array<number>(DIM).fill(0);
@@ -96,7 +96,7 @@ describe("vectorStore", () => {
     expect(hits).toHaveLength(0);
   });
 
-  test.skipIf(!qdrantUp, "Qdrant not reachable")("deleteByDocumentId removes all chunks for that document", async () => {
+  test.skipIf(!qdrantUp)("deleteByDocumentId removes all chunks for that document", async () => {
     // Upsert a separate doomed document.
     const doomed: ChunkPoint[] = [
       { id: "doomed-0", vector: vecAt(50), payload: { text: "doomed one",  source: "d.pdf", page: 1, chunkIndex: 0, documentId: "doomed" } },
