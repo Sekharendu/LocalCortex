@@ -20,6 +20,7 @@ export interface IngestOptions {
   maxSize?: number;         // semantic / recursive
   collection?: string;
   concurrency?: number;     // embedBatch
+  originalName?: string;    // original filename (used in citations + document record)
 }
 
 export type IngestResult =
@@ -60,6 +61,7 @@ export async function ingestDocument(
   const documentId = randomUUID();
   const collection = options.collection ?? DEFAULT_COLLECTION;
   const strategy: ChunkStrategy = options.strategy ?? "recursive";
+  const sourceName = options.originalName ?? path.basename(filePath);
 
   // Stage 1: load
   let loadResult;
@@ -129,7 +131,7 @@ export async function ingestDocument(
     vector: vectors[i],
     payload: {
       text: c.text,
-      source: filePath,
+      source: sourceName,
       page: c.page,
       chunkIndex: c.chunkIndex,
       documentId,
@@ -152,7 +154,7 @@ export async function ingestDocument(
   try {
     await addDocument({
       id: documentId,
-      source: path.basename(filePath),
+      source: sourceName,
       ingestedAt: new Date().toISOString(),
       chunkCount: chunks.length,
     });

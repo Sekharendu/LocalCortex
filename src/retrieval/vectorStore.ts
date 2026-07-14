@@ -1,9 +1,9 @@
 import { QdrantClient } from "@qdrant/js-client-rest";
 import { CollectionError } from "../errors.js";
+import { embedConfig } from "../config.js";
 import type { ChunkPayload } from "../types.js";
 
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
-const VECTOR_SIZE = Number(process.env.OLLAMA_EMBED_DIM ?? 768);
 
 const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
@@ -41,7 +41,7 @@ export async function ensureCollection(name: string): Promise<void> {
     const exists = await client.collectionExists(name);
     if (exists.exists === true) return;
     await client.createCollection(name, {
-      vectors: { size: VECTOR_SIZE, distance: "Cosine" },
+      vectors: { size: embedConfig.dim, distance: "Cosine" },
     });
   } catch (e) {
     throw new CollectionError(`Failed to ensure collection '${name}'`, { cause: e });
@@ -57,11 +57,11 @@ export async function ensureCollection(name: string): Promise<void> {
 export async function upsertChunks(collection: string, chunks: ChunkPoint[]): Promise<void> {
   if (chunks.length === 0) return;
   for (const c of chunks) {
-    if (!Array.isArray(c.vector) || c.vector.length !== VECTOR_SIZE) {
+    if (!Array.isArray(c.vector) || c.vector.length !== embedConfig.dim) {
       const got = Array.isArray(c.vector) ? c.vector.length : typeof c.vector;
       throw new CollectionError(
         `Vector size mismatch in upsert: chunk chunkIndex=${c.payload.chunkIndex} ` +
-          `documentId=${c.payload.documentId} has dim ${got}, expected ${VECTOR_SIZE}. ` +
+          `documentId=${c.payload.documentId} has dim ${got}, expected ${embedConfig.dim}. ` +
           `If you changed OLLAMA_EMBED_MODEL, also set OLLAMA_EMBED_DIM to match.`,
       );
     }
@@ -89,10 +89,10 @@ export async function searchSimilar(
   queryVector: number[],
   { limit = 5, scoreThreshold = 0.7 }: SearchOptions = {},
 ): Promise<SearchMatch[]> {
-  if (!Array.isArray(queryVector) || queryVector.length !== VECTOR_SIZE) {
+  if (!Array.isArray(queryVector) || queryVector.length !== embedConfig.dim) {
     const got = Array.isArray(queryVector) ? queryVector.length : typeof queryVector;
     throw new CollectionError(
-      `queryVector dim ${got} does not match collection size ${VECTOR_SIZE}. ` +
+      `queryVector dim ${got} does not match collection size ${embedConfig.dim}. ` +
         `If you changed OLLAMA_EMBED_MODEL, also set OLLAMA_EMBED_DIM.`,
     );
   }

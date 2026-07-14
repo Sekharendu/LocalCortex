@@ -36,8 +36,7 @@ afterAll(async () => {
 });
 
 describe("ingestDocument", () => {
-  test.skipIf(!stackUp, "Ollama or Qdrant not reachable")(
-    "ingests sample.txt end-to-end and chunkCount > 0",
+  test.skipIf(!stackUp)("ingests sample.txt end-to-end and chunkCount > 0",
     async () => {
       const result = await ingestDocument("data/sample.txt", {
         strategy: "recursive",

@@ -133,7 +133,7 @@ export async function chunkRecursive(
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: maxSize,
     chunkOverlap: overlap,
-    separators: ["\n## ", "\n# ", "\n\n", "\n", ". ", " ", ""],
+    separators: ["\n## ", "## ", "\n# ", "# ", "\n\n", "\n", ". ", " ", ""],
   });
   const parts = await splitter.splitText(text);
   return toChunks(parts);

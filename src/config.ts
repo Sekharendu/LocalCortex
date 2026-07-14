@@ -7,3 +7,9 @@ export const retrievalConfig = {
   scoreThreshold: Number(process.env.RETRIEVE_SCORE_THRESHOLD ?? 0.7),
   collection: process.env.QDRANT_COLLECTION ?? "rag",
 };
+
+export const embedConfig = {
+  dim: Number(process.env.OLLAMA_EMBED_DIM ?? 768),
+  model: process.env.OLLAMA_EMBED_MODEL ?? "nomic-embed-text",
+  url: process.env.OLLAMA_URL ?? "http://localhost:11434",
+};

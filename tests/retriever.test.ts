@@ -44,7 +44,7 @@ afterAll(async () => {
 });
 
 describe("retrieve", () => {
-  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+  test.skipIf(!stackUp || documentId === null)(
     "(a) clear match returns relevant chunks ranked by score descending",
     async () => {
       const chunks = await retrieve("What does the sample say about a quick brown fox?", {
@@ -59,7 +59,7 @@ describe("retrieve", () => {
     },
   );
 
-  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+  test.skipIf(!stackUp || documentId === null)(
     "(b) unrelated query with default threshold returns nothing",
     async () => {
       const chunks = await retrieve(
@@ -70,7 +70,7 @@ describe("retrieve", () => {
     },
   );
 
-  test.skipIf(!stackUp || documentId === null, "Ollama or Qdrant not reachable, or ingest failed")(
+  test.skipIf(!stackUp || documentId === null)(
     "(c) topK: 1 vs topK: 5 on the same query returns the right count",
     async () => {
       const question = "What does the sample text mention about a fox?";
