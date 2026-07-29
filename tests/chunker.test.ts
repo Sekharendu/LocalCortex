@@ -1,10 +1,22 @@
-import { describe, test, expect } from "vitest";
+import { describe, test, expect, beforeAll } from "vitest";
 import {
   chunkFixedSize,
   chunkSemantic,
   chunkRecursive,
   chunkText,
 } from "../src/ingest/chunker.js";
+
+const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
+let ollamaUp = false;
+
+beforeAll(async () => {
+  try {
+    const r = await fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(2000) });
+    ollamaUp = r.ok;
+  } catch {
+    ollamaUp = false;
+  }
+});
 
 describe("chunkFixedSize — overlap", () => {
   /**
@@ -42,58 +54,109 @@ describe("chunkFixedSize — overlap", () => {
 describe("empty input", () => {
   test("all strategies return [] on empty string", async () => {
     expect(await chunkFixedSize("", { size: 500, overlapPercent: 15 })).toEqual([]);
-    expect(await chunkSemantic("", { maxSize: 500 })).toEqual([]);
+    expect(await chunkSemantic("")).toEqual([]);
     expect(await chunkRecursive("", { maxSize: 500 })).toEqual([]);
   });
 });
 
 describe("single character input", () => {
   test("all strategies yield exactly one chunk with chunkIndex 0 and the input text", async () => {
-    for (const fn of [
-      (t: string) => chunkFixedSize(t, { size: 500, overlapPercent: 15 }),
-      (t: string) => chunkSemantic(t, { maxSize: 500 }),
-      (t: string) => chunkRecursive(t, { maxSize: 500 }),
-    ]) {
-      const chunks = await fn("A");
-      expect(chunks).toHaveLength(1);
+    const fixed = await chunkFixedSize("A", { size: 500, overlapPercent: 15 });
+    const semantic = await chunkSemantic("A");
+    const recursive = await chunkRecursive("A", { maxSize: 500 });
+
+    for (const [name, chunks] of [["fixed", fixed], ["semantic", semantic], ["recursive", recursive]] as const) {
+      expect(chunks, `${name}: expected 1 chunk`).toHaveLength(1);
       expect(chunks[0].chunkIndex).toBe(0);
       expect(chunks[0].text).toBe("A");
     }
   });
 });
 
-describe("document with no paragraph breaks (semantic fallback stress test)", () => {
-  test("semantic falls back to fixed-size chunking on a 5000-char run-on paragraph", async () => {
-    const runon = "word ".repeat(1000); // ~5000 chars, no \n\n, no markdown headings
-    const chunks = await chunkSemantic(runon, { maxSize: 500 });
+// ==============================
+//  New embedding-based semantic tests
+// ==============================
 
-    // The semantic fallback path must split, not yield one giant chunk.
-    expect(chunks.length).toBeGreaterThan(1);
-    for (const c of chunks) {
-      expect(c.text.length).toBeLessThanOrEqual(500 + 5);
-    }
-    // chunkIndex must be sequential from 0 across the fallback-flattened output
-    expect(chunks.map((c) => c.chunkIndex)).toEqual(chunks.map((_, i) => i));
+describe("chunkSemantic — embedding-based topic-boundary detection", () => {
+  test("single sentence returns exactly one chunk", async () => {
+    const chunks = await chunkSemantic("This is a single sentence about cooking.");
+    expect(chunks).toHaveLength(1);
+    expect(chunks[0].text).toBe("This is a single sentence about cooking.");
+    expect(chunks[0].chunkIndex).toBe(0);
   });
+
+  test("empty input returns empty array", async () => {
+    const chunks = await chunkSemantic("");
+    expect(chunks).toEqual([]);
+  });
+
+  test.skipIf(!ollamaUp, "Ollama not reachable")(
+    "topic-boundary detection: unrelated topics produce separate chunks",
+    async () => {
+      const cooking =
+        "First, sauté the onions until they are translucent. Next, deglaze the pan with white wine. Finally, let the sauce simmer for twenty minutes.";
+      const architecture =
+        "Microservices communicate through well-defined API gateways. Each service owns its data store and domain logic. Database sharding distributes reads across replicas.";
+      const text = cooking + " " + architecture;
+
+      const chunks = await chunkSemantic(text);
+
+      expect(chunks.length).toBeGreaterThanOrEqual(2);
+      // Find which chunk each topic landed in.
+      const cookingChunk = chunks.find((c) => c.text.includes("deglaze"));
+      const architectureChunk = chunks.find((c) => c.text.includes("API gateway"));
+      expect(cookingChunk).toBeDefined();
+      expect(architectureChunk).toBeDefined();
+      // They must not be the same chunk.
+      expect(cookingChunk!.chunkIndex).not.toBe(architectureChunk!.chunkIndex);
+    },
+    30_000,
+  );
+
+  test.skipIf(!ollamaUp, "Ollama not reachable")("high threshold (1.0): nearly every sentence becomes its own chunk", async () => {
+    // Same-topic paragraph: 4 sentences about a dog in a park.
+    const text =
+      "The dog chased the red ball across the grass. It barked happily at the children playing nearby. A squirrel darted up the oak tree. The dog wagged its tail and ran to the next game.";
+    const chunks = await chunkSemantic(text, { similarityThreshold: 1.0 });
+
+    // Cosine sim between distinct sentences is always <1.0 for nomic-embed-text,
+    // so nearly every pair splits. At most one pair might land at 0.999...
+    // Use >=3 as a robust lower bound of 4 sentences each their own (or 3 chunk).
+    expect(chunks.length).toBeGreaterThanOrEqual(3);
+  }, 30_000);
+
+  test.skipIf(!ollamaUp, "Ollama not reachable")("low threshold (0.0): topically-coherent paragraph returns as one chunk", async () => {
+    // A DIFFERENT text from the topic-boundary test: 4 same-topic sentences
+    // about a dog walking in a park. Pairwise cosine sim stays positive so
+    // splitting condition (sim < 0.0) never triggers.
+    const text =
+      "The dog walked along the gravel path in the park. It sniffed at the base of every tree it passed. A light breeze rustled the leaves overhead. The dog seemed perfectly content with the afternoon.";
+    const chunks = await chunkSemantic(text, { similarityThreshold: 0.0 });
+
+    expect(chunks).toHaveLength(1);
+    expect(chunks[0].text).toBe(text);
+  }, 30_000);
 });
 
-describe("long single paragraph: every strategy respects maxSize", () => {
-  test("fixed / semantic / recursive all slice a 5000-char run-on and stay under maxSize", async () => {
+// ==============================
+//  Long-run-on-paragraph tests (fixed + recursive only — semantic no longer has maxSize)
+// ==============================
+
+describe("long single paragraph: fixed + recursive respect maxSize", () => {
+  test("fixed and recursive both slice a 5000-char run-on and stay under maxSize", async () => {
     const runon = "word ".repeat(1000);
     const fixed = await chunkFixedSize(runon, { size: 500, overlapPercent: 15 });
-    const semantic = await chunkSemantic(runon, { maxSize: 500 });
     const recursive = await chunkRecursive(runon, { maxSize: 500 });
 
     for (const [name, chunks] of [
       ["fixed", fixed],
-      ["semantic", semantic],
       ["recursive", recursive],
     ] as const) {
-      expect(chunks.length).toBeGreaterThan(1);
+      expect(chunks.length, `${name}: expected >1 chunk`).toBeGreaterThan(1);
       for (const c of chunks) {
-        expect(c.text.length).toBeLessThanOrEqual(500 + 5);
+        expect(c.text.length, `${name}: chunk exceeds maxSize+5 slack`).toBeLessThanOrEqual(500 + 5);
       }
-      expect(chunks.every((c, i) => c.chunkIndex === i)).toBe(true);
+      expect(chunks.every((c, i) => c.chunkIndex === i), `${name}: chunkIndex must be sequential`).toBe(true);
     }
   });
 });

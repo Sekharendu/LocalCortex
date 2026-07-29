@@ -1,5 +1,6 @@
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import type { Chunk } from "../types.js";
+import { embedBatch } from "../retrieval/embedder.js";
 
 /**
  * Default strategy for a mixed corpus of PDFs and markdown docs:
@@ -11,11 +12,12 @@ import type { Chunk } from "../types.js";
  *    ends mid-sentence, splitting a citation in half. For homogeneous plain text
  *    that's tolerable; for Markdown headings and PDF section breaks it loses the
  *    one piece of metadata (which section am I in?) that retrieval cares about.
- *  - `semantic` respects paragraph and heading boundaries, but a single oversized
- *    paragraph (common in PDFs where the layout collapses logical paragraphs into
- *    one text block) forces it straight into the fixed-size fallback anyway, so you
- *    pay the cost of both passes for the same result. It also has no graceful
- *    behavior inside an unbreakable run-on block -- it just hard-cuts.
+ *  - `semantic` uses cosine similarity between sentence embeddings to detect topic
+ *    boundaries. It makes one `embedBatch()` call per document, which is significantly
+ *    more expensive than `fixed` or `recursive` (those make zero embedding calls).
+ *    The trade-off is genuine topic-gap detection instead of structural-separator
+ *    detection. Only use `semantic` when topic boundaries matter more than ingestion
+ *    throughput.
  *  - `recursive` asks the splitter to try structural separators in priority order
  *    (markdown section heading -> blank-line paragraph -> newline -> sentence
  *    terminator -> word -> char). A unit is only split by a smaller-grain
@@ -30,9 +32,8 @@ import type { Chunk } from "../types.js";
  *    survives intact in at least one chunk -- important for citation faithfulness.
  *
  * Pick `fixed` only when the corpus is uniform plain text with no markup. Pick
- * `semantic` only when section attribution matters more than throughput and the
- * corpus is well-formed markdown. For everything else, `recursive` is the robust
- * default.
+ * `semantic` only when topic boundaries matter more than throughput and you can
+ * afford the embedding cost. For everything else, `recursive` is the robust default.
  */
 
 export interface FixedSizeOptions {
@@ -42,6 +43,10 @@ export interface FixedSizeOptions {
 
 export interface MaxSizeOptions {
   maxSize: number;
+}
+
+export interface SemanticOptions {
+  similarityThreshold?: number;
 }
 
 export type ChunkStrategy = "fixed" | "semantic" | "recursive";
@@ -54,6 +59,14 @@ function clampOverlap(overlap: number, size: number): number {
   if (overlap < 0) return 0;
   if (size <= 1) return 0;
   return Math.min(overlap, size - 1);
+}
+
+/** Pure cosine similarity: dot(a,b) / (|a|*|b|). Returns 0 when either vector is zero. */
+function cosineSim(a: number[], b: number[]): number {
+  let dot = 0, na = 0, nb = 0;
+  for (let i = 0; i < a.length; i++) { dot += a[i] * b[i]; na += a[i] * a[i]; nb += b[i] * b[i]; }
+  const denom = Math.sqrt(na) * Math.sqrt(nb);
+  return denom === 0 ? 0 : dot / denom;
 }
 
 /**
@@ -80,41 +93,55 @@ export async function chunkFixedSize(
 }
 
 /**
- * 2. Semantic chunking: split on paragraph breaks and markdown heading boundaries,
- * keeping each heading attached to its following body. Any resulting segment larger
- * than `maxSize` is sub-chunked via the fixed-size strategy with a 15% overlap so
- * the fallback never hard-cuts a sentence.
+ * 2. Semantic chunking — embedding-based topic-boundary detection. Unlike the
+ * structural-separator strategies, this one embeds every sentence via the existing
+ * embedBatch() and splits when cosine similarity between consecutive sentences
+ * drops below `similarityThreshold` (default 0.75). A topic boundary — where the
+ * text shifts from cooking to software architecture — manifests as a similarity
+ * dip; the splitter cuts there and starts a new chunk.
+ *
+ * COST WARNING: This strategy makes one embedBatch() call per document, which
+ * triggers ~N/4 HTTP roundtrips to Ollama for an N-sentence document (bounded
+ * concurrency default 4). This is significantly more expensive than `fixed` or
+ * `recursive` chunking (which make zero embedding calls). The intentional
+ * trade-off is genuine topic-boundary detection instead of structural-separator
+ * detection. Prefer `recursive` for general corpora; reserve `semantic` for cases
+ * where topic boundaries matter more than ingestion throughput.
  */
 export async function chunkSemantic(
   text: string,
-  { maxSize }: MaxSizeOptions,
+  { similarityThreshold = 0.75 }: SemanticOptions = {},
 ): Promise<Chunk[]> {
-  if (maxSize < 1) throw new RangeError("maxSize must be >= 1");
-  if (text.length === 0) return [];
+  if (text.trim().length === 0) return [];
 
-  const paragraphs = text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
-  const segments: string[] = [];
-  for (let i = 0; i < paragraphs.length; i++) {
-    const isHeading = /^#{1,6}\s/.test(paragraphs[i]);
-    if (isHeading && i + 1 < paragraphs.length) {
-      segments.push(paragraphs[i] + "\n\n" + paragraphs[i + 1]);
-      i++;
-    } else {
-      segments.push(paragraphs[i]);
+  // Split into sentences using sentence-ending punctuation followed by whitespace.
+  const sentences = text.split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean);
+
+  // Edge case: single sentence requires no embedding (nothing to compare).
+  if (sentences.length <= 1) return [{ text: sentences.join(" ") || text, chunkIndex: 0 }];
+
+  // Embed all sentences in one batch call — uses the existing embedBatch bounded-
+  // concurrency stride loop (one HTTP call per batch of 4). This guarantees the
+  // sentence vectors live in the same space as query vectors from the retriever.
+  const vectors = await embedBatch(sentences);
+
+  // Mark split boundaries where cosine similarity between consecutive sentences
+  // falls below the threshold (strict <, matching the "below" wording).
+  const boundaries: number[] = [0];
+  for (let i = 1; i < sentences.length; i++) {
+    if (cosineSim(vectors[i - 1], vectors[i]) < similarityThreshold) {
+      boundaries.push(i);
     }
   }
 
-  const out: Chunk[] = [];
-  let idx = 0;
-  for (const seg of segments) {
-    if (seg.length <= maxSize) {
-      out.push({ text: seg, chunkIndex: idx++ });
-    } else {
-      const sub = await chunkFixedSize(seg, { size: maxSize, overlapPercent: 15 });
-      for (const c of sub) out.push({ text: c.text, chunkIndex: idx++ });
-    }
+  // Group sentences between boundaries into chunks; join each group with a space.
+  const chunks: Chunk[] = [];
+  for (let b = 0; b < boundaries.length; b++) {
+    const start = boundaries[b];
+    const end = b + 1 < boundaries.length ? boundaries[b + 1] : sentences.length;
+    chunks.push({ text: sentences.slice(start, end).join(" "), chunkIndex: b });
   }
-  return out;
+  return chunks;
 }
 
 /**
@@ -146,13 +173,13 @@ export async function chunkRecursive(
 export async function chunkText(
   text: string,
   strategy: ChunkStrategy,
-  options: FixedSizeOptions | MaxSizeOptions = {},
+  options: FixedSizeOptions | MaxSizeOptions | SemanticOptions = {},
 ): Promise<Chunk[]> {
   if (strategy === "fixed") {
     return chunkFixedSize(text, options as FixedSizeOptions);
   }
   if (strategy === "semantic") {
-    return chunkSemantic(text, options as MaxSizeOptions);
+    return chunkSemantic(text, options as SemanticOptions);
   }
   if (strategy === "recursive") {
     return chunkRecursive(text, options as MaxSizeOptions);
