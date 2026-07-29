@@ -18,6 +18,12 @@ Guidance for AI agents working on this repo.
   chunkCount) so the upcoming DELETE route can hydrate the response.
 - Loaders are hand-rolled and return LangChain `Document<LoadedMetadata>` shapes so downstream components plug in cleanly. Sources of truth: `src/ingest/loader.ts`, `src/types.ts`.
 
+## Chunking
+
+- `chunkFixedSize(text, { size, overlapPercent })` — naive character-based cut with configurable overlap. Uses `RecursiveCharacterTextSplitter` with word/char separators (no structural awareness). Zero embedding calls — cheap, fast, offline-safe.
+- `chunkRecursive(text, { maxSize })` — structural separator cascade (heading → paragraph → line → sentence → word → char). Also zero embedding calls, always offline-safe. The recommended default for mixed corpora.
+- `chunkSemantic(text, { similarityThreshold })` — embedding-based topic-boundary detection. Calls `embedBatch()` to embed every sentence, then splits where cosine similarity between consecutive sentences drops below `similarityThreshold` (default 0.75). **Requires Ollama to be reachable** — this is the only chunker strategy that makes network calls. Tests that exercise it use `test.skipIf(!ollamaUp)` to skip cleanly when the stack is down. Significantly more expensive than fixed/recursive; prefer `recursive` for general use.
+
 ## Generation
 
 - `src/generation/llm.ts` exports `RAG_SYSTEM_PROMPT` (the universal baseline persona -- editable single source of truth for instruction wording) and `generate(prompt)` which calls Ollama's `/api/generate` with the local generation model (default `llama3`, env `OLLAMA_GEN_MODEL`), `system: RAG_SYSTEM_PROMPT`, `stream: false`. Throws `GenerationError` on any failure (network, non-2xx, malformed body, missing `response`, model error field).

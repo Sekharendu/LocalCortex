@@ -11,13 +11,15 @@ const DEFAULT_COLLECTION = process.env.QDRANT_COLLECTION ?? "rag";
 const DEFAULT_MAX_SIZE = 500;
 const DEFAULT_SIZE = 500;
 const DEFAULT_OVERLAP_PERCENT = 15;
+const DEFAULT_SIMILARITY_THRESHOLD = 0.75;
 const DEFAULT_EMBED_CONCURRENCY = 4;
 
 export interface IngestOptions {
   strategy?: ChunkStrategy;
   size?: number;            // fixed only
   overlapPercent?: number;  // fixed only
-  maxSize?: number;         // semantic / recursive
+  maxSize?: number;         // recursive only
+  similarityThreshold?: number; // semantic only
   collection?: string;
   concurrency?: number;     // embedBatch
   originalName?: string;    // original filename (used in citations + document record)
@@ -86,7 +88,9 @@ export async function ingestDocument(
     const chunkOptions =
       strategy === "fixed"
         ? { size: options.size ?? DEFAULT_SIZE, overlapPercent: options.overlapPercent ?? DEFAULT_OVERLAP_PERCENT }
-        : { maxSize: options.maxSize ?? DEFAULT_MAX_SIZE };
+        : strategy === "semantic"
+          ? { similarityThreshold: options.similarityThreshold ?? DEFAULT_SIMILARITY_THRESHOLD }
+          : { maxSize: options.maxSize ?? DEFAULT_MAX_SIZE };
 
     let globalIndex = 0;
     for (const doc of loadResult.documents) {
