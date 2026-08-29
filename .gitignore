@@ -8,3 +8,6 @@ data/halluc-results-*.json
 .env
 doubts.txt
 notes.md
+pipeline-architecture.html
+pipeline-diagram.html
+ui-mockup.html
