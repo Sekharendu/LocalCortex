@@ -3,9 +3,8 @@
 // Verifies, in order, that:
 //   1. /health reports both ollama and qdrant reachable
 //   2. POST /ingest accepts a sample file and returns { documentId, chunkCount > 0 }
-//   3. The ingested chunks are searchable (Qdrant chunk count > 0 via extended /health)
-//   4. POST /query for an answerable question returns an answer referencing the corpus
-//   5. DELETE /documents/:id cleans up the ingested document (no DocumentStore drift)
+//   3. POST /query for an answerable question returns an answer referencing the corpus
+//   4. DELETE /documents/:id cleans up the ingested document (no DocumentStore drift)
 //
 // Each step asserts loudly with a CLEAR step-specific message at whichever point it
 // breaks -- never a generic timeout or a Node stack trace. Fail fast, report next-step.
@@ -34,8 +33,6 @@ function assert(cond: boolean, step: string, msg: string): void {
 interface HealthResponse {
   ollama: boolean;
   qdrant: boolean;
-  collection: string | null;
-  chunkCount: number | null;
 }
 
 interface IngestResponse {
@@ -95,7 +92,7 @@ async function main(): Promise<void> {
       `  Bring up the stack: docker compose up -d\n` +
       `  Then pull models: docker exec -it local-rag-ollama ollama pull nomic-embed-text llama3`,
   );
-  console.log(`  ✓ ollama=true qdrant=true (collection=${health.collection}, chunks=${health.chunkCount})`);
+  console.log(`  ✓ ollama=true qdrant=true`);
 
   // --- Step 2: ingest sample.txt
   console.log("\nStep 2: POST /ingest data/sample.txt ...");
@@ -135,23 +132,8 @@ async function main(): Promise<void> {
   );
   console.log(`  ✓ ingested documentId=${ingest.documentId} chunkCount=${ingest.chunkCount}`);
 
-  // --- Step 3: confirm chunks are searchable via extended /health
-  console.log("\nStep 3: confirm chunks searchable via /health chunkCount ...");
-  {
-    const res = await fetch(`${API}/health`);
-    const body = (await res.json()) as HealthResponse;
-    assert(
-      body.chunkCount !== null && body.chunkCount >= ingest.chunkCount,
-      "3",
-      `/health chunkCount=${body.chunkCount}; expected >= ${ingest.chunkCount}.\n` +
-        `  This indicates Qdrant's wait:true upsert contract is broken -- chunks reported\n` +
-        `  as ingested but not yet searchable. Check qdrant logs: docker compose logs qdrant`,
-    );
-    console.log(`  ✓ Qdrant confirms ${body.chunkCount} searchable chunks (collection=${body.collection})`);
-  }
-
-  // --- Step 4: query answerable from sample.txt
-  console.log("\nStep 4: POST /query \"What does the sample say about a fox?\" ...");
+  // --- Step 3: query answerable from sample.txt
+  console.log("\nStep 3: POST /query \"What does the sample say about a fox?\" ...");
   let query: QueryResponse;
   {
     const res = await fetch(`${API}/query`, {
@@ -162,7 +144,7 @@ async function main(): Promise<void> {
     const body = await res.json();
     if (res.status !== 200) {
       fail(
-        "4",
+        "3",
         `POST /query returned HTTP ${res.status}: ${(body as ErrorResponse).error ?? JSON.stringify(body)}.\n` +
           `  If 'Failed to answer question: Failed to reach Ollama generate endpoint' ->\n` +
           `    docker exec -it local-rag-ollama ollama pull llama3`,
@@ -172,12 +154,12 @@ async function main(): Promise<void> {
   }
   assert(
     typeof query.answer === "string" && query.answer.length > 0,
-    "4",
+    "3",
     `POST /query returned 200 but empty answer: ${JSON.stringify(query)}`,
   );
   assert(
     query.answer.toLowerCase().includes("fox"),
-    "4",
+    "3",
     `Answer doesn't reference the corpus content.\n` +
       `  Expected: answer containing "fox" (sample.txt's central noun).\n` +
       `  Got: ${JSON.stringify(query.answer)}\n` +
@@ -188,14 +170,14 @@ async function main(): Promise<void> {
   // citations array containing at least one entry whose source is "sample.txt".
   assert(
     Array.isArray(query.citations) && query.citations.length > 0,
-    "4",
+    "3",
     `POST /query returned 200 but missing/empty citations array: ${JSON.stringify(query.citations)}.\n` +
       `  Expected: non-empty citations computed from chunks that cleared the threshold.\n` +
       `  Suspect: buildCitations in src/rag.ts regressed OR the response is dropping it.`,
   );
   assert(
     query.citations.some((c) => c.source.endsWith("sample.txt")),
-    "4",
+    "3",
     `Citations array doesn't include sample.txt: ${JSON.stringify(query.citations)}.\n` +
       `  Expected: source ending in "sample.txt" (the only ingested document).`,
   );
@@ -203,14 +185,14 @@ async function main(): Promise<void> {
     `  ✓ answer references "fox" (chunks: ${query.chunks.length}, citations: ${query.citations.length})`,
   );
 
-  // --- Step 5: cleanup DELETE the ingested document
-  console.log("\nStep 5: DELETE /documents/:id (cleanup) ...");
+  // --- Step 4: cleanup DELETE the ingested document
+  console.log("\nStep 4: DELETE /documents/:id (cleanup) ...");
   {
     const res = await fetch(`${API}/documents/${ingest.documentId}`, { method: "DELETE" });
     const body = await res.json();
     if (res.status !== 200) {
       fail(
-        "5",
+        "4",
         `DELETE /documents/${ingest.documentId} returned HTTP ${res.status}: ${(body as ErrorResponse).error ?? JSON.stringify(body)}.\n` +
           `  The just-ingested doc is now an ORPHAN -- the DocumentStore and Qdrant may be drifted.\n` +
           `  Check GET /documents for leftover records and call the DELETE again.`,
@@ -219,15 +201,15 @@ async function main(): Promise<void> {
     const del = body as DeleteResponse;
     assert(
       del.deleted.id === ingest.documentId,
-      "5",
+      "4",
       `DELETE returned 200 but deleted.id mismatch: expected ${ingest.documentId}, got ${del.deleted.id}`,
     );
     console.log(`  ✓ deleted document (id=${del.deleted.id}, chunkCount=${del.deleted.chunkCount})`);
   }
 
-  console.log("\n✓ SMOKE TEST PASSED — all 5 steps green.\n");
+  console.log("\n✓ SMOKE TEST PASSED — all 4 steps green.\n");
   console.log("  The full stack is wired correctly end-to-end:");
-  console.log("    infra up + models pulled → API health → ingest → query → sandwich-cleanup.");
+  console.log("    infra up + models pulled → API health → ingest → query → cleanup.");
 }
 
 main().catch((e) => {

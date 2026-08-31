@@ -53,7 +53,7 @@ Every route returns JSON `{ error: string }` on failure — never Express's defa
 
 | Method | Path | Body | Response | Statuses |
 |---|---|---|---|---|
-| `GET` | `/health` | — | `{ ollama, qdrant, collection, chunkCount }` | `200` |
+| `GET` | `/health` | — | `{ ollama, qdrant }` | `200` |
 | `POST` | `/ingest` | `multipart/form-data`: `file` (required), `strategy` ∈ {fixed, semantic, recursive} (default `recursive`) | `{ documentId, chunkCount }` | `200`, `400` (no file), `413` (too large), `502` (pipeline failed, names the stage) |
 | `POST` | `/query` | `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }` | non-stream: `{ answer, chunks, citations }`; stream: `text/plain; charset=utf-8` token-by-token + `X-Citations` response header (JSON array) | `200`, `400` (missing question), `503` (infra failure) |
 | `GET` | `/documents` | — | `{ documents: DocumentRecord[] }` (newest first) | `200`, `500` (store read failure) |
@@ -62,7 +62,7 @@ Every route returns JSON `{ error: string }` on failure — never Express's defa
 ## curl examples (manual smoke of every route)
 
 ```bash
-# 1. Health -- reports ollama/qdrant reachability + active collection name + chunk count
+# 1. Health -- reports ollama/qdrant reachability
 curl -s localhost:3000/health | jq
 
 # 2. Ingest a file (chunking strategy defaults to recursive)
@@ -158,9 +158,8 @@ npx tsx scripts/smoke-test.ts
 Steps it verifies:
 1. `GET /health` reports `ollama=true` and `qdrant=true`.
 2. `POST /ingest` with `data/sample.txt` returns `{ documentId, chunkCount > 0 }`.
-3. `GET /health` reports `chunkCount >= chunkCount` from step 2 (proves Qdrant's `wait:true` upsert contract).
-4. `POST /query` for an answerable question returns an answer referencing `"fox"` (sample.txt's central noun).
-5. `DELETE /documents/:id` cleans up the just-ingested document — surfaces any DocumentStore↔Qdrant drift loudly.
+3. `POST /query` for an answerable question returns an answer referencing `"fox"` (sample.txt's central noun).
+4. `DELETE /documents/:id` cleans up the just-ingested document — surfaces any DocumentStore↔Qdrant drift loudly.
 
 If any step fails, the script prints a step-specific message with hints about which underlying component to check — *infra up? models pulled? pnpm dev running? RAG_SYSTEM_PROMPT wording?* — instead of a stack trace.
 

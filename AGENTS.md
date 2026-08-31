@@ -33,7 +33,7 @@ Guidance for AI agents working on this repo.
 
 ## API contract (`src/server.ts`)
 
-- `GET /health` -> `{ ollama: boolean, qdrant: boolean, collection: string | null, chunkCount: number | null }` (probes `/api/tags` and `/readyz`; when Qdrant is reachable, additionally reports the configured collection name and live point count via `QdrantClient.count(..., { exact: true })`). `null` for unknown/unreachable; never `0` since `0` is a valid count distinct from "unknown".
+- `GET /health` -> `{ ollama: boolean, qdrant: boolean }` (probes `/api/tags` and `/readyz` — connection-only).
 - `POST /ingest` (multipart/form-data, field `file`, optional field `strategy` ∈ {fixed, semantic, recursive}; defaults `recursive`) -> `JSON { documentId, chunkCount }` on success. Uploads land in the OS temp dir and are auto-cleaned after ingest. `400` if no file attached; `413` if exceeds `MAX_INGEST_BYTES` (default 50MB, env-overridable); `502 { error: "Ingest failed at stage 'X': ..." }` on pipeline failure (names the stage so failures triage by root cause).
 - `POST /query` body: `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }`.
   - `stream` falsy (default): returns `JSON { answer, chunks: RetrievedChunk[], citations: Citation[] }`. `citations` is the deduped `{ source, page? }` pairs from chunks that actually cleared the retrieval threshold and went into the prompt context -- never fabricated. `400` missing question; `503` infra failure.
@@ -45,7 +45,7 @@ Guidance for AI agents working on this repo.
 ## curl recipes (manual smoke)
 
 ```bash
-# 1. Health -- reports ollama/qdrant reachability + active collection name + chunk count
+# 1. Health -- reports ollama/qdrant reachability
 curl -s localhost:3000/health | jq
 
 # 2. Ingest a file (chunking strategy defaults to recursive)
@@ -97,7 +97,7 @@ npx tsx scripts/test-hallucination.ts --compare data/halluc-results-<prev-ts>.js
 ```
 Eval corpus: `data/eval-corpus.txt` (handwritten 15-section employee handbook — ingest with `curl -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt"` before running either script).
 
-End-to-end API smoke (`scripts/smoke-test.ts`) — exercises every route against a running `pnpm dev` server: `/health` green → `/ingest data/sample.txt` → confirm `/health` chunkCount > 0 → `/query` for an answerable question asserts the answer references "fox" → `DELETE /documents/:id` cleanup asserts no DocumentStore↔Qdrant drift. Each step fails loudly with a step-specific message (never a generic timeout) and a hint about which component to check.
+End-to-end API smoke (`scripts/smoke-test.ts`) — exercises every route against a running `pnpm dev` server: `/health` green → `/ingest data/sample.txt` → `/query` for an answerable question asserts the answer references "fox" → `DELETE /documents/:id` cleanup asserts no DocumentStore↔Qdrant drift. Each step fails loudly with a step-specific message (never a generic timeout) and a hint about which component to check.
 ```bash
 npx tsx scripts/smoke-test.ts
 # Prereq: docker compose up -d + models pulled + pnpm dev running on localhost:3000

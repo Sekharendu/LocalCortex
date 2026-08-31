@@ -2,7 +2,6 @@ import express, { type Express, type Request, type Response, type NextFunction }
 import multer, { MulterError } from "multer";
 import { tmpdir } from "node:os";
 import { unlink } from "node:fs/promises";
-import { QdrantClient } from "@qdrant/js-client-rest";
 import { answerQuestion, answerQuestionStream } from "./rag.js";
 import { ingestDocument } from "./ingest/pipeline.js";
 import { listDocuments, deleteDocument, getDocument, addDocument, type DocumentRecord } from "./documentStore.js";
@@ -12,10 +11,9 @@ import { retrievalConfig } from "./config.js";
 const PORT = Number(process.env.PORT ?? 3000);
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
-const MAX_INGEST_BYTES = Number(process.env.MAX_INGEST_BYTES ?? 50 * 1024 * 1024);
+const MAX_INGEST_BYTES = Number(process.env.MAX_INGEST_BYTES ?? 50 * 1024 * 1024); // 50 MB (50 * 1024 * 1024 bytes)
 
 const app: Express = express();
-const qsClient = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
 app.use(express.json());
 
@@ -28,6 +26,10 @@ const upload = multer({
   limits: { fileSize: MAX_INGEST_BYTES },
 });
 
+/**
+ * description: Pings a URL with a strict timeout to verify service availability.
+ * Utilizes an AbortController to kill hanging network requests.
+**/
 async function probe(url: string, timeoutMs = 2000): Promise<boolean> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -48,26 +50,9 @@ app.get("/health", async (_req, res) => {
     probe(`${QDRANT_URL}/readyz`),
   ]);
 
-  const collectionName = retrievalConfig.collection;
-  let chunkCount: number | null = null;
-
-  if (qdrantUp) {
-    try {
-      const exists = await qsClient.collectionExists(collectionName);
-      if (exists.exists === true) {
-        const countResult = await qsClient.count(collectionName, { exact: true });
-        chunkCount = countResult.count ?? 0;
-      }
-    } catch {
-      // fall through -- collection stat unavailable; report null
-    }
-  }
-
   res.json({
     ollama: ollamaUp,
-    qdrant: qdrantUp,
-    collection: qdrantUp ? collectionName : null,
-    chunkCount,
+    qdrant: qdrantUp
   });
 });
 

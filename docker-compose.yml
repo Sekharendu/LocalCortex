@@ -7,7 +7,7 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
     healthcheck:
-      # Raw TCP + HTTP line via bash -- the base image ships no curl/wget.
+      # Raw TCP + HTTP line via bash -- the base image ships no curl/wget, so using 'bash' that is present in both the images
       # Probes /readyz which Qdrant responds to with 200 once ready.
       test:
         - "CMD-SHELL"
