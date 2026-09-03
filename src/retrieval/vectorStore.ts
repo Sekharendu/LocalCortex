@@ -101,7 +101,8 @@ export async function searchSimilar(
     hits = await client.search(collection, {
       vector: queryVector,
       limit,
-      score_threshold: scoreThreshold,
+      score_threshold: scoreThreshold,// passing the threshold to the qdrant server-> to ignore the graph nodes and skip distance computations that falls below threshold.
+      // Other opt was to bring all the relevant datas in the client side then filtering, but that will be less computatievely optimise. cuz we fetch all, bring all from server to client then throw the irrelevant ones off. 
       with_payload: true,
     });
   } catch (e) {

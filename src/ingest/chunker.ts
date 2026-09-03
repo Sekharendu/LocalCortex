@@ -156,7 +156,7 @@ export async function chunkRecursive(
 ): Promise<Chunk[]> {
   if (maxSize < 1) throw new RangeError("maxSize must be >= 1");
   if (text.length === 0) return [];
-  const overlap = clampOverlap(Math.round(maxSize * 0.1), maxSize);
+  const overlap = clampOverlap(Math.round(maxSize * 0.1), maxSize);//10% overlap
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: maxSize,
     chunkOverlap: overlap,
