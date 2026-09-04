@@ -29,6 +29,7 @@ let writeChain: Promise<unknown> = Promise.resolve();
 
 type StoreShape = Record<string, DocumentRecord>;
 
+//if path exists then reads the file and returns the data, if not then reutrns an {}
 async function readStore(): Promise<StoreShape> {
   if (!existsSync(DOC_STORE_PATH)) return {};
   try {
@@ -45,14 +46,16 @@ async function readStore(): Promise<StoreShape> {
 async function writeStoreAtomic(data: StoreShape): Promise<void> {
   await fs.mkdir(path.dirname(DOC_STORE_PATH), { recursive: true });
   const tmp = `${DOC_STORE_PATH}.${process.pid}.tmp`;
-  await fs.writeFile(tmp, JSON.stringify(data, null, 2), "utf8");
+  await fs.writeFile(tmp, JSON.stringify(data, null, 2), "utf8");//creates a temp file, with all the old+newly attached data
   // rename over the target -- atomic on POSIX; on Windows it's near-atomic and
   // good enough for a single-process local pipeline.
-  await fs.rename(tmp, DOC_STORE_PATH);
+  await fs.rename(tmp, DOC_STORE_PATH);// renames the temp file to documents.json, replacing the old file with the new one with old+new record.
+  //doing this cuz if writing on original file there is a crash we might loose data, so for safety i used this
 }
 
 function serialize<T>(work: () => Promise<T>): Promise<T> {
-  const run = writeChain.then(work, work);
+  const run = writeChain.then(work, work);// 1st time writeChain is a resolved promise, from the next time it is a promise that waits for the completeiton of the previous work
+  // by doing this we are letting requests to change the document.json file only whern the prev request done editing the file
   writeChain = run.then(
     () => undefined,
     () => undefined,
