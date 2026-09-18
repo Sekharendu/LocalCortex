@@ -92,7 +92,8 @@ interface QueryBody {
   topK?: unknown;
   scoreThreshold?: unknown;
   collection?: unknown;
-}
+}//declared everything as unknown so as to handle the creash gracefully when user gives an invalid input.
+// i first accept everything as it is and manually check for types. this prevents creash.
 
 app.post("/query", async (req: Request, res: Response) => {
   const body = req.body as QueryBody;
