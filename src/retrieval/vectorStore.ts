@@ -98,8 +98,8 @@ export async function searchSimilar(
   }
   let hits;
   try {
-    hits = await client.search(collection, {
-      vector: queryVector,
+    hits = await client.query(collection, {
+      query: queryVector,
       limit,
       score_threshold: scoreThreshold,// passing the threshold to the qdrant server-> to ignore the graph nodes and skip distance computations that falls below threshold.
       // Other opt was to bring all the relevant datas in the client side then filtering, but that will be less computatievely optimise. cuz we fetch all, bring all from server to client then throw the irrelevant ones off. 
@@ -108,7 +108,7 @@ export async function searchSimilar(
   } catch (e) {
     throw new CollectionError(`Failed to search '${collection}'`, { cause: e });
   }
-  return hits.map((h) => ({
+  return hits.points.map((h) => ({
     id: h.id as string | number,
     score: h.score,
     payload: (h.payload as unknown as ChunkPayload | null | undefined) ?? null,

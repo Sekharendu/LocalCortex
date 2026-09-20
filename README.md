@@ -5,7 +5,7 @@ A fully local Retrieval-Augmented Generation (RAG) pipeline: **Ollama** runs the
 ## Prerequisites
 
 - **Docker** with Docker Compose v2 — for running Qdrant and Ollama containers
-- **Node.js 18+** and **pnpm** — for the TypeScript API server
+- **Node.js 26+** and **pnpm** — for the TypeScript API server
 - **curl** + **jq** — for exercising the API manually (smoke step)
 
 ## First-time setup (clone → run, no guesswork)
@@ -13,6 +13,11 @@ A fully local Retrieval-Augmented Generation (RAG) pipeline: **Ollama** runs the
 ```bash
 git clone <your-repo-url> local-rag
 cd local-rag
+
+# Verify the required Node.js version
+node --version       # must be v26 or newer
+# If you use nvm, select the project version:
+nvm use
 
 # 1. Start the infrastructure containers (Qdrant + Ollama)
 docker compose up -d
@@ -46,6 +51,10 @@ pnpm build && pnpm start   # compiles to dist/ and runs node directly
 ```
 
 The API listens on `http://localhost:3000` (override with the `PORT` env var).
+
+This project requires Node.js 26 or newer. The Qdrant REST client is kept on a
+Node 26-compatible release; using an older client with Node 26 can fail with
+`UND_ERR_INVALID_ARG: invalid onError method` during ingestion.
 
 ## API surface
 

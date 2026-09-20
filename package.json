@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "engines": {
-    "node": ">=18"
+    "node": ">=26"
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
@@ -18,7 +18,7 @@
   "dependencies": {
     "@langchain/core": "^1.2.1",
     "@langchain/textsplitters": "^1.0.1",
-    "@qdrant/js-client-rest": "^1.18.0",
+    "@qdrant/js-client-rest": "^1.19.0",
     "express": "^4.19.2",
     "mammoth": "^1.12.0",
     "multer": "^2.2.0",
