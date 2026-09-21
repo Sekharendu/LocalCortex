@@ -86,4 +86,18 @@ describe("retrieve", () => {
       }
     },
   );
+
+  test.skipIf(!stackUp || documentId === null)(
+    "(d) mode: 'dense' and mode: 'hybrid' both find the clear match",
+    async () => {
+      const question = "What does the sample say about a quick brown fox?";
+      const dense = await retrieve(question, { mode: "dense", collection: TEST_COLLECTION });
+      const hybrid = await retrieve(question, { mode: "hybrid", collection: TEST_COLLECTION });
+
+      expect(dense.length).toBeGreaterThan(0);
+      expect(hybrid.length).toBeGreaterThan(0);
+      expect(dense[0].text).toContain("quick brown fox");
+      expect(hybrid[0].text).toContain("quick brown fox");
+    },
+  );
 });

@@ -4,13 +4,16 @@ import {
   ensureCollection,
   upsertChunks,
   searchSimilar,
+  hybridSearch,
   deleteByDocumentId,
   type ChunkPoint,
 } from "../src/retrieval/vectorStore.js";
+import { sparseVectorFor } from "../src/retrieval/sparse.js";
 
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
 const TEST_COLLECTION = `test-vectorstore-${process.pid}`;
 const DIM = Number(process.env.OLLAMA_EMBED_DIM ?? 768);
+const EMPTY_SPARSE = { indices: [], values: [] };
 
 const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
@@ -39,7 +42,7 @@ afterAll(async () => {
   await client.deleteCollection(TEST_COLLECTION).catch(() => {});
 });
 
-// Build a sparse unit-ish vector at the given axis (axis < DIM). All other entries 0.
+// Build a sparse unit-ish dense vector at the given axis (axis < DIM). All other entries 0.
 function vecAt(axis: number): number[] {
   const v = new Array<number>(DIM).fill(0);
   v[axis] = 1;
@@ -59,9 +62,9 @@ describe("vectorStore", () => {
     const vB = vecAt(1);
     const vC = (() => { const v = new Array<number>(DIM).fill(0); v[0] = 0.7; v[1] = 0.7; return v; })();
     const chunks: ChunkPoint[] = [
-      { id: "a", vector: vA, payload: { text: "alpha", source: "t.pdf", page: 1, chunkIndex: 0, documentId: "doc1" } },
-      { id: "b", vector: vB, payload: { text: "beta",  source: "t.pdf", page: 1, chunkIndex: 1, documentId: "doc1" } },
-      { id: "c", vector: vC, payload: { text: "gamma", source: "t.pdf", page: 2, chunkIndex: 2, documentId: "doc1" } },
+      { id: "a", denseVector: vA, sparseVector: EMPTY_SPARSE, payload: { text: "alpha", source: "t.pdf", page: 1, chunkIndex: 0, documentId: "doc1" } },
+      { id: "b", denseVector: vB, sparseVector: EMPTY_SPARSE, payload: { text: "beta",  source: "t.pdf", page: 1, chunkIndex: 1, documentId: "doc1" } },
+      { id: "c", denseVector: vC, sparseVector: EMPTY_SPARSE, payload: { text: "gamma", source: "t.pdf", page: 2, chunkIndex: 2, documentId: "doc1" } },
     ];
     await upsertChunks(TEST_COLLECTION, chunks);
 
@@ -99,9 +102,9 @@ describe("vectorStore", () => {
   test.skipIf(!qdrantUp)("deleteByDocumentId removes all chunks for that document", async () => {
     // Upsert a separate doomed document.
     const doomed: ChunkPoint[] = [
-      { id: "doomed-0", vector: vecAt(50), payload: { text: "doomed one",  source: "d.pdf", page: 1, chunkIndex: 0, documentId: "doomed" } },
-      { id: "doomed-1", vector: vecAt(51), payload: { text: "doomed two",  source: "d.pdf", page: 2, chunkIndex: 1, documentId: "doomed" } },
-      { id: "doomed-2", vector: vecAt(52), payload: { text: "doomed three", source: "d.pdf", page: 3, chunkIndex: 2, documentId: "doomed" } },
+      { id: "doomed-0", denseVector: vecAt(50), sparseVector: EMPTY_SPARSE, payload: { text: "doomed one",  source: "d.pdf", page: 1, chunkIndex: 0, documentId: "doomed" } },
+      { id: "doomed-1", denseVector: vecAt(51), sparseVector: EMPTY_SPARSE, payload: { text: "doomed two",  source: "d.pdf", page: 2, chunkIndex: 1, documentId: "doomed" } },
+      { id: "doomed-2", denseVector: vecAt(52), sparseVector: EMPTY_SPARSE, payload: { text: "doomed three", source: "d.pdf", page: 3, chunkIndex: 2, documentId: "doomed" } },
     ];
     await upsertChunks(TEST_COLLECTION, doomed);
 
@@ -116,5 +119,49 @@ describe("vectorStore", () => {
     // Other documents in the collection remain.
     const doc1Hits = await searchSimilar(TEST_COLLECTION, vecAt(0), { limit: 5, scoreThreshold: 0.9 });
     expect(doc1Hits.length).toBeGreaterThanOrEqual(1);
+  });
+
+  describe("hybridSearch", () => {
+    const HYBRID_DOC = "hybrid-doc";
+
+    test.skipIf(!qdrantUp)("a chunk matched only by its sparse (exact-keyword) vector is still found", async () => {
+      // Dense vectors deliberately far from every existing axis used above, and from
+      // the query's dense vector -- if this chunk is found, it's the sparse prefetch
+      // (or the fusion of a weak dense signal + a strong sparse one) doing the work,
+      // not a dense near-match.
+      const denseIrrelevant = vecAt(100);
+      const denseQuery = vecAt(200); // orthogonal to denseIrrelevant -- cosine 0
+      const sparseVec = sparseVectorFor("zephyrquartz onboarding checklist", 50);
+      expect(sparseVec.indices.length).toBeGreaterThan(0);
+
+      await upsertChunks(TEST_COLLECTION, [
+        {
+          id: "hybrid-0",
+          denseVector: denseIrrelevant,
+          sparseVector: sparseVec,
+          payload: { text: "zephyrquartz onboarding checklist", source: "h.pdf", chunkIndex: 0, documentId: HYBRID_DOC },
+        },
+      ]);
+
+      const hits = await hybridSearch(
+        TEST_COLLECTION,
+        denseQuery,
+        sparseVectorFor("zephyrquartz onboarding checklist", 50),
+        { limit: 5 },
+      );
+
+      expect(hits.some((h) => h.payload?.documentId === HYBRID_DOC)).toBe(true);
+
+      await deleteByDocumentId(TEST_COLLECTION, HYBRID_DOC);
+    });
+
+    test.skipIf(!qdrantUp)("an empty sparse query (stopwords only) degenerates to dense-only search", async () => {
+      const emptySparse = sparseVectorFor("the a an", 50);
+      expect(emptySparse.indices).toHaveLength(0);
+
+      const hits = await hybridSearch(TEST_COLLECTION, vecAt(0), emptySparse, { limit: 5 });
+      // Should not throw, and should still return dense results (doc1's chunk 'a' at axis 0).
+      expect(hits.length).toBeGreaterThanOrEqual(1);
+    });
   });
 });

@@ -1,5 +1,7 @@
 import { embed } from "./embedder.js";
-import { searchSimilar } from "./vectorStore.js";
+import { searchSimilar, hybridSearch } from "./vectorStore.js";
+import { sparseVectorFor } from "./sparse.js";
+import { getAvgDocLength } from "./sparseStats.js";
 import { retrievalConfig } from "../config.js";
 import type { ChunkPayload } from "../types.js";
 
@@ -20,6 +22,12 @@ export interface RetrieveOptions {
   topK?: number;
   scoreThreshold?: number;
   collection?: string;
+  /** "hybrid" (default, per retrievalConfig.mode) fuses dense+sparse via Qdrant's RRF;
+   * "dense" reproduces pure cosine-similarity search -- mainly useful for A/B comparing
+   * against a pre-hybrid baseline (see scripts/evaluate-retrieval.ts's --mode flag).
+   * Note: scoreThreshold is ignored in hybrid mode -- RRF-fused scores aren't cosine
+   * similarities, so the threshold default (tuned for dense) doesn't carry over. */
+  mode?: "dense" | "hybrid";
 }
 
 /**
@@ -27,15 +35,16 @@ export interface RetrieveOptions {
  *
  * 1. Embed the question with the SAME embedder used at ingestion time (so query and
  *    chunk vectors live in the same space -- a model swap silently breaks retrieval
- *    otherwise).
- * 2. Delegate to searchSimilar, which applies the score threshold SERVER-SIDE in
- *    Qdrant (cheaper than client-side post-filtering).
+ *    otherwise). In hybrid mode, also compute the question's BM25-ish sparse vector
+ *    (pure/local, no network call).
+ * 2. Delegate to searchSimilar (dense) or hybridSearch (dense+sparse RRF, fused
+ *    server-side by Qdrant).
  * 3. Return RetrievedChunk[] sorted by score descending.
  *
- * Empty result semantics: when nothing clears the threshold, Qdrant returns an empty
- * array and so do we. The generation step decides what to do with an empty context,
- * not this function -- we do NOT fabricate a low-confidence chunk, do NOT throw on
- * empty, do NOT relax the threshold silently.
+ * Empty result semantics: when nothing clears the threshold (dense mode) or nothing is
+ * retrieved (hybrid mode), an empty array is returned. The generation step decides what
+ * to do with an empty context, not this function -- we do NOT fabricate a low-confidence
+ * chunk, do NOT throw on empty, do NOT relax the threshold silently.
  *
  * Infrastructure failures (Ollama down, Qdrant down, dimension mismatch) -- these are
  * NOT "no relevant chunks" situations and DO propagate as typed errors EmbeddingError
@@ -44,18 +53,27 @@ export interface RetrieveOptions {
  */
 export async function retrieve(
   question: string,
-  { topK, scoreThreshold, collection }: RetrieveOptions = {},
+  { topK, scoreThreshold, collection, mode }: RetrieveOptions = {},
 ): Promise<RetrievedChunk[]> {
   const effectiveTopK = topK ?? retrievalConfig.topK;
   const effectiveThreshold = scoreThreshold ?? retrievalConfig.scoreThreshold;
   const effectiveCollection = collection ?? retrievalConfig.collection;
+  const effectiveMode = mode ?? retrievalConfig.mode;
 
   const queryVector = await embed(question);
 
-  const hits = await searchSimilar(effectiveCollection, queryVector, {
-    limit: effectiveTopK,
-    scoreThreshold: effectiveThreshold,
-  });
+  const hits =
+    effectiveMode === "dense"
+      ? await searchSimilar(effectiveCollection, queryVector, {
+          limit: effectiveTopK,
+          scoreThreshold: effectiveThreshold,
+        })
+      : await hybridSearch(
+          effectiveCollection,
+          queryVector,
+          sparseVectorFor(question, await getAvgDocLength()),
+          { limit: effectiveTopK },
+        );
 
   const chunks: RetrievedChunk[] = hits.map((h) => {
     const payload = (h.payload ?? {}) as Partial<ChunkPayload>;

@@ -59,3 +59,23 @@ Building access is provisioned via a physical badge and digital credentials. Bad
 ## Open Source Contributions
 
 Employees are encouraged to contribute to open-source projects as part of their professional development, subject to disclosure of any repository with a license conflict with company work. All contributions during business hours must be reviewed by immediate managers for appropriateness of time allocation.
+
+## International Remote Work Policy
+
+Employees relocating temporarily outside their home country may work remotely for up to four consecutive weeks per calendar year, subject to prior approval from both their manager and the international mobility team. Tax and visa compliance are evaluated on a per-country basis before approval is granted. This policy is separate from the standard remote work arrangement and does not affect standard remote day allowances.
+
+## Sick Leave Policy
+
+Full-time employees accrue 8 days of paid sick leave per year, credited at the start of each calendar year. Unused sick leave carries over up to a maximum of 10 days into the following year. A doctor's note is required for absences exceeding three consecutive days. Sick leave is tracked separately from vacation accrual.
+
+## Health Savings Account (HSA)
+
+Employees enrolled in the high-deductible health plan are eligible to open a Health Savings Account after 30 days of employment. The company contributes up to 3% of base salary annually to the employee's HSA, deposited quarterly. HSA funds roll over year to year and remain with the employee after termination.
+
+## Promotion and Leveling Process
+
+Promotion decisions are reviewed once annually, in June, by a calibration committee composed of cross-team managers. Employees may self-nominate or be nominated by their manager; nominations must be submitted at least six weeks before the calibration meeting. Leveling criteria are published internally and reviewed independently of the twice-annual performance review cycle.
+
+## Satellite Office Hours
+
+The satellite office in Denver, Colorado observes business hours of 9am to 6pm Mountain Time, Monday through Friday. Employees based at the satellite office follow the same holiday calendar as the Austin headquarters but may substitute up to two floating holidays for regional observances.

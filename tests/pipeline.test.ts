@@ -58,6 +58,20 @@ describe("ingestDocument", () => {
       const foundPhrase = hits.some((h) => (h.payload?.text ?? "").includes("quick brown fox"));
       expect(foundPhrase).toBe(true);
 
+      // Sanity: each upserted point carries both a dense and a non-trivial sparse
+      // vector (pipeline.ts's embed stage computes both), not just the dense one.
+      const scrolled = await client.scroll(TEST_COLLECTION, {
+        filter: { must: [{ key: "documentId", match: { value: result.documentId } }] },
+        with_vector: true,
+        limit: 1,
+      });
+      const point = scrolled.points[0];
+      expect(point).toBeDefined();
+      const vector = point.vector as Record<string, unknown>;
+      expect(Array.isArray(vector.dense)).toBe(true);
+      const sparse = vector.sparse as { indices: number[]; values: number[] };
+      expect(sparse.indices.length).toBeGreaterThan(0);
+
       // Cleanup: remove the ingested document's chunks so test reruns don't accumulate.
       await deleteByDocumentId(TEST_COLLECTION, result.documentId);
     },

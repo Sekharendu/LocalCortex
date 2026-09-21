@@ -2,101 +2,349 @@
   {
     "question": "How many vacation days do I get per year?",
     "expectedSubstrings": ["15 days of paid vacation"],
-    "notes": "vacation accrual rate"
+    "notes": "vacation accrual rate",
+    "category": "baseline"
   },
   {
     "question": "What is the accrual rate after five years of service?",
     "expectedSubstrings": ["20 days per year"],
-    "notes": "vacation rate increase"
+    "notes": "vacation rate increase",
+    "category": "baseline"
   },
   {
     "question": "Do I need manager approval to work remotely?",
     "expectedSubstrings": ["three days per week, with manager approval"],
-    "notes": "remote work approval"
+    "notes": "remote work approval",
+    "category": "baseline"
   },
   {
     "question": "What are the core hours for remote employees?",
     "expectedSubstrings": ["Core hours are 10am to 3pm"],
-    "notes": "remote core hours"
+    "notes": "remote core hours",
+    "category": "baseline"
   },
   {
     "question": "How much of the health insurance premium does the employer pay?",
     "expectedSubstrings": ["80% of the premium"],
-    "notes": "health insurance employer share"
+    "notes": "health insurance employer share",
+    "category": "baseline"
   },
   {
     "question": "When does health coverage begin?",
     "expectedSubstrings": ["first day of the month following the hire date"],
-    "notes": "coverage start"
+    "notes": "coverage start",
+    "category": "baseline"
   },
   {
     "question": "How long do I have to wait before joining the 401(k)?",
     "expectedSubstrings": ["90 days of employment"],
-    "notes": "retirement eligibility"
+    "notes": "retirement eligibility",
+    "category": "baseline"
   },
   {
     "question": "What is the company match on retirement contributions?",
     "expectedSubstrings": ["up to 5% of base salary"],
-    "notes": "retirement match"
+    "notes": "retirement match",
+    "category": "baseline"
   },
   {
     "question": "How long is paid parental leave?",
     "expectedSubstrings": ["12 weeks of paid parental leave"],
-    "notes": "parental leave duration"
+    "notes": "parental leave duration",
+    "category": "baseline"
   },
   {
     "question": "Where is the corporate headquarters located?",
     "expectedSubstrings": ["headquarters in Austin, Texas"],
-    "notes": "office location"
+    "notes": "office location",
+    "category": "baseline"
   },
   {
     "question": "What are the business hours of the headquarters?",
     "expectedSubstrings": ["8:30am to 5:30pm Central Time"],
-    "notes": "office hours"
+    "notes": "office hours",
+    "category": "baseline"
   },
   {
     "question": "How long does expense reimbursement take to process?",
     "expectedSubstrings": ["two pay cycles"],
-    "notes": "expense processing time"
+    "notes": "expense processing time",
+    "category": "baseline"
   },
   {
     "question": "What class of flight is required for short trips under four hours?",
     "expectedSubstrings": ["Economy class is required for flights under four hours"],
-    "notes": "travel flight class"
+    "notes": "travel flight class",
+    "category": "baseline"
   },
   {
     "question": "What is the annual training budget for employees?",
     "expectedSubstrings": ["2000 dollars for professional development"],
-    "notes": "training stipend amount"
+    "notes": "training stipend amount",
+    "category": "baseline"
   },
   {
     "question": "Do unused training funds roll over to the next year?",
     "expectedSubstrings": ["Unused funds do not rollover"],
-    "notes": "training funds rollover"
+    "notes": "training funds rollover",
+    "category": "baseline"
   },
   {
     "question": "How often are engineering workstations refreshed?",
     "expectedSubstrings": ["refreshed every three years"],
-    "notes": "equipment refresh cycle"
+    "notes": "equipment refresh cycle",
+    "category": "baseline"
   },
   {
     "question": "How much notice is required for a non-cause termination?",
     "expectedSubstrings": ["two weeks notice for non-cause terminations"],
-    "notes": "termination notice"
+    "notes": "termination notice",
+    "category": "baseline"
   },
   {
     "question": "When are final paychecks issued after termination?",
     "expectedSubstrings": ["Final paychecks are issued within three business days"],
-    "notes": "final paycheck timing"
+    "notes": "final paycheck timing",
+    "category": "baseline"
   },
   {
     "question": "How often are performance reviews conducted?",
     "expectedSubstrings": ["twice annually, in March and September"],
-    "notes": "review cadence"
+    "notes": "review cadence",
+    "category": "baseline"
   },
   {
     "question": "What needs to happen with a lost building badge?",
     "expectedSubstrings": ["Lost badges must be reported to security within four hours"],
-    "notes": "lost badge reporting"
+    "notes": "lost badge reporting",
+    "category": "baseline"
+  },
+  {
+    "question": "How much annual time off do employees earn before reaching five years on the job?",
+    "expectedSubstrings": ["15 days of paid vacation"],
+    "notes": "paraphrase of vacation accrual with zero keyword overlap",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "What financial cushion does the firm provide each year for staff to pursue courses or conferences?",
+    "expectedSubstrings": ["2000 dollars for professional development"],
+    "notes": "paraphrase of training stipend",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "If my role ends without any wrongdoing on my part, how much advance warning am I owed?",
+    "expectedSubstrings": ["two weeks notice for non-cause terminations"],
+    "notes": "paraphrase of termination notice",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "How soon after my start date can my medical benefits kick in?",
+    "expectedSubstrings": ["first day of the month following the hire date"],
+    "notes": "paraphrase of coverage start",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "What portion of my insurance costs does the company cover for people I add to my plan, like a spouse?",
+    "expectedSubstrings": ["50% for dependents"],
+    "notes": "paraphrase of dependent premium share",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "How quickly must I let security know if I can't find my access card?",
+    "expectedSubstrings": ["reported to security within four hours"],
+    "notes": "paraphrase of lost badge reporting",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "How long after wrapping up my job here will I receive my last paycheck?",
+    "expectedSubstrings": ["issued within three business days"],
+    "notes": "paraphrase of final paycheck timing",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "Roughly how frequently does engineering get new computers?",
+    "expectedSubstrings": ["refreshed every three years"],
+    "notes": "paraphrase of equipment refresh cycle",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "What does the 80% employer premium cover?",
+    "expectedSubstrings": ["80% of the premium"],
+    "notes": "exact figure lookup, health insurance",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "Explain the 2000 dollars training budget.",
+    "expectedSubstrings": ["2000 dollars for professional development"],
+    "notes": "exact figure lookup, training stipend",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What happens after 90 days of employment for retirement?",
+    "expectedSubstrings": ["90 days of employment"],
+    "notes": "exact figure lookup, 401k eligibility",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "Tell me about the 12 weeks of paid parental leave.",
+    "expectedSubstrings": ["12 weeks of paid parental leave"],
+    "notes": "exact figure lookup, parental leave",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What is the four hour rule for lost badges?",
+    "expectedSubstrings": ["within four hours"],
+    "notes": "exact figure lookup, badge reporting window",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What is required for flights under four hours?",
+    "expectedSubstrings": ["Economy class is required for flights under four hours"],
+    "notes": "exact figure lookup, travel class threshold",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What is the twice annually review schedule?",
+    "expectedSubstrings": ["twice annually, in March and September"],
+    "notes": "exact figure lookup, review cadence",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "remote approval days",
+    "expectedSubstrings": ["three days per week, with manager approval"],
+    "notes": "short keyword fragment, remote work",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "badge lost policy",
+    "expectedSubstrings": ["Lost badges must be reported to security within four hours"],
+    "notes": "short keyword fragment, badge policy",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "sick leave carryover",
+    "expectedSubstrings": ["carries over up to a maximum of 10 days"],
+    "notes": "short keyword fragment, sick leave rollover",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "flight economy four hours",
+    "expectedSubstrings": ["Economy class is required for flights under four hours"],
+    "notes": "short keyword fragment, travel class",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "satellite office hours",
+    "expectedSubstrings": ["9am to 6pm Mountain Time"],
+    "notes": "short keyword fragment, satellite office",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "promotion calibration committee",
+    "expectedSubstrings": ["calibration committee composed of cross-team managers"],
+    "notes": "short keyword fragment, promotion process",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "workstation refresh cycle",
+    "expectedSubstrings": ["refreshed every three years"],
+    "notes": "short keyword fragment, equipment refresh",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "How much PTO do I accrue annually?",
+    "expectedSubstrings": ["15 days of paid vacation"],
+    "notes": "abbreviation PTO not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "How many WFH days are allowed weekly?",
+    "expectedSubstrings": ["three days per week, with manager approval"],
+    "notes": "abbreviation WFH not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "What are the HQ's opening hours?",
+    "expectedSubstrings": ["8:30am to 5:30pm Central Time"],
+    "notes": "abbreviation HQ not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "Is there a stipend for prof dev?",
+    "expectedSubstrings": ["2000 dollars for professional development"],
+    "notes": "informal shorthand 'prof dev' not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "What's the intl remote work limit?",
+    "expectedSubstrings": ["four consecutive weeks per calendar year"],
+    "notes": "abbreviation intl not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "How much does the co match for HSA contributions?",
+    "expectedSubstrings": ["up to 3% of base salary annually"],
+    "notes": "informal shorthand 'co' not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "How many days per week can I work remotely under the standard policy?",
+    "expectedSubstrings": ["three days per week, with manager approval"],
+    "notes": "distractor pair: standard vs international remote work",
+    "category": "distractor"
+  },
+  {
+    "question": "How long can I work remotely while temporarily relocated to another country?",
+    "expectedSubstrings": ["four consecutive weeks per calendar year"],
+    "notes": "distractor pair: international vs standard remote work",
+    "category": "distractor"
+  },
+  {
+    "question": "How many vacation days do new employees accrue before their fifth work anniversary?",
+    "expectedSubstrings": ["15 days of paid vacation"],
+    "notes": "distractor pair: vacation vs sick leave",
+    "category": "distractor"
+  },
+  {
+    "question": "How many paid sick days do employees get each year?",
+    "expectedSubstrings": ["8 days of paid sick leave"],
+    "notes": "distractor pair: sick leave vs vacation",
+    "category": "distractor"
+  },
+  {
+    "question": "What percentage of base salary does the company match toward my 401(k)?",
+    "expectedSubstrings": ["up to 5% of base salary"],
+    "notes": "distractor pair: 401k match vs HSA contribution",
+    "category": "distractor"
+  },
+  {
+    "question": "What percentage does the company contribute annually to my HSA?",
+    "expectedSubstrings": ["up to 3% of base salary annually"],
+    "notes": "distractor pair: HSA contribution vs 401k match",
+    "category": "distractor"
+  },
+  {
+    "question": "How often are standard performance reviews held during the year?",
+    "expectedSubstrings": ["twice annually, in March and September"],
+    "notes": "distractor pair: performance reviews vs promotion process",
+    "category": "distractor"
+  },
+  {
+    "question": "How often does the promotion calibration committee meet?",
+    "expectedSubstrings": ["reviewed once annually, in June"],
+    "notes": "distractor pair: promotion process vs performance reviews",
+    "category": "distractor"
+  },
+  {
+    "question": "What time does the Austin headquarters open in the morning?",
+    "expectedSubstrings": ["8:30am to 5:30pm Central Time"],
+    "notes": "distractor pair: HQ office hours vs satellite office hours",
+    "category": "distractor"
+  },
+  {
+    "question": "What time does the Denver satellite office open?",
+    "expectedSubstrings": ["9am to 6pm Mountain Time"],
+    "notes": "distractor pair: satellite office hours vs HQ office hours",
+    "category": "distractor"
   }
 ]

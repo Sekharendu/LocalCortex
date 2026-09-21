@@ -4,6 +4,8 @@ import { loadDocument } from "./loader.js";
 import { chunkText, type ChunkStrategy } from "./chunker.js";
 import { embedBatch } from "../retrieval/embedder.js";
 import { ensureCollection, upsertChunks, type ChunkPoint } from "../retrieval/vectorStore.js";
+import { sparseVectorFor, type SparseVector } from "../retrieval/sparse.js";
+import { getAvgDocLength, recordChunks } from "../retrieval/sparseStats.js";
 import { addDocument } from "../documentStore.js";
 import type { Chunk } from "../types.js";
 
@@ -112,13 +114,16 @@ export async function ingestDocument(
     return { success: true, documentId, chunkCount: 0 };
   }
 
-  // Stage 3: embed
+  // Stage 3: embed (dense via Ollama; sparse is pure/local -- no network call)
   let vectors: number[][];
+  let sparseVectors: SparseVector[];
   try {
     vectors = await embedBatch(
       chunks.map((c) => c.text),
       options.concurrency ?? DEFAULT_EMBED_CONCURRENCY,
     );
+    const avgDocLength = await getAvgDocLength();
+    sparseVectors = chunks.map((c) => sparseVectorFor(c.text, avgDocLength));
   } catch (e) {
     return {
       success: false,
@@ -132,7 +137,8 @@ export async function ingestDocument(
   // Stage 4: upsert to Qdrant
   const chunkPoints: ChunkPoint[] = chunks.map((c, i) => ({
     id: randomUUID(),
-    vector: vectors[i],
+    denseVector: vectors[i],
+    sparseVector: sparseVectors[i],
     payload: {
       text: c.text,
       source: sourceName,
@@ -154,7 +160,7 @@ export async function ingestDocument(
   }
   log(`upserted ${chunkPoints.length} chunks to Qdrant ('${collection}')`);
 
-  // Stage 5: persist document record
+  // Stage 5: persist document record + sparse corpus stats (BM25 avgDocLength input)
   try {
     await addDocument({
       id: documentId,
@@ -162,6 +168,7 @@ export async function ingestDocument(
       ingestedAt: new Date().toISOString(),
       chunkCount: chunks.length,
     });
+    await recordChunks(chunks.map((c) => c.text));
   } catch (e) {
     return {
       success: false,
