@@ -2,6 +2,7 @@ import { embed } from "./embedder.js";
 import { searchSimilar, hybridSearch } from "./vectorStore.js";
 import { sparseVectorFor } from "./sparse.js";
 import { getAvgDocLength } from "./sparseStats.js";
+import { expandAcronyms } from "./acronyms.js";
 import { retrievalConfig } from "../config.js";
 import type { ChunkPayload } from "../types.js";
 
@@ -50,6 +51,14 @@ export interface RetrieveOptions {
  * NOT "no relevant chunks" situations and DO propagate as typed errors EmbeddingError
  * / CollectionError. A down Qdrant is a different failure mode from "no match above
  * threshold" and silently returning [] would make the LLM hallucinate with no signal.
+ *
+ * Hybrid mode's relevance floor: RRF-fused scores aren't cosine similarities, so
+ * hybridSearch can't apply effectiveThreshold directly -- left unchecked it would
+ * always return up to topK results even for a completely off-topic question, breaking
+ * the hallucination-safety guarantee dense mode provides via scoreThreshold. Instead of
+ * inventing a new (unvalidated) RRF cutoff number, a cheap limit:1 dense probe using
+ * the SAME tested threshold decides whether anything relevant exists at all before a
+ * full hybrid query is even attempted; a miss short-circuits straight to [].
  */
 export async function retrieve(
   question: string,
@@ -60,20 +69,33 @@ export async function retrieve(
   const effectiveCollection = collection ?? retrievalConfig.collection;
   const effectiveMode = mode ?? retrievalConfig.mode;
 
-  const queryVector = await embed(question);
+  // Expand known abbreviations (PTO, WFH, ...) before embedding/encoding -- sparse
+  // retrieval structurally can't bridge a term that never appears in the corpus, and
+  // the expansion helps dense's semantic match too. See acronyms.ts.
+  const expandedQuestion = expandAcronyms(question);
+  const queryVector = await embed(expandedQuestion);
 
-  const hits =
-    effectiveMode === "dense"
-      ? await searchSimilar(effectiveCollection, queryVector, {
-          limit: effectiveTopK,
-          scoreThreshold: effectiveThreshold,
-        })
-      : await hybridSearch(
-          effectiveCollection,
-          queryVector,
-          sparseVectorFor(question, await getAvgDocLength()),
-          { limit: effectiveTopK },
-        );
+  let hits;
+  if (effectiveMode === "dense") {
+    hits = await searchSimilar(effectiveCollection, queryVector, {
+      limit: effectiveTopK,
+      scoreThreshold: effectiveThreshold,
+    });
+  } else {
+    const probe = await searchSimilar(effectiveCollection, queryVector, {
+      limit: 1,
+      scoreThreshold: effectiveThreshold,
+    });
+    hits =
+      probe.length === 0
+        ? []
+        : await hybridSearch(
+            effectiveCollection,
+            queryVector,
+            sparseVectorFor(expandedQuestion, await getAvgDocLength()),
+            { limit: effectiveTopK, fusion: retrievalConfig.fusion },
+          );
+  }
 
   const chunks: RetrievedChunk[] = hits.map((h) => {
     const payload = (h.payload ?? {}) as Partial<ChunkPayload>;

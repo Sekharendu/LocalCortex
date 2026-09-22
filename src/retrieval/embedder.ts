@@ -61,12 +61,13 @@ function assertDim(vec: number[], label: string): void {
 }
 
 /**
- * Embed a single text via Ollama's /api/embed endpoint. Returns a number[] of length
+ * Embed a single query via Ollama's /api/embed endpoint (gets the "search_query: " prefix
+ * when embedConfig.taskPrefixes is on; embedBatch gets "search_document: "). Returns a number[] of length
  * OLLAMA_EMBED_DIM (default 768). Throws EmbeddingError on network failure, non-2xx
  * response, malformed body, or dimension mismatch.
  */
 export async function embed(text: string): Promise<number[]> {
-  const vectors = await postEmbed(text);
+  const vectors = await postEmbed(embedConfig.taskPrefixes ? `search_query: ${text}` : text);
   if (vectors.length !== 1) {
     throw new EmbeddingError(
       `Expected 1 embedding for single input, got ${vectors.length}`,
@@ -93,7 +94,9 @@ export async function embedBatch(
   const out: number[][] = new Array(texts.length);
   for (let start = 0; start < texts.length; start += concurrency) {
     const slice = texts.slice(start, start + concurrency);
-    const vectors = await postEmbed(slice);
+    const vectors = await postEmbed(
+      embedConfig.taskPrefixes ? slice.map((t) => `search_document: ${t}`) : slice,
+    );
     if (vectors.length !== slice.length) {
       throw new EmbeddingError(
         `Ollama returned ${vectors.length} embeddings for a sub-batch of ${slice.length} inputs`,

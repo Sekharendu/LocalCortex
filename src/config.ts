@@ -9,10 +9,16 @@ export const retrievalConfig = {
   // Hybrid (dense+sparse RRF) is the default retrieval mode; set RETRIEVE_MODE=dense to
   // fall back to pure dense search (e.g. to reproduce a pre-hybrid baseline for A/B eval).
   mode: (process.env.RETRIEVE_MODE === "dense" ? "dense" : "hybrid") as "dense" | "hybrid",
+  // Hybrid-mode fusion: "rrf" (rank-only) or "dbsf" (score-magnitude-aware).
+  fusion: (process.env.RETRIEVE_FUSION === "dbsf" ? "dbsf" : "rrf") as "rrf" | "dbsf",
 };
 
 export const embedConfig = {
   dim: Number(process.env.OLLAMA_EMBED_DIM ?? 768),
   model: process.env.OLLAMA_EMBED_MODEL ?? "nomic-embed-text",
   url: process.env.OLLAMA_URL ?? "http://localhost:11434",
+  // nomic-embed-text expects "search_query: " / "search_document: " task prefixes; using
+  // them lifted large-corpus R@1 from 47/55 to 50/55. Set OLLAMA_EMBED_PREFIXES=0 to
+  // disable. Toggling this changes every vector: collections must be re-ingested.
+  taskPrefixes: process.env.OLLAMA_EMBED_PREFIXES !== "0",
 };

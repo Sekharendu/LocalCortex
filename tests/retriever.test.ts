@@ -60,13 +60,19 @@ describe("retrieve", () => {
   );
 
   test.skipIf(!stackUp || documentId === null)(
-    "(b) unrelated query with default threshold returns nothing",
+    "(b) unrelated query with default threshold returns nothing -- both modes",
     async () => {
-      const chunks = await retrieve(
-        "Quantum chromodynamics gauge invariance and the strong nuclear force confinement hypothesis",
-        { collection: TEST_COLLECTION },
-      );
-      expect(chunks).toHaveLength(0);
+      // Explicit per-mode assertions, not just "whatever the default happens to be":
+      // hybridSearch has no server-side score_threshold of its own (RRF-fused scores
+      // aren't cosine similarities), so this specifically guards the relevance-floor
+      // probe in retriever.ts that gates hybrid mode behind the same tested dense
+      // threshold check dense mode already passes here.
+      const question =
+        "Quantum chromodynamics gauge invariance and the strong nuclear force confinement hypothesis";
+      const dense = await retrieve(question, { mode: "dense", collection: TEST_COLLECTION });
+      const hybrid = await retrieve(question, { mode: "hybrid", collection: TEST_COLLECTION });
+      expect(dense).toHaveLength(0);
+      expect(hybrid).toHaveLength(0);
     },
   );
 

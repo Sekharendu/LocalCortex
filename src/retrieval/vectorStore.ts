@@ -40,6 +40,18 @@ export interface HybridSearchOptions {
    * max(20, limit * 4) -- Qdrant recommends prefetching meaningfully more than the
    * final limit so RRF has enough candidates from each side to actually fuse. */
   prefetchLimit?: number;
+  /** Relative RRF weight for [dense, sparse] when both prefetches are present. Defaults
+   * to [2, 1] -- dense alone was already reliable on this corpus; weighting sparse down
+   * makes it act as a tie-breaker / rescue signal rather than an equal vote that can
+   * outrank a correct dense top-1 result purely on sparse noise (see the hybrid-search
+   * hardening plan's Tier 2 -- observed regression on `paraphrase-no-overlap` questions
+   * before this was added). Only applies to "rrf" -- Qdrant's DBSF takes no weights. */
+  weights?: [number, number];
+  /** "rrf" fuses by rank position only, discarding how confident each side was.
+   * "dbsf" (distribution-based score fusion) normalizes each prefetch's scores and sums
+   * the magnitudes, so a narrow dense lead or a weak one-word sparse match is weighed
+   * as such instead of as a flat "rank 1 vs rank 2". */
+  fusion?: "rrf" | "dbsf";
 }
 
 /**
@@ -161,7 +173,7 @@ export async function hybridSearch(
   collection: string,
   denseVector: number[],
   sparseVector: SparseVector,
-  { limit = 5, prefetchLimit }: HybridSearchOptions = {},
+  { limit = 5, prefetchLimit, weights, fusion = "rrf" }: HybridSearchOptions = {},
 ): Promise<SearchMatch[]> {
   if (!Array.isArray(denseVector) || denseVector.length !== embedConfig.dim) {
     const got = Array.isArray(denseVector) ? denseVector.length : typeof denseVector;
@@ -178,12 +190,20 @@ export async function hybridSearch(
   if (sparseVector.indices.length > 0) {
     prefetch.push({ query: sparseVector, using: SPARSE_VECTOR_NAME, limit: effectivePrefetchLimit });
   }
+  // Weights only make sense when there are two prefetches to weigh against each other;
+  // a lone dense prefetch (sparse query was empty) just needs plain unweighted fusion.
+  const fusionQuery =
+    fusion === "dbsf"
+      ? { fusion: "dbsf" as const }
+      : prefetch.length > 1
+        ? { rrf: { weights: weights ?? [2, 1] } }
+        : { fusion: "rrf" as const };
 
   let hits;
   try {
     hits = await client.query(collection, {
       prefetch,
-      query: { fusion: "rrf" },
+      query: fusionQuery,
       limit,
       with_payload: true,
     });
