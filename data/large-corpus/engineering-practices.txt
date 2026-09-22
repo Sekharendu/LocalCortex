@@ -1,0 +1,81 @@
+# Engineering Practices Guide
+
+## Code Review Requirements
+
+All code changes submitted to the main repository must undergo a review process prior to approval. A minimum of two code reviewers, including at least one senior developer, are required to approve changes before they can be merged into the master branch. For features, this review process will take no more than 3 business days; for bug fixes, it will take no more than 1 business day. Code reviews will focus on ensuring adherence to coding standards, testing, and overall code quality.
+
+## Git Branching Strategy
+
+The company uses a feature-based branching strategy. Each feature or release is represented by a unique branch name, prefixed with "feat-". Development occurs on these feature branches until they are deemed complete, at which point they are merged into the master branch. The main repository will always reflect the current production state. All feature branches must be reviewed and approved before being merged into master. The maximum time to live for a feature branch is 6 weeks from creation.
+
+## Commit Message Conventions
+
+Commit messages must adhere to the following conventions: • A brief summary of changes made (max 50 characters) • Any relevant JIRA ticket or task ID (e.g., #1234) • Any notable issues resolved or dependencies addressed. For example: "feat-login: Added login functionality (#4567), resolves #7890". This will ensure clear and concise tracking of code changes throughout the system.
+
+## CI/CD Pipeline Overview
+
+The company's continuous integration/continuous deployment (CI/CD) pipeline is triggered on every push to the main repository. The pipeline consists of three stages: • Unit testing, using Jest, which must pass before moving forward • Integration testing, using Cucumber, which also must pass before deploying • Deployment to production, using Amazon S3 and AWS Lambda, which will occur within 30 minutes of a successful build.
+
+## Deployment Approval Process
+
+The deployment approval process requires at least one senior developer and the release manager's approval for any changes to the master branch. The release manager will review all deployments and ensure they align with the company's product roadmap. For emergency deployments, the CEO must be notified within 2 hours of deployment.
+
+## Feature Flag Policy
+
+All new features in our product must be deployed using feature flags. This ensures that we can control the rollout of new features to specific user segments or teams before releasing them to all users. Any feature flag must have a clear description, including the purpose and scope of the feature, as well as any relevant dependencies or limitations. Feature flags will be reviewed by our product management team prior to deployment. All feature flags must be tested in production for at least 24 hours before being considered stable.
+
+## On-Call Rotation Guidelines
+
+The on-call rotation schedule will follow a standard 4-week cycle, with each team member responsible for two weeks of on-call duty and one week off. The on-call engineer will be notified in advance of their scheduled duty period, and will receive a detailed playbook outlining the procedures and protocols to follow during that time. All engineers are required to take an active role in responding to critical incidents while on call, unless excused by management for valid reasons.
+
+## Incident Severity Classification
+
+Incidents will be classified as either Level 1 (minor), Level 2 (significant), or Level 3 (catastrophic). Level 1 incidents include minor errors or performance issues that do not affect user productivity. Level 2 incidents may impact a small number of users, but can be resolved within two hours. Level 3 incidents are critical failures that affect a large number of users and require immediate attention from our on-call team.
+
+## Postmortem and Root Cause Analysis Process
+
+All incidents will trigger a postmortem analysis to identify the root cause and recommend steps to prevent similar incidents in the future. The postmortem report must be completed within three business days, and will include a detailed description of the incident, its impact, and any relevant metrics or data. A copy of the report will be sent to all affected teams and stakeholders.
+
+## Architecture Decision Record Process
+
+All architecture decisions will be documented using an Architecture Decision Record (ADR). The ADR must include a clear statement of the decision, its rationale, and any trade-offs made. The document will also include references to relevant design patterns or technologies, as well as any testing or validation procedures performed. All ADRs will be reviewed by the architecture team prior to being considered final.
+
+## API Design Guidelines
+
+All new and existing APIs must adhere to the following guidelines: APIs must be designed using OpenAPI 3.0 specifications, with all endpoint URLs mapped to a single top-level domain (api.example.com). Each API must include at least two types of authentication methods (OAuth2 and JWT) and support both JSON and XML data formats. Additionally, all APIs must be documented using Doxgen, with documentation available for internal developers within 24 hours of API deployment.
+
+## Database Migration Process
+
+The company will employ a zero-downtime database migration process for all schema changes. All migrations must be performed during scheduled maintenance windows (Wednesday evenings from 10 PM to 2 AM) and must be tested on staging environments prior to production deployment. The DBA team will review all proposed schema changes 48 hours in advance, and the change request must be approved by at least two senior developers or a database administrator.
+
+## Test Coverage Requirements
+
+All code commits must meet a minimum test coverage threshold of 85% for new features and 90% for bug fixes. The testing framework shall be based on JUnit, with all tests written in Java. Test coverage reports will be generated automatically by Jenkins CI/CD pipeline and reviewed by the QA team weekly.
+
+## Dependency Update Policy
+
+All dependencies must be updated to the latest stable version within 14 days of release. The minimum acceptable version for each dependency will be determined by the DevOps team, taking into account factors such as security patches and feature enhancements. All updates must be tested on staging environments prior to production deployment and reviewed by at least one senior developer or technical lead.
+
+## Secrets Management Standards
+
+The company will use HashiCorp's Vault for all secrets management. All sensitive data, including API keys, database credentials, and encryption keys, must be stored in Vault and accessed using the company-provided access tokens. Each secret must be encrypted using AES-256 and have at least two layers of approval ( DevOps team and a senior developer) before being made available to developers for production use.
+
+## Monitoring and Alerting Standards
+
+All systems will be configured to send alerts to the on-call engineer via PagerDuty within 30 minutes of detecting a critical error or performance issue. This includes all production environments, such as staging and live sites, but excludes development environments like JIRA and GitHub pages. The alert threshold will be set at 95% CPU utilization or above for server resources, with a maximum latency of 5 seconds before the alert is triggered. All alerts will be monitored by the DevOps team during business hours (Monday-Friday, 9am-5pm ET) and escalated to the on-call engineer outside of regular working hours.
+
+## Documentation Requirements for New Services
+
+All new services launched within the company must have a minimum of three documentation pages created within the service's wiki repository. These pages will include information on service architecture, technical requirements, and troubleshooting steps. The documentation team will review and approve all new service documentation within two business days of submission. Service owners are responsible for ensuring that their documentation meets these standards before launching their service in production.
+
+## Third-Party Library Approval Process
+
+All third-party libraries used in the company's codebase must be approved by the Architecture Committee prior to being added to the project repository. The approval process will involve a review of the library's license terms, functionality, and compatibility with existing technologies. Libraries requiring approval will include those that handle sensitive data, have security vulnerabilities, or are not open-source. The Architecture Committee will respond to all approval requests within one week.
+
+## Rollback Procedures
+
+In the event of a critical error or performance issue in production, the rollback procedure will involve reverting the previous stable version of the codebase from Git within 30 minutes of detection. All rollbacks will be executed by the on-call engineer and verified for proper functionality before being deemed successful. A post-rollback review will be conducted by the incident commander to identify root causes and implement preventative measures for future occurrences.
+
+## Engineering Onboarding Checklist
+
+All new engineers must complete a comprehensive onboarding checklist within their first two weeks of joining the company. The checklist will include tasks such as setting up their IDE, configuring code reviews, and completing mandatory training modules. New engineers will be assigned a buddy engineer to guide them through the onboarding process and ensure all requirements are met before they begin working on projects.

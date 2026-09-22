@@ -1,0 +1,370 @@
+[
+  {
+    "question": "How many paid vacation days do I get in my first five years of service?",
+    "expectedSubstrings": [
+      "Full-time employees accrue 15 days"
+    ],
+    "notes": "auto-generated from employee-handbook.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "Who handles violations of the professional behavior code?",
+    "expectedSubstrings": [
+      "Professional behavior is expected at"
+    ],
+    "notes": "auto-generated from employee-handbook.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "How often are workstations refreshed for engineering staff?",
+    "expectedSubstrings": [
+      "Engineering staff receive a workstation"
+    ],
+    "notes": "auto-generated from employee-handbook.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the maximum consecutive weeks I can work remotely while temporarily outside my home country?",
+    "expectedSubstrings": [
+      "Employees relocating temporarily outside their"
+    ],
+    "notes": "auto-generated from employee-handbook.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the timeframe for reporting incidents of harassment?",
+    "expectedSubstrings": [
+      "is committed to providing a"
+    ],
+    "notes": "auto-generated from employee-handbook.txt; weak substring (generic opener, not the fact itself) -- kept as a lower-rigor baseline entry",
+    "category": "baseline"
+  },
+  {
+    "question": "Who reviews applications for open positions within the company?",
+    "expectedSubstrings": [
+      "is committed to providing opportunities"
+    ],
+    "notes": "auto-generated from employee-handbook.txt; weak substring (generic opener, not the fact itself) -- kept as a lower-rigor baseline entry",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the minimum annual income required to be considered an independent contractor?",
+    "expectedSubstrings": [
+      ". To qualify as an"
+    ],
+    "notes": "auto-generated from employee-handbook.txt; weak substring (generic opener, not the fact itself) -- kept as a lower-rigor baseline entry",
+    "category": "baseline"
+  },
+  {
+    "question": "Who needs to approve changes to the master branch?",
+    "expectedSubstrings": [
+      "The deployment approval process requires"
+    ],
+    "notes": "auto-generated from engineering-practices.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What documentation is required for all architecture decisions?",
+    "expectedSubstrings": [
+      "All architecture decisions will be"
+    ],
+    "notes": "auto-generated from engineering-practices.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the minimum encryption method used to store secrets in Vault?",
+    "expectedSubstrings": [
+      "The company will use HashiCorp's"
+    ],
+    "notes": "auto-generated from engineering-practices.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the maximum file size for storing personal files on approved cloud storage services?",
+    "expectedSubstrings": [
+      "The following cloud storage services"
+    ],
+    "notes": "auto-generated from it-security-policy.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What are data classification levels labeled with?",
+    "expectedSubstrings": [
+      ". Data classification levels will"
+    ],
+    "notes": "auto-generated from it-security-policy.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "How often do we need to update our company-owned devices?",
+    "expectedSubstrings": [
+      "The company will implement a"
+    ],
+    "notes": "auto-generated from it-security-policy.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the time frame for reviewing and acknowledging the company's Acceptable Use Policy?",
+    "expectedSubstrings": [
+      ". After completing the training,"
+    ],
+    "notes": "auto-generated from it-security-policy.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the minimum retention period for offsite backups of critical data?",
+    "expectedSubstrings": [
+      "The company will maintain at"
+    ],
+    "notes": "auto-generated from it-security-policy.txt; weak substring, see hand-curated entry with the same intent for a rigorous version",
+    "category": "baseline"
+  },
+  {
+    "question": "How long does it take for the vulnerability disclosure team to confirm a reported security issue?",
+    "expectedSubstrings": [
+      "When a security vulnerability is"
+    ],
+    "notes": "auto-generated from it-security-policy.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What happens to an employee who violates the insider trading policy?",
+    "expectedSubstrings": [
+      "The company strictly prohibits insider"
+    ],
+    "notes": "auto-generated from legal-compliance-manual.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the minimum length of time Company X retains records?",
+    "expectedSubstrings": [
+      "Company X retains records for"
+    ],
+    "notes": "auto-generated from legal-compliance-manual.txt",
+    "category": "baseline"
+  },
+  {
+    "question": "What is the minimum value of a proposed transaction that requires review by the Antitrust Compliance Officer?",
+    "expectedSubstrings": [
+      ". The Antitrust Compliance Officer"
+    ],
+    "notes": "auto-generated from legal-compliance-manual.txt; weak substring, see hand-curated entry with the same intent for a rigorous version",
+    "category": "baseline"
+  },
+  {
+    "question": "How quickly must a suspicious phishing email be reported to the security team?",
+    "expectedSubstrings": ["report any suspicious or phishing emails to the Information Security department within 2 hours"],
+    "notes": "cross-document distractor: reporting-window triad (2h phishing vs 24h incident vs 24h FCPA vs 48h harassment)",
+    "category": "distractor"
+  },
+  {
+    "question": "How quickly must a suspected FCPA or bribery violation be reported to the Compliance Officer?",
+    "expectedSubstrings": ["report any suspected violations to the company's Compliance Officer within 24 hours"],
+    "notes": "cross-document distractor: reporting-window triad",
+    "category": "distractor"
+  },
+  {
+    "question": "How quickly must a harassment or discrimination incident be reported for investigation?",
+    "expectedSubstrings": ["incidents reported within 48 hours"],
+    "notes": "cross-document distractor: reporting-window triad",
+    "category": "distractor"
+  },
+  {
+    "question": "How quickly must a data breach or compromised account be reported to Information Security?",
+    "expectedSubstrings": ["report the incident to the Information Security department within 24 hours"],
+    "notes": "cross-document distractor: reporting-window triad (same doc as phishing, different section)",
+    "category": "distractor"
+  },
+  {
+    "question": "What is the minimum retention period for general company data under IT policy?",
+    "expectedSubstrings": ["retained for a minimum of three years"],
+    "notes": "cross-document distractor: retention triad (3yr IT data vs 7yr records vs 7-day backups)",
+    "category": "distractor"
+  },
+  {
+    "question": "What is the minimum retention period for company records under the compliance policy?",
+    "expectedSubstrings": ["retains records for a minimum of seven years"],
+    "notes": "cross-document distractor: retention triad",
+    "category": "distractor"
+  },
+  {
+    "question": "What is the minimum retention period for offsite data backups?",
+    "expectedSubstrings": ["minimum retention period of seven days"],
+    "notes": "cross-document distractor: retention triad",
+    "category": "distractor"
+  },
+  {
+    "question": "How many code reviewers are required to approve a change to the master branch, and how many must be senior?",
+    "expectedSubstrings": ["minimum of two code reviewers, including at least one senior developer"],
+    "notes": "in-document distractor: approval-count pair vs database migration",
+    "category": "distractor"
+  },
+  {
+    "question": "How many senior developers must approve a proposed database schema migration?",
+    "expectedSubstrings": ["approved by at least two senior developers or a database administrator"],
+    "notes": "in-document distractor: approval-count pair vs code review",
+    "category": "distractor"
+  },
+  {
+    "question": "What percentage of base salary does the company contribute to an HSA account?",
+    "expectedSubstrings": ["up to 3% of base salary annually"],
+    "notes": "distractor vs overtime pay multiplier",
+    "category": "distractor"
+  },
+  {
+    "question": "What is the overtime pay rate for non-exempt employees?",
+    "expectedSubstrings": ["1.5 times their regular hourly rate"],
+    "notes": "distractor vs HSA contribution percentage",
+    "category": "distractor"
+  },
+  {
+    "question": "At what contract value does the CEO have to sign off personally?",
+    "expectedSubstrings": ["exceeding $500,000 must be signed by Company X's Chief Executive Officer"],
+    "notes": "distractor within the contract signing authority tiers",
+    "category": "distractor"
+  },
+  {
+    "question": "How much PTO do I accrue during my first five years?",
+    "expectedSubstrings": ["15 days of paid vacation"],
+    "notes": "abbreviation PTO not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "How many WFH days are allowed per week under the standard policy?",
+    "expectedSubstrings": ["three days per week, with manager approval"],
+    "notes": "abbreviation WFH not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "What kind of support does the EAP offer to employees?",
+    "expectedSubstrings": ["confidential counseling services, mental health resources, and wellness programs"],
+    "notes": "abbreviation EAP not present verbatim (heading spells out 'Wellness and Assistance Program', not the acronym)",
+    "category": "abbreviation"
+  },
+  {
+    "question": "What's the intl remote work limit under company policy?",
+    "expectedSubstrings": ["four consecutive weeks per calendar year"],
+    "notes": "abbreviation intl not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "How much does the co match for HSA contributions?",
+    "expectedSubstrings": ["up to 3% of base salary annually"],
+    "notes": "informal shorthand 'co' not present verbatim in corpus",
+    "category": "abbreviation"
+  },
+  {
+    "question": "How long after being hired can I start contributing to a health savings account?",
+    "expectedSubstrings": ["after 30 days of employment"],
+    "notes": "paraphrase of HSA eligibility with zero keyword overlap",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "If a close relative passes away, how much paid time off can I take?",
+    "expectedSubstrings": ["five days (40 hours) of paid bereavement leave"],
+    "notes": "paraphrase of bereavement leave",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "How soon do new employees need to finish their required cybersecurity training?",
+    "expectedSubstrings": ["within their first two weeks of employment"],
+    "notes": "paraphrase of security awareness training timeline",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "How long do I have to sign over my inventions and ideas to the company after I'm hired?",
+    "expectedSubstrings": ["signed within 30 days of starting employment"],
+    "notes": "paraphrase of IP assignment agreement deadline",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "What's the largest deal size a Vice President can approve without going higher up?",
+    "expectedSubstrings": ["signing authority for contracts up to $100,000"],
+    "notes": "paraphrase of contract signing authority",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "How fast does the on-call engineer get paged when something goes seriously wrong in production?",
+    "expectedSubstrings": ["within 30 minutes of detecting a critical error"],
+    "notes": "paraphrase of monitoring/alerting SLA",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "How many people need to sign off before a new open-source library gets added to our codebase?",
+    "expectedSubstrings": ["approved by the Architecture Committee prior to being added"],
+    "notes": "paraphrase of third-party library approval process",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "How much runway does a departing employee's manager give before final access is cut off?",
+    "expectedSubstrings": ["access to all company systems and resources will be revoked within 24 hours"],
+    "notes": "paraphrase of offboarding access revocation",
+    "category": "paraphrase-no-overlap"
+  },
+  {
+    "question": "What is the maximum feature branch lifetime?",
+    "expectedSubstrings": ["maximum time to live for a feature branch is 6 weeks"],
+    "notes": "exact figure lookup, git branching strategy",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What is the test coverage requirement for bug fixes?",
+    "expectedSubstrings": ["90% for bug fixes"],
+    "notes": "exact figure lookup, test coverage",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What encryption standard is required for company devices?",
+    "expectedSubstrings": ["encrypted with AES-256 encryption standards"],
+    "notes": "exact figure lookup, device encryption",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What is the maximum BYOD expense allowance per year?",
+    "expectedSubstrings": ["limited allowance for BYOD-related expenses up to $500 per year"],
+    "notes": "exact figure lookup, BYOD policy",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What is the antitrust review threshold for a proposed transaction?",
+    "expectedSubstrings": ["reviewing all proposed transactions over $100 million"],
+    "notes": "exact figure lookup, antitrust compliance",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "What is the minimum NDA validity period?",
+    "expectedSubstrings": ["valid for a minimum of two years from the date of execution"],
+    "notes": "exact figure lookup, NDA requirements",
+    "category": "exact-keyword"
+  },
+  {
+    "question": "feature branch lifetime limit",
+    "expectedSubstrings": ["maximum time to live for a feature branch is 6 weeks"],
+    "notes": "short keyword fragment, git branching",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "backup retention days",
+    "expectedSubstrings": ["minimum retention period of seven days"],
+    "notes": "short keyword fragment, backup policy",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "antitrust transaction threshold",
+    "expectedSubstrings": ["reviewing all proposed transactions over $100 million"],
+    "notes": "short keyword fragment, antitrust compliance",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "BYOD expense allowance",
+    "expectedSubstrings": ["limited allowance for BYOD-related expenses up to $500 per year"],
+    "notes": "short keyword fragment, BYOD policy",
+    "category": "ambiguous-short"
+  },
+  {
+    "question": "offboarding access revocation timeframe",
+    "expectedSubstrings": ["access to all company systems and resources will be revoked within 24 hours"],
+    "notes": "short keyword fragment, offboarding",
+    "category": "ambiguous-short"
+  }
+]

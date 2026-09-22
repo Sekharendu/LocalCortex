@@ -1,0 +1,81 @@
+# IT Security & Acceptable Use Policy
+
+## Password Policy
+
+All employees are required to create and maintain complex passwords for company systems and applications. A password must be at least 12 characters long and include a combination of uppercase and lowercase letters, numbers, and special characters. Employees' passwords will expire every 90 days, at which point they must be updated to meet the above criteria. The IT department will require employees to reset their passwords immediately if an account has been compromised or if there is a suspected security breach. Failure to comply with password policies may result in system access being revoked.
+
+## Multi-Factor Authentication Requirements
+
+All employees are required to use multi-factor authentication (MFA) when accessing company applications and systems from off-site locations or non-company devices. MFA will be enabled on all company accounts by the end of Q2, 2023. The approved MFA methods include biometric login via fingerprint scanner, one-time password sent via SMS or authenticator app, and smart card authentication. Users who fail to enable MFA within the specified timeframe will receive a series of escalating notifications and may have their account access restricted.
+
+## Device Encryption Standards
+
+All company-owned devices, including laptops, tablets, and smartphones, must be encrypted with AES-256 encryption standards. This includes all company-provided devices as well as personally owned devices used for company business (BYOD). The IT department will provide a standardized encryption software to ensure compliance. All devices must be encrypted within 30 days of issuance or adoption for BYOD. Failure to encrypt devices may result in system access being revoked.
+
+## Bring Your Own Device (BYOD) Policy
+
+Employees are permitted to bring their personally owned devices to work for company business purposes, subject to the following guidelines. All BYOD devices must be registered with the IT department and meet the company's encryption standards. Employees are responsible for ensuring their devices comply with these requirements and must provide proof of compliance upon request. The company will provide a limited allowance for BYOD-related expenses up to $500 per year.
+
+## VPN and Remote Access Requirements
+
+All remote access connections, including virtual private network (VPN) connections, must be made using the company-approved VPN software. This includes all company-provided devices as well as personally owned devices used for company business (BYOD). All remote connections will be authenticated through MFA methods. The IT department will provide instructions on how to establish a secure remote connection. Failure to use approved VPN software and authentication methods may result in system access being revoked.
+
+## Approved Cloud Storage Services
+
+The following cloud storage services are approved for use by employees: Microsoft OneDrive, Google Drive, Dropbox Business, and Amazon S3. All approved cloud storage services must comply with our company's data classification levels and security protocols. Employees may store work-related files in these services up to 100GB in size, and personal files up to 50GB, without prior approval from management. Any files exceeding these limits require managerial approval before being stored on approved cloud storage services.
+
+## Data Classification Levels
+
+Company data is classified into three levels: Public, Internal, and Confidential. Public data includes non-sensitive information available to the general public, such as press releases and publicly traded financial reports. Internal data is confidential company information not intended for external disclosure, including employee personnel files and marketing strategies. Confidential data includes sensitive customer information, intellectual property, and trade secrets. Data classification levels will be marked with specific labels and color-coded stickers on all electronic files.
+
+## Security Incident Response Process
+
+In the event of a security incident, such as a data breach or compromised account, employees must report the incident to the Information Security department within 24 hours. The response process includes: (1) immediate containment of the incident, (2) notification of affected parties and management, (3) forensic analysis and root cause identification, (4) remediation and patching of vulnerabilities, and (5) post-incident review and lessons learned documentation. A dedicated security incident response team will be responsible for managing the incident from start to finish.
+
+## Phishing and Suspicious Email Reporting
+
+Employees are required to report any suspicious or phishing emails to the Information Security department within 2 hours of receipt. Phishing emails will be marked with a red flag icon in the subject line, indicating potential fraud or malware. Suspect emails may contain misspelled URLs, urgent requests for personal information, or generic greetings. Employees must not open attachments, click links, or respond to these emails. Instead, they should forward the email to the security team and delete it.
+
+## Patch and Update Management
+
+The company will implement a patch and update management process to ensure all software applications and systems are up-to-date with the latest security patches and updates. This includes quarterly Windows and macOS updates, as well as monthly security patches for cloud-based productivity suites like Microsoft Office 365. All company-owned devices must be updated within 72 hours of release or notification by the Information Security department. Personal devices used for work purposes will follow a similar schedule.
+
+## Network Access Control
+
+All corporate-owned devices connecting to the company network must be configured with up-to-date antivirus software and firewalls prior to access. Additionally, all new users requesting network access will undergo a mandatory security awareness training program within 72 hours of their initial login. This program will cover best practices for password management, phishing detection, and data privacy. After completing the training, users will have a 14-day window to review and acknowledge the company's Acceptable Use Policy before full network privileges are granted.
+
+## Privileged Account Management
+
+All privileged accounts (root, administrator, etc.) must be assigned a unique username and password that meets the following criteria: at least 12 characters in length, containing uppercase and lowercase letters, numbers, and special characters. These passwords will expire every 60 days and require immediate re-authentication upon login. The IT department will maintain a centralized list of privileged account credentials, accessible only to designated administrators.
+
+## Third-Party Vendor Access Policy
+
+All third-party vendors accessing company systems or facilities must undergo a thorough background check and adhere to the same security policies as internal employees. Vendors will be issued a unique username and password for access, which will expire after 30 days of inactivity. The IT department will maintain a vendor access log, tracking all login attempts, system access, and any security incidents.
+
+## Data Retention and Secure Deletion
+
+All company data stored electronically or physically must be retained for a minimum of three years from the date of creation or modification. After this retention period, data may be securely deleted using industry-standard methods. All devices containing sensitive information will be wiped clean of all data upon decommissioning, reassignment, or retirement.
+
+## Backup and Disaster Recovery Policy
+
+The company will maintain at least two (2) offsite backups of all critical data daily, with a minimum retention period of seven days. In the event of a disaster, the IT department will prioritize restoring critical systems within 24 hours. The backup process will be tested quarterly to ensure its integrity.
+
+## Acceptable Use of AI Tools
+
+All employees are permitted to utilize AI-powered tools for work-related purposes within the company's internal network. This includes using chatbots to automate routine tasks, predictive analytics software to inform decision-making, and machine learning algorithms to streamline processes. To ensure responsible AI use, all employees must obtain prior approval from their supervisor before implementing an AI tool. Additionally, employees must adhere to the following guidelines: (1) refrain from sharing company-sensitive information on public-facing AI platforms; (2) utilize secure connections when accessing external AI services; and (3) report any AI-related security incidents or concerns to the IT department within 24 hours.
+
+## Security Awareness Training Requirements
+
+All new hires are required to complete a comprehensive security awareness training program within their first two weeks of employment. The training program, provided by our third-party vendor, CyberEd, covers topics such as phishing and social engineering, password management, and data protection best practices. Additionally, all employees must renew their training certification annually. Failure to comply with these requirements may result in restricted access to company systems or resources.
+
+## Vulnerability Disclosure Process
+
+When a security vulnerability is discovered, all employees are expected to report it immediately to the IT department using the designated reporting tool. A dedicated vulnerability disclosure team will review and verify the reported issue within 72 hours. If confirmed, the team will work with the affected team members to develop and implement a remediation plan within 30 days. The disclosed vulnerability will be documented on our public-facing website and shared with industry partners as part of our commitment to responsible disclosure.
+
+## Email Security and Anti-Spoofing Standards
+
+To prevent email spoofing attacks, all employees are required to use the company's approved email authentication system, Authify, for all business communications. Authify uses DMARC (Domain-based Message Authentication, Reporting, and Conformance) technology to verify sender identities and detect potential phishing attempts. Additionally, employees must refrain from using personal email accounts for work-related purposes.
+
+## Offboarding Access Revocation Procedure
+
+When an employee is terminated or leaves the company, their access to all company systems and resources will be revoked within 24 hours of official notification. The IT department will disable their login credentials, remove them from all security groups and role-based access controls, and purge any sensitive company data stored on their personal device. All offboarded employees' access will be fully terminated within 72 hours, ensuring the protection of our confidential information.

@@ -23,6 +23,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { retrieve } from "../src/retrieval/retriever.js";
+import { retrievalConfig, embedConfig } from "../src/config.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -181,6 +182,8 @@ async function main(): Promise<void> {
   console.log(`  threshold:  ${threshold}`);
   console.log(`  topK:       ${maxK}`);
   console.log(`  mode:       ${mode || "(retriever default)"}`);
+  console.log(`  fusion:     ${retrievalConfig.fusion} (hybrid only; set RETRIEVE_FUSION=dbsf to switch)`);
+  console.log(`  prefixes:   ${embedConfig.taskPrefixes ? "on" : "off"} (set OLLAMA_EMBED_PREFIXES=0 to disable)`);
   console.log();
 
   for (let i = 0; i < evalSet.length; i++) {
@@ -251,6 +254,8 @@ async function main(): Promise<void> {
     threshold,
     topK: maxK,
     mode: mode || "default",
+    fusion: retrievalConfig.fusion,
+    embedPrefixes: embedConfig.taskPrefixes,
     aggregate: {
       ...overall,
       byCategory,

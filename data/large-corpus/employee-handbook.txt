@@ -1,0 +1,121 @@
+# Employee Handbook (Sample)
+
+## Vacation Policy
+
+Full-time employees accrue 15 days of paid vacation per year during their first five years of service. After five years, the accrual rate increases to 20 days per year. Vacation requests must be submitted at least two weeks in advance through the company portal.
+
+## Remote Work
+
+Employees may work remotely up to three days per week, with manager approval. Core hours are 10am to 3pm in the employee's local timezone, during which they must be reachable. Remote work arrangements are reviewed quarterly.
+
+## Health Insurance
+
+The company offers a comprehensive health insurance plan covering medical, dental, and vision. The employer pays 80% of the premium for the employee and 50% for dependents. Coverage begins on the first day of the month following the hire date.
+
+## Retirement Plan
+
+All employees are eligible for the 401(k) retirement plan after 90 days of employment. The company matches employee contributions up to 5% of base salary. Vested immediately, and rollovers into the plan from previous employers are supported.
+
+## Parental Leave
+
+New parents are eligible for 12 weeks of paid parental leave following the birth, adoption, or foster placement of a child. This leave is available to both primary and secondary caregivers and must be taken within the first year of the event.
+
+## Code of Conduct
+
+Professional behavior is expected at all times. This includes respectful communication with colleagues and external clients, confidentiality of company information, and avoidance of conflicts of interest. Violations are handled through the people-ops team.
+
+## Office Hours
+
+The corporate headquarters in Austin, Texas observes business hours of 8:30am to 5:30pm Central Time, Monday through Friday, excluding the company's published holiday calendar. Engineering teams operate on a flexible schedule within core hours.
+
+## Expense Reimbursement
+
+Business expenses such as travel, lodging, and client meals are reimbursed when accompanied by an itemized receipt and a valid business justification. Reimbursements are processed within two pay cycles and submitted through the expense management system.
+
+## Travel Policy
+
+Travel for business must be booked at least two weeks in advance when possible and booked through the approved travel platform. Economy class is required for flights under four hours. Business class is permitted only for international flights exceeding six hours.
+
+## Training Stipend
+
+Every permanent employee receives an annual training budget of 2000 dollars for professional development. Approved uses include conference attendance, online courses, certification exam fees, and workshop enrollment. Unused funds do not rollover.
+
+## Equipment and Workstations
+
+Engineering staff receive a workstation of their choice up to a defined budget threshold, refreshed every three years. Optional peripherals such as ergonomic keyboards and standing desk converters can be requested via the procurement portal.
+
+## Termination Procedures
+
+Employment can be terminated by either party with two weeks notice for non-cause terminations. Immediate termination is reserved for cause, defined as gross misconduct, security violations, or material breach of contract. Final paychecks are issued within three business days.
+
+## Performance Reviews
+
+Formal performance reviews are conducted twice annually, in March and September. Each review covers goal achievement, peer feedback, and growth areas. The manager-of-managers review precedes the leadership review to ensure calibration across teams.
+
+## Security and Access
+
+Building access is provisioned via a physical badge and digital credentials. Badges are required at all times in the workplace and must be returned upon termination. Lost badges must be reported to security within four hours to enable revocation.
+
+## Open Source Contributions
+
+Employees are encouraged to contribute to open-source projects as part of their professional development, subject to disclosure of any repository with a license conflict with company work. All contributions during business hours must be reviewed by immediate managers for appropriateness of time allocation.
+
+## International Remote Work Policy
+
+Employees relocating temporarily outside their home country may work remotely for up to four consecutive weeks per calendar year, subject to prior approval from both their manager and the international mobility team. Tax and visa compliance are evaluated on a per-country basis before approval is granted. This policy is separate from the standard remote work arrangement and does not affect standard remote day allowances.
+
+## Sick Leave Policy
+
+Full-time employees accrue 8 days of paid sick leave per year, credited at the start of each calendar year. Unused sick leave carries over up to a maximum of 10 days into the following year. A doctor's note is required for absences exceeding three consecutive days. Sick leave is tracked separately from vacation accrual.
+
+## Health Savings Account (HSA)
+
+Employees enrolled in the high-deductible health plan are eligible to open a Health Savings Account after 30 days of employment. The company contributes up to 3% of base salary annually to the employee's HSA, deposited quarterly. HSA funds roll over year to year and remain with the employee after termination.
+
+## Promotion and Leveling Process
+
+Promotion decisions are reviewed once annually, in June, by a calibration committee composed of cross-team managers. Employees may self-nominate or be nominated by their manager; nominations must be submitted at least six weeks before the calibration meeting. Leveling criteria are published internally and reviewed independently of the twice-annual performance review cycle.
+
+## Satellite Office Hours
+
+The satellite office in Denver, Colorado observes business hours of 9am to 6pm Mountain Time, Monday through Friday. Employees based at the satellite office follow the same holiday calendar as the Austin headquarters but may substitute up to two floating holidays for regional observances.
+
+## Diversity, Equity & Inclusion Policy
+
+The company is committed to fostering a culture of diversity, equity, and inclusion (DEI) that celebrates individual differences and promotes equal opportunities for all employees. As part of this commitment, the company aims to increase representation of underrepresented groups by 25% within the next three years. To achieve this goal, the company will implement targeted recruitment strategies, provide training on unconscious bias and inclusive hiring practices, and establish a Diversity Council comprising at least one representative from each business unit.
+
+## Anti-Harassment and Anti-Discrimination Policy
+
+The company is committed to providing a work environment that is free from harassment and discrimination. All employees are expected to conduct themselves in a professional and respectful manner towards their colleagues. Any form of harassment, including sexual harassment, bullying, or retaliation, will not be tolerated. The company has established a zero-tolerance policy, with any incidents reported within 48 hours being promptly investigated by the HR department. Employees found to have engaged in harassing behavior may face disciplinary action up to and including termination.
+
+## Whistleblower Protection Policy
+
+The company is committed to protecting employees who report suspected wrongdoing or illegal activities from retaliation or harm. Any employee who reports a concern or incident will be protected under this policy, which includes confidentiality, protection from retribution, and support through the reporting process. The company has established an anonymous reporting hotline and encourages employees to speak up if they witness or become aware of any unethical behavior.
+
+## Workplace Accommodations for Disabilities
+
+The company is committed to providing reasonable accommodations to ensure equal opportunities for employees with disabilities. Employees who require accommodations must notify their supervisor or HR representative in writing within 30 days of the need. The company will provide reasonable modifications, such as flexible work arrangements, assistive technology, or physical changes to the workspace. All requests will be reviewed and approved by the Accommodation Committee, which comprises representatives from HR, management, and employee resource groups.
+
+## Employee Referral Program
+
+The company encourages employees to refer qualified candidates for open positions within their networks. The Employee Referral Program offers a $2,000 referral bonus for successful hires who remain with the company for at least six months. Eligible referrals must meet the minimum qualifications for the job posting and be submitted through the company's online referral portal. The program is designed to recognize employee involvement in talent acquisition and retention while promoting diversity and inclusion in the hiring process.
+
+## Internal Transfer and Mobility Policy
+
+The Company is committed to providing opportunities for internal transfer and mobility to enhance employee career development and job satisfaction. To facilitate this, employees may apply for open positions within the Company at any time. The hiring manager will review all eligible applications and make a selection based on business needs and qualifications. For domestic transfers, the Company will reimburse up to $1,000 in relocation expenses for employees who accept a new role within 50 miles of their current location. International transfers are subject to additional procedures and approvals.
+
+## Contractor vs Employee Classification
+
+To ensure compliance with tax laws and regulations, the Company has established guidelines for classifying workers as either employees or independent contractors. Contractors will be engaged through third-party vendors and will not receive employee benefits, including health insurance, retirement plans, or paid time off. To qualify as an independent contractor, a worker must: (1) work on a project-by-project basis; (2) maintain control over their work schedule and methods; and (3) earn more than $25,000 per year.
+
+## Overtime and Timekeeping Policy
+
+The Company recognizes that occasional overtime is necessary to meet business demands. All non-exempt employees are eligible for overtime pay at 1.5 times their regular hourly rate for hours worked in excess of 40 in a workweek. Employees must record all time worked, including lunch breaks, on the Company's electronic timekeeping system within two hours of completing their shift. Failure to comply may result in suspension or termination of overtime pay.
+
+## Bereavement, Jury Duty, and Military Leave
+
+The Company is committed to supporting employees during times of need. Eligible employees are entitled to up to five days (40 hours) of paid bereavement leave following the loss of an immediate family member. For jury duty, employees will receive their regular pay while serving as a juror, but must provide written documentation from the court or government agency. Military leave is available for up to 26 weeks under the Family and Medical Leave Act (FMLA) for eligible employees.
+
+## Employee Wellness and Assistance Program
+
+The Company recognizes the importance of employee well-being and has established an Employee Wellness and Assistance Program. Eligible employees may access confidential counseling services, mental health resources, and wellness programs at no cost to themselves. The program also includes a workplace safety initiative, providing a safe and healthy work environment for all employees.
