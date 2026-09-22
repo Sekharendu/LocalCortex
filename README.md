@@ -187,11 +187,17 @@ All optional — sensible defaults work for the standard `docker compose up -d` 
 | `OLLAMA_GEN_TIMEOUT_MS` | `180000` | Generation request timeout (ms) — generous because CPU-based llama3 is slow |
 | `QDRANT_COLLECTION` | `rag` | Default collection name used by ingest and retrieval |
 | `RETRIEVE_TOP_K` | `5` | Default topK used by `retrieve()` |
-| `RETRIEVE_SCORE_THRESHOLD` | `0.7` | Default cosine score threshold used by `retrieve()` |
+| `RETRIEVE_SCORE_THRESHOLD` | `0.7` | Default cosine score threshold used by `retrieve()` (in hybrid mode it gates results via a cheap dense probe, since fused scores aren't cosine similarities) |
+| `RETRIEVE_MODE` | `hybrid` | `hybrid` (dense + BM25 sparse, fused in Qdrant) or `dense` |
+| `RETRIEVE_FUSION` | `rrf` | Hybrid fusion method: `rrf` (rank-based, dense weighted 2:1) or `dbsf` (score-based) |
+| `OLLAMA_EMBED_PREFIXES` | on | Prepends nomic-embed-text's `search_query: ` / `search_document: ` task prefixes. Set `0` to disable |
+| `SPARSE_STATS_PATH` | `./data/sparse-stats.json` | Corpus average chunk length used by the BM25 sparse encoder |
 | `MAX_INGEST_BYTES` | `52428800` (50 MB) | Hard upload size cap on `POST /ingest` |
 | `DOC_STORE_PATH` | `./data/documents.json` | Where the document-store JSON file lives |
 
 **Swapping the embedding model**: this is the one override that needs *two* env vars together — `OLLAMA_EMBED_MODEL=...` AND `OLLAMA_EMBED_DIM=...`. The dim mismatch guard will throw `EmbeddingError` with an actionable message if they disagree.
+
+**Re-ingest after changing embeddings**: changing `OLLAMA_EMBED_MODEL` or `OLLAMA_EMBED_PREFIXES` changes every vector, so existing collections must be dropped and re-ingested (`curl -X DELETE localhost:6333/collections/rag`, then `POST /ingest` again). Collections created before hybrid search (single unnamed vector) also need re-ingesting.
 
 ## Project layout
 

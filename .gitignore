@@ -3,11 +3,14 @@ dist/
 # ignore runtime artifacts in data/, keep fixtures + eval set + corpus committed
 data/documents.json
 data/eval-results-*.json
+data/large-eval-results-*.json
+data/sparse-stats.json
 data/halluc-results-*.json
 *.log
 .env
 doubts.txt
 notes.md
+SESSION-LOG.md
 pipeline-architecture.html
 pipeline-diagram.html
 ui-mockup.html

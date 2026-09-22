@@ -24,6 +24,15 @@ Guidance for AI agents working on this repo.
 - `chunkRecursive(text, { maxSize })` — structural separator cascade (heading → paragraph → line → sentence → word → char). Also zero embedding calls, always offline-safe. The recommended default for mixed corpora.
 - `chunkSemantic(text, { similarityThreshold })` — embedding-based topic-boundary detection. Calls `embedBatch()` to embed every sentence, then splits where cosine similarity between consecutive sentences drops below `similarityThreshold` (default 0.75). **Requires Ollama to be reachable** — this is the only chunker strategy that makes network calls. Tests that exercise it use `test.skipIf(!ollamaUp)` to skip cleanly when the stack is down. Significantly more expensive than fixed/recursive; prefer `recursive` for general use.
 
+## Retrieval (dense + hybrid)
+
+- Every Qdrant point has two **named vectors**: `dense` (nomic-embed-text, Cosine) and `sparse` (BM25-style TF from `src/retrieval/sparse.ts`, with Qdrant's `idf` modifier applying IDF server-side). Collections created before this schema must be dropped and re-ingested.
+- `retrieve()` (`src/retrieval/retriever.ts`) takes `mode: "dense" | "hybrid"` (default `hybrid`, env `RETRIEVE_MODE`). Hybrid calls `hybridSearch()` — one Qdrant query that prefetches dense + sparse and fuses them (`RETRIEVE_FUSION`: `rrf` weighted dense 2:1, or `dbsf`).
+- **Safety invariant:** fused scores aren't cosine similarities, so hybrid mode first runs a `limit: 1` dense probe with the normal `scoreThreshold`; if nothing clears it, `retrieve()` returns `[]`. This preserves the "off-topic question → no context → refusal" behaviour. Don't remove it.
+- Queries pass through `expandAcronyms()` (`src/retrieval/acronyms.ts`) before embedding/encoding — sparse retrieval can't match abbreviations that never appear in the corpus.
+- The embedder adds nomic-embed-text's `search_query: ` / `search_document: ` task prefixes (env `OLLAMA_EMBED_PREFIXES`, default on). Toggling it changes every vector, so collections must be re-ingested.
+- Measured result (`data/eval-set.json` + `data/large-eval-set.json`, 113 questions): prefixes were the biggest gain; with prefixes, dense and hybrid tie overall (105/113 each).
+
 ## Generation
 
 - `src/generation/llm.ts` exports `RAG_SYSTEM_PROMPT` (the universal baseline persona -- editable single source of truth for instruction wording) and `generate(prompt)` which calls Ollama's `/api/generate` with the local generation model (default `llama3`, env `OLLAMA_GEN_MODEL`), `system: RAG_SYSTEM_PROMPT`, `stream: false`. Throws `GenerationError` on any failure (network, non-2xx, malformed body, missing `response`, model error field).
@@ -83,10 +92,16 @@ curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
 
 ## Standalone evaluation scripts
 
-Retrieval quality (`scripts/evaluate-retrieval.ts`) — measures Recall@{1,3,5} and MRR against `data/eval-set.json` (20 entries). Starter-set generator: `scripts/gen-eval-set.ts` (uses `llama3` to author questions from each chunk). Run:
+Retrieval quality (`scripts/evaluate-retrieval.ts`) — measures Recall@{1,3,5}, MRR, avg rank/score of the correct hit, overall and per question `category`, against `data/eval-set.json` (58 hand-curated entries). Flags: `--mode dense|hybrid`, `--collection`, `--eval-set`; the output JSON records mode, fusion and prefix settings. Starter-set generator: `scripts/gen-eval-set.ts` (uses `llama3` to author questions from each chunk). Run:
 ```bash
-npx tsx scripts/evaluate-retrieval.ts                          # measures current run, writes data/eval-results-<ts>.json
+npx tsx scripts/evaluate-retrieval.ts --mode dense             # writes data/eval-results-<ts>.json
 npx tsx scripts/gen-eval-set.ts --doc data/eval-corpus.txt     # regenerate starter eval set via llama3
+```
+
+Larger multi-document benchmark: `data/large-corpus/` (4 LLM-generated policy documents, ~208 chunks) with `data/large-eval-set.json` (55 entries). Built by `scripts/gen-corpus.ts` (resumable) and `scripts/gen-large-eval-set.ts`; ingest into its own collection with `scripts/ingest-large-corpus.ts` (`--file` ingests a single file), then:
+```bash
+npx tsx scripts/ingest-large-corpus.ts --collection rag-large
+npx tsx scripts/evaluate-retrieval.ts --collection rag-large --eval-set data/large-eval-set.json --mode dense
 ```
 Low-score diagnosis: a wide Recall@1 → Recall@5 gap means ranking is mediocre but retrieval is happening (suspect embedding/prompt phrasing). Low Recall@5 means right chunk isn't in top-5 → start by re-tuning chunking strategy/size, NOT the embedding model (most retrieval failures are chunking failures in disguise).
 
@@ -95,7 +110,7 @@ Hallucination stress test (`scripts/test-hallucination.ts`) — directly tests "
 npx tsx scripts/test-hallucination.ts                            # run
 npx tsx scripts/test-hallucination.ts --compare data/halluc-results-<prev-ts>.json
 ```
-Eval corpus: `data/eval-corpus.txt` (handwritten 15-section employee handbook — ingest with `curl -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt"` before running either script).
+Eval corpus: `data/eval-corpus.txt` (handwritten 20-section employee handbook, including 5 near-duplicate distractor sections — ingest with `curl -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt"` before running either script).
 
 End-to-end API smoke (`scripts/smoke-test.ts`) — exercises every route against a running `pnpm dev` server: `/health` green → `/ingest data/sample.txt` → `/query` for an answerable question asserts the answer references "fox" → `DELETE /documents/:id` cleanup asserts no DocumentStore↔Qdrant drift. Each step fails loudly with a step-specific message (never a generic timeout) and a hint about which component to check.
 ```bash
