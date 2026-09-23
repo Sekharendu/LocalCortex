@@ -4,7 +4,11 @@
 
 export const retrievalConfig = {
   topK: Number(process.env.RETRIEVE_TOP_K ?? 5),
-  scoreThreshold: Number(process.env.RETRIEVE_SCORE_THRESHOLD ?? 0.7),
+  // Chosen by scripts/calibrate-threshold.ts: general-knowledge questions top out at
+  // 0.567 and answerable ones start at 0.640, so 0.63 blocks the former and refuses none
+  // of the latter (0.7 refused 9/113). Company-sounding questions the corpus can't answer
+  // overlap answerable scores; those rely on the prompt's "context is insufficient" rule.
+  scoreThreshold: Number(process.env.RETRIEVE_SCORE_THRESHOLD ?? 0.63),
   collection: process.env.QDRANT_COLLECTION ?? "rag",
   // Hybrid (dense+sparse RRF) is the default retrieval mode; set RETRIEVE_MODE=dense to
   // fall back to pure dense search (e.g. to reproduce a pre-hybrid baseline for A/B eval).

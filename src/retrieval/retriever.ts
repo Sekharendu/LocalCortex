@@ -26,8 +26,8 @@ export interface RetrieveOptions {
   /** "hybrid" (default, per retrievalConfig.mode) fuses dense+sparse via Qdrant's RRF;
    * "dense" reproduces pure cosine-similarity search -- mainly useful for A/B comparing
    * against a pre-hybrid baseline (see scripts/evaluate-retrieval.ts's --mode flag).
-   * Note: scoreThreshold is ignored in hybrid mode -- RRF-fused scores aren't cosine
-   * similarities, so the threshold default (tuned for dense) doesn't carry over. */
+   * In hybrid mode scoreThreshold gates the whole result via a dense probe (fused scores
+   * aren't cosine similarities, so it can't filter them directly). */
   mode?: "dense" | "hybrid";
 }
 

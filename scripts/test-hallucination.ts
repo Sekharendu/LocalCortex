@@ -19,6 +19,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { answerQuestion } from "../src/rag.js";
+import { retrievalConfig } from "../src/config.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -229,7 +230,7 @@ async function main(): Promise<void> {
   console.log("Hallucination Stress Test");
   console.log("=========================");
   console.log(`  collection: ${collection}`);
-  console.log(`  threshold:  0.7 (production default -- 'answerQuestion' uses config default)`);
+  console.log(`  threshold:  ${retrievalConfig.scoreThreshold} (production default -- 'answerQuestion' uses config default)`);
   console.log(`  questions:  ${TEST_SET.length}`);
   console.log();
 
@@ -355,7 +356,7 @@ async function main(): Promise<void> {
   const record: RunRecord = {
     runAt,
     collection,
-    threshold: 0.7,
+    threshold: retrievalConfig.scoreThreshold,
     verdicts,
     summary,
   };

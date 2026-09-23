@@ -4,6 +4,8 @@ dist/
 data/documents.json
 data/eval-results-*.json
 data/large-eval-results-*.json
+data/threshold-calibration-*.json
+data/nearmiss-check-*.json
 data/sparse-stats.json
 data/halluc-results-*.json
 *.log

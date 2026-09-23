@@ -110,7 +110,7 @@ Tests live in `tests/`. Node-dependent unit tests (`loader`, `chunker`, `ndjson`
 
 ## Run the retrieval evaluation
 
-The retrieval evaluator measures **Recall@{1,3,5}** and **Mean Reciprocal Rank (MRR)** against `data/eval-set.json` (20 entries authored from `data/eval-corpus.txt`).
+The retrieval evaluator measures **Recall@{1,3,5}** and **Mean Reciprocal Rank (MRR)** against `data/eval-set.json` (58 categorized entries authored from `data/eval-corpus.txt`). It runs at threshold 0, so it measures ranking only; `scripts/calibrate-threshold.ts` measures where the production `RETRIEVE_SCORE_THRESHOLD` should sit (answerable vs off-topic scores from `data/offtopic-set.json`).
 
 ```bash
 # 1. Ingest the eval corpus first (one time)
@@ -187,7 +187,7 @@ All optional — sensible defaults work for the standard `docker compose up -d` 
 | `OLLAMA_GEN_TIMEOUT_MS` | `180000` | Generation request timeout (ms) — generous because CPU-based llama3 is slow |
 | `QDRANT_COLLECTION` | `rag` | Default collection name used by ingest and retrieval |
 | `RETRIEVE_TOP_K` | `5` | Default topK used by `retrieve()` |
-| `RETRIEVE_SCORE_THRESHOLD` | `0.7` | Default cosine score threshold used by `retrieve()` (in hybrid mode it gates results via a cheap dense probe, since fused scores aren't cosine similarities) |
+| `RETRIEVE_SCORE_THRESHOLD` | `0.63` | Minimum cosine score for a question to get any context (in hybrid mode it gates results via a cheap dense probe, since fused scores aren't cosine similarities). Chosen with `scripts/calibrate-threshold.ts`; re-run it after changing the embedding model, prefixes or corpus |
 | `RETRIEVE_MODE` | `hybrid` | `hybrid` (dense + BM25 sparse, fused in Qdrant) or `dense` |
 | `RETRIEVE_FUSION` | `rrf` | Hybrid fusion method: `rrf` (rank-based, dense weighted 2:1) or `dbsf` (score-based) |
 | `OLLAMA_EMBED_PREFIXES` | on | Prepends nomic-embed-text's `search_query: ` / `search_document: ` task prefixes. Set `0` to disable |
