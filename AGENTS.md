@@ -73,6 +73,15 @@ Guidance for AI agents working on this repo.
   - Postgres refusing connections -> `503 { error: "database unreachable ..." }` from the error middleware. Handlers are wrapped in `route()` so async rejections reach it (Express 4 doesn't forward them).
 - All error paths return `JSON { error: string }` -- never Express's default HTML stack trace. 404 for unknown routes (`{ error: "route not found: METHOD /path" }`); 400 for malformed JSON body; 413 for oversized uploads; 500 catch-all for anything unhandled, server-side logged.
 
+## Web UI (`web/`)
+
+- A pnpm workspace package (`pnpm-workspace.yaml` lists `web`): React 19 + Vite + TypeScript, `react-markdown` + `remark-gfm`. No UI kit, no icon library (inline SVG), no web fonts (system stack, so it works fully offline). Hand-written CSS with custom properties in `web/src/styles.css`; dark only.
+- The UI calls `/api/*`; Vite's dev proxy strips `/api` and forwards to `API_URL` (default `http://localhost:3000`). Same origin, so `X-Citations` is readable with no CORS on the server. Verified that streams pass through unbuffered and that a client abort still reaches the API (Ollama logs `cancel task`).
+- Routing is two paths, `/` (new chat) and `/c/:id`, via the history API (`web/src/lib/route.ts`). A chat is only created when its first message is sent.
+- `web/src/state/chat.tsx` owns the chat list, loaded conversations and **the one live stream**. The stream lives there, not in the view, so switching chats mid-answer doesn't cancel it; only one runs at a time (Ollama answers one request at a time), and other chats' composers say "Answering in another chat…". After a stream ends the conversation is refetched so ids/statuses match the server; after Stop the partial answer is added locally as `interrupted` instead of racing the server's save.
+- Saved `error` messages with `citations === null` are pre-stream failures (content is the error text); with citations they're partial answers that failed mid-stream.
+- Commands: `pnpm dev:web`, `pnpm build:web`, `pnpm typecheck:web`.
+
 ## curl recipes (manual smoke)
 
 ```bash
@@ -118,6 +127,7 @@ curl -s localhost:3000/conversations/$CID | jq
 - `pnpm test:watch` — `vitest` (watch mode for dev iteration)
 - `docker compose up -d` — start Qdrant (6333) + Ollama (11434) + Postgres (5433)
 - `pnpm db:migrate` — apply pending `migrations/*.sql` (idempotent)
+- `pnpm dev:web` / `pnpm build:web` / `pnpm typecheck:web` — the chat UI in `web/` (dev server on :5173, needs `pnpm dev` running)
 
 ## Standalone evaluation scripts
 

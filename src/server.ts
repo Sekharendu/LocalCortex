@@ -382,7 +382,14 @@ app.post(
         res.write(`\n\n[generation error: ${msg}]`);
       }
     } finally {
-      await appendMessage(conversation.id, { role: "assistant", content: answer, citations, status });
+      try {
+        await appendMessage(conversation.id, { role: "assistant", content: answer, citations, status });
+      } catch (e) {
+        // e.g. the chat was deleted while answering. The response is already under way,
+        // so there's no status left to report this with.
+        // eslint-disable-next-line no-console
+        console.error(`[messages] could not save the answer for ${conversation.id}:`, e);
+      }
       if (!res.writableEnded) res.end();
     }
   }),
@@ -395,6 +402,13 @@ app.use((req, res) => {
 
 // ----- centralized error middleware ---------------------------------------------
 app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
+  // Mid-stream failures can't change the status any more; log and close.
+  if (res.headersSent) {
+    // eslint-disable-next-line no-console
+    console.error("[unhandled after headers sent]", err);
+    if (!res.writableEnded) res.end();
+    return;
+  }
   if (err instanceof MulterError && err.code === "LIMIT_FILE_SIZE") {
     res.status(413).json({ error: `upload too large (max ${MAX_INGEST_BYTES} bytes)` });
     return;

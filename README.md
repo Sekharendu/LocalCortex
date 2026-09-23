@@ -61,6 +61,17 @@ This project requires Node.js 26 or newer. The Qdrant REST client is kept on a
 Node 26-compatible release; using an older client with Node 26 can fail with
 `UND_ERR_INVALID_ARG: invalid onError method` during ingestion.
 
+## Run the web UI
+
+A ChatGPT-style chat app lives in `web/` (React + Vite). It talks to the API through Vite's dev proxy, so run both:
+
+```bash
+pnpm dev         # terminal 1: the API on :3000
+pnpm dev:web     # terminal 2: the UI on http://localhost:5173
+```
+
+Chats are listed in the sidebar (grouped Today / Previous 7 days / Older) and each has its own URL (`/c/<id>`). Answers stream in with their sources shown as chips underneath, and **Stop** cancels generation. `pnpm build:web` produces a static build in `web/dist`; `pnpm typecheck:web` type-checks it.
+
 ## API surface
 
 Every route returns JSON `{ error: string }` on failure — never Express's default HTML stack trace.
@@ -281,6 +292,12 @@ local-rag/
 │   ├── pipeline.test.ts    # ingestDocument end-to-end (live-stack, skipIf-guarded)
 │   ├── retriever.test.ts    # retrieve() ranking/threshold/topK (live-stack, skipIf-guarded)
 │   └── rag.test.ts          # answerQuestion end-to-end + absent-topic stress (live-stack, skipIf-guarded)
+├── web/                     # chat UI (React + Vite), proxies /api/* to the API
+│   └── src/
+│       ├── api.ts           # typed client, incl. streaming sendMessage
+│       ├── state/chat.tsx   # chats, loaded conversations, the one live stream
+│       ├── components/      # Sidebar, ChatView, Message, Composer, Modal, Icons
+│       └── styles.css       # the whole look, hand-written
 ├── package.json
 ├── tsconfig.json
 ├── vitest.config.ts

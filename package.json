@@ -14,7 +14,10 @@
     "typecheck:test": "tsc --noEmit -p tsconfig.test.json",
     "test": "vitest run",
     "test:watch": "vitest",
-    "db:migrate": "tsx scripts/migrate.ts"
+    "db:migrate": "tsx scripts/migrate.ts",
+    "dev:web": "pnpm --filter web dev",
+    "build:web": "pnpm --filter web build",
+    "typecheck:web": "pnpm --filter web typecheck"
   },
   "dependencies": {
     "@langchain/core": "^1.2.1",
