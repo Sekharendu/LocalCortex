@@ -1,6 +1,7 @@
 import { describe, test, expect, beforeAll, afterAll } from "vitest";
 import { QdrantClient } from "@qdrant/js-client-rest";
 import { answerQuestion } from "../src/rag.js";
+import { isRefusal } from "../src/generation/refusal.js";
 import { ingestDocument } from "../src/ingest/pipeline.js";
 import { deleteByDocumentId } from "../src/retrieval/vectorStore.js";
 
@@ -55,7 +56,7 @@ describe("answerQuestion — end-to-end", () => {
       // keyword-level assertion: llama3 paraphrases; "fox" is the corpus's central noun.
       expect(lowered).toContain("fox");
       // negative assertion: should NOT decline when the question is answerable.
-      expect(lowered).not.toMatch(/\b(insufficient|could ?n'?t find|not (found|relevant))\b/);
+      expect(isRefusal(answer), `expected an answer, got a refusal: ${JSON.stringify(answer)}`).toBe(false);
 
       // Citations: only chunks that cleared the retrieval threshold (the ones that
       // actually appeared in the prompt context) contribute their { source, page }.
@@ -76,15 +77,7 @@ describe("answerQuestion — end-to-end", () => {
       });
 
       const lowered = answer.toLowerCase();
-      const admissionPatterns = [
-        /\bnot (found|relevant|available|in the (knowledge|context|knowledge base|provided context))\b/,
-        /\bcould ?n'?t (find|locate) (any )?relevant/,
-        /\bno (relevant|matching|related) (information|context|documents)\b/,
-        /\binsufficient (context|information)\b/,
-        /\b(don'?t have|cannot|can'?t (answer|provide))\b/,
-      ];
-      const admits = admissionPatterns.some((p) => p.test(lowered));
-      expect(admits, `expected an admission phrasing; got: ${JSON.stringify(answer)}`).toBe(true);
+      expect(isRefusal(answer), `expected an admission phrasing; got: ${JSON.stringify(answer)}`).toBe(true);
 
       // The cheap-failure case is the model just answering "Paris is the capital
       // of France" without admitting it's general knowledge. Catches that.
@@ -116,14 +109,6 @@ describe("answerQuestion — absent-topic stress (multiple questions)", () => {
     { q: "What is the distance from Earth to the Moon?", fabricationMarker: "kilometers" },
     { q: "How do I bake a chocolate cake?", fabricationMarker: "preheat" },
   ];
-  const admissionPatterns = [
-    /\bnot (found|relevant|available|in the (knowledge|context|knowledge base|provided context))\b/,
-    /\bcould ?n'?t (find|locate) (any )?relevant/,
-    /\bno (relevant|matching|related) (information|context|documents)\b/,
-    /\binsufficient (context|information)\b/,
-    /\b(don'?t have|cannot|can'?t (answer|provide))\b/,
-  ];
-
   for (const c of ABSENT_CASES) {
     test.skipIf(!stackUp || documentId === null)(
       `absent-topic stress: "${c.q}"`,
@@ -131,9 +116,8 @@ describe("answerQuestion — absent-topic stress (multiple questions)", () => {
         const { answer } = await answerQuestion(c.q, { collection: TEST_COLLECTION });
         const lowered = answer.toLowerCase();
 
-        const admits = admissionPatterns.some((p) => p.test(lowered));
         expect(
-          admits,
+          isRefusal(answer),
           `expected admission phrasing for absent question "${c.q}"; got: ${JSON.stringify(answer)}`,
         ).toBe(true);
         expect(

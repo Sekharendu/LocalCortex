@@ -87,7 +87,7 @@ curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
 - `pnpm install` — install deps
 - `pnpm dev` — start Express API with hot reload (tsx watch)
 - `pnpm run typecheck` — `tsc --noEmit`
-- `pnpm test` — `vitest run` (one-shot). Live-stack tests in `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts`, `tests/rag.test.ts` skip cleanly when Qdrant / Ollama is not reachable via `test.skipIf`. Offline tests in `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/ndjson.test.ts` always run.
+- `pnpm test` — `vitest run` (one-shot). Live-stack tests in `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts`, `tests/rag.test.ts` skip cleanly when Qdrant / Ollama is not reachable via `test.skipIf`. Offline tests in `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/ndjson.test.ts`, `tests/sparse.test.ts`, `tests/refusal.test.ts` always run. Refusal detection (`src/generation/refusal.ts`) is shared by `tests/rag.test.ts` and `scripts/test-hallucination.ts`; keep its patterns in sync with the refusal sentences in `RAG_SYSTEM_PROMPT` / `promptBuilder.ts`.
 - `pnpm test:watch` — `vitest` (watch mode for dev iteration)
 - `docker compose up -d` — start Qdrant (6333) + Ollama (11434)
 

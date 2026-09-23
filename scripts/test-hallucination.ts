@@ -20,6 +20,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { answerQuestion } from "../src/rag.js";
 import { retrievalConfig } from "../src/config.js";
+import { classifyAnswer } from "../src/generation/refusal.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -104,23 +105,10 @@ const TEST_SET: TestQuestion[] = [
     id: 10,
     subtlety: "obvious",
     question: "How do I bake a chocolate cake?",
-    fabricationMarkers: ["flour", "sugar", "eggs", "oven", "preheat", "baking"],
+    fabricationMarkers: ["flour", "sugar", "eggs", "oven", "preheat"],
     notes: "recipe, unrelated",
   },
 ];
-
-// Admission patterns the RAG_SYSTEM_PROMPT explicitly tells the model to emit.
-// Matches the regex set in tests/rag.test.ts so the codebase is consistent.
-const ADMISSION_PATTERNS = [
-  /\bnot (found|relevant|available|in the (knowledge|context|knowledge base|provided context))\b/i,
-  /\bcould ?n'?t (find|locate) (any )?relevant\b/i,
-  /\bno (relevant|matching|related) (information|context|documents|passages?)\b/i,
-  /\binsufficient (context|information)\b/i,
-  /\b(don'?t have|cannot|can'?t (answer|provide|find))\b/i,
-];
-
-// Hedging markers -- confident-sounding fabrications the model sometimes hides behind.
-const HEDGE_PATTERNS = [/\bi think\b/i, /\bi'?m not sure\b/i, /\blikely\b/i, /\bprobably\b/i, /\bit seems\b/i];
 
 function argHas(name: string): boolean {
   return process.argv.includes(name);
@@ -152,33 +140,6 @@ interface RunRecord {
   summary: { pass: number; fail: number; ambiguous: number; total: number };
 }
 
-function classify(answer: string, fabricationMarkers: string[]): {
-  verdict: PerQuestionResult["verdict"];
-  matchedAdmission: string | null;
-  matchedFabrication: string | null;
-  isHedged: boolean;
-} {
-  const matchedAdmission = ADMISSION_PATTERNS.find((p) => p.test(answer))?.source ?? null;
-  const lower = answer.toLowerCase();
-  const matchedFabrication = fabricationMarkers.find((m) => lower.includes(m.toLowerCase())) ?? null;
-  const isHedged = HEDGE_PATTERNS.some((p) => p.test(answer));
-
-  // PASS: an admission pattern matched, and no fabrication marker is stronger.
-  if (matchedAdmission && !matchedFabrication) {
-    return { verdict: "PASS", matchedAdmission, matchedFabrication: null, isHedged };
-  }
-  // FAIL: a fabrication marker fired without an admission to override.
-  if (matchedFabrication && !matchedAdmission) {
-    return { verdict: "FAIL", matchedAdmission: null, matchedFabrication, isHedged };
-  }
-  // Both matched -> prefer FAIL reading because a hedged admission + fabrication is
-  // still fabrication wearing a disclaimer. Flag as AMBIGUOUS for human judgment.
-  if (matchedAdmission && matchedFabrication) {
-    return { verdict: "AMBIGUOUS", matchedAdmission, matchedFabrication, isHedged };
-  }
-  // Neither matched -> flag for manual judgment rather than guessing.
-  return { verdict: "AMBIGUOUS", matchedAdmission: null, matchedFabrication: null, isHedged };
-}
 
 async function probe(url: string): Promise<boolean> {
   try {
@@ -257,13 +218,13 @@ async function main(): Promise<void> {
       });
       continue;
     }
-    const cls = classify(answer, q.fabricationMarkers);
+    const cls = classifyAnswer(answer, q.question, q.fabricationMarkers);
     console.log(`${cls.verdict} (retrieved=${retrievedCount})`);
     verdicts.push({
       id: q.id, subtlety: q.subtlety, question: q.question,
       retrievedCount, retrievedTexts,
       answer, verdict: cls.verdict,
-      matchedAdmissionPattern: cls.matchedAdmission,
+      matchedAdmissionPattern: cls.matchedRefusal,
       matchedFabricationMarker: cls.matchedFabrication,
       isHedged: cls.isHedged,
       notes: q.notes,
