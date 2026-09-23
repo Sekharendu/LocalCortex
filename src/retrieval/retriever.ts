@@ -29,6 +29,15 @@ export interface RetrieveOptions {
    * In hybrid mode scoreThreshold gates the whole result via a dense probe (fused scores
    * aren't cosine similarities, so it can't filter them directly). */
   mode?: "dense" | "hybrid";
+  /** The previous user question in a conversation. When set, retrieval embeds it
+   * together with `question`, so a vague follow-up ("what about contractors?") finds
+   * the topic being discussed. */
+  previousQuestion?: string;
+  /** Follow-ups only: the minimum score `question` must reach ON ITS OWN. The combined
+   * query borrows the previous question's relevance, which would let an off-topic
+   * follow-up ("capital of France?") through; this floor blocks it. Defaults to
+   * retrievalConfig.followupFloor; 0 disables it. */
+  followupFloor?: number;
 }
 
 /**
@@ -62,7 +71,7 @@ export interface RetrieveOptions {
  */
 export async function retrieve(
   question: string,
-  { topK, scoreThreshold, collection, mode }: RetrieveOptions = {},
+  { topK, scoreThreshold, collection, mode, previousQuestion, followupFloor }: RetrieveOptions = {},
 ): Promise<RetrievedChunk[]> {
   const effectiveTopK = topK ?? retrievalConfig.topK;
   const effectiveThreshold = scoreThreshold ?? retrievalConfig.scoreThreshold;
@@ -73,7 +82,21 @@ export async function retrieve(
   // retrieval structurally can't bridge a term that never appears in the corpus, and
   // the expansion helps dense's semantic match too. See acronyms.ts.
   const expandedQuestion = expandAcronyms(question);
-  const queryVector = await embed(expandedQuestion);
+  const isFollowUp = previousQuestion !== undefined && previousQuestion.trim().length > 0;
+  const queryText = isFollowUp ? `${expandAcronyms(previousQuestion)}\n${expandedQuestion}` : expandedQuestion;
+  const queryVector = await embed(queryText);
+
+  // Follow-up gate 2 (gate 1 is the normal threshold on the combined query below).
+  if (isFollowUp) {
+    const floor = followupFloor ?? retrievalConfig.followupFloor;
+    if (floor > 0) {
+      const own = await searchSimilar(effectiveCollection, await embed(expandedQuestion), {
+        limit: 1,
+        scoreThreshold: floor,
+      });
+      if (own.length === 0) return [];
+    }
+  }
 
   let hits;
   if (effectiveMode === "dense") {
@@ -92,7 +115,7 @@ export async function retrieve(
         : await hybridSearch(
             effectiveCollection,
             queryVector,
-            sparseVectorFor(expandedQuestion, await getAvgDocLength()),
+            sparseVectorFor(queryText, await getAvgDocLength()),
             { limit: effectiveTopK, fusion: retrievalConfig.fusion },
           );
   }

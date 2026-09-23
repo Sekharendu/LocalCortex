@@ -160,11 +160,13 @@ export async function generate(prompt: string): Promise<string> {
  * in a complete NDJSON line all throw GenerationError. The caller decides what to
  * do with a mid-stream error -- the HTTP route writes a footer and closes.
  */
-export async function* generateStream(prompt: string): AsyncGenerator<string> {
+export async function* generateStream(prompt: string, signal?: AbortSignal): AsyncGenerator<string> {
   if (!prompt || prompt.trim().length === 0) {
     throw new GenerationError("generateStream() called with an empty prompt");
   }
 
+  // `signal` lets the caller cancel (e.g. the user pressed Stop). Aborting drops the
+  // connection, and Ollama stops generating when its client disconnects.
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), GEN_TIMEOUT_MS);
   let res: Response;
@@ -178,7 +180,7 @@ export async function* generateStream(prompt: string): AsyncGenerator<string> {
         system: RAG_SYSTEM_PROMPT,
         stream: true,
       }),
-      signal: controller.signal,
+      signal: signal ? AbortSignal.any([controller.signal, signal]) : controller.signal,
     });
   } catch (e) {
     clearTimeout(timer);

@@ -13,6 +13,7 @@ data/halluc-results-*.json
 doubts.txt
 notes.md
 SESSION-LOG.md
+FRONTEND-LOG.md
 pipeline-architecture.html
 pipeline-diagram.html
 ui-mockup.html

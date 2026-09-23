@@ -16,6 +16,11 @@ Guidance for AI agents working on this repo.
   (`data/documents.json` by default, configurable via `DOC_STORE_PATH`). Source of truth:
   `src/documentStore.ts`. Tracks ingested document records (id, source, ingestedAt,
   chunkCount) so the upcoming DELETE route can hydrate the response.
+- **Conversation store:** Postgres (compose service `postgres`, host port **5433** because 5432 is
+  commonly taken by other local Postgres instances; env `DATABASE_URL`). Pool + `withTransaction`
+  in `src/db.ts`; queries in `src/conversationStore.ts`. Schema lives in `migrations/*.sql`,
+  applied in order by `pnpm db:migrate` (`scripts/migrate.ts`, tracked in `schema_migrations`).
+  Add a new numbered file for schema changes; never edit an applied one.
 - Loaders are hand-rolled and return LangChain `Document<LoadedMetadata>` shapes so downstream components plug in cleanly. Sources of truth: `src/ingest/loader.ts`, `src/types.ts`.
 
 ## Chunking
@@ -34,22 +39,38 @@ Guidance for AI agents working on this repo.
 - The embedder adds nomic-embed-text's `search_query: ` / `search_document: ` task prefixes (env `OLLAMA_EMBED_PREFIXES`, default on). Toggling it changes every vector, so collections must be re-ingested.
 - Measured result (`data/eval-set.json` + `data/large-eval-set.json`, 113 questions): prefixes were the biggest gain; with prefixes, dense and hybrid tie overall (105/113 each).
 
+## Conversation memory
+
+- `buildPrompt(question, chunks, history?)` adds a "Conversation so far" block (last `HISTORY_MAX_MESSAGES` = 6, assistant replies trimmed to `HISTORY_MAX_ASSISTANT_CHARS` = 800) after the Context and before the Question. On the no-context path history is deliberately dropped, so an off-topic follow-up still gets the plain refusal prompt.
+- `retrieveForQuestion` passes the latest earlier user message as `previousQuestion` to `retrieve()`, which embeds `previous + "\n" + current` for the search (no LLM rewrite call).
+- **Two gates for follow-ups:** the combined query must clear `RETRIEVE_SCORE_THRESHOLD` (0.63) as usual, and the current question on its own must clear `RETRIEVE_FOLLOWUP_FLOOR` (0.57, just above the 0.567 general-knowledge max from calibration). Without the floor an off-topic follow-up borrows the previous question's relevance (capital of France: 0.479 alone, 0.682 combined). Don't remove it.
+- Measured with `scripts/evaluate-followups.ts` over `data/followup-eval-set.json` (13 genuine + 6 off-topic follow-ups). Small corpus: alone 4/13 rank-1, combined 12/13 but 6/6 off-topic leaked, combined + floor 10/13 with 0 leaked. Large corpus (`rag-large`): combined + floor 12/13, 0 leaked. The two small-corpus misses are very vague follow-ups ("Can I carry over what I don't use?") that score below some off-topic questions on their own; fixing them needs an LLM query rewrite, which was judged not worth the latency.
+- Only messages with `status = null` feed history; `interrupted` / `error` turns are stored and shown but never sent back to the model.
+
 ## Generation
 
 - `src/generation/llm.ts` exports `RAG_SYSTEM_PROMPT` (the universal baseline persona -- editable single source of truth for instruction wording) and `generate(prompt)` which calls Ollama's `/api/generate` with the local generation model (default `llama3`, env `OLLAMA_GEN_MODEL`), `system: RAG_SYSTEM_PROMPT`, `stream: false`. Throws `GenerationError` on any failure (network, non-2xx, malformed body, missing `response`, model error field).
 - `src/generation/promptBuilder.ts` exports `buildPrompt(question, chunks)` and the situation-specific instruction constants `WITH_CONTEXT_INSTRUCTION` / `NO_CONTEXT_INSTRUCTION`. Empty chunks produce a distinct prompt variant that tells the model no relevant context was found and instructs it to say so -- it does NOT emit an empty "Context:" block. Non-empty chunks emit one passage per entry with light `[1] (source: file, page: N)` citation tags so the model can ground cited answers.
-- `src/generation/llm.ts` also exports `generateStream(prompt): AsyncGenerator<string>` (stream:true) and `parseNdjsonStream(chunks): AsyncGenerator<GenerateResponse>` (exported for unit testing). The NJSON parser maintains a string buffer across reads, splits on `\n`, parses every complete line, and carries any trailing incomplete line over to be prepended to the next chunk -- a naive `JSON.parse(chunk)` implementation fails on objects split across chunks and on multiple objects concatenated in one chunk.
+- `src/generation/llm.ts` also exports `generateStream(prompt, signal?): AsyncGenerator<string>` (stream:true; aborting `signal` drops the Ollama connection, which cancels generation) and `parseNdjsonStream(chunks): AsyncGenerator<GenerateResponse>` (exported for unit testing). The NJSON parser maintains a string buffer across reads, splits on `\n`, parses every complete line, and carries any trailing incomplete line over to be prepended to the next chunk -- a naive `JSON.parse(chunk)` implementation fails on objects split across chunks and on multiple objects concatenated in one chunk.
 - `src/rag.ts` exports `retrieveForQuestion(question, opts): Promise<{ prompt, chunks }>` (the shared prep helper), `answerQuestion(question, opts): Promise<{ answer, chunks, citations }>` (non-streaming orchestrator) and `answerQuestionStream(question, opts): Promise<{ tokens, citations }>` (streaming). `buildCitations(chunks)` dedupes the chunks that cleared threshold into the returned `{ source, page? }` digest -- only sources that actually went into the prompt context are surfaced.
 
 ## API contract (`src/server.ts`)
 
-- `GET /health` -> `{ ollama: boolean, qdrant: boolean }` (probes `/api/tags` and `/readyz` — connection-only).
+- `GET /health` -> `{ ollama: boolean, qdrant: boolean, postgres: boolean }` (probes `/api/tags`, `/readyz` and `SELECT 1` — connection-only).
 - `POST /ingest` (multipart/form-data, field `file`, optional field `strategy` ∈ {fixed, semantic, recursive}; defaults `recursive`) -> `JSON { documentId, chunkCount }` on success. Uploads land in the OS temp dir and are auto-cleaned after ingest. `400` if no file attached; `413` if exceeds `MAX_INGEST_BYTES` (default 50MB, env-overridable); `502 { error: "Ingest failed at stage 'X': ..." }` on pipeline failure (names the stage so failures triage by root cause).
 - `POST /query` body: `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }`.
   - `stream` falsy (default): returns `JSON { answer, chunks: RetrievedChunk[], citations: Citation[] }`. `citations` is the deduped `{ source, page? }` pairs from chunks that actually cleared the retrieval threshold and went into the prompt context -- never fabricated. `400` missing question; `503` infra failure.
   - `stream: true`: returns `text/plain; charset=utf-8` streamed token-by-token; citations are emitted as an `X-Citations` response header (JSON array) set before the stream starts so body-only clients keep working unchanged and citation-metadata clients read the side channel. retrieval+buildPrompt+citations setup run EAGERLY so pre-stream infra failures return a normal `503` JSON envelope before any bytes are written. Once streaming begins the status is immutable -- a mid-stream generation error surfaces as a trailing `\n\n[generation error: msg]` footer.
 - `GET /documents` -> `JSON { documents: DocumentRecord[] }` (sorted by `ingestedAt` desc). `500` on document-store read failure.
 - `DELETE /documents/:id` -> `JSON { deleted: DocumentRecord }` on success. `404` if id not in store. **Sync guarantee**: deletes the document-store record first, then `deleteByDocumentId` from Qdrant; if the Qdrant delete fails the document-store record is RE-ADDED and the response is `502` with `"... record restored"`. The two stores never drift out of sync even on partial infra failure.
+- Conversations (Postgres; ids are UUIDs, a malformed id is a 404 not a 500):
+  - `GET /conversations` -> `{ conversations: { id, title, createdAt, updatedAt }[] }`, most recently active first.
+  - `POST /conversations { title? }` -> `201 { conversation }` (title defaults to `"New chat"`).
+  - `GET /conversations/:id` -> `{ conversation }` including `messages: { id, role, content, citations, status, createdAt }[]` in order. `404` if unknown.
+  - `PATCH /conversations/:id { title }` -> `{ conversation }`. `400` blank title, `404` unknown.
+  - `DELETE /conversations/:id` -> `{ deleted: id }` (messages cascade). `404` unknown.
+  - `POST /conversations/:id/messages { content }` -> streams exactly like `/query` with `stream: true` (text/plain, `X-Citations` header, eager setup so infra failures are a `503` JSON before any bytes). The user message is saved first; the assistant message is saved when the stream ends, with citations and `status` null / `"interrupted"` (client disconnected -> generation aborted, partial answer kept) / `"error"`. A chat still titled `"New chat"` is renamed from its first message (60 chars). `400` blank content, `404` unknown.
+  - Postgres refusing connections -> `503 { error: "database unreachable ..." }` from the error middleware. Handlers are wrapped in `route()` so async rejections reach it (Express 4 doesn't forward them).
 - All error paths return `JSON { error: string }` -- never Express's default HTML stack trace. 404 for unknown routes (`{ error: "route not found: METHOD /path" }`); 400 for malformed JSON body; 413 for oversized uploads; 500 catch-all for anything unhandled, server-side logged.
 
 ## curl recipes (manual smoke)
@@ -80,6 +101,12 @@ curl -s localhost:3000/documents | jq
 
 # 6. Delete a document (replace with a real documentId from /documents)
 curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
+
+# 7. Conversation: create, ask, follow up, reload
+CID=$(curl -s -X POST localhost:3000/conversations -H 'content-type: application/json' -d '{}' | jq -r .conversation.id)
+curl -N -X POST localhost:3000/conversations/$CID/messages -H 'content-type: application/json' -d '{"content":"How many vacation days do I get per year?"}'
+curl -N -X POST localhost:3000/conversations/$CID/messages -H 'content-type: application/json' -d '{"content":"And after five years?"}'
+curl -s localhost:3000/conversations/$CID | jq
 ```
 
 ## Commands
@@ -87,9 +114,10 @@ curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
 - `pnpm install` — install deps
 - `pnpm dev` — start Express API with hot reload (tsx watch)
 - `pnpm run typecheck` — `tsc --noEmit`
-- `pnpm test` — `vitest run` (one-shot). Live-stack tests in `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts`, `tests/rag.test.ts` skip cleanly when Qdrant / Ollama is not reachable via `test.skipIf`. Offline tests in `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/ndjson.test.ts`, `tests/sparse.test.ts`, `tests/refusal.test.ts` always run. Refusal detection (`src/generation/refusal.ts`) is shared by `tests/rag.test.ts` and `scripts/test-hallucination.ts`; keep its patterns in sync with the refusal sentences in `RAG_SYSTEM_PROMPT` / `promptBuilder.ts`.
+- `pnpm test` — `vitest run` (one-shot). Live-stack tests in `tests/vectorStore.test.ts`, `tests/pipeline.test.ts`, `tests/retriever.test.ts`, `tests/rag.test.ts` skip cleanly when Qdrant / Ollama is not reachable via `test.skipIf`; `tests/conversationStore.test.ts` skips when Postgres is not. Offline tests in `tests/loader.test.ts`, `tests/chunker.test.ts`, `tests/ndjson.test.ts`, `tests/sparse.test.ts`, `tests/refusal.test.ts`, `tests/promptBuilder.test.ts` always run. Refusal detection (`src/generation/refusal.ts`) is shared by `tests/rag.test.ts` and `scripts/test-hallucination.ts`; keep its patterns in sync with the refusal sentences in `RAG_SYSTEM_PROMPT` / `promptBuilder.ts`.
 - `pnpm test:watch` — `vitest` (watch mode for dev iteration)
-- `docker compose up -d` — start Qdrant (6333) + Ollama (11434)
+- `docker compose up -d` — start Qdrant (6333) + Ollama (11434) + Postgres (5433)
+- `pnpm db:migrate` — apply pending `migrations/*.sql` (idempotent)
 
 ## Standalone evaluation scripts
 
@@ -139,5 +167,6 @@ npx tsx scripts/smoke-test.ts
 - `tests/vectorStore.test.ts` — Qdrant round-trip (upsert/search/delete/dimension gate)
 - `tests/pipeline.test.ts` — `ingestDocument` end-to-end against the real stack + a missing-file local test
 - `tests/retriever.test.ts` — `retrieve()` clear-match / absent-at-default-threshold / topK-count tests
-- `tests/rag.test.ts` — `answerQuestion` answerable + absent-topic (single) + **absent-topic STRESS (3 cases)** end-to-end; the stress test is the multi-question vitest-side counterpart of `scripts/test-hallucination.ts` (kept short to stay under the vitest per-test timeout on CPU llama3)
-- All four use `test.skipIf` to skip cleanly when Qdrant / Ollama is not reachable
+- `tests/rag.test.ts` — `answerQuestion` answerable + absent-topic (single) + **absent-topic STRESS (3 cases)** + follow-ups with history (vague follow-up answered, off-topic follow-up refused) end-to-end; the stress test is the multi-question vitest-side counterpart of `scripts/test-hallucination.ts` (kept short to stay under the vitest per-test timeout on CPU llama3)
+- `tests/conversationStore.test.ts` — Postgres store round-trip (ordering, citations/status, list order, rename, cascade delete, malformed ids); creates and deletes its own conversations
+- All use `test.skipIf` to skip cleanly when their dependency (Qdrant / Ollama / Postgres) is not reachable

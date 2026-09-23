@@ -116,3 +116,43 @@ describe("answerQuestion — absent-topic stress (multiple questions)", () => {
     );
   }
 });
+/**
+ * Conversation memory: a vague follow-up is answered using the earlier turn (the
+ * retrieval query combines both questions, and the prompt carries the history), while
+ * an off-topic follow-up must still be refused -- the previous question's relevance
+ * must not leak into it (the RETRIEVE_FOLLOWUP_FLOOR gate).
+ */
+describe("answerQuestion — follow-ups with history", () => {
+  const history = [
+    { role: "user" as const, content: "What does the sample text say about a fox?" },
+    { role: "assistant" as const, content: "It says the quick brown fox jumps over the lazy dog." },
+  ];
+
+  test.skipIf(!stackUp)(
+    "a vague follow-up is resolved from the earlier turn",
+    async () => {
+      const { answer, citations } = await answerQuestion("What does it jump over?", {
+        collection: TEST_COLLECTION,
+        history,
+      });
+      expect(isRefusal(answer), `expected an answer, got a refusal: ${JSON.stringify(answer)}`).toBe(false);
+      expect(answer.toLowerCase()).toContain("dog");
+      expect(citations.length).toBeGreaterThan(0);
+    },
+    120_000,
+  );
+
+  test.skipIf(!stackUp)(
+    "an off-topic follow-up is still refused",
+    async () => {
+      const { answer, citations } = await answerQuestion("What is the capital of France?", {
+        collection: TEST_COLLECTION,
+        history,
+      });
+      expect(isRefusal(answer), `expected admission phrasing; got: ${JSON.stringify(answer)}`).toBe(true);
+      expect(answer.toLowerCase()).not.toContain("paris");
+      expect(citations).toHaveLength(0);
+    },
+    120_000,
+  );
+});

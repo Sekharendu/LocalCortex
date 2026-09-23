@@ -1,5 +1,5 @@
 import { retrieve, type RetrievedChunk, type RetrieveOptions } from "./retrieval/retriever.js";
-import { buildPrompt } from "./generation/promptBuilder.js";
+import { buildPrompt, type HistoryMessage } from "./generation/promptBuilder.js";
 import { generate, generateStream } from "./generation/llm.js";
 import type { Citation } from "./types.js";
 
@@ -8,7 +8,13 @@ export interface RetrieveForQuestionResult {
   chunks: RetrievedChunk[];
 }
 
-export type AskOptions = RetrieveOptions;
+export interface AskOptions extends Omit<RetrieveOptions, "previousQuestion"> {
+  /** Earlier turns of the conversation, oldest first. Used to retrieve follow-ups with
+   * the previous question, and to let the model resolve references like "it". */
+  history?: HistoryMessage[];
+  /** Cancels generation (streaming only), e.g. when the user presses Stop. */
+  signal?: AbortSignal;
+}
 
 export interface AnswerResult {
   answer: string;
@@ -59,8 +65,10 @@ export async function retrieveForQuestion(
   question: string,
   options: AskOptions = {},
 ): Promise<RetrieveForQuestionResult> {
-  const chunks = await retrieve(question, options);
-  const prompt = buildPrompt(question, chunks);
+  const { history = [], signal: _signal, ...retrieveOptions } = options;
+  const previousQuestion = [...history].reverse().find((m) => m.role === "user")?.content;
+  const chunks = await retrieve(question, { ...retrieveOptions, previousQuestion });
+  const prompt = buildPrompt(question, chunks, history);
   return { prompt, chunks };
 }
 
@@ -107,7 +115,7 @@ export async function answerQuestionStream(
 ): Promise<StreamSetup> {
   const { prompt, chunks } = await retrieveForQuestion(question, opts);
   return {
-    tokens: generateStream(prompt),
+    tokens: generateStream(prompt, opts.signal),
     citations: buildCitations(chunks),
   };
 }

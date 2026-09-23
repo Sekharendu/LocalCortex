@@ -9,6 +9,10 @@ export const retrievalConfig = {
   // of the latter (0.7 refused 9/113). Company-sounding questions the corpus can't answer
   // overlap answerable scores; those rely on the prompt's "context is insufficient" rule.
   scoreThreshold: Number(process.env.RETRIEVE_SCORE_THRESHOLD ?? 0.63),
+  // Follow-ups are retrieved with the previous question + the new one, which lets an
+  // off-topic follow-up borrow relevance. The new question must ALSO score this on its
+  // own: 0.57 is just above the highest general-knowledge score in calibration (0.567).
+  followupFloor: Number(process.env.RETRIEVE_FOLLOWUP_FLOOR ?? 0.57),
   collection: process.env.QDRANT_COLLECTION ?? "rag",
   // Dense is the default: with task prefixes on, dense and hybrid tie on the eval sets
   // (105/113 each), and dense needs no sparse fusion or relevance probe. Set

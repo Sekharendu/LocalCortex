@@ -1,10 +1,10 @@
 # local-rag
 
-A fully local Retrieval-Augmented Generation (RAG) pipeline: **Ollama** runs the embedding and LLM models on your machine, **Qdrant** stores and searches the vector index, and a small Express API wires ingest → retrieve → generate together. Everything runs locally — no external API calls, no third-party keys, no data leaving your machine.
+A fully local Retrieval-Augmented Generation (RAG) pipeline: **Ollama** runs the embedding and LLM models on your machine, **Qdrant** stores and searches the vector index, **Postgres** keeps chat conversations, and a small Express API wires ingest → retrieve → generate together. Everything runs locally — no external API calls, no third-party keys, no data leaving your machine.
 
 ## Prerequisites
 
-- **Docker** with Docker Compose v2 — for running Qdrant and Ollama containers
+- **Docker** with Docker Compose v2 — for running the Qdrant, Ollama and Postgres containers
 - **Node.js 26+** and **pnpm** — for the TypeScript API server
 - **curl** + **jq** — for exercising the API manually (smoke step)
 
@@ -19,12 +19,14 @@ node --version       # must be v26 or newer
 # If you use nvm, select the project version:
 nvm use
 
-# 1. Start the infrastructure containers (Qdrant + Ollama)
+# 1. Start the infrastructure containers (Qdrant + Ollama + Postgres)
 docker compose up -d
 
-# 2. Wait for both containers to be "healthy" before pulling models
+# 2. Wait for the containers to be "healthy" before pulling models
 docker compose ps
-#   Both qdrant and ollama should show "(healthy)" in the STATUS column within ~30s.
+#   qdrant, ollama and postgres should show "(healthy)" in the STATUS column within ~30s.
+#   Postgres is published on 127.0.0.1:5433 (not 5432) so it can't collide with
+#   another local Postgres.
 
 # 3. Pull the two models the pipeline depends on.
 #    NOTE: Ollama models are NOT baked into the base image -- this is a one-time pull
@@ -35,7 +37,10 @@ docker exec -it local-rag-ollama ollama pull llama3             # generation
 # 4. Install Node dependencies
 pnpm install
 
-# 5. Start the API (hot reload via tsx watch)
+# 5. Create the conversation tables (safe to re-run: applied migrations are skipped)
+pnpm db:migrate
+
+# 6. Start the API (hot reload via tsx watch)
 pnpm dev
 # The API listens on http://localhost:3000
 ```
@@ -62,11 +67,23 @@ Every route returns JSON `{ error: string }` on failure — never Express's defa
 
 | Method | Path | Body | Response | Statuses |
 |---|---|---|---|---|
-| `GET` | `/health` | — | `{ ollama, qdrant }` | `200` |
+| `GET` | `/health` | — | `{ ollama, qdrant, postgres }` | `200` |
 | `POST` | `/ingest` | `multipart/form-data`: `file` (required), `strategy` ∈ {fixed, semantic, recursive} (default `recursive`) | `{ documentId, chunkCount }` | `200`, `400` (no file), `413` (too large), `502` (pipeline failed, names the stage) |
 | `POST` | `/query` | `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }` | non-stream: `{ answer, chunks, citations }`; stream: `text/plain; charset=utf-8` token-by-token + `X-Citations` response header (JSON array) | `200`, `400` (missing question), `503` (infra failure) |
 | `GET` | `/documents` | — | `{ documents: DocumentRecord[] }` (newest first) | `200`, `500` (store read failure) |
 | `DELETE` | `/documents/:id` | — | `{ deleted: DocumentRecord }` | `200`, `404` (id not in store), `502` (Qdrant delete failed — store record restored to keep drift-free) |
+| `GET` | `/conversations` | — | `{ conversations: ConversationSummary[] }` (most recently active first) | `200`, `503` (Postgres down) |
+| `POST` | `/conversations` | `{ title?: string }` | `{ conversation }` | `201` |
+| `GET` | `/conversations/:id` | — | `{ conversation }` with `messages` in order | `200`, `404` |
+| `PATCH` | `/conversations/:id` | `{ title: string }` | `{ conversation }` | `200`, `400` (blank title), `404` |
+| `DELETE` | `/conversations/:id` | — | `{ deleted: id }` (messages go with it) | `200`, `404` |
+| `POST` | `/conversations/:id/messages` | `{ content: string }` | streamed like `/query` with `stream: true` (`text/plain` + `X-Citations`); both turns are saved | `200`, `400` (blank content), `404`, `503` (infra failure before streaming) |
+
+**Conversation memory.** A message sent to a conversation is answered with the earlier turns in mind, so follow-ups like "And after five years?" work:
+- The prompt carries the last 6 messages (assistant replies trimmed to 800 characters), placed after the retrieved context. When nothing relevant is retrieved, the history is left out and the model refuses as usual.
+- Retrieval embeds the previous question together with the new one, so a vague follow-up finds the right chunk.
+- A follow-up gets context only if the combined query clears `RETRIEVE_SCORE_THRESHOLD` (0.63) **and** the new question on its own clears `RETRIEVE_FOLLOWUP_FLOOR` (0.57). The second check stops an off-topic follow-up ("What is the capital of France?") from borrowing the previous question's relevance. Measured with `scripts/evaluate-followups.ts`.
+- New chats are titled from their first message. If the client disconnects mid-answer, generation is cancelled and the partial answer is saved with `status: "interrupted"`.
 
 ## curl examples (manual smoke of every route)
 
@@ -97,6 +114,14 @@ curl -s localhost:3000/documents | jq
 
 # 6. Delete a document (replace with a real documentId from /documents)
 curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
+
+# 7. Conversations: create a chat, ask, then ask a follow-up in the same chat
+CID=$(curl -s -X POST localhost:3000/conversations -H 'content-type: application/json' -d '{}' | jq -r .conversation.id)
+curl -N -X POST localhost:3000/conversations/$CID/messages \
+  -H 'content-type: application/json' -d '{"content":"How many vacation days do I get per year?"}'
+curl -N -X POST localhost:3000/conversations/$CID/messages \
+  -H 'content-type: application/json' -d '{"content":"And after five years?"}'
+curl -s localhost:3000/conversations/$CID | jq   # both turns, with citations
 ```
 
 ## Run the test suite
@@ -106,7 +131,7 @@ pnpm test         # vitest run, one-shot, CI-friendly
 pnpm test:watch   # vitest watch mode for dev iteration
 ```
 
-Tests live in `tests/`. Node-dependent unit tests (`loader`, `chunker`, `ndjson`) always run. Live-stack integration tests (`vectorStore`, `pipeline`, `retriever`, `rag`) auto-skip cleanly via `test.skipIf` when the Ollama / Qdrant stack isn't reachable — so `pnpm test` stays green offline and exercises the full pipeline when the stack is up. The detailed list of which test file exercises what lives in `AGENTS.md`.
+Tests live in `tests/`. Node-dependent unit tests (`loader`, `chunker`, `ndjson`) always run. Live-stack integration tests (`vectorStore`, `pipeline`, `retriever`, `rag`) auto-skip cleanly via `test.skipIf` when the Ollama / Qdrant stack isn't reachable (`conversationStore` skips when Postgres isn't) — so `pnpm test` stays green offline and exercises the full pipeline when the stack is up. The detailed list of which test file exercises what lives in `AGENTS.md`.
 
 ## Run the retrieval evaluation
 
@@ -194,6 +219,8 @@ All optional — sensible defaults work for the standard `docker compose up -d` 
 | `SPARSE_STATS_PATH` | `./data/sparse-stats.json` | Corpus average chunk length used by the BM25 sparse encoder |
 | `MAX_INGEST_BYTES` | `52428800` (50 MB) | Hard upload size cap on `POST /ingest` |
 | `DOC_STORE_PATH` | `./data/documents.json` | Where the document-store JSON file lives |
+| `DATABASE_URL` | `postgres://localcortex:localcortex@localhost:5433/localcortex` | Postgres holding conversations and messages (matches the compose service) |
+| `RETRIEVE_FOLLOWUP_FLOOR` | `0.57` | Minimum score the new question must reach on its own for a follow-up to get context (just above the highest general-knowledge score in calibration, 0.567). `0` disables the check |
 
 **Swapping the embedding model**: this is the one override that needs *two* env vars together — `OLLAMA_EMBED_MODEL=...` AND `OLLAMA_EMBED_DIM=...`. The dim mismatch guard will throw `EmbeddingError` with an actionable message if they disagree.
 
@@ -213,11 +240,13 @@ local-rag/
 │   │   ├── vectorStore.ts   # @qdrant/js-client-rest: ensure/upsert/search/delete
 │   │   └── retriever.ts     # retrieve(question) = embed + searchSimilar + defensive sort
 │   ├── generation/
-│   │   ├── promptBuilder.ts # buildPrompt(question, chunks) -- with-context vs no-context variants
+│   │   ├── promptBuilder.ts # buildPrompt(question, chunks, history?) -- with-context vs no-context variants
 │   │   └── llm.ts           # RAG_SYSTEM_PROMPT + generate() + generateStream() + parseNdjsonStream()
 │   ├── rag.ts               # answerQuestion / answerQuestionStream -- the one orchestrator
-│   ├── server.ts            # Express API: /health, /ingest, /query, /documents, /documents/:id
+│   ├── server.ts            # Express API: /health, /ingest, /query, /documents, /conversations
 │   ├── documentStore.ts     # JSON-file document records (Document Store leaf, separate from Qdrant)
+│   ├── db.ts                # Postgres pool + withTransaction
+│   ├── conversationStore.ts # conversations + messages in Postgres
 │   ├── config.ts            # centralized tunable defaults (retrievalConfig)
 │   ├── types.ts             # LoadedMetadata, Chunk, ChunkPayload, LoadedDocument
 │   └── errors.ts            # UnsupportedFileTypeError, DocumentReadError, EmbeddingError, CollectionError, GenerationError
@@ -228,12 +257,17 @@ local-rag/
 │   ├── evaluate-retrieval.ts# Recall@{1,3,5} + MRR evaluator against data/eval-set.json
 │   ├── gen-eval-set.ts      # regenerates data/eval-set.json from a corpus using llama3
 │   ├── test-hallucination.ts# 10 absent-topic PASS/FAIL/AMBIGUOUS stress test
+│   ├── evaluate-followups.ts# follow-up retrieval: alone vs combined vs combined + floor
+│   ├── migrate.ts           # applies migrations/*.sql (pnpm db:migrate)
 │   └── smoke-test.ts        # end-to-end API smoke (health → ingest → query → cleanup)
+├── migrations/
+│   └── 001_conversations.sql# conversations + messages tables
 ├── data/
 │   ├── sample.txt           # plain-text fixture
 │   ├── sample.pdf           # 2-page PDF fixture (regenerable via scripts/gen-sample-pdf.mjs)
 │   ├── eval-corpus.txt      # 15-section handwritten employee handbook (eval + halluc corpus)
 │   ├── eval-set.json        # 20 labeled (question, expectedSubstrings) entries
+│   ├── followup-eval-set.json # 13 genuine + 6 off-topic two-turn follow-ups
 │   ├── documents.json       # DocumentStore JSON — runtime artifact (gitignored)
 │   ├── eval-results-*.json  # retrieval evaluator output (gitignored)
 │   └── halluc-results-*.json# halluc stress output (gitignored)
@@ -241,6 +275,8 @@ local-rag/
 │   ├── loader.test.ts       # loader unit tests (offline, always run)
 │   ├── chunker.test.ts      # chunker unit tests (offline, always run)
 │   ├── ndjson.test.ts       # NJSON parser buffered-handling tests (offline, always run)
+│   ├── promptBuilder.test.ts# history block + trimming (offline, always run)
+│   ├── conversationStore.test.ts # Postgres store round-trip (skipIf Postgres down)
 │   ├── vectorStore.test.ts  # Qdrant round-trip tests (live-stack, skipIf-guarded)
 │   ├── pipeline.test.ts    # ingestDocument end-to-end (live-stack, skipIf-guarded)
 │   ├── retriever.test.ts    # retrieve() ranking/threshold/topK (live-stack, skipIf-guarded)
@@ -261,6 +297,8 @@ For deeper architectural notes (LangChain policy, error philosophy, API contract
 | `curl localhost:3000/health` returns "connection refused" | `pnpm dev` not running | `pnpm dev` in a separate terminal |
 | `/health` reports `ollama: false` | Ollama container down or not yet healthy | `docker compose ps`; `docker compose up -d ollama` |
 | `/health` reports `qdrant: false` | Qdrant container down or not yet healthy | `docker compose ps`; `docker compose up -d qdrant` |
+| `/health` reports `postgres: false`, or `/conversations` returns `503 database unreachable` | Postgres container down | `docker compose up -d postgres` |
+| `/conversations` returns `500 relation "conversations" does not exist` | Migrations not applied | `pnpm db:migrate` |
 | `POST /ingest` returns `502 Ingest failed at stage 'embed': Failed to reach Ollama embed endpoint` | `nomic-embed-text` not pulled into the Ollama container | `docker exec -it local-rag-ollama ollama pull nomic-embed-text` |
 | `POST /query` returns `503 Failed to answer question: Failed to reach Ollama generate endpoint` | `llama3` not pulled into the Ollama container | `docker exec -it local-rag-ollama ollama pull llama3` |
 | `Embedding dimension mismatch: expected 768, got N` | `OLLAMA_EMBED_MODEL` swapped to a different-dim model without updating `OLLAMA_EMBED_DIM` | Set BOTH `OLLAMA_EMBED_MODEL=...` and `OLLAMA_EMBED_DIM=...` |

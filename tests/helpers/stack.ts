@@ -3,6 +3,9 @@
 // inside beforeAll is always still false at that point and the live tests silently
 // never run. A top-level await here resolves before the importing file's tests are
 // defined.
+import pg from "pg";
+import { DATABASE_URL } from "../../src/db.js";
+
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
 
@@ -14,6 +17,18 @@ async function reachable(url: string): Promise<boolean> {
   }
 }
 
+async function postgresReachable(): Promise<boolean> {
+  const client = new pg.Client({ connectionString: DATABASE_URL, connectionTimeoutMillis: 2000 });
+  try {
+    await client.connect();
+    await client.end();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export const qdrantUp = await reachable(`${QDRANT_URL}/readyz`);
 export const ollamaUp = await reachable(`${OLLAMA_URL}/api/tags`);
+export const postgresUp = await postgresReachable();
 export const stackUp = qdrantUp && ollamaUp;

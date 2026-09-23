@@ -15,6 +15,29 @@ export const NO_CONTEXT_INSTRUCTION = `No relevant context was found in the know
 
 const CONTEXT_SEPARATOR = "\n\n---\n\n";
 
+export interface HistoryMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
+// Enough recent turns to resolve "it" / "that policy", without the history crowding
+// out the retrieved context in the model's window.
+export const HISTORY_MAX_MESSAGES = 6;
+export const HISTORY_MAX_ASSISTANT_CHARS = 800;
+
+export function formatHistory(history: HistoryMessage[]): string {
+  return history
+    .slice(-HISTORY_MAX_MESSAGES)
+    .map((m) => {
+      const text =
+        m.role === "assistant" && m.content.length > HISTORY_MAX_ASSISTANT_CHARS
+          ? `${m.content.slice(0, HISTORY_MAX_ASSISTANT_CHARS)}…`
+          : m.content;
+      return `${m.role === "user" ? "User" : "Assistant"}: ${text}`;
+    })
+    .join("\n");
+}
+
 function formatCitationTag(chunk: RetrievedChunk, index: number): string {
   const parts: string[] = [`[${index + 1}]`];
   if (chunk.source) parts.push(`(source: ${chunk.source}${chunk.page != null ? `, page: ${chunk.page}` : ""})`);
@@ -33,7 +56,9 @@ function formatCitationTag(chunk: RetrievedChunk, index: number): string {
  *   into fabricating passages. Instead emit a different variant that explicitly
  *   states no relevant context was found and instructs the model to say so.
  */
-export function buildPrompt(question: string, chunks: RetrievedChunk[]): string {
+export function buildPrompt(question: string, chunks: RetrievedChunk[], history: HistoryMessage[] = []): string {
+  // No-context path deliberately ignores history: with nothing retrieved the model must
+  // refuse, not answer from its own earlier replies.
   if (chunks.length === 0) {
     return `${NO_CONTEXT_INSTRUCTION}\n\nQuestion: ${question}\nAnswer:`;
   }
@@ -42,5 +67,12 @@ export function buildPrompt(question: string, chunks: RetrievedChunk[]): string 
     .map((c, i) => `${formatCitationTag(c, i)}\n${c.text}`)
     .join(CONTEXT_SEPARATOR);
 
-  return `${WITH_CONTEXT_INSTRUCTION}\n\nContext:\n${contextBlock}\n\nQuestion: ${question}\nAnswer:`;
+  // History only helps the model resolve references ("it", "that policy"); facts still
+  // have to come from the Context block.
+  const historyBlock =
+    history.length > 0
+      ? `Conversation so far (for resolving references only; answer from the Context above):\n${formatHistory(history)}\n\n`
+      : "";
+
+  return `${WITH_CONTEXT_INSTRUCTION}\n\nContext:\n${contextBlock}\n\n${historyBlock}Question: ${question}\nAnswer:`;
 }

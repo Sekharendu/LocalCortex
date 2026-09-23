@@ -1,0 +1,25 @@
+{
+  "followups": [
+    { "first": "How many vacation days do I get per year?", "followup": "And after five years?", "expected": "20 days per year" },
+    { "first": "Can I work remotely?", "followup": "Do I need approval for that?", "expected": "with manager approval" },
+    { "first": "How much of the health insurance premium does the company pay?", "followup": "What about for my dependents?", "expected": "50% for dependents" },
+    { "first": "When can I join the 401(k)?", "followup": "Does the company match contributions?", "expected": "up to 5% of base salary" },
+    { "first": "How long is paid parental leave?", "followup": "Does it apply to secondary caregivers too?", "expected": "primary and secondary caregivers" },
+    { "first": "What is the travel booking policy?", "followup": "Which class can I fly on long international trips?", "expected": "exceeding six hours" },
+    { "first": "How much is the annual training budget?", "followup": "Can I carry over what I don't use?", "expected": "Unused funds do not rollover" },
+    { "first": "How often are engineering workstations refreshed?", "followup": "How do I request extra peripherals?", "expected": "procurement portal" },
+    { "first": "How much notice is required for termination?", "followup": "When is the last paycheck paid?", "expected": "within three business days" },
+    { "first": "How many sick days do I get?", "followup": "Do unused ones carry over?", "expected": "maximum of 10 days" },
+    { "first": "When can I open a health savings account?", "followup": "How much does the company contribute to it?", "expected": "up to 3% of base salary" },
+    { "first": "When are promotion decisions made?", "followup": "How early do nominations need to be submitted?", "expected": "six weeks before" },
+    { "first": "What are the Denver office hours?", "followup": "Do they follow the same holidays as headquarters?", "expected": "two floating holidays" }
+  ],
+  "offtopic": [
+    { "first": "How many vacation days do I get per year?", "followup": "What is the capital of France?" },
+    { "first": "How much of the health insurance premium does the company pay?", "followup": "How do I bake a chocolate cake?" },
+    { "first": "When can I join the 401(k)?", "followup": "Who won the 2018 FIFA World Cup?" },
+    { "first": "Can I work remotely?", "followup": "What is the tallest mountain in the world?" },
+    { "first": "How much is the annual training budget?", "followup": "Explain how photosynthesis works." },
+    { "first": "What is the travel booking policy?", "followup": "What is the boiling point of water in Fahrenheit?" }
+  ]
+}

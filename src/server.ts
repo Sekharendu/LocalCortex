@@ -7,6 +7,16 @@ import { ingestDocument } from "./ingest/pipeline.js";
 import { listDocuments, deleteDocument, getDocument, addDocument, type DocumentRecord } from "./documentStore.js";
 import { deleteByDocumentId } from "./retrieval/vectorStore.js";
 import { retrievalConfig } from "./config.js";
+import { postgresReachable } from "./db.js";
+import {
+  appendMessage,
+  createConversation,
+  deleteConversation,
+  getConversation,
+  listConversations,
+  renameConversation,
+} from "./conversationStore.js";
+import type { Citation } from "./types.js";
 
 const PORT = Number(process.env.PORT ?? 3000);
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
@@ -45,14 +55,16 @@ async function probe(url: string, timeoutMs = 2000): Promise<boolean> {
 
 // ----- GET /health -------------------------------------------------------------
 app.get("/health", async (_req, res) => {
-  const [ollamaUp, qdrantUp] = await Promise.all([
+  const [ollamaUp, qdrantUp, postgresUp] = await Promise.all([
     probe(`${OLLAMA_URL}/api/tags`),
     probe(`${QDRANT_URL}/readyz`),
+    postgresReachable(),
   ]);
 
   res.json({
     ollama: ollamaUp,
-    qdrant: qdrantUp
+    qdrant: qdrantUp,
+    postgres: postgresUp,
   });
 });
 
@@ -215,6 +227,167 @@ app.delete("/documents/:id", async (req: Request, res: Response) => {
   res.json({ deleted: record });
 });
 
+// ----- conversations -----------------------------------------------------------
+// Express 4 doesn't forward rejected promises from async handlers to the error
+// middleware -- a thrown error (e.g. Postgres down) would leave the request hanging.
+function route(handler: (req: Request, res: Response) => Promise<void>) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    handler(req, res).catch(next);
+  };
+}
+
+const DEFAULT_TITLE = "New chat";
+const TITLE_MAX_CHARS = 60;
+
+function titleFrom(text: string): string {
+  const t = text.trim().replace(/\s+/g, " ");
+  return t.length > TITLE_MAX_CHARS ? `${t.slice(0, TITLE_MAX_CHARS - 1)}…` : t;
+}
+
+/** Resolves when the socket can take more data -- or when the client goes away, so a
+ * disconnect during backpressure can't leave the handler waiting forever. */
+function drainOrClose(res: Response): Promise<void> {
+  return new Promise((resolve) => {
+    const done = () => {
+      res.off("drain", done);
+      res.off("close", done);
+      resolve();
+    };
+    res.once("drain", done);
+    res.once("close", done);
+  });
+}
+
+app.get(
+  "/conversations",
+  route(async (_req, res) => {
+    res.json({ conversations: await listConversations() });
+  }),
+);
+
+app.post(
+  "/conversations",
+  route(async (req, res) => {
+    const raw = (req.body as { title?: unknown } | undefined)?.title;
+    const title = typeof raw === "string" && raw.trim() ? titleFrom(raw) : DEFAULT_TITLE;
+    res.status(201).json({ conversation: await createConversation(title) });
+  }),
+);
+
+app.get(
+  "/conversations/:id",
+  route(async (req, res) => {
+    const conversation = await getConversation(req.params.id);
+    if (!conversation) {
+      res.status(404).json({ error: `conversation not found: ${req.params.id}` });
+      return;
+    }
+    res.json({ conversation });
+  }),
+);
+
+app.patch(
+  "/conversations/:id",
+  route(async (req, res) => {
+    const raw = (req.body as { title?: unknown } | undefined)?.title;
+    if (typeof raw !== "string" || raw.trim().length === 0) {
+      res.status(400).json({ error: "title is required and must be a non-empty string" });
+      return;
+    }
+    const conversation = await renameConversation(req.params.id, titleFrom(raw));
+    if (!conversation) {
+      res.status(404).json({ error: `conversation not found: ${req.params.id}` });
+      return;
+    }
+    res.json({ conversation });
+  }),
+);
+
+app.delete(
+  "/conversations/:id",
+  route(async (req, res) => {
+    if (!(await deleteConversation(req.params.id))) {
+      res.status(404).json({ error: `conversation not found: ${req.params.id}` });
+      return;
+    }
+    res.json({ deleted: req.params.id });
+  }),
+);
+
+// Streams the answer exactly like POST /query (text/plain body, X-Citations header,
+// 503 JSON if setup fails before streaming), and saves both turns.
+app.post(
+  "/conversations/:id/messages",
+  route(async (req, res) => {
+    const content = (req.body as { content?: unknown } | undefined)?.content;
+    if (typeof content !== "string" || content.trim().length === 0) {
+      res.status(400).json({ error: "content is required and must be a non-empty string" });
+      return;
+    }
+    const conversation = await getConversation(req.params.id);
+    if (!conversation) {
+      res.status(404).json({ error: `conversation not found: ${req.params.id}` });
+      return;
+    }
+
+    // Only completed turns go into memory; a half-written or failed answer would mislead.
+    const history = conversation.messages
+      .filter((m) => m.status === null)
+      .map((m) => ({ role: m.role, content: m.content }));
+
+    await appendMessage(conversation.id, { role: "user", content });
+    if (conversation.messages.length === 0 && conversation.title === DEFAULT_TITLE) {
+      await renameConversation(conversation.id, titleFrom(content));
+    }
+
+    // Client disconnect (tab closed, Stop pressed) aborts generation so llama3 stops.
+    const controller = new AbortController();
+    res.on("close", () => {
+      if (!res.writableEnded) controller.abort();
+    });
+
+    let tokens: AsyncGenerator<string>;
+    let citations: Citation[];
+    try {
+      ({ tokens, citations } = await answerQuestionStream(content, { history, signal: controller.signal }));
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      await appendMessage(conversation.id, { role: "assistant", content: msg, status: "error" });
+      res.status(503).json({ error: `Failed to answer question: ${msg}` });
+      return;
+    }
+
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
+    res.setHeader("X-Accel-Buffering", "no");
+    res.setHeader("X-Citations", JSON.stringify(citations));
+    res.flushHeaders();
+
+    let answer = "";
+    let status: "interrupted" | "error" | null = null;
+    try {
+      for await (const token of tokens) {
+        answer += token;
+        if (!res.write(token)) await drainOrClose(res);
+        if (controller.signal.aborted) break;
+      }
+      if (controller.signal.aborted) status = "interrupted";
+    } catch (e) {
+      if (controller.signal.aborted) {
+        status = "interrupted";
+      } else {
+        status = "error";
+        const msg = e instanceof Error ? e.message : String(e);
+        res.write(`\n\n[generation error: ${msg}]`);
+      }
+    } finally {
+      await appendMessage(conversation.id, { role: "assistant", content: answer, citations, status });
+      if (!res.writableEnded) res.end();
+    }
+  }),
+);
+
 // ----- 404 (no route matched) ---------------------------------------------------
 app.use((req, res) => {
   res.status(404).json({ error: `route not found: ${req.method} ${req.path}` });
@@ -233,6 +406,11 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
     (err as unknown as { type: string }).type === "entity.parse.failed"
   ) {
     res.status(400).json({ error: "request body is not valid JSON" });
+    return;
+  }
+  // Postgres refusing connections (container stopped) is an infra outage, not a bug.
+  if ((err as { code?: string } | null)?.code === "ECONNREFUSED") {
+    res.status(503).json({ error: "database unreachable -- is the postgres container running? (docker compose up -d postgres)" });
     return;
   }
   // eslint-disable-next-line no-console
