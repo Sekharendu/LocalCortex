@@ -1,22 +1,11 @@
-import { describe, test, expect, beforeAll } from "vitest";
+import { describe, test, expect } from "vitest";
 import {
   chunkFixedSize,
   chunkSemantic,
   chunkRecursive,
   chunkText,
 } from "../src/ingest/chunker.js";
-
-const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
-let ollamaUp = false;
-
-beforeAll(async () => {
-  try {
-    const r = await fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(2000) });
-    ollamaUp = r.ok;
-  } catch {
-    ollamaUp = false;
-  }
-});
+import { ollamaUp } from "./helpers/stack.js";
 
 describe("chunkFixedSize — overlap", () => {
   /**
@@ -90,7 +79,7 @@ describe("chunkSemantic — embedding-based topic-boundary detection", () => {
     expect(chunks).toEqual([]);
   });
 
-  test.skipIf(!ollamaUp, "Ollama not reachable")(
+  test.skipIf(!ollamaUp)(
     "topic-boundary detection: unrelated topics produce separate chunks",
     async () => {
       const cooking =
@@ -113,7 +102,7 @@ describe("chunkSemantic — embedding-based topic-boundary detection", () => {
     30_000,
   );
 
-  test.skipIf(!ollamaUp, "Ollama not reachable")("high threshold (1.0): nearly every sentence becomes its own chunk", async () => {
+  test.skipIf(!ollamaUp)("high threshold (1.0): nearly every sentence becomes its own chunk", async () => {
     // Same-topic paragraph: 4 sentences about a dog in a park.
     const text =
       "The dog chased the red ball across the grass. It barked happily at the children playing nearby. A squirrel darted up the oak tree. The dog wagged its tail and ran to the next game.";
@@ -125,7 +114,7 @@ describe("chunkSemantic — embedding-based topic-boundary detection", () => {
     expect(chunks.length).toBeGreaterThanOrEqual(3);
   }, 30_000);
 
-  test.skipIf(!ollamaUp, "Ollama not reachable")("low threshold (0.0): topically-coherent paragraph returns as one chunk", async () => {
+  test.skipIf(!ollamaUp)("low threshold (0.0): topically-coherent paragraph returns as one chunk", async () => {
     // A DIFFERENT text from the topic-boundary test: 4 same-topic sentences
     // about a dog walking in a park. Pairwise cosine sim stays positive so
     // splitting condition (sim < 0.0) never triggers.

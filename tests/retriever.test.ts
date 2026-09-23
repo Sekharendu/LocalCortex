@@ -3,38 +3,25 @@ import { QdrantClient } from "@qdrant/js-client-rest";
 import { retrieve } from "../src/retrieval/retriever.js";
 import { ingestDocument } from "../src/ingest/pipeline.js";
 import { deleteByDocumentId } from "../src/retrieval/vectorStore.js";
+import { stackUp } from "./helpers/stack.js";
 
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
-const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
 const TEST_COLLECTION = `retriever-test-${process.pid}`;
 
 const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
-let stackUp = false;
 let documentId: string | null = null;
 
 beforeAll(async () => {
-  try {
-    const [qRes, oRes] = await Promise.all([
-      fetch(`${QDRANT_URL}/readyz`, { signal: AbortSignal.timeout(2000) }),
-      fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(2000) }),
-    ]);
-    stackUp = qRes.ok && oRes.ok;
-  } catch {
-    stackUp = false;
-  }
   if (!stackUp) return;
-
-  try {
-    await client.deleteCollection(TEST_COLLECTION).catch(() => {});
-    const r = await ingestDocument("data/sample.txt", {
-      strategy: "recursive",
-      collection: TEST_COLLECTION,
-    });
-    if (r.success) documentId = r.documentId;
-  } catch {
-    stackUp = false;
-  }
+  await client.deleteCollection(TEST_COLLECTION).catch(() => {});
+  const r = await ingestDocument("data/sample.txt", {
+    strategy: "recursive",
+    collection: TEST_COLLECTION,
+  });
+  // Fail loudly: with the stack up, a broken ingest is a real failure, not a reason to skip.
+  if (!r.success) throw new Error(`test setup: ingest failed at stage '${r.stage}': ${r.error}`);
+  documentId = r.documentId;
 }, 180_000);
 
 afterAll(async () => {
@@ -44,7 +31,7 @@ afterAll(async () => {
 });
 
 describe("retrieve", () => {
-  test.skipIf(!stackUp || documentId === null)(
+  test.skipIf(!stackUp)(
     "(a) clear match returns relevant chunks ranked by score descending",
     async () => {
       const chunks = await retrieve("What does the sample say about a quick brown fox?", {
@@ -59,7 +46,7 @@ describe("retrieve", () => {
     },
   );
 
-  test.skipIf(!stackUp || documentId === null)(
+  test.skipIf(!stackUp)(
     "(b) unrelated query with default threshold returns nothing -- both modes",
     async () => {
       // Explicit per-mode assertions, not just "whatever the default happens to be":
@@ -76,7 +63,7 @@ describe("retrieve", () => {
     },
   );
 
-  test.skipIf(!stackUp || documentId === null)(
+  test.skipIf(!stackUp)(
     "(c) topK: 1 vs topK: 5 on the same query returns the right count",
     async () => {
       const question = "What does the sample text mention about a fox?";
@@ -93,7 +80,7 @@ describe("retrieve", () => {
     },
   );
 
-  test.skipIf(!stackUp || documentId === null)(
+  test.skipIf(!stackUp)(
     "(d) mode: 'dense' and mode: 'hybrid' both find the clear match",
     async () => {
       const question = "What does the sample say about a quick brown fox?";

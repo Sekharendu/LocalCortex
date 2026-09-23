@@ -11,9 +11,9 @@
 //     [--threshold 0] \
 //     [--mode dense|hybrid]
 //
-// --mode defaults to whatever retrieve() defaults to (retrievalConfig.mode, "hybrid"
-// unless RETRIEVE_MODE=dense is set). Pass --mode dense explicitly to reproduce a
-// pre-hybrid baseline for direct before/after comparison against a --mode hybrid run.
+// --mode defaults to whatever retrieve() defaults to (retrievalConfig.mode, "dense"
+// unless RETRIEVE_MODE=hybrid is set). Pass --mode explicitly to compare the two
+// modes on the same collection.
 //
 // Why scoreThreshold defaults to 0: this script measures RANKING quality (does the
 // expected chunk live in the top-K, and at what rank?), not threshold-tuning. A

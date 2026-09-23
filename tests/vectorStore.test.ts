@@ -9,32 +9,22 @@ import {
   type ChunkPoint,
 } from "../src/retrieval/vectorStore.js";
 import { sparseVectorFor } from "../src/retrieval/sparse.js";
+import { qdrantUp } from "./helpers/stack.js";
+import { randomUUID } from "node:crypto";
 
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
 const TEST_COLLECTION = `test-vectorstore-${process.pid}`;
 const DIM = Number(process.env.OLLAMA_EMBED_DIM ?? 768);
 const EMPTY_SPARSE = { indices: [], values: [] };
+// Qdrant point IDs must be unsigned integers or UUIDs; readable labels are rejected.
+const ID = { a: randomUUID(), b: randomUUID(), c: randomUUID(), doomed: [randomUUID(), randomUUID(), randomUUID()], hybrid: randomUUID() };
 
 const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
-let qdrantUp = false;
-
 beforeAll(async () => {
-  try {
-    const res = await fetch(`${QDRANT_URL}/readyz`, { signal: AbortSignal.timeout(2000) });
-    qdrantUp = res.ok;
-  } catch {
-    qdrantUp = false;
-  }
   if (!qdrantUp) return;
-  try {
-    await client.deleteCollection(TEST_COLLECTION).catch(() => {});
-    await ensureCollection(TEST_COLLECTION);
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error("Setup failed; marking tests as skipped:", e instanceof Error ? e.message : e);
-    qdrantUp = false;
-  }
+  await client.deleteCollection(TEST_COLLECTION).catch(() => {});
+  await ensureCollection(TEST_COLLECTION);
 }, 30_000);
 
 afterAll(async () => {
@@ -62,9 +52,9 @@ describe("vectorStore", () => {
     const vB = vecAt(1);
     const vC = (() => { const v = new Array<number>(DIM).fill(0); v[0] = 0.7; v[1] = 0.7; return v; })();
     const chunks: ChunkPoint[] = [
-      { id: "a", denseVector: vA, sparseVector: EMPTY_SPARSE, payload: { text: "alpha", source: "t.pdf", page: 1, chunkIndex: 0, documentId: "doc1" } },
-      { id: "b", denseVector: vB, sparseVector: EMPTY_SPARSE, payload: { text: "beta",  source: "t.pdf", page: 1, chunkIndex: 1, documentId: "doc1" } },
-      { id: "c", denseVector: vC, sparseVector: EMPTY_SPARSE, payload: { text: "gamma", source: "t.pdf", page: 2, chunkIndex: 2, documentId: "doc1" } },
+      { id: ID.a, denseVector: vA, sparseVector: EMPTY_SPARSE, payload: { text: "alpha", source: "t.pdf", page: 1, chunkIndex: 0, documentId: "doc1" } },
+      { id: ID.b, denseVector: vB, sparseVector: EMPTY_SPARSE, payload: { text: "beta",  source: "t.pdf", page: 1, chunkIndex: 1, documentId: "doc1" } },
+      { id: ID.c, denseVector: vC, sparseVector: EMPTY_SPARSE, payload: { text: "gamma", source: "t.pdf", page: 2, chunkIndex: 2, documentId: "doc1" } },
     ];
     await upsertChunks(TEST_COLLECTION, chunks);
 
@@ -73,7 +63,7 @@ describe("vectorStore", () => {
 
     expect(hits.length).toBeGreaterThanOrEqual(1);
     const top = hits[0];
-    expect(top.id).toBe("a");
+    expect(top.id).toBe(ID.a);
     expect(top.score).toBeGreaterThanOrEqual(0.99);
     expect(top.payload?.text).toBe("alpha");
     expect(top.payload?.source).toBe("t.pdf");
@@ -102,9 +92,9 @@ describe("vectorStore", () => {
   test.skipIf(!qdrantUp)("deleteByDocumentId removes all chunks for that document", async () => {
     // Upsert a separate doomed document.
     const doomed: ChunkPoint[] = [
-      { id: "doomed-0", denseVector: vecAt(50), sparseVector: EMPTY_SPARSE, payload: { text: "doomed one",  source: "d.pdf", page: 1, chunkIndex: 0, documentId: "doomed" } },
-      { id: "doomed-1", denseVector: vecAt(51), sparseVector: EMPTY_SPARSE, payload: { text: "doomed two",  source: "d.pdf", page: 2, chunkIndex: 1, documentId: "doomed" } },
-      { id: "doomed-2", denseVector: vecAt(52), sparseVector: EMPTY_SPARSE, payload: { text: "doomed three", source: "d.pdf", page: 3, chunkIndex: 2, documentId: "doomed" } },
+      { id: ID.doomed[0], denseVector: vecAt(50), sparseVector: EMPTY_SPARSE, payload: { text: "doomed one",  source: "d.pdf", page: 1, chunkIndex: 0, documentId: "doomed" } },
+      { id: ID.doomed[1], denseVector: vecAt(51), sparseVector: EMPTY_SPARSE, payload: { text: "doomed two",  source: "d.pdf", page: 2, chunkIndex: 1, documentId: "doomed" } },
+      { id: ID.doomed[2], denseVector: vecAt(52), sparseVector: EMPTY_SPARSE, payload: { text: "doomed three", source: "d.pdf", page: 3, chunkIndex: 2, documentId: "doomed" } },
     ];
     await upsertChunks(TEST_COLLECTION, doomed);
 
@@ -136,7 +126,7 @@ describe("vectorStore", () => {
 
       await upsertChunks(TEST_COLLECTION, [
         {
-          id: "hybrid-0",
+          id: ID.hybrid,
           denseVector: denseIrrelevant,
           sparseVector: sparseVec,
           payload: { text: "zephyrquartz onboarding checklist", source: "h.pdf", chunkIndex: 0, documentId: HYBRID_DOC },

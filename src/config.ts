@@ -10,9 +10,10 @@ export const retrievalConfig = {
   // overlap answerable scores; those rely on the prompt's "context is insufficient" rule.
   scoreThreshold: Number(process.env.RETRIEVE_SCORE_THRESHOLD ?? 0.63),
   collection: process.env.QDRANT_COLLECTION ?? "rag",
-  // Hybrid (dense+sparse RRF) is the default retrieval mode; set RETRIEVE_MODE=dense to
-  // fall back to pure dense search (e.g. to reproduce a pre-hybrid baseline for A/B eval).
-  mode: (process.env.RETRIEVE_MODE === "dense" ? "dense" : "hybrid") as "dense" | "hybrid",
+  // Dense is the default: with task prefixes on, dense and hybrid tie on the eval sets
+  // (105/113 each), and dense needs no sparse fusion or relevance probe. Set
+  // RETRIEVE_MODE=hybrid to fuse dense + BM25 sparse instead.
+  mode: (process.env.RETRIEVE_MODE === "hybrid" ? "hybrid" : "dense") as "dense" | "hybrid",
   // Hybrid-mode fusion: "rrf" (rank-only) or "dbsf" (score-magnitude-aware).
   fusion: (process.env.RETRIEVE_FUSION === "dbsf" ? "dbsf" : "rrf") as "rrf" | "dbsf",
 };

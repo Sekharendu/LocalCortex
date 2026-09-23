@@ -188,7 +188,7 @@ All optional — sensible defaults work for the standard `docker compose up -d` 
 | `QDRANT_COLLECTION` | `rag` | Default collection name used by ingest and retrieval |
 | `RETRIEVE_TOP_K` | `5` | Default topK used by `retrieve()` |
 | `RETRIEVE_SCORE_THRESHOLD` | `0.63` | Minimum cosine score for a question to get any context (in hybrid mode it gates results via a cheap dense probe, since fused scores aren't cosine similarities). Chosen with `scripts/calibrate-threshold.ts`; re-run it after changing the embedding model, prefixes or corpus |
-| `RETRIEVE_MODE` | `hybrid` | `hybrid` (dense + BM25 sparse, fused in Qdrant) or `dense` |
+| `RETRIEVE_MODE` | `dense` | `dense` or `hybrid` (dense + BM25 sparse, fused in Qdrant). They tie on the eval sets once task prefixes are on, so dense is the simpler default |
 | `RETRIEVE_FUSION` | `rrf` | Hybrid fusion method: `rrf` (rank-based, dense weighted 2:1) or `dbsf` (score-based) |
 | `OLLAMA_EMBED_PREFIXES` | on | Prepends nomic-embed-text's `search_query: ` / `search_document: ` task prefixes. Set `0` to disable |
 | `SPARSE_STATS_PATH` | `./data/sparse-stats.json` | Corpus average chunk length used by the BM25 sparse encoder |

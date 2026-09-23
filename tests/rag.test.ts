@@ -4,38 +4,25 @@ import { answerQuestion } from "../src/rag.js";
 import { isRefusal } from "../src/generation/refusal.js";
 import { ingestDocument } from "../src/ingest/pipeline.js";
 import { deleteByDocumentId } from "../src/retrieval/vectorStore.js";
+import { stackUp } from "./helpers/stack.js";
 
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
-const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
 const TEST_COLLECTION = `rag-test-${process.pid}`;
 
 const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
-let stackUp = false;
 let documentId: string | null = null;
 
 beforeAll(async () => {
-  try {
-    const [qRes, oRes] = await Promise.all([
-      fetch(`${QDRANT_URL}/readyz`, { signal: AbortSignal.timeout(2000) }),
-      fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(2000) }),
-    ]);
-    stackUp = qRes.ok && oRes.ok;
-  } catch {
-    stackUp = false;
-  }
   if (!stackUp) return;
-
-  try {
-    await client.deleteCollection(TEST_COLLECTION).catch(() => {});
-    const r = await ingestDocument("data/sample.txt", {
-      strategy: "recursive",
-      collection: TEST_COLLECTION,
-    });
-    if (r.success) documentId = r.documentId;
-  } catch {
-    stackUp = false;
-  }
+  await client.deleteCollection(TEST_COLLECTION).catch(() => {});
+  const r = await ingestDocument("data/sample.txt", {
+    strategy: "recursive",
+    collection: TEST_COLLECTION,
+  });
+  // Fail loudly: with the stack up, a broken ingest is a real failure, not a reason to skip.
+  if (!r.success) throw new Error(`test setup: ingest failed at stage '${r.stage}': ${r.error}`);
+  documentId = r.documentId;
 }, 180_000);
 
 afterAll(async () => {
@@ -45,7 +32,7 @@ afterAll(async () => {
 });
 
 describe("answerQuestion — end-to-end", () => {
-  test.skipIf(!stackUp || documentId === null)(
+  test.skipIf(!stackUp)(
     "an answerable question yields an answer containing the key phrase",
     async () => {
       const { answer, citations } = await answerQuestion("What does the sample text say about a fox?", {
@@ -69,7 +56,7 @@ describe("answerQuestion — end-to-end", () => {
     },
   );
 
-  test.skipIf(!stackUp || documentId === null)(
+  test.skipIf(!stackUp)(
     "an absent-topic question yields an explicit admission, not fabricated content",
     async () => {
       const { answer, citations } = await answerQuestion("What is the capital of France?", {
@@ -110,7 +97,7 @@ describe("answerQuestion — absent-topic stress (multiple questions)", () => {
     { q: "How do I bake a chocolate cake?", fabricationMarker: "preheat" },
   ];
   for (const c of ABSENT_CASES) {
-    test.skipIf(!stackUp || documentId === null)(
+    test.skipIf(!stackUp)(
       `absent-topic stress: "${c.q}"`,
       async () => {
         const { answer } = await answerQuestion(c.q, { collection: TEST_COLLECTION });

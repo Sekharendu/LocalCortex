@@ -3,31 +3,16 @@ import { QdrantClient } from "@qdrant/js-client-rest";
 import { ingestDocument } from "../src/ingest/pipeline.js";
 import { embed } from "../src/retrieval/embedder.js";
 import { searchSimilar, deleteByDocumentId } from "../src/retrieval/vectorStore.js";
+import { stackUp } from "./helpers/stack.js";
 
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
-const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
 const TEST_COLLECTION = `pipeline-test-${process.pid}`;
 
 const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
-let stackUp = false;
-
 beforeAll(async () => {
-  try {
-    const [qRes, oRes] = await Promise.all([
-      fetch(`${QDRANT_URL}/readyz`, { signal: AbortSignal.timeout(2000) }),
-      fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(2000) }),
-    ]);
-    stackUp = qRes.ok && oRes.ok;
-  } catch {
-    stackUp = false;
-  }
   if (!stackUp) return;
-  try {
-    await client.deleteCollection(TEST_COLLECTION).catch(() => {});
-  } catch {
-    // ignore
-  }
+  await client.deleteCollection(TEST_COLLECTION).catch(() => {});
 }, 30_000);
 
 afterAll(async () => {
