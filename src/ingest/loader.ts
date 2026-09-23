@@ -14,6 +14,20 @@ function isTextItem(item: unknown): item is TextItem {
   return typeof item === "object" && item !== null && "str" in item;
 }
 
+/**
+ * Joins a page's pdf.js text items into text, keeping line breaks. pdf.js marks the last
+ * item of each line with `hasEOL` (often an empty item); joining with "" dropped those
+ * breaks and glued lines into words like "SkillsProgramming", which embed badly and
+ * leave the recursive chunker no newlines to split sections on.
+ */
+export function pageTextFromItems(items: Array<Pick<TextItem, "str" | "hasEOL">>): string {
+  return items
+    .map((it) => it.str + (it.hasEOL ? "\n" : ""))
+    .join("")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n");
+}
+
 function makeDoc(pageContent: string, metadata: LoadedMetadata): LoadedDocument {
   return new Document<LoadedMetadata>({ pageContent, metadata });
 }
@@ -67,7 +81,7 @@ export async function loadDocument(filePath: string): Promise<LoadResult> {
       for (let i = 1; i <= pages; i++) {
         const page = await doc.getPage(i);
         const content = await page.getTextContent();
-        const pageText = content.items.filter(isTextItem).map((it) => it.str).join("");
+        const pageText = pageTextFromItems(content.items.filter(isTextItem));
         pageTexts.push(pageText);
         documents.push(makeDoc(pageText, { source, page: i }));
       }

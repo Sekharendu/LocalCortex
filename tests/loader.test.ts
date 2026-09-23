@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { loadDocument, isSupportedFile } from "../src/ingest/loader.js";
+import { loadDocument, isSupportedFile, pageTextFromItems } from "../src/ingest/loader.js";
 import { UnsupportedFileTypeError } from "../src/errors.js";
 
 describe("loadDocument", () => {
@@ -34,5 +34,31 @@ describe("isSupportedFile (upload filter)", () => {
   });
   test.each(["photo.png", "sheet.xlsx", "archive.zip", "noextension", "file.txt.exe"])("rejects %s", (name) => {
     expect(isSupportedFile(name)).toBe(false);
+  });
+});
+
+describe("pageTextFromItems (PDF line handling)", () => {
+  // Shaped like a real resume page: pdf.js ends each line with an (often empty) hasEOL item.
+  const items = [
+    { str: "Skills", hasEOL: false },
+    { str: "", hasEOL: true },
+    { str: "Programming Languages: JavaScript, TypeScript", hasEOL: true },
+    { str: "Projects", hasEOL: false },
+    { str: " ", hasEOL: true },
+    { str: "Built a telemetry wrapper with exponential", hasEOL: true },
+    { str: "backoff retries.", hasEOL: false },
+  ];
+
+  test("keeps line breaks instead of gluing lines into one word", () => {
+    const text = pageTextFromItems(items);
+    expect(text).toBe(
+      "Skills\nProgramming Languages: JavaScript, TypeScript\nProjects\nBuilt a telemetry wrapper with exponential\nbackoff retries.",
+    );
+    expect(text).not.toContain("SkillsProgramming");
+    expect(text).not.toContain("exponentialbackoff");
+  });
+
+  test("items on one line join as-is (pdf.js supplies its own spaces)", () => {
+    expect(pageTextFromItems([{ str: "Hello", hasEOL: false }, { str: " ", hasEOL: false }, { str: "world", hasEOL: false }])).toBe("Hello world");
   });
 });

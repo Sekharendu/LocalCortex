@@ -104,6 +104,27 @@ export async function retrieve(
       limit: effectiveTopK,
       scoreThreshold: effectiveThreshold,
     });
+    // Same-document expansion. The threshold decides WHETHER there is relevant material
+    // (it was calibrated on the best chunk per question), but applied to every chunk it
+    // also dropped the rest of the matching document: "What are Sekharendu Dey's
+    // projects?" matched the resume at 0.763 via the chunk naming him, while the project
+    // sections (0.50-0.53, no name in them) never reached the model. So once the best
+    // chunk clears the gate, fill the remaining topK slots with the next best chunks of
+    // that same document. Other documents still have to clear the threshold, so a
+    // question never picks up an unrelated document or its source chip.
+    const bestDoc = hits[0]?.payload?.documentId;
+    if (bestDoc && hits.length < effectiveTopK) {
+      const sameDoc = await searchSimilar(effectiveCollection, queryVector, {
+        limit: effectiveTopK,
+        scoreThreshold: 0,
+        documentId: bestDoc,
+      });
+      const seen = new Set(hits.map((h) => h.id));
+      for (const h of sameDoc) {
+        if (hits.length >= effectiveTopK) break;
+        if (!seen.has(h.id)) hits.push(h);
+      }
+    }
   } else {
     const probe = await searchSimilar(effectiveCollection, queryVector, {
       limit: 1,

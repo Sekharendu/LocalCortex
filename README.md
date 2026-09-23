@@ -92,8 +92,8 @@ Every route returns JSON `{ error: string }` on failure — never Express's defa
 
 **Conversation memory.** A message sent to a conversation is answered with the earlier turns in mind, so follow-ups like "And after five years?" work:
 - The prompt carries the last 6 messages (assistant replies trimmed to 800 characters), placed after the retrieved context. When nothing relevant is retrieved, the history is left out and the model refuses as usual.
-- Retrieval embeds the previous question together with the new one, so a vague follow-up finds the right chunk.
-- A follow-up gets context only if the combined query clears `RETRIEVE_SCORE_THRESHOLD` (0.63) **and** the new question on its own clears `RETRIEVE_FOLLOWUP_FLOOR` (0.57). The second check stops an off-topic follow-up ("What is the capital of France?") from borrowing the previous question's relevance. Measured with `scripts/evaluate-followups.ts`.
+- A follow-up that refers back ("what are his projects?") is rewritten by the LLM into a standalone question ("What are Sekharendu Dey's projects?") and searched like a first question. Others fall back to embedding the previous question together with the new one.
+- On that fallback path, a follow-up gets context only if the combined query clears `RETRIEVE_SCORE_THRESHOLD` (0.63) **and** the new question on its own clears `RETRIEVE_FOLLOWUP_FLOOR` (0.57). The second check stops an off-topic follow-up ("What is the capital of France?") from borrowing the previous question's relevance. Measured with `scripts/evaluate-followups.ts`.
 - New chats are titled from their first message. If the client disconnects mid-answer, generation is cancelled and the partial answer is saved with `status: "interrupted"`.
 
 ## curl examples (manual smoke of every route)
@@ -231,6 +231,9 @@ All optional — sensible defaults work for the standard `docker compose up -d` 
 | `MAX_INGEST_BYTES` | `52428800` (50 MB) | Hard upload size cap on `POST /ingest` |
 | `DOC_STORE_PATH` | `./data/documents.json` | Where the document-store JSON file lives |
 | `DATABASE_URL` | `postgres://localcortex:localcortex@localhost:5433/localcortex` | Postgres holding conversations and messages (matches the compose service) |
+| `QUERY_REWRITE` | on | Rewrites follow-ups that refer back ("what are his projects?") into standalone questions with the LLM before retrieval. Set `0` to use the previous-question + floor method instead |
+| `OLLAMA_REWRITE_MODEL` | `OLLAMA_GEN_MODEL` | Model used for the rewrite (a small model makes follow-ups faster) |
+| `REWRITE_TIMEOUT_MS` | `60000` | Rewrite timeout; on timeout the fallback method is used |
 | `RETRIEVE_FOLLOWUP_FLOOR` | `0.57` | Minimum score the new question must reach on its own for a follow-up to get context (just above the highest general-knowledge score in calibration, 0.567). `0` disables the check |
 
 **Swapping the embedding model**: this is the one override that needs *two* env vars together — `OLLAMA_EMBED_MODEL=...` AND `OLLAMA_EMBED_DIM=...`. The dim mismatch guard will throw `EmbeddingError` with an actionable message if they disagree.

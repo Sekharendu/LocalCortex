@@ -31,3 +31,11 @@ export const embedConfig = {
   // disable. Toggling this changes every vector: collections must be re-ingested.
   taskPrefixes: process.env.OLLAMA_EMBED_PREFIXES !== "0",
 };
+export const rewriteConfig = {
+  // Follow-ups ("tell me more about him") are rewritten into standalone questions before
+  // retrieval, so the subject named turns ago carries through. QUERY_REWRITE=0 falls back
+  // to embedding the previous question + the new one, gated by RETRIEVE_FOLLOWUP_FLOOR.
+  enabled: process.env.QUERY_REWRITE !== "0",
+  model: process.env.OLLAMA_REWRITE_MODEL ?? process.env.OLLAMA_GEN_MODEL ?? "llama3",
+  timeoutMs: Number(process.env.REWRITE_TIMEOUT_MS ?? 60_000),
+};

@@ -32,6 +32,8 @@ export interface SearchMatch {
 export interface SearchOptions {
   limit?: number;
   scoreThreshold?: number;
+  /** Only search chunks of this document. */
+  documentId?: string;
 }
 
 export interface HybridSearchOptions {
@@ -125,7 +127,7 @@ export async function upsertChunks(collection: string, chunks: ChunkPoint[]): Pr
 export async function searchSimilar(
   collection: string,
   queryVector: number[],
-  { limit = 5, scoreThreshold = 0.7 }: SearchOptions = {},
+  { limit = 5, scoreThreshold = 0.7, documentId }: SearchOptions = {},
 ): Promise<SearchMatch[]> {
   if (!Array.isArray(queryVector) || queryVector.length !== embedConfig.dim) {
     const got = Array.isArray(queryVector) ? queryVector.length : typeof queryVector;
@@ -143,6 +145,7 @@ export async function searchSimilar(
       score_threshold: scoreThreshold,// passing the threshold to the qdrant server-> to ignore the graph nodes and skip distance computations that falls below threshold.
       // Other opt was to bring all the relevant datas in the client side then filtering, but that will be less computatievely optimise. cuz we fetch all, bring all from server to client then throw the irrelevant ones off.
       with_payload: true,
+      ...(documentId ? { filter: { must: [{ key: "documentId", match: { value: documentId } }] } } : {}),
     });
   } catch (e) {
     throw new CollectionError(`Failed to search '${collection}'`, { cause: e });

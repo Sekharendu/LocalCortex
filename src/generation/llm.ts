@@ -88,6 +88,17 @@ export async function* parseNdjsonStream(
   }
 }
 
+export interface GenerateOptions {
+  /** Defaults to RAG_SYSTEM_PROMPT. */
+  system?: string;
+  /** Defaults to OLLAMA_GEN_MODEL. */
+  model?: string;
+  /** Defaults to OLLAMA_GEN_TIMEOUT_MS. */
+  timeoutMs?: number;
+  /** Ollama sampling options, e.g. { temperature: 0, num_predict: 64 }. */
+  options?: Record<string, number>;
+}
+
 /**
  * Call Ollama's /api/generate endpoint with the local generation model and the
  * RAG system prompt, non-streaming. Returns the model's full response text.
@@ -98,23 +109,24 @@ export async function* parseNdjsonStream(
  * swallowed as an empty string -- callers (the upcoming rag.ts / API route) decide
  * how to present a generation failure to the user, but they need the signal.
  */
-export async function generate(prompt: string): Promise<string> {
+export async function generate(prompt: string, opts: GenerateOptions = {}): Promise<string> {
   if (!prompt || prompt.trim().length === 0) {
     throw new GenerationError("generate() called with an empty prompt");
   }
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), GEN_TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(), opts.timeoutMs ?? GEN_TIMEOUT_MS);
   let res: Response;
   try {
     res = await fetch(`${OLLAMA_URL}/api/generate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: GEN_MODEL,
+        model: opts.model ?? GEN_MODEL,
         prompt,
-        system: RAG_SYSTEM_PROMPT,
+        system: opts.system ?? RAG_SYSTEM_PROMPT,
         stream: false,
+        ...(opts.options ? { options: opts.options } : {}),
       }),
       signal: controller.signal,
     });

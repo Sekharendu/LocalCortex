@@ -72,6 +72,22 @@ describe("vectorStore", () => {
     expect(top.payload?.chunkIndex).toBe(0);
   });
 
+  test.skipIf(!qdrantUp)("documentId filter restricts search to one document", async () => {
+    // Same-document expansion in retrieve() relies on this.
+    const other = randomUUID();
+    await upsertChunks(TEST_COLLECTION, [
+      { id: other, denseVector: vecAt(0), sparseVector: EMPTY_SPARSE, payload: { text: "other doc", source: "o.pdf", chunkIndex: 0, documentId: "doc2" } },
+    ]);
+    const all = await searchSimilar(TEST_COLLECTION, vecAt(0), { limit: 10, scoreThreshold: 0 });
+    expect(all.some((h) => h.payload?.documentId === "doc2")).toBe(true);
+
+    const onlyDoc1 = await searchSimilar(TEST_COLLECTION, vecAt(0), { limit: 10, scoreThreshold: 0, documentId: "doc1" });
+    expect(onlyDoc1.length).toBeGreaterThan(0);
+    expect(onlyDoc1.every((h) => h.payload?.documentId === "doc1")).toBe(true);
+
+    await deleteByDocumentId(TEST_COLLECTION, "doc2");
+  });
+
   test.skipIf(!qdrantUp)("search with unrelated vector + high threshold returns zero results", async () => {
     // Already-upserted chunks have nonzero components only on axes 0 and 1.
     // Anti-vector flips all axes so cosine similarity is <= 0 against all of them.

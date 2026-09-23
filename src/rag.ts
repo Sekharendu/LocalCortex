@@ -1,16 +1,20 @@
 import { retrieve, type RetrievedChunk, type RetrieveOptions } from "./retrieval/retriever.js";
 import { buildPrompt, type HistoryMessage } from "./generation/promptBuilder.js";
 import { generate, generateStream } from "./generation/llm.js";
+import { rewriteFollowUp } from "./generation/rewrite.js";
+import { rewriteConfig } from "./config.js";
 import type { Citation } from "./types.js";
 
 export interface RetrieveForQuestionResult {
   prompt: string;
   chunks: RetrievedChunk[];
+  /** For follow-ups: the standalone question retrieval searched with, when rewriting succeeded. */
+  searchQuestion?: string;
 }
 
 export interface AskOptions extends Omit<RetrieveOptions, "previousQuestion"> {
-  /** Earlier turns of the conversation, oldest first. Used to retrieve follow-ups with
-   * the previous question, and to let the model resolve references like "it". */
+  /** Earlier turns of the conversation, oldest first. Follow-ups are rewritten into a
+   * standalone question for retrieval, and the model sees the history to resolve "it". */
   history?: HistoryMessage[];
   /** Cancels generation (streaming only), e.g. when the user presses Stop. */
   signal?: AbortSignal;
@@ -67,9 +71,23 @@ export async function retrieveForQuestion(
 ): Promise<RetrieveForQuestionResult> {
   const { history = [], signal: _signal, ...retrieveOptions } = options;
   const previousQuestion = [...history].reverse().find((m) => m.role === "user")?.content;
-  const chunks = await retrieve(question, { ...retrieveOptions, previousQuestion });
+
+  let chunks: RetrievedChunk[];
+  let searchQuestion: string | undefined;
+  if (previousQuestion === undefined) {
+    chunks = await retrieve(question, retrieveOptions);
+  } else {
+    // A follow-up: search with its standalone form, gated like any first question. If
+    // rewriting is off or fails, fall back to previous + current question with the
+    // follow-up floor.
+    searchQuestion = rewriteConfig.enabled ? ((await rewriteFollowUp(history, question)) ?? undefined) : undefined;
+    chunks = searchQuestion
+      ? await retrieve(searchQuestion, retrieveOptions)
+      : await retrieve(question, { ...retrieveOptions, previousQuestion });
+  }
+  // The model still sees the user's own words plus the history.
   const prompt = buildPrompt(question, chunks, history);
-  return { prompt, chunks };
+  return { prompt, chunks, searchQuestion };
 }
 
 /**

@@ -147,6 +147,27 @@ describe("answerQuestion — follow-ups with history", () => {
   );
 
   test.skipIf(!stackUp)(
+    "a pronoun two turns after the subject is resolved (query rewrite)",
+    async () => {
+      // "it" refers to the fox from turn 1; turn 2 never names it. Embedding only the
+      // previous question + this one can't find it -- the rewrite has to.
+      const chain = [
+        ...history,
+        { role: "user" as const, content: "Is it quick?" },
+        { role: "assistant" as const, content: "Yes, it is described as quick and brown." },
+      ];
+      const { answer, citations } = await answerQuestion("What does it jump over?", {
+        collection: TEST_COLLECTION,
+        history: chain,
+      });
+      expect(isRefusal(answer), `expected an answer, got a refusal: ${JSON.stringify(answer)}`).toBe(false);
+      expect(answer.toLowerCase()).toContain("dog");
+      expect(citations.length).toBeGreaterThan(0);
+    },
+    180_000,
+  );
+
+  test.skipIf(!stackUp)(
     "an off-topic follow-up is still refused",
     async () => {
       const { answer, citations } = await answerQuestion("What is the capital of France?", {
