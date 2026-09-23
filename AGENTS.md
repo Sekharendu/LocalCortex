@@ -49,8 +49,9 @@ Guidance for AI agents working on this repo.
 
 ## Generation
 
+- **Answer style:** answers start with the answer in full sentences, keep the conditions/limits from the context, and never mention the context, passages or file names (no "According to…", no "Source:" line). Measured with `scripts/check-answer-style.ts` (16 answers incl. follow-ups): style leaks 14 → 0, wrongly refused 3 → 0; hallucination test still 10/10. Re-run it after any prompt change.
 - `src/generation/llm.ts` exports `RAG_SYSTEM_PROMPT` (the universal baseline persona -- editable single source of truth for instruction wording) and `generate(prompt)` which calls Ollama's `/api/generate` with the local generation model (default `llama3`, env `OLLAMA_GEN_MODEL`), `system: RAG_SYSTEM_PROMPT`, `stream: false`. Throws `GenerationError` on any failure (network, non-2xx, malformed body, missing `response`, model error field).
-- `src/generation/promptBuilder.ts` exports `buildPrompt(question, chunks)` and the situation-specific instruction constants `WITH_CONTEXT_INSTRUCTION` / `NO_CONTEXT_INSTRUCTION`. Empty chunks produce a distinct prompt variant that tells the model no relevant context was found and instructs it to say so -- it does NOT emit an empty "Context:" block. Non-empty chunks emit one passage per entry with light `[1] (source: file, page: N)` citation tags so the model can ground cited answers.
+- `src/generation/promptBuilder.ts` exports `buildPrompt(question, chunks)` and the situation-specific instruction constants `WITH_CONTEXT_INSTRUCTION` / `NO_CONTEXT_INSTRUCTION`. Empty chunks produce a distinct prompt variant that tells the model no relevant context was found and instructs it to say so -- it does NOT emit an empty "Context:" block. Non-empty chunks emit the passages separated by `---`, with **no** `[n]` / `(source: …)` tags: with tags llama3 opened every answer with "According to [1] (source: …)" and appended its own, sometimes misspelled, "Source:" line. Sources reach users only from retrieval (`buildCitations`, shown by the UI as chips).
 - `src/generation/llm.ts` also exports `generateStream(prompt, signal?): AsyncGenerator<string>` (stream:true; aborting `signal` drops the Ollama connection, which cancels generation) and `parseNdjsonStream(chunks): AsyncGenerator<GenerateResponse>` (exported for unit testing). The NJSON parser maintains a string buffer across reads, splits on `\n`, parses every complete line, and carries any trailing incomplete line over to be prepended to the next chunk -- a naive `JSON.parse(chunk)` implementation fails on objects split across chunks and on multiple objects concatenated in one chunk.
 - `src/rag.ts` exports `retrieveForQuestion(question, opts): Promise<{ prompt, chunks }>` (the shared prep helper), `answerQuestion(question, opts): Promise<{ answer, chunks, citations }>` (non-streaming orchestrator) and `answerQuestionStream(question, opts): Promise<{ tokens, citations }>` (streaming). `buildCitations(chunks)` dedupes the chunks that cleared threshold into the returned `{ source, page? }` digest -- only sources that actually went into the prompt context are surfaced.
 
@@ -150,6 +151,13 @@ npx tsx scripts/test-hallucination.ts                            # run
 npx tsx scripts/test-hallucination.ts --compare data/halluc-results-<prev-ts>.json
 ```
 Eval corpus: `data/eval-corpus.txt` (handwritten 20-section employee handbook, including 5 near-duplicate distractor sections — ingest with `curl -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt"` before running either script).
+
+Answer style (`scripts/check-answer-style.ts`) — asks 10 answerable questions (2 per category) + 3 two-turn follow-ups through `answerQuestion` and flags style leaks ("According to"/"Based on" openers, `[n]` tags, "Source:" lines, file names, talk about "the provided context" outside refusals) and wrongly refused answers; prints each answer's start for a human read and writes `data/answer-style-<ts>.json`.
+```bash
+npx tsx scripts/check-answer-style.ts
+```
+
+**Long runs on this laptop:** if Windows sleeps mid-run, Docker's clock pauses but Node's timers don't, so on wake the generation timeout fires on a request Ollama only saw for ~20s (`AbortError`, Ollama logs a 500 + `cancel task`). Keep the PC awake for evaluation runs.
 
 End-to-end API smoke (`scripts/smoke-test.ts`) — exercises every route against a running `pnpm dev` server: `/health` green → `/ingest data/sample.txt` → `/query` for an answerable question asserts the answer references "fox" → `DELETE /documents/:id` cleanup asserts no DocumentStore↔Qdrant drift. Each step fails loudly with a step-specific message (never a generic timeout) and a hint about which component to check.
 ```bash

@@ -19,6 +19,11 @@ export const REFUSAL_PATTERNS: RegExp[] = [
   /\bnot (found|available) in the (knowledge base|context|provided context)\b/i,
   /\b(cannot|can'?t|unable to) (answer|provide an answer)\b/i,
   /\bthere is no mention of\b/i,
+  // Paraphrases that appeared once the prompt told the model not to talk about "the
+  // context" in answers, e.g. "There is no information provided about parking
+  // reimbursement ..., so it cannot be answered."
+  /\bno information (is )?(provided|given|available) (about|on|regarding)\b/i,
+  /\b(cannot|can'?t) be answered\b/i,
 ];
 
 export function matchRefusal(answer: string): string | null {

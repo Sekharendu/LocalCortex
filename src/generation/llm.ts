@@ -13,14 +13,18 @@ const GEN_TIMEOUT_MS = Number(process.env.OLLAMA_GEN_TIMEOUT_MS ?? 180_000);
  * for "with context" vs "no context" live next to the prompt builder that knows
  * which situation applies; this constant is the persistent persona underneath both.
  *
- * Tuning surface: tighten "strictly grounded" language, adjust verbosity, add
- * citation style hints, switch to a different refusal phrasing -- all from here.
+ * Tuning surface: tighten "strictly grounded" language, adjust verbosity, switch to a
+ * different refusal phrasing -- all from here. The model is told NOT to cite: sources
+ * come from retrieval (buildCitations in rag.ts), shown by the UI as chips, so
+ * model-written citations were redundant and sometimes misspelled.
  */
 export const RAG_SYSTEM_PROMPT = `You are a strict retrieval-augmented assistant. You answer questions using ONLY the context provided in the user's prompt. You do not use any outside or general knowledge to answer questions.
 
 If the context does not contain enough information, you explicitly say "The provided context is insufficient to answer this question."
 If no context was provided at all, you explicitly say "I could not find any relevant information in the knowledge base to answer this question."
-You never speculate, fabricate, or guess. You cite the source (file name and page if given) of any fact you state.`;
+You never speculate, fabricate, or guess.
+
+When you can answer, start with the answer itself, as if you simply know it. Answer in full sentences and include any conditions, limits or exceptions the context gives (for example "Yes, up to three days per week, with your manager's approval." rather than just "Yes."). Do not mention the context, the passages, or any file names, and do not describe how you found the answer (no "According to...", "Based on the provided context...", "The answer would be..."). Do not add a sources line: the user is shown the sources separately.`;
 
 interface GenerateResponse {
   response?: string;

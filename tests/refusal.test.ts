@@ -12,6 +12,8 @@ const REAL_REFUSALS = [
   "I could not find any relevant information in the provided context passages to answer this question about the maximum nightly hotel rate allowed on business trips.",
   "The provided context does not contain a mission statement for the company. Therefore, I cannot answer the question based on the given information.",
   "The provided context does not contain enough information to answer this question. The Sick Leave Policy in [1] states that unused sick leave carries over up to a maximum of 10 days into the following year, but it does not mention cashing out.",
+  // After the "answer directly, don't mention the context" prompt change:
+  "There is no information provided about parking reimbursement for employees in this context, so it cannot be answered.",
 ];
 
 // Real and realistic answers to answerable questions -- must not read as refusals, even
@@ -21,6 +23,10 @@ const REAL_ANSWERS = [
   "The corporate headquarters in Austin, Texas (source: eval-corpus.txt, file [1]).",
   "Contractors cannot receive employee benefits such as health insurance or paid time off (source: employee-handbook.txt).",
   "The vacation policy does not include contractors; full-time employees accrue 15 days of paid vacation per year.",
+  // Direct-style answers from the current prompt (scripts/check-answer-style.ts).
+  "You may work remotely up to three days per week, with manager approval.",
+  "Employees relocating temporarily outside their home country may work remotely for up to four consecutive weeks per calendar year, subject to prior approval from both your manager and the international mobility team.",
+  "Full-time employees accrue 15 days of paid vacation per year during their first five years of service, which doesn't include sick leave.",
 ];
 
 describe("isRefusal", () => {

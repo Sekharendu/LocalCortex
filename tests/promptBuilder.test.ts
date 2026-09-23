@@ -33,6 +33,14 @@ describe("buildPrompt with history", () => {
     expect(prompt).toContain("Assistant: 15 days per year.");
   });
 
+  test("passages carry no citation tags or file names for the model to repeat", () => {
+    const prompt = buildPrompt("How many vacation days?", [chunk, { ...chunk, page: 3 }]);
+    expect(prompt).toContain(chunk.text);
+    expect(prompt).not.toMatch(/\[\d+\]/);
+    expect(prompt).not.toContain("(source:");
+    expect(prompt).not.toContain("eval-corpus.txt");
+  });
+
   test("without history the prompt is unchanged", () => {
     expect(buildPrompt("Q?", [chunk], [])).toBe(buildPrompt("Q?", [chunk]));
     expect(buildPrompt("Q?", [chunk])).not.toContain("Conversation so far");

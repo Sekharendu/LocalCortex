@@ -26,11 +26,11 @@ const GEN_TIMEOUT_MS = Number(process.env.OLLAMA_GEN_TIMEOUT_MS ?? 300_000);
 
 /**
  * Deliberately does NOT reuse src/generation/llm.ts's generate() -- that function
- * always applies RAG_SYSTEM_PROMPT ("cite the source... of any fact you state"),
- * which is correct for its real job (answering questions from retrieved context) but
- * actively wrong here: applied to a bare content-authoring prompt with no "context" to
- * cite, it made the model fabricate a citation like "(File: Employee_Handbook.pdf,
- * Page 23)" that was never asked for. This script needs a neutral system prompt, not
+ * always applies RAG_SYSTEM_PROMPT (answer only from context, refuse otherwise), which
+ * is correct for its real job (answering questions from retrieved context) but
+ * actively wrong here: applied to a bare content-authoring prompt with no "context",
+ * the version that asked for citations made the model fabricate one like
+ * "(File: Employee_Handbook.pdf, Page 23)". This script needs a neutral system prompt, not
  * the production RAG persona -- not worth complicating the shared function for a
  * one-off script's sake.
  */

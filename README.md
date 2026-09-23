@@ -251,7 +251,7 @@ local-rag/
 │   │   ├── vectorStore.ts   # @qdrant/js-client-rest: ensure/upsert/search/delete
 │   │   └── retriever.ts     # retrieve(question) = embed + searchSimilar + defensive sort
 │   ├── generation/
-│   │   ├── promptBuilder.ts # buildPrompt(question, chunks, history?) -- with-context vs no-context variants
+│   │   ├── promptBuilder.ts # buildPrompt(question, chunks, history?) -- with-context vs no-context variants, no citation tags
 │   │   └── llm.ts           # RAG_SYSTEM_PROMPT + generate() + generateStream() + parseNdjsonStream()
 │   ├── rag.ts               # answerQuestion / answerQuestionStream -- the one orchestrator
 │   ├── server.ts            # Express API: /health, /ingest, /query, /documents, /conversations
@@ -268,6 +268,7 @@ local-rag/
 │   ├── evaluate-retrieval.ts# Recall@{1,3,5} + MRR evaluator against data/eval-set.json
 │   ├── gen-eval-set.ts      # regenerates data/eval-set.json from a corpus using llama3
 │   ├── test-hallucination.ts# 10 absent-topic PASS/FAIL/AMBIGUOUS stress test
+│   ├── check-answer-style.ts# answers start with the answer: no "According to [1]…", no Source: lines
 │   ├── evaluate-followups.ts# follow-up retrieval: alone vs combined vs combined + floor
 │   ├── migrate.ts           # applies migrations/*.sql (pnpm db:migrate)
 │   └── smoke-test.ts        # end-to-end API smoke (health → ingest → query → cleanup)
