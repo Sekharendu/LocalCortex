@@ -6,6 +6,7 @@ import {
   searchSimilar,
   hybridSearch,
   deleteByDocumentId,
+  countByDocumentId,
   type ChunkPoint,
 } from "../src/retrieval/vectorStore.js";
 import { sparseVectorFor } from "../src/retrieval/sparse.js";
@@ -102,7 +103,9 @@ describe("vectorStore", () => {
     const before = await searchSimilar(TEST_COLLECTION, vecAt(50), { limit: 5, scoreThreshold: 0.9 });
     expect(before.some((h) => h.payload?.documentId === "doomed")).toBe(true);
 
+    expect(await countByDocumentId(TEST_COLLECTION, "doomed")).toBe(3);
     await deleteByDocumentId(TEST_COLLECTION, "doomed");
+    expect(await countByDocumentId(TEST_COLLECTION, "doomed")).toBe(0);
 
     const after = await searchSimilar(TEST_COLLECTION, vecAt(50), { limit: 5, scoreThreshold: 0.9 });
     expect(after).toHaveLength(0);

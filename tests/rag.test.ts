@@ -4,6 +4,7 @@ import { answerQuestion } from "../src/rag.js";
 import { isRefusal } from "../src/generation/refusal.js";
 import { ingestDocument } from "../src/ingest/pipeline.js";
 import { deleteByDocumentId } from "../src/retrieval/vectorStore.js";
+import { deleteDocument } from "../src/documentStore.js";
 import { stackUp } from "./helpers/stack.js";
 
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
@@ -27,7 +28,10 @@ beforeAll(async () => {
 
 afterAll(async () => {
   if (!stackUp) return;
-  if (documentId) await deleteByDocumentId(TEST_COLLECTION, documentId).catch(() => {});
+  if (documentId) {
+    await deleteByDocumentId(TEST_COLLECTION, documentId).catch(() => {});
+    await deleteDocument(documentId).catch(() => {});
+  }
   await client.deleteCollection(TEST_COLLECTION).catch(() => {});
 });
 

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useChat } from "../state/chat";
+import { useDocuments } from "../state/documents";
 import { Composer } from "./Composer";
 import { ArrowDownIcon } from "./Icons";
 import { ErrorLine, LiveAnswer, MessageView } from "./Message";
@@ -10,11 +11,23 @@ const STICK_THRESHOLD = 80;
 
 export function EmptyState({ onSend }: { onSend(content: string): void }) {
   const { stream } = useChat();
+  const docs = useDocuments();
+  const noDocuments = docs.loaded && docs.documents.length === 0;
   return (
     <div className="empty">
       <div className="empty-inner">
         <h1>What do you want to know?</h1>
-        <p className="empty-sub">Answers come from your documents, on this machine.</p>
+        {noDocuments ? (
+          <p className="empty-sub">
+            There's nothing to search yet.{" "}
+            <button className="link-btn" onClick={() => docs.setPanelOpen(true)}>
+              Add a document
+            </button>{" "}
+            to get started.
+          </p>
+        ) : (
+          <p className="empty-sub">Answers come from your documents, on this machine.</p>
+        )}
         <Composer onSend={onSend} disabledReason={stream ? BUSY_ELSEWHERE : null} focusKey="new" />
       </div>
     </div>

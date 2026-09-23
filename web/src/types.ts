@@ -34,3 +34,14 @@ export interface Health {
   qdrant: boolean;
   postgres: boolean;
 }
+
+export interface DocumentRecord {
+  id: string;
+  source: string;
+  ingestedAt: string;
+  chunkCount: number;
+  collection?: string;
+}
+
+/** What the loader can read (src/ingest/loader.ts SUPPORTED_EXTENSIONS). */
+export const SUPPORTED_EXTENSIONS = [".txt", ".md", ".pdf", ".docx"];

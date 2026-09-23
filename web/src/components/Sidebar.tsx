@@ -2,8 +2,9 @@ import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react"
 import { getHealth } from "../api";
 import { groupByRecency } from "../lib/groups";
 import { useChat } from "../state/chat";
+import { useDocuments } from "../state/documents";
 import type { ConversationSummary, Health } from "../types";
-import { CloseIcon, NewChatIcon, PencilIcon, TrashIcon } from "./Icons";
+import { CloseIcon, LibraryIcon, NewChatIcon, PencilIcon, TrashIcon } from "./Icons";
 import { ConfirmDialog } from "./Modal";
 
 const HEALTH_POLL_MS = 30_000;
@@ -40,6 +41,24 @@ function HealthStatus() {
       <span className={ok ? "health-dot ok" : "health-dot down"} />
       {ok ? "All services running" : `${down.join(", ")} unreachable`}
     </div>
+  );
+}
+
+function DocumentsButton() {
+  const { documents, loaded, uploads, setPanelOpen } = useDocuments();
+  const indexing = uploads.some((u) => u.status === "indexing" || u.status === "queued");
+  return (
+    <button className="docs-btn" onClick={() => setPanelOpen(true)}>
+      <LibraryIcon width={16} height={16} />
+      <span className="docs-btn-label">Documents</span>
+      {indexing ? (
+        <span className="docs-btn-meta">
+          <span className="spinner spinner-sm" aria-hidden="true" /> Indexing…
+        </span>
+      ) : (
+        loaded && <span className="docs-btn-meta">{documents.length}</span>
+      )}
+    </button>
   );
 }
 
@@ -199,6 +218,7 @@ export function Sidebar({ activeId, open, onClose, onNavigate }: SidebarProps) {
         </nav>
 
         <div className="sidebar-foot">
+          <DocumentsButton />
           <HealthStatus />
         </div>
       </aside>

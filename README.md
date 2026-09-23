@@ -70,7 +70,7 @@ pnpm dev         # terminal 1: the API on :3000
 pnpm dev:web     # terminal 2: the UI on http://localhost:5173
 ```
 
-Chats are listed in the sidebar (grouped Today / Previous 7 days / Older) and each has its own URL (`/c/<id>`). Answers stream in with their sources shown as chips underneath, and **Stop** cancels generation. `pnpm build:web` produces a static build in `web/dist`; `pnpm typecheck:web` type-checks it.
+Chats are listed in the sidebar (grouped Today / Previous 7 days / Older) and each has its own URL (`/c/<id>`). Answers stream in with their sources shown as chips underneath, and **Stop** cancels generation. **Documents** (sidebar footer) opens a panel to drag in `.txt`, `.md`, `.pdf` or `.docx` files, watch them index, and delete them. `pnpm build:web` produces a static build in `web/dist`; `pnpm typecheck:web` type-checks it.
 
 ## API surface
 
@@ -79,9 +79,9 @@ Every route returns JSON `{ error: string }` on failure — never Express's defa
 | Method | Path | Body | Response | Statuses |
 |---|---|---|---|---|
 | `GET` | `/health` | — | `{ ollama, qdrant, postgres }` | `200` |
-| `POST` | `/ingest` | `multipart/form-data`: `file` (required), `strategy` ∈ {fixed, semantic, recursive} (default `recursive`) | `{ documentId, chunkCount }` | `200`, `400` (no file), `413` (too large), `502` (pipeline failed, names the stage) |
+| `POST` | `/ingest` | `multipart/form-data`: `file` (required; .txt, .md, .pdf, .docx), `strategy` ∈ {fixed, semantic, recursive} (default `recursive`) | `{ documentId, chunkCount }` | `200`, `400` (no file, or unsupported type), `413` (too large), `502` (pipeline failed, names the stage) |
 | `POST` | `/query` | `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }` | non-stream: `{ answer, chunks, citations }`; stream: `text/plain; charset=utf-8` token-by-token + `X-Citations` response header (JSON array) | `200`, `400` (missing question), `503` (infra failure) |
-| `GET` | `/documents` | — | `{ documents: DocumentRecord[] }` (newest first) | `200`, `500` (store read failure) |
+| `GET` | `/documents` | — | `{ documents: DocumentRecord[] }` (default collection, newest first) | `200`, `500` (store read failure) |
 | `DELETE` | `/documents/:id` | — | `{ deleted: DocumentRecord }` | `200`, `404` (id not in store), `502` (Qdrant delete failed — store record restored to keep drift-free) |
 | `GET` | `/conversations` | — | `{ conversations: ConversationSummary[] }` (most recently active first) | `200`, `503` (Postgres down) |
 | `POST` | `/conversations` | `{ title?: string }` | `{ conversation }` | `201` |
@@ -271,6 +271,7 @@ local-rag/
 │   ├── check-answer-style.ts# answers start with the answer: no "According to [1]…", no Source: lines
 │   ├── evaluate-followups.ts# follow-up retrieval: alone vs combined vs combined + floor
 │   ├── migrate.ts           # applies migrations/*.sql (pnpm db:migrate)
+│   ├── reconcile-documents.ts# sync documents.json with Qdrant (dry run; --apply)
 │   └── smoke-test.ts        # end-to-end API smoke (health → ingest → query → cleanup)
 ├── migrations/
 │   └── 001_conversations.sql# conversations + messages tables
@@ -297,7 +298,8 @@ local-rag/
 │   └── src/
 │       ├── api.ts           # typed client, incl. streaming sendMessage
 │       ├── state/chat.tsx   # chats, loaded conversations, the one live stream
-│       ├── components/      # Sidebar, ChatView, Message, Composer, Modal, Icons
+│       ├── state/documents.tsx # document list + one-at-a-time upload queue
+│       ├── components/      # Sidebar, ChatView, Message, Composer, DocumentsPanel, Modal, Icons
 │       └── styles.css       # the whole look, hand-written
 ├── package.json
 ├── tsconfig.json
@@ -321,4 +323,5 @@ For deeper architectural notes (LangChain policy, error philosophy, API contract
 | `POST /query` returns `503 Failed to answer question: Failed to reach Ollama generate endpoint` | `llama3` not pulled into the Ollama container | `docker exec -it local-rag-ollama ollama pull llama3` |
 | `Embedding dimension mismatch: expected 768, got N` | `OLLAMA_EMBED_MODEL` swapped to a different-dim model without updating `OLLAMA_EMBED_DIM` | Set BOTH `OLLAMA_EMBED_MODEL=...` and `OLLAMA_EMBED_DIM=...` |
 | Smoke test step 5 fails ("DocumentStore and Qdrant may be drifted") | A previous DELETE failed between the two stores | `curl localhost:3000/documents`, manually re-DELETE any orphaned records |
+| The Documents panel lists files that answers don't use, or misses some | `data/documents.json` drifted from Qdrant (e.g. old test runs) | `npx tsx scripts/reconcile-documents.ts` to see the diff, then `--apply` |
 | `docker compose down -v` wiped the models and chunks | Volumes removed with `-v` flag | Re-pull models (`docker exec ... ollama pull ...`) and re-ingest documents |

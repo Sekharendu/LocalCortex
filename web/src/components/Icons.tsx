@@ -94,3 +94,15 @@ export const CloseIcon = (p: P) => (
     <path d="M18 6 6 18M6 6l12 12" />
   </Icon>
 );
+export const UploadIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="M12 16V4M7 9l5-5 5 5" />
+    <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" />
+  </Icon>
+);
+export const LibraryIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z" />
+    <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H19v-3" />
+  </Icon>
+);

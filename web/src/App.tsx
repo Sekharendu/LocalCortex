@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { ChatView, EmptyState } from "./components/ChatView";
+import { DocumentsPanel } from "./components/DocumentsPanel";
 import { CloseIcon, MenuIcon, NewChatIcon } from "./components/Icons";
 import { Sidebar } from "./components/Sidebar";
 import { useRoute } from "./lib/route";
 import { useChat } from "./state/chat";
+import { useDocuments } from "./state/documents";
 
 export function App() {
   const { conversationId, navigate } = useRoute();
   const chat = useChat();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { refreshChats, open, create, send, setNotice } = chat;
+  const docs = useDocuments();
+  const refreshDocs = docs.refresh;
 
   useEffect(() => {
     void refreshChats();
-  }, [refreshChats]);
+    void refreshDocs();
+  }, [refreshChats, refreshDocs]);
 
   useEffect(() => {
     if (conversationId) void open(conversationId);
@@ -67,6 +72,8 @@ export function App() {
           <EmptyState onSend={(content) => void startChat(content)} />
         )}
       </main>
+
+      {docs.panelOpen && <DocumentsPanel />}
     </div>
   );
 }

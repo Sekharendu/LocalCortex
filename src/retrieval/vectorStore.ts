@@ -236,3 +236,48 @@ export async function deleteByDocumentId(collection: string, documentId: string)
     throw new CollectionError(`Failed to delete documentId='${documentId}' from '${collection}'`, { cause: e });
   }
 }
+
+/** Number of points (chunks) in the collection that belong to `documentId`. */
+export async function countByDocumentId(collection: string, documentId: string): Promise<number> {
+  try {
+    const { count } = await client.count(collection, {
+      filter: { must: [{ key: "documentId", match: { value: documentId } }] },
+      exact: true,
+    });
+    return count;
+  } catch (e) {
+    throw new CollectionError(`Failed to count documentId='${documentId}' in '${collection}'`, { cause: e });
+  }
+}
+
+export async function listCollections(): Promise<string[]> {
+  try {
+    return (await client.getCollections()).collections.map((c) => c.name);
+  } catch (e) {
+    throw new CollectionError("Failed to list collections", { cause: e });
+  }
+}
+
+/** Every distinct payload.documentId in the collection, with its point count (scrolls all points). */
+export async function documentIdCounts(collection: string): Promise<Map<string, number>> {
+  const counts = new Map<string, number>();
+  try {
+    let offset: string | number | null | undefined = undefined;
+    do {
+      const page: Awaited<ReturnType<typeof client.scroll>> = await client.scroll(collection, {
+        limit: 256,
+        offset,
+        with_payload: ["documentId"],
+        with_vector: false,
+      });
+      for (const p of page.points) {
+        const id = (p.payload as { documentId?: unknown } | null)?.documentId;
+        if (typeof id === "string") counts.set(id, (counts.get(id) ?? 0) + 1);
+      }
+      offset = page.next_page_offset as string | number | null | undefined;
+    } while (offset !== null && offset !== undefined);
+  } catch (e) {
+    throw new CollectionError(`Failed to scan documentIds in '${collection}'`, { cause: e });
+  }
+  return counts;
+}

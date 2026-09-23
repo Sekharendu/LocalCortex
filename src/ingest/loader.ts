@@ -18,6 +18,13 @@ function makeDoc(pageContent: string, metadata: LoadedMetadata): LoadedDocument 
   return new Document<LoadedMetadata>({ pageContent, metadata });
 }
 
+/** File extensions loadDocument can read. The upload route rejects anything else up front. */
+export const SUPPORTED_EXTENSIONS = [".txt", ".md", ".pdf", ".docx"] as const;
+
+export function isSupportedFile(name: string): boolean {
+  return (SUPPORTED_EXTENSIONS as readonly string[]).includes(path.extname(name).toLowerCase());
+}
+
 /**
  * Reads a raw file and returns its clean extracted text plus LangChain-compatible
  * per-page documents. Supports: .txt, .md (UTF-8), .pdf (pdfjs-dist, one document

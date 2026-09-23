@@ -15,7 +15,10 @@ Guidance for AI agents working on this repo.
 - **Document store:** a leaf separate from the vector store, JSON-file backed on disk
   (`data/documents.json` by default, configurable via `DOC_STORE_PATH`). Source of truth:
   `src/documentStore.ts`. Tracks ingested document records (id, source, ingestedAt,
-  chunkCount) so the upcoming DELETE route can hydrate the response.
+  chunkCount, collection) so the DELETE route can hydrate the response and delete from the right
+  collection. `GET /documents` lists only the default collection (`QDRANT_COLLECTION`); benchmark and
+  test collections have records too. If the file drifts from Qdrant, run
+  `npx tsx scripts/reconcile-documents.ts` (dry run; `--apply` writes, backing up to `documents.json.bak`).
 - **Conversation store:** Postgres (compose service `postgres`, host port **5433** because 5432 is
   commonly taken by other local Postgres instances; env `DATABASE_URL`). Pool + `withTransaction`
   in `src/db.ts`; queries in `src/conversationStore.ts`. Schema lives in `migrations/*.sql`,
@@ -58,12 +61,12 @@ Guidance for AI agents working on this repo.
 ## API contract (`src/server.ts`)
 
 - `GET /health` -> `{ ollama: boolean, qdrant: boolean, postgres: boolean }` (probes `/api/tags`, `/readyz` and `SELECT 1` — connection-only).
-- `POST /ingest` (multipart/form-data, field `file`, optional field `strategy` ∈ {fixed, semantic, recursive}; defaults `recursive`) -> `JSON { documentId, chunkCount }` on success. Uploads land in the OS temp dir and are auto-cleaned after ingest. `400` if no file attached; `413` if exceeds `MAX_INGEST_BYTES` (default 50MB, env-overridable); `502 { error: "Ingest failed at stage 'X': ..." }` on pipeline failure (names the stage so failures triage by root cause).
+- `POST /ingest` (multipart/form-data, field `file`, optional field `strategy` ∈ {fixed, semantic, recursive}; defaults `recursive`) -> `JSON { documentId, chunkCount }` on success. Uploads land in the OS temp dir and are auto-cleaned after ingest. `400` if no file attached or the type isn't one of `SUPPORTED_EXTENSIONS` (.txt/.md/.pdf/.docx, `src/ingest/loader.ts`; checked by multer's `fileFilter` before anything is written); `413` if exceeds `MAX_INGEST_BYTES` (default 50MB, env-overridable); `502 { error: "Ingest failed at stage 'X': ..." }` on pipeline failure (names the stage so failures triage by root cause).
 - `POST /query` body: `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }`.
   - `stream` falsy (default): returns `JSON { answer, chunks: RetrievedChunk[], citations: Citation[] }`. `citations` is the deduped `{ source, page? }` pairs from chunks that actually cleared the retrieval threshold and went into the prompt context -- never fabricated. `400` missing question; `503` infra failure.
   - `stream: true`: returns `text/plain; charset=utf-8` streamed token-by-token; citations are emitted as an `X-Citations` response header (JSON array) set before the stream starts so body-only clients keep working unchanged and citation-metadata clients read the side channel. retrieval+buildPrompt+citations setup run EAGERLY so pre-stream infra failures return a normal `503` JSON envelope before any bytes are written. Once streaming begins the status is immutable -- a mid-stream generation error surfaces as a trailing `\n\n[generation error: msg]` footer.
-- `GET /documents` -> `JSON { documents: DocumentRecord[] }` (sorted by `ingestedAt` desc). `500` on document-store read failure.
-- `DELETE /documents/:id` -> `JSON { deleted: DocumentRecord }` on success. `404` if id not in store. **Sync guarantee**: deletes the document-store record first, then `deleteByDocumentId` from Qdrant; if the Qdrant delete fails the document-store record is RE-ADDED and the response is `502` with `"... record restored"`. The two stores never drift out of sync even on partial infra failure.
+- `GET /documents` -> `JSON { documents: DocumentRecord[] }` (default collection only, sorted by `ingestedAt` desc). `500` on document-store read failure.
+- `DELETE /documents/:id` -> `JSON { deleted: DocumentRecord }` on success. `404` if id not in store. **Sync guarantee**: deletes the document-store record first, then `deleteByDocumentId` from Qdrant; deletes from the record's own `collection` (default collection for old records); if the Qdrant delete fails the document-store record is RE-ADDED and the response is `502` with `"... record restored"`. The two stores never drift out of sync even on partial infra failure.
 - Conversations (Postgres; ids are UUIDs, a malformed id is a 404 not a 500):
   - `GET /conversations` -> `{ conversations: { id, title, createdAt, updatedAt }[] }`, most recently active first.
   - `POST /conversations { title? }` -> `201 { conversation }` (title defaults to `"New chat"`).
@@ -81,6 +84,7 @@ Guidance for AI agents working on this repo.
 - Routing is two paths, `/` (new chat) and `/c/:id`, via the history API (`web/src/lib/route.ts`). A chat is only created when its first message is sent.
 - `web/src/state/chat.tsx` owns the chat list, loaded conversations and **the one live stream**. The stream lives there, not in the view, so switching chats mid-answer doesn't cancel it; only one runs at a time (Ollama answers one request at a time), and other chats' composers say "Answering in another chat…". After a stream ends the conversation is refetched so ids/statuses match the server; after Stop the partial answer is added locally as `interrupted` instead of racing the server's save.
 - Saved `error` messages with `citations === null` are pre-stream failures (content is the error text); with citations they're partial answers that failed mid-stream.
+- Documents panel (`web/src/components/DocumentsPanel.tsx`, state in `web/src/state/documents.tsx`): a right-hand sheet opened from the sidebar footer. Drag-and-drop or browse; uploads queue and run **one at a time** (Ollama embeds serially) at app level, so closing the panel doesn't cancel them. Unsupported types are rejected in the browser with the server's wording; re-uploading an existing file name asks first (ingest isn't idempotent, it would add a second copy). Ingest errors are rewritten per stage ("Couldn't index X while embedding: …").
 - Commands: `pnpm dev:web`, `pnpm build:web`, `pnpm typecheck:web`.
 
 ## curl recipes (manual smoke)
@@ -187,4 +191,5 @@ npx tsx scripts/smoke-test.ts
 - `tests/retriever.test.ts` — `retrieve()` clear-match / absent-at-default-threshold / topK-count tests
 - `tests/rag.test.ts` — `answerQuestion` answerable + absent-topic (single) + **absent-topic STRESS (3 cases)** + follow-ups with history (vague follow-up answered, off-topic follow-up refused) end-to-end; the stress test is the multi-question vitest-side counterpart of `scripts/test-hallucination.ts` (kept short to stay under the vitest per-test timeout on CPU llama3)
 - `tests/conversationStore.test.ts` — Postgres store round-trip (ordering, citations/status, list order, rename, cascade delete, malformed ids); creates and deletes its own conversations
+- Tests that ingest delete both their chunks **and** their document record in cleanup, so the suite never adds to `data/documents.json`.
 - All use `test.skipIf` to skip cleanly when their dependency (Qdrant / Ollama / Postgres) is not reachable

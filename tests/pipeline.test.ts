@@ -2,7 +2,8 @@ import { describe, test, expect, beforeAll, afterAll } from "vitest";
 import { QdrantClient } from "@qdrant/js-client-rest";
 import { ingestDocument } from "../src/ingest/pipeline.js";
 import { embed } from "../src/retrieval/embedder.js";
-import { searchSimilar, deleteByDocumentId } from "../src/retrieval/vectorStore.js";
+import { searchSimilar, deleteByDocumentId, countByDocumentId } from "../src/retrieval/vectorStore.js";
+import { deleteDocument, getDocument } from "../src/documentStore.js";
 import { stackUp } from "./helpers/stack.js";
 
 const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
@@ -57,8 +58,15 @@ describe("ingestDocument", () => {
       const sparse = vector.sparse as { indices: number[]; values: number[] };
       expect(sparse.indices.length).toBeGreaterThan(0);
 
-      // Cleanup: remove the ingested document's chunks so test reruns don't accumulate.
+      // The document record names the collection its chunks went to, so DELETE
+      // /documents/:id can remove them from the right place.
+      const record = await getDocument(result.documentId);
+      expect(record?.collection).toBe(TEST_COLLECTION);
+      expect(await countByDocumentId(TEST_COLLECTION, result.documentId)).toBe(result.chunkCount);
+
+      // Cleanup: chunks and the record, so test runs don't pile up in documents.json.
       await deleteByDocumentId(TEST_COLLECTION, result.documentId);
+      await deleteDocument(result.documentId);
     },
     120_000,
   );

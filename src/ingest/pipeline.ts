@@ -167,6 +167,7 @@ export async function ingestDocument(
       source: sourceName,
       ingestedAt: new Date().toISOString(),
       chunkCount: chunks.length,
+      collection,
     });
     await recordChunks(chunks.map((c) => c.text));
   } catch (e) {

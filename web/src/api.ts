@@ -1,4 +1,4 @@
-import type { Citation, Conversation, ConversationSummary, Health } from "./types";
+import type { Citation, Conversation, ConversationSummary, DocumentRecord, Health } from "./types";
 
 const BASE = "/api";
 
@@ -112,4 +112,21 @@ export async function sendMessage(id: string, content: string, signal: AbortSign
     }
   }
   return { citations, tokens: tokens() };
+}
+
+export async function listDocuments(): Promise<DocumentRecord[]> {
+  return (await request<{ documents: DocumentRecord[] }>("/documents")).documents;
+}
+
+/** Uploads and indexes one file. Resolves when indexing is done, which can take a while. */
+export async function uploadDocument(file: File): Promise<{ documentId: string; chunkCount: number }> {
+  const form = new FormData();
+  form.append("file", file);
+  const res = await fetch(`${BASE}/ingest`, { method: "POST", body: form });
+  if (!res.ok) throw await errorFrom(res);
+  return (await res.json()) as { documentId: string; chunkCount: number };
+}
+
+export async function deleteDocument(id: string): Promise<void> {
+  await request(`/documents/${encodeURIComponent(id)}`, { method: "DELETE" });
 }

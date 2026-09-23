@@ -1,9 +1,12 @@
 import express, { type Express, type Request, type Response, type NextFunction } from "express";
 import multer, { MulterError } from "multer";
 import { tmpdir } from "node:os";
+import { extname } from "node:path";
 import { unlink } from "node:fs/promises";
 import { answerQuestion, answerQuestionStream } from "./rag.js";
 import { ingestDocument } from "./ingest/pipeline.js";
+import { isSupportedFile, SUPPORTED_EXTENSIONS } from "./ingest/loader.js";
+import { UnsupportedFileTypeError } from "./errors.js";
 import { listDocuments, deleteDocument, getDocument, addDocument, type DocumentRecord } from "./documentStore.js";
 import { deleteByDocumentId } from "./retrieval/vectorStore.js";
 import { retrievalConfig } from "./config.js";
@@ -34,6 +37,13 @@ const upload = multer({
     filename: (_req, file, cb) => cb(null, `${process.pid}-${Date.now()}-${file.originalname}`),
   }),
   limits: { fileSize: MAX_INGEST_BYTES },
+  // Reject what the loader can't read before it's written to disk or ingested; otherwise
+  // it fails later as a confusing "502 Ingest failed at stage 'load'".
+  fileFilter: (_req, file, cb) => {
+    if (isSupportedFile(file.originalname)) return cb(null, true);
+    const ext = extname(file.originalname) || "(none)";
+    cb(new UnsupportedFileTypeError(`unsupported file type '${ext}' (supported: ${SUPPORTED_EXTENSIONS.join(", ")})`));
+  },
 });
 
 /**
@@ -187,7 +197,12 @@ app.post("/query", async (req: Request, res: Response) => {
 
 // ----- GET /documents ----------------------------------------------------------
 app.get("/documents", async (_req, res) => {
-  const docs = await listDocuments();
+  // Only documents answers can use: the default collection. Benchmark (rag-large) and
+  // test collections have records too, but they'd be noise in the UI. Records from before
+  // `collection` existed count as default until scripts/reconcile-documents.ts fixes them.
+  const docs = (await listDocuments()).filter(
+    (d) => (d.collection ?? retrievalConfig.collection) === retrievalConfig.collection,
+  );
   // newest first so the operator's recent ingests surface at the top
   docs.sort((a, b) => (a.ingestedAt < b.ingestedAt ? 1 : -1));
   res.json({ documents: docs });
@@ -210,7 +225,7 @@ app.delete("/documents/:id", async (req: Request, res: Response) => {
   }
 
   try {
-    await deleteByDocumentId(retrievalConfig.collection, id);
+    await deleteByDocumentId(record.collection ?? retrievalConfig.collection, id);
   } catch (e) {
     // Roll back the document-store delete so the two stores never drift out of sync.
     // The record is restored; caller can retry once Qdrant recovers.
@@ -407,6 +422,10 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
     // eslint-disable-next-line no-console
     console.error("[unhandled after headers sent]", err);
     if (!res.writableEnded) res.end();
+    return;
+  }
+  if (err instanceof UnsupportedFileTypeError) {
+    res.status(400).json({ error: err.message });
     return;
   }
   if (err instanceof MulterError && err.code === "LIMIT_FILE_SIZE") {

@@ -9,6 +9,9 @@ export interface DocumentRecord {
   source: string;
   ingestedAt: string;
   chunkCount: number;
+  /** Qdrant collection holding the document's chunks. Missing on records written before
+   * this field existed; scripts/reconcile-documents.ts fills it in. */
+  collection?: string;
 }
 
 /**

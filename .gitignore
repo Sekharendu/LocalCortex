@@ -2,6 +2,7 @@ node_modules/
 dist/
 # ignore runtime artifacts in data/, keep fixtures + eval set + corpus committed
 data/documents.json
+data/documents.json.bak
 data/eval-results-*.json
 data/large-eval-results-*.json
 data/threshold-calibration-*.json

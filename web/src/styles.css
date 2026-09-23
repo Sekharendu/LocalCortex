@@ -818,11 +818,246 @@ button:disabled {
   margin-top: 20px;
 }
 
+/* ----- documents ------------------------------------------------------------ */
+
+.docs-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: calc(100% + 16px);
+  height: 36px;
+  margin: 0 -8px 8px;
+  padding: 0 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: left;
+  transition: background 150ms var(--ease);
+}
+
+.docs-btn:hover {
+  background: var(--bg-hover);
+}
+
+.docs-btn-label {
+  flex: 1;
+}
+
+.docs-btn-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-faint);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: rgba(0, 0, 0, 0.45);
+  animation: fade-in 150ms var(--ease);
+}
+
+.sheet {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 46;
+  display: flex;
+  flex-direction: column;
+  width: min(440px, 100vw);
+  border-left: 1px solid var(--border);
+  background: var(--bg-sidebar);
+  box-shadow: -24px 0 60px rgba(0, 0, 0, 0.35);
+  animation: slide-in 200ms var(--ease);
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 12px 0 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sheet-head h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sheet-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px 12px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.sheet-body .group-label {
+  margin-top: 18px;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 26px 16px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  transition: border-color 150ms var(--ease), background 150ms var(--ease), color 150ms var(--ease);
+}
+
+.dropzone:hover,
+.sheet.dragging .dropzone {
+  border-color: var(--text-muted);
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.sheet.dragging .dropzone {
+  border-color: var(--accent);
+}
+
+.dropzone-title {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dropzone-sub {
+  font-size: 12px;
+}
+
+.doc-list {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doc-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 150ms var(--ease);
+  animation: fade-in 150ms var(--ease);
+}
+
+.doc-row:hover,
+.doc-row:focus-within {
+  background: var(--bg-hover);
+}
+
+.doc-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+}
+
+.upload-done .doc-icon {
+  color: var(--ok);
+}
+
+.upload-failed .doc-icon {
+  color: var(--danger);
+}
+
+.doc-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.doc-name {
+  overflow: hidden;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.doc-meta {
+  color: var(--text-faint);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.upload-failed .doc-meta {
+  color: var(--danger);
+}
+
+.doc-actions {
+  display: flex;
+  flex: none;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 150ms var(--ease);
+}
+
+.doc-row:hover .doc-actions,
+.doc-row:focus-within .doc-actions,
+.doc-actions.visible {
+  opacity: 1;
+}
+
+.sheet-body .error-line {
+  margin: 10px 4px 0;
+  font-size: 13px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border-strong);
+  border-top-color: var(--text);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+.spinner-sm {
+  width: 10px;
+  height: 10px;
+  border-width: 1.5px;
+}
+
 /* ----- motion ---------------------------------------------------------------- */
 
 @keyframes fade-in {
   from {
     opacity: 0;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -901,6 +1136,15 @@ button:disabled {
 
   .thread-inner {
     padding: 20px 16px 16px;
+  }
+
+  .sheet {
+    width: 100vw;
+    border-left: 0;
+  }
+
+  .doc-actions {
+    opacity: 1;
   }
 
   .composer-dock {

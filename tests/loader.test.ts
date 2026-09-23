@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { loadDocument } from "../src/ingest/loader.js";
+import { loadDocument, isSupportedFile } from "../src/ingest/loader.js";
 import { UnsupportedFileTypeError } from "../src/errors.js";
 
 describe("loadDocument", () => {
@@ -26,5 +26,13 @@ describe("loadDocument", () => {
 
   test("throws UnsupportedFileTypeError for unknown extensions", async () => {
     await expect(loadDocument("data/sample.xyz")).rejects.toBeInstanceOf(UnsupportedFileTypeError);
+  });
+});
+describe("isSupportedFile (upload filter)", () => {
+  test.each(["notes.txt", "README.md", "Handbook.PDF", "policy.docx"])("accepts %s", (name) => {
+    expect(isSupportedFile(name)).toBe(true);
+  });
+  test.each(["photo.png", "sheet.xlsx", "archive.zip", "noextension", "file.txt.exe"])("rejects %s", (name) => {
+    expect(isSupportedFile(name)).toBe(false);
   });
 });
