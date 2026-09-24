@@ -1,0 +1,4 @@
+# Binary fixtures: never convert line endings (core.autocrlf would rewrite the
+# PDF's byte offsets on a Windows checkout).
+*.pdf binary
+*.docx binary
