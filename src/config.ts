@@ -22,6 +22,15 @@ export const retrievalConfig = {
   fusion: (process.env.RETRIEVE_FUSION === "dbsf" ? "dbsf" : "rrf") as "rrf" | "dbsf",
 };
 
+export const ingestConfig = {
+  // "auto" (default): a document with fewer than 2 markdown headings gets a "Title ›
+  // Section" prefix embedded above each chunk (see hasHeadingStructure); a document that
+  // already labels its own sections (the handbook, most .md files) gets none. "1"/"0"
+  // force it on/off for every document regardless of structure. Changes what gets
+  // embedded, so existing collections need re-ingesting after a change here.
+  contextHeaders: (process.env.INGEST_CONTEXT_HEADERS ?? "auto") as "auto" | "1" | "0",
+};
+
 export const embedConfig = {
   dim: Number(process.env.OLLAMA_EMBED_DIM ?? 768),
   model: process.env.OLLAMA_EMBED_MODEL ?? "nomic-embed-text",

@@ -43,6 +43,8 @@ export interface FixedSizeOptions {
 
 export interface MaxSizeOptions {
   maxSize: number;
+  /** Split only on headings at a line start, and never leave a heading without its body. */
+  fixHeadingSplit?: boolean;
 }
 
 export interface SemanticOptions {
@@ -152,18 +154,73 @@ export async function chunkSemantic(
  */
 export async function chunkRecursive(
   text: string,
-  { maxSize }: MaxSizeOptions,
+  { maxSize, fixHeadingSplit = false }: MaxSizeOptions,
 ): Promise<Chunk[]> {
   if (maxSize < 1) throw new RangeError("maxSize must be >= 1");
   if (text.length === 0) return [];
   const overlap = clampOverlap(Math.round(maxSize * 0.1), maxSize);//10% overlap
-  const splitter = new RecursiveCharacterTextSplitter({
-    chunkSize: maxSize,
-    chunkOverlap: overlap,
-    separators: ["\n## ", "## ", "\n# ", "# ", "\n\n", "\n", ". ", " ", ""],
-  });
+  // The default list's bare "## " / "# " match inside a heading marker: a section over
+  // maxSize is split "## Title" -> "#" + "# Title ...", leaving "#"-only chunks.
+  const separators = fixHeadingSplit
+    ? ["\n## ", "\n# ", "\n### ", "\n\n", "\n", ". ", " ", ""]
+    : ["\n## ", "## ", "\n# ", "# ", "\n\n", "\n", ". ", " ", ""];
+  const splitter = new RecursiveCharacterTextSplitter({ chunkSize: maxSize, chunkOverlap: overlap, separators });
   const parts = await splitter.splitText(text);
-  return toChunks(parts);
+  return toChunks(fixHeadingSplit ? attachLoneHeadings(parts) : parts);
+}
+
+/** Drops marker-only parts and prepends a heading-only part to the part after it. */
+function attachLoneHeadings(parts: string[]): string[] {
+  const out: string[] = [];
+  let pending = "";
+  for (const raw of parts) {
+    const part = raw.trim();
+    if (/^#+$/.test(part)) continue;
+    if (/^#{1,6} [^\n]+$/.test(part)) {
+      pending = pending ? `${pending}\n${part}` : part;
+      continue;
+    }
+    out.push(pending ? `${pending}\n\n${part}` : part);
+    pending = "";
+  }
+  if (pending) out.push(pending);
+  return out;
+}
+
+/** The document's first line when it reads as a title (a name, a "# Heading"), else `fallback`. */
+export function documentTitle(text: string, fallback: string): string {
+  const first = text.split("\n").find((l) => l.trim().length > 0)?.replace(/^#+\s*/, "").trim() ?? "";
+  return first.length > 0 && first.length <= 80 && !/[.!?]$/.test(first) ? first : fallback;
+}
+
+/**
+ * True when the text already has at least 2 markdown headings (`#`..`######`). Used to
+ * decide, per document, whether contextual headers should be added automatically: a
+ * document that already labels its own sections gets no benefit from one (measured: it
+ * cost a refusal without raising accuracy), while one with no headings at all (a resume,
+ * a plain-text export) gains a lot from a "Title › Section" prefix.
+ */
+export function hasHeadingStructure(text: string): boolean {
+  const matches = text.match(/^#{1,6}\s+\S/gm);
+  return (matches?.length ?? 0) >= 2;
+}
+
+/** Heading stack (by markdown level) in effect at `offset`, continuing from `carry`. */
+export function headingsAt(text: string, offset: number, carry: string[] = []): string[] {
+  const stack = [...carry];
+  for (const m of text.matchAll(/^(#{1,6})\s+(.+)$/gm)) {
+    if (m.index > offset) break;
+    const level = m[1].length;
+    stack.length = Math.min(stack.length, level - 1);
+    while (stack.length < level - 1) stack.push("");
+    stack.push(m[2].trim());
+  }
+  return stack;
+}
+
+/** "Title › Section › Subsection", skipping empty levels and the title repeated as a heading. */
+export function contextHeader(title: string, headings: string[]): string {
+  return [title, ...headings.filter((h) => h.length > 0 && h !== title)].join(" › ");
 }
 
 /**

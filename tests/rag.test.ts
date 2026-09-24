@@ -20,6 +20,13 @@ beforeAll(async () => {
   const r = await ingestDocument("data/sample.txt", {
     strategy: "recursive",
     collection: TEST_COLLECTION,
+    // This fixture's only heading is its own title (1 heading, under the auto/2-heading
+    // structure threshold), so "auto" would add a redundant "Sample Text Document" prefix
+    // to its single tiny chunk -- enough to dilute the "fox jumps over the lazy dog" line
+    // below the follow-up threshold. This suite tests conversation memory, not header
+    // behaviour (see tests/pipeline.test.ts and tests/headings.test.ts for that), so it
+    // pins the pre-header baseline explicitly.
+    contextHeaders: false,
   });
   // Fail loudly: with the stack up, a broken ingest is a real failure, not a reason to skip.
   if (!r.success) throw new Error(`test setup: ingest failed at stage '${r.stage}': ${r.error}`);

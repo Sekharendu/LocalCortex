@@ -32,6 +32,43 @@ function makeDoc(pageContent: string, metadata: LoadedMetadata): LoadedDocument 
   return new Document<LoadedMetadata>({ pageContent, metadata });
 }
 
+function decodeEntities(s: string): string {
+  return s
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, "&");
+}
+
+/**
+ * Converts the HTML mammoth.convertToHtml produces (headings, paragraphs, list items,
+ * table cells, <br>) into plain text with markdown `#`/`##`/... headings, so a well-
+ * formatted Word document is chunked by section like a .md file instead of losing its
+ * structure. Not mammoth's own --output-format=markdown: that mode is deprecated in
+ * mammoth's own docs and escapes punctuation ("1\. Item"), which would leak into stored
+ * text. Only handles the small set of tags mammoth actually emits -- everything else is
+ * stripped, not preserved.
+ */
+export function htmlToMarkdown(html: string): string {
+  return decodeEntities(
+    html
+      .replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi, (_m, level: string, body: string) => {
+        const text = body.replace(/<[^>]+>/g, "").trim();
+        return `\n${"#".repeat(Number(level))} ${text}\n`;
+      })
+      .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_m, body: string) => `\n- ${body.replace(/<[^>]+>/g, "").trim()}`)
+      .replace(/<\/p>/gi, "\n")
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<\/t[dh]>/gi, " ")
+      .replace(/<\/tr>/gi, "\n")
+      .replace(/<[^>]+>/g, ""),
+  )
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 /** File extensions loadDocument can read. The upload route rejects anything else up front. */
 export const SUPPORTED_EXTENSIONS = [".txt", ".md", ".pdf", ".docx"] as const;
 
@@ -61,9 +98,10 @@ export async function loadDocument(filePath: string): Promise<LoadResult> {
 
   if (ext === ".docx") {
     try {
-      const result = await mammoth.extractRawText({ path: filePath });
-      const documents = [makeDoc(result.value, { source })];
-      return { text: result.value, documents, source };
+      const result = await mammoth.convertToHtml({ path: filePath });
+      const text = htmlToMarkdown(result.value);
+      const documents = [makeDoc(text, { source })];
+      return { text, documents, source };
     } catch (e) {
       throw new DocumentReadError(`Failed to read docx file: ${filePath}`, { cause: e });
     }

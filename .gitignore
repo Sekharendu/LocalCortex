@@ -10,6 +10,7 @@ data/nearmiss-check-*.json
 data/sparse-stats.json
 data/halluc-results-*.json
 data/answer-style-*.json
+data/chunking-compare-*.json
 *.log
 .env
 doubts.txt

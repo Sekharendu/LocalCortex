@@ -1,5 +1,6 @@
 import { describe, test, expect } from "vitest";
-import { loadDocument, isSupportedFile, pageTextFromItems } from "../src/ingest/loader.js";
+import { loadDocument, isSupportedFile, pageTextFromItems, htmlToMarkdown } from "../src/ingest/loader.js";
+import { hasHeadingStructure } from "../src/ingest/chunker.js";
 import { UnsupportedFileTypeError } from "../src/errors.js";
 
 describe("loadDocument", () => {
@@ -26,6 +27,22 @@ describe("loadDocument", () => {
 
   test("throws UnsupportedFileTypeError for unknown extensions", async () => {
     await expect(loadDocument("data/sample.xyz")).rejects.toBeInstanceOf(UnsupportedFileTypeError);
+  });
+
+  test("reads a .docx with Word Heading styles as markdown headings", async () => {
+    const result = await loadDocument("data/eval-corpus.docx");
+    expect(result.source).toBe("data/eval-corpus.docx");
+    expect(result.documents).toHaveLength(1);
+    expect(result.text).toContain("# Employee Handbook (Sample)");
+    expect(result.text).toContain("## Vacation Policy");
+    expect(hasHeadingStructure(result.text)).toBe(true);
+  });
+
+  test("reads a .docx with no heading styles as plain paragraphs, no '#'", async () => {
+    const result = await loadDocument("data/sample-plain.docx");
+    expect(result.text).not.toContain("#");
+    expect(result.text).toContain("Priya Sharma");
+    expect(hasHeadingStructure(result.text)).toBe(false);
   });
 });
 describe("isSupportedFile (upload filter)", () => {
@@ -60,5 +77,37 @@ describe("pageTextFromItems (PDF line handling)", () => {
 
   test("items on one line join as-is (pdf.js supplies its own spaces)", () => {
     expect(pageTextFromItems([{ str: "Hello", hasEOL: false }, { str: " ", hasEOL: false }, { str: "world", hasEOL: false }])).toBe("Hello world");
+  });
+});
+
+describe("htmlToMarkdown (mammoth HTML -> plain text with # headings)", () => {
+  test("converts h1-h3 tags into matching '#' levels", () => {
+    const html = "<h1>Employee Handbook (Sample)</h1><h2>Vacation Policy</h2><p>15 days per year.</p><h3>Accrual</h3><p>More.</p>";
+    const text = htmlToMarkdown(html);
+    expect(text).toContain("# Employee Handbook (Sample)");
+    expect(text).toContain("## Vacation Policy");
+    expect(text).toContain("### Accrual");
+    expect(text).toContain("15 days per year.");
+  });
+
+  test("converts list items to '- ' lines and drops the <ul>/<ol> wrapper", () => {
+    const html = "<ul><li>Python</li><li>SQL</li></ul>";
+    const text = htmlToMarkdown(html);
+    expect(text).toBe("- Python\n- SQL");
+  });
+
+  test("decodes HTML entities", () => {
+    expect(htmlToMarkdown("<p>Tom &amp; Jerry &lt;3 &quot;cheese&quot;</p>")).toBe('Tom & Jerry <3 "cheese"');
+  });
+
+  test("strips tags it doesn't specially handle (bold, italic, span)", () => {
+    expect(htmlToMarkdown("<p>This is <strong>bold</strong> and <em>italic</em>.</p>")).toBe("This is bold and italic.");
+  });
+
+  test("collapses runs of blank lines and trims", () => {
+    const text = htmlToMarkdown("<h1>Title</h1>\n\n\n<p>Body.</p>");
+    expect(text).not.toMatch(/\n{3,}/);
+    expect(text.startsWith("#")).toBe(true);
+    expect(text.endsWith(".")).toBe(true);
   });
 });

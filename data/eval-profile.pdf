@@ -1,0 +1,43 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+5 0 obj
+<< /Length 2485 >>
+stream
+BT /F1 10 Tf 14 TL 56 740 Td (Priya Sharma) Tj T* (Data Engineer | Pune, India | priya.sharma@example.com | github.com/priyasharma-demo) Tj T* (SUMMARY) Tj T* (Data engineer with five years of experience building batch and streaming pipelines for retail) Tj T* (analytics. Comfortable owning a pipeline from ingestion to the dashboard, and happiest when a) Tj T* (flaky job becomes a boring one.) Tj T* (EXPERIENCE) Tj T* (Senior Data Engineer) Tj T* (Northwind Retail Analytics, Pune | March 2023 - Present) Tj T* (- Lead a team of four engineers maintaining 60+ Airflow DAGs that feed the merchandising) Tj T* (warehouse.) Tj T* (- Moved nightly sales reconciliation from a 6-hour cron script to an incremental dbt model that) Tj T* (finishes in 40 minutes.) Tj T* (- Introduced data contracts between the point-of-sale team and analytics, cutting schema-break) Tj T* (incidents from about two a month to zero in two quarters.) Tj T* (- Mentor two junior engineers and run the fortnightly pipeline review.) Tj T* (Data Engineer) Tj T* (Bluefin Logistics, Bengaluru | July 2020 - February 2023) Tj T* (- Built the Kafka ingestion layer for shipment tracking events, handling around 2 million) Tj T* (events per day.) Tj T* (- Wrote the Spark jobs that compute delivery-delay forecasts used by the operations dashboard.) Tj T* (- Reduced the monthly cloud bill for the analytics cluster by 30% by moving cold partitions to) Tj T* (object storage.) Tj T* (PROJECTS) Tj T* (SHELFSENSE : STOCKOUT PREDICTION) Tj T* (- Side project that predicts which store shelves will run empty in the next 48 hours from) Tj T* (point-of-sale and delivery data.) Tj T* (- Gradient-boosted model served through a small FastAPI service, retrained weekly by a GitHub) Tj T* (Actions workflow.) Tj T* (- Won second place at the 2024 Pune Retail Data Hackathon.) Tj T* (TRAILMIX : OPEN-SOURCE DATA QUALITY CHECKS) Tj T* (- A lightweight library of column-level checks \(null rate, freshness, row-count drift\) that) Tj T* (runs inside Airflow tasks.) Tj T* (- About 400 stars on GitHub; adopted by two teams outside Northwind.) Tj T* (BUSROUTE : CITY BUS DELAY TRACKER) Tj T* (- Weekend project that scrapes public bus GPS feeds and shows average delay per route on a map.) Tj T* (- Built with DuckDB and Streamlit; the whole thing runs on a Raspberry Pi at home.) Tj T* (SKILLS) Tj T* (Languages: Python, SQL, Scala, Bash) Tj T* (Data tools: Apache Airflow, dbt, Apache Spark, Apache Kafka, DuckDB) Tj T* ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 7 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+7 0 obj
+<< /Length 891 >>
+stream
+BT /F1 10 Tf 14 TL 56 740 Td (Databases: PostgreSQL, Snowflake, BigQuery, MongoDB) Tj T* (Cloud: AWS \(S3, Glue, EMR\), Google Cloud Platform) Tj T* (Practices: data modelling, data contracts, CI/CD for pipelines, on-call and incident review) Tj T* (EDUCATION) Tj T* (Bachelor of Technology in Computer Science) Tj T* (College of Engineering Pune | 2016 - 2020 | CGPA 8.4 / 10) Tj T* (Final-year thesis on anomaly detection in smart-meter electricity readings.) Tj T* (CERTIFICATIONS) Tj T* (- AWS Certified Data Analytics - Specialty \(2022\)) Tj T* (- Google Cloud Professional Data Engineer \(2024\)) Tj T* (ACHIEVEMENTS AND INTERESTS) Tj T* (- Speaker at PyCon India 2023 with the talk "Testing data pipelines like application code".) Tj T* (- Volunteers as a mentor for a weekend coding club for school students.) Tj T* (- Plays competitive table tennis at the district level.) Tj T* ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000344 00000 n 
+0000002881 00000 n 
+0000003007 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+3949
+%%EOF

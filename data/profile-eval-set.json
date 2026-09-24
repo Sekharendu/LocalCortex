@@ -1,0 +1,16 @@
+[
+  { "question": "What are Priya Sharma's projects?", "expectedSubstrings": ["SHELFSENSE", "TRAILMIX", "BUSROUTE"], "category": "section" },
+  { "question": "What programming languages does Priya Sharma know?", "expectedSubstrings": ["Languages: Python, SQL, Scala"], "category": "section" },
+  { "question": "Which databases has Priya Sharma worked with?", "expectedSubstrings": ["Databases: PostgreSQL"], "category": "section" },
+  { "question": "Where did Priya Sharma study?", "expectedSubstrings": ["College of Engineering Pune"], "category": "section" },
+  { "question": "What certifications does Priya Sharma have?", "expectedSubstrings": ["AWS Certified Data Analytics"], "category": "section" },
+  { "question": "Where does Priya Sharma work now?", "expectedSubstrings": ["Northwind Retail Analytics, Pune"], "category": "section" },
+  { "question": "What did Priya Sharma do at Bluefin Logistics?", "expectedSubstrings": ["Kafka ingestion layer"], "category": "detail" },
+  { "question": "Tell me about Priya Sharma's stockout prediction project.", "expectedSubstrings": ["run empty in the next 48 hours"], "category": "detail" },
+  { "question": "What is TrailMix?", "expectedSubstrings": ["column-level checks"], "category": "detail" },
+  { "question": "How is the bus delay tracker built?", "expectedSubstrings": ["DuckDB and Streamlit"], "category": "detail" },
+  { "question": "What was Priya Sharma's thesis about?", "expectedSubstrings": ["anomaly detection in smart-meter"], "category": "detail" },
+  { "question": "Has Priya Sharma given any conference talks?", "expectedSubstrings": ["PyCon India 2023"], "category": "detail" },
+  { "question": "How did Priya Sharma reduce schema-break incidents?", "expectedSubstrings": ["data contracts between the point-of-sale team"], "category": "detail" },
+  { "question": "What are Priya Sharma's hobbies?", "expectedSubstrings": ["table tennis"], "category": "section" }
+]

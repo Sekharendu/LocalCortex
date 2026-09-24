@@ -1,0 +1,44 @@
+Priya Sharma
+Data Engineer | Pune, India | priya.sharma@example.com | github.com/priyasharma-demo
+SUMMARY
+Data engineer with five years of experience building batch and streaming pipelines for retail analytics. Comfortable owning a pipeline from ingestion to the dashboard, and happiest when a flaky job becomes a boring one.
+EXPERIENCE
+Senior Data Engineer
+Northwind Retail Analytics, Pune | March 2023 - Present
+- Lead a team of four engineers maintaining 60+ Airflow DAGs that feed the merchandising warehouse.
+- Moved nightly sales reconciliation from a 6-hour cron script to an incremental dbt model that finishes in 40 minutes.
+- Introduced data contracts between the point-of-sale team and analytics, cutting schema-break incidents from about two a month to zero in two quarters.
+- Mentor two junior engineers and run the fortnightly pipeline review.
+Data Engineer
+Bluefin Logistics, Bengaluru | July 2020 - February 2023
+- Built the Kafka ingestion layer for shipment tracking events, handling around 2 million events per day.
+- Wrote the Spark jobs that compute delivery-delay forecasts used by the operations dashboard.
+- Reduced the monthly cloud bill for the analytics cluster by 30% by moving cold partitions to object storage.
+PROJECTS
+SHELFSENSE : STOCKOUT PREDICTION
+- Side project that predicts which store shelves will run empty in the next 48 hours from point-of-sale and delivery data.
+- Gradient-boosted model served through a small FastAPI service, retrained weekly by a GitHub Actions workflow.
+- Won second place at the 2024 Pune Retail Data Hackathon.
+TRAILMIX : OPEN-SOURCE DATA QUALITY CHECKS
+- A lightweight library of column-level checks (null rate, freshness, row-count drift) that runs inside Airflow tasks.
+- About 400 stars on GitHub; adopted by two teams outside Northwind.
+BUSROUTE : CITY BUS DELAY TRACKER
+- Weekend project that scrapes public bus GPS feeds and shows average delay per route on a map.
+- Built with DuckDB and Streamlit; the whole thing runs on a Raspberry Pi at home.
+SKILLS
+Languages: Python, SQL, Scala, Bash
+Data tools: Apache Airflow, dbt, Apache Spark, Apache Kafka, DuckDB
+Databases: PostgreSQL, Snowflake, BigQuery, MongoDB
+Cloud: AWS (S3, Glue, EMR), Google Cloud Platform
+Practices: data modelling, data contracts, CI/CD for pipelines, on-call and incident review
+EDUCATION
+Bachelor of Technology in Computer Science
+College of Engineering Pune | 2016 - 2020 | CGPA 8.4 / 10
+Final-year thesis on anomaly detection in smart-meter electricity readings.
+CERTIFICATIONS
+- AWS Certified Data Analytics - Specialty (2022)
+- Google Cloud Professional Data Engineer (2024)
+ACHIEVEMENTS AND INTERESTS
+- Speaker at PyCon India 2023 with the talk "Testing data pipelines like application code".
+- Volunteers as a mentor for a weekend coding club for school students.
+- Plays competitive table tennis at the district level.

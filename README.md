@@ -238,7 +238,7 @@ All optional — sensible defaults work for the standard `docker compose up -d` 
 
 **Swapping the embedding model**: this is the one override that needs *two* env vars together — `OLLAMA_EMBED_MODEL=...` AND `OLLAMA_EMBED_DIM=...`. The dim mismatch guard will throw `EmbeddingError` with an actionable message if they disagree.
 
-**Re-ingest after changing embeddings**: changing `OLLAMA_EMBED_MODEL` or `OLLAMA_EMBED_PREFIXES` changes every vector, so existing collections must be dropped and re-ingested (`curl -X DELETE localhost:6333/collections/rag`, then `POST /ingest` again). Collections created before hybrid search (single unnamed vector) also need re-ingesting.
+**Re-ingest after changing embeddings**: changing `OLLAMA_EMBED_MODEL` or `OLLAMA_EMBED_PREFIXES` changes every vector, so existing collections must be dropped and re-ingested (`curl -X DELETE localhost:6333/collections/rag`, then `POST /ingest` again). Collections created before hybrid search (single unnamed vector) also need re-ingesting. The same goes for documents ingested before the heading-split fix and automatic title headers (and `.docx` files ingested before Word headings were kept): delete them in the Documents panel and upload them again.
 
 ## Project layout
 

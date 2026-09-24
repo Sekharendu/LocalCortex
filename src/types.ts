@@ -53,6 +53,8 @@ export interface ChunkPayload {
   page?: number;
   chunkIndex: number;
   documentId: string;
+  /** "Title › Section" embedded above the text when ingested with contextHeaders. */
+  section?: string;
 }
 
 /**

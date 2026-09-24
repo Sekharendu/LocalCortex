@@ -1,12 +1,20 @@
 import { randomUUID } from "node:crypto";
 import path from "node:path";
 import { loadDocument } from "./loader.js";
-import { chunkText, type ChunkStrategy } from "./chunker.js";
+import {
+  chunkText,
+  contextHeader,
+  documentTitle,
+  hasHeadingStructure,
+  headingsAt,
+  type ChunkStrategy,
+} from "./chunker.js";
 import { embedBatch } from "../retrieval/embedder.js";
 import { ensureCollection, upsertChunks, type ChunkPoint } from "../retrieval/vectorStore.js";
 import { sparseVectorFor, type SparseVector } from "../retrieval/sparse.js";
 import { getAvgDocLength, recordChunks } from "../retrieval/sparseStats.js";
 import { addDocument } from "../documentStore.js";
+import { ingestConfig } from "../config.js";
 import type { Chunk } from "../types.js";
 
 const DEFAULT_COLLECTION = process.env.QDRANT_COLLECTION ?? "rag";
@@ -25,6 +33,14 @@ export interface IngestOptions {
   collection?: string;
   concurrency?: number;     // embedBatch
   originalName?: string;    // original filename (used in citations + document record)
+  /** Embed "Title › Section" above each chunk's text; stored as payload.section.
+   * Defaults to ingestConfig.contextHeaders ("auto": only when the document has fewer
+   * than 2 markdown headings of its own). Pass true/false to force it either way. */
+  contextHeaders?: boolean;
+  /** Recursive only: no "#"-only or heading-only chunks (see chunkRecursive). Defaults
+   * to true -- it's a bug fix, not a variant, so there's no reason to run without it
+   * except reproducing pre-fix comparison numbers. */
+  fixHeadingSplit?: boolean;
 }
 
 export type IngestResult =
@@ -85,21 +101,51 @@ export async function ingestDocument(
   );
 
   // Stage 2: chunk (per loaded page; renumber globally across the document)
-  let chunks: (Chunk & { page?: number })[] = [];
+  let chunks: (Chunk & { page?: number; section?: string })[] = [];
+  let fullText = "";
+  let title = "";
   try {
     const chunkOptions =
       strategy === "fixed"
         ? { size: options.size ?? DEFAULT_SIZE, overlapPercent: options.overlapPercent ?? DEFAULT_OVERLAP_PERCENT }
         : strategy === "semantic"
           ? { similarityThreshold: options.similarityThreshold ?? DEFAULT_SIMILARITY_THRESHOLD }
-          : { maxSize: options.maxSize ?? DEFAULT_MAX_SIZE };
+          : {
+              maxSize: options.maxSize ?? DEFAULT_MAX_SIZE,
+              fixHeadingSplit: options.fixHeadingSplit ?? true,
+            };
 
+    const pageTexts = loadResult.documents.map((d) => d.pageContent);
+    title = documentTitle(pageTexts[0] ?? "", path.parse(sourceName).name);
+    fullText = pageTexts.join("\n\n");
+    // Resolve whether this document gets a "Title › Section" prefix: an explicit
+    // true/false wins; otherwise ingestConfig.contextHeaders ("auto" by default) decides
+    // per-document from its own structure -- a document with its own headings (the
+    // handbook, most .md files) gets none, one without (a resume, plain-text) gets one.
+    const contextHeaders =
+      options.contextHeaders ??
+      (ingestConfig.contextHeaders === "1"
+        ? true
+        : ingestConfig.contextHeaders === "0"
+          ? false
+          : !hasHeadingStructure(fullText));
+    log(`context headers: ${contextHeaders ? "on" : "off"} (${ingestConfig.contextHeaders})`);
+    let carry: string[] = []; // headings in effect at the end of the previous page
     let globalIndex = 0;
-    for (const doc of loadResult.documents) {
-      const pageChunks = await chunkText(doc.pageContent, strategy, chunkOptions);
+    for (const [p, doc] of loadResult.documents.entries()) {
+      const text = pageTexts[p];
+      const pageChunks = await chunkText(text, strategy, chunkOptions);
+      let from = 0;
       for (const c of pageChunks) {
-        chunks.push({ text: c.text, chunkIndex: globalIndex++, page: doc.metadata.page });
+        let section: string | undefined;
+        if (contextHeaders) {
+          const at = text.indexOf(c.text, from);
+          if (at >= 0) from = at + 1;
+          section = contextHeader(title, headingsAt(text, at >= 0 ? at : from, carry));
+        }
+        chunks.push({ text: c.text, chunkIndex: globalIndex++, page: doc.metadata.page, section });
       }
+      carry = headingsAt(text, text.length, carry);
     }
   } catch (e) {
     return {
@@ -117,13 +163,13 @@ export async function ingestDocument(
   // Stage 3: embed (dense via Ollama; sparse is pure/local -- no network call)
   let vectors: number[][];
   let sparseVectors: SparseVector[];
+  // With a header, the embedded text names the document and section, so a chunk that never
+  // mentions them ("SKILLS ... Python, SQL") still matches a question that does.
+  const embedTexts = chunks.map((c) => (c.section ? `${c.section}\n\n${c.text}` : c.text));
   try {
-    vectors = await embedBatch(
-      chunks.map((c) => c.text),
-      options.concurrency ?? DEFAULT_EMBED_CONCURRENCY,
-    );
+    vectors = await embedBatch(embedTexts, options.concurrency ?? DEFAULT_EMBED_CONCURRENCY);
     const avgDocLength = await getAvgDocLength();
-    sparseVectors = chunks.map((c) => sparseVectorFor(c.text, avgDocLength));
+    sparseVectors = embedTexts.map((t) => sparseVectorFor(t, avgDocLength));
   } catch (e) {
     return {
       success: false,
@@ -145,6 +191,7 @@ export async function ingestDocument(
       page: c.page,
       chunkIndex: c.chunkIndex,
       documentId,
+      ...(c.section ? { section: c.section } : {}),
     },
   }));
   try {

@@ -71,6 +71,35 @@ describe("ingestDocument", () => {
     120_000,
   );
 
+  test.skipIf(!stackUp)(
+    "auto contextHeaders: a document with no headings of its own gets a Title section prefix",
+    async () => {
+      // data/sample.txt has no markdown headings, so ingestConfig.contextHeaders="auto"
+      // (the default, not overridden here) should add a "Title" section to every chunk.
+      const result = await ingestDocument("data/sample.txt", {
+        strategy: "recursive",
+        collection: TEST_COLLECTION,
+      });
+      expect(result.success).toBe(true);
+      if (!result.success) return;
+
+      const scrolled = await client.scroll(TEST_COLLECTION, {
+        filter: { must: [{ key: "documentId", match: { value: result.documentId } }] },
+        with_payload: true,
+        limit: 10,
+      });
+      expect(scrolled.points.length).toBeGreaterThan(0);
+      for (const point of scrolled.points) {
+        expect(typeof point.payload?.section).toBe("string");
+        expect((point.payload?.section as string).length).toBeGreaterThan(0);
+      }
+
+      await deleteByDocumentId(TEST_COLLECTION, result.documentId);
+      await deleteDocument(result.documentId);
+    },
+    120_000,
+  );
+
   test("returns a typed load-stage failure for a missing file", async () => {
     // This test does not need the live stack -- load failure is local I/O.
     const result = await ingestDocument("data/does-not-exist.txt", {
