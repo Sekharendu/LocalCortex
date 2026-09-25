@@ -22,6 +22,29 @@ export const retrievalConfig = {
   fusion: (process.env.RETRIEVE_FUSION === "dbsf" ? "dbsf" : "rrf") as "rrf" | "dbsf",
 };
 
+// What the model is shown for the chunks retrieval found (src/retrieval/context.ts). All
+// sizes are llama3 tokens (counted with llama3-tokenizer-js), not characters: characters
+// per token ran 4.3 on the resume and 5.7 on the handbook, so a character cap misfits.
+export const contextConfig = {
+  // RETRIEVE_EXPAND_CONTEXT=0: show the retrieved chunks as-is (best first), for comparisons.
+  expand: process.env.RETRIEVE_EXPAND_CONTEXT !== "0",
+  // A matched document at most this long goes into the prompt whole; longer ones
+  // contribute their matched chunks plus one neighbour each side, in reading order.
+  // scripts/check-answers.ts: whole resume (~650-750 tokens) = hits + neighbours on
+  // answers; the whole handbook (1,116, near-duplicate sections) lost one answer at 1500.
+  wholeDocMaxTokens: Number(process.env.WHOLE_DOC_MAX_TOKENS ?? 1000),
+  // Most a longer document may add (hits first, then its title chunk, then neighbours).
+  // Uncapped, 48-page PDFs sent 2,000-2,650 tokens: 2x the latency, and one answer buried.
+  // 0 = no cap.
+  chunkedDocMaxTokens: Number(process.env.CHUNKED_DOC_MAX_TOKENS ?? 1200) || Infinity,
+  // CONTEXT_TITLE_CHUNK=0: don't add a chunked document's first chunk (title, authors).
+  titleChunk: process.env.CONTEXT_TITLE_CHUNK !== "0",
+  // Pinned rather than left to Ollama's default (4096 on 0.31, llama3 supports 8192) so the
+  // context budget can't silently change with an Ollama upgrade.
+  numCtx: Number(process.env.OLLAMA_NUM_CTX ?? 4096),
+  answerReserveTokens: Number(process.env.ANSWER_RESERVE_TOKENS ?? 512),
+};
+
 export const ingestConfig = {
   // "auto" (default): a document with fewer than 2 markdown headings gets a "Title ›
   // Section" prefix embedded above each chunk (see hasHeadingStructure); a document that

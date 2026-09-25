@@ -1,4 +1,5 @@
 import { GenerationError } from "../errors.js";
+import { contextConfig } from "../config.js";
 
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
 const GEN_MODEL = process.env.OLLAMA_GEN_MODEL ?? "llama3";
@@ -24,7 +25,10 @@ If the context does not contain enough information, you explicitly say "The prov
 If no context was provided at all, you explicitly say "I could not find any relevant information in the knowledge base to answer this question."
 You never speculate, fabricate, or guess.
 
-When you can answer, start with the answer itself, as if you simply know it. Answer in full sentences and include any conditions, limits or exceptions the context gives (for example "Yes, up to three days per week, with your manager's approval." rather than just "Yes."). Do not mention the context, the passages, or any file names, and do not describe how you found the answer (no "According to...", "Based on the provided context...", "The answer would be..."). Do not add a sources line: the user is shown the sources separately.`;
+When you can answer, start with the answer itself, as if you simply know it. Answer in full sentences and include any conditions, limits or exceptions the context gives (for example "Yes, up to three days per week, with your manager's approval." rather than just "Yes."). Do not mention the context, the passages, or any file names, and do not describe how you found the answer (no "According to...", "Based on the provided context...", "The answer would be..."). Do not add a sources line: the user is shown the sources separately. Never answer with just a name or a bare yes/no: when the question asks who or what someone or something is, describe them with the key facts the context gives (for a person: their role, work and background).`;
+
+// Pinned so the context budget (contextBudget in rag.ts) matches the window Ollama loads.
+const BASE_OPTIONS = { num_ctx: contextConfig.numCtx };
 
 interface GenerateResponse {
   response?: string;
@@ -126,7 +130,7 @@ export async function generate(prompt: string, opts: GenerateOptions = {}): Prom
         prompt,
         system: opts.system ?? RAG_SYSTEM_PROMPT,
         stream: false,
-        ...(opts.options ? { options: opts.options } : {}),
+        options: { ...BASE_OPTIONS, ...opts.options },
       }),
       signal: controller.signal,
     });
@@ -195,6 +199,7 @@ export async function* generateStream(prompt: string, signal?: AbortSignal): Asy
         prompt,
         system: RAG_SYSTEM_PROMPT,
         stream: true,
+        options: BASE_OPTIONS,
       }),
       signal: signal ? AbortSignal.any([controller.signal, signal]) : controller.signal,
     });

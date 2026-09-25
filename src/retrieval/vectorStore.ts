@@ -253,6 +253,28 @@ export async function countByDocumentId(collection: string, documentId: string):
   }
 }
 
+/** Every chunk payload of `documentId`, in reading order (chunkIndex). */
+export async function chunksByDocumentId(collection: string, documentId: string): Promise<ChunkPayload[]> {
+  const out: ChunkPayload[] = [];
+  try {
+    let offset: string | number | null | undefined = undefined;
+    do {
+      const page: Awaited<ReturnType<typeof client.scroll>> = await client.scroll(collection, {
+        limit: 256,
+        offset,
+        filter: { must: [{ key: "documentId", match: { value: documentId } }] },
+        with_payload: true,
+        with_vector: false,
+      });
+      for (const p of page.points) if (p.payload) out.push(p.payload as unknown as ChunkPayload);
+      offset = page.next_page_offset as string | number | null | undefined;
+    } while (offset !== null && offset !== undefined);
+  } catch (e) {
+    throw new CollectionError(`Failed to read documentId='${documentId}' from '${collection}'`, { cause: e });
+  }
+  return out.sort((a, b) => a.chunkIndex - b.chunkIndex);
+}
+
 export async function listCollections(): Promise<string[]> {
   try {
     return (await client.getCollections()).collections.map((c) => c.name);

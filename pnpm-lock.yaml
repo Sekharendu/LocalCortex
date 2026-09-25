@@ -20,6 +20,9 @@ importers:
       express:
         specifier: ^4.19.2
         version: 4.22.2
+      llama3-tokenizer-js:
+        specifier: ^1.2.0
+        version: 1.2.0
       mammoth:
         specifier: ^1.12.0
         version: 1.12.0
@@ -988,6 +991,9 @@ packages:
   lightningcss@1.33.0:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
+
+  llama3-tokenizer-js@1.2.0:
+    resolution: {integrity: sha512-oMgIgK958UlvoEm3Lz/gAj3QAKpnAMb6YqlY0aTYraSK/c+V3TF3P7IWFQJe4yjM60+2/KoK+EWziec6WQ57/g==}
 
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
@@ -2261,9 +2267,9 @@ snapshots:
 
   extend@3.0.2: {}
 
-  fdir@6.5.0(picomatch@4.0.5):
+  fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:
-      picomatch: 4.0.5
+      picomatch: 4.0.7
 
   finalhandler@1.3.2:
     dependencies:
@@ -2443,6 +2449,8 @@ snapshots:
       lightningcss-linux-x64-musl: 1.33.0
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
+
+  llama3-tokenizer-js@1.2.0: {}
 
   longest-streak@3.1.0: {}
 
@@ -3183,8 +3191,8 @@ snapshots:
 
   tinyglobby@0.2.17:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.5)
-      picomatch: 4.0.5
+      fdir: 6.5.0(picomatch@4.0.7)
+      picomatch: 4.0.7
 
   tinyrainbow@3.1.0: {}
 

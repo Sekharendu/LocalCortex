@@ -11,6 +11,12 @@ import type { RetrievedChunk } from "../retrieval/retriever.js";
 
 export const WITH_CONTEXT_INSTRUCTION = `Answer the question using ONLY the context passages provided below. If the context does not contain enough information to answer fully, say "The provided context is insufficient to answer this question." Otherwise, start directly with the answer in plain language, without mentioning the context, the passages or any sources.`;
 
+// Repeated right before the question: with 1,500-2,600-token contexts from big documents
+// llama3 lost the opening instruction by the end (bare "Economy class." answers, an
+// "According to the provided context" opener, a dropped "after 90 days" condition, one
+// answer that was in the passages refused). SESSION-LOG §27.
+export const ANSWER_REMINDER = `Reminder: if the passages above answer the question, answer it in full sentences, keep any conditions or limits they give, and do not mention the passages or the context. Only if they do not answer it, say "The provided context is insufficient to answer this question."`;
+
 export const NO_CONTEXT_INSTRUCTION = `No relevant context was found in the knowledge base for this question. Tell the user explicitly that no relevant information was found. Do not attempt to answer from general knowledge.`;
 
 const CONTEXT_SEPARATOR = "\n\n---\n\n";
@@ -66,5 +72,5 @@ export function buildPrompt(question: string, chunks: RetrievedChunk[], history:
       ? `Conversation so far (for resolving references only; answer from the Context above):\n${formatHistory(history)}\n\n`
       : "";
 
-  return `${WITH_CONTEXT_INSTRUCTION}\n\nContext:\n${contextBlock}\n\n${historyBlock}Question: ${question}\nAnswer:`;
+  return `${WITH_CONTEXT_INSTRUCTION}\n\nContext:\n${contextBlock}\n\n${historyBlock}${ANSWER_REMINDER}\n\nQuestion: ${question}\nAnswer:`;
 }

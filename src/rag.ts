@@ -1,13 +1,17 @@
 import { retrieve, type RetrievedChunk, type RetrieveOptions } from "./retrieval/retriever.js";
 import { buildPrompt, type HistoryMessage } from "./generation/promptBuilder.js";
-import { generate, generateStream } from "./generation/llm.js";
+import { generate, generateStream, RAG_SYSTEM_PROMPT } from "./generation/llm.js";
 import { rewriteFollowUp } from "./generation/rewrite.js";
-import { rewriteConfig } from "./config.js";
+import { countTokens } from "./generation/tokens.js";
+import { assembleContext } from "./retrieval/context.js";
+import { contextConfig, retrievalConfig, rewriteConfig } from "./config.js";
 import type { Citation } from "./types.js";
 
 export interface RetrieveForQuestionResult {
   prompt: string;
   chunks: RetrievedChunk[];
+  /** What the prompt's Context block holds (src/retrieval/context.ts). */
+  passages: RetrievedChunk[];
   /** For follow-ups: the standalone question retrieval searched with, when rewriting succeeded. */
   searchQuestion?: string;
 }
@@ -85,9 +89,37 @@ export async function retrieveForQuestion(
       ? await retrieve(searchQuestion, retrieveOptions)
       : await retrieve(question, { ...retrieveOptions, previousQuestion });
   }
-  // The model still sees the user's own words plus the history.
-  const prompt = buildPrompt(question, chunks, history);
-  return { prompt, chunks, searchQuestion };
+  // The model still sees the user's own words plus the history. It reads the assembled
+  // passages (whole small documents, or hits plus neighbours); citations still come from
+  // the chunks retrieval returned.
+  const passages =
+    contextConfig.expand && chunks.length > 0
+      ? await assembleContext(chunks, {
+          collection: retrieveOptions.collection ?? retrievalConfig.collection,
+          budgetTokens: contextBudget(question, history),
+          wholeMaxTokens: contextConfig.wholeDocMaxTokens,
+          chunkedMaxTokens: contextConfig.chunkedDocMaxTokens,
+          titleChunk: contextConfig.titleChunk,
+        })
+      : chunks;
+  const prompt = buildPrompt(question, passages, history);
+  return { prompt, chunks, passages, searchQuestion };
+}
+
+/** Ollama's llama3 chat template around system + prompt (header tokens, BOS, EOT). */
+const TEMPLATE_OVERHEAD_TOKENS = 32;
+
+/** llama3 tokens left for context passages in this request's num_ctx window. */
+export function contextBudget(question: string, history: HistoryMessage[]): number {
+  // The prompt with one empty passage is everything except the passages themselves.
+  const skeleton = buildPrompt(question, [{ text: "", source: "", score: 0 }], history);
+  return (
+    contextConfig.numCtx -
+    TEMPLATE_OVERHEAD_TOKENS -
+    countTokens(RAG_SYSTEM_PROMPT) -
+    countTokens(skeleton) -
+    contextConfig.answerReserveTokens
+  );
 }
 
 /**

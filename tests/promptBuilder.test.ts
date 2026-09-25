@@ -5,6 +5,7 @@ import {
   HISTORY_MAX_MESSAGES,
   HISTORY_MAX_ASSISTANT_CHARS,
   NO_CONTEXT_INSTRUCTION,
+  ANSWER_REMINDER,
   type HistoryMessage,
 } from "../src/generation/promptBuilder.js";
 import type { RetrievedChunk } from "../src/retrieval/retriever.js";
@@ -75,5 +76,18 @@ describe("formatHistory", () => {
     const [userLine, assistantLine] = out.split("\n");
     expect(userLine).toBe(`User: ${longText}`);
     expect(assistantLine).toBe(`Assistant: ${"x".repeat(HISTORY_MAX_ASSISTANT_CHARS)}…`);
+  });
+});
+
+describe("buildPrompt answer reminder", () => {
+  test("repeats the rules after the context and history, right before the question", () => {
+    const prompt = buildPrompt("And after five years?", [chunk], history);
+    const reminder = prompt.indexOf(ANSWER_REMINDER);
+    expect(reminder).toBeGreaterThan(prompt.indexOf("Conversation so far"));
+    expect(prompt.indexOf("Question: And after five years?")).toBeGreaterThan(reminder);
+  });
+
+  test("is left out when there is no context", () => {
+    expect(buildPrompt("Q?", [])).not.toContain(ANSWER_REMINDER);
   });
 });

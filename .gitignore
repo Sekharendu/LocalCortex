@@ -10,6 +10,8 @@ data/nearmiss-check-*.json
 data/sparse-stats.json
 data/halluc-results-*.json
 data/answer-style-*.json
+data/answer-check-*.json
+data/answer-check-*.jsonl
 data/chunking-compare-*.json
 *.log
 .env

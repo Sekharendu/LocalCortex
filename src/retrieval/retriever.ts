@@ -17,6 +17,9 @@ export interface RetrievedChunk {
   source: string;
   page?: number;
   score: number;
+  /** Locate the chunk in its document, so context assembly can add its neighbours. */
+  documentId?: string;
+  chunkIndex?: number;
 }
 
 export interface RetrieveOptions {
@@ -148,6 +151,8 @@ export async function retrieve(
       source: payload.source ?? "",
       page: payload.page,
       score: h.score,
+      documentId: payload.documentId,
+      chunkIndex: payload.chunkIndex,
     };
   });
 
