@@ -1,0 +1,185 @@
+import { Measured } from "../../components/Measured";
+
+Every change below was measured with the same scripts before and after, on the same questions. Some were kept, many were not. The full notes are in `SESSION-LOG.md` in the repository.
+
+The test sets used throughout (sizes and the test machine are in [What it was tested on](/evaluation/measuring-quality#what-it-was-tested-on)):
+
+| Test set | What it is | Questions |
+|---|---|---|
+| Handbook | A handwritten 20-section employee handbook, including 5 near-duplicate sections meant to confuse the search | 58 |
+| 4 documents | Four longer policy documents (handbook, IT security, engineering, legal), about 117 chunks | 55 |
+| Resume | A fictional one-page resume, as `.txt` and `.pdf` | 14 |
+
+"Right first" means the passage that holds the answer was the first search result.
+
+## Kept
+
+### 1. Task prefixes
+
+`nomic-embed-text` expects the label `search_query: ` before questions and `search_document: ` before passages. Adding them was the biggest single improvement on the project, and costs nothing.
+
+<Measured
+  source="scripts/evaluate-retrieval.ts (4 documents)"
+  stats={[
+    { label: "right first", before: "47 / 55", value: "50 / 55" },
+    { label: "right passage in the top 5", before: "54 / 55", value: "55 / 55" },
+  ]}
+/>
+
+### 2. A measured relevance threshold
+
+The cut-off of 0.63 comes from running answerable and general-knowledge questions and placing it in the gap between their scores (0.640 vs 0.567). See [Finding the right passages](/how-it-works/retrieval#the-relevance-threshold-when-to-say-i-dont-know).
+
+<Measured
+  source="scripts/calibrate-threshold.ts"
+  stats={[
+    { label: "real questions refused (of 113)", value: "0" },
+    { label: "unrelated questions answered (of 20)", value: "0" },
+  ]}
+/>
+
+### 3. Keeping headings with their text
+
+A splitting bug could cut a long section inside its own `##` marker, leaving chunks with nothing but a heading.
+
+<Measured
+  source="scripts/compare-chunking.ts (4 documents)"
+  stats={[
+    { label: "chunks", before: "208", value: "117" },
+    { label: "heading-only chunks", before: "61", value: "0" },
+    { label: "search scores", value: "unchanged" },
+  ]}
+/>
+
+### 4. Automatic title headers
+
+Documents with fewer than two headings get a "Title › Section" label embedded above each chunk.
+
+<Measured
+  source="scripts/compare-chunking.ts"
+  stats={[
+    { label: "resume (.txt), right first", before: "5 / 14", value: "8 / 14" },
+    { label: "resume (.pdf), right first", before: "5 / 14", value: "9 / 14" },
+    { label: "handbook and 4 documents", value: "unchanged" },
+  ]}
+/>
+
+On structured documents the same label cost one refusal per test set, which is why it's only added when a document has no headings of its own.
+
+### 5. Whole small documents, neighbours for big ones
+
+The model reads short documents whole, and long ones as matching passages plus the passages around them, with the title page and a 1,200-token cap per document. See [Answering](/how-it-works/answering#what-the-model-reads).
+
+<Measured
+  source="scripts/check-answers.ts (same questions, old vs new context)"
+  stats={[
+    { label: "resume questions answered correctly", before: "17 / 25", value: "22 / 25" },
+    { label: "all mixed-document questions", before: "119 / 140", value: "125 / 140" },
+    { label: "time per answer on long documents", value: "≈ 2× slower" },
+  ]}
+>
+
+A follow-up round added the title page, the per-document cap and a reminder of the rules just before the question. Of 14 questions the first version still got wrong, 8 became correct; all 17 it already got right stayed right.
+
+</Measured>
+
+### 6. Rewriting follow-up questions
+
+Questions like "tell me more about her" are rewritten into standalone questions before searching, with guard rails against wrong rewrites. See [Follow-up questions](/how-it-works/memory).
+
+<Measured
+  source="scripts/evaluate-followups.ts"
+  stats={[
+    { label: "two-turn follow-ups, right first", before: "10 / 13", value: "11 / 13" },
+    { label: "three-question pronoun chains", before: "2 / 4", value: "4 / 4" },
+    { label: "off-topic follow-ups let through", value: "0 / 6" },
+  ]}
+/>
+
+## Built, measured, not the default
+
+### 7. Hybrid search (vector + keyword)
+
+Still in the code (`RETRIEVE_MODE=hybrid`), but it never beat plain vector search. Common words, plural forms and terms like "401(k)" pulled the keyword side to wrong sections. See [Why plain vector search](/how-it-works/retrieval#why-plain-vector-search-not-hybrid-search).
+
+<Measured source="scripts/evaluate-retrieval.ts">
+
+| Test set | Vector | Hybrid |
+|---|---|---|
+| Handbook, first try | **56** / 58 | 54 / 58 |
+| 4 documents, first try | **47** / 55 | 43 / 55 |
+| Both, with all fixes and task prefixes | **105** / 113 | **105** / 113 |
+
+</Measured>
+
+### 8. A different way to merge hybrid results (DBSF)
+
+The default merge uses rank positions only. DBSF combines the actual scores instead, which should let a confident vector result win. It fixed some questions and broke about as many others.
+
+<Measured
+  source="scripts/evaluate-retrieval.ts, right first"
+  stats={[
+    { label: "handbook: vector / hybrid / hybrid with DBSF", value: "56 / 55 / 56" },
+    { label: "4 documents: vector / hybrid / hybrid with DBSF", value: "47 / 47 / 46" },
+  ]}
+/>
+
+## Removed
+
+### 9. Semantic chunking
+
+Cuts where the topic seems to change between sentences. It only cuts at `.`, `!` or `?`, so bullet lists were glued together, and the handbook became 48 scraps. It needs one AI call per sentence.
+
+<Measured source="scripts/compare-chunking.ts (handbook + resume)">
+
+| Test | Recursive (default) | Semantic |
+|---|---|---|
+| Handbook, right first | 55 / 58 | 56 / 58 |
+| Handbook, answerable questions refused | 0 | 1 |
+| Resume, right first | 8 / 14 | 3 / 14 |
+| Resume, right passage in the top 5 | 14 / 14 | 13 / 14 |
+
+</Measured>
+
+Recursive stays the default because semantic never answered better: about the same ranking on the handbook but one wrong refusal, clearly worse on the resume, and one AI call per sentence. (Semantic is still available through the API.)
+
+### 10. Detecting headings from plain lines
+
+Treating short Title Case or ALL CAPS lines as headings, for documents without `#` markers. On its own it made the resume slightly worse and changed nothing elsewhere; too easy to mistake an ordinary line for a heading.
+
+<Measured
+  source="scripts/compare-chunking.ts"
+  stats={[
+    { label: "resume (.txt), right first", before: "5 / 14", value: "4 / 14" },
+    { label: "handbook and 4 documents", value: "unchanged" },
+  ]}
+/>
+
+### 11. Bigger chunks (800 characters) with small leftovers merged
+
+Fewer, larger chunks, so each one carries more context. It blurred the section boundaries of structured documents, and the model started refusing questions it could answer.
+
+<Measured
+  source="scripts/compare-chunking.ts (handbook)"
+  stats={[
+    { label: "right first", before: "55 / 58", value: "51 / 58" },
+    { label: "answerable questions refused", before: "0", value: "6" },
+  ]}
+/>
+
+### 12. AI-written context for each chunk (Contextual Retrieval)
+
+`llama3` wrote a sentence of context for every chunk. Better at putting the right passage first, but far too slow on a CPU, and one vague sentence pushed its chunk out of the results entirely.
+
+<Measured
+  source="scripts/compare-chunking.ts (resume, 7 chunks)"
+  stats={[
+    { label: "upload time", before: "24 s", value: "218 s" },
+    { label: "right first", before: "5 / 14", value: "12 / 14" },
+    { label: "right passage in the top 5", before: "14 / 14", value: "12 / 14" },
+  ]}
+/>
+
+The top-5 number decides whether the model can see the answer at all, so this one lost where it matters. The simple title header was kept instead.
+
+[How quality is measured](/evaluation/measuring-quality) explains the scripts behind these numbers.

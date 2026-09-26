@@ -1,0 +1,115 @@
+import { Callout } from "../../components/Callout";
+import { Measured } from "../../components/Measured";
+
+When you ask a question, LocalCortex turns it into a vector the same way it did for your documents. It then looks for the chunks whose vectors are closest to it. Each chunk gets a **score** from 0 to 1 for how closely it matches: around 0.8 is a strong match, and under 0.6 usually means "not really about this".
+
+This page explains how that search works, and how LocalCortex decides that **nothing** in your documents answers a question.
+
+## The relevance threshold: when to say "I don't know"
+
+This is the most important number in LocalCortex.
+
+A question only gets passages from your documents if its best match scores at least **0.63**. If nothing reaches 0.63, the model gets no passages at all and says it couldn't find the answer. It doesn't get a chance to guess.
+
+**0.63 was measured, not guessed.** Real questions about the test documents and general-knowledge questions ("What is the capital of France?") were run through the search, and their best scores were compared:
+
+- Questions the documents **can** answer: the lowest best score was **0.640**.
+- General questions they **can't** answer: the highest best score was **0.567**.
+
+0.63 sits in the **gap** between the two, so every real question gets through and every general question is stopped.
+
+**Why 0.63 and not 0.64?** 0.640 is only the lowest score among *our* test questions. A new question could score a little lower, so the line sits just below it to leave some room. It isn't set lower still, because every step down lets through more look-alike questions (see the table below: 39 at 0.59, 26 at 0.63).
+
+<Measured source="scripts/calibrate-threshold.ts">
+
+| Threshold | Real refused (of 113) | Unrelated answered (of 20) | Look-alike answered (of 58) |
+|---|---|---|---|
+| 0.59 | 0 | 0 | 39 |
+| **0.63** (default) | **0** | **0** | 26 |
+| 0.70 | 9 | 0 | 6 |
+
+- **Real questions:** ones the documents answer.
+- **Unrelated questions:** general knowledge, like "What is the capital of France?".
+- **Look-alike questions:** sound like they belong in the documents but aren't answered there, like "What is the parking reimbursement?" asked of an HR handbook.
+
+</Measured>
+
+The hard case is the last column, the look-alike questions. Their scores overlap with real questions, so no threshold can stop them all without also blocking real ones. For those, a second safety net takes over: the model is told to answer only from the passages and to say so when they don't contain the answer.
+
+<Measured
+  source="production path, 29 look-alike questions"
+  stats={[
+    { label: "got no passages at all (stopped by 0.63)", value: "14" },
+    { label: "got passages, and the model correctly said it didn't know", value: "15 / 15" },
+    { label: "made-up answers", value: "0" },
+  ]}
+/>
+
+You can change the threshold with `RETRIEVE_SCORE_THRESHOLD`, but re-run the calibration script if you change the embedding model or your documents are very different from the test set.
+
+## Task prefixes: the biggest single improvement
+
+The embedding model, `nomic-embed-text`, was trained to see a label in front of every text: `search_query: ` before a question and `search_document: ` before a passage. Leaving the labels out still works, but the model matches questions to passages noticeably better with them. LocalCortex adds them automatically.
+
+<Measured
+  source="scripts/evaluate-retrieval.ts (4-document set, 55 questions)"
+  stats={[
+    { label: "right passage ranked first", before: "47 / 55", value: "50 / 55" },
+    { label: "right passage anywhere in the top 5", before: "54 / 55", value: "55 / 55" },
+  ]}
+>
+
+No other change tried on this project, hybrid search included, improved results this much. It also costs nothing at question time.
+
+</Measured>
+
+## Why plain vector search, not hybrid search
+
+"Hybrid search" combines vector search with old-fashioned keyword search (the kind that counts matching words). It is often recommended for search over documents, and LocalCortex has it built in (`RETRIEVE_MODE=hybrid`). It was tested thoroughly, and it never beat plain vector search, which is now the default.
+
+The keyword side kept out-voting a correct vector result:
+
+- **Common words got too much weight.** "If my role ends without any wrongdoing on my part, how much advance warning am I owed?" matched *Open Source Contributions* over *Termination Procedures*, pulled there by everyday words like "part" and "any".
+- **Word forms didn't match.** "paycheck" and "paychecks" counted as different words.
+- **Some terms were split wrongly.** "401(k)" became two separate words.
+- **It ignored how sure the vector search was.** The two results are merged by rank position only. A vector search that was barely sure (0.83 vs 0.81) and one that was very sure (0.83 vs 0.40) looked the same, so a wrong keyword match at #1 could win either way.
+
+<Measured source="scripts/evaluate-retrieval.ts">
+
+| Test set | Vector search | Hybrid search |
+|---|---|---|
+| Handbook, 58 questions (first try) | **56** right first | 54 right first |
+| 4 documents, 55 questions (first try) | **47** right first | 43 right first |
+| Both sets, after all fixes and task prefixes (113 questions) | **105** | **105** |
+
+</Measured>
+
+After fixing what could be fixed, the two tied at 105 out of 113. With no accuracy gain, the extra parts hybrid needs (a keyword index, a word-statistics file, an extra safety check) weren't worth keeping on by default.
+
+<Callout type="note">
+If you do switch to hybrid, the 0.63 threshold still applies. Hybrid scores aren't on the same 0–1 scale, so a quick vector-only check runs first, and if nothing reaches 0.63 the question gets no passages, exactly as in the default mode.
+</Callout>
+
+## Abbreviations
+
+People write "PTO" or "WFH", but a document often spells things out: "paid time off", "remote work".
+
+**Vector search (the default) handles most of this on its own.** The embedding model learned common abbreviations (CEO, FAQ, PTO, ASAP…) from the text it was trained on, so "CEO" already finds a passage that says "chief executive officer". If your document uses the abbreviation itself, it matches directly.
+
+**Keyword search (hybrid mode, off by default) can't:** it only matches exact words. For it, LocalCortex adds the full meaning next to a few known abbreviations before searching. The original word stays in the question:
+
+| You type | What gets searched |
+|---|---|
+| How much PTO do I get? | How much PTO **paid vacation time off** do I get? |
+| Can I WFH on Fridays? | Can I WFH **remote work from home** on Fridays? |
+| Who runs the EAP? | Who runs the EAP **employee assistance program wellness**? |
+
+This list is small on purpose: PTO, WFH, HQ, intl, HSA and EAP, the ones that came up in the test handbook (`src/retrieval/acronyms.ts`). "HR" and "PM" were left out because they would also fire inside "24hr" and "3pm".
+
+**Not covered:** abbreviations the model never learned, such as internal team names or project codes, when your document only spells them out. If a question like that isn't answered, ask again using the words your document uses.
+
+## More passages from the best document
+
+The 0.63 threshold decides **whether** a question has an answer, and **which document** holds it. Once a document has a passage above 0.63, its other passages are allowed in too, even if each one scores lower on its own. Passages from *other* documents still need 0.63.
+
+Why: on a resume, "What are her projects?" matched the chunk that names the person with a score of 0.76. The chunks that actually list the projects don't mention her name, and scored only 0.50–0.53. Without this rule they never reached the model. What happens with the document after that (whole document or selected passages) is covered in [Answering](/how-it-works/answering#what-the-model-reads).

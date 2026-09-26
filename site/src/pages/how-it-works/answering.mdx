@@ -1,0 +1,69 @@
+import { Measured } from "../../components/Measured";
+
+Once the search has found which documents answer a question, LocalCortex builds a prompt for the local `llama3` model: the relevant text, the conversation so far, a few rules, and your question. The model writes the answer, and it appears on screen word by word.
+
+## What the model reads
+
+The model can only read about 4,000 tokens at a time (a token is roughly ¾ of a word), and that space also has to hold the rules, the conversation and the answer itself. So LocalCortex chooses carefully what goes in:
+
+- **Short documents go in whole.** A document of up to **1,000 tokens** (about two pages, such as a resume) is given to the model complete and in order. Questions like "how many projects are there?" need the whole list, not the three best-matching pieces of it.
+- **Long documents give their best passages plus their surroundings.** For a longer document, each matching passage comes with the passage just before and just after it, in reading order. That keeps a bullet list together with the heading that says what it's a list of.
+- **The title page is always included.** For a long document, its first passage (title, authors, affiliations) is added, so "who wrote this paper?" can be answered even when that page wasn't a top match.
+- **One document can't crowd out the others.** Each long document gets at most **1,200 tokens**. If several documents match, the best-matching one goes first, and each one fills the space that's left.
+
+Right before the question, the prompt repeats the answering rules. `llama3` tends to forget instructions from the start of a long prompt, so repeating the rules there keeps the answers in the right style.
+
+<Measured
+  source="scripts/check-answers.ts (same questions, old vs new context)"
+  stats={[
+    { label: "questions about a sample resume, answered correctly", before: "17 / 25", value: "22 / 25" },
+    { label: "all mixed-document questions (resume, handbook, 3 PDFs)", before: "119 / 140", value: "125 / 140" },
+  ]}
+>
+
+Before this change, the model got only the five best-matching pieces of each document. Asked how many projects were on a resume, it answered *"at least three"*: it was counting jobs, because the project list arrived in fragments. With the whole resume in front of it, the model counts the projects correctly.
+
+**The cost:** on long documents, answers take about twice as long (a bigger prompt takes longer to read on a CPU). On short documents they're often faster.
+
+</Measured>
+
+## How the model is told to answer
+
+- **Start with the answer**, in full sentences, and keep any conditions or limits from the text ("up to three days a week, *with manager approval*").
+- **Don't talk about "the context"**: no "According to the provided passages…", no "Source:" line at the end. Sources are shown by the app itself as chips under the answer.
+- **Describe, don't just name.** "Who is X?" gets a description with the key facts, not only a name.
+
+An early version put numbered tags like `[1] (source: handbook.txt)` in front of each passage. The model then began every answer with "According to [1]…" and sometimes added its own "Source:" line, with the file name misspelled. The tags were removed. The sources you see come only from the search results, never from the model's text, so they can't be invented.
+
+<Measured
+  source="scripts/check-answer-style.ts"
+  stats={[
+    { label: "answers with \"According to…\", tags or file names (16 checked)", before: "14", value: "0" },
+    { label: "answerable questions wrongly refused", before: "3", value: "0" },
+  ]}
+/>
+
+## Saying "I don't know"
+
+If the search found nothing above the relevance threshold, the model gets a different, shorter prompt: nothing relevant was found, say so. It never sees an empty "Context" section that it might try to fill with a guess.
+
+If passages *were* found but don't actually answer the question, the rules tell the model to answer with a fixed sentence saying the information isn't there, instead of guessing.
+
+<Measured
+  source="scripts/test-hallucination.ts"
+  stats={[
+    { label: "questions on topics missing from the documents, correctly refused", value: "10 / 10" },
+    { label: "must-refuse questions in the production-style check", value: "14 / 14" },
+  ]}
+/>
+
+## Streaming and sources
+
+Answers appear word by word, as the model writes them, instead of all at once after a long wait. A few details make that reliable:
+
+- **Sources are sent first.** Before the first word, the server sends the list of documents (and PDF pages) the answer was built from. The app shows them as chips.
+- **Only real sources.** The list holds exactly the documents whose text went into the prompt, each listed once. Nothing the model writes can add to it.
+- **Problems before the answer starts get a clear error.** The search and prompt are prepared before anything is sent. If Ollama or Qdrant is down, you get a normal error message instead of a half-started answer.
+- **Problems in the middle are marked at the end.** Once words are streaming, the response can't be turned into an error any more. If the model fails halfway, the partial answer is kept and a line `[generation error: …]` is added at the end.
+
+Developers: the technical contract (the `X-Citations` header, status codes) is in the [HTTP API reference](/reference/api#query).

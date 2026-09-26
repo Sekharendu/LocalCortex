@@ -1,0 +1,88 @@
+import { Measured } from "../../components/Measured";
+
+In a real conversation you don't repeat yourself: after asking about someone, you ask "what about her projects?". That's easy for a person and hard for a search engine, because "her projects" on its own doesn't say whose. This page explains how LocalCortex handles follow-up questions.
+
+## The conversation the model sees
+
+Along with the passages from your documents, the model is shown the **last 6 messages** of the chat (long answers are shortened to 800 characters). That's what lets it understand "her" or "that policy" when it writes the answer.
+
+Two exceptions:
+
+- If the search found nothing relevant, the history is **left out** and the model gets the plain "I couldn't find it" prompt. Otherwise an off-topic question could get an answer spun from the earlier conversation.
+- Answers that were stopped halfway or failed are shown in the chat but **never** sent back to the model.
+
+## Step 1: does the question refer back?
+
+Before searching, LocalCortex checks the question with a simple word check. No AI is involved, so it takes no time. A question counts as a follow-up that needs rewriting if:
+
+- it contains a **referring word**: *he, him, his, she, her, hers, they, them, their, it, its, this, that, these, those, one, ones, there, same, former, latter*
+- **or** it starts with *And…, Also…, So…, What about…, How about…*
+
+| Question | Referring word? | What happens |
+|---|---|---|
+| Tell me more about **her**. | yes | sent to the model to be rewritten |
+| **What about** the second project? | yes | sent to the model to be rewritten |
+| **And** after five years? | yes | sent to the model to be rewritten |
+| Can I carry over what I don't use? | no | searched together with the previous question ([step 3](#step-3-when-theres-nothing-to-rewrite)) |
+| What is the capital of France? | no | never sent to the rewriter |
+
+The first question in a chat is always searched as it is. There's nothing earlier for it to refer to.
+
+## Step 2: rewrite it into a standalone question
+
+A question that refers back is given to `llama3`, along with the recent conversation, and turned into a question that makes sense on its own:
+
+> **You:** Who is ABC?  
+> **You:** Tell me more about **her**.  
+> **Searched as:** Tell me more about **ABC**.
+
+The rewritten question is then searched exactly like a first question, with the normal 0.63 threshold. The model still answers your own words; the rewrite is only used for the search.
+
+`llama3` isn't reliable enough to do this unsupervised. An early version sent every question to the rewriter:
+
+<Measured source="first rewriter test">
+
+After a conversation about someone's job, the question **"What is the capital of France?"** was rewritten into **"What was his employment period?"**. That's a completely different question, which would have pulled up resume passages for a geography question.
+
+</Measured>
+
+So the rewriter has guard rails:
+
+1. **Only questions that refer back are sent to it** (step 1). "What is the capital of France?" has no referring word, so it's never rewritten.
+2. **Refusals are removed** from the conversation it sees. They contain no names to resolve, and they confused it.
+3. **Its output is checked.** A rewrite is thrown away if it drops more than 40% of the question's own key words (it swapped in a different question), or if it's much longer than the question (it answered instead of rewriting). Step 3 is used instead.
+
+<Measured
+  source="scripts/evaluate-followups.ts"
+  stats={[
+    { label: "two-turn follow-ups: right passage found first", before: "10 / 13", value: "11 / 13" },
+    { label: "three-question chains of \"he / it / that\" follow-ups", before: "2 / 4", value: "4 / 4" },
+    { label: "off-topic follow-ups that got passages anyway", value: "0 / 6" },
+    { label: "time per rewrite (model already loaded)", value: "≈ 6–8 s" },
+  ]}
+/>
+
+## Step 3: when there's nothing to rewrite
+
+If a follow-up has no referring word, or the rewrite failed or was rejected, LocalCortex searches with the **previous question and the new one together**. "How many vacation days do I get?" followed by "Can I carry over what I don't use?" is searched as both sentences, so the search knows it's about vacation.
+
+This path has **two checks**, not one:
+
+1. The combined question must reach the normal threshold, **0.63**.
+2. The new question **on its own** must reach **0.57**, just above the highest score any general-knowledge question got during calibration.
+
+Without the second check, an off-topic follow-up borrows relevance from the question before it:
+
+<Measured source="scripts/evaluate-followups.ts">
+
+"What is the capital of France?", asked right after a real question about the documents, scored **0.479** on its own but **0.682** combined with the previous question. That would have cleared 0.63 and sent the model unrelated passages.
+
+| Search method | Follow-ups answered right (of 13) | Off-topic follow-ups let through (of 6) |
+|---|---|---|
+| New question alone | 4 | 0 |
+| Combined, one check | 12 | **6** |
+| Combined, both checks (default) | 10 | **0** |
+
+</Measured>
+
+The two follow-ups the default misses are very vague ("Can I carry over what I don't use?"). On their own they score lower than some off-topic questions. On the larger 4-document test set, the default gets 12 of 13 with no off-topic leaks.

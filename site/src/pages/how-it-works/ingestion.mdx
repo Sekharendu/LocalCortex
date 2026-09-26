@@ -1,0 +1,99 @@
+import { Measured } from "../../components/Measured";
+
+When you upload a file, LocalCortex does three things with it:
+
+1. **Reads the text** out of the file.
+2. **Cuts it into chunks**: short passages, usually a section or a few paragraphs each.
+3. **Turns each chunk into a vector** (a list of numbers that captures what the passage is about) and stores it, so a question can later be matched to the passages that answer it.
+
+This page covers the first two steps. Matching questions to chunks is on the next page, [Finding the right passages](/how-it-works/retrieval).
+
+## Supported files
+
+| File | How the text is read |
+|---|---|
+| `.txt`, `.md` | As-is. |
+| `.pdf` | Page by page, keeping line breaks. |
+| `.docx` | Word headings (Heading 1–6) are kept as headings, bullet lists as lists. |
+
+Two details matter here because they change how well a file is searched later:
+
+- **PDFs keep their line breaks.** An early version glued the lines of a PDF together, so text like "Skills" + "Programming" became one made-up word, `SkillsProgramming`. That confused the search and hid the section boundaries.
+- **Word files keep their headings.** A heading tells the chunker where one topic ends and the next begins, so a Word file with real Heading styles is split along its own sections.
+
+## How a file is cut into chunks
+
+You can pick one of three strategies when uploading through the API. The app always uses the default, `recursive`.
+
+| Strategy | How it cuts | Cost |
+|---|---|---|
+| `recursive` (default) | Tries the biggest natural break first (a heading), then a paragraph, a line, a sentence, a word, and only as a last resort a character. | Free, works offline |
+| `fixed` | Every N characters, with some overlap, whatever the text says. | Free, works offline |
+| `semantic` | Measures where the topic changes between sentences, and cuts there. | One AI call per sentence |
+
+**Use `recursive`.** It follows the document's own structure, it's instant, and it doesn't need the AI model. It is the right choice for a mix of documents: handbooks, resumes, papers, notes.
+
+`semantic` sounds smarter but tested worse. It only cuts at the end of a sentence (`.`, `!` or `?`), so bullet lists with no full stops were glued together, and the 20-section test handbook became 48 small scraps. One scrap read "After five years, the accrual rate increases to 20 days…" without the word *vacation*, so nothing about it said what topic it belonged to.
+
+<Measured source="scripts/compare-chunking.ts">
+
+| Test | `recursive` (default) | `semantic` |
+|---|---|---|
+| Handbook: right passage came first | 55 / 58 | 56 / 58 |
+| Handbook: answerable questions refused | 0 | 1 |
+| Resume: right passage came first | 8 / 14 | 3 / 14 |
+| Resume: right passage in the top 5 | 14 / 14 | 13 / 14 |
+
+**Why recursive is the default:** in our tests, semantic never answered better. On the handbook it ranked about the same (56 vs 55 of 58) but refused 1 answerable question (recursive: 0). On the resume it put the right passage first for 3 of 14 questions (recursive: 8). It also needs one AI call per sentence, while recursive needs none.
+
+</Measured>
+
+## Keeping headings with their text
+
+A long section is sometimes too big for one chunk, so it has to be split. An earlier version could split a section right after its own heading marker, leaving a chunk that held nothing but `##` or a heading with no text under it. Those chunks can't answer anything, and they took up search results.
+
+Now a heading always stays attached to the text that follows it. This is always on.
+
+<Measured
+  source="scripts/compare-chunking.ts"
+  stats={[
+    { label: "chunks in the 4-document test set", before: "208", value: "117" },
+    { label: "chunks that were only a heading or a # mark", before: "61", value: "0" },
+    { label: "change in search scores", value: "none" },
+  ]}
+/>
+
+## Automatic title headers
+
+Some documents have no headings at all: most PDFs, resumes, plain notes, and Word files that don't use Heading styles. A chunk from the middle of one of them often doesn't say what it's about. A list of project names doesn't mention the word "projects", and a resume section rarely repeats the person's name.
+
+So when a document has **fewer than two headings**, every chunk gets a short label like **"Resume › Projects"** added before it is turned into a vector. The label only helps the search. The text you see and the text the model reads are unchanged.
+
+Documents that already have headings don't get the label. Tests showed it made their results slightly worse: the extra words diluted short, precise sections. The choice is made from the document's text, not its file type, so a `.docx` with Heading styles is treated like a structured document and a `.txt` file without headings gets the label.
+
+<Measured
+  source="scripts/compare-chunking.ts"
+  stats={[
+    { label: "resume questions answered by the first result (.txt)", before: "5 / 14", value: "8 / 14" },
+    { label: "the same resume as a PDF", before: "5 / 14", value: "9 / 14" },
+    { label: "handbook and 4-document set", value: "unchanged" },
+    { label: "extra upload time", value: "0 s" },
+  ]}
+/>
+
+### Why not have the AI write a better header?
+
+There is a well-known technique for this.  
+*Contextual Retrieval*: the AI model reads each chunk and writes a sentence of context for it. It was built and tested here. It found the right passage first more often, but it was too slow and sometimes wrong:
+
+<Measured source="scripts/compare-chunking.ts (resume, 7 chunks)">
+
+| | Simple title header | AI-written context |
+|---|---|---|
+| Upload time for one resume | **24 s** | **218 s** (≈ 25–31 s per chunk on a CPU) |
+| Right passage ranked **first** | 8 / 14 | 12 / 14 |
+| Right passage anywhere in the **top 5** | **14 / 14** | **12 / 14** |
+
+</Measured>
+
+The top-5 number is the one that decides whether the model gets to see the answer, and there the AI version lost two questions. It described one section as *"Personal and professional accomplishments outside of technical expertise"*: that says nothing about what the section actually contains, so questions about its contents stopped finding it. A 20-page PDF would also take many minutes to upload. The simple label costs nothing and can't be wrong about what a section is called.

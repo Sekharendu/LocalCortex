@@ -1,0 +1,29 @@
+## Chats
+
+Open the app at `http://localhost:5173`. That's the default port: if it's already taken, the app starts on the next free one (such as 5174) and prints the address in the terminal where you ran `pnpm dev:web`. Your chats are listed in the sidebar, grouped into Today, Previous 7 days and Older, and each one has its own link. A new chat is only saved once you send its first message.
+
+Answers appear word by word as the model writes them, with the documents they came from shown as chips underneath. While an answer is being written, the send button turns into a **Stop** button; press it to end the answer early.
+
+The model answers one question at a time. You can switch to another chat while an answer is being written and it keeps going; the other chats show "Answering in another chat…" until it finishes.
+
+## Follow-up questions
+
+You can talk to it the way you'd talk to a person:
+
+- **"Who is ABC?"** then **"What about her projects?"**: it works out that "her" means ABC and searches for that.
+- **"How many vacation days do I get?"** then **"Can I carry over what I don't use?"**: the second question is searched together with the first, so it knows you mean vacation days.
+- **"What is the capital of France?"**, even right after a real answer: it still says it couldn't find the answer in your documents. A follow-up can't borrow relevance from the question before it.
+
+[Follow-up questions](/how-it-works/memory) explains how this works.
+
+## Uploading documents
+
+Open the **Documents** panel from the bottom of the sidebar. Drag files in, or click to browse. Supported: `.txt`, `.md`, `.pdf` and `.docx`.
+
+- Files are indexed **one at a time**. You can close the panel while that happens; it keeps going.
+- Uploading a file with the same name as an existing one asks first. Uploading it again would add a second copy, not replace the first.
+- Deleting a document removes it completely: from the list and from the search index.
+
+## Stopped answers
+
+If you press the **Stop** button, or the connection drops, the part of the answer written so far is kept and marked **interrupted**. Ask again to get a full answer. Interrupted answers are never used as memory for follow-up questions.

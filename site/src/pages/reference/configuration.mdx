@@ -1,0 +1,83 @@
+import { EnvTable } from "../../components/EnvTable";
+import { Callout } from "../../components/Callout";
+
+Every variable is optional. The defaults work with the standard `docker compose up -d` setup, so most people never need this page. Set variables in the shell before running `pnpm dev` (there is no `.env` file loading).
+
+## Core
+
+<EnvTable rows={[
+  { name: "PORT", default: "3000", purpose: "API listen port" },
+  { name: "OLLAMA_URL", default: "http://localhost:11434", purpose: "Ollama base URL" },
+  { name: "QDRANT_URL", default: "http://localhost:6333", purpose: "Qdrant base URL" },
+  { name: "DATABASE_URL", default: "postgres://…@localhost:5433/…", purpose: "Postgres holding conversations and messages" },
+]} />
+
+## Embedding & generation
+
+<EnvTable rows={[
+  { name: "OLLAMA_EMBED_MODEL", default: "nomic-embed-text", purpose: "Embedding model name" },
+  { name: "OLLAMA_EMBED_DIM", default: "768", purpose: "Expected embedding dimension — a cross-layer integrity gate" },
+  { name: "OLLAMA_EMBED_PREFIXES", default: "on", purpose: "Prepend the search_query:/search_document: task prefixes" },
+  { name: "OLLAMA_GEN_MODEL", default: "llama3", purpose: "Generation model name" },
+  { name: "OLLAMA_GEN_TIMEOUT_MS", default: "180000", purpose: "Generation request timeout" },
+  { name: "OLLAMA_NUM_CTX", default: "4096", purpose: "Context window pinned for generation, in tokens; the prompt budget is computed from it" },
+]} />
+
+## Retrieval
+
+<EnvTable rows={[
+  { name: "QDRANT_COLLECTION", default: "rag", purpose: "Default collection for ingest and retrieval" },
+  { name: "RETRIEVE_TOP_K", default: "5", purpose: "Default topK for retrieve()" },
+  { name: "RETRIEVE_SCORE_THRESHOLD", default: "0.63", purpose: "Minimum score for a question to get any context" },
+  { name: "RETRIEVE_MODE", default: "dense", purpose: "dense or hybrid" },
+  { name: "RETRIEVE_FUSION", default: "rrf", purpose: "rrf (rank-based) or dbsf (score-based), hybrid mode only" },
+]} />
+
+## What the model reads
+
+These control [context assembly](/how-it-works/answering#what-the-model-reads): how much of each matched document goes into the prompt. Sizes are in llama3 tokens.
+
+<EnvTable rows={[
+  { name: "RETRIEVE_EXPAND_CONTEXT", default: "on", purpose: "Whole small documents and neighbours for big ones. 0 = only the top chunks" },
+  { name: "WHOLE_DOC_MAX_TOKENS", default: "1000", purpose: "A matched document up to this size goes into the prompt whole" },
+  { name: "CHUNKED_DOC_MAX_TOKENS", default: "1200", purpose: "Cap on the passages a bigger document can contribute" },
+  { name: "CONTEXT_TITLE_CHUNK", default: "on", purpose: "Also include a big document's first chunk (title, authors)" },
+  { name: "ANSWER_RESERVE_TOKENS", default: "512", purpose: "Space kept free in the window for the answer" },
+]} />
+
+## Uploading
+
+<EnvTable rows={[
+  { name: "INGEST_CONTEXT_HEADERS", default: "auto", purpose: "Title header above each chunk: auto = only for documents with fewer than 2 headings, 1 = always, 0 = never" },
+]} />
+
+## Conversation memory
+
+<EnvTable rows={[
+  { name: "QUERY_REWRITE", default: "on", purpose: "Rewrite referring follow-ups into standalone questions" },
+  { name: "OLLAMA_REWRITE_MODEL", default: "OLLAMA_GEN_MODEL", purpose: "Model used for the rewrite" },
+  { name: "REWRITE_TIMEOUT_MS", default: "60000", purpose: "Rewrite timeout; falls back on timeout" },
+  { name: "RETRIEVE_FOLLOWUP_FLOOR", default: "0.57", purpose: "Minimum standalone score for the fallback follow-up path" },
+]} />
+
+## Storage & limits
+
+<EnvTable rows={[
+  { name: "DOC_STORE_PATH", default: "./data/documents.json", purpose: "Document-store JSON file location" },
+  { name: "MAX_INGEST_BYTES", default: "52428800 (50 MB)", purpose: "Upload size cap on POST /ingest" },
+]} />
+
+<Callout type="warning">
+To swap the embedding model, set **both** `OLLAMA_EMBED_MODEL` and `OLLAMA_EMBED_DIM`. If they don't match, uploads stop immediately with an error saying which dimension was expected.
+</Callout>
+
+## What forces a re-ingest
+
+Changing any of these changes the vectors already stored, so delete the affected documents and upload them again:
+
+- `OLLAMA_EMBED_MODEL`, `OLLAMA_EMBED_PREFIXES` or `INGEST_CONTEXT_HEADERS`
+- Collections created before the hybrid-search schema (they have a single unnamed vector)
+- Documents ingested before the heading-split fix or the automatic title-header feature
+- `.docx` files ingested before Word headings were preserved
+
+The "What the model reads" settings don't change stored vectors, so they take effect on the next question with no re-upload.

@@ -1,0 +1,33 @@
+import { ArchitectureDiagram } from "../../components/ArchitectureDiagram";
+
+## The pieces
+
+<ArchitectureDiagram />
+
+| Piece | What it does | Where |
+|---|---|---|
+| **Web UI** | The chat app. It calls the API through Vite's dev proxy at `/api/*`, so both share one origin and the app can read the `X-Citations` header without any CORS setup. | `web/` |
+| **Express API** | The only thing the UI talks to: `/health`, `/ingest`, `/query`, `/documents`, `/conversations`. | `src/server.ts` |
+| **Ollama** | Runs `nomic-embed-text` (turns text into vectors) and `llama3` (writes answers and rewrites follow-ups). | Docker, port 11434 |
+| **Qdrant** | The vector index. Every chunk has two vectors, `dense` and `sparse`, so both search modes read the same collection. | Docker, port 6333 |
+| **Postgres** | Conversations and messages. Port 5433 so it doesn't clash with another local Postgres. | Docker, port 5433 |
+| **Document store** | A JSON file listing uploaded documents (id, file name, chunk count, collection), so "what have I uploaded?" doesn't need a full Qdrant scan. | `data/documents.json` |
+
+## A request, end to end
+
+**Uploading a file** (`POST /ingest`):
+
+1. The file is saved to a temp folder and its text is read (`src/ingest/loader.ts`).
+2. The text is cut into chunks (`src/ingest/chunker.ts`); documents without headings get a title header.
+3. Each chunk is turned into a vector by `nomic-embed-text` and stored in Qdrant.
+4. A record is added to the document store, and the temp file is deleted.
+
+**Asking a question** (`POST /conversations/:id/messages`, or `POST /query`):
+
+1. If it's a follow-up that refers back, `llama3` rewrites it into a standalone question (`src/generation/rewrite.ts`).
+2. The question is turned into a vector and matched against Qdrant. Nothing above 0.63 means no passages (`src/retrieval/retriever.ts`).
+3. The matched documents are assembled into the prompt: small ones whole, big ones as passages plus neighbours (`src/retrieval/context.ts`).
+4. The prompt goes to `llama3`. The sources are sent in a header, then the answer streams back word by word (`src/rag.ts`).
+5. The question and the answer are saved in Postgres.
+
+The user-guide pages explain each stage in plain words: [uploading](/how-it-works/ingestion), [finding passages](/how-it-works/retrieval), [answering](/how-it-works/answering) and [follow-ups](/how-it-works/memory).

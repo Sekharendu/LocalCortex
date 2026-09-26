@@ -1,0 +1,28 @@
+import { Callout } from "../../components/Callout";
+
+## Running the test suite
+
+```bash
+pnpm test         # vitest run, one-shot
+pnpm test:watch   # watch mode
+```
+
+Offline unit tests (loader, chunker, NDJSON parsing, prompt builder, sparse encoding, refusal detection) always run. Live-stack tests (vector store, ingestion pipeline, retriever, full RAG answers, conversation store) skip cleanly with `test.skipIf` when Qdrant, Ollama or Postgres isn't reachable — so `pnpm test` stays green offline and exercises the full pipeline whenever the stack is up.
+
+## Conventions worth knowing
+
+- ESM throughout, TypeScript strict mode, Node 26+.
+- `@langchain/community` is deliberately not used — it was archived by the LangChain team. The project uses the scoped, actively maintained packages (`@langchain/core`, `@langchain/textsplitters`) plus a direct wrapper over the official Qdrant SDK, instead of the LangChain Qdrant integration that depends on the archived package transitively.
+- Typed errors (`UnsupportedFileTypeError`, `DocumentReadError`, `EmbeddingError`, `CollectionError`, `GenerationError`) carry enough detail that API error messages name the failing stage, not just "something went wrong."
+
+<Callout type="note">
+`AGENTS.md` in the repo is the fuller version of this page — written for an AI agent working on the codebase, but just as useful for a human contributor who wants the reasoning behind a decision, not just the decision.
+</Callout>
+
+## Contributing
+
+Issues and pull requests are welcome on [GitHub](https://github.com/Sekharendu/LocalCortex). Before opening a PR: run `pnpm run typecheck` and `pnpm test`, and if a change affects retrieval or answer quality, re-run the relevant [evaluation script](/evaluation/measuring-quality) and include the before/after numbers — that's the standard the project holds itself to.
+
+## License
+
+See the repository for license details.

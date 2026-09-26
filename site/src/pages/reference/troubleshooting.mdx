@@ -1,0 +1,27 @@
+Find the symptom you're seeing, then try the fix. Most problems come from a container that isn't running or a model that hasn't been downloaded yet.
+
+## In the app
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| The first answer takes much longer than the rest | The model is loaded into memory on first use | Normal. Later answers are faster; a typical answer takes about 50 seconds on a CPU. |
+| The app says it couldn't find the answer, but it's in your document | The question uses different words than the document, or the PDF was uploaded before line breaks were kept | Rephrase with the document's own words. Re-upload PDFs added before the line-break fix. |
+| An answer ends with `[generation error: …]` | Ollama stopped while answering, often because Docker ran out of memory | Ask again. On long sessions, give Docker more memory. |
+| The same document appears twice | It was uploaded twice (uploads add a new copy) | Delete one copy in the Documents panel. |
+| The Documents panel lists files the answers don't use, or misses some | `data/documents.json` no longer matches Qdrant | Run `npx tsx scripts/reconcile-documents.ts` to see the differences, then again with `--apply`. |
+
+## Setup
+
+| Symptom | Cause and fix |
+|---|---|
+| `curl localhost:3000/health` can't connect | The API isn't running. Start it with `pnpm dev` in a separate terminal. |
+| `/health` shows `"ollama": false` | The Ollama container is down or still starting. Check with `docker compose ps`, start it with `docker compose up -d ollama`. |
+| `/health` shows `"qdrant": false` | The Qdrant container is down or still starting. Check with `docker compose ps`, start it with `docker compose up -d qdrant`. |
+| `/health` shows `"postgres": false`, or chats return `503` | The Postgres container is down. Start it with `docker compose up -d postgres`. |
+| Chats return `500 relation "conversations" does not exist` | The database tables haven't been created. Run `pnpm db:migrate`. |
+| Uploads fail with `Failed to reach Ollama embed endpoint` | The embedding model isn't downloaded. Run `docker exec -it local-rag-ollama ollama pull nomic-embed-text`. |
+| Questions fail with `Failed to reach Ollama generate endpoint` | The answer model isn't downloaded. Run `docker exec -it local-rag-ollama ollama pull llama3`. |
+| `Embedding dimension mismatch: expected 768, got N` | `OLLAMA_EMBED_MODEL` was changed without `OLLAMA_EMBED_DIM`. Set **both**, then re-upload your documents. |
+| Models and documents are gone after `docker compose down -v` | `-v` deletes the Docker volumes. Pull the models again and re-upload your documents. Next time, use `docker compose down` without `-v`. |
+
+See the [HTTP API reference](/reference/api) and [Configuration](/reference/configuration) for the routes and variables mentioned here.

@@ -1,0 +1,114 @@
+import { Callout } from "../../components/Callout";
+import { Measured } from "../../components/Measured";
+
+Every quality claim in these docs comes from a script in `scripts/` that runs real questions against real documents. Each script saves its results as a timestamped JSON file, so a run before a change can be compared with a run after it.
+
+## What it was tested on
+
+**Test machine:** a laptop with an Intel Core i5-1135G7 (4 cores / 8 threads, 2.4 GHz), 16 GB of RAM (Docker gets about 7.6 GB of it), and no dedicated graphics card, so the AI models run on the CPU. On this machine an answer takes about 48 seconds (median); a computer with a GPU would be much faster.
+
+**Test documents:**
+
+- a short employee handbook: 20 sections, about 900 words
+- four longer company policy documents: about 1,300–1,700 words each
+- a one-page resume (about 450 words), as text and as a PDF
+- three research papers as PDFs: 5, 15 and 48 pages (about 17,000 to 220,000 characters)
+
+## The overall result
+
+This is the closest check to what a user actually sees: questions answered through the normal app path, default settings, one answer per question, every doubtful answer read by hand against the source text.
+
+<Measured
+  source="production-style check (random sample of 52 + 10 questions typed the way users type)"
+  stats={[
+    { label: "answers correct (read by hand)", value: "61 / 62" },
+    { label: "questions that must be refused, refused", value: "14 / 14" },
+    { label: "answer's facts reached the model (all answerable questions)", value: "197 / 201" },
+    { label: "time per answer on a CPU (median / slowest 10%)", value: "48 s / 85 s" },
+  ]}
+>
+
+The one miss was *"who made the CUGA thing"*: the slangy wording scored under 0.63, so it was refused. Asked as *"Which organizations are the CUGA paper's authors from?"*, it's answered. The random sample happened not to include about six questions known to fail, so counting those, the best estimate is **about 96–97% correct**.
+
+</Measured>
+
+## Search quality: is the right passage found?
+
+`scripts/evaluate-retrieval.ts` asks hand-written questions whose correct passage is known, and checks where that passage lands in the results. It turns the relevance threshold off, so it measures ranking only.
+
+- **Recall@1**: how often the right passage is the **first** result. **Recall@5**: how often it's anywhere in the **top 5** (the model reads the top results, so this is the one that decides whether it can answer).
+- **MRR** (mean reciprocal rank): 1.0 if the right passage is always first, 0.5 if it's always second. Above 0.7 is good.
+
+```bash
+npx tsx scripts/evaluate-retrieval.ts --mode dense
+npx tsx scripts/evaluate-retrieval.ts --collection rag-large --eval-set data/large-eval-set.json
+```
+
+<Measured
+  source="scripts/evaluate-retrieval.ts (handbook, 58 questions + 4 policy documents, 55 questions)"
+  stats={[
+    { label: "right passage ranked first", value: "105 / 113" },
+  ]}
+/>
+
+**Reading the numbers when something is wrong:**
+
+- **Recall@1 low, Recall@5 high:** the right passage is found but not ranked first. Look at how questions and passages are embedded (for example, the task prefixes).
+- **Recall@5 low:** the right passage isn't in the top 5 at all. Start with **how the document is cut into chunks**, not with a different embedding model. Most search failures seen on this project were chunking failures in disguise: a heading split from its text, a list cut in half, a chunk that doesn't say what it's about.
+
+## Does it refuse instead of inventing?
+
+`scripts/test-hallucination.ts` asks 10 questions about topics that are **not** in the documents (7 that sound plausible, 3 obviously unrelated) and sorts each answer into one of three groups:
+
+- **PASS**: it says it couldn't find the answer.
+- **FAIL**: it invents one.
+- **AMBIGUOUS**: neither; flagged for a person to read, never counted either way automatically.
+
+It refuses to run against an empty collection, which would pass without testing anything.
+
+```bash
+npx tsx scripts/test-hallucination.ts
+```
+
+<Measured
+  source="scripts/test-hallucination.ts"
+  stats={[{ label: "questions about missing topics, refused", value: "10 / 10" }]}
+/>
+
+## Answer style
+
+`scripts/check-answer-style.ts` asks 10 answerable questions and 3 two-turn follow-ups, and flags answers that start with "According to…", contain `[1]`-style tags, a "Source:" line or a file name, talk about "the provided context", or refuse a question they should answer.
+
+```bash
+npx tsx scripts/check-answer-style.ts
+```
+
+<Measured
+  source="scripts/check-answer-style.ts"
+  stats={[
+    { label: "answers with style problems (16 checked)", before: "14", value: "0" },
+    { label: "answerable questions wrongly refused", before: "3", value: "0" },
+  ]}
+/>
+
+## Follow-up questions
+
+`scripts/evaluate-followups.ts` runs 13 real follow-ups and 6 off-topic ones, and compares the ways a follow-up can be searched (alone, combined with the previous question, combined with the extra check). The results are on [Follow-up questions](/how-it-works/memory).
+
+## Old context vs new context
+
+`scripts/check-answers.ts` retrieves each question once and has `llama3` answer twice: once from the plain top passages, once from the assembled context. Any difference comes from the context alone. It grades by key words, so changed verdicts should be read by hand; it counts short-but-correct answers ("Two weeks.") as wrong.
+
+```bash
+npx tsx scripts/check-answers.ts --run handbook --collection rag --set data/eval-set.json
+```
+
+## Automated tests
+
+`pnpm test` runs 150 tests. Tests that need Ollama, Qdrant or Postgres skip themselves when those aren't running, so the suite also passes offline.
+
+<Callout type="note">
+Long runs take an hour or more on a CPU. Keep the computer from sleeping: if it sleeps mid-run, requests time out on waking and the results are wrong. The answer-check scripts can be resumed.
+</Callout>
+
+See [What we tried](/evaluation/what-we-tried) for each change these scripts kept or rejected.

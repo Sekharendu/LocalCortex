@@ -1,0 +1,394 @@
+import { ApiRoute } from "../../components/ApiRoute";
+import { Callout } from "../../components/Callout";
+import { Tabs, Tab } from "../../components/Tabs";
+
+The API runs on `http://localhost:3000`. The web app calls the same routes through `/api/*`.
+
+**Errors are always JSON.** Every failure comes back as a small JSON object with an `error` message, never as an HTML error page:
+
+```json
+{ "error": "question is required and must be a non-empty string" }
+```
+
+An unknown route returns `404` with `{ "error": "route not found: METHOD /path" }`, and a request body that isn't valid JSON returns `400`.
+
+## Health
+
+<ApiRoute method="GET" path="/health">
+
+Checks that Ollama, Qdrant and Postgres can be reached. It only tests the connections; it doesn't load a model.
+
+#### Request
+
+No body.
+
+#### Response
+
+```json
+{
+  "ollama": true,
+  "qdrant": true,
+  "postgres": true
+}
+```
+
+</ApiRoute>
+
+## Ingest
+
+<ApiRoute method="POST" path="/ingest">
+
+Uploads one file, cuts it into chunks and stores their vectors. Uploads are sent as `multipart/form-data`, not JSON.
+
+#### Request
+
+```yaml
+file:      the file to upload          # required · .txt, .md, .pdf or .docx
+strategy:  recursive | fixed | semantic  # optional · default: recursive
+```
+
+<Tabs>
+<Tab label="bash">
+
+```bash
+curl -s -X POST localhost:3000/ingest \
+  -F "file=@data/sample.txt" \
+  -F "strategy=recursive"
+```
+
+</Tab>
+<Tab label="JSON">
+
+```json
+{
+  "documentId": "3f2b8c1e-5d4a-4f7e-9b61-0c2d8e7a1f90",
+  "chunkCount": 4
+}
+```
+
+</Tab>
+</Tabs>
+
+#### Responses
+
+| Status | When |
+|---|---|
+| `200` | Uploaded. Returns `documentId` and `chunkCount`. |
+| `400` | No file attached, or the file type isn't supported. |
+| `413` | The file is bigger than `MAX_INGEST_BYTES` (50 MB by default). |
+| `502` | A step failed. The message names it: `"Ingest failed at stage 'embed': …"`. |
+
+</ApiRoute>
+
+## Query
+
+<ApiRoute method="POST" path="/query">
+
+Asks one question, with no conversation history. For chats with follow-ups, use [conversation messages](#conversations) instead.
+
+#### Request
+
+```jsonc
+{
+  "question": "How many vacation days do I get?", // required · string
+  "stream": false,          // optional · true = stream the answer as plain text
+  "topK": 5,                // optional · how many passages to search for
+  "scoreThreshold": 0.63,   // optional · minimum relevance score
+  "collection": "rag"       // optional · Qdrant collection to search
+}
+```
+
+<Tabs>
+<Tab label="bash">
+
+```bash
+curl -s -X POST localhost:3000/query \
+  -H 'content-type: application/json' \
+  -d '{"question":"How many vacation days do I get?"}'
+```
+
+</Tab>
+<Tab label="JSON">
+
+```json
+{
+  "answer": "You get 15 days of paid vacation per year…",
+  "chunks": [
+    {
+      "text": "## Vacation Policy\n\nFull-time employees accrue 15 days…",
+      "source": "eval-corpus.txt",
+      "score": 0.81
+    }
+  ],
+  "citations": [
+    { "source": "eval-corpus.txt" }
+  ]
+}
+```
+
+</Tab>
+</Tabs>
+
+`citations` lists each document whose text went into the prompt, once. PDFs also carry a `page`. Nothing the model writes can add to this list.
+
+#### Streaming
+
+With `"stream": true` the answer comes back as `text/plain`, word by word. Because the body is plain text, the sources travel in a response header, `X-Citations`, which is set before the first word:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+X-Citations: [{"source":"eval-corpus.txt"}]
+
+You get 15 days of paid vacation per year…
+```
+
+The search runs before anything is sent, so if Ollama or Qdrant is down you still get a normal `503` JSON error. Once words are streaming the status can't change, so a failure halfway adds a last line `[generation error: …]` to the text.
+
+#### Responses
+
+| Status | When |
+|---|---|
+| `200` | Answered (JSON, or streamed text with `stream: true`). A question with no relevant passages still gets `200`, with a "couldn't find it" answer and empty `citations`. |
+| `400` | `question` is missing or blank. |
+| `503` | Ollama or Qdrant couldn't be reached before the answer started. |
+
+</ApiRoute>
+
+## Documents
+
+<ApiRoute method="GET" path="/documents">
+
+Lists uploaded documents in the default collection, newest first.
+
+#### Request
+
+No body.
+
+#### Response
+
+```json
+{
+  "documents": [
+    {
+      "id": "3f2b8c1e-5d4a-4f7e-9b61-0c2d8e7a1f90",
+      "source": "sample.txt",
+      "ingestedAt": "2026-09-20T10:14:03.512Z",
+      "chunkCount": 4,
+      "collection": "rag"
+    }
+  ]
+}
+```
+
+| Status | When |
+|---|---|
+| `200` | Listed. |
+| `500` | `data/documents.json` couldn't be read. |
+
+</ApiRoute>
+
+<ApiRoute method="DELETE" path="/documents/:id">
+
+Deletes a document and all of its chunks.
+
+#### Request
+
+```yaml
+id:  the documentId from /ingest or /documents   # required · in the URL
+```
+
+It removes the document record first, then the vectors in Qdrant. If the Qdrant step fails, the record is put back and you get `502`, so the document list and Qdrant never disagree.
+
+#### Responses
+
+| Status | When |
+|---|---|
+| `200` | Deleted. Returns `{ "deleted": { …the document record… } }`. |
+| `404` | No document with that id. |
+| `502` | Qdrant delete failed. The record was restored; try again. |
+
+</ApiRoute>
+
+## Conversations
+
+Conversations are stored in Postgres. Ids are UUIDs; an id that isn't a valid UUID gets `404`, like an unknown one.
+
+<ApiRoute method="GET" path="/conversations">
+
+Lists chats, most recently active first.
+
+#### Response
+
+```json
+{
+  "conversations": [
+    {
+      "id": "b7e0c2a4-1f3d-4c8e-a9b2-6d5f0e1c3a78",
+      "title": "How many vacation days do I get?",
+      "createdAt": "2026-09-20T10:15:00.000Z",
+      "updatedAt": "2026-09-20T10:16:42.000Z"
+    }
+  ]
+}
+```
+
+</ApiRoute>
+
+<ApiRoute method="POST" path="/conversations">
+
+Creates an empty chat.
+
+#### Request
+
+```jsonc
+{
+  "title": "Vacation questions"  // optional · default: "New chat"
+}
+```
+
+#### Responses
+
+| Status | When |
+|---|---|
+| `201` | Created. Returns `{ "conversation": { id, title, createdAt, updatedAt } }`. |
+
+</ApiRoute>
+
+<ApiRoute method="GET" path="/conversations/:id">
+
+Returns a chat with all of its messages, oldest first.
+
+#### Response
+
+```jsonc
+{
+  "conversation": {
+    "id": "b7e0c2a4-1f3d-4c8e-a9b2-6d5f0e1c3a78",
+    "title": "How many vacation days do I get?",
+    "createdAt": "2026-09-20T10:15:00.000Z",
+    "updatedAt": "2026-09-20T10:16:42.000Z",
+    "messages": [
+      {
+        "id": "…",
+        "role": "user",           // "user" or "assistant"
+        "content": "How many vacation days do I get?",
+        "citations": null,
+        "status": null,
+        "createdAt": "2026-09-20T10:15:00.000Z"
+      },
+      {
+        "id": "…",
+        "role": "assistant",
+        "content": "You get 15 days of paid vacation per year…",
+        "citations": [{ "source": "eval-corpus.txt" }],
+        "status": null,           // null, "interrupted" or "error"
+        "createdAt": "2026-09-20T10:16:42.000Z"
+      }
+    ]
+  }
+}
+```
+
+| Status | When |
+|---|---|
+| `200` | Found. |
+| `404` | No chat with that id. |
+
+</ApiRoute>
+
+<ApiRoute method="PATCH" path="/conversations/:id">
+
+Renames a chat.
+
+#### Request
+
+```jsonc
+{
+  "title": "Vacation policy"  // required · non-empty string
+}
+```
+
+#### Responses
+
+| Status | When |
+|---|---|
+| `200` | Renamed. Returns `{ "conversation": … }`. |
+| `400` | `title` is missing or blank. |
+| `404` | No chat with that id. |
+
+</ApiRoute>
+
+<ApiRoute method="DELETE" path="/conversations/:id">
+
+Deletes a chat and all of its messages.
+
+#### Responses
+
+| Status | When |
+|---|---|
+| `200` | Deleted. Returns `{ "deleted": "<id>" }`. |
+| `404` | No chat with that id. |
+
+</ApiRoute>
+
+<ApiRoute method="POST" path="/conversations/:id/messages">
+
+Sends a message in a chat and streams the answer. This is what the web app uses. Earlier messages are used for [follow-up questions](/how-it-works/memory).
+
+#### Request
+
+```jsonc
+{
+  "content": "And after five years?"  // required · the question
+}
+```
+
+<Tabs>
+<Tab label="bash">
+
+```bash
+curl -N -X POST localhost:3000/conversations/$CID/messages \
+  -H 'content-type: application/json' \
+  -d '{"content":"And after five years?"}'
+```
+
+</Tab>
+<Tab label="JSON">
+
+```jsonc
+// Request body
+{ "content": "And after five years?" }
+
+// The response is streamed text, like /query with "stream": true.
+// Sources arrive in the X-Citations header:
+[{ "source": "eval-corpus.txt" }]
+```
+
+</Tab>
+</Tabs>
+
+The answer streams back exactly like [`/query` with streaming](#streaming). Your message is saved first; the answer is saved when the stream ends, with a `status`:
+
+| `status` | Meaning |
+|---|---|
+| `null` | The answer finished normally. |
+| `"interrupted"` | The client disconnected (for example, pressed Stop). The answer so far is kept. |
+| `"error"` | Generation failed. |
+
+A chat still called "New chat" is renamed after its first message (first 60 characters).
+
+#### Responses
+
+| Status | When |
+|---|---|
+| `200` | Streaming the answer. |
+| `400` | `content` is missing or blank. |
+| `404` | No chat with that id. |
+| `503` | Ollama or Qdrant couldn't be reached before the answer started. |
+
+</ApiRoute>
+
+<Callout type="note">
+If Postgres is down, every conversation route returns `503` with `{ "error": "database unreachable -- is the postgres container running? (docker compose up -d postgres)" }`.
+</Callout>

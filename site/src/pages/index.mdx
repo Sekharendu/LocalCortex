@@ -1,0 +1,130 @@
+import { CardGroup, Card } from "../components/Card";
+
+<div className="hero">
+  <p className="hero-title">LocalCortex</p>
+  <p className="hero-subtitle">Chat with your documents. Every model, vector and message stays on your machine.</p>
+  <div className="hero-actions">
+    <a className="btn btn-primary" href="/quickstart">Get started</a>
+    <a className="btn btn-secondary" href="https://github.com/Sekharendu/LocalCortex" target="_blank" rel="noreferrer">View on GitHub</a>
+  </div>
+  <div className="hero-visual">
+    <div className="hero-visual-placeholder">[ screenshot: chat UI answering with source chips ]</div>
+  </div>
+</div>
+
+<section className="landing-section" id="what-is-localcortex">
+
+## What is LocalCortex?
+
+LocalCortex is a fully local Retrieval-Augmented Generation (RAG) pipeline. Upload a file, ask it a question, and get an answer grounded in that file, with Ollama running the embedding and generation models, Qdrant storing the vector index, and Postgres keeping the conversation history. **No API keys, no external calls, nothing leaves your machine.**
+
+<div className="pipeline">{`A. your files ─▶ load ─▶ chunk ─▶ embed (nomic-embed-text) ─▶ Qdrant
+B. question  ─▶ retrieve ─▶ prompt ─▶ llama3 (Ollama) ─▶ answer + sources`}</div>
+
+</section>
+
+<section className="landing-section" id="why-run-it-locally">
+
+## Why run it locally?
+
+<div className="feature-grid">
+  <div className="feature">
+    <h3>Private</h3>
+    <p>No API keys, no third-party calls. Documents and conversations never leave your machine.</p>
+  </div>
+  <div className="feature">
+    <h3>Grounded</h3>
+    <p>Answers are built only from retrieved passages, with the sources that supported them shown alongside.</p>
+  </div>
+  <div className="feature">
+    <h3>Honest</h3>
+    <p>When your documents don't cover a question, LocalCortex says so instead of guessing.</p>
+  </div>
+  <div className="feature">
+    <h3>Remembers the conversation</h3>
+    <p>Ask "what about her projects?" after a question about someone, and it knows who you mean.</p>
+  </div>
+</div>
+
+</section>
+
+<section className="landing-section" id="how-does-it-work">
+
+## How does it work?
+
+<ol className="stage-list">
+  <li className="stage">
+    <div>
+      <strong>Ingest</strong>
+      <p>A .txt, .md, .pdf or .docx file is loaded, split into chunks along its natural structure, and embedded.</p>
+    </div>
+  </li>
+  <li className="stage">
+    <div>
+      <strong>Retrieve</strong>
+      <p>A question is embedded and matched against the index; only chunks that clear a calibrated relevance threshold are used.</p>
+    </div>
+  </li>
+  <li className="stage">
+    <div>
+      <strong>Answer</strong>
+      <p>The matched chunks are placed in a prompt and streamed back through the local model, citations attached.</p>
+    </div>
+  </li>
+</ol>
+
+<p><a href="/how-it-works/architecture">Read the full architecture →</a></p>
+
+</section>
+
+<section className="landing-section" id="measured-not-guessed">
+
+## Measured, not guessed
+
+Every claim on this site is backed by a script in the repo that measured it.
+
+<table className="stats-table">
+  <thead>
+    <tr><th>What was tested</th><th>Result</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Answers correct, read by hand <small>random sample of 52 + 10 questions typed the way users type</small></td><td>61 / 62</td></tr>
+    <tr><td>Questions it should refuse, refused <small>same check</small></td><td>14 / 14</td></tr>
+    <tr><td>Made-up answers on topics missing from the documents <small>hallucination test</small></td><td>0 / 10</td></tr>
+    <tr><td>Right passage found first <small>113 hand-written questions, 5 documents</small></td><td>105 / 113</td></tr>
+    <tr><td>Resume questions answered correctly <small>before → after whole-document context</small></td><td>17 → 22 / 25</td></tr>
+    <tr><td>Off-topic follow-ups that got passages anyway</td><td>0 / 6</td></tr>
+    <tr><td>Answers starting "According to…" or naming files <small>16 checked</small></td><td>0</td></tr>
+    <tr><td>Time per answer on a laptop CPU <small>median</small></td><td>48 s</td></tr>
+  </tbody>
+</table>
+
+<p><a href="/evaluation/measuring-quality">See how these are measured →</a></p>
+
+</section>
+
+<section className="landing-section" id="built-with">
+
+## Built with
+
+<div className="stack-chips">
+  <span className="stack-chip">Ollama</span>
+  <span className="stack-chip">Qdrant</span>
+  <span className="stack-chip">Postgres</span>
+  <span className="stack-chip">LangChain text splitters</span>
+  <span className="stack-chip">Express</span>
+  <span className="stack-chip">React</span>
+</div>
+
+</section>
+
+<section className="landing-section" id="get-started">
+
+## Get started
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" href="/quickstart">Run it locally in about ten minutes.</Card>
+  <Card title="How it works" href="/how-it-works/ingestion">From an uploaded file to an answer with sources.</Card>
+</CardGroup>
+
+</section>

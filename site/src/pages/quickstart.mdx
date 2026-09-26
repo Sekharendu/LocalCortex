@@ -1,0 +1,89 @@
+import { Steps, Step } from "../components/Steps";
+import { CardGroup, Card } from "../components/Card";
+
+## Prerequisites
+
+<CardGroup cols={3}>
+  <Card title="Docker">With Docker Compose v2 — runs Qdrant, Ollama and Postgres</Card>
+  <Card title="Node.js 26+ & pnpm">Runs the API server and the web app</Card>
+  <Card title="curl + jq">For the manual smoke checks below</Card>
+</CardGroup>
+
+## Set up and run
+
+<Steps>
+
+<Step title="Clone and check your Node version">
+
+```bash
+git clone https://github.com/Sekharendu/LocalCortex.git
+cd LocalCortex
+node --version   # must be v26 or newer
+nvm use          # if you use nvm
+```
+
+</Step>
+
+<Step title="Start the infrastructure containers">
+
+```bash
+docker compose up -d
+docker compose ps
+```
+
+`qdrant`, `ollama` and `postgres` should show `(healthy)` within about 30 seconds. Postgres is published on **5433**, not 5432, so it won't collide with another local Postgres.
+
+</Step>
+
+<Step title="Pull the two models">
+
+This downloads about 5 GB once. The models are kept in a Docker volume, so restarting the containers doesn't download them again.
+
+```bash
+docker exec -it local-rag-ollama ollama pull nomic-embed-text   # turns text into vectors
+docker exec -it local-rag-ollama ollama pull llama3             # writes the answers
+```
+
+</Step>
+
+<Step title="Install dependencies and apply migrations">
+
+```bash
+pnpm install
+pnpm db:migrate
+```
+
+</Step>
+
+<Step title="Start the API and the chat UI">
+
+```bash
+pnpm dev         # terminal 1: the API on :3000
+pnpm dev:web     # terminal 2: the UI on http://localhost:5173
+```
+
+</Step>
+
+<Step title="Upload a file and ask it a question">
+
+Open [http://localhost:5173](http://localhost:5173) (the default port; if it's taken, the app uses the next free one and prints the address in terminal 2), open the **Documents** panel from the sidebar footer, drag in a `.txt`, `.md`, `.pdf` or `.docx` file, and ask a question about it once it finishes indexing.
+
+</Step>
+
+</Steps>
+
+## Or exercise the API directly
+
+```bash
+curl -s localhost:3000/health | jq
+
+curl -s -X POST localhost:3000/ingest \
+  -F "file=@data/sample.txt" \
+  -F "strategy=recursive" | jq
+
+curl -s -X POST localhost:3000/query \
+  -H 'content-type: application/json' \
+  -d '{"question":"What does the sample say about a fox?"}' | jq
+```
+
+See the [HTTP API reference](/reference/api) for every route, and [Using the app](/using-the-app) for a tour of the chat UI.
