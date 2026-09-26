@@ -17,7 +17,11 @@
     "db:migrate": "tsx scripts/migrate.ts",
     "dev:web": "pnpm --filter web dev",
     "build:web": "pnpm --filter web build",
-    "typecheck:web": "pnpm --filter web typecheck"
+    "typecheck:web": "pnpm --filter web typecheck",
+    "dev:site": "pnpm --filter site dev",
+    "build:site": "pnpm --filter site build",
+    "preview:site": "pnpm --filter site preview",
+    "typecheck:site": "pnpm --filter site typecheck"
   },
   "dependencies": {
     "@langchain/core": "^1.2.1",
