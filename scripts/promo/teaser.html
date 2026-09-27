@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>LocalCortex teaser</title>
+<!-- Same bundled fonts as the chat UI; nothing is fetched from the network. -->
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/ibm-plex-sans/400.css" />
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/ibm-plex-sans/500.css" />
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/ibm-plex-sans/600.css" />
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/ibm-plex-mono/400.css" />
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/source-serif-4/600.css" />
+<style>
+  :root {
+    --ink: #1d1c1a;
+    --body: #4a443d;
+    --muted: #7a7166;
+    --charcoal: #1f1d1a;
+    --oxblood: #8b3a2f;
+    --accent: #e08f7c;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    font-family: var(--sans); color: var(--ink);
+    /* Same desktop wallpaper as stage.html, so cuts to the demo clip are seamless. */
+    background:
+      radial-gradient(900px 640px at 86% 92%, rgba(190, 104, 86, 0.42), transparent 70%),
+      radial-gradient(1100px 760px at 12% 6%, rgba(255, 250, 240, 0.9), transparent 70%),
+      linear-gradient(135deg, #efe6d8 0%, #e2d4c1 55%, #d4c0aa 100%);
+  }
+  .layer { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .scene { display: none; }
+  body[data-scene="a"] #scene-a, body[data-scene="c"] #scene-c { display: block; }
+
+  /* hook */
+  .line { font-family: var(--serif); font-weight: 600; letter-spacing: -0.015em; margin: 0; text-align: center; }
+  #l1 { font-size: 84px; }
+  #l2 { font-size: 64px; color: var(--body); margin-top: 26px; }
+  .w { display: inline-block; white-space: pre; }
+  .strike { position: relative; }
+  .strike::after {
+    content: ""; position: absolute; left: -4px; right: -4px; top: 56%; height: 6px; border-radius: 3px;
+    background: var(--oxblood); transform-origin: 0 50%; transform: scaleX(var(--s, 0));
+  }
+
+  /* brand */
+  .mark { width: 88px; height: 88px; border-radius: 22px; background: var(--charcoal); position: relative;
+          box-shadow: 0 22px 50px rgba(60, 35, 25, .3); }
+  .mark::after { content: ""; position: absolute; inset: 30px; border-radius: 50%; background: var(--accent); }
+  .word { font-family: var(--serif); font-weight: 600; font-size: 136px; letter-spacing: -0.025em; margin: 34px 0 0; }
+  .tag { font-size: 36px; color: var(--body); margin: 14px 0 0; }
+  .tag em { font-style: normal; color: var(--oxblood); }
+
+  /* how it works */
+  #machine {
+    position: absolute; left: 190px; top: 330px; width: 1320px; height: 420px;
+    border: 2px solid rgba(29, 28, 26, .16); border-radius: 28px; background: rgba(255, 252, 246, .55);
+  }
+  #machine .label { position: absolute; left: 34px; top: -17px; padding: 0 12px; font-size: 22px; font-weight: 600;
+                    color: var(--muted); background: #ece2d3; border-radius: 8px; letter-spacing: .02em; }
+  #how-title { position: absolute; left: 190px; top: 200px; font-family: var(--serif); font-weight: 600; font-size: 60px; letter-spacing: -0.015em; }
+  .node { position: absolute; top: 120px; width: 196px; text-align: center; }
+  .node .dot { width: 96px; height: 96px; margin: 0 auto; border-radius: 24px; background: var(--charcoal);
+               display: flex; align-items: center; justify-content: center; color: #f4efe6;
+               font-family: var(--serif); font-weight: 600; font-size: 40px; box-shadow: 0 14px 30px rgba(60,35,25,.22); }
+  .node.lit .dot { color: var(--accent); }
+  .node .n { margin-top: 22px; font-size: 30px; font-weight: 600; }
+  .node .s { margin-top: 6px; font-size: 20px; color: var(--muted); font-family: var(--mono); }
+  .link { position: absolute; top: 166px; height: 4px; border-radius: 2px; background: var(--oxblood); transform-origin: 0 50%; }
+  #cloud { position: absolute; left: 1580px; top: 440px; width: 200px; text-align: center; }
+  #cloud .s { margin-top: 12px; font-size: 24px; font-weight: 600; color: var(--oxblood); }
+
+  /* numbers */
+  #proof { font-family: var(--serif); font-weight: 600; font-size: 60px; letter-spacing: -0.015em; margin: 0 0 70px; }
+  .stats { display: flex; gap: 110px; }
+  .stat { text-align: center; min-width: 300px; }
+  .stat .v { font-family: var(--serif); font-weight: 600; font-size: 120px; line-height: 1; letter-spacing: -0.02em; }
+  .stat .l { margin-top: 18px; font-size: 28px; font-weight: 500; color: var(--ink); }
+  .stat .x { margin-top: 8px; font-size: 21px; color: var(--muted); }
+  .url { margin-top: 30px; font-family: var(--mono); font-size: 32px; color: var(--oxblood); }
+  .fine { margin-top: 26px; font-size: 24px; color: var(--muted); }
+</style>
+</head>
+<body data-scene="a">
+
+<!-- ================= scene A: hook, brand, how it works (16 s) ================= -->
+<div id="scene-a" class="scene">
+  <div class="layer" id="hook">
+    <p class="line" id="l1"></p>
+    <p class="line" id="l2"></p>
+  </div>
+
+  <div class="layer" id="brand">
+    <div class="mark"></div>
+    <h1 class="word">LocalCortex</h1>
+    <p class="tag">Chat with your documents. <em>Entirely on your machine.</em></p>
+  </div>
+
+  <div class="layer" id="how" style="display:block">
+    <div id="how-title">How it works</div>
+    <div id="machine"><span class="label">YOUR MACHINE</span></div>
+    <div id="cloud">
+      <svg width="150" height="100" viewBox="0 0 150 100" aria-hidden="true">
+        <path d="M40 82 H112 a24 24 0 0 0 2-48 a34 34 0 0 0-64-8 a26 26 0 0 0-10 56 z"
+              fill="none" stroke="#7a7166" stroke-width="5" stroke-linejoin="round" />
+        <line id="cloud-x" x1="18" y1="92" x2="132" y2="8" stroke="#8b3a2f" stroke-width="7" stroke-linecap="round"
+              stroke-dasharray="142" stroke-dashoffset="142" />
+      </svg>
+      <div class="s">No cloud APIs</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= scene C: numbers, end card (8 s) ================= -->
+<div id="scene-c" class="scene">
+  <div class="layer" id="numbers">
+    <h2 id="proof">Measured, not promised.</h2>
+    <div class="stats">
+      <div class="stat"><div class="v" id="v1">0%</div><div class="l">answers correct</div><div class="x">61 of 62 in testing</div></div>
+      <div class="stat"><div class="v" id="v2">0%</div><div class="l">off-topic questions refused</div><div class="x">14 of 14 in testing</div></div>
+      <div class="stat"><div class="v" id="v3">0%</div><div class="l">local</div><div class="x">no cloud APIs, no GPU needed</div></div>
+    </div>
+  </div>
+  <div class="layer" id="end">
+    <div class="mark"></div>
+    <h1 class="word" style="font-size:120px">LocalCortex</h1>
+    <p class="tag">Chat with your documents, privately.</p>
+    <div class="url">github.com/Sekharendu/LocalCortex</div>
+    <div class="fine">Ollama · Qdrant · Postgres · runs on a laptop CPU</div>
+  </div>
+</div>
+
+<script>
+  // Every frame is a pure function of t (seconds), so record-teaser.ts can render
+  // frame-by-frame at an exact 30 fps with no dropped frames.
+  const $ = (id) => document.getElementById(id);
+  const clamp = (x) => Math.max(0, Math.min(1, x));
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+  const easeInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+  /** 0→1 over [a, a+d], eased. */
+  const p = (t, a, d, e = easeOut) => e(clamp((t - a) / d));
+  /** Fade in at `a`, fade out at `b`. */
+  const vis = (t, a, b, d = 0.5) => p(t, a, d) * (1 - p(t, b, d, easeInOut));
+  const show = (el, o, y = 0, s = 1) => {
+    el.style.opacity = o;
+    el.style.transform = `translateY(${y}px) scale(${s})`;
+  };
+
+  function words(el, text, markLast) {
+    el.innerHTML = "";
+    const parts = text.split(" ");
+    parts.forEach((w, i) => {
+      const s = document.createElement("span");
+      s.className = "w";
+      s.textContent = w + (i < parts.length - 1 ? " " : "");
+      el.appendChild(s);
+    });
+    return [...el.children];
+  }
+  const w1 = words($("l1"), "Your documents have the answers.");
+  $("l2").innerHTML = 'You shouldn’t have to send them to <span class="strike" id="cloudword">the cloud</span>.';
+
+  // Pipeline nodes inside the "your machine" box.
+  const NODES = [
+    ["1", "Your files", ".pdf .docx .md"],
+    ["2", "Chunk", "by headings"],
+    ["3", "Embed", "nomic-embed"],
+    ["4", "Search", "Qdrant"],
+    ["5", "Answer", "llama3"],
+  ];
+  const machine = $("machine");
+  const nodes = [], links = [];
+  NODES.forEach(([d, n, s], i) => {
+    const el = document.createElement("div");
+    el.className = "node";
+    el.style.left = 70 + i * 250 + "px";
+    el.innerHTML = `<div class="dot">${d}</div><div class="n">${n}</div><div class="s">${s}</div>`;
+    machine.appendChild(el);
+    nodes.push(el);
+    if (i < NODES.length - 1) {
+      const l = document.createElement("div");
+      l.className = "link";
+      l.style.left = 70 + i * 250 + 98 + 50 + 8 + "px";
+      l.style.width = 250 - 96 - 16 + "px";
+      machine.appendChild(l);
+      links.push(l);
+    }
+  });
+
+  window.render = (scene, t) => {
+    document.body.dataset.scene = scene;
+    if (scene === "a") renderA(t); else renderC(t);
+  };
+
+  function renderA(t) {
+    // Hook: 0 – 7.2
+    const hookOut = 1 - p(t, 6.7, 0.5, easeInOut);
+    w1.forEach((w, i) => { const k = p(t, 0.3 + i * 0.14, 0.7); show(w, k * hookOut, (1 - k) * 22); });
+    const k2 = p(t, 2.6, 0.8);
+    show($("l2"), k2 * hookOut, (1 - k2) * 18);
+    $("cloudword").style.setProperty("--s", p(t, 4.6, 0.55, easeInOut));
+    $("l1").style.color = t > 2.6 ? `rgba(29,28,26,${1 - 0.35 * k2})` : "";
+
+    // Brand: 7.2 – 10.6
+    const b = vis(t, 7.2, 10.3, 0.7);
+    const bk = p(t, 7.2, 1.0);
+    show($("brand"), b, (1 - bk) * 20, 0.97 + 0.03 * bk);
+
+    // How it works: 10.6 – 16
+    const h = p(t, 10.4, 0.6);
+    show($("how"), h, (1 - h) * 16);
+    nodes.forEach((n, i) => {
+      const k = p(t, 10.9 + i * 0.55, 0.45);
+      show(n, k, (1 - k) * 14);
+      n.classList.toggle("lit", t > 10.9 + i * 0.55 + 0.35);
+    });
+    links.forEach((l, i) => { l.style.transform = `scaleX(${p(t, 11.2 + i * 0.55, 0.4, easeInOut)})`; });
+    const c = p(t, 13.9, 0.5);
+    show($("cloud"), c, (1 - c) * 12);
+    $("cloud-x").setAttribute("stroke-dashoffset", 142 * (1 - p(t, 14.3, 0.5, easeInOut)));
+  }
+
+  function renderC(t) {
+    // Numbers: 0 – 4.6
+    const n = vis(t, 0, 4.2, 0.6);
+    show($("numbers"), n, (1 - p(t, 0, 0.8)) * 16);
+    const count = (a) => p(t, a, 1.3, easeOut);
+    // 61/62 is 98.4%: floor it so the video never rounds a result up.
+    $("v1").textContent = `${Math.floor(98 * count(0.5))}%`;
+    $("v2").textContent = `${Math.round(100 * count(0.8))}%`;
+    $("v3").textContent = `${Math.round(100 * count(1.1))}%`;
+
+    // End card: 4.6 – 8
+    const e = p(t, 4.6, 0.8);
+    show($("end"), e, (1 - e) * 18);
+  }
+
+  window.render("a", 0);
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>LocalCortex promo stage</title>
+<!-- Same bundled fonts as the chat UI; nothing is fetched from the network. -->
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/ibm-plex-sans/400.css" />
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/ibm-plex-sans/500.css" />
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/ibm-plex-sans/600.css" />
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/ibm-plex-mono/400.css" />
+<link rel="stylesheet" href="../../web/node_modules/@fontsource/source-serif-4/600.css" />
+<style>
+  :root {
+    --charcoal: #1f1d1a;
+    --chrome: #2a2724;
+    --fg: #f4efe6;
+    --muted: #b9b2a6;
+    --accent: #e08f7c;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    font-family: var(--sans);
+    /* The desktop: warm paper with a faint oxblood glow. */
+    background:
+      radial-gradient(900px 640px at 86% 92%, rgba(190, 104, 86, 0.42), transparent 70%),
+      radial-gradient(1100px 760px at 12% 6%, rgba(255, 250, 240, 0.9), transparent 70%),
+      linear-gradient(135deg, #efe6d8 0%, #e2d4c1 55%, #d4c0aa 100%);
+  }
+
+  /* ---------- the app window ---------- */
+  #window {
+    position: absolute;
+    left: 72px; top: 48px;
+    width: 1776px; height: 936px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--charcoal);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.35),
+      0 40px 90px rgba(60, 35, 25, 0.38),
+      0 12px 28px rgba(60, 35, 25, 0.22);
+    transform-origin: 50% 50%;
+    transition: transform 1.2s cubic-bezier(.22, .8, .24, 1), opacity .7s ease;
+  }
+  #window.hidden { opacity: 0; transform: translateY(24px) scale(.985); }
+  .titlebar {
+    height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    background: var(--chrome);
+    border-bottom: 1px solid #1a1816;
+    color: #9a9387; font-size: 13px; font-weight: 500; letter-spacing: .01em;
+  }
+  .lights { position: absolute; left: 16px; top: 13px; display: flex; gap: 8px; }
+  .lights span { width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.25); }
+  .lights .r { background: #ff5f57; } .lights .y { background: #febc2e; } .lights .g { background: #28c840; }
+  /* The app renders at a laptop-like 1366px and is scaled up, so its text reads in a feed. */
+  iframe {
+    display: block; border: 0; background: var(--charcoal);
+    width: calc(100% / 1.3); height: calc((100% - 38px) / 1.3);
+    transform: scale(1.3); transform-origin: 0 0;
+  }
+
+  /* ---------- caption in the bottom band ---------- */
+  #caption {
+    position: absolute; left: 0; right: 0; bottom: 26px;
+    display: flex; justify-content: center; pointer-events: none;
+  }
+  #caption .pill {
+    display: inline-flex; align-items: baseline; gap: 12px;
+    padding: 9px 20px 10px;
+    border-radius: 999px;
+    background: rgba(31, 29, 26, 0.92);
+    color: var(--fg); font-size: 19px; font-weight: 500;
+    box-shadow: 0 8px 24px rgba(60, 35, 25, 0.25);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .45s ease, transform .45s ease;
+  }
+  #caption .pill.show { opacity: 1; transform: none; }
+  #caption .pill b { font-family: var(--serif); font-weight: 600; color: var(--accent); font-size: 20px; }
+
+  /* ---------- title / end cards ---------- */
+  #card {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .8s ease;
+  }
+  #card.show { opacity: 1; }
+  .card-inner {
+    text-align: center; color: #2a2522;
+    transform: translateY(10px); transition: transform 1.2s cubic-bezier(.22,.8,.24,1);
+  }
+  #card.show .card-inner { transform: none; }
+  .mark {
+    width: 64px; height: 64px; margin: 0 auto 30px; border-radius: 16px;
+    background: var(--charcoal); position: relative;
+    box-shadow: 0 18px 40px rgba(60, 35, 25, .3);
+  }
+  .mark::after { content: ""; position: absolute; inset: 22px; border-radius: 50%; background: var(--accent); }
+  .card-title { font-family: var(--serif); font-weight: 600; font-size: 112px; letter-spacing: -0.02em; margin: 0; color: #1d1c1a; }
+  .card-sub { font-size: 32px; margin: 18px 0 0; color: #4a443d; }
+  .card-sub em { font-style: normal; color: #8b3a2f; }
+  .stats { display: flex; gap: 72px; justify-content: center; margin: 52px 0 0; }
+  .stat .n { font-family: var(--serif); font-weight: 600; font-size: 64px; color: #1d1c1a; }
+  .stat .l { font-size: 20px; color: #5a534b; margin-top: 4px; }
+  .stack { margin-top: 48px; font-size: 22px; color: #4a443d; }
+  .url { margin-top: 18px; font-family: var(--mono); font-size: 22px; color: #8b3a2f; }
+
+  /* ---------- the fake cursor ---------- */
+  #cursor {
+    position: absolute; left: 0; top: 0; width: 26px; height: 26px;
+    pointer-events: none; z-index: 10;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,.35));
+    opacity: 0; transition: opacity .3s;
+  }
+  #cursor.show { opacity: 1; }
+  #cursor svg { transform-origin: 3px 2px; transition: transform .12s ease; }
+  #cursor.down svg { transform: scale(.86); }
+  #ripple {
+    position: absolute; width: 36px; height: 36px; margin: -18px 0 0 -18px;
+    border-radius: 50%; border: 2px solid var(--accent);
+    opacity: 0; pointer-events: none; z-index: 9;
+  }
+  #ripple.go { animation: ripple .5s ease-out; }
+  @keyframes ripple { from { opacity: .9; transform: scale(.4); } to { opacity: 0; transform: scale(1.4); } }
+</style>
+</head>
+<body>
+  <div id="window" class="hidden">
+    <div class="titlebar">
+      <div class="lights"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+      LocalCortex
+    </div>
+    <iframe id="app" title="LocalCortex"></iframe>
+  </div>
+
+  <div id="card"><div class="card-inner" id="card-inner"></div></div>
+  <div id="caption"><div class="pill" id="pill"></div></div>
+  <div id="ripple"></div>
+  <div id="cursor">
+    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+      <path d="M3 2 L3 20 L8 15.5 L11.5 23 L14.6 21.6 L11.2 14.3 L17.8 14.3 Z"
+            fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round" />
+    </svg>
+  </div>
+
+<script>
+  // Controlled by scripts/promo/record-demo.ts through page.evaluate.
+  const $ = (id) => document.getElementById(id);
+  const pos = { x: 1500, y: 700 };
+  const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+  window.stage = {
+    load(url) { $("app").src = url; },
+    showWindow(on = true) { $("window").classList.toggle("hidden", !on); },
+    zoom(scale = 1, origin = "50% 50%") {
+      const w = $("window");
+      w.style.transformOrigin = origin;
+      w.style.transform = scale === 1 ? "" : `scale(${scale})`;
+    },
+    card(html) {
+      if (html) $("card-inner").innerHTML = html;
+      $("card").classList.toggle("show", !!html);
+    },
+    caption(html) {
+      const p = $("pill");
+      if (!html) { p.classList.remove("show"); return; }
+      if (p.classList.contains("show") && p.innerHTML !== html) {
+        p.classList.remove("show");
+        setTimeout(() => { p.innerHTML = html; p.classList.add("show"); }, 260);
+      } else { p.innerHTML = html; p.classList.add("show"); }
+    },
+    cursor(on = true) { $("cursor").classList.toggle("show", on); },
+    place(x, y) { pos.x = x; pos.y = y; this._draw(); },
+    _draw() { const c = $("cursor"); c.style.transform = `translate(${pos.x - 3}px, ${pos.y - 2}px)`; },
+    move(x, y, ms = 700) {
+      const x0 = pos.x, y0 = pos.y, t0 = performance.now();
+      // A slight arc reads as a human hand rather than a robot line.
+      const bend = Math.min(60, Math.hypot(x - x0, y - y0) * 0.12);
+      return new Promise((done) => {
+        const step = (now) => {
+          const t = Math.min(1, (now - t0) / ms), e = ease(t);
+          pos.x = x0 + (x - x0) * e;
+          pos.y = y0 + (y - y0) * e - Math.sin(Math.PI * e) * bend;
+          this._draw();
+          t < 1 ? requestAnimationFrame(step) : done();
+        };
+        requestAnimationFrame(step);
+      });
+    },
+    press() {
+      const c = $("cursor"), r = $("ripple");
+      c.classList.add("down");
+      r.style.left = pos.x + "px"; r.style.top = pos.y + "px";
+      r.classList.remove("go"); void r.offsetWidth; r.classList.add("go");
+      setTimeout(() => c.classList.remove("down"), 140);
+    },
+  };
+  stage.place(pos.x, pos.y);
+</script>
+</body>
+</html>
