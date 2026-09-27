@@ -1,330 +1,295 @@
-# local-rag
+<div align="center">
 
-A fully local Retrieval-Augmented Generation (RAG) pipeline: **Ollama** runs the embedding and LLM models on your machine, **Qdrant** stores and searches the vector index, **Postgres** keeps chat conversations, and a small Express API wires ingest → retrieve → generate together. Everything runs locally — no external API calls, no third-party keys, no data leaving your machine.
+# LocalCortex
 
-## Prerequisites
+**Chat with your documents. Entirely on your machine.**
 
-- **Docker** with Docker Compose v2 — for running the Qdrant, Ollama and Postgres containers
-- **Node.js 26+** and **pnpm** — for the TypeScript API server
-- **curl** + **jq** — for exercising the API manually (smoke step)
+Upload PDFs, Word files, Markdown or plain text, then ask questions in a chat UI.<br>
+Answers come with their sources, and when your documents don't cover a question, it says so.<br>
+No cloud APIs, no API keys, nothing leaves your computer.
 
-## First-time setup (clone → run, no guesswork)
+![LocalCortex demo: upload a handbook, ask questions, get answers with sources, and a refusal for an off-topic question](media/localcortex-demo.gif)
+
+<sub>Real answers from llama3 on a laptop CPU. The waits while it thinks are cut, and each caption shows the actual time taken.</sub>
+
+</div>
+
+---
+
+## Why LocalCortex
+
+- **Private by design.** Embedding, search, generation and chat history all run in containers on your machine. Your files are never sent anywhere.
+- **Answers you can check.** Every answer shows the documents it came from as source chips.
+- **Honest when it doesn't know.** If nothing relevant is found, it tells you instead of making something up.
+- **Real conversations.** Follow-ups like *"And after five years?"* keep the thread. Chats are saved, titled and listed like any chat app.
+- **Runs on a laptop.** No GPU needed. llama3 on a CPU is slow (see below), but it works.
+
+## Measured, not promised
+
+Every number here comes from a script in `scripts/` that you can re-run.
+
+| What was tested | Result |
+|---|---|
+| Answer accuracy: 62 questions (a random sample from the eval sets plus user-style questions), each answer read by hand | **98%** correct (61 of 62) |
+| Off-topic questions in that run | **100%** refused (14 of 14) |
+| Hallucination stress test: questions the documents don't answer (`scripts/test-hallucination.ts`) | **10 of 10** refused |
+| Answer time on a laptop CPU, no GPU | **~48 s** median |
+
+The remaining misses are retrieval misses (exact terms such as "GPT-4.1", or slangy wording), not the model inventing answers. The full measurement history is in [`AGENTS.md`](AGENTS.md).
+
+## How it works
+
+```mermaid
+flowchart LR
+    subgraph machine["Your machine"]
+        direction LR
+        F["Your files<br/>.pdf .docx .md .txt"] --> C["Chunk<br/>by headings"]
+        C --> E["Embed<br/>nomic-embed-text"]
+        E --> Q[("Qdrant<br/>vector search")]
+        U["Your question"] --> Q
+        Q --> L["Answer<br/>llama3 via Ollama"]
+        L --> A["Answer + sources"]
+        P[("Postgres<br/>chat history")] <--> L
+    end
+```
+
+1. **Ingest.** Files are turned into text (PDF line breaks and Word headings are kept), then split along their headings and paragraphs. Documents without headings, such as a resume, get a "Title › Section" header embedded with each chunk.
+2. **Embed and store.** Each chunk is embedded by `nomic-embed-text` in Ollama and stored in Qdrant with both a dense vector and a BM25-style sparse vector.
+3. **Retrieve.** A question is embedded and matched. A calibrated relevance threshold (0.63) decides whether *anything* relevant exists. If nothing clears it, the model is told so and refuses.
+4. **Assemble the context.** A small matching document goes in whole. A long one contributes its best passages plus their neighbours, within the model's 4096-token window.
+5. **Answer.** llama3 answers in plain sentences, streamed token by token. Sources come from retrieval, never from the model, so they can't be made up.
+
+Follow-ups that point back ("what about part-timers?") are first rewritten into standalone questions, so retrieval works on them like a first question.
+
+## Quick start
+
+**You need** Docker with Compose v2, Node.js 26+ and pnpm. The models need about 5 GB of disk.
 
 ```bash
-git clone <your-repo-url> local-rag
-cd local-rag
+git clone https://github.com/Sekharendu/LocalCortex.git
+cd LocalCortex
 
-# Verify the required Node.js version
-node --version       # must be v26 or newer
-# If you use nvm, select the project version:
-nvm use
-
-# 1. Start the infrastructure containers (Qdrant + Ollama + Postgres)
+# 1. Start Qdrant, Ollama and Postgres
 docker compose up -d
 
-# 2. Wait for the containers to be "healthy" before pulling models
-docker compose ps
-#   qdrant, ollama and postgres should show "(healthy)" in the STATUS column within ~30s.
-#   Postgres is published on 127.0.0.1:5433 (not 5432) so it can't collide with
-#   another local Postgres.
+# 2. Pull the two models (one time; they persist in a Docker volume)
+docker exec -it local-rag-ollama ollama pull nomic-embed-text
+docker exec -it local-rag-ollama ollama pull llama3
 
-# 3. Pull the two models the pipeline depends on.
-#    NOTE: Ollama models are NOT baked into the base image -- this is a one-time pull
-#    persisted to the ollama_data volume so you don't repeat it on subsequent runs.
-docker exec -it local-rag-ollama ollama pull nomic-embed-text   # embeddings (768-dim)
-docker exec -it local-rag-ollama ollama pull llama3             # generation
-
-# 4. Install Node dependencies
+# 3. Install dependencies and create the chat tables
 pnpm install
-
-# 5. Create the conversation tables (safe to re-run: applied migrations are skipped)
 pnpm db:migrate
 
-# 6. Start the API (hot reload via tsx watch)
-pnpm dev
-# The API listens on http://localhost:3000
+# 4. Run the API and the chat UI (two terminals)
+pnpm dev        # API on http://localhost:3000
+pnpm dev:web    # UI  on http://localhost:5173
 ```
 
-You can now open another terminal and run any of the curl examples below.
+Open **http://localhost:5173**, click **Documents** in the sidebar, drop in a file and start asking.
 
-## Run the API
+> [!TIP]
+> Try it with the sample handbook in `data/eval-corpus.docx`: ask *"How many vacation days do I get per year?"*, then *"And after five years?"*, then something it can't know, like *"What is the capital of France?"*
 
-```bash
-pnpm dev        # hot-reload dev server (tsx watch) -- recommended for development
-# OR for a production-style run:
-pnpm build && pnpm start   # compiles to dist/ and runs node directly
-```
+## Using it
 
-The API listens on `http://localhost:3000` (override with the `PORT` env var).
+### The chat UI
 
-This project requires Node.js 26 or newer. The Qdrant REST client is kept on a
-Node 26-compatible release; using an older client with Node 26 can fail with
-`UND_ERR_INVALID_ARG: invalid onError method` during ingestion.
+- Chats live in the sidebar, grouped by date, and each has its own URL. New chats are titled from their first message.
+- Answers stream in with their sources as chips underneath. **Stop** cancels generation and keeps the partial answer.
+- The **Documents** panel takes `.pdf`, `.docx`, `.md` and `.txt` by drag and drop. It shows indexing progress and lets you delete files.
+- It works fully offline: fonts are bundled, nothing loads from a CDN.
 
-## Run the web UI
+### The API
 
-A ChatGPT-style chat app lives in `web/` (React + Vite). It talks to the API through Vite's dev proxy, so run both:
+Everything the UI does is available over a small JSON API on port 3000.
 
-```bash
-pnpm dev         # terminal 1: the API on :3000
-pnpm dev:web     # terminal 2: the UI on http://localhost:5173
-```
+| Method | Path | What it does |
+|---|---|---|
+| `GET` | `/health` | Reports whether Ollama, Qdrant and Postgres are reachable |
+| `POST` | `/ingest` | Upload a file (`multipart/form-data`, field `file`) |
+| `POST` | `/query` | Ask a one-off question; `stream: true` streams the answer |
+| `GET` | `/documents` | List indexed documents |
+| `DELETE` | `/documents/:id` | Remove a document from both stores |
+| `GET` `POST` | `/conversations` | List chats, or start one |
+| `GET` `PATCH` `DELETE` | `/conversations/:id` | Read, rename or delete a chat |
+| `POST` | `/conversations/:id/messages` | Send a message and stream the answer, with memory of the chat |
 
-Chats are listed in the sidebar (grouped Today / Previous 7 days / Older) and each has its own URL (`/c/<id>`). Answers stream in with their sources shown as chips underneath, and **Stop** cancels generation. **Documents** (sidebar footer) opens a panel to drag in `.txt`, `.md`, `.pdf` or `.docx` files, watch them index, and delete them. `pnpm build:web` produces a static build in `web/dist`; `pnpm typecheck:web` type-checks it.
+Streamed answers are `text/plain`, and their sources arrive in an `X-Citations` response header (a JSON array). Errors are always JSON `{ error }`.
 
-## API surface
-
-Every route returns JSON `{ error: string }` on failure — never Express's default HTML stack trace.
+<details>
+<summary><b>Full API reference</b> (bodies, responses, status codes)</summary>
 
 | Method | Path | Body | Response | Statuses |
 |---|---|---|---|---|
 | `GET` | `/health` | — | `{ ollama, qdrant, postgres }` | `200` |
 | `POST` | `/ingest` | `multipart/form-data`: `file` (required; .txt, .md, .pdf, .docx), `strategy` ∈ {fixed, semantic, recursive} (default `recursive`) | `{ documentId, chunkCount }` | `200`, `400` (no file, or unsupported type), `413` (too large), `502` (pipeline failed, names the stage) |
-| `POST` | `/query` | `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }` | non-stream: `{ answer, chunks, citations }`; stream: `text/plain; charset=utf-8` token-by-token + `X-Citations` response header (JSON array) | `200`, `400` (missing question), `503` (infra failure) |
-| `GET` | `/documents` | — | `{ documents: DocumentRecord[] }` (default collection, newest first) | `200`, `500` (store read failure) |
-| `DELETE` | `/documents/:id` | — | `{ deleted: DocumentRecord }` | `200`, `404` (id not in store), `502` (Qdrant delete failed — store record restored to keep drift-free) |
+| `POST` | `/query` | `{ question: string, stream?: boolean, topK?: number, scoreThreshold?: number, collection?: string }` | non-stream: `{ answer, chunks, citations }`; stream: `text/plain; charset=utf-8` + `X-Citations` header | `200`, `400` (missing question), `503` (infra failure) |
+| `GET` | `/documents` | — | `{ documents: DocumentRecord[] }` (default collection, newest first) | `200`, `500` |
+| `DELETE` | `/documents/:id` | — | `{ deleted: DocumentRecord }` | `200`, `404`, `502` (Qdrant delete failed; the record is restored so the stores never drift) |
 | `GET` | `/conversations` | — | `{ conversations: ConversationSummary[] }` (most recently active first) | `200`, `503` (Postgres down) |
 | `POST` | `/conversations` | `{ title?: string }` | `{ conversation }` | `201` |
 | `GET` | `/conversations/:id` | — | `{ conversation }` with `messages` in order | `200`, `404` |
 | `PATCH` | `/conversations/:id` | `{ title: string }` | `{ conversation }` | `200`, `400` (blank title), `404` |
 | `DELETE` | `/conversations/:id` | — | `{ deleted: id }` (messages go with it) | `200`, `404` |
-| `POST` | `/conversations/:id/messages` | `{ content: string }` | streamed like `/query` with `stream: true` (`text/plain` + `X-Citations`); both turns are saved | `200`, `400` (blank content), `404`, `503` (infra failure before streaming) |
+| `POST` | `/conversations/:id/messages` | `{ content: string }` | streamed like `/query` with `stream: true`; both turns are saved | `200`, `400`, `404`, `503` (infra failure before streaming) |
 
-**Conversation memory.** A message sent to a conversation is answered with the earlier turns in mind, so follow-ups like "And after five years?" work:
-- The prompt carries the last 6 messages (assistant replies trimmed to 800 characters), placed after the retrieved context. When nothing relevant is retrieved, the history is left out and the model refuses as usual.
-- A follow-up that refers back ("what are his projects?") is rewritten by the LLM into a standalone question ("What are Sekharendu Dey's projects?") and searched like a first question. Others fall back to embedding the previous question together with the new one.
-- On that fallback path, a follow-up gets context only if the combined query clears `RETRIEVE_SCORE_THRESHOLD` (0.63) **and** the new question on its own clears `RETRIEVE_FOLLOWUP_FLOOR` (0.57). The second check stops an off-topic follow-up ("What is the capital of France?") from borrowing the previous question's relevance. Measured with `scripts/evaluate-followups.ts`.
-- New chats are titled from their first message. If the client disconnects mid-answer, generation is cancelled and the partial answer is saved with `status: "interrupted"`.
+If the client disconnects mid-answer, generation is cancelled and the partial answer is saved with `status: "interrupted"`.
 
-## curl examples (manual smoke of every route)
+**curl examples**
 
 ```bash
-# 1. Health -- reports ollama/qdrant reachability
+# Health
 curl -s localhost:3000/health | jq
 
-# 2. Ingest a file (chunking strategy defaults to recursive)
-curl -s -X POST localhost:3000/ingest \
-  -F "file=@data/sample.txt" \
-  -F "strategy=recursive" | jq
+# Ingest a file
+curl -s -X POST localhost:3000/ingest -F "file=@data/sample.txt" | jq
 
-# 3. Query (non-streaming) -- returns { answer, chunks, citations }
-curl -s -X POST localhost:3000/query \
-  -H 'content-type: application/json' \
+# Ask (JSON answer with chunks and citations)
+curl -s -X POST localhost:3000/query -H 'content-type: application/json' \
   -d '{"question":"What does the sample say about a fox?"}' | jq
 
-# 4. Query (streaming) -- token-by-token text/plain sideways to terminal.
-#    Citations for the streamed answer arrive in the X-Citations response header
-#    (JSON array of { source, page? } pairs -- only chunks that cleared the
-#    retrieval threshold and went into the prompt context). Use curl -i to see it:
-curl -i -N -X POST localhost:3000/query \
-  -H 'content-type: application/json' \
+# Ask (streamed; -i shows the X-Citations header)
+curl -i -N -X POST localhost:3000/query -H 'content-type: application/json' \
   -d '{"question":"What does the sample say about a fox?","stream":true}'
 
-# 5. List ingested documents
+# List and delete documents
 curl -s localhost:3000/documents | jq
-
-# 6. Delete a document (replace with a real documentId from /documents)
 curl -s -X DELETE localhost:3000/documents/REPLACE-WITH-DOCUMENTID | jq
 
-# 7. Conversations: create a chat, ask, then ask a follow-up in the same chat
+# A conversation with a follow-up
 CID=$(curl -s -X POST localhost:3000/conversations -H 'content-type: application/json' -d '{}' | jq -r .conversation.id)
-curl -N -X POST localhost:3000/conversations/$CID/messages \
-  -H 'content-type: application/json' -d '{"content":"How many vacation days do I get per year?"}'
-curl -N -X POST localhost:3000/conversations/$CID/messages \
-  -H 'content-type: application/json' -d '{"content":"And after five years?"}'
-curl -s localhost:3000/conversations/$CID | jq   # both turns, with citations
+curl -N -X POST localhost:3000/conversations/$CID/messages -H 'content-type: application/json' \
+  -d '{"content":"How many vacation days do I get per year?"}'
+curl -N -X POST localhost:3000/conversations/$CID/messages -H 'content-type: application/json' \
+  -d '{"content":"And after five years?"}'
+curl -s localhost:3000/conversations/$CID | jq
 ```
 
-## Run the test suite
+</details>
 
-```bash
-pnpm test         # vitest run, one-shot, CI-friendly
-pnpm test:watch   # vitest watch mode for dev iteration
-```
+## Configuration
 
-Tests live in `tests/`. Node-dependent unit tests (`loader`, `chunker`, `ndjson`) always run. Live-stack integration tests (`vectorStore`, `pipeline`, `retriever`, `rag`) auto-skip cleanly via `test.skipIf` when the Ollama / Qdrant stack isn't reachable (`conversationStore` skips when Postgres isn't) — so `pnpm test` stays green offline and exercises the full pipeline when the stack is up. The detailed list of which test file exercises what lives in `AGENTS.md`.
+Everything works with the defaults from `docker compose up -d`. These are the settings you're most likely to change:
 
-## Run the retrieval evaluation
+| Variable | Default | Purpose |
+|---|---|---|
+| `OLLAMA_GEN_MODEL` | `llama3` | The model that writes answers |
+| `OLLAMA_EMBED_MODEL` / `OLLAMA_EMBED_DIM` | `nomic-embed-text` / `768` | The embedding model and its dimension. Change both together, then re-ingest |
+| `RETRIEVE_SCORE_THRESHOLD` | `0.63` | How relevant a passage must be before the model sees it. Re-calibrate with `scripts/calibrate-threshold.ts` after changing models |
+| `RETRIEVE_MODE` | `dense` | `dense` or `hybrid` (dense + BM25, fused in Qdrant). They tie on the eval sets |
+| `QUERY_REWRITE` | on | Rewrite referring follow-ups into standalone questions. `0` to disable |
+| `MAX_INGEST_BYTES` | 50 MB | Upload size limit |
 
-The retrieval evaluator measures **Recall@{1,3,5}** and **Mean Reciprocal Rank (MRR)** against `data/eval-set.json` (58 categorized entries authored from `data/eval-corpus.txt`). It runs at threshold 0, so it measures ranking only; `scripts/calibrate-threshold.ts` measures where the production `RETRIEVE_SCORE_THRESHOLD` should sit (answerable vs off-topic scores from `data/offtopic-set.json`).
-
-```bash
-# 1. Ingest the eval corpus first (one time)
-curl -s -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt" | jq
-
-# 2. Measure retrieval quality
-npx tsx scripts/evaluate-retrieval.ts
-# Writes data/eval-results-<timestamp>.json with full per-question breakdown
-# (which chunks were returned, at what score, whether it was a hit)
-
-# 3. (Optional) Regenerate the starter eval-set with llama3 authoring questions
-npx tsx scripts/gen-eval-set.ts --doc data/eval-corpus.txt
-```
-
-**Reading the scores** (general guidance, not hard thresholds):
-- **MRR**: 1.0 = perfect (right chunk always ranked #1). ≥ 0.7 is good; 0.3–0.6 = ranking often right but not first; < 0.3 = retriever frequently missing or burying the right chunk.
-- **Recall@K**: a wide gap between Recall@1 and Recall@5 (e.g. 0.3 → 0.9) means the right chunk is *in the index* but not ranked first — usually prompt or embedding model quality. A low Recall@5 means the right chunk isn't even in top-5.
-
-**What to suspect first when scores are low**: the **chunking strategy and size**, not the embedding model. Most retrieval failures are chunking failures in disguise (a key sentence split across chunks, a chunk that mixes two topics, chunk size too small to carry enough context). The embedding model swap is the expensive knob — tune chunking first.
-
-## Run the hallucination stress test
-
-Tests whether the system honors "say so if context is insufficient" rather than assuming it does. 10 absent-topic questions (7 subtle topics an employee handbook *might* cover but doesn't, plus 3 obviously unrelated ones) are run through `answerQuestion`, classified into PASS / FAIL / AMBIGUOUS, and printed with a per-question results table.
-
-```bash
-# Pre-flight: ingest the eval corpus (reuses the same handbook as the retrieval evaluator)
-curl -s -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt" | jq
-
-# Baseline run
-npx tsx scripts/test-hallucination.ts
-# Writes data/halluc-results-<timestamp>.json
-
-# After reviewing suggested RAG_SYSTEM_PROMPT adjustments and editing src/generation/llm.ts:19:
-npx tsx scripts/test-hallucination.ts --compare data/halluc-results-<previous-timestamp>.json
-# Prints a before/after diff table per question + the FAIL count delta
-```
-
-Three-bucket classifier:
-- **PASS**: matches an admission phrasing (e.g. "no relevant context", "insufficient", "couldn't find"), no fabrication marker.
-- **FAIL**: contains a fabrication marker (e.g. `"paris"` in an answer to a France question without an admission).
-- **AMBIGUOUS**: neither matched — flagged for manual judgment, never silently forced into PASS or FAIL.
-
-**The script does NOT auto-edit `RAG_SYSTEM_PROMPT`.** When FAILs appear, it prints context-chosen suggested adjustments (a partial-context-refusal rule if noise got retrieved; a no-hedging rule if hedging appeared). Apply the ones you agree with to `src/generation/llm.ts:19`, then re-run with `--compare` to see the before/after result. The prompt stays under your control.
-
-## Run the end-to-end smoke test
-
-The smoke test exercises the deployed API through every route end-to-end, with each step asserting loudly with a step-specific failure message (never a generic timeout).
-
-```bash
-# Prereq: stack up + models pulled + pnpm dev running on localhost:3000
-npx tsx scripts/smoke-test.ts
-```
-
-Steps it verifies:
-1. `GET /health` reports `ollama=true` and `qdrant=true`.
-2. `POST /ingest` with `data/sample.txt` returns `{ documentId, chunkCount > 0 }`.
-3. `POST /query` for an answerable question returns an answer referencing `"fox"` (sample.txt's central noun).
-4. `DELETE /documents/:id` cleans up the just-ingested document — surfaces any DocumentStore↔Qdrant drift loudly.
-
-If any step fails, the script prints a step-specific message with hints about which underlying component to check — *infra up? models pulled? pnpm dev running? RAG_SYSTEM_PROMPT wording?* — instead of a stack trace.
-
-## Environment variables
-
-All optional — sensible defaults work for the standard `docker compose up -d` setup. Set these to deviate from defaults.
+<details>
+<summary><b>All environment variables</b></summary>
 
 | Variable | Default | Purpose |
 |---|---|---|
 | `PORT` | `3000` | API listen port |
 | `OLLAMA_URL` | `http://localhost:11434` | Ollama base URL |
 | `QDRANT_URL` | `http://localhost:6333` | Qdrant base URL |
-| `OLLAMA_EMBED_MODEL` | `nomic-embed-text` | Ollama model name for embeddings |
-| `OLLAMA_EMBED_DIM` | `768` | Expected embedding dimension (cross-layer integrity gate — embedder ↔ vectorStore ↔ Qdrant collection must all agree) |
-| `OLLAMA_GEN_MODEL` | `llama3` | Ollama model name for generation |
-| `OLLAMA_GEN_TIMEOUT_MS` | `180000` | Generation request timeout (ms) — generous because CPU-based llama3 is slow |
-| `QDRANT_COLLECTION` | `rag` | Default collection name used by ingest and retrieval |
-| `RETRIEVE_TOP_K` | `5` | Default topK used by `retrieve()` |
-| `RETRIEVE_SCORE_THRESHOLD` | `0.63` | Minimum cosine score for a question to get any context (in hybrid mode it gates results via a cheap dense probe, since fused scores aren't cosine similarities). Chosen with `scripts/calibrate-threshold.ts`; re-run it after changing the embedding model, prefixes or corpus |
-| `RETRIEVE_MODE` | `dense` | `dense` or `hybrid` (dense + BM25 sparse, fused in Qdrant). They tie on the eval sets once task prefixes are on, so dense is the simpler default |
-| `RETRIEVE_FUSION` | `rrf` | Hybrid fusion method: `rrf` (rank-based, dense weighted 2:1) or `dbsf` (score-based) |
-| `OLLAMA_EMBED_PREFIXES` | on | Prepends nomic-embed-text's `search_query: ` / `search_document: ` task prefixes. Set `0` to disable |
-| `SPARSE_STATS_PATH` | `./data/sparse-stats.json` | Corpus average chunk length used by the BM25 sparse encoder |
-| `MAX_INGEST_BYTES` | `52428800` (50 MB) | Hard upload size cap on `POST /ingest` |
-| `DOC_STORE_PATH` | `./data/documents.json` | Where the document-store JSON file lives |
-| `DATABASE_URL` | `postgres://localcortex:localcortex@localhost:5433/localcortex` | Postgres holding conversations and messages (matches the compose service) |
-| `QUERY_REWRITE` | on | Rewrites follow-ups that refer back ("what are his projects?") into standalone questions with the LLM before retrieval. Set `0` to use the previous-question + floor method instead |
-| `OLLAMA_REWRITE_MODEL` | `OLLAMA_GEN_MODEL` | Model used for the rewrite (a small model makes follow-ups faster) |
-| `REWRITE_TIMEOUT_MS` | `60000` | Rewrite timeout; on timeout the fallback method is used |
-| `RETRIEVE_FOLLOWUP_FLOOR` | `0.57` | Minimum score the new question must reach on its own for a follow-up to get context (just above the highest general-knowledge score in calibration, 0.567). `0` disables the check |
+| `DATABASE_URL` | `postgres://localcortex:localcortex@localhost:5433/localcortex` | Postgres for chats (port 5433 so it doesn't collide with a local Postgres) |
+| `OLLAMA_EMBED_MODEL` | `nomic-embed-text` | Embedding model |
+| `OLLAMA_EMBED_DIM` | `768` | Expected embedding dimension; a mismatch fails loudly |
+| `OLLAMA_EMBED_PREFIXES` | on | nomic-embed-text's `search_query: ` / `search_document: ` task prefixes. `0` to disable (re-ingest after changing) |
+| `OLLAMA_GEN_MODEL` | `llama3` | Generation model |
+| `OLLAMA_GEN_TIMEOUT_MS` | `180000` | Generation timeout; generous because CPU llama3 is slow |
+| `OLLAMA_NUM_CTX` | `4096` | Context window pinned for generation |
+| `QDRANT_COLLECTION` | `rag` | Default collection |
+| `RETRIEVE_TOP_K` | `5` | Passages retrieved per question |
+| `RETRIEVE_SCORE_THRESHOLD` | `0.63` | Minimum cosine score for a question to get any context |
+| `RETRIEVE_MODE` | `dense` | `dense` or `hybrid` |
+| `RETRIEVE_FUSION` | `rrf` | Hybrid fusion: `rrf` (dense weighted 2:1) or `dbsf` |
+| `RETRIEVE_FOLLOWUP_FLOOR` | `0.57` | Minimum score a follow-up must reach on its own, so an off-topic follow-up can't borrow relevance from the previous question |
+| `RETRIEVE_EXPAND_CONTEXT` | on | Whole small documents and neighbouring passages in the context. `0` for plain top chunks |
+| `INGEST_CONTEXT_HEADERS` | `auto` | "Title › Section" headers on chunks of documents without headings. `1` always, `0` never |
+| `QUERY_REWRITE` | on | LLM rewrite of referring follow-ups |
+| `OLLAMA_REWRITE_MODEL` | `OLLAMA_GEN_MODEL` | Model for the rewrite |
+| `REWRITE_TIMEOUT_MS` | `60000` | Rewrite timeout; on timeout the fallback is used |
+| `MAX_INGEST_BYTES` | `52428800` | Upload size limit |
+| `DOC_STORE_PATH` | `./data/documents.json` | Document records file |
+| `SPARSE_STATS_PATH` | `./data/sparse-stats.json` | Corpus stats for the BM25 encoder |
 
-**Swapping the embedding model**: this is the one override that needs *two* env vars together — `OLLAMA_EMBED_MODEL=...` AND `OLLAMA_EMBED_DIM=...`. The dim mismatch guard will throw `EmbeddingError` with an actionable message if they disagree.
+**Re-ingest after changing embeddings.** Changing the embedding model or prefixes changes every vector: drop the collection (`curl -X DELETE localhost:6333/collections/rag`) and upload your documents again.
 
-**Re-ingest after changing embeddings**: changing `OLLAMA_EMBED_MODEL` or `OLLAMA_EMBED_PREFIXES` changes every vector, so existing collections must be dropped and re-ingested (`curl -X DELETE localhost:6333/collections/rag`, then `POST /ingest` again). Collections created before hybrid search (single unnamed vector) also need re-ingesting. The same goes for documents ingested before the heading-split fix and automatic title headers (and `.docx` files ingested before Word headings were kept): delete them in the Documents panel and upload them again.
+</details>
 
-## Project layout
+## Development
+
+```bash
+pnpm test             # unit tests always run; live-stack tests skip if a service is down
+pnpm run typecheck    # API
+pnpm typecheck:web    # chat UI
+pnpm build && pnpm start   # production-style API run from dist/
+```
+
+<details>
+<summary><b>Evaluation scripts</b></summary>
+
+Each script prints a summary and writes its full results to `data/`. Ingest the sample handbook first: `curl -X POST localhost:3000/ingest -F "file=@data/eval-corpus.txt"`.
+
+| Script | Measures |
+|---|---|
+| `scripts/evaluate-retrieval.ts` | Recall@1/3/5 and MRR against `data/eval-set.json` (`--mode dense\|hybrid`, `--collection`, `--eval-set`) |
+| `scripts/calibrate-threshold.ts` | Where the relevance threshold should sit, from answerable vs off-topic question scores |
+| `scripts/test-hallucination.ts` | 10 questions the documents don't answer: PASS / FAIL / AMBIGUOUS. Suggests prompt changes but never applies them. `--compare` diffs two runs |
+| `scripts/check-answers.ts` | Answer correctness, old vs new context assembly (resumable) |
+| `scripts/check-answer-style.ts` | Answers start with the answer: no "According to…", no invented "Source:" lines |
+| `scripts/evaluate-followups.ts` | Follow-up retrieval and off-topic leaks |
+| `scripts/compare-chunking.ts` | Chunking strategies side by side |
+| `scripts/smoke-test.ts` | Every API route end to end, against a running `pnpm dev` |
+
+A larger benchmark (4 generated policy documents, 55 questions) lives in `data/large-corpus/`; ingest it with `npx tsx scripts/ingest-large-corpus.ts --collection rag-large`.
+
+When retrieval scores are low, look at chunking before the embedding model: most retrieval failures are chunking failures in disguise.
+
+</details>
+
+<details>
+<summary><b>Project layout</b></summary>
 
 ```
-local-rag/
+LocalCortex/
 ├── src/
-│   ├── ingest/
-│   │   ├── loader.ts        # raw file → clean text (pdfjs-dist / mammoth / UTF-8)
-│   │   ├── chunker.ts       # chunkFixedSize / chunkSemantic / chunkRecursive + dispatcher
-│   │   └── pipeline.ts      # ingestDocument: load → chunk → embed → upsert → persist
-│   ├── retrieval/
-│   │   ├── embedder.ts      # Ollama /api/embed wrapper, bounded-concurrency batch
-│   │   ├── vectorStore.ts   # @qdrant/js-client-rest: ensure/upsert/search/delete
-│   │   └── retriever.ts     # retrieve(question) = embed + searchSimilar + defensive sort
-│   ├── generation/
-│   │   ├── promptBuilder.ts # buildPrompt(question, chunks, history?) -- with-context vs no-context variants, no citation tags
-│   │   └── llm.ts           # RAG_SYSTEM_PROMPT + generate() + generateStream() + parseNdjsonStream()
-│   ├── rag.ts               # answerQuestion / answerQuestionStream -- the one orchestrator
-│   ├── server.ts            # Express API: /health, /ingest, /query, /documents, /conversations
-│   ├── documentStore.ts     # JSON-file document records (Document Store leaf, separate from Qdrant)
-│   ├── db.ts                # Postgres pool + withTransaction
-│   ├── conversationStore.ts # conversations + messages in Postgres
-│   ├── config.ts            # centralized tunable defaults (retrievalConfig)
-│   ├── types.ts             # LoadedMetadata, Chunk, ChunkPayload, LoadedDocument
-│   └── errors.ts            # UnsupportedFileTypeError, DocumentReadError, EmbeddingError, CollectionError, GenerationError
-├── scripts/
-│   ├── gen-sample-pdf.mjs   # regenerates data/sample.pdf
-│   ├── probe-embedder.ts    # manual harness: embeds one string, prints first 5 dims + length
-│   ├── probe-rag.ts         # manual harness: ingests sample.txt, asks answerable + absent questions, prints both
-│   ├── evaluate-retrieval.ts# Recall@{1,3,5} + MRR evaluator against data/eval-set.json
-│   ├── gen-eval-set.ts      # regenerates data/eval-set.json from a corpus using llama3
-│   ├── test-hallucination.ts# 10 absent-topic PASS/FAIL/AMBIGUOUS stress test
-│   ├── check-answer-style.ts# answers start with the answer: no "According to [1]…", no Source: lines
-│   ├── evaluate-followups.ts# follow-up retrieval: alone vs combined vs combined + floor
-│   ├── migrate.ts           # applies migrations/*.sql (pnpm db:migrate)
-│   ├── reconcile-documents.ts# sync documents.json with Qdrant (dry run; --apply)
-│   └── smoke-test.ts        # end-to-end API smoke (health → ingest → query → cleanup)
-├── migrations/
-│   └── 001_conversations.sql# conversations + messages tables
-├── data/
-│   ├── sample.txt           # plain-text fixture
-│   ├── sample.pdf           # 2-page PDF fixture (regenerable via scripts/gen-sample-pdf.mjs)
-│   ├── eval-corpus.txt      # 15-section handwritten employee handbook (eval + halluc corpus)
-│   ├── eval-set.json        # 20 labeled (question, expectedSubstrings) entries
-│   ├── followup-eval-set.json # 13 genuine + 6 off-topic two-turn follow-ups
-│   ├── documents.json       # DocumentStore JSON — runtime artifact (gitignored)
-│   ├── eval-results-*.json  # retrieval evaluator output (gitignored)
-│   └── halluc-results-*.json# halluc stress output (gitignored)
-├── tests/
-│   ├── loader.test.ts       # loader unit tests (offline, always run)
-│   ├── chunker.test.ts      # chunker unit tests (offline, always run)
-│   ├── ndjson.test.ts       # NJSON parser buffered-handling tests (offline, always run)
-│   ├── promptBuilder.test.ts# history block + trimming (offline, always run)
-│   ├── conversationStore.test.ts # Postgres store round-trip (skipIf Postgres down)
-│   ├── vectorStore.test.ts  # Qdrant round-trip tests (live-stack, skipIf-guarded)
-│   ├── pipeline.test.ts    # ingestDocument end-to-end (live-stack, skipIf-guarded)
-│   ├── retriever.test.ts    # retrieve() ranking/threshold/topK (live-stack, skipIf-guarded)
-│   └── rag.test.ts          # answerQuestion end-to-end + absent-topic stress (live-stack, skipIf-guarded)
-├── web/                     # chat UI (React + Vite), proxies /api/* to the API
-│   └── src/
-│       ├── api.ts           # typed client, incl. streaming sendMessage
-│       ├── state/chat.tsx   # chats, loaded conversations, the one live stream
-│       ├── state/documents.tsx # document list + one-at-a-time upload queue
-│       ├── components/      # Sidebar, ChatView, Message, Composer, DocumentsPanel, Modal, Icons
-│       └── styles.css       # the whole look, hand-written
-├── package.json
-├── tsconfig.json
-├── vitest.config.ts
-├── docker-compose.yml
-└── README.md
+│   ├── ingest/           # loader (pdf.js, mammoth, text) → chunker → pipeline
+│   ├── retrieval/        # embedder, Qdrant vector store, sparse encoder, retriever, context assembly
+│   ├── generation/       # system prompt, prompt builder, Ollama client, follow-up rewrite, refusal patterns
+│   ├── rag.ts            # the orchestrator: retrieve → build prompt → generate
+│   ├── server.ts         # Express API
+│   ├── conversationStore.ts, db.ts   # chats in Postgres
+│   └── documentStore.ts  # document records (JSON file)
+├── web/                  # chat UI: React 19 + Vite, hand-written CSS
+├── site/                 # documentation site (pnpm dev:site)
+├── migrations/           # Postgres schema, applied by pnpm db:migrate
+├── scripts/              # evaluation, calibration, maintenance and promo scripts
+├── tests/                # vitest: offline unit tests + live-stack tests
+├── data/                 # sample files, eval corpora and question sets
+└── docker-compose.yml    # Qdrant, Ollama, Postgres
 ```
 
-For deeper architectural notes (LangChain policy, error philosophy, API contract design decisions, evaluation interpretation), read `AGENTS.md` after this README — it documents the why behind the what.
+The reasoning behind each design decision, and what was measured and discarded, is in [`AGENTS.md`](AGENTS.md).
 
-## Troubleshooting
+</details>
+
+<details>
+<summary><b>Troubleshooting</b></summary>
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| `curl localhost:3000/health` returns "connection refused" | `pnpm dev` not running | `pnpm dev` in a separate terminal |
-| `/health` reports `ollama: false` | Ollama container down or not yet healthy | `docker compose ps`; `docker compose up -d ollama` |
-| `/health` reports `qdrant: false` | Qdrant container down or not yet healthy | `docker compose ps`; `docker compose up -d qdrant` |
-| `/health` reports `postgres: false`, or `/conversations` returns `503 database unreachable` | Postgres container down | `docker compose up -d postgres` |
-| `/conversations` returns `500 relation "conversations" does not exist` | Migrations not applied | `pnpm db:migrate` |
-| `POST /ingest` returns `502 Ingest failed at stage 'embed': Failed to reach Ollama embed endpoint` | `nomic-embed-text` not pulled into the Ollama container | `docker exec -it local-rag-ollama ollama pull nomic-embed-text` |
-| `POST /query` returns `503 Failed to answer question: Failed to reach Ollama generate endpoint` | `llama3` not pulled into the Ollama container | `docker exec -it local-rag-ollama ollama pull llama3` |
-| `Embedding dimension mismatch: expected 768, got N` | `OLLAMA_EMBED_MODEL` swapped to a different-dim model without updating `OLLAMA_EMBED_DIM` | Set BOTH `OLLAMA_EMBED_MODEL=...` and `OLLAMA_EMBED_DIM=...` |
-| Smoke test step 5 fails ("DocumentStore and Qdrant may be drifted") | A previous DELETE failed between the two stores | `curl localhost:3000/documents`, manually re-DELETE any orphaned records |
-| The Documents panel lists files that answers don't use, or misses some | `data/documents.json` drifted from Qdrant (e.g. old test runs) | `npx tsx scripts/reconcile-documents.ts` to see the diff, then `--apply` |
-| `docker compose down -v` wiped the models and chunks | Volumes removed with `-v` flag | Re-pull models (`docker exec ... ollama pull ...`) and re-ingest documents |
+| `localhost:3000/health` refuses the connection | API not running | `pnpm dev` |
+| `/health` shows `ollama`, `qdrant` or `postgres` as `false` | That container is down or still starting | `docker compose ps`, then `docker compose up -d` |
+| `/conversations` returns `relation "conversations" does not exist` | Migrations not applied | `pnpm db:migrate` |
+| Ingest fails at stage `'embed'` | `nomic-embed-text` not pulled | `docker exec -it local-rag-ollama ollama pull nomic-embed-text` |
+| Questions fail with `Failed to reach Ollama generate endpoint` | `llama3` not pulled | `docker exec -it local-rag-ollama ollama pull llama3` |
+| `Embedding dimension mismatch` | Embedding model changed without its dimension | Set both `OLLAMA_EMBED_MODEL` and `OLLAMA_EMBED_DIM` |
+| "model runner has unexpectedly stopped" on long runs | Docker's VM ran out of memory | Give Docker more RAM (on Windows, `memory=` in `.wslconfig`) |
+| The Documents panel doesn't match what answers use | `data/documents.json` drifted from Qdrant | `npx tsx scripts/reconcile-documents.ts`, then `--apply` |
+| Models and documents gone after `docker compose down -v` | `-v` deletes the volumes | Pull the models again and re-upload |
+
+</details>
+
+---
+
+<div align="center">
+<sub>Built with Ollama, Qdrant, Postgres, LangChain text splitters, Express and React.</sub>
+</div>
