@@ -1,17 +1,22 @@
-/* LocalCortex: dark only, deliberately quiet. */
+/* LocalCortex: dark only, deliberately quiet. Same palette and fonts as the
+   docs site's dark theme: warm charcoal, off-white text, one oxblood accent. */
 
 :root {
-  --bg-sidebar: #171717;
-  --bg-main: #212121;
-  --bg-surface: #2f2f2f;
-  --bg-hover: rgba(255, 255, 255, 0.06);
-  --bg-active: rgba(255, 255, 255, 0.1);
-  --text: #ececec;
-  --text-muted: #8e8e8e;
-  --text-faint: #6b6b6b;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --accent: #9db4ff;
+  --bg-sidebar: #1a1816;
+  --bg-main: #1f1d1a;
+  --bg-surface: #2b2825;
+  --bg-hover: rgba(244, 239, 230, 0.06);
+  --bg-active: rgba(244, 239, 230, 0.1);
+  --bg-code: #171614;
+  --text: #e4dfd5;
+  --text-muted: #9a9387;
+  --text-faint: #756f66;
+  --border: rgba(244, 239, 230, 0.08);
+  --border-strong: rgba(244, 239, 230, 0.14);
+  --accent: #e08f7c;
+  --accent-hover: #eba796;
+  --accent-fg: #1f1d1a;
+  --accent-soft: rgba(224, 143, 124, 0.22);
   --danger: #f28b82;
   --danger-bg: rgba(242, 139, 130, 0.08);
   --ok: #6fcf97;
@@ -23,9 +28,10 @@
   --sidebar-w: 260px;
   --ease: cubic-bezier(0.2, 0, 0, 1);
 
-  --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  --mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+  --font: "IBM Plex Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
 
   color-scheme: dark;
 }
@@ -76,7 +82,7 @@ button:disabled {
 }
 
 ::selection {
-  background: rgba(157, 180, 255, 0.3);
+  background: var(--accent-soft);
 }
 
 /* ----- layout ----------------------------------------------------------------- */
@@ -129,12 +135,12 @@ button:disabled {
 }
 
 .btn-primary {
-  background: var(--text);
-  color: #171717;
+  background: var(--accent);
+  color: var(--accent-fg);
 }
 
 .btn-primary:hover {
-  opacity: 0.88;
+  background: var(--accent-hover);
 }
 
 .btn-ghost {
@@ -319,14 +325,14 @@ button:disabled {
   gap: 2px;
   padding: 0 4px 0 28px;
   border-radius: 0 8px 8px 0;
-  background: linear-gradient(to right, transparent, #2a2a2a 24px);
+  background: linear-gradient(to right, transparent, #272522 24px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 150ms var(--ease);
 }
 
 .chat-item.active .chat-actions {
-  background: linear-gradient(to right, transparent, #303030 24px);
+  background: linear-gradient(to right, transparent, #302d2a 24px);
 }
 
 .chat-item:hover .chat-actions,
@@ -417,9 +423,10 @@ button:disabled {
 
 .empty h1 {
   margin: 0 0 6px;
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .empty-sub {
@@ -625,7 +632,7 @@ button:disabled {
   padding: 14px 16px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: #171717;
+  background: var(--bg-code);
 }
 
 .markdown pre code {
@@ -727,13 +734,13 @@ button:disabled {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: var(--text);
-  color: #171717;
-  transition: opacity 150ms var(--ease), transform 150ms var(--ease);
+  background: var(--accent);
+  color: var(--accent-fg);
+  transition: background 150ms var(--ease), transform 150ms var(--ease);
 }
 
 .send-btn:hover:not(:disabled) {
-  opacity: 0.88;
+  background: var(--accent-hover);
 }
 
 .send-btn:active:not(:disabled) {
@@ -741,8 +748,8 @@ button:disabled {
 }
 
 .send-btn:disabled {
-  background: #4a4a4a;
-  color: #8e8e8e;
+  background: #3d3833;
+  color: var(--text-faint);
 }
 
 .jump-btn {
