@@ -1,4 +1,5 @@
 import { CardGroup, Card } from "../components/Card";
+import demoVideo from "../assets/localcortex-demo.webm";
 
 <div className="hero">
   <p className="hero-title">LocalCortex</p>
@@ -8,7 +9,7 @@ import { CardGroup, Card } from "../components/Card";
     <a className="btn btn-secondary" href="https://github.com/Sekharendu/LocalCortex" target="_blank" rel="noreferrer">View on GitHub</a>
   </div>
   <div className="hero-visual">
-    <div className="hero-visual-placeholder">[ screenshot: chat UI answering with source chips ]</div>
+    <video src={demoVideo} autoPlay muted loop playsInline aria-label="LocalCortex demo: upload a handbook, ask questions, get answers with sources, and a refusal for an off-topic question" />
   </div>
 </div>
 

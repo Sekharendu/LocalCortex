@@ -772,13 +772,8 @@ a.card:hover { border-color: var(--border-strong); }
   overflow: hidden;
   background: var(--bg-card);
 }
-.hero-visual img { display: block; width: 100%; height: auto; }
-.hero-visual-placeholder {
-  padding: 64px 24px;
-  text-align: center;
-  color: var(--fg-label);
-  font-size: 14px;
-}
+.hero-visual img,
+.hero-visual video { display: block; width: 100%; height: auto; }
 
 .landing-section { margin: 64px 0; }
 .landing-section h2 { font-family: var(--font-serif); letter-spacing: -0.01em; font-size: 28px; margin: 0 0 10px; }
