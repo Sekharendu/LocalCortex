@@ -1,0 +1,17 @@
+**/node_modules
+**/dist
+.git
+media
+test_pdfs
+interview-logs
+usershpappdatalocaltempopencode
+*.log
+.env
+ref.png
+data/documents.json*
+data/sparse-stats.json
+data/*-results-*.json
+data/answer-*.json*
+data/*calibration-*.json
+data/nearmiss-check-*.json
+data/chunking-compare-*.json

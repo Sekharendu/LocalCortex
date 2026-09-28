@@ -63,7 +63,56 @@ services:
       start_period: 10s
     restart: unless-stopped
 
+  # ---- The full app: `docker compose --profile app up -d`, then open http://localhost:8080 ----
+  # Without the profile, only the three services above start (the development setup).
+
+  models:
+    # One-shot: pulls the two models into the ollama volume (skipped quickly once present).
+    image: ollama/ollama:latest
+    profiles: [app]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["/bin/sh", "-c", "ollama pull nomic-embed-text && ollama pull llama3"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build: { context: ., target: api }
+    profiles: [app]
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      QDRANT_URL: http://qdrant:6333
+      # Its own collection, so it never mixes with the one `pnpm dev` uses (`rag`).
+      QDRANT_COLLECTION: localcortex-app
+      DATABASE_URL: postgres://localcortex:localcortex@postgres:5432/localcortex
+      DOC_STORE_PATH: /app/state/documents.json
+      SPARSE_STATS_PATH: /app/state/sparse-stats.json
+    volumes:
+      # Document records live here, not in ./data, so they stay with this setup.
+      - app_state:/app/state
+    depends_on:
+      qdrant:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      models:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  web:
+    build: { context: ., target: web }
+    profiles: [app]
+    ports:
+      # Localhost only: the app has no login, so it isn't exposed to the network.
+      - "127.0.0.1:8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
 volumes:
   qdrant_data:
   ollama_data:
   postgres_data:
+  app_state:

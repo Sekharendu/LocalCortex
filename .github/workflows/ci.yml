@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4 # version from packageManager in package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - run: pnpm run typecheck:test
+      - run: pnpm typecheck:web
+      # No Ollama / Qdrant / Postgres here: the live-stack tests skip themselves,
+      # the offline ones (loader, chunker, prompt, refusal, ...) run.
+      - run: pnpm test

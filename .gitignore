@@ -30,3 +30,9 @@ data/embedding_zoomed.png
 requirements-viz.txt
 scripts/__pycache__/
 scripts/visualize_embeddings.py
+
+# Launch drafts: posts, profile text, applications (private)
+launch/
+
+.vercel
+.env*
