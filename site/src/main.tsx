@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import { ViteReactSSG } from "vite-react-ssg";
+import { Link } from "react-router-dom";
 import type { RouteRecord } from "vite-react-ssg";
 import type { MDXComponents } from "mdx/types";
 import DocsLayout from "./layouts/DocsLayout";
@@ -19,6 +20,10 @@ const pageModules = import.meta.glob("./pages/**/*.mdx", { eager: true }) as Rec
 // "./pages/index.mdx" -> "/", "./pages/how-it-works/architecture.mdx" -> "/how-it-works/architecture"
 const mdxComponents: MDXComponents = {
   pre: CodeBlock,
+  // Internal markdown links go through the router so they pick up the base
+  // path (/LocalCortex/ on GitHub Pages); a plain <a href="/x"> would skip it.
+  a: ({ href, ...props }) =>
+    href?.startsWith("/") ? <Link to={href} {...props} /> : <a href={href} {...props} />,
   // Markdown tables get a frame that scrolls sideways on phones.
   table: (props) => (
     <div className="table-wrap">
@@ -49,4 +54,4 @@ const routes: RouteRecord[] = Object.entries(pageModules).map(([file, mod]) => {
 
 routes.push({ path: "*", element: <NotFound /> });
 
-export const createRoot = ViteReactSSG({ routes });
+export const createRoot = ViteReactSSG({ routes, basename: import.meta.env.BASE_URL });
