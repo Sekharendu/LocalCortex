@@ -4,9 +4,12 @@
 
 **Chat with your documents. Entirely on your machine.**
 
+[![CI](https://github.com/Sekharendu/LocalCortex/actions/workflows/ci.yml/badge.svg)](https://github.com/Sekharendu/LocalCortex/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Upload PDFs, Word files, Markdown or plain text, then ask questions in a chat UI.<br>
 Answers come with their sources, and when your documents don't cover a question, it says so.<br>
-No cloud APIs, no API keys, nothing leaves your computer.
+No cloud APIs, no API keys, nothing leaves your computer. Open source under the MIT license.
 
 ![LocalCortex demo: upload a handbook, ask questions, get answers with sources, and a refusal for an off-topic question](media/localcortex-demo.gif)
 
@@ -63,13 +66,23 @@ Follow-ups that point back ("what about part-timers?") are first rewritten into 
 
 ## Quick start
 
-**You need** Docker with Compose v2, Node.js 26+ and pnpm. The models need about 5 GB of disk.
+**You need** Docker with Compose v2, and about 8 GB of free RAM for Docker (llama3 alone takes ~5 GB). The first start downloads the two models, about 5 GB.
 
 ```bash
 git clone https://github.com/Sekharendu/LocalCortex.git
 cd LocalCortex
+docker compose --profile app up -d
+```
 
-# 1. Start Qdrant, Ollama and Postgres
+Then open **http://localhost:8080**. The first `up` takes a while because it pulls `nomic-embed-text` and `llama3`; they're kept in a Docker volume, so later starts are quick. Click **Documents** in the sidebar, drop in a file and start asking.
+
+The app listens on `127.0.0.1` only: it has no login, so it isn't exposed to your network. `docker compose --profile app down` stops it; your documents and chats stay in Docker volumes.
+
+<details>
+<summary><b>Run it for development</b> (hot reload, Node.js 26+ and pnpm)</summary>
+
+```bash
+# 1. Start Qdrant, Ollama and Postgres only
 docker compose up -d
 
 # 2. Pull the two models (one time; they persist in a Docker volume)
@@ -85,7 +98,9 @@ pnpm dev        # API on http://localhost:3000
 pnpm dev:web    # UI  on http://localhost:5173
 ```
 
-Open **http://localhost:5173**, click **Documents** in the sidebar, drop in a file and start asking.
+Then open **http://localhost:5173**. The development API and the Docker app keep separate document lists and Qdrant collections (`rag` and `localcortex-app`), so they don't mix. Chats share one Postgres database.
+
+</details>
 
 > [!TIP]
 > Try it with the sample handbook in `data/eval-corpus.docx`: ask *"How many vacation days do I get per year?"*, then *"And after five years?"*, then something it can't know, like *"What is the capital of France?"*
@@ -101,7 +116,7 @@ Open **http://localhost:5173**, click **Documents** in the sidebar, drop in a fi
 
 ### The API
 
-Everything the UI does is available over a small JSON API on port 3000.
+Everything the UI does is available over a small JSON API: `localhost:3000` in development, `localhost:8080/api` in the Docker app (e.g. `localhost:8080/api/health`).
 
 | Method | Path | What it does |
 |---|---|---|
@@ -277,6 +292,7 @@ The reasoning behind each design decision, and what was measured and discarded, 
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | `localhost:3000/health` refuses the connection | API not running | `pnpm dev` |
+| `docker compose --profile app up -d` sits at "Waiting" on the first start | It is downloading the models (~5 GB) before starting the API | Watch it with `docker compose logs -f models` in another terminal |
 | `/health` shows `ollama`, `qdrant` or `postgres` as `false` | That container is down or still starting | `docker compose ps`, then `docker compose up -d` |
 | `/conversations` returns `relation "conversations" does not exist` | Migrations not applied | `pnpm db:migrate` |
 | Ingest fails at stage `'embed'` | `nomic-embed-text` not pulled | `docker exec -it local-rag-ollama ollama pull nomic-embed-text` |
