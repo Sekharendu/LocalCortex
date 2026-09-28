@@ -46,8 +46,8 @@
   --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --header-h: 64px;
-  --sidebar-w: 272px;
-  --toc-w: 290px;
+  --sidebar-w: 248px;
+  --toc-w: 260px;
   --content-max: 720px;
   --radius: 10px;
   --radius-sm: 8px;
@@ -248,7 +248,7 @@ button {
 .site-sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
-  padding: 28px 16px 40px;
+  padding: 28px 10px 40px 16px;
   position: sticky;
   top: var(--header-h);
   height: calc(100vh - var(--header-h));
@@ -311,9 +311,9 @@ button {
 .docs-content {
   flex: 1;
   min-width: 0;
-  max-width: calc(var(--content-max) + 48px);
+  max-width: calc(var(--content-max) + 96px);
   margin: 0 auto;
-  padding: 56px 24px 96px;
+  padding: 56px 40px 96px 56px;
 }
 
 .not-found {
