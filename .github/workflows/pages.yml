@@ -1,7 +1,7 @@
 name: Docs site
 
 # Builds site/ and publishes it to GitHub Pages at
-# https://sekharendu.github.io/LocalCortex/
+# https://localcortex.space/
 on:
   push:
     branches: [main]
@@ -31,10 +31,10 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # Pages serves a project site from /<repo>/, so assets and router links need that prefix.
+      # The custom domain serves assets and router links from the domain root.
       - run: pnpm build:site
         env:
-          SITE_BASE: /LocalCortex/
+          SITE_BASE: /
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site/dist
