@@ -182,6 +182,85 @@ curl -s localhost:3000/conversations/$CID | jq
 
 </details>
 
+## Use LocalCortex from an MCP client
+
+LocalCortex includes a local **stdio MCP server**. An MCP client launches it as a
+child process and can search your documents, ask the local model, list documents,
+upload files, delete indexed documents, and check service health.
+
+The MCP server connects to the existing HTTP API; it does not start Docker or the
+API for you. This keeps the web UI and MCP clients on the same document index and
+avoids multiple processes writing the JSON document store.
+
+1. Start LocalCortex with `docker compose --profile app up -d`, or start the
+   infrastructure and development API as described above.
+2. Run `pnpm install` and `pnpm build` in this checkout.
+3. Add the following server entry to a client that supports local stdio MCP
+   servers. Replace the script path with the absolute path to your checkout:
+
+```json
+{
+  "mcpServers": {
+    "localcortex": {
+      "command": "node",
+      "args": ["C:/path/to/LocalCortex/dist/mcp.js"],
+      "env": {
+        "LOCALCORTEX_API_URL": "http://localhost:8080/api"
+      }
+    }
+  }
+}
+```
+
+For a development API, set `LOCALCORTEX_API_URL` to `http://localhost:3000`
+(the default). The MCP process can run from any working directory; the API owns
+the document-store paths. Restart/rebuild the API after adding MCP support, since
+passage search uses the new `POST /search` endpoint. Rebuild the Docker app with
+`docker compose --profile app up -d --build` if using an older image.
+
+| Tool | Purpose |
+|---|---|
+| `localcortex_health` | Check Ollama, Qdrant and Postgres reachability |
+| `localcortex_list_documents` | List indexed documents and their IDs |
+| `localcortex_search` | Retrieve passages with source/page metadata; let the MCP client's own model answer |
+| `localcortex_ask` | Have LocalCortex's configured Ollama model answer with citations |
+| `localcortex_ingest` | Upload a local file using an absolute path on the MCP server's computer |
+| `localcortex_delete_document` | Remove a document and its indexed passages by ID; original file is kept |
+
+Try: *"Search my LocalCortex documents for the vacation policy and cite the
+passages you find."* Search needs the embedding model and Qdrant, but does not
+call the answer-generation model. Asking uses llama3 too. Neither tool saves a
+chat or requires Postgres; the health tool reports Postgres separately.
+
+Uploads support `.pdf`, `.docx`, `.md`, and `.txt`, with `recursive` chunking by
+default. Uploading the same file twice creates two records. Confirm deletions in
+your MCP client before approving the destructive tool. There are no automatic
+retries of writes.
+
+The HTTP timeout defaults to 10 minutes for CPU generation/indexing; override it
+with `MCP_API_TIMEOUT_MS`. For long operations, also increase your MCP client's
+tool-call timeout where supported. The upload size check defaults to 50 MB;
+set `MAX_INGEST_BYTES` in both the API and MCP environments to change it.
+
+For development, `pnpm dev:mcp` launches the TypeScript entry point;
+`pnpm start:mcp` launches the compiled server. These commands wait for an MCP
+client on stdin; they do not open a browser. Configure clients to run `node`
+directly as above so package-manager banners cannot pollute the protocol stream.
+This is a local stdio integration, not a remotely hosted MCP endpoint. Connecting
+it to a cloud assistant can send retrieved document passages to that assistant.
+
+The retrieval-only HTTP endpoint is also available directly:
+
+```bash
+curl -s localhost:3000/search -H 'content-type: application/json' \
+  -d '{"question":"What is the vacation policy?","topK":5,"mode":"dense"}'
+```
+
+It returns `{ chunks }` with the usual relevance checks and no generated answer.
+Optional `topK` is an integer from 1–20, `scoreThreshold` is from 0–1, and `mode`
+is `dense` or `hybrid`. It searches the default collection. Invalid input returns
+400, and retrieval infrastructure errors return 503 with `{ error }`.
+
 ## Configuration
 
 Everything works with the defaults from `docker compose up -d`. These are the settings you're most likely to change:

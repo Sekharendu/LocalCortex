@@ -17,6 +17,7 @@ data/chunking-compare-*.json
 .env
 doubts.txt
 notes.md
+/V2PLAN.md
 SESSION-LOG.md
 FRONTEND-LOG.md
 pipeline-architecture.html
@@ -30,6 +31,7 @@ data/embedding_zoomed.png
 requirements-viz.txt
 scripts/__pycache__/
 scripts/visualize_embeddings.py
+test_pdfs
 
 # Launch drafts: posts, profile text, applications (private)
 launch/

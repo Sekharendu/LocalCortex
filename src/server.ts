@@ -20,6 +20,7 @@ import {
   renameConversation,
 } from "./conversationStore.js";
 import type { Citation } from "./types.js";
+import { searchRouter } from "./searchRouter.js";
 
 const PORT = Number(process.env.PORT ?? 3000);
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
@@ -29,6 +30,7 @@ const MAX_INGEST_BYTES = Number(process.env.MAX_INGEST_BYTES ?? 50 * 1024 * 1024
 const app: Express = express();
 
 app.use(express.json());
+app.use(searchRouter);
 
 // ----- multer: write uploads to OS temp dir; auto-cleaned in the /ingest finally block
 const upload = multer({

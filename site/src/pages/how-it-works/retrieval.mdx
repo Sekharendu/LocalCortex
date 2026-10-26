@@ -74,6 +74,14 @@ The keyword side kept out-voting a correct vector result:
 - **Some terms were split wrongly.** "401(k)" became two separate words.
 - **It ignored how sure the vector search was.** The two results are merged by rank position only. A vector search that was barely sure (0.83 vs 0.81) and one that was very sure (0.83 vs 0.40) looked the same, so a wrong keyword match at #1 could win either way.
 
+<figure className="rrf-figure">
+  <img
+    src="/rrf-ranking-explained.png"
+    alt="Document A correctly matches the question's meaning using different words. Document B shares the question's keywords but has a different meaning. Weighted RRF combines their rank positions and incorrectly places B first."
+  />
+  <figcaption>RRF remembers where each passage finished, but not how strongly it won or lost.</figcaption>
+</figure>
+
 <Measured source="scripts/evaluate-retrieval.ts">
 
 | Test set | Vector search | Hybrid search |
