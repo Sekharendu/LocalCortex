@@ -20,7 +20,7 @@ export interface AskOptions extends Omit<RetrieveOptions, "previousQuestion"> {
   /** Earlier turns of the conversation, oldest first. Follow-ups are rewritten into a
    * standalone question for retrieval, and the model sees the history to resolve "it". */
   history?: HistoryMessage[];
-  /** Cancels generation (streaming only), e.g. when the user presses Stop. */
+  /** Cancels rewriting and generation, e.g. when the user presses Stop. */
   signal?: AbortSignal;
 }
 
@@ -73,7 +73,8 @@ export async function retrieveForQuestion(
   question: string,
   options: AskOptions = {},
 ): Promise<RetrieveForQuestionResult> {
-  const { history = [], signal: _signal, ...retrieveOptions } = options;
+  const { history = [], signal, ...retrieveOptions } = options;
+  signal?.throwIfAborted();
   const previousQuestion = [...history].reverse().find((m) => m.role === "user")?.content;
 
   let chunks: RetrievedChunk[];
@@ -84,11 +85,13 @@ export async function retrieveForQuestion(
     // A follow-up: search with its standalone form, gated like any first question. If
     // rewriting is off or fails, fall back to previous + current question with the
     // follow-up floor.
-    searchQuestion = rewriteConfig.enabled ? ((await rewriteFollowUp(history, question)) ?? undefined) : undefined;
+    searchQuestion = rewriteConfig.enabled ? ((await rewriteFollowUp(history, question, signal)) ?? undefined) : undefined;
+    signal?.throwIfAborted();
     chunks = searchQuestion
       ? await retrieve(searchQuestion, retrieveOptions)
       : await retrieve(question, { ...retrieveOptions, previousQuestion });
   }
+  signal?.throwIfAborted();
   // The model still sees the user's own words plus the history. It reads the assembled
   // passages (whole small documents, or hits plus neighbours); citations still come from
   // the chunks retrieval returned.
@@ -102,11 +105,12 @@ export async function retrieveForQuestion(
           titleChunk: contextConfig.titleChunk,
         })
       : chunks;
+  signal?.throwIfAborted();
   const prompt = buildPrompt(question, passages, history);
   return { prompt, chunks, passages, searchQuestion };
 }
 
-/** Ollama's llama3 chat template around system + prompt (header tokens, BOS, EOT). */
+/** Retained llama3 template overhead estimate; approximate for hosted Qwen generation. */
 const TEMPLATE_OVERHEAD_TOKENS = 32;
 
 /** llama3 tokens left for context passages in this request's num_ctx window. */
@@ -139,7 +143,7 @@ export async function answerQuestion(
   opts: AskOptions = {},
 ): Promise<AnswerResult> {
   const { prompt, chunks } = await retrieveForQuestion(question, opts);
-  const answer = await generate(prompt);
+  const answer = await generate(prompt, { signal: opts.signal });
   return { answer, chunks, citations: buildCitations(chunks) };
 }
 

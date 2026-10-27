@@ -2,18 +2,18 @@
 
 # LocalCortex
 
-**Chat with your documents. Entirely on your machine.**
+**Chat with your documents. Local retrieval, hosted answers.**
 
 [![CI](https://github.com/Sekharendu/LocalCortex/actions/workflows/ci.yml/badge.svg)](https://github.com/Sekharendu/LocalCortex/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Upload PDFs, Word files, Markdown or plain text, then ask questions in a chat UI.<br>
 Answers come with their sources, and when your documents don't cover a question, it says so.<br>
-No cloud APIs, no API keys, nothing leaves your computer. Open source under the MIT license.
+V2 uses Cloudflare Workers AI for answers and follow-up rewriting. Embeddings, document storage and chat persistence remain local in the standard setup. Open source under the MIT license.
 
 ![LocalCortex demo: upload a handbook, ask questions, get answers with sources, and a refusal for an off-topic question](media/localcortex-demo.gif)
 
-<sub>Real answers from llama3 on a laptop CPU. The waits while it thinks are cut, and each caption shows the actual time taken.</sub>
+<sub>Historical V1 demo: real answers from llama3 on a laptop CPU. The waits while it thinks are cut, and each caption shows the actual time taken.</sub>
 
 </div>
 
@@ -21,15 +21,15 @@ No cloud APIs, no API keys, nothing leaves your computer. Open source under the 
 
 ## Why LocalCortex
 
-- **Private by design.** Embedding, search, generation and chat history all run in containers on your machine. Your files are never sent anywhere.
+- **Local storage, hosted inference.** Questions, selected document passages (possibly a whole small document), and relevant conversation/rewrite history are sent to Cloudflare. Embeddings, search and stored chats stay local in the standard setup.
 - **Answers you can check.** Every answer shows the documents it came from as source chips.
 - **Honest when it doesn't know.** If nothing relevant is found, it tells you instead of making something up.
 - **Real conversations.** Follow-ups like *"And after five years?"* keep the thread. Chats are saved, titled and listed like any chat app.
-- **Runs on a laptop.** No GPU needed. llama3 on a CPU is slow (see below), but it works.
+- **No local answer model download.** Ollama runs nomic-embed-text for embeddings; Cloudflare generates answers over the internet.
 
 ## Measured, not promised
 
-Every number here comes from a script in `scripts/` that you can re-run.
+These are historical V1 measurements with local llama3, not validation of Cloudflare generation. V2 quality and latency have not been evaluated.
 
 | What was tested | Result |
 |---|---|
@@ -50,23 +50,26 @@ flowchart LR
         C --> E["Embed<br/>nomic-embed-text"]
         E --> Q[("Qdrant<br/>vector search")]
         U["Your question"] --> Q
-        Q --> L["Answer<br/>llama3 via Ollama"]
-        L --> A["Answer + sources"]
-        P[("Postgres<br/>chat history")] <--> L
+        P[("Postgres<br/>chat history")]
     end
+    Q --> L["Cloudflare Workers AI<br/>Qwen3 answers + rewriting"]
+    P --> L
+    L --> A["Answer + sources"]
 ```
 
 1. **Ingest.** Files are turned into text (PDF line breaks and Word headings are kept), then split along their headings and paragraphs. Documents without headings, such as a resume, get a "Title › Section" header embedded with each chunk.
 2. **Embed and store.** Each chunk is embedded by `nomic-embed-text` in Ollama and stored in Qdrant with both a dense vector and a BM25-style sparse vector.
 3. **Retrieve.** A question is embedded and matched. A calibrated relevance threshold (0.63) decides whether *anything* relevant exists. If nothing clears it, the model is told so and refuses.
-4. **Assemble the context.** A small matching document goes in whole. A long one contributes its best passages plus their neighbours, within the model's 4096-token window.
-5. **Answer.** llama3 answers in plain sentences, streamed token by token. Sources come from retrieval, never from the model, so they can't be made up.
+4. **Assemble the context.** A small matching document goes in whole. A long one contributes its best passages plus their neighbours, within the retained 4096-token prompt budget (estimated with the existing llama3 tokenizer).
+5. **Answer.** Cloudflare Qwen3 answers in plain sentences, streamed token by token. Sources come from retrieval, never from the model, so they can't be made up.
 
 Follow-ups that point back ("what about part-timers?") are first rewritten into standalone questions, so retrieval works on them like a first question.
 
 ## Quick start
 
-**You need** Docker with Compose v2, and about 8 GB of free RAM for Docker (llama3 alone takes ~5 GB). The first start downloads the two models, about 5 GB.
+**You need** Docker with Compose v2, internet access, and a Cloudflare account with a Workers AI API token. Only nomic-embed-text is downloaded (roughly 274 MB), plus application/infrastructure images.
+
+Set `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` securely in the backend shell before starting Compose or `pnpm dev`. The API does not automatically load `.env` files. Compose can read a private `.env` file for substitution; never commit it or put these variables in frontend/Vite configuration. The token needs Workers AI access for the account. Optional `CLOUDFLARE_GEN_TIMEOUT_MS` defaults to `180000`.
 
 ```bash
 git clone https://github.com/Sekharendu/LocalCortex.git
@@ -74,7 +77,7 @@ cd LocalCortex
 docker compose --profile app up -d
 ```
 
-Then open **http://localhost:8080**. The first `up` takes a while because it pulls `nomic-embed-text` and `llama3`; they're kept in a Docker volume, so later starts are quick. Click **Documents** in the sidebar, drop in a file and start asking.
+Then open **http://localhost:8080**. The first `up` pulls `nomic-embed-text`, which is kept in a Docker volume. No llama3 download is needed. Click **Documents** in the sidebar, drop in a file and start asking.
 
 The app listens on `127.0.0.1` only: it has no login, so it isn't exposed to your network. `docker compose --profile app down` stops it; your documents and chats stay in Docker volumes.
 
@@ -85,9 +88,8 @@ The app listens on `127.0.0.1` only: it has no login, so it isn't exposed to you
 # 1. Start Qdrant, Ollama and Postgres only
 docker compose up -d
 
-# 2. Pull the two models (one time; they persist in a Docker volume)
+# 2. Pull the embedding model (one time; it persists in a Docker volume)
 docker exec -it local-rag-ollama ollama pull nomic-embed-text
-docker exec -it local-rag-ollama ollama pull llama3
 
 # 3. Install dependencies and create the chat tables
 pnpm install
@@ -112,7 +114,7 @@ Then open **http://localhost:5173**. The development API and the Docker app keep
 - Chats live in the sidebar, grouped by date, and each has its own URL. New chats are titled from their first message.
 - Answers stream in with their sources as chips underneath. **Stop** cancels generation and keeps the partial answer.
 - The **Documents** panel takes `.pdf`, `.docx`, `.md` and `.txt` by drag and drop. It shows indexing progress and lets you delete files.
-- It works fully offline: fonts are bundled, nothing loads from a CDN.
+- Fonts are bundled without a CDN. Answers and follow-up rewriting require internet access to Cloudflare.
 
 ### The API
 
@@ -185,7 +187,7 @@ curl -s localhost:3000/conversations/$CID | jq
 ## Use LocalCortex from an MCP client
 
 LocalCortex includes a local **stdio MCP server**. An MCP client launches it as a
-child process and can search your documents, ask the local model, list documents,
+child process and can search your documents, ask the hosted generation model, list documents,
 upload files, delete indexed documents, and check service health.
 
 The MCP server connects to the existing HTTP API; it does not start Docker or the
@@ -223,13 +225,13 @@ passage search uses the new `POST /search` endpoint. Rebuild the Docker app with
 | `localcortex_health` | Check Ollama, Qdrant and Postgres reachability |
 | `localcortex_list_documents` | List indexed documents and their IDs |
 | `localcortex_search` | Retrieve passages with source/page metadata; let the MCP client's own model answer |
-| `localcortex_ask` | Have LocalCortex's configured Ollama model answer with citations |
+| `localcortex_ask` | Have LocalCortex's Cloudflare Qwen3 model answer with citations |
 | `localcortex_ingest` | Upload a local file using an absolute path on the MCP server's computer |
 | `localcortex_delete_document` | Remove a document and its indexed passages by ID; original file is kept |
 
 Try: *"Search my LocalCortex documents for the vacation policy and cite the
 passages you find."* Search needs the embedding model and Qdrant, but does not
-call the answer-generation model. Asking uses llama3 too. Neither tool saves a
+call the answer-generation model. Asking uses Cloudflare generation. Neither tool saves a
 chat or requires Postgres; the health tool reports Postgres separately.
 
 Uploads support `.pdf`, `.docx`, `.md`, and `.txt`, with `recursive` chunking by
@@ -261,13 +263,25 @@ Optional `topK` is an integer from 1–20, `scoreThreshold` is from 0–1, and `
 is `dense` or `hybrid`. It searches the default collection. Invalid input returns
 400, and retrieval infrastructure errors return 503 with `{ error }`.
 
+## Hosted generation and privacy
+
+The fixed generation/rewrite model is `@cf/qwen/qwen3-30b-a3b-fp8`. Cloudflare's [model schema](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/) documents a **2000-token default output limit**; answer requests omit `max_tokens` and use that default. Rewrites explicitly request **48 output tokens** with temperature 0. The existing **512-token answer reserve is context accounting, not a generation cap**. The llama3 tokenizer and 4096-token context budget are retained estimates, not Qwen's tokenizer or hosted window configuration.
+
+Thinking is disabled by rendering [Qwen's published no-thinking template](https://huggingface.co/Qwen/Qwen3-30B-A3B-FP8/blob/main/tokenizer_config.json) with a closed empty thinking block, using Cloudflare's documented [raw prompt mode](https://developers.cloudflare.com/workers-ai/features/prompting/). No unsupported `enable_thinking` parameter is sent. This combines documented capabilities and has not been verified end to end.
+
+Selected passages, including whole small documents when context assembly selects them, questions, and relevant conversation/rewrite inputs leave the device for Cloudflare inference. This integration makes no new retention or training guarantees; review [Cloudflare's data policy](https://developers.cloudflare.com/workers-ai/platform/data-usage/). Provider credentials stay on the backend. Generation errors do not echo prompts, responses, credentials or raw provider error bodies. `GET /health` still probes only local Ollama, Qdrant and Postgres; it does not verify Cloudflare access.
+
+The one-request synthetic runner is `pnpm exec tsx scripts/smoke-cloudflare.ts` after backend credentials are configured. It does not print generated content or credentials, and makes no request when credentials are missing.
+
+This integration's validation is deliberately limited to one tiny synthetic live inference check if credentials exist, otherwise blocked. No suites, builds or quality evaluations are run for it. A successful check proves connectivity and basic inference only, not streaming, cancellation, rewrites, refusals or complete application behavior. Existing evaluation scripts and historical results are not Cloudflare validation.
+
 ## Configuration
 
-Everything works with the defaults from `docker compose up -d`. These are the settings you're most likely to change:
+Local infrastructure uses the defaults from `docker compose up -d`; generation additionally requires the backend Cloudflare credentials above. These are the main settings:
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `OLLAMA_GEN_MODEL` | `llama3` | The model that writes answers |
+| `CLOUDFLARE_ACCOUNT_ID` / `CLOUDFLARE_API_TOKEN` | required | Backend account ID and Workers AI token |
 | `OLLAMA_EMBED_MODEL` / `OLLAMA_EMBED_DIM` | `nomic-embed-text` / `768` | The embedding model and its dimension. Change both together, then re-ingest |
 | `RETRIEVE_SCORE_THRESHOLD` | `0.63` | How relevant a passage must be before the model sees it. Re-calibrate with `scripts/calibrate-threshold.ts` after changing models |
 | `RETRIEVE_MODE` | `dense` | `dense` or `hybrid` (dense + BM25, fused in Qdrant). They tie on the eval sets |
@@ -286,9 +300,9 @@ Everything works with the defaults from `docker compose up -d`. These are the se
 | `OLLAMA_EMBED_MODEL` | `nomic-embed-text` | Embedding model |
 | `OLLAMA_EMBED_DIM` | `768` | Expected embedding dimension; a mismatch fails loudly |
 | `OLLAMA_EMBED_PREFIXES` | on | nomic-embed-text's `search_query: ` / `search_document: ` task prefixes. `0` to disable (re-ingest after changing) |
-| `OLLAMA_GEN_MODEL` | `llama3` | Generation model |
-| `OLLAMA_GEN_TIMEOUT_MS` | `180000` | Generation timeout; generous because CPU llama3 is slow |
-| `OLLAMA_NUM_CTX` | `4096` | Context window pinned for generation |
+| `CLOUDFLARE_ACCOUNT_ID` / `CLOUDFLARE_API_TOKEN` | required | Backend credentials for fixed model `@cf/qwen/qwen3-30b-a3b-fp8` |
+| `CLOUDFLARE_GEN_TIMEOUT_MS` | `180000` | Generation timeout covering response headers and body |
+| `OLLAMA_NUM_CTX` | `4096` | Legacy context budget estimate, not a Cloudflare window setting |
 | `QDRANT_COLLECTION` | `rag` | Default collection |
 | `RETRIEVE_TOP_K` | `5` | Passages retrieved per question |
 | `RETRIEVE_SCORE_THRESHOLD` | `0.63` | Minimum cosine score for a question to get any context |
@@ -298,7 +312,6 @@ Everything works with the defaults from `docker compose up -d`. These are the se
 | `RETRIEVE_EXPAND_CONTEXT` | on | Whole small documents and neighbouring passages in the context. `0` for plain top chunks |
 | `INGEST_CONTEXT_HEADERS` | `auto` | "Title › Section" headers on chunks of documents without headings. `1` always, `0` never |
 | `QUERY_REWRITE` | on | LLM rewrite of referring follow-ups |
-| `OLLAMA_REWRITE_MODEL` | `OLLAMA_GEN_MODEL` | Model for the rewrite |
 | `REWRITE_TIMEOUT_MS` | `60000` | Rewrite timeout; on timeout the fallback is used |
 | `MAX_INGEST_BYTES` | `52428800` | Upload size limit |
 | `DOC_STORE_PATH` | `./data/documents.json` | Document records file |
@@ -347,7 +360,7 @@ LocalCortex/
 ├── src/
 │   ├── ingest/           # loader (pdf.js, mammoth, text) → chunker → pipeline
 │   ├── retrieval/        # embedder, Qdrant vector store, sparse encoder, retriever, context assembly
-│   ├── generation/       # system prompt, prompt builder, Ollama client, follow-up rewrite, refusal patterns
+│   ├── generation/       # system prompt, prompt builder, Cloudflare generation client, follow-up rewrite, refusal patterns
 │   ├── rag.ts            # the orchestrator: retrieve → build prompt → generate
 │   ├── server.ts         # Express API
 │   ├── conversationStore.ts, db.ts   # chats in Postgres
@@ -371,15 +384,15 @@ The reasoning behind each design decision, and what was measured and discarded, 
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | `localhost:3000/health` refuses the connection | API not running | `pnpm dev` |
-| `docker compose --profile app up -d` sits at "Waiting" on the first start | It is downloading the models (~5 GB) before starting the API | Watch it with `docker compose logs -f models` in another terminal |
+| `docker compose --profile app up -d` sits at "Waiting" on the first start | It is downloading nomic-embed-text (~274 MB) before starting the API; application and infrastructure images are separate downloads | Watch it with `docker compose logs -f models` in another terminal |
 | `/health` shows `ollama`, `qdrant` or `postgres` as `false` | That container is down or still starting | `docker compose ps`, then `docker compose up -d` |
 | `/conversations` returns `relation "conversations" does not exist` | Migrations not applied | `pnpm db:migrate` |
 | Ingest fails at stage `'embed'` | `nomic-embed-text` not pulled | `docker exec -it local-rag-ollama ollama pull nomic-embed-text` |
-| Questions fail with `Failed to reach Ollama generate endpoint` | `llama3` not pulled | `docker exec -it local-rag-ollama ollama pull llama3` |
+| Questions fail with a Cloudflare generation error | Missing credentials, permissions, connectivity or provider error | Set backend Cloudflare variables; check Workers AI permissions and internet access |
 | `Embedding dimension mismatch` | Embedding model changed without its dimension | Set both `OLLAMA_EMBED_MODEL` and `OLLAMA_EMBED_DIM` |
 | "model runner has unexpectedly stopped" on long runs | Docker's VM ran out of memory | Give Docker more RAM (on Windows, `memory=` in `.wslconfig`) |
 | The Documents panel doesn't match what answers use | `data/documents.json` drifted from Qdrant | `npx tsx scripts/reconcile-documents.ts`, then `--apply` |
-| Models and documents gone after `docker compose down -v` | `-v` deletes the volumes | Pull the models again and re-upload |
+| Embedding model and documents gone after `docker compose down -v` | `-v` deletes the volumes | Pull nomic-embed-text again and re-upload |
 
 </details>
 

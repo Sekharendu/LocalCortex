@@ -39,8 +39,7 @@ export const contextConfig = {
   chunkedDocMaxTokens: Number(process.env.CHUNKED_DOC_MAX_TOKENS ?? 1200) || Infinity,
   // CONTEXT_TITLE_CHUNK=0: don't add a chunked document's first chunk (title, authors).
   titleChunk: process.env.CONTEXT_TITLE_CHUNK !== "0",
-  // Pinned rather than left to Ollama's default (4096 on 0.31, llama3 supports 8192) so the
-  // context budget can't silently change with an Ollama upgrade.
+  // Retained legacy context budget, estimated with llama3 tokens; not the hosted model window.
   numCtx: Number(process.env.OLLAMA_NUM_CTX ?? 4096),
   answerReserveTokens: Number(process.env.ANSWER_RESERVE_TOKENS ?? 512),
 };
@@ -68,6 +67,5 @@ export const rewriteConfig = {
   // retrieval, so the subject named turns ago carries through. QUERY_REWRITE=0 falls back
   // to embedding the previous question + the new one, gated by RETRIEVE_FOLLOWUP_FLOOR.
   enabled: process.env.QUERY_REWRITE !== "0",
-  model: process.env.OLLAMA_REWRITE_MODEL ?? process.env.OLLAMA_GEN_MODEL ?? "llama3",
   timeoutMs: Number(process.env.REWRITE_TIMEOUT_MS ?? 60_000),
 };

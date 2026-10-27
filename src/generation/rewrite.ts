@@ -106,17 +106,20 @@ export function cleanRewrite(raw: string, original: string): string | null {
  * The standalone form of `question`, or null when it shouldn't or couldn't be rewritten
  * (no reference back, error, timeout, unusable output). Null means: use the fallback.
  */
-export async function rewriteFollowUp(history: HistoryMessage[], question: string): Promise<string | null> {
+export async function rewriteFollowUp(history: HistoryMessage[], question: string, signal?: AbortSignal): Promise<string | null> {
+  signal?.throwIfAborted();
   if (!needsRewrite(question)) return null;
   try {
     const raw = await generate(buildRewritePrompt(history, question), {
       system: REWRITE_SYSTEM_PROMPT,
-      model: rewriteConfig.model,
       timeoutMs: rewriteConfig.timeoutMs,
-      options: { temperature: 0, num_predict: 48 },
+      temperature: 0,
+      maxTokens: 48,
+      signal,
     });
     return cleanRewrite(raw, question);
   } catch (e) {
+    signal?.throwIfAborted();
     // eslint-disable-next-line no-console
     console.warn(`[rewrite] falling back to previous-question retrieval: ${e instanceof Error ? e.message : String(e)}`);
     return null;

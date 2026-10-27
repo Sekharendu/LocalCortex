@@ -2,6 +2,8 @@ import { Measured } from "../../components/Measured";
 
 In a real conversation you don't repeat yourself: after asking about someone, you ask "what about her projects?". That's easy for a person and hard for a search engine, because "her projects" on its own doesn't say whose. This page explains how LocalCortex handles follow-up questions.
 
+The measurements on this page are historical V1 llama3 results. The Cloudflare rewrite path keeps these guardrails but has not been quality-evaluated. Relevant rewrite and answering inputs are sent to Cloudflare.
+
 ## The conversation the model sees
 
 Along with the passages from your documents, the model is shown the **last 6 messages** of the chat (long answers are shortened to 800 characters). That's what lets it understand "her" or "that policy" when it writes the answer.
@@ -30,7 +32,7 @@ The first question in a chat is always searched as it is. There's nothing earlie
 
 ## Step 2: rewrite it into a standalone question
 
-A question that refers back is given to `llama3`, along with the recent conversation, and turned into a question that makes sense on its own:
+A question that refers back is given to Cloudflare Qwen3 (48 output tokens, temperature 0), along with the recent conversation, and turned into a question that makes sense on its own:
 
 > **You:** Who is ABC?  
 > **You:** Tell me more about **her**.  

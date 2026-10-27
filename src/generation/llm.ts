@@ -1,24 +1,9 @@
 import { GenerationError } from "../errors.js";
-import { contextConfig } from "../config.js";
 
-const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
-const GEN_MODEL = process.env.OLLAMA_GEN_MODEL ?? "llama3";
-const GEN_TIMEOUT_MS = Number(process.env.OLLAMA_GEN_TIMEOUT_MS ?? 180_000);
+export const GENERATION_MODEL = "@cf/qwen/qwen3-30b-a3b-fp8";
+const GEN_TIMEOUT_MS = Number(process.env.CLOUDFLARE_GEN_TIMEOUT_MS ?? 180_000);
 
-/**
- * The universal baseline persona for the RAG assistant. Pass this as the Ollama
- * request's `system` field (engineered for exactly this: overrides the Modelfile
- * system message, keeps it separate from the dynamic per-turn prompt).
- *
- * This is the ONE place to edit the baseline instruction wording. Variant framings
- * for "with context" vs "no context" live next to the prompt builder that knows
- * which situation applies; this constant is the persistent persona underneath both.
- *
- * Tuning surface: tighten "strictly grounded" language, adjust verbosity, switch to a
- * different refusal phrasing -- all from here. The model is told NOT to cite: sources
- * come from retrieval (buildCitations in rag.ts), shown by the UI as chips, so
- * model-written citations were redundant and sometimes misspelled.
- */
+// Baseline instructions are unchanged; the provider template keeps them in the system role.
 export const RAG_SYSTEM_PROMPT = `You are a strict retrieval-augmented assistant. You answer questions using ONLY the context provided in the user's prompt. You do not use any outside or general knowledge to answer questions.
 
 If the context does not contain enough information, you explicitly say "The provided context is insufficient to answer this question."
@@ -27,9 +12,8 @@ You never speculate, fabricate, or guess.
 
 When you can answer, start with the answer itself, as if you simply know it. Answer in full sentences and include any conditions, limits or exceptions the context gives (for example "Yes, up to three days per week, with your manager's approval." rather than just "Yes."). Do not mention the context, the passages, or any file names, and do not describe how you found the answer (no "According to...", "Based on the provided context...", "The answer would be..."). Do not add a sources line: the user is shown the sources separately. Never answer with just a name or a bare yes/no: when the question asks who or what someone or something is, describe them with the key facts the context gives (for a person: their role, work and background).`;
 
-// Pinned so the context budget (contextBudget in rag.ts) matches the window Ollama loads.
-const BASE_OPTIONS = { num_ctx: contextConfig.numCtx };
 
+// Legacy parser retained for existing consumers/tests; hosted generation uses SSE below.
 interface GenerateResponse {
   response?: string;
   done?: boolean;
@@ -92,145 +76,182 @@ export async function* parseNdjsonStream(
   }
 }
 
+
 export interface GenerateOptions {
-  /** Defaults to RAG_SYSTEM_PROMPT. */
   system?: string;
-  /** Defaults to OLLAMA_GEN_MODEL. */
-  model?: string;
-  /** Defaults to OLLAMA_GEN_TIMEOUT_MS. */
   timeoutMs?: number;
-  /** Ollama sampling options, e.g. { temperature: 0, num_predict: 64 }. */
-  options?: Record<string, number>;
+  signal?: AbortSignal;
+  /** Omit for answers: Cloudflare's documented default is 2000 output tokens. */
+  maxTokens?: number;
+  temperature?: number;
 }
 
-/**
- * Call Ollama's /api/generate endpoint with the local generation model and the
- * RAG system prompt, non-streaming. Returns the model's full response text.
- *
- * Errors: network failure, non-2xx response, malformed body, or missing `response`
- * all throw GenerationError, preserving an underlying `cause` when relevant. A down
- * Ollama is an infrastructure failure that must surface loudly rather than be
- * swallowed as an empty string -- callers (the upcoming rag.ts / API route) decide
- * how to present a generation failure to the user, but they need the signal.
- */
+/** Cloudflare raw:true bypasses its chat template. This is Qwen's official template
+ * with enable_thinking=false rendered locally, not an unsupported API parameter.
+ * https://developers.cloudflare.com/workers-ai/features/prompting/
+ * https://huggingface.co/Qwen/Qwen3-30B-A3B-FP8/blob/main/tokenizer_config.json */
+function formatPrompt(system: string, prompt: string): string {
+  return `<|im_start|>system\n${system}<|im_end|>\n<|im_start|>user\n${prompt}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n`;
+}
+
+type Completion = {
+  success?: boolean;
+  error?: unknown;
+  errors?: unknown[];
+  choices?: { message?: { content?: unknown }; delta?: { content?: unknown }; finish_reason?: string | null }[];
+};
+
+function completion(value: unknown): Completion {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new GenerationError("Cloudflare returned an invalid completion");
+  }
+  const envelope = value as Completion & { result?: unknown };
+  if (envelope.success === false || envelope.error || envelope.errors?.length) {
+    throw new GenerationError("Cloudflare reported an inference error");
+  }
+  if ("result" in envelope) return completion(envelope.result);
+  return envelope;
+}
+
+/** Per-call ownership: timeout covers headers AND body; callers always dispose. */
+function request(prompt: string, stream: boolean, opts: GenerateOptions) {
+  opts.signal?.throwIfAborted();
+  if (!prompt.trim()) throw new GenerationError("Generation requires a non-empty prompt");
+  const accountId = process.env.CLOUDFLARE_ACCOUNT_ID?.trim();
+  const token = process.env.CLOUDFLARE_API_TOKEN?.trim();
+  if (!accountId || !token) {
+    throw new GenerationError("Cloudflare generation requires CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN on the backend");
+  }
+  if (!/^[a-f0-9]{32}$/i.test(accountId)) throw new GenerationError("CLOUDFLARE_ACCOUNT_ID must be a 32-character hexadecimal account ID");
+  const timeoutMs = opts.timeoutMs ?? GEN_TIMEOUT_MS;
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) throw new GenerationError("Cloudflare generation timeout must be positive");
+  if (opts.maxTokens !== undefined && (!Number.isInteger(opts.maxTokens) || opts.maxTokens < 1)) {
+    throw new GenerationError("Generation output limit must be a positive integer");
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const signal = opts.signal ? AbortSignal.any([opts.signal, controller.signal]) : controller.signal;
+  return {
+    controller,
+    signal,
+    dispose() { clearTimeout(timer); controller.abort(); },
+    async fetch() {
+      const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${GENERATION_MODEL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          prompt: formatPrompt(opts.system ?? RAG_SYSTEM_PROMPT, prompt), raw: true, stream,
+          ...(opts.maxTokens !== undefined ? { max_tokens: opts.maxTokens } : {}),
+          ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}),
+        }),
+        signal,
+      });
+      if (!response.ok) {
+        // Do not echo provider bodies: they may contain sensitive request data.
+        await response.body?.cancel().catch(() => {});
+        const hint = response.status === 401 || response.status === 403 ? " (check backend credentials and Workers AI permissions)" : "";
+        throw new GenerationError(`Cloudflare generation returned HTTP ${response.status}${hint}`);
+      }
+      return response;
+    },
+  };
+}
+
+function generationFailure(error: unknown, caller: AbortSignal | undefined, timeout: AbortSignal): never {
+  // Cancellation is not a recoverable rewrite failure and must not start more work.
+  if (caller?.aborted) throw new GenerationError("Generation cancelled");
+  if (timeout.aborted) throw new GenerationError("Cloudflare generation timed out");
+  if (error instanceof GenerationError) throw error;
+  // Raw fetch/JSON errors can include URLs or response fragments; never propagate them.
+  throw new GenerationError("Cloudflare generation failed while sending or reading the response");
+}
+
 export async function generate(prompt: string, opts: GenerateOptions = {}): Promise<string> {
-  if (!prompt || prompt.trim().length === 0) {
-    throw new GenerationError("generate() called with an empty prompt");
-  }
-
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), opts.timeoutMs ?? GEN_TIMEOUT_MS);
-  let res: Response;
+  const call = request(prompt, false, opts);
   try {
-    res = await fetch(`${OLLAMA_URL}/api/generate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: opts.model ?? GEN_MODEL,
-        prompt,
-        system: opts.system ?? RAG_SYSTEM_PROMPT,
-        stream: false,
-        options: { ...BASE_OPTIONS, ...opts.options },
-      }),
-      signal: controller.signal,
-    });
-  } catch (e) {
-    clearTimeout(timer);
-    throw new GenerationError(
-      `Failed to reach Ollama generate endpoint at ${OLLAMA_URL}/api/generate`,
-      { cause: e },
-    );
+    const response = await call.fetch();
+    const data = completion(await response.json());
+    const text = data.choices?.[0]?.message?.content;
+    if (typeof text !== "string" || !text.trim()) throw new GenerationError("Cloudflare returned no generated text");
+    return text.trim();
+  } catch (error) {
+    return generationFailure(error, opts.signal, call.controller.signal);
+  } finally {
+    call.dispose();
   }
-  clearTimeout(timer);
-
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    throw new GenerationError(
-      `Ollama /api/generate returned HTTP ${res.status}: ${body.slice(0, 200)}`,
-    );
-  }
-
-  let data: GenerateResponse;
-  try {
-    data = (await res.json()) as GenerateResponse;
-  } catch (e) {
-    throw new GenerationError("Ollama /api/generate returned non-JSON body", { cause: e });
-  }
-
-  if (typeof data.error === "string" && data.error.length > 0) {
-    throw new GenerationError(`Ollama /api/generate reported model error: ${data.error}`);
-  }
-  if (typeof data.response !== "string") {
-    throw new GenerationError(
-      `Ollama /api/generate response missing 'response' string. Got: ${JSON.stringify(data).slice(0, 200)}`,
-    );
-  }
-  return data.response.trim();
 }
 
-/**
- * Stream tokens from Ollama's /api/generate endpoint. Calls with stream: true,
- * reads the response body as an async iterable of byte chunks, parses NDJSON via
- * parseNdjsonStream, and yields each emitted token's `response` field as it
- * arrives. The final `{ done: true }` object typically carries an empty `response`
- * -- it is suppressed (empty string yields nothing) so callers don't see a
- * trailing empty token.
- *
- * Error semantics mirror generate(): network failure, non-2xx, or malformed JSON
- * in a complete NDJSON line all throw GenerationError. The caller decides what to
- * do with a mid-stream error -- the HTTP route writes a footer and closes.
- */
-export async function* generateStream(prompt: string, signal?: AbortSignal): AsyncGenerator<string> {
-  if (!prompt || prompt.trim().length === 0) {
-    throw new GenerationError("generateStream() called with an empty prompt");
-  }
-
-  // `signal` lets the caller cancel (e.g. the user pressed Stop). Aborting drops the
-  // connection, and Ollama stops generating when its client disconnects.
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), GEN_TIMEOUT_MS);
-  let res: Response;
+/** Incremental SSE framing; handles split UTF-8, CRLF, comments and multiline data. */
+async function* sseEvents(body: ReadableStream<Uint8Array>): AsyncGenerator<{ event: string; data: string }> {
+  const reader = body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let event = "";
+  let data: string[] = [];
+  let eventSize = 0;
+  const maxEventBytes = 1024 * 1024;
   try {
-    res = await fetch(`${OLLAMA_URL}/api/generate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: GEN_MODEL,
-        prompt,
-        system: RAG_SYSTEM_PROMPT,
-        stream: true,
-        options: BASE_OPTIONS,
-      }),
-      signal: signal ? AbortSignal.any([controller.signal, signal]) : controller.signal,
-    });
-  } catch (e) {
-    clearTimeout(timer);
-    throw new GenerationError(
-      `Failed to reach Ollama generate endpoint at ${OLLAMA_URL}/api/generate`,
-      { cause: e },
-    );
-  }
-  clearTimeout(timer);
-
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    throw new GenerationError(
-      `Ollama /api/generate returned HTTP ${res.status}: ${body.slice(0, 200)}`,
-    );
-  }
-  if (!res.body) {
-    throw new GenerationError("Ollama /api/generate (stream:true) returned no body");
-  }
-
-  // Node 18+ exposes res.body as a Web ReadableStream<Uint8Array>; async-iterate it.
-  const nodeStream = res.body as unknown as AsyncIterable<Uint8Array>;
-  for await (const obj of parseNdjsonStream(nodeStream)) {
-    if (typeof obj.error === "string" && obj.error.length > 0) {
-      throw new GenerationError(`Ollama /api/generate stream reported model error: ${obj.error}`);
+    for (;;) {
+      const part = await reader.read();
+      buffer += part.done ? decoder.decode() : decoder.decode(part.value, { stream: true });
+      if (buffer.length > maxEventBytes) throw new GenerationError("Cloudflare stream event exceeded the size limit");
+      let newline: number;
+      while ((newline = buffer.indexOf("\n")) !== -1) {
+        const line = buffer.slice(0, newline).replace(/\r$/, "");
+        buffer = buffer.slice(newline + 1);
+        if (line === "") {
+          if (data.length || event) yield { event, data: data.join("\n") };
+          event = ""; data = []; eventSize = 0;
+        } else if (line.startsWith("event:")) {
+          event = line.slice(6).trim();
+        } else if (line.startsWith("data:")) {
+          const value = line.slice(5).replace(/^ /, "");
+          data.push(value);
+          eventSize += value.length;
+          if (eventSize > maxEventBytes) throw new GenerationError("Cloudflare stream event exceeded the size limit");
+        }
+      }
+      if (part.done) {
+        if (buffer.trim() || data.length || event) throw new GenerationError("Cloudflare stream ended with an incomplete event");
+        break;
+      }
     }
-    if (typeof obj.response === "string" && obj.response.length > 0) {
-      yield obj.response;
+  } finally {
+    await reader.cancel().catch(() => {});
+    reader.releaseLock();
+  }
+}
+
+export async function* generateStream(prompt: string, signal?: AbortSignal): AsyncGenerator<string> {
+  const call = request(prompt, true, { signal });
+  let hasText = false;
+  let finished = false;
+  try {
+    const response = await call.fetch();
+    if (!response.body || !response.headers.get("content-type")?.includes("text/event-stream")) {
+      await response.body?.cancel().catch(() => {});
+      throw new GenerationError("Cloudflare did not return an SSE generation stream");
     }
-    // `done: true` final object typically carries empty response -- suppress the empty yield.
+    for await (const frame of sseEvents(response.body)) {
+      if (frame.event === "error") throw new GenerationError("Cloudflare reported a streaming inference error");
+      if (!frame.data) continue;
+      if (frame.data.trim() === "[DONE]") { finished = true; break; }
+      let value: unknown;
+      try { value = JSON.parse(frame.data); }
+      catch { throw new GenerationError("Cloudflare returned malformed stream JSON"); }
+      const data = completion(value);
+      if (!Array.isArray(data.choices)) throw new GenerationError("Cloudflare returned an invalid stream completion");
+      const choice = data.choices[0];
+      const text = choice?.delta?.content;
+      if (text !== undefined && text !== null && typeof text !== "string") throw new GenerationError("Cloudflare returned invalid stream text");
+      if (typeof text === "string" && text.length) { hasText ||= text.trim().length > 0; yield text; }
+      if (choice?.finish_reason) finished = true;
+    }
+    if (!finished) throw new GenerationError("Cloudflare generation stream ended before completion");
+    if (!hasText) throw new GenerationError("Cloudflare returned no generated text");
+  } catch (error) {
+    generationFailure(error, signal, call.controller.signal);
+  } finally {
+    call.dispose();
   }
 }

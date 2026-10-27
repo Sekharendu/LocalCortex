@@ -1,15 +1,17 @@
 import { Measured } from "../../components/Measured";
 
-Once the search has found which documents answer a question, LocalCortex builds a prompt for the local `llama3` model: the relevant text, the conversation so far, a few rules, and your question. The model writes the answer, and it appears on screen word by word.
+Once the search has found which documents answer a question, LocalCortex builds a prompt for Cloudflare Qwen3: the relevant text, the conversation so far, a few rules, and your question. The model writes the answer, and it appears on screen word by word.
 
 ## What the model reads
 
-The model can only read about 4,000 tokens at a time (a token is roughly ¾ of a word), and that space also has to hold the rules, the conversation and the answer itself. So LocalCortex chooses carefully what goes in:
+LocalCortex retains its approximately 4,000-token prompt budget, estimated using the existing llama3 tokenizer. This is approximate for Qwen and does not configure Cloudflare's model window. The budget also accounts for rules, conversation and an answer reserve. So LocalCortex chooses carefully what goes in:
 
 - **Short documents go in whole.** A document of up to **1,000 tokens** (about two pages, such as a resume) is given to the model complete and in order. Questions like "how many projects are there?" need the whole list, not the three best-matching pieces of it.
 - **Long documents give their best passages plus their surroundings.** For a longer document, each matching passage comes with the passage just before and just after it, in reading order. That keeps a bullet list together with the heading that says what it's a list of.
 - **The title page is always included.** For a long document, its first passage (title, authors, affiliations) is added, so "who wrote this paper?" can be answered even when that page wasn't a top match.
 - **One document can't crowd out the others.** Each long document gets at most **1,200 tokens**. If several documents match, the best-matching one goes first, and each one fills the space that's left.
+
+The measurements below are historical local llama3 results, not V2 Cloudflare validation. Answers now use Cloudflare's documented 2000-token default; rewrites have a 48-token cap. The retained 512-token context reserve is not an output cap.
 
 Right before the question, the prompt repeats the answering rules. `llama3` tends to forget instructions from the start of a long prompt, so repeating the rules there keeps the answers in the right style.
 
