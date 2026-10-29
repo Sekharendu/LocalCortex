@@ -98,7 +98,9 @@ type Completion = {
   success?: boolean;
   error?: unknown;
   errors?: unknown[];
-  choices?: { message?: { content?: unknown }; delta?: { content?: unknown }; finish_reason?: string | null }[];
+  choices?: { text?: unknown; finish_reason?: string | null }[];
+  usage?: unknown;
+  response?: unknown;
 };
 
 function completion(value: unknown): Completion {
@@ -171,7 +173,7 @@ export async function generate(prompt: string, opts: GenerateOptions = {}): Prom
   try {
     const response = await call.fetch();
     const data = completion(await response.json());
-    const text = data.choices?.[0]?.message?.content;
+    const text = data.choices?.[0]?.text;
     if (typeof text !== "string" || !text.trim()) throw new GenerationError("Cloudflare returned no generated text");
     return text.trim();
   } catch (error) {
@@ -240,10 +242,21 @@ export async function* generateStream(prompt: string, signal?: AbortSignal): Asy
       try { value = JSON.parse(frame.data); }
       catch { throw new GenerationError("Cloudflare returned malformed stream JSON"); }
       const data = completion(value);
-      if (!Array.isArray(data.choices)) throw new GenerationError("Cloudflare returned an invalid stream completion");
+      // Native raw completions carry text directly; usage-only frames are metadata.
+      const hasUsage = data.usage !== null && typeof data.usage === "object" && !Array.isArray(data.usage);
+      if (hasUsage && (
+        (Array.isArray(data.choices) && data.choices.length === 0 && (data.response === undefined || data.response === "")) ||
+        (data.choices === undefined && data.response === "")
+      )) continue;
+      if (!Array.isArray(data.choices) || data.choices.length === 0) throw new GenerationError("Cloudflare returned an invalid stream completion");
       const choice = data.choices[0];
-      const text = choice?.delta?.content;
-      if (text !== undefined && text !== null && typeof text !== "string") throw new GenerationError("Cloudflare returned invalid stream text");
+      const text = choice?.text;
+      if (choice?.finish_reason !== undefined && choice.finish_reason !== null && typeof choice.finish_reason !== "string") {
+        throw new GenerationError("Cloudflare returned an invalid stream finish reason");
+      }
+      if (typeof text !== "string" && !(text === undefined && choice?.finish_reason)) {
+        throw new GenerationError("Cloudflare returned invalid stream text");
+      }
       if (typeof text === "string" && text.length) { hasText ||= text.trim().length > 0; yield text; }
       if (choice?.finish_reason) finished = true;
     }
