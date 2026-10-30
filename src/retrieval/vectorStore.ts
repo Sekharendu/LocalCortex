@@ -8,6 +8,39 @@ const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
 
 const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
+/** Undefined is unrestricted; an empty allowlist deliberately matches nothing. */
+function documentFilter(ids: string[] | undefined) {
+  return ids === undefined ? {} : { filter: { must: [{ key: "documentId", match: { any: ids } }] } };
+}
+
+/** Request-local, payload-only catalog. A hard ceiling bounds both memory and work;
+ * exceeding it is an infrastructure error, never an incomplete identity decision. */
+export async function documentHeaders(collection: string): Promise<ChunkPayload[]> {
+  const out: ChunkPayload[] = [];
+  let offset: string | number | null | undefined;
+  try {
+    do {
+      const page = await client.scroll(collection, {
+        limit: 128, offset, filter: { must: [{ key: "chunkIndex", match: { value: 0 } }] },
+        with_payload: ["documentId", "source", "text", "section", "chunkIndex"], with_vector: false,
+      });
+      for (const point of page.points) {
+        if (point.payload) {
+          const payload = point.payload as unknown as ChunkPayload;
+          if (payload.text.length > 65536 || (payload.section?.length ?? 0) > 65536 || payload.source.length > 4096)
+            throw new Error("Document header exceeds catalog payload bound");
+          out.push(payload);
+          if (out.length > 4096) throw new Error("Document scope catalog exceeds 4096 headers");
+        }
+      }
+      offset = page.next_page_offset as typeof offset;
+    } while (offset !== null && offset !== undefined);
+    return out;
+  } catch (e) {
+    throw new CollectionError(`Failed to read document scope catalog '${collection}'`, { cause: e });
+  }
+}
+
 /** Named-vector field names used on every point -- dense (Ollama embedding) and sparse
  * (BM25-ish, see sparse.ts). Named vectors (rather than a single unnamed default) are
  * what let one Qdrant point carry both and one query fuse across them. */
@@ -34,9 +67,11 @@ export interface SearchOptions {
   scoreThreshold?: number;
   /** Only search chunks of this document. */
   documentId?: string;
+  documentIds?: string[];
 }
 
 export interface HybridSearchOptions {
+  documentIds?: string[];
   limit?: number;
   /** Candidates each of the dense/sparse prefetches ranks before fusion. Defaults to
    * max(20, limit * 4) -- Qdrant recommends prefetching meaningfully more than the
@@ -127,7 +162,7 @@ export async function upsertChunks(collection: string, chunks: ChunkPoint[]): Pr
 export async function searchSimilar(
   collection: string,
   queryVector: number[],
-  { limit = 5, scoreThreshold = 0.7, documentId }: SearchOptions = {},
+  { limit = 5, scoreThreshold = 0.7, documentId, documentIds }: SearchOptions = {},
 ): Promise<SearchMatch[]> {
   if (!Array.isArray(queryVector) || queryVector.length !== embedConfig.dim) {
     const got = Array.isArray(queryVector) ? queryVector.length : typeof queryVector;
@@ -145,7 +180,7 @@ export async function searchSimilar(
       score_threshold: scoreThreshold,// passing the threshold to the qdrant server-> to ignore the graph nodes and skip distance computations that falls below threshold.
       // Other opt was to bring all the relevant datas in the client side then filtering, but that will be less computatievely optimise. cuz we fetch all, bring all from server to client then throw the irrelevant ones off.
       with_payload: true,
-      ...(documentId ? { filter: { must: [{ key: "documentId", match: { value: documentId } }] } } : {}),
+      ...(documentFilter(documentId ? (documentIds === undefined ? [documentId] : documentIds.filter(id => id === documentId)) : documentIds)),
     });
   } catch (e) {
     throw new CollectionError(`Failed to search '${collection}'`, { cause: e });
@@ -176,7 +211,7 @@ export async function hybridSearch(
   collection: string,
   denseVector: number[],
   sparseVector: SparseVector,
-  { limit = 5, prefetchLimit, weights, fusion = "rrf" }: HybridSearchOptions = {},
+  { limit = 5, prefetchLimit, weights, fusion = "rrf", documentIds }: HybridSearchOptions = {},
 ): Promise<SearchMatch[]> {
   if (!Array.isArray(denseVector) || denseVector.length !== embedConfig.dim) {
     const got = Array.isArray(denseVector) ? denseVector.length : typeof denseVector;
@@ -187,11 +222,12 @@ export async function hybridSearch(
   }
   const effectivePrefetchLimit = prefetchLimit ?? Math.max(20, limit * 4);
 
-  const prefetch: { query: number[] | SparseVector; using: string; limit: number }[] = [
-    { query: denseVector, using: DENSE_VECTOR_NAME, limit: effectivePrefetchLimit },
+  const filter = documentFilter(documentIds);
+  const prefetch = [
+    { query: denseVector as number[] | SparseVector, using: DENSE_VECTOR_NAME, limit: effectivePrefetchLimit, ...filter },
   ];
   if (sparseVector.indices.length > 0) {
-    prefetch.push({ query: sparseVector, using: SPARSE_VECTOR_NAME, limit: effectivePrefetchLimit });
+    prefetch.push({ query: sparseVector, using: SPARSE_VECTOR_NAME, limit: effectivePrefetchLimit, ...filter });
   }
   // Weights only make sense when there are two prefetches to weigh against each other;
   // a lone dense prefetch (sparse query was empty) just needs plain unweighted fusion.
@@ -206,6 +242,7 @@ export async function hybridSearch(
   try {
     hits = await client.query(collection, {
       prefetch,
+      ...filter,
       query: fusionQuery,
       limit,
       with_payload: true,
