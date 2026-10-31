@@ -5,6 +5,7 @@ import { getAvgDocLength } from "./sparseStats.js";
 import { expandAcronyms } from "./acronyms.js";
 import { retrievalConfig } from "../config.js";
 import type { ChunkPayload } from "../types.js";
+import { resolveDocumentScope, type DocumentScope } from "./documentScope.js";
 
 /**
  * A retrieved passage surfaced to the generation layer. Narrower than the vector
@@ -23,6 +24,8 @@ export interface RetrievedChunk {
 }
 
 export interface RetrieveOptions {
+  /** Internal immutable identity decision from the original user text, before rewrite. */
+  documentScope?: DocumentScope;
   topK?: number;
   scoreThreshold?: number;
   collection?: string;
@@ -74,12 +77,15 @@ export interface RetrieveOptions {
  */
 export async function retrieve(
   question: string,
-  { topK, scoreThreshold, collection, mode, previousQuestion, followupFloor }: RetrieveOptions = {},
+  { topK, scoreThreshold, collection, mode, previousQuestion, followupFloor, documentScope }: RetrieveOptions = {},
 ): Promise<RetrievedChunk[]> {
   const effectiveTopK = topK ?? retrievalConfig.topK;
   const effectiveThreshold = scoreThreshold ?? retrievalConfig.scoreThreshold;
   const effectiveCollection = collection ?? retrievalConfig.collection;
   const effectiveMode = mode ?? retrievalConfig.mode;
+  const scope = documentScope ?? await resolveDocumentScope(question, effectiveCollection);
+  const documentIds = scope.documentIds;
+  if (documentIds?.length === 0) return [];
 
   // Expand known abbreviations (PTO, WFH, ...) before embedding/encoding -- sparse
   // retrieval structurally can't bridge a term that never appears in the corpus, and
@@ -96,6 +102,7 @@ export async function retrieve(
       const own = await searchSimilar(effectiveCollection, await embed(expandedQuestion), {
         limit: 1,
         scoreThreshold: floor,
+        documentIds,
       });
       if (own.length === 0) return [];
     }
@@ -106,6 +113,7 @@ export async function retrieve(
     hits = await searchSimilar(effectiveCollection, queryVector, {
       limit: effectiveTopK,
       scoreThreshold: effectiveThreshold,
+      documentIds,
     });
     // Same-document expansion. The threshold decides WHETHER there is relevant material
     // (it was calibrated on the best chunk per question), but applied to every chunk it
@@ -121,6 +129,7 @@ export async function retrieve(
         limit: effectiveTopK,
         scoreThreshold: 0,
         documentId: bestDoc,
+        documentIds,
       });
       const seen = new Set(hits.map((h) => h.id));
       for (const h of sameDoc) {
@@ -132,6 +141,7 @@ export async function retrieve(
     const probe = await searchSimilar(effectiveCollection, queryVector, {
       limit: 1,
       scoreThreshold: effectiveThreshold,
+      documentIds,
     });
     hits =
       probe.length === 0
@@ -140,7 +150,7 @@ export async function retrieve(
             effectiveCollection,
             queryVector,
             sparseVectorFor(queryText, await getAvgDocLength()),
-            { limit: effectiveTopK, fusion: retrievalConfig.fusion },
+            { limit: effectiveTopK, fusion: retrievalConfig.fusion, documentIds },
           );
   }
 
