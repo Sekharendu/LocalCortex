@@ -6,8 +6,10 @@ import { countTokens } from "./generation/tokens.js";
 import { assembleContext } from "./retrieval/context.js";
 import { contextConfig, retrievalConfig, rewriteConfig } from "./config.js";
 import type { Citation } from "./types.js";
+import { resolveDocumentScope, scopeQuestion, type DocumentScope } from "./retrieval/documentScope.js";
 
 export interface RetrieveForQuestionResult {
+  documentScope: DocumentScope;
   prompt: string;
   chunks: RetrievedChunk[];
   /** What the prompt's Context block holds (src/retrieval/context.ts). */
@@ -76,10 +78,18 @@ export async function retrieveForQuestion(
   const { history = [], signal, ...retrieveOptions } = options;
   signal?.throwIfAborted();
   const previousQuestion = [...history].reverse().find((m) => m.role === "user")?.content;
+  const documentScope = await resolveDocumentScope(
+    scopeQuestion(question, history.filter(m => m.role === "user").map(m => m.content)),
+    retrieveOptions.collection ?? retrievalConfig.collection,
+  );
+  retrieveOptions.documentScope = documentScope;
+  signal?.throwIfAborted();
 
   let chunks: RetrievedChunk[];
   let searchQuestion: string | undefined;
-  if (previousQuestion === undefined) {
+  if (documentScope.documentIds?.length === 0) {
+    chunks = [];
+  } else if (previousQuestion === undefined) {
     chunks = await retrieve(question, retrieveOptions);
   } else {
     // A follow-up: search with its standalone form, gated like any first question. If
@@ -107,7 +117,7 @@ export async function retrieveForQuestion(
       : chunks;
   signal?.throwIfAborted();
   const prompt = buildPrompt(question, passages, history);
-  return { prompt, chunks, passages, searchQuestion };
+  return { prompt, chunks, passages, searchQuestion, documentScope };
 }
 
 /** Retained llama3 template overhead estimate; approximate for hosted Qwen generation. */
