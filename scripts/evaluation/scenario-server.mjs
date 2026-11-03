@@ -1,0 +1,21 @@
+/** Actual unchanged HTTP API, dedicated synthetic collections and bounded hosted calls. */
+import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import {performance} from 'node:perf_hooks';
+import {args,readJson,append,sha} from './common.mjs';
+import {readFrozenRun,verifyFrozenFiles,applyFrozenEnvironment,assertActualConfig,assertOwnedDocker,cloudValidation} from '../evaluation-resume-20261029-continuation-r2/validation.mjs';
+import {CallLedger} from '../evaluation-resume-20261029-continuation-r2/ledger.mjs';
+import {installGuard} from '../evaluation-resume-20261029-continuation-r2/guard.mjs';
+const o=args();if(!o.run||!o.out||!['pdf','docx'].includes(o.format))throw Error('Missing scenario server parameters');
+const run=readFrozenRun(o.run),services=readJson(path.join(o.run,'services.json')),format=o.format,port=format==='pdf'?33003:33004;
+const {ROOT,app}=await import('./bootstrap.mjs');verifyFrozenFiles(run,ROOT,o.run);assertOwnedDocker(run,services,o.run);applyFrozenEnvironment(run);
+const seal=readJson(path.join(o.out,'scenario-seal.json'));const checkSeal=()=>{for(const h of seal.hashes)if(sha(fs.readFileSync(h.file))!==h.sha256)throw Error('Scenario source/fixture changed');};checkSeal();
+const privateText=fs.readFileSync(services.privateEnvironment,'utf8');process.env.DATABASE_URL=privateText.split('\n').find(s=>s.startsWith('DATABASE_URL='))?.slice(13);
+process.env.QDRANT_URL='http://127.0.0.1:'+services.ports.qdrant;process.env.QDRANT_COLLECTION='eval-qasper-full2-'+(run.resourceOwnerId??run.id)+'-scenarios-'+format;
+process.env.DOC_STORE_PATH=path.join(o.out,format,'documents.json');process.env.SPARSE_STATS_PATH=path.join(o.out,format,'sparse-stats.json');process.env.TEMP=path.join(o.out,format,'upload-tmp');process.env.TMP=process.env.TEMP;process.env.PORT=String(port);fs.mkdirSync(process.env.TEMP,{recursive:true});
+const config=await app('src/config.ts');assertActualConfig(run,config);
+const ledger=new CallLedger(path.join(o.out,'cloud-ledger.jsonl'),{freePlanConfirmed:true,maxOutstanding:2});
+const guard=installGuard({root:ROOT,ledger,allowCloud:true,beforeDispatch:()=>{checkSeal();cloudValidation({run,root:ROOT,out:o.run,services,config});}});
+const originalListen=http.Server.prototype.listen,originalEmit=http.Server.prototype.emit;let server;
+http.Server.prototype.listen=function(value,callback){if(Number(value)!==port)throw Error('Unexpected port');server=this;return originalListen.call(this,{port,host:'127.0.0.1'},callback);};
+http.Server.prototype.emit=function(event,...values){if(event!=='request')return originalEmit.call(this,event,...values);const [req,res]=values;const id=req.headers['x-eval-case-id'];if(typeof id!=='string'||!/^scenario\/[a-zA-Z0-9_./:-]{1,200}$/.test(id)){res.statusCode=400;res.end('Scenario attribution required');return true;}res.setHeader('X-LocalCortex-Eval-Run',seal.id);res.setHeader('X-LocalCortex-Eval-Format',format);const trace={caseId:id,prepared:[],calls:[]};const start=performance.now();let saved=false;const save=()=>{if(saved)return;saved=true;append(path.join(o.out,'http-traces.jsonl'),{caseId:id,format,method:req.method,path:req.url,status:res.statusCode,totalMs:performance.now()-start,...trace});};res.once('finish',save);res.once('close',()=>setTimeout(save,100));return guard.scope.run(trace,()=>originalEmit.call(this,event,...values));};
+await app('src/server.ts');
+const shutdown=async()=>{server?.close();server?.closeAllConnections?.();guard.restore();const {pool}=await app('src/db.ts');await pool.end().catch(()=>{});process.exit(0);};process.once('SIGTERM',shutdown);process.once('SIGINT',shutdown);setTimeout(shutdown,Math.max(1,Date.parse(run.settings.deadline)-Date.now())).unref();

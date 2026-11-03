@@ -1,0 +1,20 @@
+/** Unchanged HTTP API in an owned child, bound to loopback; no app source edits. */
+import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import {performance} from 'node:perf_hooks';
+import {args,readJson,append,DEADLINE} from './common.mjs';import {CallLedger} from './ledger.mjs';
+import {readFrozenRun,verifyFrozenFiles,applyFrozenEnvironment,assertActualConfig,endpoints,assertOwnedDocker,cloudValidation} from './validation.mjs';
+const options=args(),out=options.out,format=options.format;if(!out||!['pdf','docx'].includes(format))throw Error('Required --out --format pdf|docx');
+const run=readFrozenRun(out),services=readJson(path.join(out,'services.json'));const target=endpoints(run,services,out,format);assertOwnedDocker(run,services,out);applyFrozenEnvironment(run);
+const privateText=fs.readFileSync(services.privateEnvironment,'utf8');const database=privateText.split('\n').find(line=>line.startsWith('DATABASE_URL='))?.slice(13);if(!database)throw Error('Owned database configuration missing');const dbUrl=new URL(database);if(dbUrl.hostname!=='127.0.0.1'||dbUrl.port!==String(services.ports.postgres)||dbUrl.pathname!=='/eval'||dbUrl.username!=='eval')throw Error('Database is not owned');
+process.env.DATABASE_URL=database;process.env.PORT=String(format==='pdf'?services.ports.pdfApi:services.ports.docxApi);process.env.QDRANT_URL='http://127.0.0.1:'+services.ports.qdrant;process.env.OLLAMA_URL='http://127.0.0.1:11434';process.env.QDRANT_COLLECTION=run.collections[format];
+process.env.DOC_STORE_PATH=path.join(out,format,'documents.json');process.env.SPARSE_STATS_PATH=path.join(out,format,'sparse-stats.json');process.env.TEMP=path.join(out,format,'upload-tmp');process.env.TMP=process.env.TEMP;fs.mkdirSync(process.env.TEMP,{recursive:true});
+const {app,ROOT}=await import('./bootstrap.mjs');verifyFrozenFiles(run,ROOT,out);const config=await app('src/config.ts');assertActualConfig(run,config);
+if(options.cloud==='reviewed-free-today'){cloudValidation({run,root:ROOT,out,services,config});const health=await fetch(target.qdrant+'/readyz',{signal:AbortSignal.timeout(5000)});await health.text();if(!health.ok)throw Error('Owned Qdrant unavailable');}
+if(options.migrate==='yes'){await app('scripts/migrate.ts');}else{
+ const {installGuard}=await import('./guard.mjs');const ledger=new CallLedger(path.join(out,'cloud-ledger.jsonl'),{freePlanConfirmed:options.cloud==='reviewed-free-today',maxOutstanding:2});const guard=installGuard({root:ROOT,ledger,allowCloud:options.cloud==='reviewed-free-today',beforeDispatch:()=>cloudValidation({run,root:ROOT,out,services,config})});
+ const originalListen=http.Server.prototype.listen,originalEmit=http.Server.prototype.emit;let server,seq=0;
+ http.Server.prototype.listen=function(port,callback){if(Number(port)!==Number(process.env.PORT))throw Error('Unexpected listening port');server=this;return originalListen.call(this,{port:Number(port),host:'127.0.0.1'},callback);};
+ http.Server.prototype.emit=function(event,...values){if(event!=='request')return originalEmit.call(this,event,...values);const [req,res]=values;res.setHeader('X-LocalCortex-Eval-Run',run.id);res.setHeader('X-LocalCortex-Eval-Format',format);const supplied=req.headers['x-eval-case-id'];const caseId=typeof supplied==='string'&&/^[a-zA-Z0-9_./:-]{1,200}$/.test(supplied)?supplied:run.id+'/http/'+format+'/'+(++seq);const trace={caseId,calls:[],prepared:[]};const start=performance.now();res.once('finish',()=>append(path.join(out,'api-traces.jsonl'),{caseId,format,method:req.method,path:req.url,status:res.statusCode,totalMs:performance.now()-start,...trace}));return guard.scope.run(trace,()=>originalEmit.call(this,event,...values));};
+ await app('src/server.ts');
+ const shutdown=async()=>{const timer=setTimeout(()=>process.exit(0),5000);timer.unref();server?.close();server?.closeAllConnections?.();const {pool}=await app('src/db.ts');await pool.end().catch(()=>{});guard.restore();process.exit(0);};process.once('SIGTERM',shutdown);process.once('SIGINT',shutdown);
+ setTimeout(shutdown,Math.max(1,Date.parse(DEADLINE)-Date.now())).unref();
+}

@@ -43,3 +43,23 @@ launch/
 /AGENTS.md
 /.codex/
 /docs/development/three-agent-workflow.md
+
+# Evaluation outputs: only question sets and reranker score files are published.
+# Everything else (candidates, raw results, prompts, answers, logs) stays local.
+eval/**/*.jsonl
+scripts/evaluation*/**/*.jsonl
+eval/**/*.log
+scripts/evaluation*/**/*.log
+eval/**/tmp/
+# question sets
+!eval/ragbench-20261115/dev.jsonl
+!eval/ragbench-20261115/test.jsonl
+!eval/ragbench-20261115/dev-retrieval.jsonl
+!eval/final-test-20261117/qasper-labels.jsonl
+!eval/scenario1-top5-mrr-20261112/labels.auto.jsonl
+# reranker score files
+!eval/ragbench-20261115/rerank/scores.jsonl
+!eval/final-test-20261117/scores-qasper-docx.jsonl
+!eval/final-test-20261117/scores-qasper-pdf.jsonl
+!eval/final-test-20261117/scores-ragbench.jsonl
+!eval/scenario1-rerank-bge-v2-m3-int8-20261113/scores.jsonl

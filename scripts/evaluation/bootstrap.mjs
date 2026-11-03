@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {registerHooks} from 'node:module';
+export const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+export const DEPS=process.env.EVAL_DEPS_ROOT??(fs.existsSync(path.join(ROOT,'node_modules/tsx'))?ROOT:path.resolve(ROOT,'../LocalCortex'));
+const parent=pathToFileURL(path.join(DEPS,'package.json')).href;
+registerHooks({resolve(specifier,context,next){try{return next(specifier,context);}catch(error){if(error.code!=='ERR_MODULE_NOT_FOUND'||specifier.startsWith('.')||specifier.startsWith('/')||/^[a-zA-Z][a-zA-Z\d+.-]*:/.test(specifier))throw error;return next(specifier,{...context,parentURL:parent});}}});
+const {register}=await import(pathToFileURL(path.join(DEPS,'node_modules/tsx/dist/esm/api/index.mjs')).href);
+register({tsconfig:path.join(ROOT,'tsconfig.json')});
+export const app=file=>import(pathToFileURL(path.join(ROOT,file)).href);
