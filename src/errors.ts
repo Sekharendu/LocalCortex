@@ -1,5 +1,12 @@
 // Shared typed errors so the ingestion pipeline can catch and report failures without crashing a batch.
 
+export class RerankingError extends Error {
+  constructor(message: string, options?: { cause?: unknown }) {
+    super(message, options);
+    this.name = "RerankingError";
+  }
+}
+
 export class UnsupportedFileTypeError extends Error {
   constructor(message: string) {
     super(message);

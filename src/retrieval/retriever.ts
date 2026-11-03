@@ -18,6 +18,8 @@ export interface RetrievedChunk {
   source: string;
   page?: number;
   score: number;
+  /** Hosted reranker priority; never replaces the retrieval relevance score. */
+  rerankScore?: number;
   /** Locate the chunk in its document, so context assembly can add its neighbours. */
   documentId?: string;
   chunkIndex?: number;
