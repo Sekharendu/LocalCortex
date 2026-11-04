@@ -1,0 +1,118 @@
+{
+  "status": "complete",
+  "files": [
+    {
+      "file": "eval/question-only-same-paper-20261102/baseline-input-manifest.json",
+      "sha256": "60ca2df74ce6db7d16fea8c1cc0c0bf9a4555eb363ecbd6804d4281ee20b5dd7"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/case-changes.json",
+      "sha256": "f892c264c0ad6608f2f60d664c3d5ad44ec775471fa7353e1b84a8152e076c3b"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/case-plan.jsonl",
+      "sha256": "b4a68b2d4ac9f44be5a55f3494c451212b32c4548022f5231e6ca8bbf734dbb1"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/common.mjs",
+      "sha256": "601cd4c2d575dba9f12e0afda57f7ea80ca52fa7277cb563c1b7d300bc729553"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/dev-sources.jsonl",
+      "sha256": "a409da1ebd95a6e4a446b51e4b4b6b145f7c0c491825aa04d72a44d2273e0e31"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/docx.results.jsonl",
+      "sha256": "eaa3b8ea2b62741df4e48a3c4f7494b4b0a3c61064c792b3059fd646a09be24c"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/docx.summary.json",
+      "sha256": "c2505bb9b786cd4c4225b453aeb3c14e152af573754835565ebe4e6665aaad01"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/docx.traces.jsonl",
+      "sha256": "384e66bce7f390524f384b27535903cd737a3535ac8b552599764bc4ebcf9349"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/eval.test.mjs",
+      "sha256": "8424eaaaf7c6a7d54ae57fde60027f3aa8e4e36778a68ea398a186b8d83a1e91"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/execution-status.json",
+      "sha256": "18ddb7b5e02c437df9e3d5504edb974648beba04e833ed7a23c1e6122eebeb8e"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/final-summary.json",
+      "sha256": "fef1432b8e1e067248e4e3d542f74aec5d78387d10a003a78ecd9429c7803259"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/gate-regressions.json",
+      "sha256": "d88e25931c69118b8d252f6a6ac2c40ef698776151ac9e20eef0e069655b16ae"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/INTERPRETATION.md",
+      "sha256": "126f3b8b95a52c21e5aa6b82c86620c7f4d448b0cf91ec4307f31e4e177921da"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/item-first-ranks.jsonl",
+      "sha256": "22aad62a0b3faf9d62516768d99001ac56520b224f4ab7d0ca0a06b8f3ba2801"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/item-recall.json",
+      "sha256": "9f5085c7a9b3586562af465013ff5aa5c30c85b9b6aa4527e1196148f1a73b72"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/pdf.results.jsonl",
+      "sha256": "2e575e207f4b7b6ccf9916c8ea62c57161bdc94065dc435a1baa13bc27d02121"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/pdf.summary.json",
+      "sha256": "63896e1c13f0f9d805c5ed4859ab3d1d1d67ab151e0812cb727b90c92bb71d95"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/pdf.traces.jsonl",
+      "sha256": "73501fa3b2f84e2c5fbd35466b96fdaf8f856b7d0c4599c0a220696b0b13840d"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/preflight.json",
+      "sha256": "e4ad41a3d5b614383b583cdc7a78f8ae480eb27e9537cd1903b4128373e723c1"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/prepare.mjs",
+      "sha256": "a8995af9e5d3a09d9c4b9419abd52f9c0557f05eeee78af960316d1dba61f652"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/preservation-check.json",
+      "sha256": "8b7359099070abdd34e4b5ae4582666d7b2d3e73b821c20134e742f4b5c85461"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/report.mjs",
+      "sha256": "1c9d8bd9725443df9bb40f155c252397c2761ad78e067594673953fedc3dc33c"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/RESULTS.md",
+      "sha256": "0a84bfee4d2f0e2e5cd12794f0d3c29ede4a289bf23bd9a5a1d44f30373a8600"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/retrieval-behavior.json",
+      "sha256": "4adde61d9b46446a8e1ab11d628394b717a959ed0a37f01c813e8ee0ee237f52"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/run.mjs",
+      "sha256": "062b4b7d2824c25351ab75a474f20442b0a41a8d36a35379871999f011396033"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/submission-manifest.json",
+      "sha256": "213a4752236891aca9ea9c44730e78c3fb7e515ec4d46e0077264645dbc216a0"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/worker.mjs",
+      "sha256": "a3b77ed66531a2516ae3c19ce9f91684dd8bfc069fdff0bc2062e8abddfd8de6"
+    }
+  ],
+  "verifiedSubmissionEntries": 24,
+  "submissionMismatches": [],
+  "baselineInputsMismatched": [],
+  "productionSourcesMismatched": [],
+  "splitUnchanged": true
+}

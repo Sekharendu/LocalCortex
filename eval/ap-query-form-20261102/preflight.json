@@ -1,0 +1,195 @@
+{
+  "splitSha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8",
+  "frozenSourceHashes": [
+    {
+      "file": "src/config.ts",
+      "sha256": "a2404542252b1342963b3532cf5df6d2c94ecfb7d8e7f0f930c1d923150d23c5"
+    },
+    {
+      "file": "src/conversationStore.ts",
+      "sha256": "e6ed70e49ba984b0d1d170b67c022f6273c6c153d320594d25a0f6c1ae6649a0"
+    },
+    {
+      "file": "src/db.ts",
+      "sha256": "4d1b746473444f6b17a94e7ab44057a006058fcf311563a427961b69e48622a9"
+    },
+    {
+      "file": "src/documentStore.ts",
+      "sha256": "587ab2415151709e8c89fa8f77b96a19aa23de055bef081ee711b81f0d40b858"
+    },
+    {
+      "file": "src/errors.ts",
+      "sha256": "180ed4b680baa3463350b8a8480646f79d39be54e10686f47a75a15ddb66b657"
+    },
+    {
+      "file": "src/generation/llm.ts",
+      "sha256": "39c7dcd8b2a03f0090caecbb0ad850e0f512807ac5b3ac7256041b349b7d1419"
+    },
+    {
+      "file": "src/generation/promptBuilder.ts",
+      "sha256": "a50626d13b713171cc0132cf12b57da3f4307ee77e5a5a9b30fb20a069e55389"
+    },
+    {
+      "file": "src/generation/refusal.ts",
+      "sha256": "5e4b9fec8e59585fa042e2f0b0e13db745d73c425a62f4abca331261e2c3af13"
+    },
+    {
+      "file": "src/generation/rewrite.ts",
+      "sha256": "2246b92472f2a927984b15619078398f136c46d101cd16d2fbcc68e255e8232e"
+    },
+    {
+      "file": "src/generation/tokens.ts",
+      "sha256": "a251d2b57ec51daffe6c1040f28cc26f165dacd86ec6700e7ab2401a0ea6ebe1"
+    },
+    {
+      "file": "src/ingest/chunker.ts",
+      "sha256": "4f718d0a646e4ef08d1af12f8f93c1178b7aa287c6e9a4718fef6b642578086c"
+    },
+    {
+      "file": "src/ingest/loader.ts",
+      "sha256": "121ccd08def5385433e7906c6a9ad4b335f6f780777c8c9a6eadf912dd97c4e9"
+    },
+    {
+      "file": "src/ingest/pipeline.ts",
+      "sha256": "2ba5cc5f23946302e9000085ad7a9a7d1822ecfbb7fa68b68abc5eddc75f3b04"
+    },
+    {
+      "file": "src/mcp/server.ts",
+      "sha256": "3f1d2cce74c5dcb2307a9aac8d0cea3126f09d7ce3ef886217d29e163a2d2ad1"
+    },
+    {
+      "file": "src/mcp.ts",
+      "sha256": "e4bb693fcd0d53aa13897d3ac6fdea321a058ec67f2ce58e99f744a99f7ef7a3"
+    },
+    {
+      "file": "src/rag.ts",
+      "sha256": "f110fa0ff33db48d072c65789107be93b5fea2b290e959ea0c0181a8d7aa3e50"
+    },
+    {
+      "file": "src/retrieval/acronyms.ts",
+      "sha256": "1a077227543808ecbf5cb67e1aba0d803b7afc417cfb0e3d6ad811405044bf16"
+    },
+    {
+      "file": "src/retrieval/context.ts",
+      "sha256": "5eb9c2677d0a1b8978ff2981f699af6e024d51e37a1f047e6e6c16c4d476bc1c"
+    },
+    {
+      "file": "src/retrieval/documentScope.ts",
+      "sha256": "206eef3606fc5fe11fb78892140df77b3e08d2d0af5246a50205409e4f85b4ac"
+    },
+    {
+      "file": "src/retrieval/embedder.ts",
+      "sha256": "3048d9b1b19c3fc638970908b2f3220faac25cc933fa6e089da315e8d74729c2"
+    },
+    {
+      "file": "src/retrieval/retriever.ts",
+      "sha256": "331d626a41b9f5084fe032fed5a43d63660aa0e0d7a40cc00bc19cd1e943eec9"
+    },
+    {
+      "file": "src/retrieval/sparse.ts",
+      "sha256": "6e3d2c14ed6d20d7c5cbd53a749e25c8f7fefaa6fcc9deec756ca94593ea6639"
+    },
+    {
+      "file": "src/retrieval/sparseStats.ts",
+      "sha256": "07318b580ea88678bd45bc328b19052406d5085660fc74687aa44ecee13de71f"
+    },
+    {
+      "file": "src/retrieval/vectorStore.ts",
+      "sha256": "b66598d532a7c809318a4e178007325c146187257bd0076be24a4d6a98314c6f"
+    },
+    {
+      "file": "src/searchRouter.ts",
+      "sha256": "59731765e8cb50258e43f91a02a4e78ef4d170b930825683b671bc814da7175c"
+    },
+    {
+      "file": "src/server.ts",
+      "sha256": "e9ae395d560e3b62b1f643a79211baa4c4cba3412d42996f81134797c8c04510"
+    },
+    {
+      "file": "src/types.ts",
+      "sha256": "f1ecf6798ae2aa834a8b3be4a0a57a3471914ea5e9be751a76f0a8e43a0c35f5"
+    },
+    {
+      "file": "migrations/001_conversations.sql",
+      "sha256": "7ae7626a7eede248a754008fec217970c7b1fce7fb3da411fa85edd553b84469"
+    },
+    {
+      "file": "scripts/migrate.ts",
+      "sha256": "973488f37eff8b72de05b67ee5b7951c44d34ba9e8db65bbc54e9b55f5bdcf9a"
+    },
+    {
+      "file": "package.json",
+      "sha256": "ae9271b2f32c7479d0b4d8005eb4a7aa3ec9fe3ff3fc22b3621396f679e646eb"
+    },
+    {
+      "file": "pnpm-lock.yaml",
+      "sha256": "287ed26f40f00ed5730961274aefaa02f7eacba5329222d572283c7902abd4a5"
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "142da7e1a6d2c956f2bb8f037e5cc1bd0fc5e92f2d54156b5733effa60d53214"
+    },
+    {
+      "file": ".dockerignore",
+      "sha256": "9c8b21d5865d090cf32fe01bd5f122b7fea3a7e64c0036e0097716548f32fe2e"
+    }
+  ],
+  "frozenRunSha256": "4a7298c0d410ee82ca59d527b002156b89d2fde11ad2bd032cd4ea3633cae9e3",
+  "counts": {
+    "chunk_omission": {
+      "cases": 236,
+      "mappedCases": 157,
+      "items": {
+        "under 4 words": {
+          "mapped": 298,
+          "unmapped": 45
+        },
+        "4+ words": {
+          "mapped": 148,
+          "unmapped": 214
+        }
+      }
+    },
+    "acceptable": {
+      "cases": 204,
+      "mappedCases": 118,
+      "items": {
+        "under 4 words": {
+          "mapped": 157,
+          "unmapped": 22
+        },
+        "4+ words": {
+          "mapped": 103,
+          "unmapped": 158
+        }
+      }
+    },
+    "scope_rejection": {
+      "cases": 19,
+      "mappedCases": 13,
+      "items": {
+        "4+ words": {
+          "mapped": 13,
+          "unmapped": 12
+        },
+        "under 4 words": {
+          "mapped": 29,
+          "unmapped": 2
+        }
+      }
+    }
+  },
+  "totalCases": 459,
+  "P": "original standalone question, no history, no title wrapper, real scope resolver returns unrestricted",
+  "A": "saved actualQuestion and saved production document-scope decision, including rejected scope",
+  "searchMode": "hybrid held constant for A/P; P reproduces query formation and document-scope rules, not the source default dense mode",
+  "normalization": "whitespace only; exact full quote containment OR verified same-paper normalized character-range overlap, inherited from prior approved rule; no fuzzy matching",
+  "itemPolicy": "one unique literal reference answer quote per case/item; deduplicated across references by whitespace-normalized text; retain every item, score only exact source-locatable items; no generic diagnostic evidence as gold",
+  "metrics": "micro item recall at each cutoff and mean reciprocal first-hit rank per mapped item; missing in top50 contributes zero; case pass/fail means any mapped item hit, not final answer correctness",
+  "corpusBoundary": "same dev-document allowlist on both variants and all Qdrant prefetches; no per-question gold-paper filter added to P; original collection-wide IDF and frozen sparse stats retained",
+  "testPaperContentRead": false,
+  "topK": 50,
+  "threshold": 0.63,
+  "fusion": "rrf",
+  "scopeRejectionCases": 19
+}

@@ -1,0 +1,71 @@
+{
+  "base": "724d812b8da5cd02981147299c383e7471919ff7",
+  "sourceHashesChecked": 33,
+  "sourceHashMismatches": [],
+  "files": [
+    {
+      "file": "eval/eval.test.mjs",
+      "sha256": "e7489f713e797278d5520ac325ce2d0a1455bd2ba2e6eafbd8fa173d96d98526"
+    },
+    {
+      "file": "eval/README.md",
+      "sha256": "d23f7f3c059b770d958bb36da68bc8dc971317413e658611535c59a491d7eeaa"
+    },
+    {
+      "file": "eval/retrieval-k.mjs",
+      "sha256": "dfc404e0090fa445fadc078704b2f00e234b1dd06de186308d7a4ad29dead48d"
+    },
+    {
+      "file": "eval/retrieval-worker.mjs",
+      "sha256": "106e24878a589143b2c2f7c2673d03e97ce7c3695d76694a670f50ee4160773b"
+    },
+    {
+      "file": "eval/runs/seed42/dev-diagnoses.jsonl",
+      "sha256": "f0f43bcc3f96d5358e5b3686182eecfdaba9e1f60821a870c6784dd23a497484"
+    },
+    {
+      "file": "eval/runs/seed42/dev-metadata.jsonl",
+      "sha256": "802101697225ee8c7d2c997758a45eb8d21783b7f243dd0ba482e02c70dbcaaf"
+    },
+    {
+      "file": "eval/runs/seed42/dev-sources.jsonl",
+      "sha256": "a409da1ebd95a6e4a446b51e4b4b6b145f7c0c491825aa04d72a44d2273e0e31"
+    },
+    {
+      "file": "eval/runs/seed42/metadata.jsonl",
+      "sha256": "c390928b1a4b8a1c491d6a4fe2a40a9b929f0eac48b3984f5e2067d1c4f85976"
+    },
+    {
+      "file": "eval/runs/seed42/production-manifest.json",
+      "sha256": "168fa71108d394667cc8694670f617e1118fc456c16ece7a9304f9cba862b208"
+    },
+    {
+      "file": "eval/runs/seed42/retrieval-summary.json",
+      "sha256": "4474a466cf72b3c7bce6c105237b5cdad503ada40d464299cf13c367dc2ec03a"
+    },
+    {
+      "file": "eval/runs/seed42/sanity-investigation.json",
+      "sha256": "5fc05814fc188e442cef3dcf868e13aed141c26b49ec462acdbb17ed3c4a25c0"
+    },
+    {
+      "file": "eval/runs/seed42/sanity-pdf.json",
+      "sha256": "d98f7b857f1278c418aa1864170aa9d6ec78f53e6a0e4b00ffe1c94391b8cfbd"
+    },
+    {
+      "file": "eval/runs/seed42/split-summary.json",
+      "sha256": "b2f8a7a09ef69a4f6a06e96727693e70f056e416c26bede263386b83b3c036ba"
+    },
+    {
+      "file": "eval/shared.mjs",
+      "sha256": "6d33a8b947b26bfeae3ffe06d3ab853cb040374eb63fba113e8b84ff9d917f7a"
+    },
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    },
+    {
+      "file": "eval/split.mjs",
+      "sha256": "65e1ba7bc8d57412ae42b9b7ed7d14836ce130933d778ca9b8ee4120afdadec8"
+    }
+  ]
+}

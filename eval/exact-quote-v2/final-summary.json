@@ -1,0 +1,35 @@
+{
+  "status": "stopped_step3a",
+  "reason": "Mapped-gold omission hit rate is not near zero under the requested exact-quote OR range-overlap rule. No acceptable or top50 retrieval performed.",
+  "omissionK5": {
+    "run": 236,
+    "eligible": 157,
+    "hits": 20,
+    "rate": 0.12738853503184713,
+    "unmappedOrNoAnswerQuote": 79,
+    "mappingCounts": {
+      "quote-not-found-in-extracted-paper": 67,
+      "mapped": 157,
+      "no-literal-answer-quote": 11,
+      "unanswerable": 1
+    }
+  },
+  "acceptableK5": null,
+  "recall": null,
+  "mrr": null,
+  "scopeRejections": {
+    "devCases": 19,
+    "excludedFromRecall": true,
+    "run": false
+  },
+  "top50ProductionComparison": {
+    "run": false
+  },
+  "policy": {
+    "nearZeroMaxRate": 0.01,
+    "acceptableHighMinRate": 0.7,
+    "gold": "Use entire literal extractive answer spans and literal free-form answers from saved references. Never use generic sourceEvidence or background evidence as answer gold. Alternative reference quotes are OR alternatives. Unanswerable, yes/no without literal answer quotes, and unmappable quotes are reported separately, never silently counted as misses.",
+    "normalization": "whitespace only: replace whitespace runs with one space and trim; preserve case, punctuation, Unicode and LaTeX"
+  },
+  "splitUnchanged": true
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "group": "chunk_omission",
+    "variant": "A",
+    "cases": 236,
+    "scopeRejected": 0,
+    "unrestricted": 0,
+    "denseGateAttempted": 236,
+    "denseGateRejected": 0,
+    "hybridExecuted": 236,
+    "nonemptyResults": 236,
+    "targetPaperTop1": 236,
+    "targetPaperInTop50": 236
+  },
+  {
+    "group": "chunk_omission",
+    "variant": "P",
+    "cases": 236,
+    "scopeRejected": 0,
+    "unrestricted": 236,
+    "denseGateAttempted": 236,
+    "denseGateRejected": 0,
+    "hybridExecuted": 236,
+    "nonemptyResults": 236,
+    "targetPaperTop1": 74,
+    "targetPaperInTop50": 176
+  },
+  {
+    "group": "acceptable",
+    "variant": "A",
+    "cases": 204,
+    "scopeRejected": 0,
+    "unrestricted": 0,
+    "denseGateAttempted": 204,
+    "denseGateRejected": 0,
+    "hybridExecuted": 204,
+    "nonemptyResults": 204,
+    "targetPaperTop1": 204,
+    "targetPaperInTop50": 204
+  },
+  {
+    "group": "acceptable",
+    "variant": "P",
+    "cases": 204,
+    "scopeRejected": 0,
+    "unrestricted": 204,
+    "denseGateAttempted": 204,
+    "denseGateRejected": 1,
+    "hybridExecuted": 203,
+    "nonemptyResults": 203,
+    "targetPaperTop1": 89,
+    "targetPaperInTop50": 162
+  },
+  {
+    "group": "scope_rejection",
+    "variant": "A",
+    "cases": 19,
+    "scopeRejected": 19,
+    "unrestricted": 0,
+    "denseGateAttempted": 0,
+    "denseGateRejected": 0,
+    "hybridExecuted": 0,
+    "nonemptyResults": 0,
+    "targetPaperTop1": 0,
+    "targetPaperInTop50": 0
+  },
+  {
+    "group": "scope_rejection",
+    "variant": "P",
+    "cases": 19,
+    "scopeRejected": 0,
+    "unrestricted": 19,
+    "denseGateAttempted": 19,
+    "denseGateRejected": 0,
+    "hybridExecuted": 19,
+    "nonemptyResults": 19,
+    "targetPaperTop1": 6,
+    "targetPaperInTop50": 13
+  }
+]

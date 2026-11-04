@@ -1,0 +1,68 @@
+[
+  {
+    "group": "chunk_omission",
+    "k": 5,
+    "lostCases": 3,
+    "lostToDenseGate": 0,
+    "caseIds": [
+      "pdf/1912.00667/bc730e4d964b6a66656078e2da130310142ab641",
+      "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",
+      "pdf/1909.00015/5c5aeee83ea3b34f5936404f5855ccb9869356c1"
+    ]
+  },
+  {
+    "group": "chunk_omission",
+    "k": 50,
+    "lostCases": 12,
+    "lostToDenseGate": 11,
+    "caseIds": [
+      "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+      "pdf/2001.03131/a778b8204a415b295f73b93623d09599f242f202",
+      "pdf/1909.13104/51b1142c1d23420dbf6d49446730b0e82b32137c",
+      "pdf/1909.06200/5c3e98e3cebaecd5d3e75ec2c9fc3dd267ac3c83",
+      "pdf/1908.09246/0602a974a879e6eae223cdf048410b5a0111665e",
+      "pdf/1907.09369/de3b1145cb4111ea2d4e113f816b537d052d9814",
+      "pdf/1911.07555/012b8a89aea27485797373adbcda32f16f9d7b54",
+      "pdf/1903.03530/dd53baf26dad3d74872f2d8956c9119a27269bd5",
+      "pdf/1611.02988/f875337f2ecd686cd7789e111174d0f14972638d",
+      "pdf/1701.05574/bbb77f2d6685c9257763ca38afaaef29044b4018",
+      "docx/1610.09225/4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",
+      "docx/1701.05574/bbb77f2d6685c9257763ca38afaaef29044b4018"
+    ]
+  },
+  {
+    "group": "acceptable",
+    "k": 5,
+    "lostCases": 12,
+    "lostToDenseGate": 4,
+    "caseIds": [
+      "pdf/1708.01464/0752d71a0a1f73b3482a888313622ce9e9870d6e",
+      "pdf/1909.02027/27de1d499348e17fec324d0ef00361a490659988",
+      "pdf/1702.03856/8acab64ba72831633e8cc174d5469afecccf3ae9",
+      "pdf/1909.03405/bc31a3d2f7c608df8c019a64d64cb0ccc5669210",
+      "pdf/1909.13104/203337c15bd1ee05763c748391d295a1f6415b9b",
+      "pdf/1912.08904/375b281e7441547ba284068326dd834216e55c07",
+      "pdf/1810.04428/2c6b50877133a499502feb79a682f4023ddab63e",
+      "pdf/1612.08205/935d6a6187e6a0c9c0da8e53a42697f853f5c248",
+      "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+      "pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f",
+      "pdf/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",
+      "pdf/1605.07333/0f7867f888109b9e000ef68965df4dde2511a55f"
+    ]
+  },
+  {
+    "group": "acceptable",
+    "k": 50,
+    "lostCases": 7,
+    "lostToDenseGate": 6,
+    "caseIds": [
+      "pdf/1708.01464/0752d71a0a1f73b3482a888313622ce9e9870d6e",
+      "pdf/1702.03856/8acab64ba72831633e8cc174d5469afecccf3ae9",
+      "pdf/1912.08904/375b281e7441547ba284068326dd834216e55c07",
+      "pdf/1908.09246/15e481e668114e4afe0c78eefb716ffe1646b494",
+      "pdf/1605.07333/0f7867f888109b9e000ef68965df4dde2511a55f",
+      "pdf/1608.01884/9a7ba5ed1779c664d2cac92494a43517d3e87c96",
+      "docx/1608.01884/9a7ba5ed1779c664d2cac92494a43517d3e87c96"
+    ]
+  }
+]

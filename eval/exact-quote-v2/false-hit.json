@@ -1,0 +1,16 @@
+{
+  "caseId": "pdf/1911.02855/20e38438471266ce021817c6364f6a46d01564f2",
+  "question": "How are weights dynamically adjusted?",
+  "retrievedChunk": {
+    "text": "associate training examples with dynamically\nadjusted weights to deemphasize easy-negative\nexamples. Experimental results show that this\nstrategy narrows down the gap between the F1\nscore in evaluation and the dice loss in training.\nWith the proposed training objective, we ob-\nserve significant performance boosts over a\nwide range of data imbalanced NLP tasks.\nNotably, we are able to achieve SOTA re-\nsults on CTB5, CTB6 and UD1.4 for the part\nof speech tagging task, and competitive or",
+    "source": "1911.02855.pdf",
+    "page": 1,
+    "score": 0.78571427,
+    "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+    "chunkIndex": 3
+  },
+  "goldQuote": "associates each training example with a weight in proportion to $(1-p)$, and this weight dynamically changes as training proceeds",
+  "normalizedGoldContained": false,
+  "oldRule": "Matched a retrieved chunk ID/index/text hash to any diagnostic supporting anchor. It never required the gold answer quote. This sourceEvidence anchor only mentions dynamic weights; it does not give the (1-p) mechanism.",
+  "sourceRenderingCaveat": "The annotation uses LaTeX $(1-p)$ while the PDF extraction uses (1 − p). Whitespace-only normalization cannot equate these. No fabricated gold coordinate or automatic math conversion is used."
+}

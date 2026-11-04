@@ -1,0 +1,100 @@
+{
+  "snapshot": "RERANK-1-live-r2",
+  "base": "2f3bae4422a3814af8419de920a47ef61f5ea935",
+  "applicationSnapshot": "RERANK-1-r1 unchanged; 18 hashes independently audited",
+  "attempts": 44,
+  "furtherInferenceAuthorized": false,
+  "files": [
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/attempts.jsonl",
+      "sha256": "300b8f4e89f3f2aaa65a09ef176469885a880739122ed10a37364acd657c14a2",
+      "bytes": 26441
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/audit.json",
+      "sha256": "046836293b689e01385dcc125e77dece14f5bfee202a51f32c29ef1dee8d2175",
+      "bytes": 323
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/audit.mjs",
+      "sha256": "683109eb7511e6712170cd2c7be5a60d6341f32ed3b0326f514f2e88933af2f5",
+      "bytes": 3175
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/authorization.json",
+      "sha256": "2e8e58dbb1512f6ff3f156c04601161145fc35d87d88721b4e8fc152bf32344e",
+      "bytes": 730
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/comparison.json",
+      "sha256": "349128bbf29f79dc0be3fb85925bee8cbdb3665e090062da3e8a83b6851a21d7",
+      "bytes": 26250
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/execution.json",
+      "sha256": "91cba93504c4da8d627d3b79a4e3e0ac0812500d670e7bd535ac0e96f43fa19e",
+      "bytes": 222
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/guard.mjs",
+      "sha256": "464f0c50e4de8874767ec6cef4983b99ff61bdbb7235af5d21d7696536517f9b",
+      "bytes": 1729
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/guard.test.mjs",
+      "sha256": "8a6323257e7df1c18af8eeb6024d3dd36459f79841168806c391e078adb01bb7",
+      "bytes": 1511
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/HANDOFF.md",
+      "sha256": "9e832fc8a8e2a8c0b8edd1acd868df5536f63430cf15f26a287dc18e7105921a",
+      "bytes": 3873
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/http-observations.jsonl",
+      "sha256": "62b670a2945bddf92bf4067ac61b34817f04ba66fa9e58df6a87f96924f15504",
+      "bytes": 2763
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/report.mjs",
+      "sha256": "e4f817b111e91d834d691576389278586a34151e0fbfaf83394e062023fda59f",
+      "bytes": 4541
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/reranked-results.jsonl",
+      "sha256": "cb25b98304a15f7fa3eaa672f9d2e73eddb9fa18115525fe3504da2bd8f5d207",
+      "bytes": 53390
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/RESULTS.md",
+      "sha256": "f8bb7851d9e1298a704a1d862abe4f4e8b99bb524b03290375c367b28bfd3312",
+      "bytes": 7692
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/run.mjs",
+      "sha256": "415ab23bd8693b2771f4529deb34c0bb7cc28859e6eb9959c869328a8bcea94c",
+      "bytes": 8146
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/smoke-results.jsonl",
+      "sha256": "7cac5873d12651f501a12fa78d248ea2e9ff90f8c9d0827f6f8d14199b6c0b63",
+      "bytes": 1814
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/summarize.mjs",
+      "sha256": "b6ff14586d2ade03152b253d172522957c122950aef3a75c3f064da4a8984627",
+      "bytes": 6708
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/summary.json",
+      "sha256": "535380d30f44e0b7b85b39a13c40b1ebb769a919847cd60a78d4bf10875b8e75",
+      "bytes": 1378
+    },
+    {
+      "file": "eval/reranker-dev-20261102-live-r2/usage-observations.jsonl",
+      "sha256": "139a4789a09f087bc9b7c7450507b0ddba8d4620dac125e6e1cef7fb03a00aed",
+      "bytes": 7122
+    }
+  ],
+  "diffSha256": "ffb0d217ed13590516592e55ae3988e8d7336353f2110f1a42fe3cd242a39d78"
+}

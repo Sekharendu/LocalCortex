@@ -1,0 +1,35 @@
+{
+  "execution": {
+    "status": "complete",
+    "failure": null,
+    "attempts": 44,
+    "maximum": 44,
+    "answerGenerationCalls": 0,
+    "rewriteCalls": 0,
+    "newRetrievalCalls": 0,
+    "changedR1": [],
+    "completedAt": "2026-11-02T15:10:04.282Z"
+  },
+  "syntheticAttempts": 4,
+  "devAttempts": 40,
+  "completedDevPools": 40,
+  "completedCaseIds": 20,
+  "failedAttempts": [],
+  "unattemptedDevPools": 0,
+  "smokeCoarseOrderingPasses": 4,
+  "smokeCases": 4,
+  "httpStatusCounts": {
+    "200": 44
+  },
+  "latencyMs": {
+    "min": 429.34040000000095,
+    "median": 806.1653999999999,
+    "max": 11005.453300000001
+  },
+  "providerUsageObjectsObserved": 44,
+  "providerReportedRunNeurons": 114.02856860280329,
+  "neuronEvidence": "Sum of numeric neurons fields reported in these provider response usage objects only. Start 0 is user-reported; current shared daily account usage and remaining allowance were not API verified.",
+  "queryPolicy": "Frozen Q keywordInput and unchanged saved candidate text/order. No rewrite, answer generation, title stripping or new retrieval.",
+  "limits": "Input bytes checked by reviewed client; BGE 512-token window/truncation behavior not inferred from byte sizes or coarse ordering.",
+  "interpretation": "Small frozen dev sample only; item recall and any-item case hits do not establish full answer coverage or final answer accuracy."
+}

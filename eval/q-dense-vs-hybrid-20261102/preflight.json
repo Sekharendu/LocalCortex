@@ -1,0 +1,325 @@
+{
+  "splitSha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8",
+  "frozenSourceHashes": [
+    {
+      "file": "src/config.ts",
+      "sha256": "a2404542252b1342963b3532cf5df6d2c94ecfb7d8e7f0f930c1d923150d23c5"
+    },
+    {
+      "file": "src/conversationStore.ts",
+      "sha256": "e6ed70e49ba984b0d1d170b67c022f6273c6c153d320594d25a0f6c1ae6649a0"
+    },
+    {
+      "file": "src/db.ts",
+      "sha256": "4d1b746473444f6b17a94e7ab44057a006058fcf311563a427961b69e48622a9"
+    },
+    {
+      "file": "src/documentStore.ts",
+      "sha256": "587ab2415151709e8c89fa8f77b96a19aa23de055bef081ee711b81f0d40b858"
+    },
+    {
+      "file": "src/errors.ts",
+      "sha256": "180ed4b680baa3463350b8a8480646f79d39be54e10686f47a75a15ddb66b657"
+    },
+    {
+      "file": "src/generation/llm.ts",
+      "sha256": "39c7dcd8b2a03f0090caecbb0ad850e0f512807ac5b3ac7256041b349b7d1419"
+    },
+    {
+      "file": "src/generation/promptBuilder.ts",
+      "sha256": "a50626d13b713171cc0132cf12b57da3f4307ee77e5a5a9b30fb20a069e55389"
+    },
+    {
+      "file": "src/generation/refusal.ts",
+      "sha256": "5e4b9fec8e59585fa042e2f0b0e13db745d73c425a62f4abca331261e2c3af13"
+    },
+    {
+      "file": "src/generation/rewrite.ts",
+      "sha256": "2246b92472f2a927984b15619078398f136c46d101cd16d2fbcc68e255e8232e"
+    },
+    {
+      "file": "src/generation/tokens.ts",
+      "sha256": "a251d2b57ec51daffe6c1040f28cc26f165dacd86ec6700e7ab2401a0ea6ebe1"
+    },
+    {
+      "file": "src/ingest/chunker.ts",
+      "sha256": "4f718d0a646e4ef08d1af12f8f93c1178b7aa287c6e9a4718fef6b642578086c"
+    },
+    {
+      "file": "src/ingest/loader.ts",
+      "sha256": "121ccd08def5385433e7906c6a9ad4b335f6f780777c8c9a6eadf912dd97c4e9"
+    },
+    {
+      "file": "src/ingest/pipeline.ts",
+      "sha256": "2ba5cc5f23946302e9000085ad7a9a7d1822ecfbb7fa68b68abc5eddc75f3b04"
+    },
+    {
+      "file": "src/mcp/server.ts",
+      "sha256": "3f1d2cce74c5dcb2307a9aac8d0cea3126f09d7ce3ef886217d29e163a2d2ad1"
+    },
+    {
+      "file": "src/mcp.ts",
+      "sha256": "e4bb693fcd0d53aa13897d3ac6fdea321a058ec67f2ce58e99f744a99f7ef7a3"
+    },
+    {
+      "file": "src/rag.ts",
+      "sha256": "f110fa0ff33db48d072c65789107be93b5fea2b290e959ea0c0181a8d7aa3e50"
+    },
+    {
+      "file": "src/retrieval/acronyms.ts",
+      "sha256": "1a077227543808ecbf5cb67e1aba0d803b7afc417cfb0e3d6ad811405044bf16"
+    },
+    {
+      "file": "src/retrieval/context.ts",
+      "sha256": "5eb9c2677d0a1b8978ff2981f699af6e024d51e37a1f047e6e6c16c4d476bc1c"
+    },
+    {
+      "file": "src/retrieval/documentScope.ts",
+      "sha256": "206eef3606fc5fe11fb78892140df77b3e08d2d0af5246a50205409e4f85b4ac"
+    },
+    {
+      "file": "src/retrieval/embedder.ts",
+      "sha256": "3048d9b1b19c3fc638970908b2f3220faac25cc933fa6e089da315e8d74729c2"
+    },
+    {
+      "file": "src/retrieval/retriever.ts",
+      "sha256": "331d626a41b9f5084fe032fed5a43d63660aa0e0d7a40cc00bc19cd1e943eec9"
+    },
+    {
+      "file": "src/retrieval/sparse.ts",
+      "sha256": "6e3d2c14ed6d20d7c5cbd53a749e25c8f7fefaa6fcc9deec756ca94593ea6639"
+    },
+    {
+      "file": "src/retrieval/sparseStats.ts",
+      "sha256": "07318b580ea88678bd45bc328b19052406d5085660fc74687aa44ecee13de71f"
+    },
+    {
+      "file": "src/retrieval/vectorStore.ts",
+      "sha256": "b66598d532a7c809318a4e178007325c146187257bd0076be24a4d6a98314c6f"
+    },
+    {
+      "file": "src/searchRouter.ts",
+      "sha256": "59731765e8cb50258e43f91a02a4e78ef4d170b930825683b671bc814da7175c"
+    },
+    {
+      "file": "src/server.ts",
+      "sha256": "e9ae395d560e3b62b1f643a79211baa4c4cba3412d42996f81134797c8c04510"
+    },
+    {
+      "file": "src/types.ts",
+      "sha256": "f1ecf6798ae2aa834a8b3be4a0a57a3471914ea5e9be751a76f0a8e43a0c35f5"
+    },
+    {
+      "file": "migrations/001_conversations.sql",
+      "sha256": "7ae7626a7eede248a754008fec217970c7b1fce7fb3da411fa85edd553b84469"
+    },
+    {
+      "file": "scripts/migrate.ts",
+      "sha256": "973488f37eff8b72de05b67ee5b7951c44d34ba9e8db65bbc54e9b55f5bdcf9a"
+    },
+    {
+      "file": "package.json",
+      "sha256": "ae9271b2f32c7479d0b4d8005eb4a7aa3ec9fe3ff3fc22b3621396f679e646eb"
+    },
+    {
+      "file": "pnpm-lock.yaml",
+      "sha256": "287ed26f40f00ed5730961274aefaa02f7eacba5329222d572283c7902abd4a5"
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "142da7e1a6d2c956f2bb8f037e5cc1bd0fc5e92f2d54156b5733effa60d53214"
+    },
+    {
+      "file": ".dockerignore",
+      "sha256": "9c8b21d5865d090cf32fe01bd5f122b7fea3a7e64c0036e0097716548f32fe2e"
+    }
+  ],
+  "frozenRunSha256": "4a7298c0d410ee82ca59d527b002156b89d2fde11ad2bd032cd4ea3633cae9e3",
+  "counts": {
+    "chunk_omission": {
+      "cases": 236,
+      "mappedCases": 157,
+      "items": {
+        "under 4 words": {
+          "mapped": 298,
+          "unmapped": 45
+        },
+        "4+ words": {
+          "mapped": 148,
+          "unmapped": 214
+        }
+      }
+    },
+    "acceptable": {
+      "cases": 204,
+      "mappedCases": 118,
+      "items": {
+        "under 4 words": {
+          "mapped": 157,
+          "unmapped": 22
+        },
+        "4+ words": {
+          "mapped": 103,
+          "unmapped": 158
+        }
+      }
+    },
+    "scope_rejection": {
+      "cases": 19,
+      "mappedCases": 13,
+      "items": {
+        "4+ words": {
+          "mapped": 13,
+          "unmapped": 12
+        },
+        "under 4 words": {
+          "mapped": 29,
+          "unmapped": 2
+        }
+      }
+    }
+  },
+  "totalCases": 459,
+  "P": "original standalone question, no history, no title wrapper, real scope resolver returns unrestricted",
+  "A": "saved actualQuestion and saved production document-scope decision, including rejected scope",
+  "searchMode": "hybrid held constant for A/P; P reproduces query formation and document-scope rules, not the source default dense mode",
+  "normalization": "whitespace only; exact full quote containment OR verified same-paper normalized character-range overlap, inherited from prior approved rule; no fuzzy matching",
+  "itemPolicy": "one unique literal reference answer quote per case/item; deduplicated across references by whitespace-normalized text; retain every item, score only exact source-locatable items; no generic diagnostic evidence as gold",
+  "metrics": "micro item recall at each cutoff and mean reciprocal first-hit rank per mapped item; missing in top50 contributes zero; case pass/fail means any mapped item hit, not final answer correctness",
+  "corpusBoundary": "same dev-document allowlist on both variants and all Qdrant prefetches; no per-question gold-paper filter added to P; original collection-wide IDF and frozen sparse stats retained",
+  "testPaperContentRead": false,
+  "topK": 50,
+  "threshold": 0.63,
+  "fusion": "rrf",
+  "scopeRejectionCases": 19,
+  "variant": "Q",
+  "definition": "Original question and its exact production acronym/prefix transformations, with the same immutable scope as A. No forced gold-document identity. Missing scope remains rejected.",
+  "baselineReuse": {
+    "directory": "C:\\Users\\hp\\Desktop\\My Products\\LocalCortex-cloudflare-inference\\eval\\ap-query-form-20261102",
+    "manifestSha256": "3af9cf164a7d1f1f2c2854f42df4ce21abf90b9721ef33ca3f205fe2ffe767a5",
+    "verifiedArtifacts": 33,
+    "source": "All saved A/P rankings and item scores are reused, not rerun."
+  },
+  "baselineSparseStats": {
+    "pdf": "d36f0438d256d3e8a06805d7b0b0b29593d7bdabb7c4dc2f79d98b550e164d50",
+    "docx": "4b4ff8b4abd36754ed0c089d7d20f0d208eb6b9c3107502498c389ae09174295"
+  },
+  "mode": "dense",
+  "comparison": "Q dense versus verified saved Q hybrid; same question, immutable paper scope, model/prefixes,0.63threshold, gold items, dev boundary and top50 cutoffs",
+  "denseBehavior": "Unchanged retrieve(): initial dense limit50 at0.63; if at least one result passes and fewer than50 return, fill from same document at threshold0. This is the existing production default branch, not a new raw vector-search implementation.",
+  "hybridBaseline": {
+    "directory": "C:\\Users\\hp\\Desktop\\My Products\\LocalCortex-cloudflare-inference\\eval\\question-only-same-paper-20261102",
+    "finalManifestSha256": "500b878408a84b40002abfaf3f0baf28e237f8a3a256fa0f02ae68ce21f3763c",
+    "preservedFiles": [
+      {
+        "file": "eval/question-only-same-paper-20261102/baseline-input-manifest.json",
+        "sha256": "60ca2df74ce6db7d16fea8c1cc0c0bf9a4555eb363ecbd6804d4281ee20b5dd7"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/case-changes.json",
+        "sha256": "f892c264c0ad6608f2f60d664c3d5ad44ec775471fa7353e1b84a8152e076c3b"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/case-plan.jsonl",
+        "sha256": "b4a68b2d4ac9f44be5a55f3494c451212b32c4548022f5231e6ca8bbf734dbb1"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/common.mjs",
+        "sha256": "601cd4c2d575dba9f12e0afda57f7ea80ca52fa7277cb563c1b7d300bc729553"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/dev-sources.jsonl",
+        "sha256": "a409da1ebd95a6e4a446b51e4b4b6b145f7c0c491825aa04d72a44d2273e0e31"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/docx.results.jsonl",
+        "sha256": "eaa3b8ea2b62741df4e48a3c4f7494b4b0a3c61064c792b3059fd646a09be24c"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/docx.summary.json",
+        "sha256": "c2505bb9b786cd4c4225b453aeb3c14e152af573754835565ebe4e6665aaad01"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/docx.traces.jsonl",
+        "sha256": "384e66bce7f390524f384b27535903cd737a3535ac8b552599764bc4ebcf9349"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/eval.test.mjs",
+        "sha256": "8424eaaaf7c6a7d54ae57fde60027f3aa8e4e36778a68ea398a186b8d83a1e91"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/execution-status.json",
+        "sha256": "18ddb7b5e02c437df9e3d5504edb974648beba04e833ed7a23c1e6122eebeb8e"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/final-summary.json",
+        "sha256": "fef1432b8e1e067248e4e3d542f74aec5d78387d10a003a78ecd9429c7803259"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/gate-regressions.json",
+        "sha256": "d88e25931c69118b8d252f6a6ac2c40ef698776151ac9e20eef0e069655b16ae"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/INTERPRETATION.md",
+        "sha256": "126f3b8b95a52c21e5aa6b82c86620c7f4d448b0cf91ec4307f31e4e177921da"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/item-first-ranks.jsonl",
+        "sha256": "22aad62a0b3faf9d62516768d99001ac56520b224f4ab7d0ca0a06b8f3ba2801"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/item-recall.json",
+        "sha256": "9f5085c7a9b3586562af465013ff5aa5c30c85b9b6aa4527e1196148f1a73b72"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/pdf.results.jsonl",
+        "sha256": "2e575e207f4b7b6ccf9916c8ea62c57161bdc94065dc435a1baa13bc27d02121"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/pdf.summary.json",
+        "sha256": "63896e1c13f0f9d805c5ed4859ab3d1d1d67ab151e0812cb727b90c92bb71d95"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/pdf.traces.jsonl",
+        "sha256": "73501fa3b2f84e2c5fbd35466b96fdaf8f856b7d0c4599c0a220696b0b13840d"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/preflight.json",
+        "sha256": "e4ad41a3d5b614383b583cdc7a78f8ae480eb27e9537cd1903b4128373e723c1"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/prepare.mjs",
+        "sha256": "a8995af9e5d3a09d9c4b9419abd52f9c0557f05eeee78af960316d1dba61f652"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/preservation-check.json",
+        "sha256": "8b7359099070abdd34e4b5ae4582666d7b2d3e73b821c20134e742f4b5c85461"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/report.mjs",
+        "sha256": "1c9d8bd9725443df9bb40f155c252397c2761ad78e067594673953fedc3dc33c"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/RESULTS.md",
+        "sha256": "0a84bfee4d2f0e2e5cd12794f0d3c29ede4a289bf23bd9a5a1d44f30373a8600"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/retrieval-behavior.json",
+        "sha256": "4adde61d9b46446a8e1ab11d628394b717a959ed0a37f01c813e8ee0ee237f52"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/run.mjs",
+        "sha256": "062b4b7d2824c25351ab75a474f20442b0a41a8d36a35379871999f011396033"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/submission-manifest.json",
+        "sha256": "213a4752236891aca9ea9c44730e78c3fb7e515ec4d46e0077264645dbc216a0"
+      },
+      {
+        "file": "eval/question-only-same-paper-20261102/worker.mjs",
+        "sha256": "a3b77ed66531a2516ae3c19ce9f91684dd8bfc069fdff0bc2062e8abddfd8de6"
+      }
+    ]
+  },
+  "generationCalls": 0
+}

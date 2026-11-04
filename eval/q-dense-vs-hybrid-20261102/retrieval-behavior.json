@@ -1,0 +1,59 @@
+{
+  "behavior": [
+    {
+      "group": "chunk_omission",
+      "mode": "hybrid",
+      "cases": 236,
+      "scopeRejected": 0,
+      "relevanceRejected": 27,
+      "returnedChunks": 209,
+      "sameDocumentExpansionCalls": null
+    },
+    {
+      "group": "chunk_omission",
+      "mode": "dense",
+      "cases": 236,
+      "scopeRejected": 0,
+      "relevanceRejected": 27,
+      "returnedChunks": 209,
+      "sameDocumentExpansionCalls": 166
+    },
+    {
+      "group": "acceptable",
+      "mode": "hybrid",
+      "cases": 204,
+      "scopeRejected": 0,
+      "relevanceRejected": 16,
+      "returnedChunks": 188,
+      "sameDocumentExpansionCalls": null
+    },
+    {
+      "group": "acceptable",
+      "mode": "dense",
+      "cases": 204,
+      "scopeRejected": 0,
+      "relevanceRejected": 16,
+      "returnedChunks": 188,
+      "sameDocumentExpansionCalls": 150
+    },
+    {
+      "group": "scope_rejection",
+      "mode": "hybrid",
+      "cases": 19,
+      "scopeRejected": 19,
+      "relevanceRejected": 0,
+      "returnedChunks": 0,
+      "sameDocumentExpansionCalls": null
+    },
+    {
+      "group": "scope_rejection",
+      "mode": "dense",
+      "cases": 19,
+      "scopeRejected": 19,
+      "relevanceRejected": 0,
+      "returnedChunks": 0,
+      "sameDocumentExpansionCalls": 0
+    }
+  ],
+  "relevanceGateDifferences": []
+}

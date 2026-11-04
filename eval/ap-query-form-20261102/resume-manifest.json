@@ -1,0 +1,32 @@
+{
+  "preserved": [
+    {
+      "file": "pdf.results.jsonl",
+      "sha256": "57966691fea8c5e7263d119c61f148fedc87ca6103b55abbb645cdcd7976de79"
+    },
+    {
+      "file": "pdf.traces.jsonl",
+      "sha256": "ba804a6f77a5ede923a6a9417f91c64336f8412905524b4c9a6b5624b55e760e"
+    },
+    {
+      "file": "pdf.summary.json",
+      "sha256": "19f8c5f68a737ab6f9dd0c35177ad18ac9409706700a58c06132516e6d519205"
+    },
+    {
+      "file": "docx.results.jsonl",
+      "sha256": "97f0d7aa7ad2150c7f8a22ab1192b6b4d13669a8eee5f6d923b11a3edfd4f3b8"
+    },
+    {
+      "file": "docx.traces.jsonl",
+      "sha256": "6e04a7319a5efac2f6b5edd3b8504f4cdd38bf01c600e8804be2614dea82724f"
+    }
+  ],
+  "completedCasesSkipped": [
+    "docx/1609.00425/b6ae8e10c6a0d34c834f18f66ab730b670fb528c",
+    "docx/1609.00425/a87a009c242d57c51fc94fe312af5e02070f898b"
+  ],
+  "completedVariantRowsSkipped": 4,
+  "sourceWorkerSha256": "6660d63f7466d0a8a8cb103d1de6901e93dec1de71be56fc8df3e519b9092f27",
+  "resumedWorkerSha256": "c9cd8e0a74c9d5877c46beb42751dc757f5b685d9b248dea4c6602e2105091b8",
+  "note": "No saved retrieval is repeated. A possibly unrecorded in-flight request at interruption cannot be audited."
+}

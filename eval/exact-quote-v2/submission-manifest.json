@@ -1,0 +1,100 @@
+{
+  "status": "stopped_step3a",
+  "files": [
+    {
+      "file": "eval/exact-quote-v2/all-hit-details.json",
+      "sha256": "f1fdf1832ee14124ea5a61b71a684693fe0ac0481fb2fe5595f77c0aaa50d8f8"
+    },
+    {
+      "file": "eval/exact-quote-v2/all-hit-details.md",
+      "sha256": "fdc05887519c6b5350b7621bb43151aa4ebe340ee3d384b8e6597c8632f6a63b"
+    },
+    {
+      "file": "eval/exact-quote-v2/chunk_omission-docx-k5.rows.jsonl",
+      "sha256": "f85a823b4628bc5a7e4196f8bbb9a8e313e2dec8d5e0d3d032375218a05535e8"
+    },
+    {
+      "file": "eval/exact-quote-v2/chunk_omission-docx-k5.summary.json",
+      "sha256": "e48ac46e6af7e8f037d84179efca258854db8aa228c38cffe349bb84d2877894"
+    },
+    {
+      "file": "eval/exact-quote-v2/chunk_omission-pdf-k5.rows.jsonl",
+      "sha256": "7a1e803dbb22598d262051e0a4f70c893e4ed95676ce8780de46150ff6523647"
+    },
+    {
+      "file": "eval/exact-quote-v2/chunk_omission-pdf-k5.summary.json",
+      "sha256": "d0e975154de173e4970ce10071c3df78bececa74b5ce534b361563a7badca389"
+    },
+    {
+      "file": "eval/exact-quote-v2/common.mjs",
+      "sha256": "fef26d1eb62bafd676f593c71753ef5b6e338aa26e0b38ec7afaceda427acdbd"
+    },
+    {
+      "file": "eval/exact-quote-v2/false-hit.json",
+      "sha256": "ce5d2b4fee5ef4a305e6aee266287a69c9f546e800264da7c175db15d22cc53d"
+    },
+    {
+      "file": "eval/exact-quote-v2/false-hit.md",
+      "sha256": "b5ffa0376cd82bea58d81d6ed6b4365c8d379ef38d56c4e1f2b28722c991b106"
+    },
+    {
+      "file": "eval/exact-quote-v2/final-summary.json",
+      "sha256": "bb3ec67f3573cb418b66a4593f68fd282ed0a30b70e25f97e1d6cd21494bf873"
+    },
+    {
+      "file": "eval/exact-quote-v2/finish.mjs",
+      "sha256": "97d78fbc8c3ea6918997d5befe9ea9fe0922599f7b5dba4636e0f8d6bde0463b"
+    },
+    {
+      "file": "eval/exact-quote-v2/gold-mapping.jsonl",
+      "sha256": "6020cdeed497f6a418b4594fc570f3dd4c05cbce8b5fdb440db8b9bc1ee03900"
+    },
+    {
+      "file": "eval/exact-quote-v2/matching.test.mjs",
+      "sha256": "8143ee4d740b606b8ad6baed81f30a84fb3b3d4b71df0ac42fbc91ff1abfe706"
+    },
+    {
+      "file": "eval/exact-quote-v2/preflight.json",
+      "sha256": "6eb936cb8b71aac5c182db02c32d2b226c1aa4acc236cf2c950c53368068f7d8"
+    },
+    {
+      "file": "eval/exact-quote-v2/prepare.mjs",
+      "sha256": "2d6062d6d8c82b439088163c1ccde08796e130d27e0cf0c7dfdb3844ef16442f"
+    },
+    {
+      "file": "eval/exact-quote-v2/preservation-check.json",
+      "sha256": "e5481d13af261ffc815428d2a119a686032ec2081dbc1d1a064a2c486519e1d9"
+    },
+    {
+      "file": "eval/exact-quote-v2/random-examples.json",
+      "sha256": "0b64e8a09f1966d830291c5ce1c4b059dc900e065fdf23b30c3af7ad197b8881"
+    },
+    {
+      "file": "eval/exact-quote-v2/random-examples.md",
+      "sha256": "0f33ca973d9ad93cb98df0de059471905ace28217d3191cc1a578fca63fb3270"
+    },
+    {
+      "file": "eval/exact-quote-v2/README.md",
+      "sha256": "f0ba59edd281584acfc866f5b790520a2c2eb510f4505a929b18dc33eeb86b0e"
+    },
+    {
+      "file": "eval/exact-quote-v2/RESULTS.md",
+      "sha256": "55c8efbfab0516d020a36873ae8950621a598f2ef7c082ff4989eef439d5ddfc"
+    },
+    {
+      "file": "eval/exact-quote-v2/run.mjs",
+      "sha256": "5b27137fe842e04423272764321b32ffd8196a4edc6c582687e800c1f3e85bd3"
+    },
+    {
+      "file": "eval/exact-quote-v2/step3-omission-hits.json",
+      "sha256": "c2790952e3d7dc5ea950c43cee569489a38b40e12488205ef1bb162644711eb8"
+    },
+    {
+      "file": "eval/exact-quote-v2/worker.mjs",
+      "sha256": "c2403421d63ba62fa370bfa62ea78c45705a62ede681a9365d34a332f9d1590d"
+    }
+  ],
+  "splitUnchanged": true,
+  "productionFilesChecked": 33,
+  "productionMismatches": []
+}

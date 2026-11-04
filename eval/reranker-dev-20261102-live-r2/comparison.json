@@ -1,0 +1,1159 @@
+{
+  "metrics": [
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "variant": "A",
+      "cases": 10,
+      "mappedItems": 4,
+      "unmappedItems": 2,
+      "r5": 0.25,
+      "hits5": 1,
+      "r10": 1,
+      "hits10": 4,
+      "r20": 1,
+      "hits20": 4,
+      "r50": 1,
+      "hits50": 4,
+      "mrr": 0.325
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "variant": "P",
+      "cases": 10,
+      "mappedItems": 4,
+      "unmappedItems": 2,
+      "r5": 0,
+      "hits5": 0,
+      "r10": 0.75,
+      "hits10": 3,
+      "r20": 0.75,
+      "hits20": 3,
+      "r50": 1,
+      "hits50": 4,
+      "mrr": 0.09226190476190475
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "variant": "A",
+      "cases": 10,
+      "mappedItems": 11,
+      "unmappedItems": 3,
+      "r5": 0.8181818181818182,
+      "hits5": 9,
+      "r10": 0.9090909090909091,
+      "hits10": 10,
+      "r20": 0.9090909090909091,
+      "hits20": 10,
+      "r50": 1,
+      "hits50": 11,
+      "mrr": 0.4999496627403604
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "variant": "P",
+      "cases": 10,
+      "mappedItems": 11,
+      "unmappedItems": 3,
+      "r5": 0.7272727272727273,
+      "hits5": 8,
+      "r10": 0.8181818181818182,
+      "hits10": 9,
+      "r20": 0.8181818181818182,
+      "hits20": 9,
+      "r50": 1,
+      "hits50": 11,
+      "mrr": 0.27213438735177864
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "4+ words",
+      "variant": "A",
+      "cases": 10,
+      "mappedItems": 1,
+      "unmappedItems": 13,
+      "r5": 0,
+      "hits5": 0,
+      "r10": 0,
+      "hits10": 0,
+      "r20": 0,
+      "hits20": 0,
+      "r50": 1,
+      "hits50": 1,
+      "mrr": 0.045454545454545456
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "4+ words",
+      "variant": "P",
+      "cases": 10,
+      "mappedItems": 1,
+      "unmappedItems": 13,
+      "r5": 1,
+      "hits5": 1,
+      "r10": 1,
+      "hits10": 1,
+      "r20": 1,
+      "hits20": 1,
+      "r50": 1,
+      "hits50": 1,
+      "mrr": 0.3333333333333333
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "variant": "A",
+      "cases": 10,
+      "mappedItems": 1,
+      "unmappedItems": 2,
+      "r5": 1,
+      "hits5": 1,
+      "r10": 1,
+      "hits10": 1,
+      "r20": 1,
+      "hits20": 1,
+      "r50": 1,
+      "hits50": 1,
+      "mrr": 1
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "variant": "P",
+      "cases": 10,
+      "mappedItems": 1,
+      "unmappedItems": 2,
+      "r5": 1,
+      "hits5": 1,
+      "r10": 1,
+      "hits10": 1,
+      "r20": 1,
+      "hits20": 1,
+      "r50": 1,
+      "hits50": 1,
+      "mrr": 1
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "variant": "A",
+      "cases": 10,
+      "mappedItems": 4,
+      "unmappedItems": 2,
+      "r5": 0.25,
+      "hits5": 1,
+      "r10": 0.25,
+      "hits10": 1,
+      "r20": 1,
+      "hits20": 4,
+      "r50": 1,
+      "hits50": 4,
+      "mrr": 0.3181818181818182
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "variant": "P",
+      "cases": 10,
+      "mappedItems": 4,
+      "unmappedItems": 2,
+      "r5": 0,
+      "hits5": 0,
+      "r10": 0.75,
+      "hits10": 3,
+      "r20": 0.75,
+      "hits20": 3,
+      "r50": 1,
+      "hits50": 4,
+      "mrr": 0.08392857142857144
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "variant": "A",
+      "cases": 10,
+      "mappedItems": 11,
+      "unmappedItems": 3,
+      "r5": 0.9090909090909091,
+      "hits5": 10,
+      "r10": 0.9090909090909091,
+      "hits10": 10,
+      "r20": 0.9090909090909091,
+      "hits20": 10,
+      "r50": 1,
+      "hits50": 11,
+      "mrr": 0.5430232558139536
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "variant": "P",
+      "cases": 10,
+      "mappedItems": 11,
+      "unmappedItems": 3,
+      "r5": 0.7272727272727273,
+      "hits5": 8,
+      "r10": 0.8181818181818182,
+      "hits10": 9,
+      "r20": 0.8181818181818182,
+      "hits20": 9,
+      "r50": 1,
+      "hits50": 11,
+      "mrr": 0.27177788111291945
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "4+ words",
+      "variant": "A",
+      "cases": 10,
+      "mappedItems": 1,
+      "unmappedItems": 13,
+      "r5": 0,
+      "hits5": 0,
+      "r10": 0,
+      "hits10": 0,
+      "r20": 1,
+      "hits20": 1,
+      "r50": 1,
+      "hits50": 1,
+      "mrr": 0.06666666666666667
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "4+ words",
+      "variant": "P",
+      "cases": 10,
+      "mappedItems": 1,
+      "unmappedItems": 13,
+      "r5": 1,
+      "hits5": 1,
+      "r10": 1,
+      "hits10": 1,
+      "r20": 1,
+      "hits20": 1,
+      "r50": 1,
+      "hits50": 1,
+      "mrr": 0.3333333333333333
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "variant": "A",
+      "cases": 10,
+      "mappedItems": 1,
+      "unmappedItems": 2,
+      "r5": 1,
+      "hits5": 1,
+      "r10": 1,
+      "hits10": 1,
+      "r20": 1,
+      "hits20": 1,
+      "r50": 1,
+      "hits50": 1,
+      "mrr": 1
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "variant": "P",
+      "cases": 10,
+      "mappedItems": 1,
+      "unmappedItems": 2,
+      "r5": 1,
+      "hits5": 1,
+      "r10": 1,
+      "hits10": 1,
+      "r20": 1,
+      "hits20": 1,
+      "r50": 1,
+      "hits50": 1,
+      "mrr": 1
+    }
+  ],
+  "caseChanges": [
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "k": 5,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 2,
+      "unscorableCases": 8,
+      "both": 0,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 1,
+      "different": 1
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "k": 10,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 2,
+      "unscorableCases": 8,
+      "both": 1,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "k": 20,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 2,
+      "unscorableCases": 8,
+      "both": 1,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "k": 50,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 2,
+      "unscorableCases": 8,
+      "both": 2,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "k": 5,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 5,
+      "unscorableCases": 5,
+      "both": 3,
+      "Aonly": 2,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 2
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "k": 10,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 5,
+      "unscorableCases": 5,
+      "both": 4,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "k": 20,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 5,
+      "unscorableCases": 5,
+      "both": 4,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "k": 50,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 5,
+      "unscorableCases": 5,
+      "both": 5,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "k": 5,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 0,
+      "Aonly": 0,
+      "Ponly": 1,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "k": 10,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 0,
+      "Aonly": 0,
+      "Ponly": 1,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "k": 20,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 0,
+      "Aonly": 0,
+      "Ponly": 1,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "k": 50,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "k": 5,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "k": 10,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "k": 20,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "k": 50,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "k": 5,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 2,
+      "unscorableCases": 8,
+      "both": 0,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 1,
+      "different": 1
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "k": 10,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 2,
+      "unscorableCases": 8,
+      "both": 0,
+      "Aonly": 1,
+      "Ponly": 1,
+      "neither": 0,
+      "different": 2
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "k": 20,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 2,
+      "unscorableCases": 8,
+      "both": 1,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "k": 50,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 2,
+      "unscorableCases": 8,
+      "both": 2,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "k": 5,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 5,
+      "unscorableCases": 5,
+      "both": 3,
+      "Aonly": 2,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 2
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "k": 10,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 5,
+      "unscorableCases": 5,
+      "both": 4,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "k": 20,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 5,
+      "unscorableCases": 5,
+      "both": 4,
+      "Aonly": 1,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "k": 50,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 5,
+      "unscorableCases": 5,
+      "both": 5,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "k": 5,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 0,
+      "Aonly": 0,
+      "Ponly": 1,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "k": 10,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 0,
+      "Aonly": 0,
+      "Ponly": 1,
+      "neither": 0,
+      "different": 1
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "k": 20,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "k": 50,
+      "lengthGroup": "4+ words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "k": 5,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "k": 10,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "k": 20,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "k": 50,
+      "lengthGroup": "under 4 words",
+      "passRule": "any mapped item",
+      "scorableCases": 1,
+      "unscorableCases": 9,
+      "both": 1,
+      "Aonly": 0,
+      "Ponly": 0,
+      "neither": 0,
+      "different": 0
+    }
+  ],
+  "itemChanges": [
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "k": 5,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+          "itemId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6/item-0",
+          "before": 1,
+          "after": 28
+        }
+      ]
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "k": 10,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+          "itemId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6/item-0",
+          "before": 1,
+          "after": 28
+        }
+      ]
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "k": 20,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+          "itemId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6/item-0",
+          "before": 1,
+          "after": 28
+        }
+      ]
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "k": 50,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "k": 5,
+      "gains": [
+        {
+          "caseId": "pdf/1909.02027/149da739b1c19a157880d9d4827f0b692006aa2c",
+          "itemId": "pdf/1909.02027/149da739b1c19a157880d9d4827f0b692006aa2c/item-3",
+          "before": 7,
+          "after": 4
+        }
+      ],
+      "regressions": [
+        {
+          "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+          "itemId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6/item-1",
+          "before": 2,
+          "after": 6
+        },
+        {
+          "caseId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c",
+          "itemId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c/item-1",
+          "before": 2,
+          "after": 30
+        }
+      ]
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "k": 10,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c",
+          "itemId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c/item-1",
+          "before": 2,
+          "after": 30
+        }
+      ]
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "k": 20,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c",
+          "itemId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c/item-1",
+          "before": 2,
+          "after": 30
+        }
+      ]
+    },
+    {
+      "mode": "dense",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "k": 50,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "4+ words",
+      "k": 5,
+      "gains": [
+        {
+          "caseId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e",
+          "itemId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e/item-1",
+          "before": 22,
+          "after": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "4+ words",
+      "k": 10,
+      "gains": [
+        {
+          "caseId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e",
+          "itemId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e/item-1",
+          "before": 22,
+          "after": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "4+ words",
+      "k": 20,
+      "gains": [
+        {
+          "caseId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e",
+          "itemId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e/item-1",
+          "before": 22,
+          "after": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "4+ words",
+      "k": 50,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "k": 5,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "k": 10,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "k": 20,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "dense",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "k": 50,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "k": 5,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+          "itemId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6/item-0",
+          "before": 1,
+          "after": 28
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "k": 10,
+      "gains": [
+        {
+          "caseId": "docx/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d",
+          "itemId": "docx/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d/item-0",
+          "before": 11,
+          "after": 10
+        },
+        {
+          "caseId": "docx/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d",
+          "itemId": "docx/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d/item-1",
+          "before": 11,
+          "after": 10
+        },
+        {
+          "caseId": "docx/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d",
+          "itemId": "docx/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d/item-2",
+          "before": 11,
+          "after": 10
+        }
+      ],
+      "regressions": [
+        {
+          "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+          "itemId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6/item-0",
+          "before": 1,
+          "after": 28
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "k": 20,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+          "itemId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6/item-0",
+          "before": 1,
+          "after": 28
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "4+ words",
+      "k": 50,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "k": 5,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+          "itemId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6/item-1",
+          "before": 4,
+          "after": 6
+        },
+        {
+          "caseId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c",
+          "itemId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c/item-1",
+          "before": 2,
+          "after": 34
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "k": 10,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c",
+          "itemId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c/item-1",
+          "before": 2,
+          "after": 34
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "k": 20,
+      "gains": [],
+      "regressions": [
+        {
+          "caseId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c",
+          "itemId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c/item-1",
+          "before": 2,
+          "after": 34
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "group": "chunk_omission",
+      "length": "under 4 words",
+      "k": 50,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "4+ words",
+      "k": 5,
+      "gains": [
+        {
+          "caseId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e",
+          "itemId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e/item-1",
+          "before": 15,
+          "after": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "4+ words",
+      "k": 10,
+      "gains": [
+        {
+          "caseId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e",
+          "itemId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e/item-1",
+          "before": 15,
+          "after": 3
+        }
+      ],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "4+ words",
+      "k": 20,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "4+ words",
+      "k": 50,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "k": 5,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "k": 10,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "k": 20,
+      "gains": [],
+      "regressions": []
+    },
+    {
+      "mode": "hybrid",
+      "group": "acceptable",
+      "length": "under 4 words",
+      "k": 50,
+      "gains": [],
+      "regressions": []
+    }
+  ],
+  "recallAt50Invariant": true,
+  "caveat": "Frozen sampled dev pools only. Item hits and any-item case changes are not complete-answer coverage or answer accuracy."
+}

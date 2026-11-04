@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "failure": null,
+  "attempts": 44,
+  "maximum": 44,
+  "answerGenerationCalls": 0,
+  "rewriteCalls": 0,
+  "newRetrievalCalls": 0,
+  "changedR1": [],
+  "completedAt": "2026-11-02T15:10:04.282Z"
+}

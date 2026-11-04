@@ -1,0 +1,34 @@
+{
+  "endpoint": "POST /query, standalone; same retrieval form as first conversation message",
+  "endpointQuestion": "body.question passed as received; validation checks trimmed nonempty but does not replace with trimmed text",
+  "retrieval": "retrieveForQuestion -> scopeQuestion(question,[]) -> resolveDocumentScope -> retrieve(question). No rewrite with empty history.",
+  "embedding": "search_query: + expandAcronyms(question); local Ollama /api/embed, nomic-embed-text,768dimensions",
+  "keyword": "expandAcronyms(question), without search_query prefix; locally tokenized/lowercased/stopwords removed/light plural stemming/feature hashing; sparseVectorFor called only in hybrid mode after dense relevance probe passes",
+  "filtering": "No body.documentId accepted. Collection chooses search collection. Literal filenames/quoted document titles/recognized named-document grammar resolve from indexed chunk0 headers to documentId allowlists; missing/ambiguous identity returns []; no explicit reference leaves documentIds undefined (collection-wide). Document scope is decided before follow-up rewrite; question text is not stripped of document reference.",
+  "defaultMode": "src/config.ts defaults dense; no RETRIEVE_MODE assignment found in .env or docker-compose.yml. This experiment explicitly holds prior hybrid settings for both A and P.",
+  "example": {
+    "A": {
+      "question": "Regarding the paper \"Dice Loss for Data-imbalanced NLP Tasks\": How are weights dynamically adjusted?",
+      "scope": {
+        "status": "resolved",
+        "references": [
+          "Dice Loss for Data-imbalanced NLP Tasks"
+        ],
+        "documentIds": [
+          "781f39d0-514a-4328-81d4-9d93eff47dfa"
+        ]
+      },
+      "keywordInput": "Regarding the paper \"Dice Loss for Data-imbalanced NLP Tasks\": How are weights dynamically adjusted?",
+      "embeddingInput": "search_query: Regarding the paper \"Dice Loss for Data-imbalanced NLP Tasks\": How are weights dynamically adjusted?"
+    },
+    "P": {
+      "question": "How are weights dynamically adjusted?",
+      "scope": {
+        "status": "unrestricted",
+        "references": []
+      },
+      "keywordInput": "How are weights dynamically adjusted?",
+      "embeddingInput": "search_query: How are weights dynamically adjusted?"
+    }
+  }
+}

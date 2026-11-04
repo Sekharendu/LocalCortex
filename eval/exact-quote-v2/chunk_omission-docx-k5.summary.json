@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "error": null,
+  "group": "chunk_omission",
+  "format": "docx",
+  "k": 5,
+  "selected": 46,
+  "processed": 46,
+  "hitCount": 5,
+  "requestCount": 92,
+  "sparseStatsSha256": "4b4ff8b4abd36754ed0c089d7d20f0d208eb6b9c3107502498c389ae09174295",
+  "productionFilesUnchanged": true,
+  "splitUnchanged": true,
+  "scope": "Replay saved production decision; no collection-wide title/catalog reads",
+  "generationCalls": 0
+}

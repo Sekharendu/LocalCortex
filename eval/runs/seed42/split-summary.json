@@ -1,0 +1,30 @@
+{
+  "dev": {
+    "papers": 140,
+    "assets": 173,
+    "cases": 610,
+    "pdf": 496,
+    "docx": 114,
+    "failed": 287,
+    "acceptable": 204,
+    "ambiguous": 119,
+    "answerable": 532,
+    "unanswerable": 28,
+    "mixed": 50,
+    "unknown": 0
+  },
+  "test": {
+    "papers": 60,
+    "assets": 77,
+    "cases": 261,
+    "pdf": 212,
+    "docx": 49,
+    "failed": 122,
+    "acceptable": 92,
+    "ambiguous": 47,
+    "answerable": 228,
+    "unanswerable": 12,
+    "mixed": 21,
+    "unknown": 0
+  }
+}
