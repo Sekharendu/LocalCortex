@@ -39,6 +39,14 @@ describe("mergeChunkTexts", () => {
 });
 
 describe("selectPassages", () => {
+  test("rerank priority wins a tight budget while retrieval score remains unchanged", () => {
+    const preferred = { ...hit(large, 3, .65), rerankScore: .95 };
+    const other = { ...hit(large, 8, .99), rerankScore: .1 };
+    const out = selectPassages([{ chunks: large, hits: [preferred, other] }], { budgetTokens: 1, wholeMaxTokens: 0 });
+    expect(indexes(out)).toEqual([3]);
+    expect(out[0].score).toBe(.65);
+    expect(out[0].text).toBe(large[3].text);
+  });
   const roomy = { budgetTokens: 3000, wholeMaxTokens: 1500 };
 
   test("a small document goes in whole, as one passage in reading order", () => {
