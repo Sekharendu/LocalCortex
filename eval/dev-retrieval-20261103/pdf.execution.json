@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "error": null,
+  "cases": 170,
+  "completedSearches": 680,
+  "expectedSearches": 680,
+  "counts": {
+    "actualEmbeddingRequests": 170,
+    "reusedEmbeddingResponses": 510,
+    "qdrantRequests": 1155,
+    "hostedCalls": 0
+  },
+  "changedInputs": [],
+  "heldOutContentRead": false,
+  "generationCalls": 0,
+  "rerankCalls": 0
+}

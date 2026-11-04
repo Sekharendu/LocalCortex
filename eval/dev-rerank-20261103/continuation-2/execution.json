@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "failure": null,
+  "attempts": 444,
+  "previousAttempts": 49,
+  "completedPools": 389,
+  "skippedPools": 20,
+  "timeouts": 6,
+  "expectedPools": 468,
+  "reportedRunNeurons": 966.7855170040999,
+  "usageRecords": 389,
+  "changedInputs": [],
+  "generationCalls": 0,
+  "newRetrievalCalls": 0,
+  "heldOutContentRead": false
+}

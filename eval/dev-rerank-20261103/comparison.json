@@ -1,0 +1,253 @@
+{
+  "status": "complete-with-request-failures",
+  "execution": {
+    "status": "complete",
+    "failure": null,
+    "attempts": 444,
+    "previousAttempts": 49,
+    "completedPools": 435,
+    "skippedPools": 24,
+    "expectedPools": 468,
+    "reportedRunNeurons": 1092.7056924546291,
+    "usageRecords": 435,
+    "changedInputs": [],
+    "generationCalls": 0,
+    "newRetrievalCalls": 0,
+    "heldOutContentRead": false,
+    "initialFailure": "RerankingError: Reranking cancelled or timed out",
+    "stages": [
+      {
+        "status": "stopped",
+        "failure": "RerankingError: Reranking cancelled or timed out",
+        "attempts": 19,
+        "completedPools": 18,
+        "skippedPools": 4,
+        "expectedPools": 468,
+        "reportedRunNeurons": 48.35778803674158,
+        "usageRecords": 18,
+        "changedInputs": [],
+        "generationCalls": 0,
+        "newRetrievalCalls": 0,
+        "heldOutContentRead": false
+      },
+      {
+        "status": "stopped",
+        "failure": "RerankingError: Cloudflare reranking failed",
+        "attempts": 49,
+        "previousAttempts": 19,
+        "completedPools": 28,
+        "skippedPools": 0,
+        "timeouts": 1,
+        "expectedPools": 468,
+        "reportedRunNeurons": 77.56238741378763,
+        "usageRecords": 28,
+        "changedInputs": [],
+        "generationCalls": 0,
+        "newRetrievalCalls": 0,
+        "heldOutContentRead": false
+      },
+      {
+        "status": "complete",
+        "failure": null,
+        "attempts": 444,
+        "previousAttempts": 49,
+        "completedPools": 389,
+        "skippedPools": 20,
+        "timeouts": 6,
+        "expectedPools": 468,
+        "reportedRunNeurons": 966.7855170040999,
+        "usageRecords": 389,
+        "changedInputs": [],
+        "generationCalls": 0,
+        "newRetrievalCalls": 0,
+        "heldOutContentRead": false
+      }
+    ],
+    "timeoutAttempts": 6,
+    "otherFailedAttempts": 3
+  },
+  "cases": 234,
+  "cohorts": [
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "dense",
+      "expectedCases": 119,
+      "pairedCases": 117,
+      "unpairedCases": 2,
+      "untestedCases": 0,
+      "off5": 60,
+      "on5": 52,
+      "pool5": 60,
+      "allCasesOff5": 62,
+      "allCasesOn5Successful": 52,
+      "rerankRequestFailures": 2,
+      "unattemptedCases": 0,
+      "pool10": 80,
+      "on10": 69,
+      "pool20": 93,
+      "on20": 87,
+      "pool50": 106,
+      "on50": 106,
+      "fixed": 13,
+      "regressed": 21,
+      "both": 39,
+      "neither": 44,
+      "gateRejected": 2,
+      "k5DifferentFromK50Slice": 0,
+      "verdicts": [
+        {
+          "verdict": "failed",
+          "cases": 65,
+          "off5": 33,
+          "on5": 24
+        },
+        {
+          "verdict": "acceptable",
+          "cases": 52,
+          "off5": 27,
+          "on5": 28
+        }
+      ]
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "hybrid",
+      "expectedCases": 119,
+      "pairedCases": 115,
+      "unpairedCases": 4,
+      "untestedCases": 0,
+      "off5": 60,
+      "on5": 53,
+      "pool5": 60,
+      "allCasesOff5": 62,
+      "allCasesOn5Successful": 53,
+      "rerankRequestFailures": 4,
+      "unattemptedCases": 0,
+      "pool10": 82,
+      "on10": 69,
+      "pool20": 95,
+      "on20": 86,
+      "pool50": 106,
+      "on50": 106,
+      "fixed": 12,
+      "regressed": 19,
+      "both": 41,
+      "neither": 43,
+      "gateRejected": 2,
+      "k5DifferentFromK50Slice": 21,
+      "verdicts": [
+        {
+          "verdict": "failed",
+          "cases": 63,
+          "off5": 30,
+          "on5": 24
+        },
+        {
+          "verdict": "acceptable",
+          "cases": 52,
+          "off5": 30,
+          "on5": 29
+        }
+      ]
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "dense",
+      "expectedCases": 115,
+      "pairedCases": 112,
+      "unpairedCases": 3,
+      "untestedCases": 0,
+      "off5": 53,
+      "on5": 51,
+      "pool5": 53,
+      "allCasesOff5": 55,
+      "allCasesOn5Successful": 51,
+      "rerankRequestFailures": 3,
+      "unattemptedCases": 0,
+      "pool10": 65,
+      "on10": 65,
+      "pool20": 86,
+      "on20": 84,
+      "pool50": 99,
+      "on50": 99,
+      "fixed": 11,
+      "regressed": 13,
+      "both": 40,
+      "neither": 48,
+      "gateRejected": 10,
+      "k5DifferentFromK50Slice": 0,
+      "verdicts": [
+        {
+          "verdict": "failed",
+          "cases": 68,
+          "off5": 32,
+          "on5": 24
+        },
+        {
+          "verdict": "acceptable",
+          "cases": 44,
+          "off5": 21,
+          "on5": 27
+        }
+      ]
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "hybrid",
+      "expectedCases": 115,
+      "pairedCases": 115,
+      "unpairedCases": 0,
+      "untestedCases": 0,
+      "off5": 50,
+      "on5": 56,
+      "pool5": 51,
+      "allCasesOff5": 50,
+      "allCasesOn5Successful": 56,
+      "rerankRequestFailures": 0,
+      "unattemptedCases": 0,
+      "pool10": 61,
+      "on10": 69,
+      "pool20": 88,
+      "on20": 87,
+      "pool50": 102,
+      "on50": 102,
+      "fixed": 11,
+      "regressed": 5,
+      "both": 45,
+      "neither": 54,
+      "gateRejected": 10,
+      "k5DifferentFromK50Slice": 28,
+      "verdicts": [
+        {
+          "verdict": "failed",
+          "cases": 71,
+          "off5": 28,
+          "on5": 29
+        },
+        {
+          "verdict": "acceptable",
+          "cases": 44,
+          "off5": 22,
+          "on5": 27
+        }
+      ]
+    }
+  ],
+  "failedPools": [
+    "pdf/1804.05918/bd5bd1765362c2d972a762ca12675108754aa437:dense",
+    "pdf/1909.09587/37be0d479480211291e068d0d3823ad0c13321d3:hybrid",
+    "pdf/1909.09587/a3d9b101765048f4b61cbd3eaa2439582ebb5c77:dense",
+    "pdf/1710.04203/c09a92e25e6a81369fcc4ae6045491f2690ccc10:dense",
+    "pdf/1710.04203/c09a92e25e6a81369fcc4ae6045491f2690ccc10:hybrid",
+    "pdf/1707.06806/ed67359889cf61fa11ee291d6c378cccf83d599d:hybrid",
+    "pdf/1707.06806/425bd2ccfd95ead91d8f2b1b1c8ab9fc3446cb82:dense",
+    "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4:dense",
+    "docx/1611.08661/b49598b05358117ab1471b8ebd0b042d2f04b2a4:hybrid"
+  ],
+  "timeoutCount": 6,
+  "otherRequestFailures": 3,
+  "failedUniqueCases": 8,
+  "allPoolsAccountedFor": true,
+  "gateRejectedUniqueCases": 12,
+  "notes": "Complete selected reference-quote coverage, whitespace normalization only. This is not semantic completeness, final-answer accuracy, or context assembly. Off uses independent production retrieve(k5); on reorders retrieve(k50) and takes5. Actual retrieval code used unchanged."
+}
