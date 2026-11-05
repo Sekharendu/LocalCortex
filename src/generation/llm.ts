@@ -1,10 +1,13 @@
+import { answerConfig } from "../config.js";
+import { C_SYSTEM_PROMPT } from "./promptVariants.js";
 import { GenerationError } from "../errors.js";
+export { PARTIAL_ANSWER_SYSTEM_PROMPT } from "./promptVariants.js";
 
 export const GENERATION_MODEL = "@cf/qwen/qwen3-30b-a3b-fp8";
 const GEN_TIMEOUT_MS = Number(process.env.CLOUDFLARE_GEN_TIMEOUT_MS ?? 180_000);
 
 // Baseline instructions are unchanged; the provider template keeps them in the system role.
-export const RAG_SYSTEM_PROMPT = `You are a strict retrieval-augmented assistant. You answer questions using ONLY the context provided in the user's prompt. You do not use any outside or general knowledge to answer questions.
+export const LEGACY_RAG_SYSTEM_PROMPT = `You are a strict retrieval-augmented assistant. You answer questions using ONLY the context provided in the user's prompt. You do not use any outside or general knowledge to answer questions.
 
 If the context does not contain enough information, you explicitly say "The provided context is insufficient to answer this question."
 If no context was provided at all, you explicitly say "I could not find any relevant information in the knowledge base to answer this question."
@@ -12,6 +15,8 @@ You never speculate, fabricate, or guess.
 
 When you can answer, start with the answer itself, as if you simply know it. Answer in full sentences and include any conditions, limits or exceptions the context gives (for example "Yes, up to three days per week, with your manager's approval." rather than just "Yes."). Do not mention the context, the passages, or any file names, and do not describe how you found the answer (no "According to...", "Based on the provided context...", "The answer would be..."). Do not add a sources line: the user is shown the sources separately. Never answer with just a name or a bare yes/no: when the question asks who or what someone or something is, describe them with the key facts the context gives (for a person: their role, work and background).`;
 
+
+export const RAG_SYSTEM_PROMPT = answerConfig.profile === "legacy" ? LEGACY_RAG_SYSTEM_PROMPT : C_SYSTEM_PROMPT;
 
 // Legacy parser retained for existing consumers/tests; hosted generation uses SSE below.
 interface GenerateResponse {
@@ -81,7 +86,7 @@ export interface GenerateOptions {
   system?: string;
   timeoutMs?: number;
   signal?: AbortSignal;
-  /** Omit for answers: Cloudflare's documented default is 2000 output tokens. */
+  /** Explicit API cap; defaults to 512. Shorter rewrite/custom limits remain supported. */
   maxTokens?: number;
   temperature?: number;
 }
@@ -143,7 +148,7 @@ function request(prompt: string, stream: boolean, opts: GenerateOptions) {
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({
           prompt: formatPrompt(opts.system ?? RAG_SYSTEM_PROMPT, prompt), raw: true, stream,
-          ...(opts.maxTokens !== undefined ? { max_tokens: opts.maxTokens } : {}),
+          max_tokens: opts.maxTokens ?? answerConfig.maxOutputTokens,
           ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}),
         }),
         signal,
@@ -224,8 +229,12 @@ async function* sseEvents(body: ReadableStream<Uint8Array>): AsyncGenerator<{ ev
   }
 }
 
-export async function* generateStream(prompt: string, signal?: AbortSignal): AsyncGenerator<string> {
-  const call = request(prompt, true, { signal });
+export async function* generateStream(
+  prompt: string,
+  signal?: AbortSignal,
+  options: Pick<GenerateOptions, "system" | "maxTokens" | "temperature"> = {},
+): AsyncGenerator<string> {
+  const call = request(prompt, true, { ...options, signal });
   let hasText = false;
   let finished = false;
   try {
