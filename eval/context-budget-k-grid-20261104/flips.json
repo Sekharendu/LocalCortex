@@ -1,0 +1,2940 @@
+[
+  {
+    "variant": "2400-k15",
+    "gained": [],
+    "lost": []
+  },
+  {
+    "variant": "2400-k20",
+    "gained": [
+      {
+        "caseId": "pdf/1912.00667/43f074bacabd0a355b4e0f91a1afd538c0a6244f",
+        "paperId": "1912.00667",
+        "format": "pdf",
+        "question": "How is the keyword specific expectation elicited from the crowd?",
+        "previousVerdict": "acceptable",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "workers are first asked to find those microposts where the model predictions are deemed correct",
+                    "present": false
+                  },
+                  {
+                    "quote": " asked to find the keyword that best indicates the class of the microposts",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "c6f85b2870b85e84c40184bc4b109d5e142e38e573c356dd0a97e4488efd093d"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "workers are first asked to find those microposts where the model predictions are deemed correct",
+                    "present": true
+                  },
+                  {
+                    "quote": " asked to find the keyword that best indicates the class of the microposts",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 14,
+            "promptSha256": "de970c761fe4653c4b95d4224499a0f64c7af8f411d6d44b36a6c3ab064acc69"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "workers are first asked to find those microposts where the model predictions are deemed correct",
+                    "present": false
+                  },
+                  {
+                    "quote": " asked to find the keyword that best indicates the class of the microposts",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "690892db7af69c8a5b6cba59d6983dfeb9dc40b2f7c327470fc135f5d6793a1e"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "workers are first asked to find those microposts where the model predictions are deemed correct",
+                    "present": true
+                  },
+                  {
+                    "quote": " asked to find the keyword that best indicates the class of the microposts",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "a2e7653f90aa8fa6be66b318aa864e70d6a1c8ae1a018726c88552d1d1dfe0d6"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1909.06200/62f27fe08ddb67f16857fab2a8a721926ecbb6fb",
+        "paperId": "1909.06200",
+        "format": "pdf",
+        "question": "Who judged the irony accuracy, sentiment preservation and content preservation?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "four annotators who are proficient in English",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "746eeef8699de085bb39d8add772467dbd8f37a6e4e2470ba880a71dfa230501"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "four annotators who are proficient in English",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 12,
+            "promptSha256": "02a8eb254c4ee873694169ff865bd6ad415768cb7603ffc2ce7ff5e541d07644"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "four annotators who are proficient in English",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "cb03039ab427bfc8cb541adb949e8ea046a74acc2f3b4583172c7238370b9640"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "four annotators who are proficient in English",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "a13f508f3740cd90588d7b58f5cca4af92f4bb62bf62fb8775180298737f8633"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1612.08205/935d6a6187e6a0c9c0da8e53a42697f853f5c248",
+        "paperId": "1612.08205",
+        "format": "pdf",
+        "question": "What do they mean by a person's industry?",
+        "previousVerdict": "acceptable",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": false
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "be5bd6c1fc2af0006e4f3fa2c408c473b8acddd75142ccebea2033a0233a25b6"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "20ab4bfe858b12cdf8df012778fe0a8b6e1683a1003e3a846e435894072db74e"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 5,
+            "promptSha256": "a6c2358ddfc28023519abbf42b99d276ea7c3a7bef1173516273c8b1247b7ad1"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "cb0afb7c622e0ce9032fa524e11fccca2fffc5c7f4f8995d179265f8cb43d704"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "docx/1703.10344/fb1227b3681c69f60eb0539e16c5a8cd784177a7",
+        "paperId": "1703.10344",
+        "format": "docx",
+        "question": "What features are used to represent the salience and relative authority of entities?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "positional features",
+                    "present": true
+                  },
+                  {
+                    "quote": "occurrence frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "internal POS structure of the entity and the sentence it occurs in",
+                    "present": true
+                  },
+                  {
+                    "quote": "relative entity frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "centrality measures like PageRank ",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "35c7af44ac6d8147cbe5716fc24ebe5fe37e0d5fea20613c3606ee24e777c9ca"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "positional features",
+                    "present": true
+                  },
+                  {
+                    "quote": "occurrence frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "internal POS structure of the entity and the sentence it occurs in",
+                    "present": true
+                  },
+                  {
+                    "quote": "relative entity frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "centrality measures like PageRank ",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "137cee9319f07e85d05e30eef00b507aeebe3300f5099c56208be21d18e196c5"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "positional features",
+                    "present": true
+                  },
+                  {
+                    "quote": "occurrence frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "internal POS structure of the entity and the sentence it occurs in",
+                    "present": true
+                  },
+                  {
+                    "quote": "relative entity frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "centrality measures like PageRank ",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "710eb1920e1bd815a76835a0b4d71b3b9c25102a0e7f340d13fc718123453ee3"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "positional features",
+                    "present": true
+                  },
+                  {
+                    "quote": "occurrence frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "internal POS structure of the entity and the sentence it occurs in",
+                    "present": true
+                  },
+                  {
+                    "quote": "relative entity frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "centrality measures like PageRank ",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "36863803da0c7011f7a349021184607b9657aacb76ce5a79dc54617c53e8cbec"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      }
+    ],
+    "lost": [
+      {
+        "caseId": "pdf/1912.00667/3941401a182a3d6234894a5c8a75d48c6116c45c",
+        "paperId": "1912.00667",
+        "format": "pdf",
+        "question": "Which real-world datasets are used?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "cyber security (CyberAttack)",
+                    "present": true
+                  },
+                  {
+                    "quote": "death of politicians (PoliticianDeath)",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "4bcc41dbec3c8c1be5028aae782a7ba1cf7e56e6b8b630997480ccdc001580e2"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "cyber security (CyberAttack)",
+                    "present": false
+                  },
+                  {
+                    "quote": "death of politicians (PoliticianDeath)",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 13,
+            "promptSha256": "158d9975663e1dcf57e6792b7c508b4d489380867b28291c2aa2beb0f18e47a9"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "cyber security (CyberAttack)",
+                    "present": true
+                  },
+                  {
+                    "quote": "death of politicians (PoliticianDeath)",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "cfff216e696b247e9f55f98eabcc9dbcae79e554456ce2bd8f8f88f1c369394b"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "cyber security (CyberAttack)",
+                    "present": true
+                  },
+                  {
+                    "quote": "death of politicians (PoliticianDeath)",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 13,
+            "promptSha256": "6343a6af8b5df4ca8b15e9ea64982d7de0d7b02e9eb06705eb702fa487f5159c"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "both-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "lost"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "both-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "both-covered"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1908.09246/15e481e668114e4afe0c78eefb716ffe1646b494",
+        "paperId": "1908.09246",
+        "format": "pdf",
+        "question": "What alternative to Gibbs sampling is used?",
+        "previousVerdict": "acceptable",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "generator network to capture the event-related patterns",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "579c8e69322a7f81be0485998a3d3f05dfad9e7180b8fa7a191155284f25f0c9"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "generator network to capture the event-related patterns",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "ad1f286b9bdb39ffe5cf649160d9bcf75e41bf73e255d5254e05e7be517fe0da"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "generator network to capture the event-related patterns",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "73f73dfd42227137bfddf37bd4aa659674a5ba62967b17a3b9665b1faf74658e"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "generator network to capture the event-related patterns",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "5d25b79b3709e6d8ff933090ad800204206926cd6d446ebff84546be13db66cc"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "both-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "lost"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "both-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "both-covered"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",
+        "paperId": "1601.02403",
+        "format": "pdf",
+        "question": "How is the data in the new corpus come sourced?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "refer to each article, blog post, comment, or forum posts as a document",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 12,
+            "promptSha256": "47067477bb1513b30f0ef0f16599fbfbeab3edbc5db30eac2e1f5444c671c99b"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "refer to each article, blog post, comment, or forum posts as a document",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 17,
+            "promptSha256": "19f01335217e4c0c5911369ad76505ab9aed7c19fdf2e25d7c9522eba4e39e51"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "refer to each article, blog post, comment, or forum posts as a document",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 12,
+            "promptSha256": "aa3365084169696f900a0500a901319235f0486fb97cd0ed30584f9a74d317b9"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "refer to each article, blog post, comment, or forum posts as a document",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 16,
+            "promptSha256": "eaa1d23ca76af4b0441a2c0f3ae65f21f44eead261cd51c58a6f4869ffa93e56"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "both-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "lost"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "both-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "both-covered"
+          }
+        ]
+      },
+      {
+        "caseId": "docx/1610.08815/fabf6fdcfb4c4c7affaa1e4336658c1e6635b1bf",
+        "paperId": "1610.08815",
+        "format": "docx",
+        "question": "Which benchmark datasets are used?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Semeval 2014 BIBREF34 Twitter Sentiment Analysis Dataset ",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset was created by BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": " English dataset from BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset from The Sarcasm Detector",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "This dataset was created by BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": "another English dataset from BIBREF8 ",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset from The Sarcasm Detector",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 12,
+            "promptSha256": "84087220daa4b7f42d05c21c31408be0254db9e23130624d4299e2767a90a728"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Semeval 2014 BIBREF34 Twitter Sentiment Analysis Dataset ",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset was created by BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": " English dataset from BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset from The Sarcasm Detector",
+                    "present": false
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "This dataset was created by BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": "another English dataset from BIBREF8 ",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset from The Sarcasm Detector",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 12,
+            "promptSha256": "7e3f4530115693f6a10a3e12d7c9628876258a5b99774b33d16cadbbd60d4c07"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Semeval 2014 BIBREF34 Twitter Sentiment Analysis Dataset ",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset was created by BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": " English dataset from BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset from The Sarcasm Detector",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "This dataset was created by BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": "another English dataset from BIBREF8 ",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset from The Sarcasm Detector",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "530fe06142faee934e742868cec96e176bd55fc4c6a8ebbf3a3241db49c8d831"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Semeval 2014 BIBREF34 Twitter Sentiment Analysis Dataset ",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset was created by BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": " English dataset from BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset from The Sarcasm Detector",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "This dataset was created by BIBREF8",
+                    "present": true
+                  },
+                  {
+                    "quote": "another English dataset from BIBREF8 ",
+                    "present": true
+                  },
+                  {
+                    "quote": " dataset from The Sarcasm Detector",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "1177fed14b57b3770737848af236e4e106ba244c3e6df58a678e38495bb929d1"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "both-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "lost"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "both-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "both-covered"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "variant": "3200-k15",
+    "gained": [
+      {
+        "caseId": "pdf/1810.08699/18c5d366b1da8447b5404eab71f4cc658ba12e6f",
+        "paperId": "1810.08699",
+        "format": "pdf",
+        "question": "what ner models were evaluated?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0 ",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": false
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "4de6bb42616fb9809552a9ae8659902b2565351351f00de26143626b3625c306"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0 ",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": false
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "6235f249dcb3c0977d4e6fb4e50a0f841aab4365050954fd356b9822f09885da"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0 ",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "d45b8f4e28204c87f59f334bb10115355762c97b7d59c667f54af317da8db094"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0 ",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "bd63bfef291fec1dfef91021473576fa3853ab18babe8e404b4687a7416d248f"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1802.06024/585626d18a20d304ae7df228c2128da542d248ff",
+        "paperId": "1802.06024",
+        "format": "pdf",
+        "question": "What metrics are used to establish that this makes chatbots more knowledgeable and better at learning and conversation? ",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Coverage",
+                    "present": true
+                  },
+                  {
+                    "quote": "Avg. MCC and avg. +ve F1 score",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "f1cd8ce3a15ebdb1d3378b6c9f9f7c7c3793c9ea8a575fd76e6e4553e3492562"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Coverage",
+                    "present": true
+                  },
+                  {
+                    "quote": "Avg. MCC and avg. +ve F1 score",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "7ee3089db17bd9b8b667b3e911f62dafe62e933cfa283bcf9ecfbe84ec5d7910"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Coverage",
+                    "present": true
+                  },
+                  {
+                    "quote": "Avg. MCC and avg. +ve F1 score",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "1bcf0b6fd506e644ac998cbc9ab8618f8d85be5bd41e20f891b686a48e92b6d2"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Coverage",
+                    "present": true
+                  },
+                  {
+                    "quote": "Avg. MCC and avg. +ve F1 score",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "cce0b07e0a6845f327878ac803760f4c324cf9c495150a20550f008af1c7dd40"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "neither-covered"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1612.08205/935d6a6187e6a0c9c0da8e53a42697f853f5c248",
+        "paperId": "1612.08205",
+        "format": "pdf",
+        "question": "What do they mean by a person's industry?",
+        "previousVerdict": "acceptable",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": false
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "be5bd6c1fc2af0006e4f3fa2c408c473b8acddd75142ccebea2033a0233a25b6"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "20ab4bfe858b12cdf8df012778fe0a8b6e1683a1003e3a846e435894072db74e"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 5,
+            "promptSha256": "a6c2358ddfc28023519abbf42b99d276ea7c3a7bef1173516273c8b1247b7ad1"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "cb0afb7c622e0ce9032fa524e11fccca2fffc5c7f4f8995d179265f8cb43d704"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1903.03530/2c85865a65acd429508f50b5e4db9674813d67f2",
+        "paperId": "1903.03530",
+        "format": "pdf",
+        "question": "Which data do they use as a starting point for the dialogue dataset?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "c55c6e17e9b0a827334292239cd1483740e66e8861663c9e13326955d052a491"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "c6d2549ca32cdb65049611f3bfda0db2a4db67dbdb22bf1c51cdf1e7ca6ba2ba"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "71d206bacb5603dba1d501cb4369a2e00c0be6b37d647c86ff283c8d36e52740"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "ee3ed3c87ceda792cb166f57cefc4e2a105710050aa7a658600a866472287757"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+        "paperId": "1908.04042",
+        "format": "pdf",
+        "question": "how large is the vocabulary?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "33,663 distinct review keywords ",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 13,
+            "promptSha256": "c2f927ffe2dd147dfb1281bb61ac9d22af481658d08f559dc8263938342d997a"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "33,663 distinct review keywords ",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 14,
+            "promptSha256": "7ba4cc557a84674cc4d14ea23e1a85a3a7a4851cb29b51e756abec72049c44ff"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "33,663 distinct review keywords ",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "6bca5c294ba6aba2dad7260b73eb0ee39d271d37568e7be134331ab211e9fc9d"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "33,663 distinct review keywords ",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 13,
+            "promptSha256": "1ba10c895d4edec58aa669757851e580ad02341e0001858afc9fb7a7cbf417b3"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1705.01265/12159f04e0427fe33fa05af6ba8c950f1a5ce5ea",
+        "paperId": "1705.01265",
+        "format": "pdf",
+        "question": "Which hyperparameters were varied in the experiments on the four tasks?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "different number of clusters",
+                    "present": true
+                  },
+                  {
+                    "quote": "different embeddings",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "be3bb7bf88e451e868a943b7f9fce1f61472f7a93127a4d123b0138f3423434e"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "different number of clusters",
+                    "present": false
+                  },
+                  {
+                    "quote": "different embeddings",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 13,
+            "promptSha256": "3f65f705f65743415c8bd4cfbb4ffe48914806389fdd7343c3f23a0525385751"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "different number of clusters",
+                    "present": true
+                  },
+                  {
+                    "quote": "different embeddings",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 6,
+            "promptSha256": "a673df1a86f0538d64a124819a265d6c64769b09085d2947157d74c3721762a9"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "different number of clusters",
+                    "present": true
+                  },
+                  {
+                    "quote": "different embeddings",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "9b3eaa4a2f889d1d03e3210a25bc82874b7450e8b242a39b82c1122bdfa2a0f1"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      }
+    ],
+    "lost": []
+  },
+  {
+    "variant": "3200-k20",
+    "gained": [
+      {
+        "caseId": "pdf/1810.08699/18c5d366b1da8447b5404eab71f4cc658ba12e6f",
+        "paperId": "1810.08699",
+        "format": "pdf",
+        "question": "what ner models were evaluated?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0 ",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": false
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "4de6bb42616fb9809552a9ae8659902b2565351351f00de26143626b3625c306"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0 ",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": false
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "6235f249dcb3c0977d4e6fb4e50a0f841aab4365050954fd356b9822f09885da"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0 ",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "d45b8f4e28204c87f59f334bb10115355762c97b7d59c667f54af317da8db094"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0 ",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "Stanford NER",
+                    "present": true
+                  },
+                  {
+                    "quote": "spaCy 2.0",
+                    "present": true
+                  },
+                  {
+                    "quote": "recurrent model with a CRF top layer",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "bd63bfef291fec1dfef91021473576fa3853ab18babe8e404b4687a7416d248f"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1912.00667/43f074bacabd0a355b4e0f91a1afd538c0a6244f",
+        "paperId": "1912.00667",
+        "format": "pdf",
+        "question": "How is the keyword specific expectation elicited from the crowd?",
+        "previousVerdict": "acceptable",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "workers are first asked to find those microposts where the model predictions are deemed correct",
+                    "present": false
+                  },
+                  {
+                    "quote": " asked to find the keyword that best indicates the class of the microposts",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "c6f85b2870b85e84c40184bc4b109d5e142e38e573c356dd0a97e4488efd093d"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "workers are first asked to find those microposts where the model predictions are deemed correct",
+                    "present": true
+                  },
+                  {
+                    "quote": " asked to find the keyword that best indicates the class of the microposts",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 14,
+            "promptSha256": "de970c761fe4653c4b95d4224499a0f64c7af8f411d6d44b36a6c3ab064acc69"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "workers are first asked to find those microposts where the model predictions are deemed correct",
+                    "present": false
+                  },
+                  {
+                    "quote": " asked to find the keyword that best indicates the class of the microposts",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "690892db7af69c8a5b6cba59d6983dfeb9dc40b2f7c327470fc135f5d6793a1e"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "workers are first asked to find those microposts where the model predictions are deemed correct",
+                    "present": true
+                  },
+                  {
+                    "quote": " asked to find the keyword that best indicates the class of the microposts",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "a2e7653f90aa8fa6be66b318aa864e70d6a1c8ae1a018726c88552d1d1dfe0d6"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1909.06200/62f27fe08ddb67f16857fab2a8a721926ecbb6fb",
+        "paperId": "1909.06200",
+        "format": "pdf",
+        "question": "Who judged the irony accuracy, sentiment preservation and content preservation?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "four annotators who are proficient in English",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "746eeef8699de085bb39d8add772467dbd8f37a6e4e2470ba880a71dfa230501"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "four annotators who are proficient in English",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 12,
+            "promptSha256": "02a8eb254c4ee873694169ff865bd6ad415768cb7603ffc2ce7ff5e541d07644"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "four annotators who are proficient in English",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "cb03039ab427bfc8cb541adb949e8ea046a74acc2f3b4583172c7238370b9640"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "four annotators who are proficient in English",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "a13f508f3740cd90588d7b58f5cca4af92f4bb62bf62fb8775180298737f8633"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1612.08205/935d6a6187e6a0c9c0da8e53a42697f853f5c248",
+        "paperId": "1612.08205",
+        "format": "pdf",
+        "question": "What do they mean by a person's industry?",
+        "previousVerdict": "acceptable",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": false
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "be5bd6c1fc2af0006e4f3fa2c408c473b8acddd75142ccebea2033a0233a25b6"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "20ab4bfe858b12cdf8df012778fe0a8b6e1683a1003e3a846e435894072db74e"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 5,
+            "promptSha256": "a6c2358ddfc28023519abbf42b99d276ea7c3a7bef1173516273c8b1247b7ad1"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 0,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              },
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "the aggregate of enterprises in a particular field",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 7,
+            "promptSha256": "cb0afb7c622e0ce9032fa524e11fccca2fffc5c7f4f8995d179265f8cb43d704"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1903.03530/2c85865a65acd429508f50b5e4db9674813d67f2",
+        "paperId": "1903.03530",
+        "format": "pdf",
+        "question": "Which data do they use as a starting point for the dialogue dataset?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "c55c6e17e9b0a827334292239cd1483740e66e8861663c9e13326955d052a491"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "c6d2549ca32cdb65049611f3bfda0db2a4db67dbdb22bf1c51cdf1e7ca6ba2ba"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "71d206bacb5603dba1d501cb4369a2e00c0be6b37d647c86ff283c8d36e52740"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "ee3ed3c87ceda792cb166f57cefc4e2a105710050aa7a658600a866472287757"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+        "paperId": "1908.04042",
+        "format": "pdf",
+        "question": "how large is the vocabulary?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "33,663 distinct review keywords ",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 13,
+            "promptSha256": "c2f927ffe2dd147dfb1281bb61ac9d22af481658d08f559dc8263938342d997a"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "33,663 distinct review keywords ",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 14,
+            "promptSha256": "7ba4cc557a84674cc4d14ea23e1a85a3a7a4851cb29b51e756abec72049c44ff"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "33,663 distinct review keywords ",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 11,
+            "promptSha256": "6bca5c294ba6aba2dad7260b73eb0ee39d271d37568e7be134331ab211e9fc9d"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "33,663 distinct review keywords ",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 13,
+            "promptSha256": "1ba10c895d4edec58aa669757851e580ad02341e0001858afc9fb7a7cbf417b3"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "pdf/1705.01265/12159f04e0427fe33fa05af6ba8c950f1a5ce5ea",
+        "paperId": "1705.01265",
+        "format": "pdf",
+        "question": "Which hyperparameters were varied in the experiments on the four tasks?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "different number of clusters",
+                    "present": true
+                  },
+                  {
+                    "quote": "different embeddings",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "be3bb7bf88e451e868a943b7f9fce1f61472f7a93127a4d123b0138f3423434e"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "different number of clusters",
+                    "present": false
+                  },
+                  {
+                    "quote": "different embeddings",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 13,
+            "promptSha256": "3f65f705f65743415c8bd4cfbb4ffe48914806389fdd7343c3f23a0525385751"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "different number of clusters",
+                    "present": true
+                  },
+                  {
+                    "quote": "different embeddings",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 6,
+            "promptSha256": "a673df1a86f0538d64a124819a265d6c64769b09085d2947157d74c3721762a9"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "different number of clusters",
+                    "present": true
+                  },
+                  {
+                    "quote": "different embeddings",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 9,
+            "promptSha256": "9b3eaa4a2f889d1d03e3210a25bc82874b7450e8b242a39b82c1122bdfa2a0f1"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      },
+      {
+        "caseId": "docx/1703.10344/fb1227b3681c69f60eb0539e16c5a8cd784177a7",
+        "paperId": "1703.10344",
+        "format": "docx",
+        "question": "What features are used to represent the salience and relative authority of entities?",
+        "previousVerdict": "failed",
+        "arms": [
+          {
+            "id": "2400-k15",
+            "cap": 2400,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "positional features",
+                    "present": true
+                  },
+                  {
+                    "quote": "occurrence frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "internal POS structure of the entity and the sentence it occurs in",
+                    "present": true
+                  },
+                  {
+                    "quote": "relative entity frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "centrality measures like PageRank ",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "35c7af44ac6d8147cbe5716fc24ebe5fe37e0d5fea20613c3606ee24e777c9ca"
+          },
+          {
+            "id": "2400-k20",
+            "cap": 2400,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "positional features",
+                    "present": true
+                  },
+                  {
+                    "quote": "occurrence frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "internal POS structure of the entity and the sentence it occurs in",
+                    "present": true
+                  },
+                  {
+                    "quote": "relative entity frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "centrality measures like PageRank ",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "137cee9319f07e85d05e30eef00b507aeebe3300f5099c56208be21d18e196c5"
+          },
+          {
+            "id": "3200-k15",
+            "cap": 3200,
+            "k": 15,
+            "covered": false,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "positional features",
+                    "present": true
+                  },
+                  {
+                    "quote": "occurrence frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "internal POS structure of the entity and the sentence it occurs in",
+                    "present": true
+                  },
+                  {
+                    "quote": "relative entity frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "centrality measures like PageRank ",
+                    "present": false
+                  }
+                ]
+              }
+            ],
+            "passageCount": 10,
+            "promptSha256": "710eb1920e1bd815a76835a0b4d71b3b9c25102a0e7f340d13fc718123453ee3"
+          },
+          {
+            "id": "3200-k20",
+            "cap": 3200,
+            "k": 20,
+            "covered": true,
+            "references": [
+              {
+                "referenceIndex": 1,
+                "items": [
+                  {
+                    "quote": "positional features",
+                    "present": true
+                  },
+                  {
+                    "quote": "occurrence frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "internal POS structure of the entity and the sentence it occurs in",
+                    "present": true
+                  },
+                  {
+                    "quote": "relative entity frequency",
+                    "present": true
+                  },
+                  {
+                    "quote": "centrality measures like PageRank ",
+                    "present": true
+                  }
+                ]
+              }
+            ],
+            "passageCount": 8,
+            "promptSha256": "36863803da0c7011f7a349021184607b9657aacb76ce5a79dc54617c53e8cbec"
+          }
+        ],
+        "changes": [
+          {
+            "variant": "2400-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "2400-k20",
+            "change": "gained"
+          },
+          {
+            "variant": "3200-k15",
+            "change": "neither-covered"
+          },
+          {
+            "variant": "3200-k20",
+            "change": "gained"
+          }
+        ]
+      }
+    ],
+    "lost": []
+  }
+]

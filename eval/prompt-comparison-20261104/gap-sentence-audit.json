@@ -1,0 +1,142 @@
+[
+  {
+    "caseId": "docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",
+    "cohort": "dev",
+    "question": "Which machine learning methods are used in experiments?",
+    "grade": "wrong",
+    "answer": "The experiments used several machine learning methods, including multinomial Naive Bayes classifier, maximum entropy model, C4.5 decision classifier, convolution kernel methods, multi-class SVM, and CRFs. Additionally, the study experimented with supervised and semi-supervised machine learning methods. The passages do not specify all the exact methods used in the current study's experiments.",
+    "sentence": "The passages do not specify all the exact methods used in the current study's experiments.",
+    "verdict": "correct",
+    "reason": "Exact Structural SVM/SVMhmm experiment identity is absent; gap admission is correct, preceding related-work attribution is not."
+  },
+  {
+    "caseId": "docx/1701.08229/82642d3111287abf736b781043d49536fe48c350",
+    "cohort": "dev",
+    "question": "How is the dataset annotated?",
+    "grade": "adequate",
+    "answer": "The dataset is annotated such that each tweet is labeled as no evidence of depression (e.g., “Citizens fear an economic depression”) or evidence of depression (e.g., “depressed over disappointment”). If a tweet is annotated as evidence of depression, it is further annotated with one or more depressive symptoms, such as depressed mood (e.g., “feeling down in the dumps”), disturbed sleep (e.g., “another restless night”), or fatigue or loss of energy (e.g., “the fatigue is unbearable”). For each class, every annotation is binarized as the positive class (e.g., depressed mood=1) or negative class (e.g., not depressed mood=0). The passages do not specify how the annotations were validated or the criteria used for determining the presence of depressive symptoms.",
+    "sentence": "The passages do not specify how the annotations were validated or the criteria used for determining the presence of depressive symptoms.",
+    "verdict": "correct",
+    "reason": "Detailed human-label validation/operational symptom criteria are not supplied. Five-fold validation concerns the classifier, not human annotations."
+  },
+  {
+    "caseId": "docx/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "cohort": "dev",
+    "question": "what challenges are identified?",
+    "grade": "adequate",
+    "answer": "The challenges identified include low recall due to the difficulty of cross-speaker unsupervised term discovery (UTD), low coverage of audio leading to sparse pseudotext, and fragmentation of words across different clusters. Additionally, the system struggles with assigning wrong words to clusters and has issues with out-of-vocabulary (OOV) words, especially in the call-level split. The passages do not cover the specific technical solutions proposed to address these challenges.",
+    "sentence": "The passages do not cover the specific technical solutions proposed to address these challenges.",
+    "verdict": "partly_correct",
+    "reason": "No detailed new technical solution is supplied in this DOCX context, but tuning default ZRTools parameters is mentioned as future work; categorical absence is overbroad."
+  },
+  {
+    "caseId": "offtopic/27",
+    "cohort": "offtopic",
+    "question": "Can unused sick days be cashed out at the end of the year?",
+    "grade": "partial",
+    "answer": "Full-time employees accrue 8 days of paid sick leave per year, credited at the start of each calendar year. Unused sick leave carries over up to a maximum of 10 days into the following year. The passages do not specify whether unused sick days can be cashed out at the end of the year.",
+    "sentence": "The passages do not specify whether unused sick days can be cashed out at the end of the year.",
+    "verdict": "correct",
+    "reason": "Handbook covers sick-leave accrual/carryover but never cash-out; all stated related facts are supported."
+  },
+  {
+    "caseId": "pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",
+    "cohort": "dev",
+    "question": "How is the data in the new corpus come sourced?",
+    "grade": "adequate",
+    "answer": "The data in the new corpus is sourced from various websites with relevant comments to articles and discussion forums, identified manually using a Google search engine. The data was extracted automatically, with some minimal data pre-selection and cleaning. The sources include comments to articles, discussion forum posts, blog posts, and professional newswire articles. The corpus includes 5,444 documents with 694,110 tokens. The passages do not specify the exact websites or platforms used for sourcing the data.",
+    "sentence": "The passages do not specify the exact websites or platforms used for sourcing the data.",
+    "verdict": "correct",
+    "reason": "Actual website/platform names are not given in supplied corpus-collection passages; Google describes discovery method, not data-source domains. Unrequested extra specificity."
+  },
+  {
+    "caseId": "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",
+    "cohort": "dev",
+    "question": "Is this hashtag prediction task an established task, or something new?",
+    "grade": "wrong",
+    "answer": "The hashtag prediction task is an established task, as it has been addressed earlier in previous works, such as in (Weston et al., 2014; Godin et al., 2013). However, the specific approach described in the context, which uses a character-based model called tweet2vec, is presented as a novel method. The passages do not provide information on whether the task itself is new or not, only that it has been previously addressed.",
+    "sentence": "The passages do not provide information on whether the task itself is new or not, only that it has been previously addressed.",
+    "verdict": "incorrect",
+    "reason": "Explicit statement that prediction was addressed earlier establishes task novelty status; final caveat contradicts opening answer."
+  },
+  {
+    "caseId": "pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "cohort": "dev",
+    "question": "what challenges are identified?",
+    "grade": "wrong",
+    "answer": "The challenges identified include low recall due to the difficulty of cross-speaker unsupervised term discovery (UTD), low coverage of audio leading to sparse pseudotext, and the fragmentation of words across clusters which makes pseudoterms hard to translate. Additionally, the system struggles with cross-speaker matches and the simplicity of the machine translation model affects precision. The passages do not cover specific solutions to these challenges.",
+    "sentence": "The passages do not cover specific solutions to these challenges.",
+    "verdict": "incorrect",
+    "reason": "Supplied PDF conclusion explicitly proposes multispeaker speech features, speaker normalization and joint learning."
+  },
+  {
+    "caseId": "pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",
+    "cohort": "dev",
+    "question": "How are sentences selected from the summary graph?",
+    "grade": "wrong",
+    "answer": "The sentences are selected by identifying the important sentences from the story, which contain most of the important information. The algorithm is based on the idea that only a few sentences are important from the point of view of summary. To test this, for each summary sentence, the sentence from the story that contains maximum information of this summary sentence is found. ROGUE-1 Recall scores are used as the metric for the information contained in the story sentence. Additionally, methods such as first-n and first co-occurrence+first based sentence selection are used to select the important sentences. The passages do not cover the specific criteria or algorithms used for determining the \"most referred entity\" or the exact process of finding the closest verb in the AMR graph.",
+    "sentence": "The passages do not cover the specific criteria or algorithms used for determining the \"most referred entity\" or the exact process of finding the closest verb in the AMR graph.",
+    "verdict": "incorrect",
+    "reason": "Both claimed gaps are explicitly answered: most-referred entity is most frequent; closest verb is first on entity-to-root path."
+  },
+  {
+    "caseId": "pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",
+    "cohort": "dev",
+    "question": "In what cases is attention different from alignment?",
+    "grade": "adequate",
+    "answer": "Attention is different from alignment in some cases, particularly when capturing information beyond translational equivalents. For instance, attention agrees with traditional alignments to a high degree in the case of nouns, but it captures other information rather than only the translational equivalent in the case of verbs. Additionally, attention does not always comply with alignment, as it can attend to context words influencing the current word translation. The passages do not cover specific examples of other cases where attention differs from alignment.",
+    "sentence": "The passages do not cover specific examples of other cases where attention differs from alignment.",
+    "verdict": "ambiguous",
+    "reason": "Specific other cases is underspecified. Other mechanisms/roles occur, but detailed POS analysis centers on nouns and verbs; do not count as a proven false gap."
+  },
+  {
+    "caseId": "pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",
+    "cohort": "dev",
+    "question": "What useful information does attention capture?",
+    "grade": "wrong",
+    "answer": "Attention captures useful information other than alignments. For instance, while attention agrees with traditional alignments to a high degree in the case of nouns, it captures other information rather than only the translational equivalent in the case of verbs. Additionally, attention does not always comply with alignment and can focus on different parts of the source sentence, which is necessary for translating verbs. The paper also indicates that attention can learn and encode various types of information, including syntactic and morphological information, depending on the context and the type of words being processed. However, the passages do not specify the exact nature of this additional information beyond the examples given.",
+    "sentence": "However, the passages do not specify the exact nature of this additional information beyond the examples given.",
+    "verdict": "qualified_correct",
+    "reason": "No exact account beyond examples is supplied; vague extra caveat, while syntactic claim remains unsupported."
+  },
+  {
+    "caseId": "pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f",
+    "cohort": "dev",
+    "question": "What set of approaches to hashtag segmentation are proposed?",
+    "grade": "partial",
+    "answer": "The paper proposes a set of approaches for hashtag segmentation by framing it as a pairwise ranking problem between candidate segmentations. It also introduces a multi-task learning approach which jointly learns segment ranking and single- vs. multi-token hashtag classification. Additionally, it presents a pairwise neural ranking method that uses a beam search algorithm to extract top k segmentations and re-ranks them. The approaches include neural architectures that use corpus-based, linguistic, and thesaurus-based features. The passages do not cover specific details about the implementation of these approaches.",
+    "sentence": "The passages do not cover specific details about the implementation of these approaches.",
+    "verdict": "partly_correct",
+    "reason": "Neural implementation/loss section is absent, but supplied text gives candidate generator beam search and n-gram scoring implementation details."
+  },
+  {
+    "caseId": "pdf/1907.09369/132f752169adf6dc5ade3e4ca773c11044985da4",
+    "cohort": "dev",
+    "question": "What data is used in experiments?",
+    "grade": "adequate",
+    "answer": "The data used in experiments includes a tweet dataset created by Wang et al., which consists of over 2 million tweets labeled using emotional hashtags. Additionally, the CrowdFlower dataset was used for assessing model performance on a totally unseen data. The specific details of the dataset include emotions such as joy, sadness, anger, love, fear, thankfulness, and surprise with corresponding numbers of tweets. The data was pre-processed and split into test, development test, and training data. The provided context does not specify any other datasets used in the experiments.",
+    "sentence": "The provided context does not specify any other datasets used in the experiments.",
+    "verdict": "correct",
+    "reason": "The supplied experiment description identifies Wang/CrowdFlower; no extra experimental dataset is specified."
+  },
+  {
+    "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+    "cohort": "dev",
+    "question": "What types of online harassment are studied?",
+    "grade": "wrong",
+    "answer": "The types of online harassment studied include indirect harassment, sexual harassment, and physical harassment. The passages do not cover other potential types of online harassment beyond these.",
+    "sentence": "The passages do not cover other potential types of online harassment beyond these.",
+    "verdict": "incorrect",
+    "reason": "Other harassment types are discussed in related work, including information threat. Only target study has three categories."
+  },
+  {
+    "caseId": "pdf/2002.02070/29f2954098f055fb19d9502572f085862d75bf61",
+    "cohort": "dev",
+    "question": "What classifiers have been trained?",
+    "grade": "adequate",
+    "answer": "The classifiers that have been trained are K Nearest Neighbors (KNN), Random Forest (RF), Support Vector Machine (SVM), and Multi-layer Perceptron (MLP). The passages do not mention any other classifiers.",
+    "sentence": "The passages do not mention any other classifiers.",
+    "verdict": "correct",
+    "reason": "Only KNN/RF/SVM/MLP classifier identities are supplied; caveat is unnecessary but true."
+  }
+]

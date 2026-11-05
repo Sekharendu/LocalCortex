@@ -1,0 +1,394 @@
+{
+  "coverage": [
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "dense",
+      "k": 5,
+      "cases": 119,
+      "rawCovered": 62,
+      "rawPercent": 52.10084033613445,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "dense",
+      "k": 8,
+      "cases": 119,
+      "rawCovered": 75,
+      "rawPercent": 63.02521008403362,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "dense",
+      "k": 10,
+      "cases": 119,
+      "rawCovered": 82,
+      "rawPercent": 68.90756302521008,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "dense",
+      "k": 15,
+      "cases": 119,
+      "rawCovered": 90,
+      "rawPercent": 75.63025210084034,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "dense",
+      "k": 20,
+      "cases": 119,
+      "rawCovered": 95,
+      "rawPercent": 79.83193277310924,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "dense",
+      "k": 50,
+      "cases": 119,
+      "rawCovered": 108,
+      "rawPercent": 90.75630252100841,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "hybrid",
+      "k": 5,
+      "cases": 119,
+      "rawCovered": 62,
+      "rawPercent": 52.10084033613445,
+      "productionMeasuredCases": 119,
+      "productionAssembledCovered": 76,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "hybrid",
+      "k": 8,
+      "cases": 119,
+      "rawCovered": 78,
+      "rawPercent": 65.54621848739495,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "hybrid",
+      "k": 10,
+      "cases": 119,
+      "rawCovered": 84,
+      "rawPercent": 70.58823529411765,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "hybrid",
+      "k": 15,
+      "cases": 119,
+      "rawCovered": 92,
+      "rawPercent": 77.3109243697479,
+      "productionMeasuredCases": 119,
+      "productionAssembledCovered": 87,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "hybrid",
+      "k": 20,
+      "cases": 119,
+      "rawCovered": 98,
+      "rawPercent": 82.3529411764706,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "hybrid",
+      "k": 50,
+      "cases": 119,
+      "rawCovered": 110,
+      "rawPercent": 92.43697478991596,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "dense",
+      "k": 5,
+      "cases": 115,
+      "rawCovered": 55,
+      "rawPercent": 47.82608695652174,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "dense",
+      "k": 8,
+      "cases": 115,
+      "rawCovered": 62,
+      "rawPercent": 53.91304347826087,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "dense",
+      "k": 10,
+      "cases": 115,
+      "rawCovered": 67,
+      "rawPercent": 58.26086956521739,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "dense",
+      "k": 15,
+      "cases": 115,
+      "rawCovered": 79,
+      "rawPercent": 68.69565217391305,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "dense",
+      "k": 20,
+      "cases": 115,
+      "rawCovered": 89,
+      "rawPercent": 77.3913043478261,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "dense",
+      "k": 50,
+      "cases": 115,
+      "rawCovered": 102,
+      "rawPercent": 88.69565217391305,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "hybrid",
+      "k": 5,
+      "cases": 115,
+      "rawCovered": 51,
+      "rawPercent": 44.34782608695652,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "hybrid",
+      "k": 8,
+      "cases": 115,
+      "rawCovered": 58,
+      "rawPercent": 50.43478260869565,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "hybrid",
+      "k": 10,
+      "cases": 115,
+      "rawCovered": 61,
+      "rawPercent": 53.04347826086956,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "hybrid",
+      "k": 15,
+      "cases": 115,
+      "rawCovered": 76,
+      "rawPercent": 66.08695652173913,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "hybrid",
+      "k": 20,
+      "cases": 115,
+      "rawCovered": 88,
+      "rawPercent": 76.52173913043478,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "hybrid",
+      "k": 50,
+      "cases": 115,
+      "rawCovered": 102,
+      "rawPercent": 88.69565217391305,
+      "productionMeasuredCases": 0,
+      "productionAssembledCovered": null,
+      "overBudget": 0
+    }
+  ],
+  "review": {
+    "sampleCases": 40,
+    "uniqueOriginalQuestionIds": 38,
+    "modes": [
+      "hybrid"
+    ],
+    "depths": [
+      5,
+      15
+    ],
+    "judgmentType": "AI-assisted review, not independent human-certified accuracy",
+    "counts": [
+      {
+        "k": 5,
+        "correct": 20,
+        "partial": 5,
+        "incorrect": 5,
+        "refused": 10,
+        "ambiguous": 0,
+        "service_error": 0
+      },
+      {
+        "k": 15,
+        "correct": 27,
+        "partial": 6,
+        "incorrect": 1,
+        "refused": 6,
+        "ambiguous": 0,
+        "service_error": 0
+      }
+    ],
+    "improved": [
+      3,
+      4,
+      5,
+      7,
+      14,
+      19,
+      24,
+      34,
+      36,
+      37
+    ],
+    "regressed": [
+      6,
+      11,
+      18
+    ],
+    "bothCorrect": 17,
+    "borderlineCases": [
+      6,
+      10,
+      18
+    ],
+    "sensitivity": "Three15-chunk partial labels are borderline under a more permissive rubric; accepting all three changes15 correctness from27/40 to30/40. The strict labels and reasons remain available."
+  },
+  "execution": {
+    "status": "complete",
+    "stopReason": null,
+    "attempts": 79,
+    "completed": 79,
+    "failed": 0,
+    "reused": 1,
+    "maximumAttempts": 80,
+    "reportedRunNeurons": 611.7275519371033,
+    "usageRecords": 79,
+    "lengthLimitedAnswers": 0,
+    "changedInputs": [],
+    "retrievalCalls": 0,
+    "rerankingCalls": 0,
+    "graderInferenceCalls": 0,
+    "testPaperContentRead": false
+  },
+  "generationStats": [
+    {
+      "k": 5,
+      "actualCalls": 40,
+      "medianMs": 901.8463000000047,
+      "meanPromptTokens": 887.95,
+      "meanCompletionTokens": 35.675,
+      "meanReportedNeurons": 5.193584537506103
+    },
+    {
+      "k": 15,
+      "actualCalls": 39,
+      "medianMs": 957.5627999999997,
+      "meanPromptTokens": 1967.179487179487,
+      "meanCompletionTokens": 41.38461538461539,
+      "meanReportedNeurons": 10.358568472739977
+    }
+  ],
+  "sampleQuoteCoverage": [
+    {
+      "k": 5,
+      "cases": 40,
+      "covered": 23
+    },
+    {
+      "k": 15,
+      "cases": 40,
+      "covered": 31
+    }
+  ],
+  "audit": {
+    "all80AnswersPaired": true,
+    "all40CasesReviewed": true,
+    "explicitCloudflareExportAuthorization": true,
+    "exactPromptAndReviewedAnswerHashes": true,
+    "serialLedger": true,
+    "noRetries": true,
+    "generationAttempts": 79,
+    "identicalPromptReuses": 1,
+    "unchangedInputsAndPriorApplicationSnapshots": true,
+    "newSearching": 0,
+    "heldOutPaperContentReads": 0
+  },
+  "limitations": [
+    "Saved top50 cutoffs, not new independent k8/k10/k15/k20 retrieval calls.",
+    "Same selected paper; does not establish collection-wide answer quality.",
+    "Coverage is complete eligible reference-answer quote coverage, not full QASPER evidence paragraph recall.",
+    "Answer test uses direct top5 versus direct top15 prompts with unchanged model/system/buildPrompt and temperature0, not production neighbour expansion.",
+    "Offline production-style replay uses k50 cutoffs with1200 per-document cap; actual independent retrieval at15 could rank differently.",
+    "40 cases include38 unique original question IDs because two questions are tested as bothPDF/DOCX.",
+    "AI-assisted qualitative review, not independent human-certified scoring; three15-chunk partial labels are borderline.",
+    "One answer per distinct prompt; no repeated-seed or held-out validation."
+  ]
+}

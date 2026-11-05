@@ -1,0 +1,147 @@
+[
+  {
+    "file": "eval/prompt-comparison-20261104/analysis.json",
+    "bytes": 7198,
+    "sha256": "d6598fe0fb4c708b31c0bdf61fe34511046d531bc181379d820e606c75185f07"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/attempts.jsonl",
+    "bytes": 19236,
+    "sha256": "fe0634ed063de7979429c7a57250f54696765498989ec2c32aefe6fb78893b96"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/audit.json",
+    "bytes": 379,
+    "sha256": "850e96b475b502874419be51953ecf80e6c44f2f80bb58b492f5005fece8e41d"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/blind-contexts.jsonl",
+    "bytes": 1508086,
+    "sha256": "52fe7bc4cf1f7ea257f634e304ca2113f5c47fc95abac45f7bfaa7429597fe2a"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/blind-grades.jsonl",
+    "bytes": 35415,
+    "sha256": "41a6225577c252c1e97f151c3f150ee256e4fc4d711be0f7e97f2ccf4f5f95ad"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/blind-key.json",
+    "bytes": 21000,
+    "sha256": "31c327a41e0ad8198f3632490ef349c442a2dc47c0de5cd58b071b2ef9b3dcb6"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/blind-pack.mjs",
+    "bytes": 1569,
+    "sha256": "fd658e5a7ab4465532a0675c3011d2393f8694ab4e08eb3d29c9d09b2c1f8d4a"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/blind-review.jsonl",
+    "bytes": 262820,
+    "sha256": "42ae9e8eb25fa38b494b870f7d9cffe9727889a2d0b58c6ccfde9ae9183a0e09"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/borderline-judgments.json",
+    "bytes": 3662,
+    "sha256": "783d80858c7f50d865754d1c57e3557712f60b94cd2b7b0ee8a3aa96f25df424"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/case-evidence.json",
+    "bytes": 21169,
+    "sha256": "7689c2ee8c9ebc4104e67eaca7cf4b8ecf1f8a279f1f5dba848ba51bbd6d742a"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/exact-wire-prompts.jsonl",
+    "bytes": 3504000,
+    "sha256": "0d58e32167b41bf719a8e8f341dc4d8e1c9acc1831e7915cc4619788f6e6cc95"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/focus-refusal-answers.json",
+    "bytes": 13444,
+    "sha256": "7824e35da90bf1de1704254a36738a285d8c6fb70584790d6f1455e7ce34107d"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/focus-refusal-cases.json",
+    "bytes": 314,
+    "sha256": "4ce21338b300534d0703151f9dcc9cfe1547511ef2efec04fc376ce88e69dc3f"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/gap-sentence-audit.json",
+    "bytes": 14075,
+    "sha256": "df786a6e310909c282c7c96d2d94c034e1e2adad347a592d6c1b7ff243a990fe"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/grade-freeze.json",
+    "bytes": 421,
+    "sha256": "dd7c1c8310c47c86acb040959445a0ec1c71f96524f2059e9c563e057244af7b"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/manifest.json",
+    "bytes": 3428,
+    "sha256": "a686035079f6706946a7358acdbcb275528bbb9ef86a74e18d2bab40820a6953"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/paired-results.jsonl",
+    "bytes": 159028,
+    "sha256": "7fb493ffb0b1cd1136249d8ace91747af23411e030f0e9dbbf10882346e89d87"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/preflight.json",
+    "bytes": 233,
+    "sha256": "a245aeb91f7651b0afbb74bd3ded79383ff5b565bdd257e190913eb913de1230"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/prompt-example-A.txt",
+    "bytes": 14557,
+    "sha256": "8a3515756f17a7532c2dd6d7a813a5207c021ecd5c554f28434082e849b940f0"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/prompt-example-B.txt",
+    "bytes": 14007,
+    "sha256": "616809004ccb4913b6a54aa6a780e40e6d3024816f75fd310ccde4719920c810"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/refused-to-answered-audit.json",
+    "bytes": 2289,
+    "sha256": "1e2370544180d3dca5d6304cc11545abbf3f8a58b7216c416a4aeac526ea28a5"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/REPORT.md",
+    "bytes": 35022,
+    "sha256": "72d9d3c24d5d78a413f853c659aec42a4f4ea63d7066b74c7828e78689f6a21e"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/report.mjs",
+    "bytes": 16935,
+    "sha256": "661773ea0460e6f8f6bb7a6761c5432ce26efc091b8f763924d51dab69e269e8"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/requests.jsonl",
+    "bytes": 5339163,
+    "sha256": "5a332cd04e9b70a3d4465628d61a27e717a5762320a46231de73a3ee15c4c048"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/results.jsonl",
+    "bytes": 216137,
+    "sha256": "615bbda10c0785d81af7f0065bc0c0a7eaa41624f29762b39a734df879649750"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/review-rubric.md",
+    "bytes": 2770,
+    "sha256": "907c3fc6970e88c480f0604c84ed990d664470142377c61095e9fee0e28e4645"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/run.mjs",
+    "bytes": 13788,
+    "sha256": "155b33f2d7fcf64d8077a238d67a3461b2f65ed28c0c6a72cdfdb37843d74cb2"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/summary.json",
+    "bytes": 4097,
+    "sha256": "0d52222c8db7eca9f17f5d47409f09096958786470844a9d2db747a04d63108d"
+  },
+  {
+    "file": "eval/prompt-comparison-20261104/supporting-excerpts.json",
+    "bytes": 11900,
+    "sha256": "932118954e7534fafdc05e21a9c081ec1d90470e775c08512d518762ee0c8920"
+  }
+]

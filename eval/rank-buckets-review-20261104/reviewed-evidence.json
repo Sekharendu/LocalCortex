@@ -1,0 +1,1911 @@
+[
+  {
+    "number": 1,
+    "caseId": "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",
+    "question": "What datasets did they use for evaluation?",
+    "firstCompleteQuoteRank": 10,
+    "reference": {
+      "referenceIndex": 0,
+      "items": [
+        {
+          "quote": "CSAT dataset",
+          "rank": 5
+        },
+        {
+          "quote": "20 newsgroups",
+          "rank": 2
+        },
+        {
+          "quote": "Fisher Phase 1 corpus",
+          "rank": 10
+        }
+      ],
+      "rank": 10
+    },
+    "primaryVisiblePattern": "fragmentation",
+    "observation": "Three evaluation datasets appear in different chunks; the full Fisher Phase1 name is on a continued bullet list. The first result discusses ASR training and dataset construction, a related but different role.",
+    "nextTest": "Preserve dataset-list continuations; distinguish evaluation data from ASR training data.",
+    "caveat": "The previous five-chunk answer named all three datasets without reproducing the full Phase1 phrase; literal quote completion can be conservative.",
+    "previousAnswerReview": {
+      "number": 35,
+      "caseId": "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",
+      "question": "What datasets did they use for evaluation?",
+      "previousVerdict": "failed",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "correct"
+        },
+        {
+          "k": 15,
+          "verdict": "correct"
+        }
+      ],
+      "reason": "Both identify CSAT,20newsgroups and Fisher; full name Phase1 is not repeated, but the correct core dataset list is given.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 5,
+          "sha256": "c031597f9f027e5b1f329733f6a6e18ad0c4a1489bcdf1abe7989337fdab3244"
+        },
+        {
+          "k": 15,
+          "sha256": "35e46645479dab2a9f1127ba7cda535dd8a2e57bab2f35cde26cf6b1c0bec343"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "low 4.5 as dissatisfied. Quantization of ratings also helped us\nto create a balanced dataset. This dataset contains 4331 calls\nand we split them into 3 sets for our experiments: 2866 calls\nfor training, 362 calls for validation and, finally, 1103 calls\nfor testing.\nWe obtained the transcripts by employing an ASR sys-\ntem. The ASR system uses TDNN-LSTM acoustic model\ntrained on Fisher and Switchboard datasets with lattice-free\nmaximum mutual information criterion [19]. The word er-",
+        "source": "1910.10781.pdf",
+        "page": 3,
+        "score": 1.1666667,
+        "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+        "chunkIndex": 25
+      },
+      {
+        "text": "ror rates using four-gram language models were 9.2% and\n17.3% respectively on Switchboard and CallHome portions\nof Eval2000 dataset2.\n4.2. 20 newsgroups\n20 newsgroups3 data set is one of the frequently used datasets\nin the text processing community for text classification and\ntext clustering. This data set contains approximately 20,000\nEnglish documents from 20 topics to be identified, with\n11314 documents for training and 7532 for testing. In this",
+        "source": "1910.10781.pdf",
+        "page": 3,
+        "score": 0.5416667,
+        "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+        "chunkIndex": 26
+      },
+      {
+        "text": "in [16] but it is prohibitive for very long documents. In [17],\ndataset collected from arXiv papers is used for classification.\nFor classification, they sample random blocks of words and\nuse them together for classification instead of using full doc-\nument which may work well as arXiv papers are usually co-\nherent and well written on a well defined topic. Their method\nmay not work well on spoken conversations as random block\nof words usually do not represent topic of full conversation.",
+        "source": "1910.10781.pdf",
+        "page": 2,
+        "score": 0.53571427,
+        "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+        "chunkIndex": 11
+      },
+      {
+        "text": "using BERT model: RoBERT and ToBERT. We evaluated our\nexperiments on two classification tasks - customer satisfaction\nprediction and topic identification - using 3 datasets: CSAT,\n20newsgroups and Fisher. We observed that ToBERT outper-",
+        "source": "1910.10781.pdf",
+        "page": 5,
+        "score": 0.47142857,
+        "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+        "chunkIndex": 44
+      },
+      {
+        "text": "be seen that our model ToBERT outperforms CNN based ex-\nperiments by significant margin on CSAT and Fisher datasets.\nFor CSAT dataset, we used multi-scale CNN (MS-CNN) as\nthe baseline, given its strong results on Fisher and 20news-\ngroups. The setup was replicated from [6] for comparison.\nWe also see that our result on 20 newsgroups is 0.6% worse\nthan the state-of-the-art.\n6. CONCLUSIONS\nIn this paper, we presented two methods for long documents",
+        "source": "1910.10781.pdf",
+        "page": 5,
+        "score": 0.42424244,
+        "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+        "chunkIndex": 43
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "ken transcripts (automatic via ASR).\n• 20 newsgroups for topic identification task, consisting\nof written text;\n• Fisher Phase 1 corpus for topic identification task, con-\nsisting of spoken transcripts (manual);\n4.1. CSAT\nCSAT dataset consists of US English telephone speech from\ncall centers. For each call in this dataset, customers partici-\npated in that call gave a rating on his experience with agent.\nOriginally, this dataset has labels rated on a scale 1-9 with 9\n1401\n182 180 147\n26 4 30 127",
+      "source": "1910.10781.pdf",
+      "page": 3,
+      "score": 0.2916667,
+      "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+      "chunkIndex": 23
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "CSAT dataset",
+        "rank": 5,
+        "chunk": {
+          "text": "be seen that our model ToBERT outperforms CNN based ex-\nperiments by significant margin on CSAT and Fisher datasets.\nFor CSAT dataset, we used multi-scale CNN (MS-CNN) as\nthe baseline, given its strong results on Fisher and 20news-\ngroups. The setup was replicated from [6] for comparison.\nWe also see that our result on 20 newsgroups is 0.6% worse\nthan the state-of-the-art.\n6. CONCLUSIONS\nIn this paper, we presented two methods for long documents",
+          "source": "1910.10781.pdf",
+          "page": 5,
+          "score": 0.42424244,
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 43
+        }
+      },
+      {
+        "quote": "20 newsgroups",
+        "rank": 2,
+        "chunk": {
+          "text": "ror rates using four-gram language models were 9.2% and\n17.3% respectively on Switchboard and CallHome portions\nof Eval2000 dataset2.\n4.2. 20 newsgroups\n20 newsgroups3 data set is one of the frequently used datasets\nin the text processing community for text classification and\ntext clustering. This data set contains approximately 20,000\nEnglish documents from 20 topics to be identified, with\n11314 documents for training and 7532 for testing. In this",
+          "source": "1910.10781.pdf",
+          "page": 3,
+          "score": 0.5416667,
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 26
+        }
+      },
+      {
+        "quote": "Fisher Phase 1 corpus",
+        "rank": 10,
+        "chunk": {
+          "text": "ken transcripts (automatic via ASR).\n• 20 newsgroups for topic identification task, consisting\nof written text;\n• Fisher Phase 1 corpus for topic identification task, con-\nsisting of spoken transcripts (manual);\n4.1. CSAT\nCSAT dataset consists of US English telephone speech from\ncall centers. For each call in this dataset, customers partici-\npated in that call gave a rating on his experience with agent.\nOriginally, this dataset has labels rated on a scale 1-9 with 9\n1401\n182 180 147\n26 4 30 127",
+          "source": "1910.10781.pdf",
+          "page": 3,
+          "score": 0.2916667,
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 23
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": true
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "caseId": "pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",
+    "question": "In what cases is attention different from alignment?",
+    "firstCompleteQuoteRank": 16,
+    "reference": {
+      "referenceIndex": 1,
+      "items": [
+        {
+          "quote": "most word alignments only involve one or a few words, attention can be distributed more freely",
+          "rank": 16
+        }
+      ],
+      "rank": 16
+    },
+    "primaryVisiblePattern": "metric",
+    "observation": "The top result already explains nouns versus verbs and captures information beyond alignment. The rank16quote describes attention distribution more generally.",
+    "nextTest": "Repair semantic/evidence scoring before calling this a retrieval failure.",
+    "caveat": "Five- and15-chunk answers were both judged correct earlier despite the selected long quote not appearing by15.",
+    "previousAnswerReview": {
+      "number": 22,
+      "caseId": "pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",
+      "question": "In what cases is attention different from alignment?",
+      "previousVerdict": "acceptable",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "correct"
+        },
+        {
+          "k": 15,
+          "verdict": "correct"
+        }
+      ],
+      "reason": "Both explain attention to contextual information beyond translational alignment, especially verbs; valid reference alternatives allow POS-based examples.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 15,
+          "sha256": "07261d7e9a3156d0cca3a55da0437d98e530905c1a037261be46e42964a565dd"
+        },
+        {
+          "k": 5,
+          "sha256": "6560a6a979666af8bae62209e42653a19eeaa5447d36a822dc11d925d5322b7e"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "Our analysis shows that attention models tradi-\ntional alignment in some cases more closely while\nit captures information beyond alignment in oth-\ners. For instance, attention agrees with traditional\nalignments to a high degree in the case of nouns.\nHowever, it captures other information rather than\nonly the translational equivalent in the case of\nverbs.\nThis paper makes the following contributions:\n1) We provide a detailed comparison of attention\nin NMT and word alignment. 2) We show that",
+        "source": "1710.03348.pdf",
+        "page": 2,
+        "score": 1,
+        "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+        "chunkIndex": 9
+      },
+      {
+        "text": "in NMT and word alignment. 2) We show that\nwhile different attention mechanisms can lead to\ndifferent degrees of compliance with respect to\nword alignments, global compliance is not always\nhelpful for word prediction. 3) We show that at-\ntention follows different patterns depending on the\ntype of the word being generated. 4) We demon-\nstrate that attention does not always comply with\nalignment. We provide evidence showing that the\ndifference between attention and alignment is due",
+        "source": "1710.03348.pdf",
+        "page": 2,
+        "score": 0.8333334,
+        "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+        "chunkIndex": 10
+      },
+      {
+        "text": "studies attention and provides analysis of\nwhat is being learned by attention mod-\nels. Thus, the question still remains that\nhow attention is similar or different from\nthe traditional alignment. In this paper, we\nprovide detailed analysis of attention and\ncompare it to traditional alignment. We\nanswer the question of whether attention\nis only capable of modelling translational\nequivalent or it captures more information.\nWe show that attention is different from",
+        "source": "1710.03348.pdf",
+        "page": 1,
+        "score": 0.64285713,
+        "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+        "chunkIndex": 1
+      },
+      {
+        "text": "difference between attention and alignment is due\nto attention model capability to attend the context\nwords influencing the current word translation.\n2 Related Work\nLiu et al. (2016) investigate how training the at-\ntention model in a supervised manner can bene-\nfit machine translation quality. To this end they\nuse traditional alignments obtained by running au-\ntomatic alignment tools (GIZA++ (Och and Ney,\n2003) and fast align (Dyer et al., 2013)) on the",
+        "source": "1710.03348.pdf",
+        "page": 2,
+        "score": 0.44545454,
+        "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+        "chunkIndex": 11
+      },
+      {
+        "text": "Recently, Koehn and Knowles (2017) carried\nout a brief analysis of how much attention and\nalignment match in different languages by mea-\nsuring the probability mass that attention gives to\nalignments obtained from an automatic alignment\ntool. They also report differences based on the\nmost attended words.\nThe mixed results reported by Chen et al.\n(2016); Alkhouli et al. (2016); Liu et al. (2016)\non optimizing attention with respect to alignments\nmotivates a more thorough analysis of attention",
+        "source": "1710.03348.pdf",
+        "page": 2,
+        "score": 0.3968254,
+        "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+        "chunkIndex": 16
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "we look into the attention concentration. While\nmost word alignments only involve one or a few\nwords, attention can be distributed more freely.\nWe measure the concentration of attention by\ncomputing the entropy of the attention distribu-\ntion:\nEAt(yt) = −\n|x|\n∑\ni=1\nAt(xi, yt) log(At(xi, yt))\n(11)\n5 Empirical Analysis of Attention\nBehaviour\nWe conduct our analysis using the two different\nattention models described in Section 3. Our first\nattention model is the global model without input-",
+      "source": "1710.03348.pdf",
+      "page": 4,
+      "score": 0.19090909,
+      "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+      "chunkIndex": 33
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "most word alignments only involve one or a few words, attention can be distributed more freely",
+        "rank": 16,
+        "chunk": {
+          "text": "we look into the attention concentration. While\nmost word alignments only involve one or a few\nwords, attention can be distributed more freely.\nWe measure the concentration of attention by\ncomputing the entropy of the attention distribu-\ntion:\nEAt(yt) = −\n|x|\n∑\ni=1\nAt(xi, yt) log(At(xi, yt))\n(11)\n5 Empirical Analysis of Attention\nBehaviour\nWe conduct our analysis using the two different\nattention models described in Section 3. Our first\nattention model is the global model without input-",
+          "source": "1710.03348.pdf",
+          "page": 4,
+          "score": 0.19090909,
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 33
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": false
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "caseId": "pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "question": "what challenges are identified?",
+    "firstCompleteQuoteRank": 8,
+    "reference": {
+      "referenceIndex": 0,
+      "items": [
+        {
+          "quote": "Assigning wrong words to a cluster",
+          "rank": 8
+        },
+        {
+          "quote": "Splitting words across different clusters",
+          "rank": 4
+        },
+        {
+          "quote": "sparse, giving low coverage",
+          "rank": 7
+        }
+      ],
+      "rank": 8
+    },
+    "primaryVisiblePattern": "fragmentation",
+    "observation": "The first hit introduces challenges without enumerating them; separate subsection chunks describe wrong assignments, split words and low coverage at ranks8,4,7.",
+    "nextTest": "Keep the relevant subsection cluster or pack a coherent challenges section.",
+    "caveat": "A useful summary can be present before every exact subsection-heading quote.",
+    "previousAnswerReview": {
+      "number": 18,
+      "caseId": "pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+      "question": "what challenges are identified?",
+      "previousVerdict": "acceptable",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "correct"
+        },
+        {
+          "k": 15,
+          "verdict": "partial"
+        }
+      ],
+      "reason": "Five explicitly covers wrong cluster assignments, same words split across clusters and low coverage. Fifteen describes low coverage and noisy cross-speaker clustering but omits the explicit split-word failure. BORDERLINE: a broad clustering-summary rubric could accept15.",
+      "borderline15": true,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 15,
+          "sha256": "9361c3f94b4ea1b795213a979eff54ea3484051ad46db43b494cc21587e6861d"
+        },
+        {
+          "k": 5,
+          "sha256": "b809b455bd0513b69eb855caa9c8e89549663e96baf0311e296dda3c72660424"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "and test data. Although the utterance-level split is\noptimistic, it allows us to investigate how multiple\nspeakers affect system performance. In either case,\nthe oracle has about 38k Spanish tokens to train on.\n4 Analysis of challenges from UTD\nOur system relies on the pseudotext produced by\nZRTools (the only freely available UTD system we\nare aware of), which presents several challenges\nfor MT. We used the default ZRTools parameters,\nand it might be possible to tune them to our task,",
+        "source": "1702.03856.pdf",
+        "page": 3,
+        "score": 1.1666667,
+        "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+        "chunkIndex": 20
+      },
+      {
+        "text": "2015. The Zero Resource Speech Challenge 2015.\nIn Proc. Interspeech.\n[Waibel and Fugen2008] Alex Waibel and Christian Fu-\ngen. 2008. Spoken language translation. IEEE\nSignal Processing Magazine, 3(25):70–79.\n[Zeghidour et al.2016] Neil Zeghidour, Gabriel Syn-\nnaeve, Nicolas Usunier, and Emmanuel Dupoux.\n2016. Joint learning of speaker and phonetic similar-\nities with Siamese networks. In Proc. Interspeech.",
+        "source": "1702.03856.pdf",
+        "page": 6,
+        "score": 0.61904764,
+        "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+        "chunkIndex": 49
+      },
+      {
+        "text": "matches, which are known to be more challenging\nfor UTD (Carlin et al., 2011; Kamper et al., 2015;\nBansal et al., 2017). Most matches in our corpus\nare across calls, yet these are also the least accu-\nrate (Table 1). Within-utterance matches, which\nare always from the same speaker, are the most\nreliable, but make up the smallest proportion of\nthe discovered pairs. Within-call matches fall in\nbetween. Overall, average cluster purity is only\n34%, meaning that 66% of discovered patterns do",
+        "source": "1702.03856.pdf",
+        "page": 3,
+        "score": 0.5,
+        "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+        "chunkIndex": 22
+      },
+      {
+        "text": "34%, meaning that 66% of discovered patterns do\nnot match the most frequent type in their cluster.\n4.2 Splitting words across different clusters\nAlthough most UTD matches are across speakers,\nrecall of cross-speaker matches is lower than for\nsame-speaker matches. As a result, the same word\nfrom different speakers often appears in multiple\nclusters, preventing the model from learning good\ntranslations. ZRTools discovers 15,089 clusters in\n5http://www.nltk.org/\nutterance call corpus",
+        "source": "1702.03856.pdf",
+        "page": 3,
+        "score": 0.4,
+        "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+        "chunkIndex": 23
+      },
+      {
+        "text": "alects (§3). Using the Spanish speech as the source\nand English text translations as the target, we iden-\ntify several challenges in the use of UTD, includ-\ning low coverage of audio and difficulty in cross-\nspeaker clustering (§4). Despite these difficulties,\nwe demonstrate that the system learns to translate\nsome content words (§5).\n2 From unsupervised term discovery to\ndirect speech-to-text translation\nFor UTD we use the Zero Resource Toolkit (ZR-\nTools; Jansen and Van Durme, 2011).1 ZRTools",
+        "source": "1702.03856.pdf",
+        "page": 2,
+        "score": 0.38333333,
+        "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+        "chunkIndex": 9
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "but we leave this to future work.\n4.1 Assigning wrong words to a cluster\nSince UTD is unsupervised, the discovered clusters\nare noisy. Fig. 1 shows an example of an incorrect\nmatch between the acoustically similar “qu´e tal\nvas con” and “te trabajo y” in utterances B and C,\nleading to a common assignment to c2. Such incon-\nsistencies in turn affect the translation distribution\nconditioned on c2.\nMany of these errors are due to cross-speaker\nmatches, which are known to be more challenging",
+      "source": "1702.03856.pdf",
+      "page": 3,
+      "score": 0.25,
+      "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+      "chunkIndex": 21
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "Assigning wrong words to a cluster",
+        "rank": 8,
+        "chunk": {
+          "text": "but we leave this to future work.\n4.1 Assigning wrong words to a cluster\nSince UTD is unsupervised, the discovered clusters\nare noisy. Fig. 1 shows an example of an incorrect\nmatch between the acoustically similar “qu´e tal\nvas con” and “te trabajo y” in utterances B and C,\nleading to a common assignment to c2. Such incon-\nsistencies in turn affect the translation distribution\nconditioned on c2.\nMany of these errors are due to cross-speaker\nmatches, which are known to be more challenging",
+          "source": "1702.03856.pdf",
+          "page": 3,
+          "score": 0.25,
+          "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+          "chunkIndex": 21
+        }
+      },
+      {
+        "quote": "Splitting words across different clusters",
+        "rank": 4,
+        "chunk": {
+          "text": "34%, meaning that 66% of discovered patterns do\nnot match the most frequent type in their cluster.\n4.2 Splitting words across different clusters\nAlthough most UTD matches are across speakers,\nrecall of cross-speaker matches is lower than for\nsame-speaker matches. As a result, the same word\nfrom different speakers often appears in multiple\nclusters, preventing the model from learning good\ntranslations. ZRTools discovers 15,089 clusters in\n5http://www.nltk.org/\nutterance call corpus",
+          "source": "1702.03856.pdf",
+          "page": 3,
+          "score": 0.4,
+          "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+          "chunkIndex": 23
+        }
+      },
+      {
+        "quote": "sparse, giving low coverage",
+        "rank": 7,
+        "chunk": {
+          "text": "that these pseudotext out-of-vocabulary (OOV)\nwords are frequent, especially in the call-level split.\nThis reflects differences in acoustic patterns of dif-\nferent speakers, but also in their vocabulary — even\nthe oracle OOV rate is higher in the call-level split.\n4.3 UTD is sparse, giving low coverage\nUTD is most reliable on long and frequently-\nrepeated patterns, so many spoken words are not\nrepresented in the pseudotext, as in Fig. 1. We\nfound that the patterns discovered by ZRTools",
+          "source": "1702.03856.pdf",
+          "page": 3,
+          "score": 0.33333334,
+          "documentId": "8a3b8d02-8d90-4869-bb1b-24c4dabdf32b",
+          "chunkIndex": 26
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": true
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+    "question": "What types of online harassment are studied?",
+    "firstCompleteQuoteRank": 12,
+    "reference": {
+      "referenceIndex": 0,
+      "items": [
+        {
+          "quote": "indirect harassment, sexual and physical harassment",
+          "rank": 12
+        }
+      ],
+      "rank": 12
+    },
+    "primaryVisiblePattern": "fragmentation",
+    "observation": "The target three-class list begins with tweets are divided, separated from the preceding dataset explanation. Earlier passages discuss the general topic and related-work categories.",
+    "nextTest": "Preserve the dataset paragraph across the chunk boundary and retain it when increasing k.",
+    "caveat": "The old first5assembled-context replay already recovers it;15-hit assembly loses it under the unchanged cap.",
+    "previousAnswerReview": {
+      "number": 34,
+      "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+      "question": "What types of online harassment are studied?",
+      "previousVerdict": "acceptable",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "incorrect"
+        },
+        {
+          "k": 15,
+          "verdict": "correct"
+        }
+      ],
+      "reason": "Five imports information-threat from related work as a target category. Fifteen correctly identifies the target indirect/sexual/physical categories.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 15,
+          "sha256": "7f8ddbb039ffa7a704d0e9ed72da2d0feec62a74f9dd0a40d8cb506a34c83e7c"
+        },
+        {
+          "k": 5,
+          "sha256": "d60fe418b75e8cda93cee110716e8d6c4abae5f2b89f0970f169aeb5732d4953"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "olent or hostile sexism [1], which undermines other types of online harassment.\nHowever, there is no much study focusing on different types online harassment\nalone attracting natural language processing techniques.\nIn this paper we present our work, which is a part of the SociaL Media And\nHarassment Competition of the ECML PKDD 2019 Conference. The topic of\nthe competition is the classification of different types of harassment and it is",
+        "source": "1909.13104.pdf",
+        "page": 2,
+        "score": 1.1666667,
+        "documentId": "1eee5486-c065-407f-9cb0-21707139c5f7",
+        "chunkIndex": 7
+      },
+      {
+        "text": "Twitter has become the platform for many racists, misogynists and hate groups\nwhich can express themselves openly. Online harassment is usually in the form of\nverbal or graphical formats and is considered harassment, because it is neither\ninvited nor has the consent of the receipt. Monitoring the contents including\nsexism and sexual harassment in traditional media is easier than monitoring\non the online social media platforms like Twitter. The main reason is because",
+        "source": "1909.13104.pdf",
+        "page": 1,
+        "score": 0.6666667,
+        "documentId": "1eee5486-c065-407f-9cb0-21707139c5f7",
+        "chunkIndex": 4
+      },
+      {
+        "text": "Attention-based method for categorizing\ndifferent types of online harassment language\nChristos Karatsalos and Yannis Panagiotakis\nAthens University of Economics and Business, Athens, Greece\n{ckarats, giannispanagiwtakis}@gmail.com\nAbstract. In the era of social media and networking platforms, Twit-\nter has been doomed for abuse and harassment toward users specifically\nwomen. Monitoring the contents including sexism and sexual harassment",
+        "source": "1909.13104.pdf",
+        "page": 1,
+        "score": 0.65,
+        "documentId": "1eee5486-c065-407f-9cb0-21707139c5f7",
+        "chunkIndex": 0
+      },
+      {
+        "text": "users tendency towards racism or sexism\n3 Dataset description\nThe dataset from Twitter that we are using in our work, consists of a train\nset, a validation set and a test set. It was published for the ”First workshop\non categorizing different types of online harassment languages in social media”.\nThe whole dataset is divided into two categories, which are harassment and\nnon-harassment tweets. Moreover, considering the type of the harassment, the",
+        "source": "1909.13104.pdf",
+        "page": 3,
+        "score": 0.53333336,
+        "documentId": "1eee5486-c065-407f-9cb0-21707139c5f7",
+        "chunkIndex": 19
+      },
+      {
+        "text": "in social media. Sharifirad S. and Matwin S. [3] proposed complimentary cat-\negories of sexist language inspired from social science work. They categorized\nthe sexist tweets into the categories of indirect harassment, information threat,\nsexual harassment and physical harassment. In the next year the same authors\nproposed [4] a more comprehensive categorization of online harassment in social\nmedia e.g. twitter into the following categories, indirect harassment, information",
+        "source": "1909.13104.pdf",
+        "page": 2,
+        "score": 0.4761905,
+        "documentId": "1eee5486-c065-407f-9cb0-21707139c5f7",
+        "chunkIndex": 11
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "tweets are divided into three sub-categories which are indirect harassment, sexual\nand physical harassment. We can see in Table 1 the class distribution of our\ndataset. One important issue here is that the categories of indirect and physical",
+      "source": "1909.13104.pdf",
+      "page": 3,
+      "score": 0.21428572,
+      "documentId": "1eee5486-c065-407f-9cb0-21707139c5f7",
+      "chunkIndex": 20
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "indirect harassment, sexual and physical harassment",
+        "rank": 12,
+        "chunk": {
+          "text": "tweets are divided into three sub-categories which are indirect harassment, sexual\nand physical harassment. We can see in Table 1 the class distribution of our\ndataset. One important issue here is that the categories of indirect and physical",
+          "source": "1909.13104.pdf",
+          "page": 3,
+          "score": 0.21428572,
+          "documentId": "1eee5486-c065-407f-9cb0-21707139c5f7",
+          "chunkIndex": 20
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": true
+      },
+      {
+        "k": 15,
+        "covered": false
+      }
+    ]
+  },
+  {
+    "number": 5,
+    "caseId": "pdf/1912.00667/3941401a182a3d6234894a5c8a75d48c6116c45c",
+    "question": "Which real-world datasets are used?",
+    "firstCompleteQuoteRank": 38,
+    "reference": {
+      "referenceIndex": 1,
+      "items": [
+        {
+          "quote": "cyber security (CyberAttack)",
+          "rank": 38
+        },
+        {
+          "quote": "death of politicians (PoliticianDeath)",
+          "rank": 1
+        }
+      ],
+      "rank": 38
+    },
+    "primaryVisiblePattern": "fragmentation",
+    "observation": "The two event categories are split across adjacent chunks47and48. Rank1contains PoliticianDeath; its preceding chunk47contains CyberAttack but ranks38.",
+    "nextTest": "Prioritize the adjacent paragraph continuation instead of independently ranking its halves.",
+    "caveat": "The15-raw-chunk answer already named both datasets using other mentions; rank38is strict full-quote coverage, not proof the answer was unavailable until38.",
+    "previousAnswerReview": {
+      "number": 36,
+      "caseId": "pdf/1912.00667/3941401a182a3d6234894a5c8a75d48c6116c45c",
+      "question": "Which real-world datasets are used?",
+      "previousVerdict": "failed",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "refused"
+        },
+        {
+          "k": 15,
+          "verdict": "correct"
+        }
+      ],
+      "reason": "Five refuses. Fifteen identifies CyberAttack and PoliticianDeath; metric/dataset mentions in its actual passages support the named datasets even though full quote strings do not match.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 15,
+          "sha256": "55f91a8e9473037eec28770774ee2c20605c81248d3b9323c874775ae1a9c326"
+        },
+        {
+          "k": 5,
+          "sha256": "ee808ef6623c757ce1c38e78cb93f5d1d226b97e0275dcbcb1ebde0988920d9d"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "death of politicians (PoliticianDeath). These event cate-\ngories are chosen as they are representative of important\nevent types that are of interest to many governments and\ncompanies. The need to create our own dataset was mo-\ntivated by the lack of public datasets for event detection\non microposts. The few available datasets do not suit our\nrequirements. For example, the publicly available Events-\n2012 Twitter dataset (McMinn, Moshfeghi, and Jose 2013)",
+        "source": "1912.00667.pdf",
+        "page": 5,
+        "score": 0.7777778,
+        "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+        "chunkIndex": 48
+      },
+      {
+        "text": "curity (Ritter et al. 2015; Chambers, Fry, and McMasters\n2018) to political elections (Konovalov et al. 2017) or public\nhealth (Akbari et al. 2016; Lee et al. 2017). Due to the high\nambiguity and inconsistency of the terms used in microp-\nosts, event detection is generally performed though statisti-\ncal machine learning models, which require a labeled dataset\nfor model training. Data labeling is, however, a long, labo-\nrious, and usually costly process. For the case of micropost",
+        "source": "1912.00667.pdf",
+        "page": 1,
+        "score": 0.64285713,
+        "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+        "chunkIndex": 4
+      },
+      {
+        "text": "of the disagreement between the crowd and the model to dis-\ncover informative keywords and leverages the joint power of\nthe crowd and the model in expectation inference. We eval-\nuated our approach on real-world datasets and showed that\nit significantly outperforms the state of the art and that it\nis particularly useful for detecting events where relevant mi-\ncroposts are semantically complex, e.g., the death of a politi-\ncian. As future work, we plan to parallelize the crowdsourc-",
+        "source": "1912.00667.pdf",
+        "page": 7,
+        "score": 0.5689655,
+        "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+        "chunkIndex": 77
+      },
+      {
+        "text": "lated to ‘politician’ and ‘death’ (such as ‘bureaucrat’, ‘dead’\netc.) For each dataset, we randomly select 500 tweets from\nthe unlabeled subset and manually label them for evaluation.\nTable 1 shows key statistics from our two datasets.\nComparison Methods. To demonstrate the generality of\nour approach on different event detection models, we con-\nsider Logistic Regression (LR) (Ritter et al. 2015) and Mul-\ntilayer Perceptron (MLP) (Chambers, Fry, and McMasters",
+        "source": "1912.00667.pdf",
+        "page": 5,
+        "score": 0.42424244,
+        "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+        "chunkIndex": 50
+      },
+      {
+        "text": "events from knowledge base revisions. In WWW.\n[Krishnan et al. 2016] Krishnan, S.; Wang, J.; Wu, E.;\nFranklin, M. J.; and Goldberg, K. 2016. Active-\nclean: interactive data cleaning for statistical modeling.\nPVLDB 9(12):948–959.\n[Kuzi, Shtok, and Kurland 2016] Kuzi, S.; Shtok, A.;\nand Kurland, O. 2016. Query expansion using word\nembeddings. In CIKM.\n[Lee et al. 2017] Lee, K.; Qadir, A.; Hasan, S. A.; Datla,\nV.; Prakash, A.; Liu, J.; and Farri, O. 2017. Adverse",
+        "source": "1912.00667.pdf",
+        "page": 8,
+        "score": 0.4,
+        "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+        "chunkIndex": 84
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "compare to existing keyword expansion methods?\n• Q3: How effective is our approach using crowdsourcing\nat obtaining new keywords compared with an approach\nlabelling microposts for model training under the same\ncost?\n• Q4: How much benefit does our unified probabilistic\nmodel bring compared to methods that do not take crowd\nreliability into account?\nExperimental Setup\nDatasets. We perform our experiments with two predeter-\nmined event categories: cyber security (CyberAttack) and",
+      "source": "1912.00667.pdf",
+      "page": 5,
+      "score": 0.08116883,
+      "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+      "chunkIndex": 47
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "cyber security (CyberAttack)",
+        "rank": 38,
+        "chunk": {
+          "text": "compare to existing keyword expansion methods?\n• Q3: How effective is our approach using crowdsourcing\nat obtaining new keywords compared with an approach\nlabelling microposts for model training under the same\ncost?\n• Q4: How much benefit does our unified probabilistic\nmodel bring compared to methods that do not take crowd\nreliability into account?\nExperimental Setup\nDatasets. We perform our experiments with two predeter-\nmined event categories: cyber security (CyberAttack) and",
+          "source": "1912.00667.pdf",
+          "page": 5,
+          "score": 0.08116883,
+          "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+          "chunkIndex": 47
+        }
+      },
+      {
+        "quote": "death of politicians (PoliticianDeath)",
+        "rank": 1,
+        "chunk": {
+          "text": "death of politicians (PoliticianDeath). These event cate-\ngories are chosen as they are representative of important\nevent types that are of interest to many governments and\ncompanies. The need to create our own dataset was mo-\ntivated by the lack of public datasets for event detection\non microposts. The few available datasets do not suit our\nrequirements. For example, the publicly available Events-\n2012 Twitter dataset (McMinn, Moshfeghi, and Jose 2013)",
+          "source": "1912.00667.pdf",
+          "page": 5,
+          "score": 0.7777778,
+          "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+          "chunkIndex": 48
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": true
+      },
+      {
+        "k": 15,
+        "covered": false
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+    "question": "How do their models decide how much improtance to give to the output words?",
+    "firstCompleteQuoteRank": 6,
+    "reference": {
+      "referenceIndex": 0,
+      "items": [
+        {
+          "quote": "Given the contribution matrix, we can obtain the word importance of each input word to the entire output sentence. ",
+          "rank": 6
+        }
+      ],
+      "rank": 6
+    },
+    "primaryVisiblePattern": "wording",
+    "observation": "The question says importance of output words; the mechanism passage discusses importance of input words using contributions, aggregation and softmax. The first hit is background about input-output interpretation.",
+    "nextTest": "Test intent-preserving query variants and mechanism-oriented passages; flag the input/output wording mismatch.",
+    "caveat": "Question/reference wording is imperfect, so do not infer one latent model cause.",
+    "previousAnswerReview": {
+      "number": 32,
+      "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+      "question": "How do their models decide how much improtance to give to the output words?",
+      "previousVerdict": "acceptable",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "refused"
+        },
+        {
+          "k": 15,
+          "verdict": "refused"
+        }
+      ],
+      "reason": "Both refuse;5 already states gradient-based attribution and15 additionally provides the contribution matrix and sum/softmax mechanism. The input/output wording is imperfect, but original reference alternatives and supplied text support an answer.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 15,
+          "sha256": "ee808ef6623c757ce1c38e78cb93f5d1d226b97e0275dcbcb1ebde0988920d9d"
+        },
+        {
+          "k": 5,
+          "sha256": "ee808ef6623c757ce1c38e78cb93f5d1d226b97e0275dcbcb1ebde0988920d9d"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "representations may depend on the model imple-\nmentation, which potentially limit the applicabil-\nity of these methods to a broader range of model\narchitectures. Accordingly, we focus on under-\nstanding the input-output behaviors, and validate\non different architectures to demonstrate the uni-\nversality of our findings.\nConcerning interpreting the input-output behav-\nior, previous work generally treats Seq2Seq mod-\nels as black-boxes (Li et al., 2016; Alvarez-Melis",
+        "source": "1909.00326.pdf",
+        "page": 2,
+        "score": 0.75757575,
+        "documentId": "f333ae45-a6f7-49b0-bc68-ed5f41cab417",
+        "chunkIndex": 13
+      },
+      {
+        "text": "5.1 Effect on Detecting Translation Errors\nIn this experiment, we propose to use the es-\ntimated word importance to detect the under-\ntranslated words by NMT models. Intuitively,\nunder-translated input words should contribute lit-\ntle to the NMT outputs, yielding much smaller\nword importance. Given 500 Chinese⇒English\nsentence pairs translated by the Transformer\nmodel (BLEU 23.57), we ask ten human anno-\ntators to manually label the under-translated in-",
+        "source": "1909.00326.pdf",
+        "page": 7,
+        "score": 0.5588235,
+        "documentId": "f333ae45-a6f7-49b0-bc68-ed5f41cab417",
+        "chunkIndex": 63
+      },
+      {
+        "text": "max (Grave et al., 2017) to the input embed-\nding of variable capacity – more important\nwords are assigned with more capacity;\n• NMT Architecture Design: The language-\nspecific inductive bias (e.g., different behav-\niors on POS) should be incorporated into the\nmodel design.\nWe can also explore other applications of word im-\nportance to improve NMT models, such as more\ntailored training methods. In general, model in-\nterpretability can build trust in model predictions,",
+        "source": "1909.00326.pdf",
+        "page": 9,
+        "score": 0.55,
+        "documentId": "f333ae45-a6f7-49b0-bc68-ed5f41cab417",
+        "chunkIndex": 82
+      },
+      {
+        "text": "has advanced the state-of-the-art on various\nlanguage pairs, the interpretability of NMT re-\nmains unsatisfactory. In this work, we propose\nto address this gap by focusing on understand-\ning the input-output behavior of NMT models.\nSpecifically, we measure the word importance\nby attributing the NMT output to every input\nword through a gradient-based method. We\nvalidate the approach on a couple of pertur-\nbation operations, language pairs, and model",
+        "source": "1909.00326.pdf",
+        "page": 1,
+        "score": 0.5151515,
+        "documentId": "f333ae45-a6f7-49b0-bc68-ed5f41cab417",
+        "chunkIndex": 1
+      },
+      {
+        "text": "• Frequent Words: We rank the relative impor-\ntance of input words according to their fre-\nquency in the training corpus. We do not con-\nsider the top 50 most frequent words since\nthey are mostly punctuation and stop words.\n• Causal Model (Alvarez-Melis and Jaakkola,\n2017): Since the causal model is complicated\nto implement and its scores closely resem-\nble attention scores in NMT models. In this\nstudy, we use Attention scores to simulate the\ncausal model.",
+        "source": "1909.00326.pdf",
+        "page": 3,
+        "score": 0.4625,
+        "documentId": "f333ae45-a6f7-49b0-bc68-ed5f41cab417",
+        "chunkIndex": 21
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "M × N , where N is the output sentence length.\nGiven the contribution matrix, we can obtain the\nword importance of each input word to the entire\noutput sentence. To this end, for each input word,\nwe first aggregate its contribution values to all out-\nput words by the sum operation, and then normal-\nize all sums through the Softmax function. Fig-\nure 1 illustrates an example of the calculated word\nimportance and the contribution matrix, where an\nEnglish sentence is translated into a French sen-",
+      "source": "1909.00326.pdf",
+      "page": 3,
+      "score": 0.45,
+      "documentId": "f333ae45-a6f7-49b0-bc68-ed5f41cab417",
+      "chunkIndex": 28
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "Given the contribution matrix, we can obtain the word importance of each input word to the entire output sentence. ",
+        "rank": 6,
+        "chunk": {
+          "text": "M × N , where N is the output sentence length.\nGiven the contribution matrix, we can obtain the\nword importance of each input word to the entire\noutput sentence. To this end, for each input word,\nwe first aggregate its contribution values to all out-\nput words by the sum operation, and then normal-\nize all sums through the Softmax function. Fig-\nure 1 illustrates an example of the calculated word\nimportance and the contribution matrix, where an\nEnglish sentence is translated into a French sen-",
+          "source": "1909.00326.pdf",
+          "page": 3,
+          "score": 0.45,
+          "documentId": "f333ae45-a6f7-49b0-bc68-ed5f41cab417",
+          "chunkIndex": 28
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": true
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "caseId": "pdf/1903.03530/2c85865a65acd429508f50b5e4db9674813d67f2",
+    "question": "Which data do they use as a starting point for the dialogue dataset?",
+    "firstCompleteQuoteRank": 26,
+    "reference": {
+      "referenceIndex": 1,
+      "items": [
+        {
+          "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+          "rank": 26
+        }
+      ],
+      "rank": 26
+    },
+    "primaryVisiblePattern": "wording",
+    "observation": "Starting point and dialogue dataset match the seed-data analysis paragraph strongly. The source passage instead says nurse-initiated telephone recordings for heart-failure patients.",
+    "nextTest": "Distinguish data origin from seed-sample size; test source/corpus-oriented query variants.",
+    "caveat": "The source passage is understandable and has a Data Preparation heading; it is not simply absent or garbled.",
+    "previousAnswerReview": {
+      "number": 28,
+      "caseId": "pdf/1903.03530/2c85865a65acd429508f50b5e4db9674813d67f2",
+      "question": "Which data do they use as a starting point for the dialogue dataset?",
+      "previousVerdict": "failed",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "partial"
+        },
+        {
+          "k": 15,
+          "verdict": "partial"
+        }
+      ],
+      "reason": "Five gives a1200-turn seed size rather than the source. Fifteen identifies nurse-patient conversations but omits the telephone/congestive-heart-failure source specification.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 15,
+          "sha256": "ccb19dd9b5fb114bba1af115b990cca8746f8f17ee673d624d6ba3f1b4a02756"
+        },
+        {
+          "k": 5,
+          "sha256": "feeb88efe23128790b270f1d1a24615eaa28869b27f1fedc126332ba6af6da1e"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "telehealth nurses.\n3.2 Linguistic Characterization on Seed Data\nTo analyze the linguistic structure of the inquiry-\nresponse pairs in the entire 41-hour dataset, we\nrandomly sampled a seed dataset consisting of\n1,200 turns and manually categorized them to\ndifferent types, which are summarized in Ta-\nble 1 along with the corresponding occurrence fre-\nquency statistics. Note that each given utterance\ncould be categorized to more than one type. We\nelaborate on each utterance type below.",
+        "source": "1903.03530.pdf",
+        "page": 4,
+        "score": 0.75757575,
+        "documentId": "d5eb84a2-8ec6-48ae-a867-e83cb14fdb28",
+        "chunkIndex": 32
+      },
+      {
+        "text": "cantly to the achievements obtained so far. The\nfirst factor, the availability of large scale datasets,\nempowers the latter two factors. To date, there is\nstill very limited well-annotated large-scale data\nsuitable for modeling human-human spoken dia-\nlogues. Therefore, it is not straightforward to di-\nrectly port over the recent endeavors in reading\ncomprehension to dialogue comprehension tasks.\nIn healthcare, conversation data is even scarcer\ndue to privacy issues. Crowd-sourcing is an ef-",
+        "source": "1903.03530.pdf",
+        "page": 1,
+        "score": 0.75,
+        "documentId": "d5eb84a2-8ec6-48ae-a867-e83cb14fdb28",
+        "chunkIndex": 7
+      },
+      {
+        "text": "ficient way to annotate large quantities of data,\nbut less suitable for healthcare scenarios, where\ndomain knowledge is required to guarantee data\nquality. To demonstrate the feasibility of a di-\nalogue comprehension system used for extract-\ning key clinical information from symptom moni-\ntoring conversations, we developed a framework\nto construct a simulated human-human dialogue\ndataset to bootstrap such a prototype. Similar ef-\nforts have been conducted for human-machine di-",
+        "source": "1903.03530.pdf",
+        "page": 2,
+        "score": 0.5833334,
+        "documentId": "d5eb84a2-8ec6-48ae-a867-e83cb14fdb28",
+        "chunkIndex": 10
+      },
+      {
+        "text": "Hospital. This research study was approved by\nthe SingHealth Centralised Institutional Review\nBoard (Protocol 1556561515). The patients were\nrecruited during 2014-2016 as part of their routine\ncare delivery, and enrolled into the telemonitoring\nhealth management program with consent for use\nof anonymized versions of their data for research.\nThe dataset comprises a total of 353 conver-\nsations from 40 speakers (11 nurses, 16 patients,\nand 13 caregivers) with consent to the use of",
+        "source": "1903.03530.pdf",
+        "page": 3,
+        "score": 0.55128205,
+        "documentId": "d5eb84a2-8ec6-48ae-a867-e83cb14fdb28",
+        "chunkIndex": 27
+      },
+      {
+        "text": "We propose a framework inspired by nurse-\ninitiated clinical symptom monitoring conver-\nsations to construct a simulated human-human\ndialogue dataset, embodying linguistic char-\nacteristics of spoken interactions like think-\ning aloud, self-contradiction, and topic drift.\nWe then adopt an established bidirectional\nattention pointer network on this simulated\ndataset, achieving more than 80% F1 score\non a held-out test set from real-world nurse-\nto-patient conversations. The ability to au-",
+        "source": "1903.03530.pdf",
+        "page": 1,
+        "score": 0.47692308,
+        "documentId": "d5eb84a2-8ec6-48ae-a867-e83cb14fdb28",
+        "chunkIndex": 2
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "sion from human-machine interviews (Al Hanai\net al., 2018). However, few studies have examined\nhuman-human spoken conversations in healthcare\nsettings.\n3 Real-World Data Analysis\n3.1 Data Preparation\nWe used recordings of nurse-initiated telephone\nconversations for congestive heart failure patients\nundergoing telemonitoring, post-discharge from\nthe hospital. The clinical data was acquired by\nthe Health Management Unit at Changi General\nHospital. This research study was approved by",
+      "source": "1903.03530.pdf",
+      "page": 3,
+      "score": 0.122670814,
+      "documentId": "d5eb84a2-8ec6-48ae-a867-e83cb14fdb28",
+      "chunkIndex": 26
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "recordings of nurse-initiated telephone conversations for congestive heart failure patients",
+        "rank": 26,
+        "chunk": {
+          "text": "sion from human-machine interviews (Al Hanai\net al., 2018). However, few studies have examined\nhuman-human spoken conversations in healthcare\nsettings.\n3 Real-World Data Analysis\n3.1 Data Preparation\nWe used recordings of nurse-initiated telephone\nconversations for congestive heart failure patients\nundergoing telemonitoring, post-discharge from\nthe hospital. The clinical data was acquired by\nthe Health Management Unit at Changi General\nHospital. This research study was approved by",
+          "source": "1903.03530.pdf",
+          "page": 3,
+          "score": 0.122670814,
+          "documentId": "d5eb84a2-8ec6-48ae-a867-e83cb14fdb28",
+          "chunkIndex": 26
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": false
+      }
+    ]
+  },
+  {
+    "number": 8,
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "question": "how large is the vocabulary?",
+    "firstCompleteQuoteRank": 28,
+    "reference": {
+      "referenceIndex": 1,
+      "items": [
+        {
+          "quote": "33,663 distinct review keywords ",
+          "rank": 28
+        }
+      ],
+      "rank": 28
+    },
+    "primaryVisiblePattern": "wording",
+    "observation": "The question says vocabulary size; the answer says33,663distinct review keywords. Earlier passages repeat vocabulary while discussing a vocabulary mismatch, not its size.",
+    "nextTest": "Test vocabulary/lexicon/keyword terminology and keep the count with its dataset description.",
+    "caveat": "The answer chunk starts as a sentence continuation; wording and context are overlapping issues.",
+    "previousAnswerReview": {
+      "number": 31,
+      "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+      "question": "how large is the vocabulary?",
+      "previousVerdict": "failed",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "refused"
+        },
+        {
+          "k": 15,
+          "verdict": "refused"
+        }
+      ],
+      "reason": "Neither gives33,663 keywords; the required number is absent from both selected prompt sets.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 5,
+          "sha256": "ee808ef6623c757ce1c38e78cb93f5d1d226b97e0275dcbcb1ebde0988920d9d"
+        },
+        {
+          "k": 15,
+          "sha256": "ee808ef6623c757ce1c38e78cb93f5d1d226b97e0275dcbcb1ebde0988920d9d"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "vocabulary of users (e.g., when searching and reviewing e-books)\nis an essential task [22].\nProblem and aim of this work. Annotating e-books with suitable\ntags is, however, a complex task as users’ vocabulary may differ\nfrom the one of editors. Such a vocabulary mismatch yet hinders\neffective organization and retrieval [21] of e-books. For example,\nwhile editors mostly annotate e-books with descriptive tags that\nreflect the book’s content, Amazon users often search for parts of",
+        "source": "1908.04042.pdf",
+        "page": 1,
+        "score": 0.9,
+        "documentId": "839a7adc-7511-4599-a88a-2630f62abd7a",
+        "chunkIndex": 7
+      },
+      {
+        "text": "of e-books such as the ISBN, the title, a description text, the author\nand a list of BISACs, which are identifiers for book categories.\nFor the Amazon search terms, we collect search query logs of\n21,243 e-books for 12 months (i.e., November 2017 to October 2018).\nApart from the search terms, this data contains the e-books’ ISBNs,\ntitles and description texts.\nTable 1 shows that the overlap of e-books that have editor tags\nand Amazon search terms is small (i.e., only 497). Furthermore,",
+        "source": "1908.04042.pdf",
+        "page": 2,
+        "score": 0.6666667,
+        "documentId": "839a7adc-7511-4599-a88a-2630f62abd7a",
+        "chunkIndex": 16
+      },
+      {
+        "text": "assigned review keywords (= our test set) for respective e-books.\n2In our experiments, we set N = 20, the minimum document frequency to 10 and the\nminimum word length to 5.\n3.2 Evaluation Metrics\nIn this work, we measure (i) recommendation accuracy, (ii) semantic\nsimilarity, and (iii) recommendation diversity to evaluate the quality\nof our approaches from different perspectives.\nRecommendation accuracy. We use Normalized Discounted Cu-",
+        "source": "1908.04042.pdf",
+        "page": 3,
+        "score": 0.5,
+        "documentId": "839a7adc-7511-4599-a88a-2630f62abd7a",
+        "chunkIndex": 31
+      },
+      {
+        "text": "books on Amazon. Our idea is to not favor one or the other data\nsource (i.e., editor tags and Amazon search terms) when evaluat-\ning our approaches against expected tags. At the same time, we\nconsider Amazon review keywords to be a good mixture of editor\ntags and search terms as they describe both the content and the\nusers’ opinions on the e-books (i.e., the readers’ vocabulary). As\nshown in Table 1, we collect Amazon review keywords for 2,896",
+        "source": "1908.04042.pdf",
+        "page": 2,
+        "score": 0.4107143,
+        "documentId": "839a7adc-7511-4599-a88a-2630f62abd7a",
+        "chunkIndex": 20
+      },
+      {
+        "text": "with the similarity-based approaches, which extract Amazon search\nterms. Their accuracy is, however, very low. Thus, the combina-\ntion of the two vocabularies can provide a good trade-off between\nrecommendation accuracy and diversity.\n5 CONCLUSION AND FUTURE WORK\nIn this paper, we present our work to support editors in the e-book\nannotation process. Specifically, we aim to provide tag recommenda-\ntions that incorporate both the vocabulary of the editors and e-book",
+        "source": "1908.04042.pdf",
+        "page": 5,
+        "score": 0.3904762,
+        "documentId": "839a7adc-7511-4599-a88a-2630f62abd7a",
+        "chunkIndex": 56
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "e-books (publishers: Kiwi, Rowohlt, Fischer, and Droemer), which\nleads to 33,663 distinct review keywords and on average 30 keyword\nassignments per e-book.\n2.2 Tag Recommendation Approaches\nWe implement three types of tag recommendation approaches, i.e.,\n(i) popularity-based, (ii) similarity-based (i.e., using content infor-\nmation), and (iii) hybrid approaches. Due to the lack of personalized\ntags (i.e., we do not know which user has assigned a tag), we do not",
+      "source": "1908.04042.pdf",
+      "page": 2,
+      "score": 0.07692308,
+      "documentId": "839a7adc-7511-4599-a88a-2630f62abd7a",
+      "chunkIndex": 21
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "33,663 distinct review keywords ",
+        "rank": 28,
+        "chunk": {
+          "text": "e-books (publishers: Kiwi, Rowohlt, Fischer, and Droemer), which\nleads to 33,663 distinct review keywords and on average 30 keyword\nassignments per e-book.\n2.2 Tag Recommendation Approaches\nWe implement three types of tag recommendation approaches, i.e.,\n(i) popularity-based, (ii) similarity-based (i.e., using content infor-\nmation), and (iii) hybrid approaches. Due to the lack of personalized\ntags (i.e., we do not know which user has assigned a tag), we do not",
+          "source": "1908.04042.pdf",
+          "page": 2,
+          "score": 0.07692308,
+          "documentId": "839a7adc-7511-4599-a88a-2630f62abd7a",
+          "chunkIndex": 21
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": false
+      }
+    ]
+  },
+  {
+    "number": 9,
+    "caseId": "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",
+    "question": "What argument components do the ML methods aim to identify?",
+    "firstCompleteQuoteRank": 6,
+    "reference": {
+      "referenceIndex": 0,
+      "items": [
+        {
+          "quote": "claim, premise, backing, rebuttal, and refutation",
+          "rank": 6
+        }
+      ],
+      "rank": 6
+    },
+    "primaryVisiblePattern": "wording",
+    "observation": "The first hit says MLmethods identify argument components but does not name them. The answer is in the definition of the modified Toulmin model in a different section.",
+    "nextTest": "Connect task descriptions to model-definition evidence; avoid preferring a question restatement.",
+    "caveat": "The answer chunk itself explicitly lists all five components.",
+    "previousAnswerReview": {
+      "number": 14,
+      "caseId": "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",
+      "question": "What argument components do the ML methods aim to identify?",
+      "previousVerdict": "failed",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "partial"
+        },
+        {
+          "k": 15,
+          "verdict": "correct"
+        }
+      ],
+      "reason": "Five restates identifying argument components without naming them. Fifteen lists claim, premise, backing, rebuttal and refutation.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 15,
+          "sha256": "138cb48a50713bfabc1cf624241e52a48c00c86bf08d28100ca962df063035d2"
+        },
+        {
+          "k": 5,
+          "sha256": "054a54d18487108e56c49248dfcbebae951458853300b4b0a91f9e258685023a"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "of our approach, we train the system on five domains and test on the remaining one for\nall six domains (which we report as cross-domain validation).\n5.1 Identification of argument components\nIn the following experiment, we focus on automatic identification of arguments in the\ndiscourse. Our approach is based on supervised and semi-supervised machine learning\nmethods on the gold data Toulmin dataset introduced in section 4.4.",
+        "source": "1601.02403.pdf",
+        "page": 32,
+        "score": 0.7777778,
+        "documentId": "663870eb-be19-4fb7-9fa0-111ed1cb169d",
+        "chunkIndex": 261
+      },
+      {
+        "text": "dealt with a step that precedes argument analysis by filtering documents given their\npersuasiveness with respect to the controversy. Finally, we proposed a computational\nmodel based on machine learning for identifying argument components (section 5.1). In\nthis identification task, we experimented with a wide range of linguistically motivated\nfeatures and found that (1) the largest feature set (including n-grams, structural features,",
+        "source": "1601.02403.pdf",
+        "page": 42,
+        "score": 0.537037,
+        "documentId": "663870eb-be19-4fb7-9fa0-111ed1cb169d",
+        "chunkIndex": 341
+      },
+      {
+        "text": "Computational Linguistics Volume 43, Number 1\n4.4.10 Discussion. Manually analyzing argumentative discourse and reconstructing\n(annotating) the underlying argument structure and its components is difficult. As Reed\nand Rowe (2006, p. 267) point out, “the analysis of arguments is often hard, not only for\nstudents, but for experts too.” According to Harrell (2011a, p. 81), argumentation is a skill\nand “even for simple arguments, untrained college students can identify the conclusion but",
+        "source": "1601.02403.pdf",
+        "page": 30,
+        "score": 0.53636366,
+        "documentId": "663870eb-be19-4fb7-9fa0-111ed1cb169d",
+        "chunkIndex": 238
+      },
+      {
+        "text": "4 We used the dataset and core methods from this article in our sequel publication (Habernal and\nGurevych 2015). The main difference is that the this article focuses mainly on corpus annotation, analysis,\nand argumentation on Web in general, while in (Habernal and Gurevych 2015) we explored whether\nmethods for recognizing argument components benefit from using semi-supervised features obtained\nfrom noisy debate portals.",
+        "source": "1601.02403.pdf",
+        "page": 4,
+        "score": 0.46666667,
+        "documentId": "663870eb-be19-4fb7-9fa0-111ed1cb169d",
+        "chunkIndex": 31
+      },
+      {
+        "text": "We proposed a sequence labeling approach to identify argument components in the\ndiscourse and significantly (p < 0.001) outperformed the baseline (0.156) with overall\nmacro-F1 0.251. We also found that a feature set based on word embeddings works well\nin a cross-domain scenario and reaches 0.209 macroF1. We thoroughly examined errors\nmade by the system and proposed future improvements.\nAs the argumentation mining field is still evolving, and to foster future research,",
+        "source": "1601.02403.pdf",
+        "page": 42,
+        "score": 0.4166667,
+        "documentId": "663870eb-be19-4fb7-9fa0-111ed1cb169d",
+        "chunkIndex": 345
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "removing backing (would be only considered “weaker”).\n4.4.3 Model definition. We call the model as a modified Toulmin’s model. It contains five\nargument components, namely claim, premise, backing, rebuttal, and refutation. When\nannotating a document, any arbitrary token span can be labeled with an argument\ncomponent; the components do not overlap. The spans are not known in advance and\nthe annotator thus chooses the span and the component type at the same time. All",
+      "source": "1601.02403.pdf",
+      "page": 19,
+      "score": 0.3857143,
+      "documentId": "663870eb-be19-4fb7-9fa0-111ed1cb169d",
+      "chunkIndex": 151
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "claim, premise, backing, rebuttal, and refutation",
+        "rank": 6,
+        "chunk": {
+          "text": "removing backing (would be only considered “weaker”).\n4.4.3 Model definition. We call the model as a modified Toulmin’s model. It contains five\nargument components, namely claim, premise, backing, rebuttal, and refutation. When\nannotating a document, any arbitrary token span can be labeled with an argument\ncomponent; the components do not overlap. The spans are not known in advance and\nthe annotator thus chooses the span and the component type at the same time. All",
+          "source": "1601.02403.pdf",
+          "page": 19,
+          "score": 0.3857143,
+          "documentId": "663870eb-be19-4fb7-9fa0-111ed1cb169d",
+          "chunkIndex": 151
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": true
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "caseId": "docx/1606.03676/3ddff6b707767c3dd54d7104fe88b628765cae58",
+    "question": "which datasets did they experiment with?",
+    "firstCompleteQuoteRank": 7,
+    "reference": {
+      "referenceIndex": 1,
+      "items": [
+        {
+          "quote": "Universal Dependencies v1.2 treebanks BIBREF21 , hereafter UD1.2",
+          "rank": 7
+        }
+      ],
+      "rank": 7
+    },
+    "primaryVisiblePattern": "topic-over-fact",
+    "observation": "The first result reports performance on16datasets without naming the collection. The Corpora paragraph names Universal Dependencies and treebanks.",
+    "nextTest": "Prefer experimental-dataset statements over results summaries for dataset questions.",
+    "caveat": "Dataset versus corpora/treebanks wording may also matter; the needed paragraph is already coherent.",
+    "previousAnswerReview": {
+      "number": 5,
+      "caseId": "docx/1606.03676/3ddff6b707767c3dd54d7104fe88b628765cae58",
+      "question": "which datasets did they experiment with?",
+      "previousVerdict": "acceptable",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "incorrect"
+        },
+        {
+          "k": 15,
+          "verdict": "correct"
+        }
+      ],
+      "reason": "Five substitutes the SPMRL related-work dataset. Fifteen identifies UD1.2 and its16 languages.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 5,
+          "sha256": "fa4f5c24e53b16f6fefd5f318d8032e68223e77b1eea14e301821c8e5c2fb142"
+        },
+        {
+          "k": 15,
+          "sha256": "a5d8154cc094d9f4f70277107c80325ea463e91e972f37818b47445f551f3ead"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "These results show that Plank et al.'s (2016) bi-LSTM performs extremely well, surpassed by MarMoT on only 3 out of 16 datasets (Czech, French and Italian), and by MElt only once (Indonesian).",
+        "source": "1606.03676.docx",
+        "score": 0.7666667,
+        "documentId": "0de3a548-43cd-4857-92c1-75e0b41da4cd",
+        "chunkIndex": 39
+      },
+      {
+        "text": "In order to select the best performing feature set, we carried out a series of experiments using the multilingual dataset provided during the SPMRL parsing shared task BIBREF42 . This included discarding useless or harmful features and selecting the maximal length of the prefixes and suffixes to be used as features, both for the current word and for the following word.",
+        "source": "1606.03676.docx",
+        "score": 0.6666667,
+        "documentId": "0de3a548-43cd-4857-92c1-75e0b41da4cd",
+        "chunkIndex": 28
+      },
+      {
+        "text": "Despite a few experiments published with MElt on languages other than French BIBREF12 , BIBREF40 , BIBREF41 , the original feature set used by MElt (standard and lexical features) was designed and tested mostly on this language, by building and evaluating tagging models on a variant of the French TreeBank. Since our goal was to carry out experiments in a multilingual setting, we have decided to design our own set of features, using the standard MElt features as a starting point",
+        "source": "1606.03676.docx",
+        "score": 0.5833334,
+        "documentId": "0de3a548-43cd-4857-92c1-75e0b41da4cd",
+        "chunkIndex": 26
+      },
+      {
+        "text": "# Baseline models\n\nIn order to assess the respective contributions of external lexicons and word vector representations, we first compared the results of the three above-mentioned systems when trained without such additional lexical information. Table TABREF11 provides the results of MElt and MarMoT retrained on UD1.2 corpora, together with the results publised on the same corpora by BIBREF20 , using their best model not enhanced by external word vector representations —i.e",
+        "source": "1606.03676.docx",
+        "score": 0.5,
+        "documentId": "0de3a548-43cd-4857-92c1-75e0b41da4cd",
+        "chunkIndex": 37
+      },
+      {
+        "text": ". Models that take advantage of external lexicons should therefore perform comparatively better on datasets containing a higher proportion of rarer words, provided the lexicons' coverage is high. In order to confirm this intuition, we have used a lexical richness metric based on the type/token ratio. Since this ratio is well-known for being sensitive to corpus length, we normalised it by computing it over the 60,000 first tokens of each training set",
+        "source": "1606.03676.docx",
+        "score": 0.4047619,
+        "documentId": "0de3a548-43cd-4857-92c1-75e0b41da4cd",
+        "chunkIndex": 48
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "# Corpora\nWe carried out our experiments on the Universal Dependencies v1.2 treebanks BIBREF21 , hereafter UD1.2, from which morphosyntactically annotated corpora can be trivially extracted. All UD1.2 corpora use a common tag set, the 17 universal PoS tags, which is an extension of the tagset proposed by BIBREF43 .",
+      "source": "1606.03676.docx",
+      "score": 0.35526317,
+      "documentId": "0de3a548-43cd-4857-92c1-75e0b41da4cd",
+      "chunkIndex": 30
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "Universal Dependencies v1.2 treebanks BIBREF21 , hereafter UD1.2",
+        "rank": 7,
+        "chunk": {
+          "text": "# Corpora\nWe carried out our experiments on the Universal Dependencies v1.2 treebanks BIBREF21 , hereafter UD1.2, from which morphosyntactically annotated corpora can be trivially extracted. All UD1.2 corpora use a common tag set, the 17 universal PoS tags, which is an extension of the tagset proposed by BIBREF43 .",
+          "source": "1606.03676.docx",
+          "score": 0.35526317,
+          "documentId": "0de3a548-43cd-4857-92c1-75e0b41da4cd",
+          "chunkIndex": 30
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": true
+      }
+    ]
+  },
+  {
+    "number": 11,
+    "caseId": "docx/1703.10344/2ee715c7c6289669f11a79743a6b2b696073805d",
+    "question": "What baseline model is used?",
+    "firstCompleteQuoteRank": 6,
+    "reference": {
+      "referenceIndex": 1,
+      "items": [
+        {
+          "quote": "B1. The first baseline uses only the salience-based features by Dunietz and Gillick BIBREF11 .",
+          "rank": 4
+        },
+        {
+          "quote": "B2. The second baseline assigns the value relevant to a pair INLINEFORM0 , if and only if INLINEFORM1 appears in the title of INLINEFORM2 .\n\n",
+          "rank": 6
+        },
+        {
+          "quote": "S1: Pick the section from template INLINEFORM0 with the highest lexical similarity to INLINEFORM1 : S1 INLINEFORM2",
+          "rank": 3
+        },
+        {
+          "quote": "S2: Place the news into the most frequent section in INLINEFORM0",
+          "rank": 3
+        }
+      ],
+      "rank": 6
+    },
+    "primaryVisiblePattern": "fragmentation",
+    "observation": "Four baseline definitions span distant sections; B1is rank4, B2rank6, and S1/S2rank3. The first result merely announces comparison with baselines.",
+    "nextTest": "Collect complete baseline definitions and join B1/B2adjacent passages before dropping one at a cutoff.",
+    "caveat": "INLINEFORM placeholders are a separate readability limitation, not evidence that ranking caused their creation.",
+    "previousAnswerReview": {
+      "number": 10,
+      "caseId": "docx/1703.10344/2ee715c7c6289669f11a79743a6b2b696073805d",
+      "question": "What baseline model is used?",
+      "previousVerdict": "failed",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "incorrect"
+        },
+        {
+          "k": 15,
+          "verdict": "partial"
+        }
+      ],
+      "reason": "Five invents an INLINEFORM1 baseline label and omits B2. Fifteen gives the four labels S1/S2/B1/B2, but no explanation of their methods. BORDERLINE: labels may be accepted under a names-only rubric; strict complete informative-answer review retains partial.",
+      "borderline15": true,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 15,
+          "sha256": "eac568441a6541eb4cd02decad8058aa9933da9fe84fe1a40fb600511e1d26ff"
+        },
+        {
+          "k": 5,
+          "sha256": "ab2078ea42ed9c0665bdab5cdd01002ac84caf553d92fd9645b0ef3800c1bd5d"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "The following results measure the effectiveness of our approach in three main aspects: (i) overall performance of INLINEFORM0 and comparison to baselines, (ii) robustness across the years, and (iii) optimal model for the AEP placement task.",
+        "source": "1703.10344.docx",
+        "score": 0.9,
+        "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+        "chunkIndex": 74
+      },
+      {
+        "text": ". Considering that S2 is the overall best performing baseline, through our approach INLINEFORM0 we have a significant improvement of over INLINEFORM1 P=+0.64.",
+        "source": "1703.10344.docx",
+        "score": 0.8333334,
+        "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+        "chunkIndex": 132
+      },
+      {
+        "text": "Baselines. To the best of our knowledge, we are not aware of any comparable approach for this task. Therefore, the baselines we consider are the following:\nS1: Pick the section from template INLINEFORM0 with the highest lexical similarity to INLINEFORM1 : S1 INLINEFORM2\nS2: Place the news into the most frequent section in INLINEFORM0",
+        "source": "1703.10344.docx",
+        "score": 0.75,
+        "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+        "chunkIndex": 121
+      },
+      {
+        "text": "Here we introduce the evaluation setup and analyze the results for the article–entity (AEP) placement task. We only report the evaluation metrics for the `relevant' news-entity pairs. A detailed explanation on why we focus on the `relevant' pairs is provided in Section SECREF16 .\nBaselines. We consider the following baselines for this task.\nB1. The first baseline uses only the salience-based features by Dunietz and Gillick BIBREF11 .",
+        "source": "1703.10344.docx",
+        "score": 0.48717952,
+        "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+        "chunkIndex": 70
+      },
+      {
+        "text": "On the other hand, the baseline S1 has an average precision of P=0.12. The performance across the years varies slightly, with the year 2011 having the highest average precision of P=0.13. Always picking the most frequent section as in S2, as shown in Figure FIGREF66 , results in an average precision of P=0.17, with a uniform distribution across the years.",
+        "source": "1703.10344.docx",
+        "score": 0.43333334,
+        "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+        "chunkIndex": 126
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "B2. The second baseline assigns the value relevant to a pair INLINEFORM0 , if and only if INLINEFORM1 appears in the title of INLINEFORM2 .",
+      "source": "1703.10344.docx",
+      "score": 0.42222223,
+      "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+      "chunkIndex": 71
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "B1. The first baseline uses only the salience-based features by Dunietz and Gillick BIBREF11 .",
+        "rank": 4,
+        "chunk": {
+          "text": "Here we introduce the evaluation setup and analyze the results for the article–entity (AEP) placement task. We only report the evaluation metrics for the `relevant' news-entity pairs. A detailed explanation on why we focus on the `relevant' pairs is provided in Section SECREF16 .\nBaselines. We consider the following baselines for this task.\nB1. The first baseline uses only the salience-based features by Dunietz and Gillick BIBREF11 .",
+          "source": "1703.10344.docx",
+          "score": 0.48717952,
+          "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+          "chunkIndex": 70
+        }
+      },
+      {
+        "quote": "B2. The second baseline assigns the value relevant to a pair INLINEFORM0 , if and only if INLINEFORM1 appears in the title of INLINEFORM2 .\n\n",
+        "rank": 6,
+        "chunk": {
+          "text": "B2. The second baseline assigns the value relevant to a pair INLINEFORM0 , if and only if INLINEFORM1 appears in the title of INLINEFORM2 .",
+          "source": "1703.10344.docx",
+          "score": 0.42222223,
+          "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+          "chunkIndex": 71
+        }
+      },
+      {
+        "quote": "S1: Pick the section from template INLINEFORM0 with the highest lexical similarity to INLINEFORM1 : S1 INLINEFORM2",
+        "rank": 3,
+        "chunk": {
+          "text": "Baselines. To the best of our knowledge, we are not aware of any comparable approach for this task. Therefore, the baselines we consider are the following:\nS1: Pick the section from template INLINEFORM0 with the highest lexical similarity to INLINEFORM1 : S1 INLINEFORM2\nS2: Place the news into the most frequent section in INLINEFORM0",
+          "source": "1703.10344.docx",
+          "score": 0.75,
+          "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+          "chunkIndex": 121
+        }
+      },
+      {
+        "quote": "S2: Place the news into the most frequent section in INLINEFORM0",
+        "rank": 3,
+        "chunk": {
+          "text": "Baselines. To the best of our knowledge, we are not aware of any comparable approach for this task. Therefore, the baselines we consider are the following:\nS1: Pick the section from template INLINEFORM0 with the highest lexical similarity to INLINEFORM1 : S1 INLINEFORM2\nS2: Place the news into the most frequent section in INLINEFORM0",
+          "source": "1703.10344.docx",
+          "score": 0.75,
+          "documentId": "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+          "chunkIndex": 121
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": true
+      },
+      {
+        "k": 15,
+        "covered": true
+      }
+    ]
+  },
+  {
+    "number": 12,
+    "caseId": "docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",
+    "question": "Which machine learning methods are used in experiments?",
+    "firstCompleteQuoteRank": 28,
+    "reference": {
+      "referenceIndex": 0,
+      "items": [
+        {
+          "quote": "Structural Support Vector Machine",
+          "rank": 28
+        }
+      ],
+      "rank": 28
+    },
+    "primaryVisiblePattern": "topic-over-fact",
+    "observation": "The first hit repeats experiment with various machine learning methods. The concrete We chose SVMhmm/Structural Support Vector Machines statement ranks28.",
+    "nextTest": "Prefer specific method-identification statements over generic experiment summaries; test structural method context.",
+    "caveat": "Terminology mismatch is secondary; the answer-bearing chunk is readable and explicit.",
+    "previousAnswerReview": {
+      "number": 1,
+      "caseId": "docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",
+      "question": "Which machine learning methods are used in experiments?",
+      "previousVerdict": "failed",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "incorrect"
+        },
+        {
+          "k": 15,
+          "verdict": "incorrect"
+        }
+      ],
+      "reason": "Both attribute background methods to the target experiments; neither identifies Structural SVM/SVMhmm.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 5,
+          "sha256": "7322091a8757d22a982cc853b47643f985576a086bce1a6dc01b6494f4ebf244"
+        },
+        {
+          "k": 15,
+          "sha256": "39f3387a66ad20e2c2272346c0889f6ced3a8645c9495385c7fd497f6ef12f9d"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "From the computational perspective, we experiment on the annotated data using various machine learning methods in order to extract argument structure from documents. We propose several novel feature sets and identify configurations that run best in in-domain and cross-domain scenarios. To foster research in the community, we provide the annotated data as well as all the experimental software under free license.",
+        "source": "1601.02403.docx",
+        "score": 1,
+        "documentId": "01fa4fe1-a205-42d3-9530-020a96f347c7",
+        "chunkIndex": 25
+      },
+      {
+        "text": "# Identification of argument components\nIn the following experiment, we focus on automatic identification of arguments in the discourse. Our approach is based on supervised and semi-supervised machine learning methods on the gold data Toulmin dataset introduced in section SECREF51 .",
+        "source": "1601.02403.docx",
+        "score": 0.7222222,
+        "documentId": "01fa4fe1-a205-42d3-9530-020a96f347c7",
+        "chunkIndex": 234
+      },
+      {
+        "text": "# Experiments\nThis section presents experiments conducted on the annotated corpora introduced in section SECREF4 . We put the main focus on identifying argument components in the discourse. To comply with the machine learning terminology, in this section we will use the term domain as an equivalent to a topic (remember that our dataset includes six different topics; see section SECREF38 ).",
+        "source": "1601.02403.docx",
+        "score": 0.7,
+        "documentId": "01fa4fe1-a205-42d3-9530-020a96f347c7",
+        "chunkIndex": 232
+      },
+      {
+        "text": ". Finally, we proposed a computational model based on machine learning for identifying argument components (section SECREF108 )",
+        "source": "1601.02403.docx",
+        "score": 0.4166667,
+        "documentId": "01fa4fe1-a205-42d3-9530-020a96f347c7",
+        "chunkIndex": 286
+      },
+      {
+        "text": "Park.Cardie.2014 classified propositions into three classes (unverifiable, verifiable non-experimental, and verifiable experimental) and ignored non-argumentative texts. Using multi-class SVM and a wide range of features (n-grams, POS, sentiment clue words, tense, person) they achieved Macro INLINEFORM0 0.69.",
+        "source": "1601.02403.docx",
+        "score": 0.4,
+        "documentId": "01fa4fe1-a205-42d3-9530-020a96f347c7",
+        "chunkIndex": 70
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "Table TABREF114 shows the distribution of the classes in the gold data Toulmin, where the labeling was already mapped to the sentences. The little presence of rebuttal and refutation (4 classes account only for 3.4% of the data) makes this dataset very unbalanced.\nWe chose SVMhmm BIBREF111 implementation of Structural Support Vector Machines for sequence labeling. Each sentence ( INLINEFORM0 ) is represented as a vector of real-valued features.\nWe defined the following feature sets:",
+      "source": "1601.02403.docx",
+      "score": 0.09555556,
+      "documentId": "01fa4fe1-a205-42d3-9530-020a96f347c7",
+      "chunkIndex": 245
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "Structural Support Vector Machine",
+        "rank": 28,
+        "chunk": {
+          "text": "Table TABREF114 shows the distribution of the classes in the gold data Toulmin, where the labeling was already mapped to the sentences. The little presence of rebuttal and refutation (4 classes account only for 3.4% of the data) makes this dataset very unbalanced.\nWe chose SVMhmm BIBREF111 implementation of Structural Support Vector Machines for sequence labeling. Each sentence ( INLINEFORM0 ) is represented as a vector of real-valued features.\nWe defined the following feature sets:",
+          "source": "1601.02403.docx",
+          "score": 0.09555556,
+          "documentId": "01fa4fe1-a205-42d3-9530-020a96f347c7",
+          "chunkIndex": 245
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": false
+      }
+    ]
+  },
+  {
+    "number": 13,
+    "caseId": "docx/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",
+    "question": "Which dataset do they train their models on?",
+    "firstCompleteQuoteRank": 15,
+    "reference": {
+      "referenceIndex": 0,
+      "items": [
+        {
+          "quote": "relation classification dataset of the SemEval 2010 task 8",
+          "rank": 15
+        }
+      ],
+      "rank": 15
+    },
+    "primaryVisiblePattern": "topic-over-fact",
+    "observation": "The first hit is about training models, learning rates and epochs. The preceding Experiments and Results chunk identifies SemEval2010Task8and train/test sizes, but ranks15.",
+    "nextTest": "Retain the dataset paragraph next to training details; distinguish data identity from optimization settings.",
+    "caveat": "Existing5-hit neighbour expansion already recovers the strict quote.",
+    "previousAnswerReview": {
+      "number": 3,
+      "caseId": "docx/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",
+      "question": "Which dataset do they train their models on?",
+      "previousVerdict": "acceptable",
+      "assessments": [
+        {
+          "k": 5,
+          "verdict": "refused"
+        },
+        {
+          "k": 15,
+          "verdict": "correct"
+        }
+      ],
+      "reason": "Five lacks the dataset identification;15 correctly names SemEval2010Task8.",
+      "borderline15": false,
+      "method": "AI-assisted semantic reading of answers, original references and actual supplied passages; not independent human certification",
+      "answerHashes": [
+        {
+          "k": 5,
+          "sha256": "ee808ef6623c757ce1c38e78cb93f5d1d226b97e0275dcbcb1ebde0988920d9d"
+        },
+        {
+          "k": 15,
+          "sha256": "46e17baf604e845360facd4549b070b006eddce8a0c45cf7c2509cff3280f1db"
+        }
+      ]
+    },
+    "previousInspection": "40-case paired answer review",
+    "topFive": [
+      {
+        "text": "RNN and CNN models were implemented with theano BIBREF12 , BIBREF13 . For all our models, we use L2 regularization with a weight of 0.0001. For CNN training, we use mini batches of 25 training examples while we perform stochastic gradient descent for the RNN. The initial learning rates are 0.2 for the CNN and 0.01 for the RNN. We train the models for 10 (CNN) and 50 (RNN) epochs without early stopping. As activation function, we apply tanh for the CNN and capped ReLU for the RNN",
+        "source": "1605.07333.docx",
+        "score": 1,
+        "documentId": "41fbc381-4753-4922-9b49-e7162f6a491f",
+        "chunkIndex": 31
+      },
+      {
+        "text": "Beside of training single models, we also report ensemble results for which we combined the presented single models with a voting process.",
+        "source": "1605.07333.docx",
+        "score": 0.6666667,
+        "documentId": "41fbc381-4753-4922-9b49-e7162f6a491f",
+        "chunkIndex": 33
+      },
+      {
+        "text": "Pretrained word embeddings. In this study, we used the word2vec toolkit BIBREF11 to train embeddings on an English Wikipedia from May 2014. We only considered words appearing more than 100 times and added a special PADDING token for convolution. This results in an embedding training text of about 485,000 terms and INLINEFORM0 tokens. During model training, the embeddings are updated.",
+        "source": "1605.07333.docx",
+        "score": 0.5833334,
+        "documentId": "41fbc381-4753-4922-9b49-e7162f6a491f",
+        "chunkIndex": 26
+      },
+      {
+        "text": "# Objective Function: Ranking Loss\nRanking. We applied the ranking loss function proposed in deSantos2015 to train our models. It maximizes the distance between the true label INLINEFORM0 and the best competitive label INLINEFORM1 given a data point INLINEFORM2 . The objective function is DISPLAYFORM0",
+        "source": "1605.07333.docx",
+        "score": 0.54347825,
+        "documentId": "41fbc381-4753-4922-9b49-e7162f6a491f",
+        "chunkIndex": 28
+      },
+      {
+        "text": ". Training is performed using backpropagation through time BIBREF9 which unfolds the recurrent computations of the history vector for a certain number of time steps. To avoid exploding gradients, we use gradient clipping with a threshold of 10 BIBREF10 .",
+        "source": "1605.07333.docx",
+        "score": 0.4,
+        "documentId": "41fbc381-4753-4922-9b49-e7162f6a491f",
+        "chunkIndex": 20
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "# Experiments and Results\nWe used the relation classification dataset of the SemEval 2010 task 8 BIBREF8 . It consists of sentences which have been manually labeled with 19 relations (9 directed relations and one artificial class Other). 8,000 sentences have been distributed as training set and 2,717 sentences served as test set. For evaluation, we applied the official scoring script and report the macro F1 score which also served as the official result of the shared task.",
+      "source": "1605.07333.docx",
+      "score": 0.20526317,
+      "documentId": "41fbc381-4753-4922-9b49-e7162f6a491f",
+      "chunkIndex": 30
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "relation classification dataset of the SemEval 2010 task 8",
+        "rank": 15,
+        "chunk": {
+          "text": "# Experiments and Results\nWe used the relation classification dataset of the SemEval 2010 task 8 BIBREF8 . It consists of sentences which have been manually labeled with 19 relations (9 directed relations and one artificial class Other). 8,000 sentences have been distributed as training set and 2,717 sentences served as test set. For evaluation, we applied the official scoring script and report the macro F1 score which also served as the official result of the shared task.",
+          "source": "1605.07333.docx",
+          "score": 0.20526317,
+          "documentId": "41fbc381-4753-4922-9b49-e7162f6a491f",
+          "chunkIndex": 30
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": true
+      },
+      {
+        "k": 15,
+        "covered": true
+      }
+    ]
+  },
+  {
+    "number": 14,
+    "caseId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e",
+    "question": "Why are prior knowledge distillation techniques models are ineffective in producing student models with vocabularies different from the original teacher models?  ",
+    "firstCompleteQuoteRank": 15,
+    "reference": {
+      "referenceIndex": 1,
+      "items": [
+        {
+          "quote": "distillation techniques cannot utilize these, since they require the student and teacher models to share the same vocabulary and output space. This profoundly limits their potential to further reduce model sizes.",
+          "rank": 15
+        }
+      ],
+      "rank": 15
+    },
+    "primaryVisiblePattern": "topic-over-fact",
+    "observation": "The first hit repeats that prior distillation cannot change vocabulary. The because explanation about shared vocabulary/output space is embedded after parameter-count text at rank15.",
+    "nextTest": "Keep the full explanatory paragraph and prefer mechanism evidence for why questions.",
+    "caveat": "The earlier reranker improved this particular explanation, although it worsened the larger test overall.",
+    "previousAnswerReview": null,
+    "previousInspection": "earlier reranker inspection and long-quote audit",
+    "topFive": [
+      {
+        "text": "number of scenarios, especially on mobile and edge devices. In particular, the\ninput word embedding matrix accounts for a significant proportion of the model’s\nmemory footprint, due to the large input vocabulary and embedding dimensions.\nKnowledge distillation techniques have had success at compressing large neural\nnetwork models, but they are ineffective at yielding student models with vocabu-\nlaries different from the original teacher models. We introduce a novel knowledge",
+        "source": "1909.11687v1.pdf",
+        "page": 1,
+        "score": 0.7222222,
+        "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+        "chunkIndex": 1
+      },
+      {
+        "text": "Knowledge distillation (Ba & Caruana, 2014; Hinton et al., 2015) differs from the other discussed\napproaches: the smaller student model may be parametrized differently from the bigger teacher\nmodel, affording more modeling freedom. Teaching a student model to match the soft output label\ndistributions from a larger model alongside the hard ground-truth distribution works well for many\ntasks, such as machine translation (Kim & Rush, 2016) and language modeling (Yu et al., 2018).",
+        "source": "1909.11687v1.pdf",
+        "page": 2,
+        "score": 0.71212125,
+        "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+        "chunkIndex": 16
+      },
+      {
+        "text": "our model leverages layer-wise teacher model parameters to directly optimize the parameters of the\ncorresponding layers in the student model. Specifically, our contributions are:\n• Dual Training: Our teacher and student models have different vocabularies and incompatible to-\nkenizations for the same sequence. To address this during distillation, we feed the teacher model\na mix of teacher vocabulary-tokenized and student vocabulary-tokenized words within a single",
+        "source": "1909.11687v1.pdf",
+        "page": 2,
+        "score": 0.65,
+        "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+        "chunkIndex": 10
+      },
+      {
+        "text": "knowledge distillation (Ba & Caruana, 2014; Hinton et al., 2015) techniques. Here, the goal is to\ntrain a small-footprint student model by borrowing knowledge, such as through a soft predicted label\ndistribution, from a larger pre-trained teacher model.\nHowever, a significant bottleneck that has been overlooked by previous efforts is the input vocabu-\nlary size and its corresponding word embedding matrix, often accounting for a significant proportion",
+        "source": "1909.11687v1.pdf",
+        "page": 1,
+        "score": 0.5833333,
+        "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+        "chunkIndex": 6
+      },
+      {
+        "text": "Under review as a conference paper at ICLR 2020\nFigure 1: Knowledge Distillation on BERT with smaller student vocabulary. (Left) A pre-trained\nteacher BERT model with default BERT parameters (e.g., 30K vocab, 768 hidden state dimension).\n(Right) A student BERT model trained from scratch with smaller vocab (5K) and hidden state di-\nmension (e.g., 48). During distillation, the teacher model randomly selects a vocabulary to segment",
+        "source": "1909.11687v1.pdf",
+        "page": 3,
+        "score": 0.5,
+        "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+        "chunkIndex": 19
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "of all model parameters. For instance, the embedding table of the BERTBASE model, comprising over\n30K WordPiece tokens (Wu et al., 2016b), accounts for over 21% of the model size. While there\nhas been existing work on reducing NLP model vocabulary sizes (Sennrich et al., 2016), distillation\ntechniques cannot utilize these, since they require the student and teacher models to share the same\nvocabulary and output space. This profoundly limits their potential to further reduce model sizes.\n1",
+      "source": "1909.11687v1.pdf",
+      "page": 1,
+      "score": 0.18333334,
+      "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+      "chunkIndex": 7
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "distillation techniques cannot utilize these, since they require the student and teacher models to share the same vocabulary and output space. This profoundly limits their potential to further reduce model sizes.",
+        "rank": 15,
+        "chunk": {
+          "text": "of all model parameters. For instance, the embedding table of the BERTBASE model, comprising over\n30K WordPiece tokens (Wu et al., 2016b), accounts for over 21% of the model size. While there\nhas been existing work on reducing NLP model vocabulary sizes (Sennrich et al., 2016), distillation\ntechniques cannot utilize these, since they require the student and teacher models to share the same\nvocabulary and output space. This profoundly limits their potential to further reduce model sizes.\n1",
+          "source": "1909.11687v1.pdf",
+          "page": 1,
+          "score": 0.18333334,
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 7
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": false
+      }
+    ]
+  },
+  {
+    "number": 15,
+    "caseId": "docx/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d",
+    "question": "Which parallel corpora are used?",
+    "firstCompleteQuoteRank": 11,
+    "reference": {
+      "referenceIndex": 0,
+      "items": [
+        {
+          "quote": "English (EN) and German (DE) sections of the CoNLL 2009 corpus BIBREF13",
+          "rank": 11
+        },
+        {
+          "quote": "EN-DE section of the Europarl corpus BIBREF14",
+          "rank": 11
+        }
+      ],
+      "rank": 11
+    },
+    "primaryVisiblePattern": "topic-over-fact",
+    "observation": "The first hit discusses the usefulness of parallel corpora. The Data paragraph names CoNLL2009and Europarl with language pairs at rank11.",
+    "nextTest": "Prefer the experimental-data paragraph for which-corpus questions; avoid thematic discussion taking all slots.",
+    "caveat": "The Data paragraph is intact, headed and directly answer-bearing; this is not a missing-text case.",
+    "previousAnswerReview": null,
+    "previousInspection": "earlier reranker inspection and long-quote audit",
+    "topFive": [
+      {
+        "text": ". This difficulty in showing the usefulness of parallel corpora for SRI may be due to the current assumptions about role alignments, which mean that only a small percentage of roles are aligned. Further analyses reveals that annotating small amounts of data can easily outperform the performance gains obtained by adding large unlabeled dataset as well as adding parallel corpora.",
+        "source": "1603.01514.docx",
+        "score": 1.1666667,
+        "documentId": "91cfee7a-b523-441d-af4e-632525dac8a3",
+        "chunkIndex": 70
+      },
+      {
+        "text": "As the need for SRL arises in different domains and languages, the existing manually annotated corpora become insufficient to build supervised systems. This has motivated work on unsupervised SRL BIBREF1 , BIBREF2 , BIBREF3 . Previous work has indicated that unsupervised systems could benefit from the word alignment information in parallel text in two or more languages BIBREF4 , BIBREF5 , BIBREF6 . For example, consider the German translation of sentence INLINEFORM0 :\n INLINEFORM0",
+        "source": "1603.01514.docx",
+        "score": 0.7,
+        "documentId": "91cfee7a-b523-441d-af4e-632525dac8a3",
+        "chunkIndex": 5
+      },
+      {
+        "text": "# Abstract\n\nWe propose a Bayesian model of unsupervised semantic role induction in multiple languages, and use it to explore the usefulness of parallel corpora for this task. Our joint Bayesian model consists of individual models for each language plus additional latent variables that capture alignments between roles across languages",
+        "source": "1603.01514.docx",
+        "score": 0.5555556,
+        "documentId": "91cfee7a-b523-441d-af4e-632525dac8a3",
+        "chunkIndex": 1
+      },
+      {
+        "text": ". We find that the biggest impact of adding a parallel corpus to training is actually the increase in mono-lingual data, with the alignments to another language resulting in small improvements, even with labeled data for the other language.",
+        "source": "1603.01514.docx",
+        "score": 0.5,
+        "documentId": "91cfee7a-b523-441d-af4e-632525dac8a3",
+        "chunkIndex": 3
+      },
+      {
+        "text": "# Multilingual Model\n\nThe multilingual model uses word alignments between sentences in a parallel corpus to exploit role correspondences across languages. We make copies of the monolingual model for each language and add additional crosslingual latent variables (CLVs) to couple the monolingual models, capturing crosslingual semantic role patterns. Concretely, when training on parallel sentences, whenever the head words of the arguments are aligned, we add a CLV as a parent of the two corresponding role variables",
+        "source": "1603.01514.docx",
+        "score": 0.44444445,
+        "documentId": "91cfee7a-b523-441d-af4e-632525dac8a3",
+        "chunkIndex": 18
+      }
+    ],
+    "bottleneckChunk": {
+      "text": "# Data\n\nFollowing titovcrosslingual, we run our experiments on the English (EN) and German (DE) sections of the CoNLL 2009 corpus BIBREF13 , and EN-DE section of the Europarl corpus BIBREF14 . We get about 40k EN and 36k DE sentences from the CoNLL 2009 training set, and about 1.5M parallel EN-DE sentences from Europarl. For appropriate comparison, we keep the same setting as in BIBREF6 for automatic parses and argument identification, which we briefly describe here",
+      "source": "1603.01514.docx",
+      "score": 0.24358976,
+      "documentId": "91cfee7a-b523-441d-af4e-632525dac8a3",
+      "chunkIndex": 41
+    },
+    "requiredMatchingChunks": [
+      {
+        "quote": "English (EN) and German (DE) sections of the CoNLL 2009 corpus BIBREF13",
+        "rank": 11,
+        "chunk": {
+          "text": "# Data\n\nFollowing titovcrosslingual, we run our experiments on the English (EN) and German (DE) sections of the CoNLL 2009 corpus BIBREF13 , and EN-DE section of the Europarl corpus BIBREF14 . We get about 40k EN and 36k DE sentences from the CoNLL 2009 training set, and about 1.5M parallel EN-DE sentences from Europarl. For appropriate comparison, we keep the same setting as in BIBREF6 for automatic parses and argument identification, which we briefly describe here",
+          "source": "1603.01514.docx",
+          "score": 0.24358976,
+          "documentId": "91cfee7a-b523-441d-af4e-632525dac8a3",
+          "chunkIndex": 41
+        }
+      },
+      {
+        "quote": "EN-DE section of the Europarl corpus BIBREF14",
+        "rank": 11,
+        "chunk": {
+          "text": "# Data\n\nFollowing titovcrosslingual, we run our experiments on the English (EN) and German (DE) sections of the CoNLL 2009 corpus BIBREF13 , and EN-DE section of the Europarl corpus BIBREF14 . We get about 40k EN and 36k DE sentences from the CoNLL 2009 training set, and about 1.5M parallel EN-DE sentences from Europarl. For appropriate comparison, we keep the same setting as in BIBREF6 for automatic parses and argument identification, which we briefly describe here",
+          "source": "1603.01514.docx",
+          "score": 0.24358976,
+          "documentId": "91cfee7a-b523-441d-af4e-632525dac8a3",
+          "chunkIndex": 41
+        }
+      }
+    ],
+    "productionStyleReplay": [
+      {
+        "k": 5,
+        "covered": false
+      },
+      {
+        "k": 15,
+        "covered": true
+      }
+    ]
+  }
+]

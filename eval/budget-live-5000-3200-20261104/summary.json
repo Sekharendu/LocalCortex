@@ -1,0 +1,56 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "attempts": 20,
+  "stopReason": null,
+  "changedInputs": [],
+  "variants": [
+    {
+      "id": "previous",
+      "totalCap": 4096,
+      "contextCap": 1200,
+      "calls": 10,
+      "succeeded": 0,
+      "failed": 10,
+      "latencyMs": {
+        "mean": null,
+        "median": null,
+        "min": null,
+        "max": null
+      },
+      "usageRecords": 0,
+      "totalInputTokens": 0,
+      "totalOutputTokens": 0,
+      "totalTokens": 0,
+      "totalNeurons": 0,
+      "meanContextTokensEstimate": 1164.4,
+      "meanPromptTokensEstimate": 1583.4,
+      "maxPromptTokensEstimate": 1602,
+      "exactQuoteCovered": 6,
+      "finishReasons": []
+    },
+    {
+      "id": "new",
+      "totalCap": 5000,
+      "contextCap": 3200,
+      "calls": 10,
+      "succeeded": 0,
+      "failed": 10,
+      "latencyMs": {
+        "mean": null,
+        "median": null,
+        "min": null,
+        "max": null
+      },
+      "usageRecords": 0,
+      "totalInputTokens": 0,
+      "totalOutputTokens": 0,
+      "totalTokens": 0,
+      "totalNeurons": 0,
+      "meanContextTokensEstimate": 2893.7,
+      "meanPromptTokensEstimate": 3312.8,
+      "maxPromptTokensEstimate": 3592,
+      "exactQuoteCovered": 7,
+      "finishReasons": []
+    }
+  ]
+}

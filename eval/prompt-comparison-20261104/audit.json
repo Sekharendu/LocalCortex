@@ -1,0 +1,13 @@
+{
+  "actualCallsAudited": 158,
+  "casePairsAudited": 79,
+  "devCasePairs": 40,
+  "offtopicPairs": 39,
+  "allBodiesComparedToSavedWirePromptsAtDispatch": true,
+  "allActualProviderPromptPlus512Fit5000": true,
+  "BForbiddenPhraseMatches": 0,
+  "allFrozenInputAndAppHashesMatch": true,
+  "blindGradesHashUnchanged": true,
+  "focusCases": 5,
+  "evidenceProofBundles": 9
+}

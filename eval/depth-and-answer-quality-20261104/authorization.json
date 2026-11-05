@@ -1,0 +1,11 @@
+{
+  "clientDate": "2026-11-04",
+  "explicitUserReply": "Yes, run the Cloudflare answer test",
+  "approvedExport": "40 sampled dev questions and their selected paper passages",
+  "destination": "Cloudflare Workers AI",
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "maximumGenerationCalls": 80,
+  "depths": [5, 15],
+  "retries": 0,
+  "priorAutomaticRejection": "Initial execution was rejected before the process started because explicit export permission was required. No generation calls started before the user supplied the permission above."
+}

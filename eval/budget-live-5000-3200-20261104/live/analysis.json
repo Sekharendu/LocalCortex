@@ -1,0 +1,374 @@
+{
+  "summary": {
+    "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+    "attempts": 20,
+    "stopReason": null,
+    "changedInputs": [],
+    "variants": [
+      {
+        "id": "previous",
+        "totalCap": 4096,
+        "contextCap": 1200,
+        "calls": 10,
+        "succeeded": 10,
+        "failed": 0,
+        "latencyMs": {
+          "mean": 1317.7181300000002,
+          "median": 801.4728000000005,
+          "min": 504.9528999999966,
+          "p95": 4355.096700000001,
+          "max": 4355.096700000001
+        },
+        "usageRecords": 10,
+        "totalInputTokens": 15935,
+        "totalOutputTokens": 386,
+        "totalTokens": 16321,
+        "totalNeurons": 85.45596551895142,
+        "meanContextTokensEstimate": 1164.4,
+        "meanPromptTokensEstimate": 1583.4,
+        "maxPromptTokensEstimate": 1602,
+        "exactQuoteCovered": 6,
+        "finishReasons": [
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop"
+        ],
+        "meanInputTokens": 1593.5,
+        "meanOutputTokens": 38.6,
+        "meanNeurons": 8.545596551895141,
+        "cachedInputTokens": 0,
+        "maxProviderPromptTokens": 1609,
+        "maxActualPromptPlusOutput": 1685,
+        "providerPromptPlus512WithinConfiguredTotal": true,
+        "providerPromptPlusDefault2000WithinConfiguredTotal": true,
+        "maximumLocalPromptPlusReserve": 2114,
+        "paidEquivalentUSD": 0.0009400156207084655
+      },
+      {
+        "id": "new",
+        "totalCap": 5000,
+        "contextCap": 3200,
+        "calls": 10,
+        "succeeded": 10,
+        "failed": 0,
+        "latencyMs": {
+          "mean": 1199.3081399999996,
+          "median": 956.201149999999,
+          "min": 607.5634000000009,
+          "p95": 2763.3732,
+          "max": 2763.3732
+        },
+        "usageRecords": 10,
+        "totalInputTokens": 33702,
+        "totalOutputTokens": 451,
+        "totalTokens": 34153,
+        "totalNeurons": 169.6017656326294,
+        "meanContextTokensEstimate": 2893.7,
+        "meanPromptTokensEstimate": 3312.8,
+        "maxPromptTokensEstimate": 3592,
+        "exactQuoteCovered": 7,
+        "finishReasons": [
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "stop"
+        ],
+        "meanInputTokens": 3370.2,
+        "meanOutputTokens": 45.1,
+        "meanNeurons": 16.96017656326294,
+        "cachedInputTokens": 0,
+        "maxProviderPromptTokens": 3719,
+        "maxActualPromptPlusOutput": 3798,
+        "providerPromptPlus512WithinConfiguredTotal": true,
+        "providerPromptPlusDefault2000WithinConfiguredTotal": false,
+        "maximumLocalPromptPlusReserve": 4104,
+        "paidEquivalentUSD": 0.0018656194219589233
+      }
+    ]
+  },
+  "audit": {
+    "cases": 10,
+    "calls": 20,
+    "allHttp200": true,
+    "allFinishedStop": true,
+    "frozenInputsUnchanged": true,
+    "generationOnlyLatency": true,
+    "applicationDefaultsChanged": false,
+    "heldOutTestPaperContentRead": false,
+    "retrievalCalls": 0,
+    "rerankerCalls": 0,
+    "rewriteCalls": 0,
+    "graderCalls": 0,
+    "newFasterPairs": 4,
+    "totalReportedNeurons": 255.0577311515808,
+    "limits": "Local tokenizer is llama3 estimate; provider token counts are actual reported values. 512 reserve is unchanged bookkeeping, not output cap; normal API default remains 2000. Full-model window not changed by local total budget.",
+    "latencyCaveat": "Ten sequential paired calls per arm; medians average central two. Nearest-rank p95 equals max at n=10. No streaming TTFT or provider compute-only timings measured. Includes HTTP round trip and body parsing, excludes retrieval.",
+    "metadata": "Saved actual usage including cache tokens, answer text, HTTP status, request/response sizes, headers latency, total latency, timestamps, provider request/completion IDs, model, finish reason, prompt and request hashes. Provider internal metrics were not retained; no inference about their values.",
+    "initialFailure": "Initial sandbox attempts could not resolve api.cloudflare.com; no HTTP response or usage received. Kept in parent directory, excluded from live results."
+  },
+  "pairs": [
+    {
+      "pair": 1,
+      "caseId": "docx/1705.01265/12159f04e0427fe33fa05af6ba8c950f1a5ce5ea",
+      "question": "Which hyperparameters were varied in the experiments on the four tasks?",
+      "previous": {
+        "elapsedMs": 2503.4327000000003,
+        "prompt_tokens": 1590,
+        "completion_tokens": 11,
+        "total_tokens": 1601,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 7.68830680847168
+      },
+      "new": {
+        "elapsedMs": 1434.9560000000001,
+        "prompt_tokens": 2979,
+        "completion_tokens": 53,
+        "total_tokens": 3032,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 15.391791343688965
+      }
+    },
+    {
+      "pair": 2,
+      "caseId": "pdf/1804.07789/1088255980541382a2aa2c0319427702172bbf84",
+      "question": "What is a bifocal attention mechanism?",
+      "previous": {
+        "elapsedMs": 4355.096700000001,
+        "prompt_tokens": 1601,
+        "completion_tokens": 62,
+        "total_tokens": 1663,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 9.293390274047852
+      },
+      "new": {
+        "elapsedMs": 1944.9553000000014,
+        "prompt_tokens": 3688,
+        "completion_tokens": 102,
+        "total_tokens": 3790,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 20.163883209228516
+      }
+    },
+    {
+      "pair": 3,
+      "caseId": "pdf/1912.00667/43f074bacabd0a355b4e0f91a1afd538c0a6244f",
+      "question": "How is the keyword specific expectation elicited from the crowd?",
+      "previous": {
+        "elapsedMs": 894.2997000000014,
+        "prompt_tokens": 1578,
+        "completion_tokens": 62,
+        "total_tokens": 1640,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 9.18702507019043
+      },
+      "new": {
+        "elapsedMs": 2763.3732,
+        "prompt_tokens": 3603,
+        "completion_tokens": 77,
+        "total_tokens": 3680,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 19.00892448425293
+      }
+    },
+    {
+      "pair": 4,
+      "caseId": "docx/1611.08661/b49598b05358117ab1471b8ebd0b042d2f04b2a4",
+      "question": "What neural models are used to encode the text?",
+      "previous": {
+        "elapsedMs": 588.912699999999,
+        "prompt_tokens": 1586,
+        "completion_tokens": 19,
+        "total_tokens": 1605,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 7.913606643676758
+      },
+      "new": {
+        "elapsedMs": 618.6486000000004,
+        "prompt_tokens": 2897,
+        "completion_tokens": 19,
+        "total_tokens": 2916,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 13.976432800292969
+      }
+    },
+    {
+      "pair": 5,
+      "caseId": "pdf/2004.02192/b3de9357c569fb1454be8f2ac5fcecaea295b967",
+      "question": "How many tweets are in the dataset?",
+      "previous": {
+        "elapsedMs": 564.477600000002,
+        "prompt_tokens": 1608,
+        "completion_tokens": 13,
+        "total_tokens": 1621,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 7.832499027252197
+      },
+      "new": {
+        "elapsedMs": 607.5634000000009,
+        "prompt_tokens": 3643,
+        "completion_tokens": 13,
+        "total_tokens": 3656,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 17.24352264404297
+      }
+    },
+    {
+      "pair": 6,
+      "caseId": "pdf/1910.10781/0810b43404686ddfe4ca84783477ae300fdd2ea4",
+      "question": "On top of BERT does the RNN layer work better or the transformer layer?",
+      "previous": {
+        "elapsedMs": 708.6458999999995,
+        "prompt_tokens": 1604,
+        "completion_tokens": 39,
+        "total_tokens": 1643,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 8.606344223022461
+      },
+      "new": {
+        "elapsedMs": 957.2193000000007,
+        "prompt_tokens": 3460,
+        "completion_tokens": 11,
+        "total_tokens": 3471,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 16.336273193359375
+      }
+    },
+    {
+      "pair": 7,
+      "caseId": "docx/1703.10344/984fc3e726848f8f13dfe72b89e3770d00c3a1af",
+      "question": "What features are used to represent the novelty of news articles to entity pages?",
+      "previous": {
+        "elapsedMs": 1094.9563000000016,
+        "prompt_tokens": 1578,
+        "completion_tokens": 70,
+        "total_tokens": 1648,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 9.43082332611084
+      },
+      "new": {
+        "elapsedMs": 857.4048999999977,
+        "prompt_tokens": 3470,
+        "completion_tokens": 66,
+        "total_tokens": 3536,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 18.05863380432129
+      }
+    },
+    {
+      "pair": 8,
+      "caseId": "pdf/1707.05236/9a9d225f9ac35ed35ea02f554f6056af3b42471d",
+      "question": "What textual patterns are extracted?",
+      "previous": {
+        "elapsedMs": 1275.108500000002,
+        "prompt_tokens": 1606,
+        "completion_tokens": 79,
+        "total_tokens": 1685,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 9.834585189819336
+      },
+      "new": {
+        "elapsedMs": 1200.5455000000002,
+        "prompt_tokens": 3719,
+        "completion_tokens": 79,
+        "total_tokens": 3798,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 19.606325149536133
+      }
+    },
+    {
+      "pair": 9,
+      "caseId": "docx/1603.01514/4986f420884f917d1f60d3cea04dc8e64d3b5bf1",
+      "question": "Which additional latent variables are used in the model?",
+      "previous": {
+        "elapsedMs": 687.2982999999986,
+        "prompt_tokens": 1575,
+        "completion_tokens": 20,
+        "total_tokens": 1595,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 7.893211364746094
+      },
+      "new": {
+        "elapsedMs": 955.1829999999973,
+        "prompt_tokens": 2607,
+        "completion_tokens": 20,
+        "total_tokens": 2627,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 12.665779113769531
+      }
+    },
+    {
+      "pair": 10,
+      "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+      "question": "how large is the vocabulary?",
+      "previous": {
+        "elapsedMs": 504.9528999999966,
+        "prompt_tokens": 1609,
+        "completion_tokens": 11,
+        "total_tokens": 1620,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 7.7761735916137695
+      },
+      "new": {
+        "elapsedMs": 653.2321999999986,
+        "prompt_tokens": 3636,
+        "completion_tokens": 11,
+        "total_tokens": 3647,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "neurons": 17.15019989013672
+      }
+    }
+  ]
+}

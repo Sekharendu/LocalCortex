@@ -1,0 +1,50 @@
+{
+  "buckets": [
+    {
+      "mode": "dense",
+      "cases": 119,
+      "counts": {
+        "1-5": 62,
+        "6-15": 28,
+        "16-50": 18,
+        "not-within50": 11
+      },
+      "gateRejected": 2
+    },
+    {
+      "mode": "hybrid",
+      "cases": 119,
+      "counts": {
+        "1-5": 62,
+        "6-15": 30,
+        "16-50": 18,
+        "not-within50": 9
+      },
+      "gateRejected": 2
+    }
+  ],
+  "reviewedCases": 15,
+  "samplePolicy": "Reuse13low-hybrid-rank cases from the earlier40-case answer review and2from earlier reranker/long-item inspection. Purposeful history-based sample, not a random sample of all119.",
+  "sampleBuckets": {
+    "6-15": 10,
+    "16-50": 5
+  },
+  "primaryPatternCounts": {
+    "fragmentation": 5,
+    "metric": 1,
+    "wording": 4,
+    "topic-over-fact": 5
+  },
+  "alreadyRecoveredByExisting5HitAssembly": [
+    4,
+    5,
+    11,
+    13
+  ],
+  "lostBy15HitAssembly": [
+    4,
+    5
+  ],
+  "definition": "Completion rank=min over eligible reference alternatives of max first-hit rank of all required quotes; null if no alternative is complete within50. This is not a semantic first-answer rank.",
+  "limits": "Visible patterns overlap; primary-label counts describe these15cases only, not demonstrated causes or prevalence across all119. Selected-paper benchmark. No new searches or model calls."
+}

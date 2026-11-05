@@ -1,0 +1,105 @@
+{
+  "snapshot": "DEPTH-AND-ANSWER-QUALITY-20261104",
+  "files": [
+    {
+      "file": "eval/depth-and-answer-quality-20261104/answer-attempts.jsonl",
+      "sha256": "69207ac9b751c0970e292e37b42329a56e76865c93e020012b9e63f5aaed3cac",
+      "bytes": 22628
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/answer-execution.json",
+      "sha256": "ecec6918273bc2dd1781a49ef5f49f97fa7c671277daddb84e27838c222a517c",
+      "bytes": 366
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/answer-http.jsonl",
+      "sha256": "13b10427dfa3b998f9d4a71616bc92ead2297fd0b8c0de1f6dec3ecd964ea108",
+      "bytes": 2203
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/answer-review-summary.json",
+      "sha256": "587c2f4e94bd404866e74aed4d12c25002794751ba999f0bd4e83c6da1e351f7",
+      "bytes": 955
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/answer-usage.jsonl",
+      "sha256": "57279662d0acfa832b83a091ba5430ac79c53fb428ab1c5d6e464d249f923138",
+      "bytes": 10932
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/answers.jsonl",
+      "sha256": "2cd1e8a8941f80ef9aa093d6f1d18d2298e4925c21b6ccca73dd9c78b2fd4015",
+      "bytes": 32207
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/authorization.json",
+      "sha256": "4bc76b2a323633fe0897d903602a5879bc84005721db2c7590c75c20cb927195",
+      "bytes": 543
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/coverage-cases.jsonl",
+      "sha256": "56ac5fad808a8b2659138704da52b047dc1faf9552372ceecd0026d5fe541712",
+      "bytes": 1028504
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/coverage.json",
+      "sha256": "ec5eae4855d2c272e20186152e5c8acf7b33ae212359c8e1e9bb02880df27d65",
+      "bytes": 6092
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/manifest.json",
+      "sha256": "b28187cf7d13062bfd0f61d3c87948c874d76dda25352177e06b6d958bd8f9ef",
+      "bytes": 2668
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/prepare.mjs",
+      "sha256": "fc9070501008d3699902227a084baae71b985d9282997bf6e12563a6b51466b2",
+      "bytes": 7227
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/record-review.mjs",
+      "sha256": "6b809b76442900226db29b91ac544fc111bfdb0bd61c3eb4d7cd4327446deac9",
+      "bytes": 9582
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/REPORT.md",
+      "sha256": "d862167864449af4729326f0eacebd6a447b61f9aabf33992fbdf3edc7cda59c",
+      "bytes": 6481
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/report.mjs",
+      "sha256": "445e2797cb7b6b5708188d3d58e8c68798ccdd19069a1ef2c1736372a0de044c",
+      "bytes": 11846
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/requests.jsonl",
+      "sha256": "e588f7713df37a479190e8f29f029a7a5df7620ee1230f0e8ac75ea3610fa714",
+      "bytes": 1048926
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/review-pack.mjs",
+      "sha256": "777e4f43c993eca72780d761b901fef67fbe9269d29f71f9a180446be7bc9fbf",
+      "bytes": 1247
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/review-rubric.md",
+      "sha256": "0b49a9c08557664725d9ca2e1d57150347f443d7867390e95500364b0a584c46",
+      "bytes": 1943
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/reviewed-cases.jsonl",
+      "sha256": "43dde6060afd558186d1cb49bafd98cdd88b80ec835d7091c75be697663ecf1c",
+      "bytes": 29668
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/run-answers.mjs",
+      "sha256": "88b444e4b0a1f90ec97405eeec9b1fab497d3c29d93db910c78621c443b9fd0d",
+      "bytes": 5498
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/summary.json",
+      "sha256": "23f7d1e60486afe40320558cbe6e3f2a1c13d691c6fd21e50f942a129044133e",
+      "bytes": 10073
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+[
+  {
+    "number": 11,
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "cohort": "dev",
+    "question": "How were crowd workers instructed to identify important elements in large document collections?",
+    "paperId": "1704.04452",
+    "evidence": {
+      "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+      "question": "How were crowd workers instructed to identify important elements in large document collections?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "4e02f11019de460893117c370ca8bd0268a5a9fde3fa657448b7bc2ef793985a",
+      "focusRefusalCase": true
+    },
+    "change": "improved",
+    "categoryChanged": true,
+    "arms": {
+      "A": {
+        "blindId": "R66",
+        "grade": "refused",
+        "reason": "Refuses despite supplied task-design paragraph describing topic descriptions, propositions and importance scoring.",
+        "cohort": "dev",
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 2594,
+          "completion_tokens": 11,
+          "total_tokens": 2605,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 12.33138656616211
+        },
+        "elapsedMs": 937.4693999999945,
+        "promptSha256": "73cdc7b23f853fbc279cb2a7b2f9c43f6cb83c98c08d7936993daa1920779e50",
+        "wirePromptSha256": "ff7eff18c9e9f21ce2e46055663319dd526ab35e0dfac24b828eff6a1d30d4df"
+      },
+      "B": {
+        "blindId": "R35",
+        "grade": "adequate",
+        "reason": "Explains topic description, individual propositions and 5-point importance scoring without reading all documents; supplied text supports each claim.",
+        "cohort": "dev",
+        "answer": "Crowd workers were instructed to identify important elements in large document collections by being provided with a description of the document cluster's topic along with individual propositions. They were asked to score each proposition's importance using a 5-point Likert-scale, without needing to read all the documents in the cluster. This approach, called low-context importance annotation, allowed them to efficiently determine important elements by focusing on single propositions rather than entire documents.",
+        "usage": {
+          "prompt_tokens": 2508,
+          "completion_tokens": 86,
+          "total_tokens": 2594,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 14.219281196594238
+        },
+        "elapsedMs": 955.704899999997,
+        "promptSha256": "0cf52dd973d408cc6ee3fd92fe9357bf423a476e84268a2db1ec1eaeba5620c4",
+        "wirePromptSha256": "ed47e5d16a85ba07c605910cc7224781d3cfe91c525041dcf592bcab1b0e6e58"
+      }
+    }
+  },
+  {
+    "number": 70,
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "cohort": "dev",
+    "question": "how large is the vocabulary?",
+    "paperId": "1908.04042",
+    "evidence": {
+      "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+      "question": "how large is the vocabulary?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "7fe14c5da34f7ba10b26d0fac9dc0879e545b4f85a4c089207c1cb8a143d130c",
+      "focusRefusalCase": true
+    },
+    "change": "same",
+    "categoryChanged": false,
+    "arms": {
+      "A": {
+        "blindId": "R22",
+        "grade": "refused",
+        "reason": "Vocabulary count is present but no answer is given.",
+        "cohort": "dev",
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3636,
+          "completion_tokens": 11,
+          "total_tokens": 3647,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.15019989013672
+        },
+        "elapsedMs": 767.6105000000098,
+        "promptSha256": "6bca5c294ba6aba2dad7260b73eb0ee39d271d37568e7be134331ab211e9fc9d",
+        "wirePromptSha256": "88d5b08bb4506d1dcf0cbab7ee7e8ae0891c6a7017272770f2df7e7e4e9a8304"
+      },
+      "B": {
+        "blindId": "R119",
+        "grade": "refused",
+        "reason": "Refuses despite 33663 vocabulary count in supplied passages.",
+        "cohort": "dev",
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3550,
+          "completion_tokens": 11,
+          "total_tokens": 3561,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 16.752487182617188
+        },
+        "elapsedMs": 985.2108000000007,
+        "promptSha256": "30c850ae115a4c6e016b2ef870499e7e8b9e214695aaa4451c1685ac6e10fb7e",
+        "wirePromptSha256": "ffe27bb997a1b77852f1244c5b2e53ce8fb7efce16a4a14ad9acfc39c29d5875"
+      }
+    }
+  },
+  {
+    "number": 71,
+    "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+    "cohort": "dev",
+    "question": "How do their models decide how much improtance to give to the output words?",
+    "paperId": "1909.00326",
+    "evidence": {
+      "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+      "question": "How do their models decide how much improtance to give to the output words?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "af8d41f73c9e79bd3e86bab700a6ba03f1ce7f2d28ccc814ee04f44431028a75",
+      "focusRefusalCase": true
+    },
+    "change": "same",
+    "categoryChanged": false,
+    "arms": {
+      "A": {
+        "blindId": "R134",
+        "grade": "adequate",
+        "reason": "Explains integrated gradients, contribution matrix and aggregation/Softmax.",
+        "cohort": "dev",
+        "answer": "The models use the integrated gradients method to estimate the word importance in an input sentence. This method integrates first-order derivatives to attribute the model predictions to input features, allowing the calculation of the contribution of every input word to every output word, forming a contribution matrix. The word importance of each input word to the entire output sentence is then determined by aggregating its contribution values to all output words and normalizing them through the Softmax function.",
+        "usage": {
+          "prompt_tokens": 3597,
+          "completion_tokens": 88,
+          "total_tokens": 3685,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 19.31639862060547
+        },
+        "elapsedMs": 1490.5320999999967,
+        "promptSha256": "e2d5de81c93b667eedf5d7d1c2b95af130d8bb3fda288b34d8d809cd43eb1a78",
+        "wirePromptSha256": "a7d71c66c471f6752448542dbe8e9abc4515b115df9f5f4870e7d1865e2025f2"
+      },
+      "B": {
+        "blindId": "R57",
+        "grade": "adequate",
+        "reason": "Explains integrated gradients, input/output contribution matrix and sum/Softmax aggregation, all supported.",
+        "cohort": "dev",
+        "answer": "The models use the integrated gradients method to estimate the word importance in an input sentence. This method integrates first-order derivatives to attribute the model predictions to input features, allowing the calculation of the contribution of every input word to every output word, forming a contribution matrix. The word importance of each input word to the entire output sentence is then obtained by aggregating the contribution values to all output words and normalizing them through the Softmax function.",
+        "usage": {
+          "prompt_tokens": 3511,
+          "completion_tokens": 88,
+          "total_tokens": 3599,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 18.918685913085938
+        },
+        "elapsedMs": 11163.556400000001,
+        "promptSha256": "1c5a3d908fa466214578361071a3dd17e501e1ff22b8539c9a2186ce506952aa",
+        "wirePromptSha256": "3cd91ff46ebc0ad169c84021fbe70bb30c1bad0d8d422a959722ee1d474d3cb7"
+      }
+    }
+  },
+  {
+    "number": 76,
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "cohort": "dev",
+    "question": "where did they obtain the annotated clinical notes from?",
+    "paperId": "1912.06262",
+    "evidence": {
+      "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+      "question": "where did they obtain the annotated clinical notes from?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "4429931873c9b4ce976341dd8080e95287c207e7111720c4003252c27caacf3d",
+      "focusRefusalCase": true
+    },
+    "change": "improved",
+    "categoryChanged": true,
+    "arms": {
+      "A": {
+        "blindId": "R84",
+        "grade": "refused",
+        "reason": "Refuses despite explicit i2b2/VA source statement in supplied experiments/data paragraph.",
+        "cohort": "dev",
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3742,
+          "completion_tokens": 11,
+          "total_tokens": 3753,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.640405654907227
+        },
+        "elapsedMs": 1564.990300000005,
+        "promptSha256": "b1934916a649ddf04219930eff67cd986e8c05a391fd707bc26f44927225f50b",
+        "wirePromptSha256": "bd6bf7dd9d00b56dbe23b9910e8bcd9d8a266dd95be2dce11a033e13ec732030"
+      },
+      "B": {
+        "blindId": "R53",
+        "grade": "adequate",
+        "reason": "Correctly identifies 2010 i2b2/VA CE task as source of clinical notes.",
+        "cohort": "dev",
+        "answer": "The annotated clinical notes were obtained from the 2010 i2b2/VA CE task.",
+        "usage": {
+          "prompt_tokens": 3656,
+          "completion_tokens": 23,
+          "total_tokens": 3679,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.608388900756836
+        },
+        "elapsedMs": 915.482799999998,
+        "promptSha256": "53449622c83e260177c58cd0f3df0fe0b84489a69aad4023668a8346b4f7901c",
+        "wirePromptSha256": "c0e0d42068aa22f7252b2dfab65f3d6bffcf0f4c124044d19c6c69684567febe"
+      }
+    }
+  },
+  {
+    "number": 78,
+    "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+    "cohort": "dev",
+    "question": "What was the baseline model?",
+    "paperId": "2002.01984",
+    "evidence": {
+      "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+      "question": "What was the baseline model?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "2b4f7996455e711b8258cab043b216f8faf112bb3891af13dac14374be202a84",
+      "focusRefusalCase": true
+    },
+    "change": "same",
+    "categoryChanged": false,
+    "arms": {
+      "A": {
+        "blindId": "R122",
+        "grade": "refused",
+        "reason": "Refuses despite supplied always-YES baseline statement.",
+        "cohort": "dev",
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3636,
+          "completion_tokens": 11,
+          "total_tokens": 3647,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.15019989013672
+        },
+        "elapsedMs": 518.3438000000024,
+        "promptSha256": "dcc69d0b696e067dd45929b34ad1b5b253680c8e6898dbdfba4424657599e642",
+        "wirePromptSha256": "d7365c468fede0a0ff8a4ebaf0fb660613442e6fdfbdce3a0ad54887324b4914"
+      },
+      "B": {
+        "blindId": "R106",
+        "grade": "refused",
+        "reason": "Only claims baseline is not mentioned; actual supplied text specifies always YES. Wrong refusal, not a substantive partial answer.",
+        "cohort": "dev",
+        "answer": "The baseline model is not explicitly mentioned in the provided context.",
+        "usage": {
+          "prompt_tokens": 3550,
+          "completion_tokens": 13,
+          "total_tokens": 3563,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 16.81343650817871
+        },
+        "elapsedMs": 826.75,
+        "promptSha256": "c8ab291d8179e4bb1db1e696878667a5bf094e37d46abc79b82c42c162b8f344",
+        "wirePromptSha256": "1e733099dd405a610f5140e6bc47a0915de74989703a1a567fd0c944de050c53"
+      }
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "cases": 119,
+  "variants": 4,
+  "assembledPromptCoverageChecks": 476,
+  "promptTokenRecounts": 476,
+  "baselinePromptAndContextMatches": 119,
+  "allFlipLabelsAndAggregatesVerified": true,
+  "inputsAndApplicationSnapshotsUnchanged": true,
+  "budgetViolations": 0,
+  "retrievalCalls": 0,
+  "generationCalls": 0,
+  "networkCalls": 0
+}

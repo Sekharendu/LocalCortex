@@ -1,0 +1,402 @@
+[
+  {
+    "caseId": "docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",
+    "question": "Which machine learning methods are used in experiments?",
+    "status": "partial",
+    "reason": "Experiment/sequence-labeling and feature descriptions are present, but Structural SVM/SVMhmm model identity is missing. Related-work classifier lists are not the target experiment.",
+    "exactQuoteProxy": false,
+    "sameForBothArms": true,
+    "contextSha256": "3538825a188053d1e30e2b3d515c1ed11a59d38133c6f16f0911bde80e12e02d",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1603.01514/6bf5620f295b5243230bc97b340fae6e92304595",
+    "question": "What baseline model is used?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "52c7f73e0e4fe99b418466bd3ce91e95fde3074db70fb957428eee78cf5a1cc7",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",
+    "question": "Which dataset do they train their models on?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "bafe9790f576aea59cf8646749f06e0db066b2a772e635c8425ae757defd2f8a",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1606.02891/642e8cf1d39faa1cd985d16750cdc6696c52db2f",
+    "question": "what are the baseline systems?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "0697607333bcde7b18978c33c233001c6a66c3e4f44b28d9d62a1e0ffe62344e",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1606.03676/3ddff6b707767c3dd54d7104fe88b628765cae58",
+    "question": "which datasets did they experiment with?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "1bc0b3419ba3b3d283ed26fa627bf472852d224a1f457ce6694675f2eefdce3c",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",
+    "question": "what levels of document preprocessing are looked at?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "7c4f6d211e9fcc1df31bca86e9e974024101117e2eeaed05d6d932d65833eee7",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1611.01576/a130306c6662ff489df13fb3f8faa7cba8c52a21",
+    "question": "What pooling function is used?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "b74e557e307ba505fef218fb22a813fda1f65fcf7c2f03c3cd5bbf140ce0bac8",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1701.08229/82642d3111287abf736b781043d49536fe48c350",
+    "question": "How is the dataset annotated?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "543150cc6f703d571711dd397df5d52cc6623de705008fa66cba4d5d4a00daa3",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "question": "what challenges are identified?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "a6f2d9a6b008a6b50e785c5266d77a8198e324de675c5212d5a827a6e8edbaf3",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1703.10344/2ee715c7c6289669f11a79743a6b2b696073805d",
+    "question": "What baseline model is used?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "08b149b38f317202bed90c419590a2773170a6bcc7438b0e405c55a0243bb886",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "question": "How were crowd workers instructed to identify important elements in large document collections?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "4e02f11019de460893117c370ca8bd0268a5a9fde3fa657448b7bc2ef793985a",
+    "focusRefusalCase": true
+  },
+  {
+    "caseId": "docx/1705.04153/ef396a34436072cb3c40b0c9bc9179fee4a168ae",
+    "question": "What tasks do they experiment with?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "6ce11d91ce98cc7bcea63e15813d6b68c7b1913f77573b23738c7112c2f84503",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",
+    "question": "How is the data in the new corpus come sourced?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "2b4b76647d616d68642c8145ae4e5b220db9cd6ab5fc10e098795bb85dbffe19",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",
+    "question": "What argument components do the ML methods aim to identify?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "037b70b99bc895c398821afea23b875572cd6912cff74ee1d993cce03a21d8cf",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",
+    "question": "Is this hashtag prediction task an established task, or something new?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "466ebdd8017db133c18341c96b37fe0aa44cec57b78a906bcdda7b972e2a9868",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1610.00956/e5bc73974c79d96eee2b688e578a9de1d0eb38fd",
+    "question": "How do they show there is space for further improvement?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "06a4c8e9479e8af42a7be6b26340a3323ec4787041a88d18534dd64ca2be0c83",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",
+    "question": "what levels of document preprocessing are looked at?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "ee6f31b050c02272472217a085a3ca61c23b20dfa92e4ed6083ac5602e88025a",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "question": "what challenges are identified?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "0530788747dda70d9d16202ae11df6f8a770df4da1c7ff1015df5e43dfc6fa89",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",
+    "question": "How are sentences selected from the summary graph?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "697bcf011e4b1d73fe869092eb7fa2e8205b9968793043d812b88b0a8c3e9f90",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+    "question": "What is the source of the news articles?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "9ef6ed298bcc296892c4971d4b99327b3cb206525d2229768ed87883839ec9f3",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1708.01464/55c8f7acbfd4f5cde634aaecd775b3bb32e9ffa3",
+    "question": "what evaluation metrics were used?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "07071826f51711d8e9bd6905e8d1ba64cf264bdc81d3abe47dd4e643516e20e6",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",
+    "question": "In what cases is attention different from alignment?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "e9436ed11e650df6739d15570be0b4ae56c929073eebb4d2810657ea1a3ce902",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",
+    "question": "What useful information does attention capture?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "c7f8a34404a04eeb170e26901714d55da518900bc4a34a51c4e3013fb2f29504",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1802.07862/1591068b747c94f45b948e12edafe74b5e721047",
+    "question": "How large is their MNER SnapCaptions dataset?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "c4209cc352ab6a89c840e27d5bfec79eecc8ef4af4383c318aa89e73bb2fce8c",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+    "question": "What types of social media did they consider?",
+    "status": "absent",
+    "reason": "The target Facebook status-update source identification is missing. Social-media/tweet-feature/related-work mentions do not establish that source.",
+    "exactQuoteProxy": false,
+    "sameForBothArms": true,
+    "contextSha256": "15ebe966af94463c27e7752a425e2db632c6b0badc227ab46cc1bec623a077ef",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1809.01541/5cb610d3d5d7d447b4cd5736d6a7d8262140af58",
+    "question": "How do they perform multilingual training?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "395ca93ff764f55a5d265ef811f0bfcf39eabae6c846f3a18ad9d50be5a942a7",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1810.04428/ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb",
+    "question": "what are the sizes of both datasets?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "0a50b6112b2333980c0aba664adce5759590fd3bfd4227f357b62acdb6cff100",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1903.03530/2c85865a65acd429508f50b5e4db9674813d67f2",
+    "question": "Which data do they use as a starting point for the dialogue dataset?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "a558cbc095c9bee016215e02db12c08dd26d93d66832c2a0aab607d37b7aed38",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f",
+    "question": "What set of approaches to hashtag segmentation are proposed?",
+    "status": "partial",
+    "reason": "Pairwise ranking and multitask learning are supported; margin-ranking-loss component is absent from the selected passages.",
+    "exactQuoteProxy": false,
+    "sameForBothArms": true,
+    "contextSha256": "c69dc3713f25bd8119eb21968e8a35ca3c1cafdbd6814001ac2a96ee4a005ef2",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1907.09369/132f752169adf6dc5ade3e4ca773c11044985da4",
+    "question": "What data is used in experiments?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "23c85996508c0363e859f05465ec181a19999b3df66fd8393d6fc00660a28e28",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "question": "how large is the vocabulary?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "7fe14c5da34f7ba10b26d0fac9dc0879e545b4f85a4c089207c1cb8a143d130c",
+    "focusRefusalCase": true
+  },
+  {
+    "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+    "question": "How do their models decide how much improtance to give to the output words?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "af8d41f73c9e79bd3e86bab700a6ba03f1ce7f2d28ccc814ee04f44431028a75",
+    "focusRefusalCase": true
+  },
+  {
+    "caseId": "pdf/1909.06200/5c3e98e3cebaecd5d3e75ec2c9fc3dd267ac3c83",
+    "question": "What experiments are conducted?",
+    "status": "absent",
+    "reason": "Saved relevance gate returned zero passages.",
+    "exactQuoteProxy": false,
+    "sameForBothArms": true,
+    "contextSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+    "question": "What types of online harassment are studied?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "ad9e461b6d13fb5486132eb1c726bd44392abfbc650e762861ba0ecd98ac8333",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",
+    "question": "What datasets did they use for evaluation?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "4b5b1565efaf5960205efffd4a9ddc844f4f626b2fc8e4b0610c0df9c60b890d",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1912.00667/3941401a182a3d6234894a5c8a75d48c6116c45c",
+    "question": "Which real-world datasets are used?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "e24c6361a1f92389600df83b92e247bfc0cc31875b173fe2e1b58605d3ce317e",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "question": "where did they obtain the annotated clinical notes from?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "4429931873c9b4ce976341dd8080e95287c207e7111720c4003252c27caacf3d",
+    "focusRefusalCase": true
+  },
+  {
+    "caseId": "pdf/2002.01664/4bc2784be43d599000cb71d31928908250d4cef3",
+    "question": "What is the GhostVLAD approach?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "4696e056a524778d9a1634bdea217cd7e2da26e50d0836653d7f03ae7f7a41aa",
+    "focusRefusalCase": false
+  },
+  {
+    "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+    "question": "What was the baseline model?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "2b4f7996455e711b8258cab043b216f8faf112bb3891af13dac14374be202a84",
+    "focusRefusalCase": true
+  },
+  {
+    "caseId": "pdf/2002.02070/29f2954098f055fb19d9502572f085862d75bf61",
+    "question": "What classifiers have been trained?",
+    "status": "complete",
+    "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+    "exactQuoteProxy": true,
+    "sameForBothArms": true,
+    "contextSha256": "72f5fad5c3f43e188cc41cc3dfdf1bacf9a75cac55f042f5bcae70db265dee0d",
+    "focusRefusalCase": false
+  }
+]

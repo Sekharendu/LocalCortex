@@ -1,0 +1,62 @@
+{
+  "createdAt": "2026-11-04T13:46:41.418Z",
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "maximumCalls": 20,
+  "temperature": 0,
+  "maxTokens": "omitted; provider documented default 2000",
+  "timeoutMs": 180000,
+  "history": [],
+  "k": 15,
+  "mode": "hybrid saved top50 sliced to15",
+  "selection": "10 unique nonempty longer-quote dev cases by SHA256(seed42+caseID), independent of outcomes",
+  "order": "paired, alternating first arm",
+  "tokenizer": "existing llama3 estimate; provider actual usage separately recorded",
+  "scope": "same selected paper per case; no new retrieval, reranking, rewrite or grader calls",
+  "authorization": "User requested ten Qwen calls per configuration in this conversation",
+  "inputHashes": [
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    },
+    {
+      "file": "eval/dev-set-preparation-20261103/ready.jsonl",
+      "sha256": "3d2fe52144fa1312e6ccecc3ae0ab11dc93ae395e80364f1fec4ac80351ffadb"
+    },
+    {
+      "file": "eval/dev-set-preparation-20261103/source-chunks.jsonl",
+      "sha256": "916fb0c2936494c472080b6bd31fc4a4e04f9ee707eb4e95d8cab62d864b0f60"
+    },
+    {
+      "file": "eval/dev-retrieval-20261103/pdf.results.jsonl",
+      "sha256": "e89536ec7b75bc2ea2bda81dbe0bce6935ebe8ef8b6fbb69334a0dd535ae377c"
+    },
+    {
+      "file": "eval/dev-retrieval-20261103/docx.results.jsonl",
+      "sha256": "b32299d7af906de24d583a4213ba366513668d3fd909413f2a5b304f3ba2eb2c"
+    },
+    {
+      "file": "src/config.ts",
+      "sha256": "e2560e8baf3a94a272d6e83db65f0434bdee1c8cd14c343b90f7010a5cca072b"
+    },
+    {
+      "file": "src/rag.ts",
+      "sha256": "28ee971c125b646536746010fd52f75c5e6f0ba93996e7d4f30c41a6775cbf93"
+    },
+    {
+      "file": "src/retrieval/context.ts",
+      "sha256": "a6cf67f11c8e56962203debb5250cbb25da8a2b986706456a6df1d79eff59aef"
+    },
+    {
+      "file": "src/generation/llm.ts",
+      "sha256": "39c7dcd8b2a03f0090caecbb0ad850e0f512807ac5b3ac7256041b349b7d1419"
+    },
+    {
+      "file": "src/generation/tokens.ts",
+      "sha256": "a251d2b57ec51daffe6c1040f28cc26f165dacd86ec6700e7ab2401a0ea6ebe1"
+    },
+    {
+      "file": "src/generation/promptBuilder.ts",
+      "sha256": "a50626d13b713171cc0132cf12b57da3f4307ee77e5a5a9b30fb20a069e55389"
+    }
+  ]
+}

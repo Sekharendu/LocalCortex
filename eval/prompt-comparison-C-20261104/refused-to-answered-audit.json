@@ -1,0 +1,22 @@
+[
+  {
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "cohort": "dev",
+    "question": "How were crowd workers instructed to identify important elements in large document collections?",
+    "A": "The provided context is insufficient to answer this question.",
+    "C": "Crowd workers were instructed to identify important elements in large document collections by being provided with a description of the document cluster's topic along with propositions. They were not shown the documents themselves, but instead were asked to score each proposition's importance using a 5-point Likert-scale. This approach allowed them to determine important elements without requiring them to read all documents in a cluster.",
+    "grade": "adequate",
+    "unsupportedAdditions": [],
+    "assessment": "Individually read against actual final context: all new facts are supported by the supplied task-design or clinical-source statement."
+  },
+  {
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "cohort": "dev",
+    "question": "where did they obtain the annotated clinical notes from?",
+    "A": "The provided context is insufficient to answer this question.",
+    "C": "The annotated clinical notes were obtained from the CE task in 2010 i2b2/VA.",
+    "grade": "adequate",
+    "unsupportedAdditions": [],
+    "assessment": "Individually read against actual final context: all new facts are supported by the supplied task-design or clinical-source statement."
+  }
+]

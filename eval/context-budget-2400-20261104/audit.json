@@ -1,0 +1,15 @@
+{
+  "cases": 119,
+  "assembledPrompts": 238,
+  "coverageRecomputedFromActualPassageStrings": true,
+  "tokenTotalsIndependentlyRecounted": 238,
+  "allStrictlyUnder4096With512Reserve": true,
+  "inputAndApplicationHashesUnchanged": true,
+  "baselineReproduced": 87,
+  "expandedCovered": 98,
+  "gained": 11,
+  "lost": 0,
+  "retrievalCalls": 0,
+  "generationCalls": 0,
+  "networkCalls": 0
+}

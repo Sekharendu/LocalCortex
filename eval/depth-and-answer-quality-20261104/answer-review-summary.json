@@ -1,0 +1,56 @@
+{
+  "sampleCases": 40,
+  "uniqueOriginalQuestionIds": 38,
+  "modes": [
+    "hybrid"
+  ],
+  "depths": [
+    5,
+    15
+  ],
+  "judgmentType": "AI-assisted review, not independent human-certified accuracy",
+  "counts": [
+    {
+      "k": 5,
+      "correct": 20,
+      "partial": 5,
+      "incorrect": 5,
+      "refused": 10,
+      "ambiguous": 0,
+      "service_error": 0
+    },
+    {
+      "k": 15,
+      "correct": 27,
+      "partial": 6,
+      "incorrect": 1,
+      "refused": 6,
+      "ambiguous": 0,
+      "service_error": 0
+    }
+  ],
+  "improved": [
+    3,
+    4,
+    5,
+    7,
+    14,
+    19,
+    24,
+    34,
+    36,
+    37
+  ],
+  "regressed": [
+    6,
+    11,
+    18
+  ],
+  "bothCorrect": 17,
+  "borderlineCases": [
+    6,
+    10,
+    18
+  ],
+  "sensitivity": "Three15-chunk partial labels are borderline under a more permissive rubric; accepting all three changes15 correctness from27/40 to30/40. The strict labels and reasons remain available."
+}

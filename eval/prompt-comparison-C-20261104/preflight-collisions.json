@@ -1,0 +1,97 @@
+{
+  "casesChecked": 79,
+  "collisions": [
+    {
+      "caseId": "docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",
+      "question": "Which machine learning methods are used in experiments?",
+      "field": "user",
+      "match": "enough information",
+      "excerpt": "g argument components as sequences of tokens is too fine-grained, as a single token does not convey enough information that could be encoded as features for a machine learner . However, as discussed in section UID73 , the annotations were performed on data p"
+    },
+    {
+      "caseId": "docx/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",
+      "question": "Which dataset do they train their models on?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": ". As input it uses the middle context. In contrast to zeng2014, our CNN does not have an additional fully connected hidden layer. Therefore, we increased the number of convolutional filters to 1200 to keep the number of parameters comparable. Wi"
+    },
+    {
+      "caseId": "docx/1611.01576/a130306c6662ff489df13fb3f8faa7cba8c52a21",
+      "question": "What pooling function is used?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": " and pooling layers in CNNs. The convolutional component, like convolutional layers in CNNs, allows fully parallel computation across both minibatches and spatial dimensions, in this case the sequence dimension. The pooling component, like pooli"
+    },
+    {
+      "caseId": "docx/1611.01576/a130306c6662ff489df13fb3f8faa7cba8c52a21",
+      "question": "What pooling function is used?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": "imension. The pooling component, like pooling layers in CNNs, lacks trainable parameters and allows fully parallel computation across minibatch and feature dimensions. Given an input sequence INLINEFORM0 of INLINEFORM1 INLINEFORM2 -dimensional v"
+    },
+    {
+      "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+      "question": "How were crowd workers instructed to identify important elements in large document collections?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": "F0 , BIBREF1 , BIBREF2 . However, when exploring a set of documents manually, humans rarely write a fully-formulated summary for themselves . Instead, user studies BIBREF3 , BIBREF4 show that they note down important keywords and phrases, try to"
+    },
+    {
+      "caseId": "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",
+      "question": "What argument components do the ML methods aim to identify?",
+      "field": "user",
+      "match": "enough information",
+      "excerpt": "g argument components as sequences of tokens is too fine-grained, as a single token does not convey enough information that could be encoded as features for a machine learner. However, as discussed in section 4.4.5, the annotations were performed on data pre"
+    },
+    {
+      "caseId": "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",
+      "question": "Is this hashtag prediction task an established task, or something new?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": "). The input tweet is bro- --- the forward-GRU, and hb 0 from the backward GRU are combined using a fully-connected layer to the give the final tweet embedding et: et = W f hf m + W bhb 0 (1) Here W f , W b are dt × dh and b is dt × 1 bias term,"
+    },
+    {
+      "caseId": "pdf/1610.00956/e5bc73974c79d96eee2b688e578a9de1d0eb38fd",
+      "question": "How do they show there is space for further improvement?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": " Daily Mail dataset, the largest of the three sets, therefore these datasets are not allowing us to fully use current computing potential; we believe that if the community is striving to bring the performance as far as possible, it should move i"
+    },
+    {
+      "caseId": "pdf/1802.07862/1591068b747c94f45b948e12edafe74b5e721047",
+      "question": "How large is their MNER SnapCaptions dataset?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": "led SnapCap- tions (Snapchat image-caption pairs submitted to public and crowd-sourced stories with fully annotated named entities). We then build upon the state-of-the-art Bi-LSTM word/character based NER models with 1) a deep image net- work w"
+    },
+    {
+      "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+      "question": "What types of social media did they consider?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": "antial differences to what propose in this paper. First, Ji and Bhatia used a pretrained model (not fully optimal for some parts of the given task) in their pipeline; Ji’s model performed worse than the baseline on the categorization of legisla-"
+    },
+    {
+      "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+      "question": "What types of social media did they consider?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": "models in social media analysis and causal relation discourse parsing. Then, we 3RST parsing builds fully hierarchical discourse tree structures out of the whole span of target text which highly depends on syntactic parsing and exact matching of"
+    },
+    {
+      "caseId": "pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f",
+      "question": "What set of approaches to hashtag segmentation are proposed?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": " corpus7 (Berardi et al., 2011); 7Project Gutenberg http://norvig.com/big.txt --- if and only if it fully matches the human segmen- tation. Average token-level F1 score accounts for partially correct segmentation in the multi-token hashtag cases"
+    },
+    {
+      "caseId": "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",
+      "question": "What datasets did they use for evaluation?",
+      "field": "user",
+      "match": "fully",
+      "excerpt": "or of a small Transformer model (2 layers of transformer building block containing self- attention, fully connected, etc.). To investigate if preserving the information about the input sequence order is important, we also build a variant of ToBE"
+    }
+  ],
+  "generationCalls": 0
+}

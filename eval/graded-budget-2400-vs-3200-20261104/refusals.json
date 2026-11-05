@@ -1,0 +1,204 @@
+[
+  {
+    "caseNumber": 11,
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "question": "How were crowd workers instructed to identify important elements in large document collections?",
+    "arm": "A",
+    "evidencePresent": true,
+    "reason": "Wrong refusal: supplied task-design paragraph states topic description plus propositions and importance scoring.",
+    "supportingExcerpts": [
+      {
+        "passageIndex": 2,
+        "text": "31 . Most importantly, it is also much more efficient and scalable, as it does not require workers to read all documents in a cluster.\n# Task Design\n\nWe break down the task of importance annotation to the level of single propositions. The goal of our crowdsourcing scheme is to obtain a score for each proposition indicating its importance in a document cluster, such that a ranking according to the score would reveal what is most important and should be included in a summary. In contrast to other work, we do not show the documents to the workers at all, but provide only a description of the document cluster's topic along with the propositions\n. This ensures that tasks are small, simple and can be done quickly (see Figure FIGREF4 ).\nIn preliminary tests, we found that this design, despite the minimal context, works reasonably on our focus"
+      },
+      {
+        "passageIndex": 2,
+        "text": "reveal what is most important and should be included in a summary. In contrast to other work, we do not show the documents to the workers at all, but provide only a description of the document cluster's topic along with the propositions\n. This ensures that tasks are small, simple and can be done quickly (see Figure FIGREF4 ).\nIn preliminary tests, we found that this design, despite the minimal context, works reasonably on our focused clusters on common educational topics. For instance, consider Figure FIGREF4 : One can easily say that P1 is more important than P2 without reading the documents.\nWe distinguish two task variants:\nInstead of enforcing binary importance decisions, we use a 5-point Likert-scale to allow more fine-grained annotations. The obtained labels are translated into scores (5..1) and the average o"
+      }
+    ],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 11,
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "question": "How were crowd workers instructed to identify important elements in large document collections?",
+    "arm": "B",
+    "evidencePresent": true,
+    "reason": "Wrong refusal: supplied task-design paragraph gives topic-only description, propositions and importance scoring.",
+    "supportingExcerpts": [
+      {
+        "passageIndex": 2,
+        "text": "31 . Most importantly, it is also much more efficient and scalable, as it does not require workers to read all documents in a cluster.\n# Task Design\n\nWe break down the task of importance annotation to the level of single propositions. The goal of our crowdsourcing scheme is to obtain a score for each proposition indicating its importance in a document cluster, such that a ranking according to the score would reveal what is most important and should be included in a summary. In contrast to other work, we do not show the documents to the workers at all, but provide only a description of the document cluster's topic along with the propositions\n. This ensures that tasks are small, simple and can be done quickly (see Figure FIGREF4 ).\nIn preliminary tests, we found that this design, despite the minimal context, works reasonably on our focus"
+      },
+      {
+        "passageIndex": 2,
+        "text": "reveal what is most important and should be included in a summary. In contrast to other work, we do not show the documents to the workers at all, but provide only a description of the document cluster's topic along with the propositions\n. This ensures that tasks are small, simple and can be done quickly (see Figure FIGREF4 ).\nIn preliminary tests, we found that this design, despite the minimal context, works reasonably on our focused clusters on common educational topics. For instance, consider Figure FIGREF4 : One can easily say that P1 is more important than P2 without reading the documents.\nWe distinguish two task variants:\nInstead of enforcing binary importance decisions, we use a 5-point Likert-scale to allow more fine-grained annotations. The obtained labels are translated into scores (5..1) and the average o"
+      }
+    ],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 25,
+    "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+    "question": "What types of social media did they consider?",
+    "arm": "A",
+    "evidencePresent": false,
+    "reason": "No Facebook or status-update source identification is present in the supplied passages.",
+    "supportingExcerpts": [],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 25,
+    "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+    "question": "What types of social media did they consider?",
+    "arm": "B",
+    "evidencePresent": false,
+    "reason": "No Facebook or status-update source identification is present in the supplied passages.",
+    "supportingExcerpts": [],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 31,
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "question": "how large is the vocabulary?",
+    "arm": "A",
+    "evidencePresent": false,
+    "reason": "The required 33,663 vocabulary count is absent from the supplied passages.",
+    "supportingExcerpts": [],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 31,
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "question": "how large is the vocabulary?",
+    "arm": "B",
+    "evidencePresent": true,
+    "reason": "Wrong refusal: supplied passage explicitly says 33,663 distinct review keywords.",
+    "supportingExcerpts": [
+      {
+        "passageIndex": 5,
+        "text": "cabulary). As\nshown in Table 1, we collect Amazon review keywords for 2,896\ne-books (publishers: Kiwi, Rowohlt, Fischer, and Droemer), which\nleads to 33,663 distinct review keywords and on average 30 keyword\nassignments per e-book.\n2.2 Tag Recommendation Approaches\nWe implement three types of tag recommendation approaches, i.e.,\n(i) popularity-based, (ii) similarity-based (i.e., using content infor-\nmation), and (iii) hybrid approaches. Due to the lack of personalized\ntags (i.e., we do not know which user has assigned a tag), we do not"
+      },
+      {
+        "passageIndex": 5,
+        "text": "cabulary). As\nshown in Table 1, we collect Amazon review keywords for 2,896\ne-books (publishers: Kiwi, Rowohlt, Fischer, and Droemer), which\nleads to 33,663 distinct review keywords and on average 30 keyword\nassignments per e-book.\n2.2 Tag Recommendation Approaches\nWe implement three types of tag recommendation approaches, i.e.,\n(i) popularity-based, (ii) similarity-based (i.e., using content infor-\nmation), and (iii) hybrid approaches. Due to the lack of personalized\ntags (i.e., we do not know which user has assigned a tag), we do not"
+      }
+    ],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 32,
+    "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+    "question": "How do their models decide how much improtance to give to the output words?",
+    "arm": "A",
+    "evidencePresent": true,
+    "reason": "Wrong refusal: supplied passages explain gradient attribution and the contribution-matrix sum/Softmax calculation.",
+    "supportingExcerpts": [
+      {
+        "passageIndex": 6,
+        "text": " yielding fairly good performance.\nFollowing the formula, we can calculate the\ncontribution of every input word makes to every\noutput word, forming a contribution matrix of size\nM × N , where N is the output sentence length.\nGiven the contribution matrix, we can obtain the\nword importance of each input word to the entire\noutput sentence. To this end, for each input word,\nwe first aggregate its contribution values to all out-\nput words by the sum operation, and then normal-\nize all sums through the Softmax function. Fig-\nure 1 illustrates an example of the calculated word\nimportance and the contribution matrix, where an\nEnglish sentence is translated into a French sen-\ntence using the Transformer model. A negative"
+      },
+      {
+        "passageIndex": 6,
+        "text": "ry\noutput word, forming a contribution matrix of size\nM × N , where N is the output sentence length.\nGiven the contribution matrix, we can obtain the\nword importance of each input word to the entire\noutput sentence. To this end, for each input word,\nwe first aggregate its contribution values to all out-\nput words by the sum operation, and then normal-\nize all sums through the Softmax function. Fig-\nure 1 illustrates an example of the calculated word\nimportance and the contribution matrix, where an\nEnglish sentence is translated into a French sen-\ntence using the Transformer model. A negative"
+      }
+    ],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 33,
+    "caseId": "pdf/1909.06200/5c3e98e3cebaecd5d3e75ec2c9fc3dd267ac3c83",
+    "question": "What experiments are conducted?",
+    "arm": "A",
+    "evidencePresent": false,
+    "reason": "No passages were supplied because saved retrieval returned no context.",
+    "supportingExcerpts": [],
+    "answer": "I could not find any relevant information in the knowledge base to answer this question."
+  },
+  {
+    "caseNumber": 33,
+    "caseId": "pdf/1909.06200/5c3e98e3cebaecd5d3e75ec2c9fc3dd267ac3c83",
+    "question": "What experiments are conducted?",
+    "arm": "B",
+    "evidencePresent": false,
+    "reason": "No passages were supplied because saved retrieval returned no context.",
+    "supportingExcerpts": [],
+    "answer": "I could not find any relevant information in the knowledge base to answer this question."
+  },
+  {
+    "caseNumber": 37,
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "question": "where did they obtain the annotated clinical notes from?",
+    "arm": "A",
+    "evidencePresent": true,
+    "reason": "Wrong refusal: supplied experiments/data text explicitly states clinical notes from CE task in 2010 i2b2/VA.",
+    "supportingExcerpts": [
+      {
+        "passageIndex": 3,
+        "text": " the results.\n4\nA PREPRINT - DECEMBER 25, 2019\n4 Experiments\n4.1 Data\nDespite the greater similarity between our task and the 2013 ShARe/CLEF Task 1, we use the clinical notes from\nthe CE task in 2010 i2b2/VA on account of 1) the data from 2010 i2b2/VA being easier to access and parse, 2) 2013\nShARe/CLEF containing disjoint entities and hence requiring more complicated tagging schemes. The synthesized user\nqueries are generated using the aforementioned dermatology glossary. Tagged sentences are extracted from the clinical\nnotes. Sentences with no clinical entity present are ignored. 22,489 tagged sentences are extracted from the clinical\nnotes. We will refer to these tagged sentences interchangeably as the i2b2 data. The sentences are shuffled and split\ninto train/dev/test set with a ratio of 7:2:1. The synthesized use"
+      },
+      {
+        "passageIndex": 1,
+        "text": "predefined entities of interest in clinical notes. These entity tagging tasks are also\nknown as clinical Named Entity Recognition (NER). For example, the CE task in 2010 i2b2/VA defines three types of\nentities: “problem”, “treatment”, and “test”. The CE task in 2013 ShARe/CLEF defines various types of disorder such\n∗Corresponding author.\narXiv:1912.06262v2 [cs.IR] 23 Dec 2019"
+      }
+    ],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 37,
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "question": "where did they obtain the annotated clinical notes from?",
+    "arm": "B",
+    "evidencePresent": true,
+    "reason": "Wrong refusal: actual supplied experiments/data passage explicitly identifies clinical notes from CE task in 2010 i2b2/VA.",
+    "supportingExcerpts": [
+      {
+        "passageIndex": 3,
+        "text": " the results.\n4\nA PREPRINT - DECEMBER 25, 2019\n4 Experiments\n4.1 Data\nDespite the greater similarity between our task and the 2013 ShARe/CLEF Task 1, we use the clinical notes from\nthe CE task in 2010 i2b2/VA on account of 1) the data from 2010 i2b2/VA being easier to access and parse, 2) 2013\nShARe/CLEF containing disjoint entities and hence requiring more complicated tagging schemes. The synthesized user\nqueries are generated using the aforementioned dermatology glossary. Tagged sentences are extracted from the clinical\nnotes. Sentences with no clinical entity present are ignored. 22,489 tagged sentences are extracted from the clinical\nnotes. We will refer to these tagged sentences interchangeably as the i2b2 data. The sentences are shuffled and split\ninto train/dev/test set with a ratio of 7:2:1. The synthesized use"
+      },
+      {
+        "passageIndex": 1,
+        "text": "predefined entities of interest in clinical notes. These entity tagging tasks are also\nknown as clinical Named Entity Recognition (NER). For example, the CE task in 2010 i2b2/VA defines three types of\nentities: “problem”, “treatment”, and “test”. The CE task in 2013 ShARe/CLEF defines various types of disorder such\n∗Corresponding author."
+      }
+    ],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 39,
+    "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+    "question": "What was the baseline model?",
+    "arm": "A",
+    "evidencePresent": true,
+    "reason": "Wrong refusal: supplied text explicitly states the always-YES baseline.",
+    "supportingExcerpts": [
+      {
+        "passageIndex": 8,
+        "text": "used on Factoid questions. But we also have done experiments on\nList-type and Yes/No questions.\n5.1 Entailment improves Yes/No accuracy\nWe started by answering always YES (in batch 2 and 3) to get the baseline perfor-\nmance. For batch 4 we used entailment. Our algorithm was very simple: Given a\nquestion we iterate through the candidate sentences and try to find any candidate\nsentence is contradicting the question (with confidence over 50%), if so ’No’ is\nreturned as answer, else ’Yes’ is returned. In batch 4 this strategy produced better\n12\nthan the BioAsq baseline performance, and compared to our other systems, the use\nof entailment increased the performance by about 13% (macro F1 score). We used\n’AllenNlp’ [7] entailment library to find entailment of the candidate sentences with\nquestion.\n5.2 For List-type "
+      },
+      {
+        "passageIndex": 8,
+        "text": "ctoid questions. But we also have done experiments on\nList-type and Yes/No questions.\n5.1 Entailment improves Yes/No accuracy\nWe started by answering always YES (in batch 2 and 3) to get the baseline perfor-\nmance. For batch 4 we used entailment. Our algorithm was very simple: Given a\nquestion we iterate through the candidate sentences and try to find any candidate\nsentence is contradicting the question (with confidence over 50%), if so ’No’ is\nreturned as answer, else ’Yes’ is returned. In batch 4 this strategy produced better\n12\nthan the BioAsq baseline performance, and compared to our other systems, the use\nof entailment increased the performance by about 13% (macro F1 score). We used\n’AllenNlp’ [7] entailment library to find entailment of the candidate sentences with\nquestion.\n5.2 For List-type "
+      }
+    ],
+    "answer": "The provided context is insufficient to answer this question."
+  },
+  {
+    "caseNumber": 39,
+    "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+    "question": "What was the baseline model?",
+    "arm": "B",
+    "evidencePresent": true,
+    "reason": "Wrong refusal: supplied text explicitly says always YES in batches 2 and 3 to get baseline performance.",
+    "supportingExcerpts": [
+      {
+        "passageIndex": 8,
+        "text": "used on Factoid questions. But we also have done experiments on\nList-type and Yes/No questions.\n5.1 Entailment improves Yes/No accuracy\nWe started by answering always YES (in batch 2 and 3) to get the baseline perfor-\nmance. For batch 4 we used entailment. Our algorithm was very simple: Given a\nquestion we iterate through the candidate sentences and try to find any candidate\nsentence is contradicting the question (with confidence over 50%), if so ’No’ is\nreturned as answer, else ’Yes’ is returned. In batch 4 this strategy produced better\n12\nthan the BioAsq baseline performance, and compared to our other systems, the use\nof entailment increased the performance by about 13% (macro F1 score). We used\n’AllenNlp’ [7] entailment library to find entailment of the candidate sentences with\nquestion.\n5.2 For List-type "
+      },
+      {
+        "passageIndex": 8,
+        "text": "ctoid questions. But we also have done experiments on\nList-type and Yes/No questions.\n5.1 Entailment improves Yes/No accuracy\nWe started by answering always YES (in batch 2 and 3) to get the baseline perfor-\nmance. For batch 4 we used entailment. Our algorithm was very simple: Given a\nquestion we iterate through the candidate sentences and try to find any candidate\nsentence is contradicting the question (with confidence over 50%), if so ’No’ is\nreturned as answer, else ’Yes’ is returned. In batch 4 this strategy produced better\n12\nthan the BioAsq baseline performance, and compared to our other systems, the use\nof entailment increased the performance by about 13% (macro F1 score). We used\n’AllenNlp’ [7] entailment library to find entailment of the candidate sentences with\nquestion.\n5.2 For List-type "
+      }
+    ],
+    "answer": "The provided context is insufficient to answer this question."
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "method": "All158answers read individually in randomized order with arm IDs and pairing hidden; frozen before decoding. AI review, not independent human certification; wording can suggest variant.",
+  "sha256": "367bb5d2413f19b5072d7e8d75ad81e4924d2b365773185dde4a0de4a632447b",
+  "devCounts": {
+    "adequate": 61,
+    "partial": 5,
+    "wrong": 4,
+    "refused": 10
+  },
+  "extraMissingInformationCaveatsSeen": 0
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "caseId": "pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",
+    "question": "How is the data in the new corpus come sourced?",
+    "arm": "A",
+    "grade": "partial",
+    "alternativeGrade": "adequate",
+    "reason": "Question may be interpreted as collection process rather than an exhaustive list of source types."
+  },
+  {
+    "caseId": "pdf/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",
+    "question": "what levels of document preprocessing are looked at?",
+    "arm": "A",
+    "grade": "adequate",
+    "alternativeGrade": "adequate",
+    "reason": "Fourth is informal numbering for a supported additional summarization experiment."
+  },
+  {
+    "caseId": "pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",
+    "question": "How are sentences selected from the summary graph?",
+    "arm": "A",
+    "grade": "adequate",
+    "alternativeGrade": "adequate",
+    "reason": "Same alternative-reference interpretation, no need to require the union of both gold alternatives."
+  },
+  {
+    "caseId": "pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",
+    "question": "How are sentences selected from the summary graph?",
+    "arm": "C",
+    "grade": "adequate",
+    "alternativeGrade": "adequate",
+    "reason": "Question wording mixes sentence selection and graph extraction; a complete alternative reference covers sentence-selection methods."
+  },
+  {
+    "caseId": "pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",
+    "question": "What useful information does attention capture?",
+    "arm": "A",
+    "grade": "wrong",
+    "alternativeGrade": "adequate",
+    "reason": "Same core-versus-unsupported-syntactic-extension ambiguity."
+  },
+  {
+    "caseId": "pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",
+    "question": "What useful information does attention capture?",
+    "arm": "C",
+    "grade": "wrong",
+    "alternativeGrade": "adequate",
+    "reason": "Core verb finding is correct; strict grade penalizes unsupported syntax extension."
+  },
+  {
+    "caseId": "pdf/1810.04428/ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb",
+    "question": "what are the sizes of both datasets?",
+    "arm": "A",
+    "grade": "partial",
+    "alternativeGrade": "adequate",
+    "reason": "Training-size-only interpretation possible; gold totals conflict."
+  },
+  {
+    "caseId": "pdf/1810.04428/ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb",
+    "question": "what are the sizes of both datasets?",
+    "arm": "C",
+    "grade": "partial",
+    "alternativeGrade": "adequate",
+    "reason": "Training-size-only interpretation possible; gold totals conflict."
+  }
+]
