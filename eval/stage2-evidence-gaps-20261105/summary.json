@@ -1,0 +1,83 @@
+{
+  "cases": 57,
+  "categories": {
+    "a": 0,
+    "b": 14,
+    "c": 29,
+    "already-present": 3,
+    "unresolved": 11
+  },
+  "subtypes": {
+    "relevance-gate-short-circuit": 25,
+    "earlier-gap-label-not-confirmed": 3,
+    "no-verifiable-complete-answer-witness": 11,
+    "complete-missing-witness-within16-to50": 14,
+    "mapped-witness-not-in50": 2,
+    "answer-representation-unavailable-in-index": 2
+  },
+  "patterns": {
+    "split_across_chunks": 14,
+    "table_or_figure": 9,
+    "different_wording": 37,
+    "generic_outranks_specific": 15
+  },
+  "conditionalWitnessCases": [
+    "R037",
+    "R050",
+    "R089",
+    "R132",
+    "R244",
+    "R283",
+    "R297",
+    "R317",
+    "R336",
+    "R357",
+    "R367",
+    "R460",
+    "R464",
+    "R467",
+    "R542",
+    "R546",
+    "R547",
+    "R554"
+  ],
+  "actualStage2ContextReplaysMatched": 57,
+  "largerBudgetNewlySupplies": [
+    "R187"
+  ],
+  "currentNeighbourSetCanSupply": [
+    "R187",
+    "R306"
+  ],
+  "twoNeighbourSetCanSupply": [
+    "R100",
+    "R187",
+    "R193",
+    "R283",
+    "R306",
+    "R420",
+    "R454",
+    "R532",
+    "R546"
+  ],
+  "first15RankDifferences": [
+    "R187",
+    "R271",
+    "R306",
+    "R454",
+    "R492"
+  ],
+  "compute": {
+    "at": "2026-11-05T11:54:59.057Z",
+    "plannedCases": 4,
+    "plannedMaximumSearches": 8,
+    "searchRequests": 8,
+    "embeddingRequests": 4,
+    "generationCalls": 0,
+    "unscopedSearches": 0,
+    "deniedEndpoints": [],
+    "error": null
+  },
+  "blockedOfflineNetworkAttempts": 0,
+  "sourceIntegrity": true
+}

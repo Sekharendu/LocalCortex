@@ -1,0 +1,890 @@
+{
+  "cohorts": {
+    "dev200": {
+      "old": {
+        "n": 200,
+        "outcomes": {
+          "adequate": {
+            "count": 83,
+            "percent": 41.5
+          },
+          "partial": {
+            "count": 25,
+            "percent": 12.5
+          },
+          "wrong": {
+            "count": 12,
+            "percent": 6
+          },
+          "refused": {
+            "count": 80,
+            "percent": 40
+          }
+        },
+        "gateRejected": 25,
+        "answerability": {
+          "answerable": 170,
+          "mixed": 22,
+          "unanswerable": 8
+        }
+      },
+      "new": {
+        "n": 200,
+        "outcomes": {
+          "adequate": {
+            "count": 116,
+            "percent": 58
+          },
+          "partial": {
+            "count": 23,
+            "percent": 11.5
+          },
+          "wrong": {
+            "count": 14,
+            "percent": 7
+          },
+          "refused": {
+            "count": 47,
+            "percent": 23.5
+          }
+        },
+        "gateRejected": 25,
+        "answerability": {
+          "answerable": 170,
+          "mixed": 22,
+          "unanswerable": 8
+        }
+      }
+    },
+    "earlier40": {
+      "old": {
+        "n": 40,
+        "outcomes": {
+          "adequate": {
+            "count": 26,
+            "percent": 65
+          },
+          "partial": {
+            "count": 4,
+            "percent": 10
+          },
+          "wrong": {
+            "count": 0,
+            "percent": 0
+          },
+          "refused": {
+            "count": 10,
+            "percent": 25
+          }
+        },
+        "gateRejected": 1,
+        "answerability": {
+          "answerable": 40
+        }
+      },
+      "new": {
+        "n": 40,
+        "outcomes": {
+          "adequate": {
+            "count": 32,
+            "percent": 80
+          },
+          "partial": {
+            "count": 2,
+            "percent": 5
+          },
+          "wrong": {
+            "count": 2,
+            "percent": 5
+          },
+          "refused": {
+            "count": 4,
+            "percent": 10
+          }
+        },
+        "gateRejected": 1,
+        "answerability": {
+          "answerable": 40
+        }
+      }
+    },
+    "offtopic": {
+      "old": {
+        "n": 39,
+        "outcomes": {
+          "adequate": {
+            "count": 0,
+            "percent": 0
+          },
+          "partial": {
+            "count": 0,
+            "percent": 0
+          },
+          "wrong": {
+            "count": 0,
+            "percent": 0
+          },
+          "refused": {
+            "count": 39,
+            "percent": 100
+          }
+        },
+        "gateRejected": 28,
+        "answerability": {
+          "offtopic": 39
+        }
+      },
+      "new": {
+        "n": 39,
+        "outcomes": {
+          "adequate": {
+            "count": 0,
+            "percent": 0
+          },
+          "partial": {
+            "count": 0,
+            "percent": 0
+          },
+          "wrong": {
+            "count": 0,
+            "percent": 0
+          },
+          "refused": {
+            "count": 39,
+            "percent": 100
+          }
+        },
+        "gateRejected": 28,
+        "answerability": {
+          "offtopic": 39
+        }
+      }
+    }
+  },
+  "paired": {
+    "dev200": {
+      "same": 144,
+      "improved": 49,
+      "worse": 7,
+      "categoryChanges": 61,
+      "safetyChanges": {
+        "unsafe_answer": 5
+      }
+    },
+    "earlier40": {
+      "same": 32,
+      "improved": 7,
+      "worse": 1,
+      "categoryChanges": 9,
+      "safetyChanges": {
+        "unsafe_answer": 1
+      }
+    },
+    "offtopic": {
+      "same": 39,
+      "categoryChanges": 0,
+      "safetyChanges": {}
+    }
+  },
+  "failures": {
+    "dev200": {
+      "old": {
+        "evidence_absent_refused": 47,
+        "adequate": 83,
+        "evidence_partial_wrong": 6,
+        "evidence_partial_refused": 16,
+        "complete_evidence_refused": 13,
+        "complete_evidence_wrong": 6,
+        "evidence_partial_partial": 15,
+        "expected_refusal": 4,
+        "complete_evidence_partial": 9,
+        "evidence_absent_partial": 1
+      },
+      "new": {
+        "adequate": 116,
+        "evidence_absent_refused": 33,
+        "evidence_partial_refused": 5,
+        "complete_evidence_partial": 10,
+        "evidence_partial_partial": 13,
+        "expected_refusal": 2,
+        "complete_evidence_wrong": 8,
+        "complete_evidence_refused": 7,
+        "evidence_partial_wrong": 5,
+        "evidence_absent_wrong": 1
+      }
+    },
+    "earlier40": {
+      "old": {
+        "adequate": 26,
+        "evidence_absent_refused": 4,
+        "complete_evidence_refused": 4,
+        "evidence_partial_partial": 2,
+        "evidence_partial_refused": 2,
+        "complete_evidence_partial": 2
+      },
+      "new": {
+        "adequate": 32,
+        "evidence_absent_refused": 2,
+        "evidence_absent_wrong": 1,
+        "complete_evidence_partial": 1,
+        "complete_evidence_refused": 2,
+        "evidence_partial_partial": 1,
+        "complete_evidence_wrong": 1
+      }
+    },
+    "offtopic": {
+      "old": {
+        "expected_refusal": 39
+      },
+      "new": {
+        "expected_refusal": 39
+      }
+    }
+  },
+  "evidence": {
+    "dev200": {
+      "old": {
+        "absent": 48,
+        "complete": 111,
+        "partial": 37,
+        "not-applicable": 4
+      },
+      "new": {
+        "complete": 141,
+        "absent": 34,
+        "partial": 23,
+        "not-applicable": 2
+      }
+    },
+    "earlier40": {
+      "old": {
+        "complete": 32,
+        "absent": 4,
+        "partial": 4
+      },
+      "new": {
+        "complete": 36,
+        "absent": 3,
+        "partial": 1
+      }
+    },
+    "offtopic": {
+      "old": {
+        "not-applicable": 39
+      },
+      "new": {
+        "not-applicable": 39
+      }
+    }
+  },
+  "cost": {
+    "all": {
+      "old": {
+        "n": 279,
+        "inputTokens": {
+          "mean": 1285.8458781362008,
+          "max": 1745
+        },
+        "outputTokens": {
+          "mean": 29.379928315412187,
+          "max": 113
+        },
+        "neurons": {
+          "mean": 6.841845579044794,
+          "max": 10.667244911193848
+        },
+        "generationSeconds": {
+          "mean": 1.2208603702509195,
+          "max": 12.8776016
+        },
+        "retrievalSeconds": {
+          "mean": 0.6858115641577083,
+          "max": 47.85259400000051
+        },
+        "endToEndSeconds": {
+          "mean": 1.92559593440858,
+          "max": 50.48480530000106
+        },
+        "totalNeurons": 1908.8749165534973
+      },
+      "new": {
+        "n": 279,
+        "inputTokens": {
+          "mean": 2702.3082437275984,
+          "max": 4044
+        },
+        "outputTokens": {
+          "mean": 41.340501792114694,
+          "max": 257
+        },
+        "neurons": {
+          "mean": 13.756886781330177,
+          "max": 23.065387725830078
+        },
+        "generationSeconds": {
+          "mean": 1.690695827598578,
+          "max": 30.3287175
+        },
+        "retrievalSeconds": {
+          "mean": 0.8836867505376744,
+          "max": 3.7427448999993502
+        },
+        "endToEndSeconds": {
+          "mean": 2.6029465218638492,
+          "max": 31.42835270000002
+        },
+        "totalNeurons": 3838.1714119911194
+      }
+    },
+    "dev200": {
+      "old": {
+        "n": 200,
+        "inputTokens": {
+          "mean": 1395.425,
+          "max": 1745
+        },
+        "outputTokens": {
+          "mean": 30.205,
+          "max": 113
+        },
+        "neurons": {
+          "mean": 7.373747012019157,
+          "max": 10.667244911193848
+        },
+        "generationSeconds": {
+          "mean": 1.280924267500007,
+          "max": 12.8776016
+        },
+        "retrievalSeconds": {
+          "mean": 0.8015023935000126,
+          "max": 47.85259400000051
+        },
+        "endToEndSeconds": {
+          "mean": 2.103309623499979,
+          "max": 50.48480530000106
+        },
+        "totalNeurons": 1474.7494024038315
+      },
+      "new": {
+        "n": 200,
+        "inputTokens": {
+          "mean": 3005.22,
+          "max": 4044
+        },
+        "outputTokens": {
+          "mean": 44.245,
+          "max": 257
+        },
+        "neurons": {
+          "mean": 15.246240782737733,
+          "max": 23.065387725830078
+        },
+        "generationSeconds": {
+          "mean": 1.7290566060000163,
+          "max": 30.3287175
+        },
+        "retrievalSeconds": {
+          "mean": 0.9832285290000284,
+          "max": 3.7427448999993502
+        },
+        "endToEndSeconds": {
+          "mean": 2.7436871710000235,
+          "max": 31.42835270000002
+        },
+        "totalNeurons": 3049.2481565475464
+      }
+    },
+    "earlier40": {
+      "old": {
+        "n": 40,
+        "inputTokens": {
+          "mean": 1471.925,
+          "max": 1633
+        },
+        "outputTokens": {
+          "mean": 40.175,
+          "max": 92
+        },
+        "neurons": {
+          "mean": 8.0313609957695,
+          "max": 10.189135551452637
+        },
+        "generationSeconds": {
+          "mean": 0.9254709175001322,
+          "max": 1.6949956999999995
+        },
+        "retrievalSeconds": {
+          "mean": 0.5623843924999525,
+          "max": 1.145709899999987
+        },
+        "endToEndSeconds": {
+          "mean": 1.506389787499943,
+          "max": 2.2975530999999902
+        },
+        "totalNeurons": 321.25443983078003
+      },
+      "new": {
+        "n": 40,
+        "inputTokens": {
+          "mean": 3205.425,
+          "max": 3721
+        },
+        "outputTokens": {
+          "mean": 55.8,
+          "max": 150
+        },
+        "neurons": {
+          "mean": 16.524241015315056,
+          "max": 20.23562240600586
+        },
+        "generationSeconds": {
+          "mean": 2.5691775975000013,
+          "max": 13.310586900000002
+        },
+        "retrievalSeconds": {
+          "mean": 1.045558750000134,
+          "max": 2.8352993000000715
+        },
+        "endToEndSeconds": {
+          "mean": 3.6470189800002153,
+          "max": 14.702264199999998
+        },
+        "totalNeurons": 660.9696406126022
+      }
+    },
+    "offtopic": {
+      "old": {
+        "n": 39,
+        "inputTokens": {
+          "mean": 533.0512820512821,
+          "max": 1197
+        },
+        "outputTokens": {
+          "mean": 14.076923076923077,
+          "max": 17
+        },
+        "neurons": {
+          "mean": 2.8941301107406616,
+          "max": 5.870846748352051
+        },
+        "generationSeconds": {
+          "mean": 1.2158039256410247,
+          "max": 12.715415
+        },
+        "retrievalSeconds": {
+          "mean": 0.21911723076923054,
+          "max": 1.1096568000000007
+        },
+        "endToEndSeconds": {
+          "mean": 1.444198705128206,
+          "max": 12.917681000000004
+        },
+        "totalNeurons": 112.8710743188858
+      },
+      "new": {
+        "n": 39,
+        "inputTokens": {
+          "mean": 632.8974358974359,
+          "max": 1461
+        },
+        "outputTokens": {
+          "mean": 11.615384615384615,
+          "max": 17
+        },
+        "neurons": {
+          "mean": 3.2808619187428403,
+          "max": 7.09173583984375
+        },
+        "generationSeconds": {
+          "mean": 0.5929669435897451,
+          "max": 1.0600112999999982
+        },
+        "retrievalSeconds": {
+          "mean": 0.207193528205129,
+          "max": 0.40503100000000086
+        },
+        "endToEndSeconds": {
+          "mean": 0.810356056410257,
+          "max": 1.3792584000000025
+        },
+        "totalNeurons": 127.95361483097076
+      }
+    }
+  },
+  "audit": {
+    "successfulCalls": 558,
+    "attempts": 563,
+    "failedAttempts": [
+      {
+        "callId": "pdf/1911.07555/c8541ff10c4e0c8e9eb37d9d7ea408d1914019a9:old",
+        "error": "Cloudflare generation failed while sending or reading the response",
+        "startedAt": "2026-11-04T18:49:57.841Z",
+        "usage": null
+      },
+      {
+        "callId": "pdf/1912.08960/509af1f11bd6f3db59284258e18fdfebe86cae47:new",
+        "error": "Cloudflare generation failed while sending or reading the response",
+        "startedAt": "2026-11-04T18:55:32.099Z",
+        "usage": null
+      },
+      {
+        "callId": "pdf/1904.01548/bd6dc38a9ac8d329114172194b0820766458dacc:new",
+        "error": "Cloudflare generation failed while sending or reading the response",
+        "startedAt": "2026-11-04T18:59:34.233Z",
+        "usage": null
+      },
+      {
+        "callId": "pdf/1910.05603/ceb4bac1f6c506b5dab37607354530faee02ccac:old",
+        "error": "Cloudflare generation failed while sending or reading the response",
+        "startedAt": "2026-11-04T19:03:25.496Z",
+        "usage": null
+      },
+      {
+        "callId": "docx/1610.00956/09c86ef78e567033b725fc56b85c5d2602c1a7c3:old",
+        "error": "Cloudflare generation failed while sending or reading the response",
+        "startedAt": "2026-11-05T07:42:00.242Z",
+        "usage": null
+      }
+    ],
+    "reportedTotalNeurons": 5747.046328544617,
+    "unknownUsageFailures": 5,
+    "finishReasons": {
+      "stop": 558
+    },
+    "maxOutputObserved": 257,
+    "nearBudget": [],
+    "overBudget": [],
+    "frozenHashesUnchanged": true,
+    "hashChecks": [
+      {
+        "file": "src/config.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/rag.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/llm.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/promptBuilder.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/promptVariants.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/retriever.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/vectorStore.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/context.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/embedder.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/sparse.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/sparseStats.ts",
+        "unchanged": true
+      },
+      {
+        "file": "eval/split.json",
+        "unchanged": true
+      },
+      {
+        "file": "eval/stage2-end-to-end-20261105/sample.json",
+        "unchanged": true
+      },
+      {
+        "file": "C:/Users/hp/.codex/visualizations/2026/10/29/01a1861e-e89a-7d02-8dd1-60d661cf470a/qasper-scoped-hybrid-r4/pdf/sparse-stats.json",
+        "unchanged": true
+      },
+      {
+        "file": "src/config.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/rag.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/llm.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/promptBuilder.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/promptVariants.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/retriever.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/vectorStore.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/context.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/embedder.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/sparse.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/sparseStats.ts",
+        "unchanged": true
+      },
+      {
+        "file": "eval/split.json",
+        "unchanged": true
+      },
+      {
+        "file": "eval/stage2-end-to-end-20261105/sample.json",
+        "unchanged": true
+      },
+      {
+        "file": "C:/Users/hp/.codex/visualizations/2026/10/29/01a1861e-e89a-7d02-8dd1-60d661cf470a/qasper-scoped-hybrid-r4/docx/sparse-stats.json",
+        "unchanged": true
+      },
+      {
+        "file": "src/config.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/rag.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/llm.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/promptBuilder.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/generation/promptVariants.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/retriever.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/vectorStore.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/context.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/embedder.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/sparse.ts",
+        "unchanged": true
+      },
+      {
+        "file": "src/retrieval/sparseStats.ts",
+        "unchanged": true
+      },
+      {
+        "file": "eval/split.json",
+        "unchanged": true
+      },
+      {
+        "file": "eval/stage2-end-to-end-20261105/sample.json",
+        "unchanged": true
+      },
+      {
+        "file": "eval/stage2-end-to-end-20261105/handbook-sparse-stats.json",
+        "unchanged": true
+      }
+    ],
+    "networkFilterViolations": 0,
+    "embeddingViolations": 0,
+    "contextViolations": 0,
+    "preparationCount": 563,
+    "freshEmbeddingCalls": 563,
+    "retrievalErrorsFilePresent": false,
+    "generationRequestGuard": "worker.mjs rejects every request unless raw=true, stream=false, max_tokens=512, temperature=0 and model URL matches Qwen3-30b-a3b-fp8",
+    "sample": {
+      "newCases": 200,
+      "newUniqueOriginalQuestionIDs": 188,
+      "earlierCases": 40,
+      "overlapOriginalQuestionIDs": 0,
+      "fullDevStrata": {
+        "pdf/failed": 236,
+        "pdf/acceptable": 170,
+        "pdf/ambiguous": 90,
+        "docx/failed": 51,
+        "docx/acceptable": 34,
+        "docx/ambiguous": 29
+      },
+      "eligiblePoolStrata": {
+        "pdf/failed": 214,
+        "pdf/acceptable": 154,
+        "pdf/ambiguous": 90,
+        "docx/failed": 41,
+        "docx/acceptable": 28,
+        "docx/ambiguous": 29
+      },
+      "sampleStrata": {
+        "pdf/failed": 77,
+        "pdf/acceptable": 55,
+        "pdf/ambiguous": 32,
+        "docx/failed": 15,
+        "docx/acceptable": 10,
+        "docx/ambiguous": 11
+      },
+      "stratificationTarget": "Eligible556dev case units after excluding all earlier-question IDs; largest remainder, no outcome-driven resampling",
+      "sampleFileModifiedUtc": "2026-11-04T18:44:56.303992+00:00"
+    },
+    "newPromptForbiddenPhrase": [],
+    "newPromptForbiddenPhraseInSourceContent": [
+      "pdf/1707.05236/ab9b0bde6113ffef8eb1c39919d21e5913a05081:new",
+      "pdf/1809.01202/4cbe5a36b492b99f9f9fea8081fe4ba10a7a0e94:new",
+      "pdf/1909.00015/f8c1b17d265a61502347c9a937269b38fc3fcab1:new",
+      "pdf/1810.12085/ceb767e33fde4b927e730f893db5ece947ffb0d8:new",
+      "pdf/1912.01772/5cc2daca2a84ddccba9cdd9449e51bb3f64b3dde:new",
+      "pdf/1909.09587/55569d0a4586d20c01268a80a7e31a17a18198e2:new",
+      "pdf/1912.08904/68df324e5fa697baed25c761d0be4c528f7f5cf7:new",
+      "pdf/1703.07090/8060a773f6a136944f7b59758d08cc6f2a59693b:new",
+      "pdf/1912.08904/05c49b9f84772e6df41f530d86c1f7a1da6aa489:new",
+      "pdf/1707.06806/ed67359889cf61fa11ee291d6c378cccf83d599d:new",
+      "pdf/1611.01576/2f901dab6b757e12763b23ae8b37ae2e517a2271:new",
+      "pdf/1912.00667/a74190189a6ced2a2d5b781e445e36f4e527e82a:new",
+      "pdf/1808.09111/5eabfc6cc8aa8a99e6e42514ef9584569cb75dec:new",
+      "pdf/1908.09246/56b034c303983b2e276ed6518d6b080f7b8abe6a:new",
+      "pdf/1910.12574/8748e8f64af57560d124c7b518b853bf2711c13e:new",
+      "pdf/1802.07862/7cd22ca9e107d2b13a7cc94252aaa9007976b338:new",
+      "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4:new",
+      "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747:new",
+      "pdf/1805.08241/14b74ad5a6f5b0506511c9b454e9c464371ef8c4:new",
+      "pdf/2003.13032/8df35c24af9efc3348d3b8d746df116480dfe661:new",
+      "pdf/1610.00956/e5bc73974c79d96eee2b688e578a9de1d0eb38fd:new",
+      "pdf/1910.10781/0810b43404686ddfe4ca84783477ae300fdd2ea4:new",
+      "pdf/1912.04961/99e78c390932594bd833be0f5c890af5c605d808:new",
+      "pdf/1707.05236/9a9d225f9ac35ed35ea02f554f6056af3b42471d:new",
+      "pdf/1702.03856/72755c2d79210857cfff60bfbcb55f83c71ada51:new",
+      "pdf/1610.08815/fabf6fdcfb4c4c7affaa1e4336658c1e6635b1bf:new",
+      "pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f:new",
+      "pdf/1808.10245/8a1c0ef69b6022a0642ca131a8eacb5c97016640:new",
+      "pdf/1802.07862/1591068b747c94f45b948e12edafe74b5e721047:new",
+      "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b:new",
+      "pdf/1802.07862/adbf33c6144b2f5c40d0c6a328a92687a476f371:new",
+      "pdf/1611.03599/518dae6f936882152c162058895db4eca815e649:new",
+      "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246:new",
+      "pdf/1909.03135/d509081673f5667060400eb325a8050fa5db7cc8:new",
+      "pdf/1910.12574/96a4091f681872e6d98d0efee777d9e820cb8dae:new",
+      "pdf/1912.00667/bc730e4d964b6a66656078e2da130310142ab641:new",
+      "pdf/1611.03599/37a79be0148e1751ffb2daabe4c8ec6680036106:new",
+      "docx/1611.01576/a130306c6662ff489df13fb3f8faa7cba8c52a21:new",
+      "docx/1611.01576/b591853e938984e6069d738371500ebdec50d256:new",
+      "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a:new",
+      "docx/1704.04452/8e44c02c2d9fa56fb74ace35ee70a5add50b52ae:new",
+      "docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db:new",
+      "docx/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5:new",
+      "docx/1704.04452/d6191c4643201262a770947fc95a613f57bedb6b:new",
+      "docx/1605.07333/0cfe0e33fbb100751fc0916001a5a19498ae8cb5:new",
+      "docx/1605.07333/0f7867f888109b9e000ef68965df4dde2511a55f:new"
+    ]
+  },
+  "offtopic": {
+    "old": {
+      "n": 39,
+      "refused": 39,
+      "rejectionPercent": 100,
+      "gateRejections": 28,
+      "answered": []
+    },
+    "new": {
+      "n": 39,
+      "refused": 39,
+      "rejectionPercent": 100,
+      "gateRejections": 28,
+      "answered": []
+    }
+  },
+  "absenceAudit": {
+    "answersWithClaims": 95,
+    "sentences": 95,
+    "verdicts": {
+      "true": 80,
+      "borderline": 2,
+      "false": 10,
+      "true-for-completeness-only": 3
+    },
+    "byCohort": {
+      "dev200": {
+        "true": 39,
+        "borderline": 2,
+        "false": 8,
+        "true-for-completeness-only": 3
+      },
+      "earlier40": {
+        "true": 2,
+        "false": 2
+      },
+      "offtopic": {
+        "true": 39
+      }
+    },
+    "falseClaims": [
+      "R188",
+      "R190",
+      "R208",
+      "R238",
+      "R310",
+      "R447",
+      "R487",
+      "R490",
+      "R505",
+      "R549"
+    ]
+  },
+  "refusalTransitions": {
+    "n": 39,
+    "unsupported": 6
+  },
+  "unambiguousAnswerable": {
+    "old": {
+      "n": 170,
+      "adequate": 79,
+      "partial": 22,
+      "wrong": 10,
+      "refused": 59
+    },
+    "new": {
+      "n": 170,
+      "adequate": 105,
+      "partial": 21,
+      "wrong": 11,
+      "refused": 33
+    }
+  }
+}

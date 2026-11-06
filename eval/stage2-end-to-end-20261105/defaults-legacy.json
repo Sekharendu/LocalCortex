@@ -1,0 +1,13 @@
+{
+  "profile": "legacy",
+  "settings": {
+    "topK": 5,
+    "numCtx": 4096,
+    "chunkedDocMaxTokens": 1200,
+    "promptVariant": "legacy"
+  },
+  "maxOutputTokens": 512,
+  "historicalPromptsExactlyReproduced": 79,
+  "systemSha256": "f79467778d852d5c6b88dde4515330128202044009efb6cdf786bc9927af08c5",
+  "networkCalls": 0
+}

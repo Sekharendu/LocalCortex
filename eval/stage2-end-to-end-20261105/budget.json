@@ -1,0 +1,10 @@
+{
+  "initialUtcDay": "2026-11-04",
+  "initialReportedAccountUsage": 5900,
+  "initialWindowRunCap": 3500,
+  "laterWindowRunCap": 8500,
+  "pairReserve": 100,
+  "resetUtcHour": 0,
+  "callsPlanned": 558,
+  "neverShrinkSample": true
+}

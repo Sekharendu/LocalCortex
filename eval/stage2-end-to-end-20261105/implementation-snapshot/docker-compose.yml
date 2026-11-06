@@ -1,0 +1,122 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: local-rag-qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    healthcheck:
+      # Raw TCP + HTTP line via bash -- the base image ships no curl/wget, so using 'bash' that is present in both the images
+      # Probes /readyz which Qdrant responds to with 200 once ready.
+      test:
+        - "CMD-SHELL"
+        - "bash -c 'exec 3<>/dev/tcp/localhost/6333 && echo -e \"GET /readyz HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\" >&3 && cat <&3 | head -1 | grep -q 200' || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: local-rag-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      # Probes "/" which Ollama responds to with "Ollama is running" (200).
+      test:
+        - "CMD-SHELL"
+        - "bash -c 'exec 3<>/dev/tcp/localhost/11434 && echo -e \"GET / HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\" >&3 && cat <&3 | head -1 | grep -q 200' || exit 1"
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    # NOTE: Ollama models are NOT baked into the base image. After `docker compose up -d`
+    # and the ollama container is healthy, pull the embedding model the RAG pipeline needs:
+    #   docker exec -it local-rag-ollama ollama pull nomic-embed-text
+    # Pulls are persisted to the ollama_data volume so you only do this once per machine.
+
+  postgres:
+    image: postgres:17
+    container_name: local-rag-postgres
+    environment:
+      # Local-only credentials; the port is bound to localhost below.
+      POSTGRES_USER: localcortex
+      POSTGRES_PASSWORD: localcortex
+      POSTGRES_DB: localcortex
+    ports:
+      # Host port 5433, not 5432: 5432 is commonly taken by other local Postgres
+      # instances, and sharing it risks writing into the wrong database.
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U localcortex -d localcortex"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # ---- The full app: `docker compose --profile app up -d`, then open http://localhost:8080 ----
+  # Without the profile, only the three services above start (the development setup).
+
+  models:
+    # One-shot: pulls the embedding model into the ollama volume (skipped quickly once present).
+    image: ollama/ollama:latest
+    profiles: [app]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["/bin/sh", "-c", "ollama pull nomic-embed-text"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build: { context: ., target: api }
+    profiles: [app]
+    environment:
+      CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
+      CLOUDFLARE_API_TOKEN: ${CLOUDFLARE_API_TOKEN:-}
+      RERANK_ENABLED: ${RERANK_ENABLED:-0}
+      RAG_PROFILE: ${RAG_PROFILE:-new}
+      CLOUDFLARE_GEN_TIMEOUT_MS: ${CLOUDFLARE_GEN_TIMEOUT_MS:-180000}
+      OLLAMA_URL: http://ollama:11434
+      QDRANT_URL: http://qdrant:6333
+      # Its own collection, so it never mixes with the one `pnpm dev` uses (`rag`).
+      QDRANT_COLLECTION: localcortex-app
+      DATABASE_URL: postgres://localcortex:localcortex@postgres:5432/localcortex
+      DOC_STORE_PATH: /app/state/documents.json
+      SPARSE_STATS_PATH: /app/state/sparse-stats.json
+    volumes:
+      # Document records live here, not in ./data, so they stay with this setup.
+      - app_state:/app/state
+    depends_on:
+      qdrant:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      models:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  web:
+    build: { context: ., target: web }
+    profiles: [app]
+    ports:
+      # Localhost only: the app has no login, so it isn't exposed to the network.
+      - "127.0.0.1:8080:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  qdrant_data:
+  ollama_data:
+  postgres_data:
+  app_state:

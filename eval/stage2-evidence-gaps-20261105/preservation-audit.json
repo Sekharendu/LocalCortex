@@ -1,0 +1,98 @@
+{
+  "at": "2026-11-05T12:12:16.755Z",
+  "unchanged": true,
+  "files": [
+    {
+      "file": "eval/stage2-end-to-end-20261105/judgments.jsonl",
+      "unchanged": true
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/preparations.jsonl",
+      "unchanged": true
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/results.jsonl",
+      "unchanged": true
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/blind-judgments.jsonl",
+      "unchanged": true
+    },
+    {
+      "file": "eval/split.json",
+      "unchanged": true
+    },
+    {
+      "file": "src/config.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/rag.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/generation/llm.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/generation/promptBuilder.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/generation/promptVariants.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/retrieval/retriever.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/retrieval/vectorStore.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/retrieval/context.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/retrieval/embedder.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/retrieval/sparse.ts",
+      "unchanged": true
+    },
+    {
+      "file": "src/retrieval/sparseStats.ts",
+      "unchanged": true
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/sample.json",
+      "unchanged": true
+    },
+    {
+      "file": "C:/Users/hp/.codex/visualizations/2026/10/29/01a1861e-e89a-7d02-8dd1-60d661cf470a/qasper-scoped-hybrid-r4/pdf/sparse-stats.json",
+      "unchanged": true
+    },
+    {
+      "file": "eval/dev-retrieval-20261103/pdf.results.jsonl",
+      "unchanged": true
+    },
+    {
+      "file": "eval/dev-retrieval-20261103/docx.results.jsonl",
+      "unchanged": true
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/pdf.results.jsonl",
+      "unchanged": true
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/docx.results.jsonl",
+      "unchanged": true
+    },
+    {
+      "file": "eval/dev-set-preparation-20261103/source-chunks.jsonl",
+      "unchanged": true
+    }
+  ]
+}

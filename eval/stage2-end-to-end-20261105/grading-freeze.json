@@ -1,0 +1,23 @@
+{
+  "at": "2026-11-05T08:05:24.236Z",
+  "count": 558,
+  "method": "Shuffled arm-label-hidden AI semantic reading of answers/references and focused actual passage excerpts; no inference grading calls; not independent human adjudication.",
+  "files": [
+    {
+      "file": "blind-review.jsonl",
+      "sha256": "c8e1536ed3ffc0c0ceecc4cce7cf677ee14c77400d7362fe0e978c79eda5fe6c"
+    },
+    {
+      "file": "blind-contexts.jsonl",
+      "sha256": "68f0f8deb2c31e05e6be7b8ed07dd4e2d1fb9969163f4f5f144a2f87d3258395"
+    },
+    {
+      "file": "blind-judgments.jsonl",
+      "sha256": "83ab27a25bb7139b0059b75b763d7e430d7007939900bbb63accbfed7b6b7add"
+    },
+    {
+      "file": "review-rubric.md",
+      "sha256": "862b0c38a92f919d8314ed497e2dde68a4edfa59e556aeff9df3b6ba022925bb"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-05T08:11:38.567Z",
+  "supervisorPid": 14640,
+  "resumedAfterReset": true,
+  "successfulCalls": 558,
+  "totalPlannedCalls": 558,
+  "remainingCalls": 0,
+  "failedAttempts": 5,
+  "reportedNeurons": 5747.046328544617,
+  "counts": {
+    "dev200/new": 200,
+    "dev200/old": 200,
+    "earlier40/old": 40,
+    "earlier40/new": 40,
+    "offtopic/new": 39,
+    "offtopic/old": 39
+  },
+  "grading": "complete",
+  "report": "REPORT.md"
+}

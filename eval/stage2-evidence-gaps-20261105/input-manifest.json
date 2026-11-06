@@ -1,0 +1,99 @@
+{
+  "at": "2026-11-05T11:47:19.925Z",
+  "files": [
+    {
+      "file": "eval/stage2-end-to-end-20261105/judgments.jsonl",
+      "sha256": "8fc4b06f7acc6fdcd202bb5be8a90c2308f4b0b32faeb316ccd27615041b13fd"
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/preparations.jsonl",
+      "sha256": "0923112fc908dfcd646e9ae11932c8e6211fc173b291c4ed441032b66d74d560"
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/results.jsonl",
+      "sha256": "4e2d78bf569d92cd828277d802c119648fd731ff2d1d4d32b785e3f3377202e7"
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/blind-judgments.jsonl",
+      "sha256": "83ab27a25bb7139b0059b75b763d7e430d7007939900bbb63accbfed7b6b7add"
+    },
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    },
+    {
+      "file": "src/config.ts",
+      "sha256": "8e307394fd0efc397ab12e5db42e0dcac4177267e91aa5110c05087541bc0e64"
+    },
+    {
+      "file": "src/rag.ts",
+      "sha256": "8576f129dafb6495e1294e7c60523769c966b0b02b2942a055c3cbbed1534244"
+    },
+    {
+      "file": "src/generation/llm.ts",
+      "sha256": "29a18e52b0f0ed46baa73b1994098db7f6ae95e7099de672396a7e648c13a30e"
+    },
+    {
+      "file": "src/generation/promptBuilder.ts",
+      "sha256": "fcbd3fe2133ec48343f3d8fba2986ae0affcef600f451a2b4499633af4778cc5"
+    },
+    {
+      "file": "src/generation/promptVariants.ts",
+      "sha256": "5cec2e527a8c08c57521349b2e5d1154cfe2920572311f3367d0807413c15f8a"
+    },
+    {
+      "file": "src/retrieval/retriever.ts",
+      "sha256": "6a178f0d8d758c1ae02b85a5bab3c8723410dcf1ec29d63f951ff865478cb160"
+    },
+    {
+      "file": "src/retrieval/vectorStore.ts",
+      "sha256": "b66598d532a7c809318a4e178007325c146187257bd0076be24a4d6a98314c6f"
+    },
+    {
+      "file": "src/retrieval/context.ts",
+      "sha256": "a6cf67f11c8e56962203debb5250cbb25da8a2b986706456a6df1d79eff59aef"
+    },
+    {
+      "file": "src/retrieval/embedder.ts",
+      "sha256": "3048d9b1b19c3fc638970908b2f3220faac25cc933fa6e089da315e8d74729c2"
+    },
+    {
+      "file": "src/retrieval/sparse.ts",
+      "sha256": "6e3d2c14ed6d20d7c5cbd53a749e25c8f7fefaa6fcc9deec756ca94593ea6639"
+    },
+    {
+      "file": "src/retrieval/sparseStats.ts",
+      "sha256": "07318b580ea88678bd45bc328b19052406d5085660fc74687aa44ecee13de71f"
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/sample.json",
+      "sha256": "4f810bcfa9e105295374a72257432c6b03c10e9bc0fa4bd981d3360daee4d62b"
+    },
+    {
+      "file": "C:/Users/hp/.codex/visualizations/2026/10/29/01a1861e-e89a-7d02-8dd1-60d661cf470a/qasper-scoped-hybrid-r4/pdf/sparse-stats.json",
+      "sha256": "d36f0438d256d3e8a06805d7b0b0b29593d7bdabb7c4dc2f79d98b550e164d50"
+    },
+    {
+      "file": "eval/dev-retrieval-20261103/pdf.results.jsonl",
+      "sha256": "e89536ec7b75bc2ea2bda81dbe0bce6935ebe8ef8b6fbb69334a0dd535ae377c"
+    },
+    {
+      "file": "eval/dev-retrieval-20261103/docx.results.jsonl",
+      "sha256": "b32299d7af906de24d583a4213ba366513668d3fd909413f2a5b304f3ba2eb2c"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/pdf.results.jsonl",
+      "sha256": "2e575e207f4b7b6ccf9916c8ea62c57161bdc94065dc435a1baa13bc27d02121"
+    },
+    {
+      "file": "eval/question-only-same-paper-20261102/docx.results.jsonl",
+      "sha256": "eaa3b8ea2b62741df4e48a3c4f7494b4b0a3c61064c792b3059fd646a09be24c"
+    },
+    {
+      "file": "eval/dev-set-preparation-20261103/source-chunks.jsonl",
+      "sha256": "916fb0c2936494c472080b6bd31fc4a4e04f9ee707eb4e95d8cab62d864b0f60"
+    }
+  ],
+  "devOnly": true,
+  "generationCalls": 0
+}

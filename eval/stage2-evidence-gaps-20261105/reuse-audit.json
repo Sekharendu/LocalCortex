@@ -1,0 +1,34 @@
+{
+  "cases": 57,
+  "actualStage2Top15AndContexts": 57,
+  "savedK50": 26,
+  "gateResultReusedWithoutSearch": 12,
+  "noUsableSavedPool": 19,
+  "querySetup": "original question, selected dev paper, nomic prefixes on, hybrid RRF dense:sparse2:1, threshold0.63, reranking off",
+  "olderQHashDifference": "Only optional TypeScript rerankScore property/comment; removing the exact two added lines reproduces older retriever hash.",
+  "rankVsStage2Caveat": "k50 uses prefetch200, whereas Stage2 k15 used prefetch60. Rank50 is a diagnostic wider-pool ranking; it is not assumed to preserve the actual Stage2 top15.",
+  "rejectedReuse": [
+    {
+      "files": "eval/ap-query-form-20261102/*",
+      "reason": "A uses title wrapper; P removes selected-paper restriction. Different query/scope; not reused."
+    },
+    {
+      "files": "eval/q-dense-vs-hybrid-20261102/*",
+      "reason": "Dense arm is not hybrid; not reused."
+    },
+    {
+      "files": "eval/dev-rerank-20261103/*",
+      "reason": "Reranked outputs not Stage2 reranking-off; not reused."
+    },
+    {
+      "files": "eval/context-budget-*/ and eval/depth-and-answer-quality-20261104/*",
+      "reason": "Context replays slice k50 rankings and use older prompt/overall budgets; not substituted for actual Stage2 context. Their raw same-setup k50 inputs can be reused."
+    },
+    {
+      "files": "eval/rank-buckets-review-20261104/*",
+      "reason": "Saved raw quote-coverage review covers119 cases; semantic targets and cohort differ. Reuse relevant explanatory notes only, not bucket totals or literal grades."
+    }
+  ],
+  "plannedMaximumNetworkSearchRequests": 38,
+  "plannedEmbeddingRequests": 19
+}

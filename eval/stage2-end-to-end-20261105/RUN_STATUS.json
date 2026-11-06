@@ -1,0 +1,10 @@
+{
+  "state": "complete",
+  "generation": "558/558 successful planned calls",
+  "grading": "558 frozen blinded judgments; decoded after freeze",
+  "finishedAt": "2026-11-05T08:11:38.567Z",
+  "report": "REPORT.md",
+  "knownNeurons": 5747.046328544617,
+  "unknownUsageFailures": 5,
+  "noPushOrDeployment": true
+}

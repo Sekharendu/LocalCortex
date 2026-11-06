@@ -1,0 +1,9 @@
+{
+  "8c4ff4e6-e92d-49fb-b72a-0524200e35cb": {
+    "id": "8c4ff4e6-e92d-49fb-b72a-0524200e35cb",
+    "source": "eval-corpus.txt",
+    "ingestedAt": "2026-11-04T18:46:56.620Z",
+    "chunkCount": 20,
+    "collection": "eval-stage2-offtopic-20261105"
+  }
+}

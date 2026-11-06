@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-05T11:54:59.057Z",
+  "plannedCases": 4,
+  "plannedMaximumSearches": 8,
+  "searchRequests": 8,
+  "embeddingRequests": 4,
+  "generationCalls": 0,
+  "unscopedSearches": 0,
+  "deniedEndpoints": [],
+  "error": null
+}
