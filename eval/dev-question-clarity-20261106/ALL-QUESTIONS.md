@@ -1,0 +1,1056 @@
+# Every dev question, grouped by clarity
+
+610 PDF/DOCX case units represent 496 original question IDs. Same-question copies have the same group. Labels are provisional assistant judgments from question wording alone; no questions were rewritten. A searchable question need not have a unique original-paper answer.
+
+## Can be searched on its own
+
+52 original question IDs; 57 PDF/DOCX case units.
+
+The text identifies a named method/framework/dataset or a sufficiently specified conceptual question, without needing us to invent which unnamed study is intended. Searchable does not establish a unique source or a valid single-paper gold answer.
+
+- **18. how is model compactness measured?**
+  - Question ID: `113d791df6fcfc9cecfb7b1bebaf32cc2e4402ab`; formats: pdf.
+  - Borderline: Can be a general question about compactness measures, but the original study may use one particular definition.
+- **27. Why are prior knowledge distillation techniques models are ineffective in producing student models with vocabularies different from the original teacher models?**
+  - Question ID: `d087539e6a38c42f0a521ff2173ef42c0733878e`; formats: pdf.
+  - Borderline: The methodological topic is specified; the premise about prior methods may need qualification across sources.
+- **45. What is the GhostVLAD approach?**
+  - Question ID: `4bc2784be43d599000cb71d31928908250d4cef3`; formats: pdf.
+- **63. What is MSD prediction?**
+  - Question ID: `32a3c248b928d4066ce00bbb0053534ee62596e7`; formats: pdf.
+  - Borderline: MSD is an unexpanded acronym. Kept as a named-concept definition question, with possible acronym ambiguity.
+- **66. How much better than the baseline is LiLi?**
+  - Question ID: `286078813136943dfafb5155ee15d2429e7601d9`; formats: pdf.
+  - Borderline: LiLi names the subject, but the baseline and evaluation setting are not specified.
+- **68. In what way does LiLi imitate how humans acquire knowledge and perform inference during an interactive conversation?**
+  - Question ID: `a7d020120a45c39bee624f65443e09b895c10533`; formats: pdf.
+- **84. Can named entities in SnapCaptions be discontigious?**
+  - Question ID: `a0543b4afda15ea47c1e623c7f00d4aaca045be0`; formats: pdf.
+- **85. How large is their MNER SnapCaptions dataset?**
+  - Question ID: `1591068b747c94f45b948e12edafe74b5e721047`; formats: pdf.
+- **86. What is masked document generation?**
+  - Question ID: `193ee49ae0f8827a6e67388a10da59e137e7769f`; formats: pdf.
+  - Borderline: Names a pretraining objective, although its implementation can differ across studies.
+- **90. In what cases is attention different from alignment?**
+  - Question ID: `044f922604b4b3f42ae381419fd5cd5624fa0637`; formats: pdf.
+  - Borderline: A useful general conceptual comparison; a particular paper may frame the relationship differently.
+- **101. Ngrams of which length are aligned using PARENT?**
+  - Question ID: `28067da818e3f61f8b5152c0d42a531bf0f987d4`; formats: pdf.
+- **103. By how much more does PARENT correlate with human judgements in comparison to other text generation metrics?**
+  - Question ID: `ffa7f91d6406da11ddf415ef094aaf28f3c3872d`; formats: pdf.
+  - Borderline: PARENT is identified, but the comparison metrics and dataset can change the numeric answer.
+- **109. What neural network modules are included in NeuronBlocks?**
+  - Question ID: `2ea4347f1992b0b3958c4844681ff0fe4d0dd1dd`; formats: pdf.
+- **120. What is a second order co-ocurrence matrix?**
+  - Question ID: `88e62ea7a4d1d2921624b8480b5c6b50cfa5ad42`; formats: pdf, docx.
+- **130. How is non-standard pronunciation identified?**
+  - Question ID: `f9bf6bef946012dd42835bf0c547c0de9c1d229f`; formats: pdf.
+  - Borderline: Can ask generally about detecting non-standard pronunciation; no unique experimental procedure is specified.
+- **131. Is it valid to presume a bad medical wikipedia article should not contain much domain-specific jargon?**
+  - Question ID: `6a633811019e9323dc8549ad540550d27aa6d972`; formats: pdf, docx.
+  - Borderline: The topic and claim are explicit, but "bad" and the premise need interpretation.
+- **134. What are the disadvantages to clipping negative PMI?**
+  - Question ID: `d46c0ea1ba68c649cc64d2ebb6af20202a74a3c7`; formats: pdf.
+- **135. Why are statistics from finite corpora unreliable?**
+  - Question ID: `6844683935d0d8f588fa06530f5068bf3e1ed0c0`; formats: pdf.
+  - Borderline: A general claim about finite-sample statistics, not a uniquely identified study or universally true proposition.
+- **146. How did they extend LAMA evaluation framework to focus on negation?**
+  - Question ID: `78292bc57ee68fdb93ed45430d80acca25a9e916`; formats: pdf.
+  - Borderline: LAMA and the negation focus identify a useful subject; which extension/version is not explicit.
+- **165. What is the Random Kitchen Sink approach?**
+  - Question ID: `a778b8204a415b295f73b93623d09599f242f202`; formats: pdf.
+- **190. What is the performance reported for the best models in the VLSP 2018 and VLSP 2019 challenges?**
+  - Question ID: `ceb4bac1f6c506b5dab37607354530faee02ccac`; formats: pdf.
+  - Borderline: The two named challenge years identify the intended result family, but a metric/track may still be needed.
+- **198. What is active learning?**
+  - Question ID: `1cfed6b0c9b5a079a51166209649a987e7553e4e`; formats: pdf.
+- **202. Is it possible to convert a cloze-style questions to a naturally-looking questions?**
+  - Question ID: `63c3550c6fb42f41a0c93133e9fca12ac00df9b3`; formats: pdf.
+  - Borderline: A self-contained feasibility question, with several possible supported methods/answers.
+- **203. How did they obtain the OSG dataset?**
+  - Question ID: `051df74dc643498e95d16e58851701628fdfd43e`; formats: pdf.
+  - Borderline: OSG is a dataset name/acronym without an expansion; its identity may need clarification.
+- **215. Is car-speak language collection of abstract features that classifier is later trained on?**
+  - Question ID: `25c1c4a91f5dedd4e06d14121af3b5921db125e9`; formats: pdf.
+  - Borderline: Car-speak names a specific representation, but exact terminology may vary.
+- **216. Is order of "words" important in car speak language?**
+  - Question ID: `f88036174b4a0dbf4fe70ddad884d16082c5748d`; formats: pdf.
+- **217. What are labels in car speak language dataset?**
+  - Question ID: `a267d620af319b48e56c191aa4c433ea3870f6fb`; formats: pdf.
+- **218. How big is dataset of car-speak language?**
+  - Question ID: `899ed05c460bf2aa0aa65101cad1986d4f622652`; formats: pdf.
+- **221. How does car speak pertains to a car's physical attributes?**
+  - Question ID: `6bf93968110c6e3e3640360440607744007a5228`; formats: pdf.
+- **223. How many layers does the UTCNN model have?**
+  - Question ID: `518dae6f936882152c162058895db4eca815e649`; formats: pdf, docx.
+- **231. How many GPUs are used for the training of SBERT?**
+  - Question ID: `596aede2b311deb8cb0a82d2e7de314ef6e83e4e`; formats: pdf.
+  - Borderline: SBERT identifies a method, but hardware depends on the training run, variant and source.
+- **232. How are the siamese networks trained?**
+  - Question ID: `2e89ebd2e4008c67bb2413699589ee55f59c4f36`; formats: pdf.
+  - Borderline: Can ask generally about siamese-network training, while the original reference may describe one SBERT procedure.
+- **246. Does the paper provide any case studies to illustrate how one can use Macaw for CIS research?**
+  - Question ID: `58ef2442450c392bfc55c4dc35f216542f5f2dbb`; formats: pdf.
+  - Borderline: Macaw and CIS identify the likely subject despite the phrase "the paper"; which publication/version is not explicit.
+- **247. What functionality does Macaw provide?**
+  - Question ID: `78a5546e87d4d88e3d9638a0a8cd0b7debf1f09d`; formats: pdf.
+- **248. What is a wizard of oz setup?**
+  - Question ID: `375b281e7441547ba284068326dd834216e55c07`; formats: pdf.
+- **249. What interface does Macaw currently have?**
+  - Question ID: `05c49b9f84772e6df41f530d86c1f7a1da6aa489`; formats: pdf.
+  - Borderline: Macaw is named, but "currently" is relative to the paper date/software version.
+- **250. What modalities are supported by Macaw?**
+  - Question ID: `6ecb69360449bb9915ac73c0a816c8ac479cbbfc`; formats: pdf.
+- **251. What are the different modules in Macaw?**
+  - Question ID: `68df324e5fa697baed25c761d0be4c528f7f5cf7`; formats: pdf.
+- **290. What are the distinctive characteristics of how Arabic speakers use offensive language?**
+  - Question ID: `55507f066073b29c1736b684c09c045064053ba9`; formats: pdf.
+  - Borderline: A meaningful broad question about Arabic offensive language; findings need not be universal or unique to one source.
+- **297. What are the difficulties in modelling the ironic pattern?**
+  - Question ID: `14b8ae5656e7d4ee02237288372d9e682b24fdb8`; formats: pdf.
+  - Borderline: The irony-modelling problem is understandable independently, but "the ironic pattern" could refer to a specific formulation.
+- **322. What are the languages represented in the DSL datasets?**
+  - Question ID: `6415f38a06c2f99e8627e8ba6251aa4b364ade2d`; formats: pdf.
+  - Borderline: DSL names a dataset family; its languages depend on the edition.
+- **357. Which classification algorithm do they use for s2sL?**
+  - Question ID: `b21bc09193699dc9cfad523f3d5542b0b2ff1b8e`; formats: pdf.
+  - Borderline: s2sL names the model but is an unexpanded abbreviation; its identity is provisional.
+- **369. How does Gaussian-masked directional multi-head attention works?**
+  - Question ID: `709feae853ec0362d4e883db8af41620da0677fe`; formats: pdf.
+- **392. What are the limitations of existing Vietnamese word segmentation systems?**
+  - Question ID: `8d074aabf4f51c8455618c5bf7689d3f62c4da1d`; formats: pdf.
+  - Borderline: A standalone overview question; multiple Vietnamese segmentation studies can supply valid limitations.
+- **393. Why challenges does word segmentation in Vietnamese pose?**
+  - Question ID: `fe2666ace293b4bfac3182db6d0c6f03ea799277`; formats: pdf.
+  - Borderline: A standalone task-level question despite its grammatical typo; sources can describe different challenges.
+- **394. How successful are the approaches used to solve word segmentation in Vietnamese?**
+  - Question ID: `70a1b0f9f26f1b82c14783f1b76dfb5400444aa4`; formats: pdf.
+  - Borderline: A broad task-level effectiveness question; datasets, dates and metrics determine the detailed answer.
+- **395. Which approaches have been applied to solve word segmentation in Vietnamese?**
+  - Question ID: `d3ca5f1814860a88ff30761fec3d860d35e39167`; formats: pdf.
+  - Borderline: A standalone overview question with multiple valid source-dependent answers.
+- **402. Why is lemmatization not necessary in English?**
+  - Question ID: `220d11a03897d85af91ec88a9b502815c7d2b6f3`; formats: pdf.
+  - Borderline: A self-contained linguistic question, but the premise that lemmatization is unnecessary needs qualification.
+- **407. What is a bifocal attention mechanism?**
+  - Question ID: `1088255980541382a2aa2c0319427702172bbf84`; formats: pdf.
+  - Borderline: A named attention concept, but related terminology or implementations could differ.
+- **411. Overall, does having parallel data improve semantic role induction across multiple languages?**
+  - Question ID: `111afb77cfbf4c98e0458606378fa63a0e965e36`; formats: pdf, docx.
+  - Borderline: A standalone task/method relationship question; a single-paper reference is not an exhaustive answer.
+- **422. How large are the improvements of the Attention-Sum Reader model when using the BookTest dataset?**
+  - Question ID: `d67c01d9b689c052045f3de1b0918bab18c3f174`; formats: pdf, docx.
+- **449. How much improvement is gained from Adversarial Reward Augmented Maximum Likelihood (ARAML)?**
+  - Question ID: `79f9468e011670993fd162543d1a4b3dd811ac5d`; formats: pdf.
+  - Borderline: ARAML is named, but the improvement depends on the baseline, dataset and metric.
+
+## Topic is useful, but intended study/system is missing
+
+199 original question IDs; 243 PDF/DOCX case units.
+
+Contains a substantive topic or methodological clue, but asks about the authors, a particular model, experiment, corpus or finding without identifying it. Plausible relevant passages can come from several studies.
+
+- **1. which multilingual approaches do they compare with?**
+  - Question ID: `b6f15fb6279b82e34a5bf4828b7b5ddabfdf1d54`; formats: pdf.
+- **2. what are the pivot-based baselines?**
+  - Question ID: `f5e6f43454332e0521a778db0b769481e23e7682`; formats: pdf.
+- **5. what ner models were evaluated?**
+  - Question ID: `18c5d366b1da8447b5404eab71f4cc658ba12e6f`; formats: pdf.
+- **6. what is the source of the news sentences?**
+  - Question ID: `b5e4866f0685299f1d7af267bbcc4afe2aab806f`; formats: pdf.
+- **7. did they use a crowdsourcing platform for manual annotations?**
+  - Question ID: `1f085b9bb7bfd0d6c8cba1a9d73f08fcf2da7590`; formats: pdf.
+- **8. what are the topics pulled from Reddit?**
+  - Question ID: `b6ae8e10c6a0d34c834f18f66ab730b670fb528c`; formats: pdf, docx.
+- **11. What crowdsourcing platform is used?**
+  - Question ID: `2df4a045a9cd7b44874340b6fdf9308d3c55327a`; formats: pdf.
+- **12. Which information about text structure is included in the corpus?**
+  - Question ID: `9eabb54c2408dac24f00f92cf1061258c7ea2e1a`; formats: pdf.
+- **13. Which information about typography is included in the corpus?**
+  - Question ID: `3d013f15796ae7fed5272183a166c45f16e24e39`; formats: pdf.
+- **14. What is the performance of BERT on the task?**
+  - Question ID: `66c96c297c2cffdf5013bab5e95b59101cb38655`; formats: pdf.
+- **16. Does BERT reach the best performance among all the algorithms compared?**
+  - Question ID: `c0bee6539eb6956a7347daa9d2419b367bd02064`; formats: pdf.
+- **17. What are the clinical datasets used in the paper?**
+  - Question ID: `3de0487276bb5961586acc6e9f82934ef8cb668c`; formats: pdf.
+- **22. What is the interannotator agreement for the human evaluation?**
+  - Question ID: `fb2b536dc8e442dffab408db992b971e86548158`; formats: pdf.
+- **24. Is the template-based model realistic?**
+  - Question ID: `10d450960907091f13e0be55f40bcb96f44dd074`; formats: pdf.
+- **25. Is the student reflection data very different from the newspaper data?**
+  - Question ID: `b5608076d91450b0d295ad14c3e3a90d7e168d0e`; formats: pdf.
+- **26. What is the recent abstractive summarization method in this paper?**
+  - Question ID: `c21b87c97d1afac85ece2450ee76d01c946de668`; formats: pdf.
+- **28. What state-of-the-art compression techniques were used in the comparison?**
+  - Question ID: `efe9bad55107a6be7704ed97ecce948a8ca7b1d2`; formats: pdf.
+- **29. What discourse relations does it work best/worst for?**
+  - Question ID: `f17ca24b135f9fe6bb25dc5084b13e1637ec7744`; formats: pdf.
+- **36. On top of BERT does the RNN layer work better or the transformer layer?**
+  - Question ID: `0810b43404686ddfe4ca84783477ae300fdd2ea4`; formats: pdf.
+- **37. How are models evaluated in this human-machine communication game?**
+  - Question ID: `1ff0fccf0dca95a6630380c84b0422bed854269a`; formats: pdf.
+- **38. How many participants were trying this communication game?**
+  - Question ID: `3d7d865e905295d11f1e85af5fa89b210e3e9fdf`; formats: pdf.
+- **41. Do they use off-the-shelf NLP systems to build their assitant?**
+  - Question ID: `ee417fea65f9b1029455797671da0840c8c1abbe`; formats: pdf.
+- **42. How does the IPA label data after interacting with users?**
+  - Question ID: `ca5a82b54cb707c9b947aa8445aac51ea218b23a`; formats: pdf.
+  - Borderline: IPA is not expanded; an acronym alone does not clearly identify the intended assistant here.
+- **43. What kind of repetitive and time-consuming activities does their assistant handle?**
+  - Question ID: `da55bd769721b878dd17f07f124a37a0a165db02`; formats: pdf.
+- **44. How was the audio data gathered?**
+  - Question ID: `feb448860918ef5b905bb25d7b855ba389117c1f`; formats: pdf.
+- **46. Which 7 Indian languages do they experiment with?**
+  - Question ID: `75df70ce7aa714ec4c6456d0c51f82a16227f2cb`; formats: pdf.
+- **49. What is the invertibility condition?**
+  - Question ID: `887c6727e9f25ade61b4853a869fe712fe0b703d`; formats: pdf.
+- **50. Do they use graphical models?**
+  - Question ID: `a99fdd34422f4231442c220c97eafc26c76508dd`; formats: pdf.
+- **54. Do they focus on Reading Comprehension or multiple choice question answering?**
+  - Question ID: `5bb3c27606c59d73fd6944ba7382096de4fa58d8`; formats: pdf.
+- **55. After how many hops does accuracy decrease?**
+  - Question ID: `8de9f14c7c4f37ab103bc8a639d6d80ade1bc27b`; formats: pdf.
+- **56. How do they control for annotation artificats?**
+  - Question ID: `85590bb26fed01a802241bc537d85ba5ef1c6dc2`; formats: pdf.
+- **57. Is WordNet useful for taxonomic reasoning for this task?**
+  - Question ID: `75ff6e425ce304a35f18c0230c0d13d3913a31a9`; formats: pdf.
+- **58. How do they perform multilingual training?**
+  - Question ID: `5cb610d3d5d7d447b4cd5736d6a7d8262140af58`; formats: pdf.
+- **64. What type of inflections are considered?**
+  - Question ID: `c9b8d3858c112859eabee54248b874331c48f71b`; formats: pdf.
+- **69. What metrics are used to establish that this makes chatbots more knowledgeable and better at learning and conversation?**
+  - Question ID: `585626d18a20d304ae7df228c2128da542d248ff`; formats: pdf.
+- **70. What are the components of the general knowledge learning engine?**
+  - Question ID: `bfc2dc913e7b78f3bd45e5449d71383d0aa4a890`; formats: pdf.
+- **71. Did they use a crowdsourcing platform for annotations?**
+  - Question ID: `0ba3ea93eef5660a79ea3c26c6a270eac32dfa4c`; formats: pdf.
+- **72. How do they deal with unknown distribution senses?**
+  - Question ID: `5e324846a99a5573cd2e843d1657e87f4eb22fa6`; formats: pdf.
+- **76. How is diversity measured?**
+  - Question ID: `509af1f11bd6f3db59284258e18fdfebe86cae47`; formats: pdf.
+- **77. What is the model performance on target language reading comprehension?**
+  - Question ID: `37be0d479480211291e068d0d3823ad0c13321d3`; formats: pdf.
+- **80. what does the model learn in zero-shot setting?**
+  - Question ID: `55569d0a4586d20c01268a80a7e31a17a18198e2`; formats: pdf.
+- **81. Do they inspect their model to see if their model learned to associate image parts with words related to entities?**
+  - Question ID: `7cd22ca9e107d2b13a7cc94252aaa9007976b338`; formats: pdf.
+- **82. Does their NER model learn NER from both text and images?**
+  - Question ID: `adbf33c6144b2f5c40d0c6a328a92687a476f371`; formats: pdf.
+- **83. Which types of named entities do they recognize?**
+  - Question ID: `f7a89b9cd2792f23f2cb43d50a01b8218a6fbb24`; formats: pdf.
+- **88. What useful information does attention capture?**
+  - Question ID: `beac555c4aea76c88f19db7cc901fa638765c250`; formats: pdf.
+- **92. What types of social media did they consider?**
+  - Question ID: `a4d115220438c0ded06a91ad62337061389a6747`; formats: pdf.
+- **97. What are method improvements of F1 for paraphrase identification?**
+  - Question ID: `23b2901264bda91045258b5d4120879ae292e950`; formats: pdf.
+- **98. What are method's improvements of F1 for NER task for English and Chinese datasets?**
+  - Question ID: `b5bc34e1e381dbf972d0b594fe8c66ff75305d71`; formats: pdf.
+- **99. What are method's improvements of F1 w.r.t. baseline BERT tagger for Chinese POS datasets?**
+  - Question ID: `72f7ef55e150e16dcf97fe443aff9971a32414ef`; formats: pdf.
+- **102. How many people participated in their evaluation study of table-to-text models?**
+  - Question ID: `bf3b27a4f4be1f9ae31319877fd0c75c03126fd5`; formats: pdf.
+- **104. Which stock market sector achieved the best performance?**
+  - Question ID: `b634ff1607ce5756655e61b9a6f18bc736f84c83`; formats: pdf.
+- **105. What languages pairs are used in machine translation?**
+  - Question ID: `2f901dab6b757e12763b23ae8b37ae2e517a2271`; formats: pdf, docx.
+- **106. What sentiment classification dataset is used?**
+  - Question ID: `b591853e938984e6069d738371500ebdec50d256`; formats: pdf, docx.
+- **110. How do the authors evidence the claim that many engineers find it a big overhead to choose from multiple frameworks, models and optimization techniques?**
+  - Question ID: `4f253dfced6a749bf57a1b4984dc962ce9550184`; formats: pdf.
+- **113. Is pre-training effective in their evaluation?**
+  - Question ID: `8ce11515634236165cdb06ba80b9a36a8b9099a2`; formats: pdf.
+- **114. What parallel corpus did they use?**
+  - Question ID: `6024039bbd1118c5dab86c41cce1175d99f10a25`; formats: pdf.
+- **116. What do they mean by global and local context?**
+  - Question ID: `b66c9a4021b6c8529cac1a2b54dacd8ec79afa5f`; formats: pdf.
+- **117. What are the 18 propaganda techniques?**
+  - Question ID: `6bfba3ddca5101ed15256fca75fcdc95a53cece7`; formats: pdf.
+  - Borderline: The count of 18 helps identify a taxonomy, but does not name which taxonomy or source.
+- **122. What embedding techniques are explored in the paper?**
+  - Question ID: `8b3d3953454c88bde88181897a7a2c0c8dd87e23`; formats: pdf, docx.
+- **124. What word level and character level model baselines are used?**
+  - Question ID: `7705dd04acedaefee30d8b2c9978537afb2040dc`; formats: pdf, docx.
+- **128. How do they combine a deep learning model with a knowledge base?**
+  - Question ID: `1c997c268c68149ae6fb43d83ffcd53f0e7fe57e`; formats: pdf.
+- **132. What novel PMI variants are introduced?**
+  - Question ID: `6b9b9e5d154cb963f6d921093539490daa5ebbae`; formats: pdf.
+- **133. What semantic and syntactic tasks are used as probes?**
+  - Question ID: `bc4dca3e1e83f3b4bbb53a31557fc5d8971603b2`; formats: pdf.
+- **138. what is the size of the speech corpus?**
+  - Question ID: `72755c2d79210857cfff60bfbcb55f83c71ada51`; formats: pdf, docx.
+- **139. Which two pairs of ERPs from the literature benefit from joint training?**
+  - Question ID: `7d2f812cb345bb3ab91eb8cbbdeefd4b58f65569`; formats: pdf.
+- **143. Do they use number of votes as an indicator of preference?**
+  - Question ID: `06be47e2f50b902b05ebf1ff1c66051925f5c247`; formats: pdf.
+- **144. What does a node in the network approach repesent?**
+  - Question ID: `003d6f9722ddc2ee13e879fefafc315fb8e87cb9`; formats: pdf.
+- **149. How many tweets were collected?**
+  - Question ID: `bcc0cd4e262f2db4270429ab520971bcf39414cf`; formats: pdf.
+- **156. What Named Entity Recognition dataset is used?**
+  - Question ID: `ef3567ce7301b28e34377e7b62c4ec9b496f00bf`; formats: pdf.
+- **157. What sentiment analysis dataset is used?**
+  - Question ID: `7595260c5747aede0b32b7414e13899869209506`; formats: pdf.
+- **158. Do they test both skipgram and c-bow?**
+  - Question ID: `c2d1387e08cf25cb6b1f482178cca58030e85b70`; formats: pdf.
+- **167. What word embeddings do they test?**
+  - Question ID: `493e971ee3f57a821ef1f67ef3cd47ade154e7c4`; formats: pdf.
+- **168. How do they define similar equations?**
+  - Question ID: `8dd8e5599fc56562f2acbc16dd8544689cddd938`; formats: pdf.
+- **170. What are the three steps to feature elimination?**
+  - Question ID: `22714f6cad2d5c54c28823e7285dc85e8d6bc109`; formats: pdf, docx.
+- **174. where did they obtain the annotated clinical notes from?**
+  - Question ID: `4477bb513d56e57732fba126944073d414d1f75f`; formats: pdf.
+- **175. What model is used to encode the images?**
+  - Question ID: `c37f65c9f0d543a35c784263b79236ccf1c44fac`; formats: pdf.
+- **176. How is the sequential nature of the story captured?**
+  - Question ID: `584af673429c7f8621c6bf83362a37048daa0e5d`; formats: pdf.
+- **178. Do the decoder LSTMs all have the same weights?**
+  - Question ID: `b08f88d1facefceb87e134ba2c1fa90035018e83`; formats: pdf.
+- **179. Is fine-tuning required to incorporate these embeddings into existing models?**
+  - Question ID: `b06512c17d99f9339ffdab12cedbc63501ff527e`; formats: pdf.
+- **180. How are meaningful chains in the graph selected?**
+  - Question ID: `fd8e23947095fe2230ffe1a478945829b09c8c95`; formats: pdf.
+- **181. Do the authors also analyze transformer-based architectures?**
+  - Question ID: `8bf7f1f93d0a2816234d36395ab40c481be9a0e0`; formats: pdf.
+- **182. Do they remove seasonality from the time series?**
+  - Question ID: `3611a72f754de1e256fbd25b012197e1c24e8470`; formats: pdf, docx.
+- **185. Which text embedding methodologies are used?**
+  - Question ID: `0689904db9b00a814e3109fb1698086370a28fa2`; formats: pdf.
+- **188. By how much is performance improved with multimodality?**
+  - Question ID: `f68508adef6f4bcdc0cc0a3ce9afc9a2b6333cc5`; formats: pdf.
+- **189. Is collected multimodal in cabin dataset public?**
+  - Question ID: `5563a3538d311c979c2fb83c1cc9afc66ff6fffc`; formats: pdf.
+- **192. What is the language model combination technique used in the paper?**
+  - Question ID: `fe1dcd6ef1f8618bbceee418f07cafe63a8efe08`; formats: pdf.
+- **194. How much is performance improved on NLI?**
+  - Question ID: `bdc91d1283a82226aeeb7a2f79dbbc57d3e84a1a`; formats: pdf.
+- **196. What BERT model do they test?**
+  - Question ID: `bc31a3d2f7c608df8c019a64d64cb0ccc5669210`; formats: pdf.
+- **200. How is segmentation quality evaluated?**
+  - Question ID: `f8da63df16c4c42093e5778c01a8e7e9b270142e`; formats: pdf.
+  - Borderline: Could be a general question, but the type of segmentation is not specified.
+- **201. How do they compare lexicons?**
+  - Question ID: `c09a92e25e6a81369fcc4ae6045491f2690ccc10`; formats: pdf.
+- **204. How large is the Twitter dataset?**
+  - Question ID: `33554065284110859a8ea3ca7346474ab2cab100`; formats: pdf.
+- **206. Why are current ELS's not sufficiently effective?**
+  - Question ID: `ef7212075e80bf35b7889dc8dd52fcbae0d1400a`; formats: pdf.
+  - Borderline: ELS is not expanded and the systems being criticized are not identified.
+- **210. What are the different variations of the attention-based approach which are examined?**
+  - Question ID: `d004ca2e999940ac5c1576046e30efa3059832fa`; formats: pdf.
+- **212. What types of online harassment are studied?**
+  - Question ID: `f0b2289cb887740f9255909018f400f028b1ef26`; formats: pdf.
+- **222. What topic is covered in the Chinese Facebook data?**
+  - Question ID: `37a79be0148e1751ffb2daabe4c8ec6680036106`; formats: pdf, docx.
+- **224. What topics are included in the debate data?**
+  - Question ID: `e44a6bf67ce3fde0c6608b150030e44d87eb25e3`; formats: pdf, docx.
+- **228. What transfer learning tasks are evaluated?**
+  - Question ID: `4944cd597b836b62616a4e37c045ce48de8c82ca`; formats: pdf.
+- **229. What metrics are used for the STS tasks?**
+  - Question ID: `a29c071065d26e5ee3c3bcd877e7f215c59d1d33`; formats: pdf.
+- **233. What other sentence embeddings methods are evaluated?**
+  - Question ID: `e2db361ae9ad9dbaa9a85736c5593eb3a471983d`; formats: pdf.
+- **235. Which pretrained word vectors did they use?**
+  - Question ID: `ed67359889cf61fa11ee291d6c378cccf83d599d`; formats: pdf.
+- **238. Where do they obtain the news videos from?**
+  - Question ID: `3b371ea554fa6639c76a364060258454e4b931d4`; formats: pdf.
+- **239. What is the source of the news articles?**
+  - Question ID: `ddb23a71113cbc092cbc158066d891cae261e2c6`; formats: pdf.
+- **243. How are the interpretability merits of the approach demonstrated?**
+  - Question ID: `67e9e147b2cab5ba43572ce8a17fc863690172f0`; formats: pdf.
+- **245. How is the keyword specific expectation elicited from the crowd?**
+  - Question ID: `43f074bacabd0a355b4e0f91a1afd538c0a6244f`; formats: pdf.
+- **254. What news article sources are used?**
+  - Question ID: `61a9ea36ddc37c60d1a51dabcfff9445a2225725`; formats: pdf, docx.
+- **255. How do they determine the exact section to use the input article?**
+  - Question ID: `cc850bc8245a7ae790e1f59014371d4f35cd46d7`; formats: pdf, docx.
+- **256. What features are used to represent the novelty of news articles to entity pages?**
+  - Question ID: `984fc3e726848f8f13dfe72b89e3770d00c3a1af`; formats: pdf, docx.
+- **257. What features are used to represent the salience and relative authority of entities?**
+  - Question ID: `fb1227b3681c69f60eb0539e16c5a8cd784177a7`; formats: pdf, docx.
+- **270. Was the approach used in this work to detect fake news fully supervised?**
+  - Question ID: `483a699563efcb8804e1861b18809279f21c7610`; formats: pdf.
+- **271. Based on this paper, what is the more predictive set of features to detect fake news?**
+  - Question ID: `d3ff2986ca8cb85a9a5cec039c266df756947b43`; formats: pdf.
+- **273. How is a "chunk of posts" defined in this work?**
+  - Question ID: `2317ca8d475b01f6632537b95895608dc40c4415`; formats: pdf.
+- **279. How are sentences selected from the summary graph?**
+  - Question ID: `b65a83a24fc66728451bb063cf6ec50134c8bfb0`; formats: pdf.
+- **291. How did they analyze which topics, dialects and gender are most associated with tweets?**
+  - Question ID: `e838275bb0673fba0d67ac00e4307944a2c17be3`; formats: pdf.
+- **292. How many annotators tagged each tweet?**
+  - Question ID: `8dda1ef371933811e2a25a286529c31623cca0c6`; formats: pdf.
+- **293. How many tweets are in the dataset?**
+  - Question ID: `b3de9357c569fb1454be8f2ac5fcecaea295b967`; formats: pdf.
+- **294. In what way is the offensive dataset not biased by topic, dialect or target?**
+  - Question ID: `59e58c6fc63cf5b54b632462465bfbd85b1bf3dd`; formats: pdf.
+- **296. What is the combination of rewards for reinforcement learning?**
+  - Question ID: `3f0ae9b772eeddfbfd239b7e3196dc6dfa21365f`; formats: pdf.
+- **298. How did the authors find ironic data on twitter?**
+  - Question ID: `e3a2d8886f03e78ed5e138df870f48635875727e`; formats: pdf.
+- **299. Who judged the irony accuracy, sentiment preservation and content preservation?**
+  - Question ID: `62f27fe08ddb67f16857fab2a8a721926ecbb6fb`; formats: pdf.
+- **303. What alternative to Gibbs sampling is used?**
+  - Question ID: `15e481e668114e4afe0c78eefb716ffe1646b494`; formats: pdf.
+- **304. How does this model overcome the assumption that all words in a document are generated from a single event?**
+  - Question ID: `3d7a982c718ea6bc7e770d8c5da564fbb9d11951`; formats: pdf.
+- **306. What do they mean by a person's industry?**
+  - Question ID: `935d6a6187e6a0c9c0da8e53a42697f853f5c248`; formats: pdf, docx.
+- **308. What social media platform did they look at?**
+  - Question ID: `01a41c0a4a7365cd37d28690735114f2ff5229f2`; formats: pdf, docx.
+- **309. What are the industry classes defined in this paper?**
+  - Question ID: `cd2878c5a52542ddf080b20bec005d9a74f2d916`; formats: pdf, docx.
+- **311. What are the hyperparameters of the bi-GRU?**
+  - Question ID: `6b6d498546f856ac20958f666fc3fd55811347e2`; formats: pdf.
+- **314. What meaningful information does the GRU model capture, which traditional ML models do not?**
+  - Question ID: `1d9aeeaa6efa1367c22be0718f5a5635a73844bd`; formats: pdf.
+- **316. Is the lexicon the same for all languages?**
+  - Question ID: `c598028815066089cc1e131b96d6966d2610467a`; formats: pdf.
+- **317. How do they obtain the lexicon?**
+  - Question ID: `ca4daafdc23f4e23d933ebabe682e1fe0d4b95ed`; formats: pdf.
+- **320. Which datasets are employed for South African languages LID?**
+  - Question ID: `c8541ff10c4e0c8e9eb37d9d7ea408d1914019a9`; formats: pdf.
+- **321. Does the paper report the performance of a baseline model on South African languages LID?**
+  - Question ID: `307e8ab37b67202fe22aedd9a98d9d06aaa169c5`; formats: pdf.
+- **325. Do the errors of the model reflect linguistic similarity between different L1s?**
+  - Question ID: `007b13f05d234d37966d1aa7d85b5fd78564ff45`; formats: pdf.
+- **326. Is the dataset balanced between speakers of different L1s?**
+  - Question ID: `2ceced87af4c8fdebf2dc959aa700a5c95bd518f`; formats: pdf.
+- **327. How long are the essays on average?**
+  - Question ID: `72ed5fed07ace5e3ffe9de6c313625705bc8f0c7`; formats: pdf.
+- **328. How large are the textual descriptions of entities?**
+  - Question ID: `2e37e681942e28b5b05639baaff4cd5129adb5fb`; formats: pdf, docx.
+- **329. What neural models are used to encode the text?**
+  - Question ID: `b49598b05358117ab1471b8ebd0b042d2f04b2a4`; formats: pdf, docx.
+- **332. How they extract "structured answer-relevant relation"?**
+  - Question ID: `1d197cbcac7b3f4015416f0152a6692e881ada6c`; formats: pdf.
+- **340. Does their model suffer exhibit performance drops when incorporating word importance?**
+  - Question ID: `384bf1f55c34b36cb03f916f50bbefade6c86a75`; formats: pdf.
+- **341. How do they measure which words are under-translated by NMT models?**
+  - Question ID: `aef607d2ac46024be17b1ddd0ed3f13378c563a6`; formats: pdf.
+- **342. How do their models decide how much improtance to give to the output words?**
+  - Question ID: `93beae291b455e5d3ecea6ac73b83632a3ae7ec7`; formats: pdf.
+- **343. Which model architectures do they test their word importance approach on?**
+  - Question ID: `6c91d44d5334a4ac80100eead4e105d34e99a284`; formats: pdf.
+- **345. What are the weaknesses found by non-expert annotators of current state-of-the-art NLI models?**
+  - Question ID: `b3d01ac226ee979e188a4141877a6d2a5482de98`; formats: pdf.
+- **347. Do they use active learning to create their dataset?**
+  - Question ID: `ee2c9bc24d70daa0c87e38e0558e09ab97feb4f2`; formats: pdf.
+- **348. Do the hashtag and SemEval datasets contain only English data?**
+  - Question ID: `b249b60a8c94d0e40d65f1ffdfcac527dab57516`; formats: pdf.
+  - Borderline: SemEval is named, but no year/task is given and "the hashtag" dataset is unidentified.
+- **350. What set of approaches to hashtag segmentation are proposed?**
+  - Question ID: `4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f`; formats: pdf.
+- **351. How is the dataset of hashtags sourced?**
+  - Question ID: `60ce4868af45753c9e124e64e518c32376f12694`; formats: pdf.
+- **353. Which data do they use as a starting point for the dialogue dataset?**
+  - Question ID: `2c85865a65acd429508f50b5e4db9674813d67f2`; formats: pdf.
+- **364. What is the previous state-of-the-art in summarization?**
+  - Question ID: `ab0fd94dfc291cf3e54e9b7a7f78b852ddc1a797`; formats: pdf.
+- **367. What language model architectures are used?**
+  - Question ID: `4d47bef19afd70c10bbceafd1846516546641a2f`; formats: pdf.
+- **370. What is meant by closed test setting?**
+  - Question ID: `186b7978ee33b563a37139adff1da7d51a60f581`; formats: pdf.
+  - Borderline: A potentially general term, but "closed test" has domain-specific meanings not specified here.
+- **375. What examples of the difficulties presented by the context-dependent nature of online aggression do they authors give?**
+  - Question ID: `4907096cf16d506937e592c50ae63b642da49052`; formats: pdf.
+- **377. What evidence do the authors present that the model can capture some biases in data annotation and collection?**
+  - Question ID: `893ec40b678a72760b6802f6abf73b8f487ae639`; formats: pdf.
+- **380. What new fine-tuning methods are presented?**
+  - Question ID: `afb77b11da41cd0edcaa496d3f634d18e48d7168`; formats: pdf.
+- **384. For which languages do they build word embeddings for?**
+  - Question ID: `9c44df7503720709eac933a15569e5761b378046`; formats: pdf.
+- **385. How do they evaluate their resulting word embeddings?**
+  - Question ID: `b7381927764536bd97b099b6a172708125364954`; formats: pdf.
+- **386. What types of subwords do they incorporate in their model?**
+  - Question ID: `df95b3cb6aa0187655fd4856ae2b1f503d533583`; formats: pdf.
+- **387. Which matrix factorization methods do they use?**
+  - Question ID: `f7ed3b9ed469ed34f46acde86b8a066c52ecf430`; formats: pdf.
+- **389. What experiments do they use to quantify the extent of interpretability?**
+  - Question ID: `17a1eff7993c47c54eddc7344e7454fbe64191cd`; formats: pdf.
+- **390. Along which dimension do the semantically related words take larger values?**
+  - Question ID: `a5e5cda1f6195ab1336855f1e39a609d61326d62`; formats: pdf.
+- **398. Did they use a crowdsourcing platform?**
+  - Question ID: `49764eee7fb523a6a28375cc699f5e0220b81766`; formats: pdf.
+- **400. Do the authors mention any downside of lemmatizing input before training ELMo?**
+  - Question ID: `5aa12b4063d6182a71870c98e4e1815ff3dc8a72`; formats: pdf.
+  - Borderline: ELMo is named but "the authors" and the particular lemmatization study are not identified.
+- **401. What other examples of morphologically-rich languages do the authors give?**
+  - Question ID: `22815878083ebd2f9e08bc33a5e733063dac7a0f`; formats: pdf.
+- **403. How big was the corpora they trained ELMo on?**
+  - Question ID: `d509081673f5667060400eb325a8050fa5db7cc8`; formats: pdf.
+- **405. Do they use pretrained embeddings?**
+  - Question ID: `cb6a8c642575d3577d1840ca2f4cd2cc2c3397c5`; formats: pdf.
+- **409. Which additional latent variables are used in the model?**
+  - Question ID: `4986f420884f917d1f60d3cea04dc8e64d3b5bf1`; formats: pdf, docx.
+- **410. Which parallel corpora are used?**
+  - Question ID: `747b847d687f703cc20a87877c5b138f26ff137d`; formats: pdf, docx.
+- **412. Do they add one latent variable for each language pair in their Bayesian model?**
+  - Question ID: `6568a31241167f618ef5ede939053feaa2fb0d7e`; formats: pdf, docx.
+- **414. Do they improve on state-of-the-art semantic role induction?**
+  - Question ID: `0fc2b5bc2ead08a6fe0280fb3a47477c6df1587c`; formats: pdf, docx.
+- **417. how is diversity measured?**
+  - Question ID: `249c805ee6f2ebe4dbc972126b3d82fb09fa3556`; formats: pdf.
+- **425. What argument components do the ML methods aim to identify?**
+  - Question ID: `eac9dae3492e17bc49c842fb566f464ff18c049b`; formats: pdf, docx.
+- **428. What argumentation phenomena encounter in actual data are now accounted for by this work?**
+  - Question ID: `206739417251064b910ae9e5ff096e867ee10fb8`; formats: pdf, docx.
+- **429. What challenges do different registers and domains pose to this task?**
+  - Question ID: `d6401cece55a14d2a35ba797a0878dfe2deabedc`; formats: pdf, docx.
+- **431. did they compare with other extractive summarization methods?**
+  - Question ID: `c2cb6c4500d9e02fc9a1bdffd22c3df69655189f`; formats: pdf.
+- **433. what levels of document preprocessing are looked at?**
+  - Question ID: `06eb9f2320451df83e27362c22eb02f4a426a018`; formats: pdf, docx.
+- **434. what keyphrase extraction models were reassessed?**
+  - Question ID: `e54257585cc75564341eb02bdc63ff8111992f82`; formats: pdf, docx.
+- **441. How does their model improve interpretability compared to softmax transformers?**
+  - Question ID: `5913930ce597513299e4b630df5e5153f3618038`; formats: pdf.
+- **443. What details are given about the Twitter dataset?**
+  - Question ID: `cf171fad0bea5ab985c53d11e48e7883c23cdc44`; formats: pdf.
+- **444. What details are given about the movie domain dataset?**
+  - Question ID: `2a564b092916f2fabbfe893cf13de169945ef2e1`; formats: pdf.
+- **445. Which hand-crafted features are combined with word2vec?**
+  - Question ID: `0d34c0812f1e69ea33f76ca8c24c23b0415ebc8d`; formats: pdf.
+- **446. What word-based and dictionary-based feature are used?**
+  - Question ID: `73e83c54251f6a07744413ac8b8bed6480b2294f`; formats: pdf.
+- **447. How are the supervised scores of the words calculated?**
+  - Question ID: `3355918bbdccac644afe441f085d0ffbbad565d7`; formats: pdf.
+- **448. What GAN models were used as baselines to compare against?**
+  - Question ID: `43eecc576348411b0634611c81589f618cd4fddf`; formats: pdf.
+- **450. Is the discriminator's reward made available at each step to the generator?**
+  - Question ID: `c262d3d1c5a8b6fef6b594d5eee86bc2b09e3baf`; formats: pdf.
+- **451. What is the algorithm used to create word embeddings?**
+  - Question ID: `902b3123aec0f3a39319ffa9d05ab8e08a2eb567`; formats: pdf.
+- **456. Do the answered questions measure for the usefulness of the answer?**
+  - Question ID: `9af3142630b350c93875441e1e1767312df76d17`; formats: pdf, docx.
+- **459. which lstm models did they compare with?**
+  - Question ID: `c0af8b7bf52dc15e0b33704822c4a34077e09cd1`; formats: pdf, docx.
+- **460. What was their performance on emotion detection?**
+  - Question ID: `fa30a938b58fc05131c3854f12efe376cbad887f`; formats: pdf, docx.
+- **462. Which Facebook pages did they look at?**
+  - Question ID: `de53af4eddbc30c808d90b8a11a29217d377569e`; formats: pdf, docx.
+- **463. LDA is an unsupervised method; is this paper introducing an unsupervised approach to spam detection?**
+  - Question ID: `dac087e1328e65ca08f66d8b5307d6624bf3943f`; formats: pdf, docx.
+- **465. How do they detect spammers?**
+  - Question ID: `3cd185b7adc835e1c4449eff81222f5fc15c8500`; formats: pdf, docx.
+- **468. How does their simple voting scheme work?**
+  - Question ID: `0f7867f888109b9e000ef68965df4dde2511a55f`; formats: pdf, docx.
+- **469. Which variant of the recurrent neural network do they use?**
+  - Question ID: `e2e977d7222654ee8d983fd8ba63b930e9a5a691`; formats: pdf, docx.
+- **472. Is this hashtag prediction task an established task, or something new?**
+  - Question ID: `792f6d76d2befba2af07198584aac1b189583ae4`; formats: pdf, docx.
+- **479. How were crowd workers instructed to identify important elements in large document collections?**
+  - Question ID: `e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a`; formats: pdf, docx.
+- **480. Which collections of web documents are included in the corpus?**
+  - Question ID: `d6191c4643201262a770947fc95a613f57bedb6b`; formats: pdf, docx.
+- **481. How do the authors define a concept map?**
+  - Question ID: `ffeb67a61ecd09542b1c53c3e4c3abd4da0496a8`; formats: pdf, docx.
+  - Borderline: Concept maps are a clear topic, but the question explicitly asks for particular unnamed authors' definition.
+- **491. What is the meta knowledge specifically?**
+  - Question ID: `04bde1d2b445f971e97bb46ade2d0290981c7a32`; formats: pdf, docx.
+- **494. What kind of stylistic features are obtained?**
+  - Question ID: `22732cb9476e521452bf0538f3fdb94cf3867651`; formats: pdf, docx.
+- **495. What traditional linguistics features did they use?**
+  - Question ID: `4e748cb2b5e74d905d9b24b53be6cfdf326e8054`; formats: pdf, docx.
+- **496. What cognitive features are used?**
+  - Question ID: `74b338d5352fe1a6fd592e38269a4c81fe79b866`; formats: pdf, docx.
+
+## Too general to identify the intended subject
+
+245 original question IDs; 310 PDF/DOCX case units.
+
+Asks about unnamed data, baselines, results, language, participants, settings or features with insufficient distinctive subject information. Explicit pronouns are not required: "What was the baseline?" also lacks its subject.
+
+- **3. which datasets did they experiment with?**
+  - Question ID: `9a05a5f4351db75da371f7ac12eb0b03607c4b87`; formats: pdf.
+- **4. what language pairs are explored?**
+  - Question ID: `5eda469a8a77f028d0c5f1acd296111085614537`; formats: pdf.
+- **9. What predictive model do they build?**
+  - Question ID: `a87a009c242d57c51fc94fe312af5e02070f898b`; formats: pdf, docx.
+- **10. What accuracy does the proposed system achieve?**
+  - Question ID: `ef4dba073d24042f24886580ae77add5326f2130`; formats: pdf.
+- **15. What are the other algorithms tested?**
+  - Question ID: `6b53e1f46ae4ba9b75117fc6e593abded89366be`; formats: pdf.
+- **19. what was the baseline?**
+  - Question ID: `0752d71a0a1f73b3482a888313622ce9e9870d6e`; formats: pdf.
+- **20. what evaluation metrics were used?**
+  - Question ID: `55c8f7acbfd4f5cde634aaecd775b3bb32e9ffa3`; formats: pdf.
+- **21. what datasets did they use?**
+  - Question ID: `4eaf9787f51cd7cdc45eb85cf223d752328c6ee4`; formats: pdf.
+- **23. Who were the human evaluators used?**
+  - Question ID: `31735ec3d83c40b79d11df5c34154849aeb3fb47`; formats: pdf.
+- **30. How much does this model improve state-of-the-art?**
+  - Question ID: `bd5bd1765362c2d972a762ca12675108754aa437`; formats: pdf.
+- **31. Were any of these tasks evaluated in any previous work?**
+  - Question ID: `d27438b11bc70e706431dda0af2b1c0b0d209f96`; formats: pdf.
+- **32. What is the baseline?**
+  - Question ID: `99e78c390932594bd833be0f5c890af5c605d808`; formats: pdf.
+- **33. Is the data de-identified?**
+  - Question ID: `861187338c5ad445b9acddba8f2c7688785667b1`; formats: pdf.
+- **34. What embeddings are used?**
+  - Question ID: `f161e6d5aecf8fae3a26374dcb3e4e1b40530c95`; formats: pdf.
+- **35. What datasets did they use for evaluation?**
+  - Question ID: `12c50dea84f9a8845795fa8b8c1679328bd66246`; formats: pdf.
+- **39. What user variations have been tested?**
+  - Question ID: `2ad4d3d222f5237ed97923640bc8e199409cbe52`; formats: pdf.
+- **40. What are the baselines used?**
+  - Question ID: `3fad42be0fb2052bb404b989cc7d58b440cd23a0`; formats: pdf.
+- **47. What datasets do they evaluate on?**
+  - Question ID: `6424e442b34a576f904d9649d63acf1e4fdefdfc`; formats: pdf.
+- **48. Do they evaluate only on English datasets?**
+  - Question ID: `5eabfc6cc8aa8a99e6e42514ef9584569cb75dec`; formats: pdf.
+- **51. What are the sources of the datasets?**
+  - Question ID: `2c78993524ca62bf1f525b60f2220a374d0e3535`; formats: pdf.
+- **52. What metric is used for evaluation?**
+  - Question ID: `d604f5fb114169f75f9a38fab18c1e866c5ac28b`; formats: pdf.
+- **53. Are the automatically constructed datasets subject to quality control?**
+  - Question ID: `e97186c51d4af490dba6faaf833d269c8256426c`; formats: pdf.
+- **59. What languages are evaluated?**
+  - Question ID: `c32adef59efcb9d1a5b10e1d7c999a825c9e6d9a`; formats: pdf.
+- **60. Does the model have attention?**
+  - Question ID: `b9d168da5321a7d7b812c52bb102a05210fe45bd`; formats: pdf.
+- **61. What architecture does the decoder have?**
+  - Question ID: `0c234db3b380c27c4c70579a5d6948e1e3b24ff1`; formats: pdf.
+- **62. What architecture does the encoder have?**
+  - Question ID: `fa527becb8e2551f4fd2ae840dbd4a68971349e0`; formats: pdf.
+- **65. Do they report results only on English data?**
+  - Question ID: `cb196725edc9cdb2c54b72364f3bbf7c76471490`; formats: pdf.
+- **67. What baseline is used in the experiments?**
+  - Question ID: `8f16dc7d7be0d284069841e456ebb2c69575b32b`; formats: pdf.
+- **73. Are the images from a specific domain?**
+  - Question ID: `50e80cfa84200717921840fddcf3b051a9216ad8`; formats: pdf.
+- **74. Which datasets are used?**
+  - Question ID: `b1bc9ae9d40e7065343c12f860a461c7c730a612`; formats: pdf.
+- **75. Which existing models are evaluated?**
+  - Question ID: `63a1cbe66fd58ff0ead895a8bac1198c38c008aa`; formats: pdf.
+- **78. What source-target language pairs were used in this work?**
+  - Question ID: `a3d9b101765048f4b61cbd3eaa2439582ebb5c77`; formats: pdf.
+- **79. What model is used as a baseline?**
+  - Question ID: `009ce6f2bea67e7df911b3f93443b23467c9f4a1`; formats: pdf.
+- **87. Which of the three pretraining tasks is the most helpful?**
+  - Question ID: `ed2eb4e54b641b7670ab5a7060c7b16c628699ab`; formats: pdf.
+- **89. What datasets are used?**
+  - Question ID: `91e326fde8b0a538bc34d419541b5990d8aae14b`; formats: pdf.
+- **91. What baselines did they consider?**
+  - Question ID: `4cbe5a36b492b99f9f9fea8081fe4ba10a7a0e94`; formats: pdf.
+- **93. How was the dataset annotated?**
+  - Question ID: `2c7e94a65f5f532aa31d3e538dcab0468a43b264`; formats: pdf.
+- **94. Which classifiers are evaluated?**
+  - Question ID: `149da739b1c19a157880d9d4827f0b692006aa2c`; formats: pdf.
+- **95. What is the size of this dataset?**
+  - Question ID: `27de1d499348e17fec324d0ef00361a490659988`; formats: pdf.
+- **96. Where does the data come from?**
+  - Question ID: `cfcdd73e712caf552ba44d0aa264d8dace65a589`; formats: pdf.
+- **100. How are weights dynamically adjusted?**
+  - Question ID: `20e38438471266ce021817c6364f6a46d01564f2`; formats: pdf.
+- **107. What pooling function is used?**
+  - Question ID: `a130306c6662ff489df13fb3f8faa7cba8c52a21`; formats: pdf, docx.
+- **108. Do they report results only on English?**
+  - Question ID: `b1cf5739467ba90059add58d11b73d075a11ec86`; formats: pdf.
+- **111. what datasets did they use?**
+  - Question ID: `dc1cec824507fc85ac1ba87882fe1e422ff6cffb`; formats: pdf.
+- **112. what ml based approaches were compared?**
+  - Question ID: `f428618ca9c017e0c9c2a23515dab30a7660f65f`; formats: pdf.
+- **115. How much does their model outperform existing models?**
+  - Question ID: `de5b6c25e35b3a6c5e40e350fc5e52c160b33490`; formats: pdf.
+- **118. What dataset was used?**
+  - Question ID: `df5a4505edccc0ee11349ed6e7958cf6b84c9ed4`; formats: pdf.
+- **119. What was the baseline for this task?**
+  - Question ID: `fd753ab5177d7bd27db0e0afc12411876ee607df`; formats: pdf.
+- **121. How many humans participated?**
+  - Question ID: `4dcf67b5e7bd1422e7e70c657f6eacccd8de06d3`; formats: pdf, docx.
+- **123. Do the authors also try the model on other datasets?**
+  - Question ID: `784ce5a983c5f2cc95a2c60ce66f2a8a50f3636f`; formats: pdf, docx.
+- **125. Did they only experiment with one language pair?**
+  - Question ID: `1f07e837574519f2b696f3d6fa3230af0b931e5d`; formats: pdf, docx.
+- **126. Which other approaches do they compare their model with?**
+  - Question ID: `5a65ad10ff954d0f27bb3ccd9027e3d8f7f6bb76`; formats: pdf.
+- **127. What results do they achieve using their proposed approach?**
+  - Question ID: `729694a9fe1e05d329b7a4078a596fe606bc5a95`; formats: pdf.
+- **129. What are the models used for the baseline of the three NLP tasks?**
+  - Question ID: `5cc2daca2a84ddccba9cdd9449e51bb3f64b3dde`; formats: pdf.
+- **136. what is the domain of the corpus?**
+  - Question ID: `8acab64ba72831633e8cc174d5469afecccf3ae9`; formats: pdf, docx.
+- **137. what challenges are identified?**
+  - Question ID: `53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa`; formats: pdf, docx.
+- **140. What datasets are used?**
+  - Question ID: `bd6dc38a9ac8d329114172194b0820766458dacc`; formats: pdf.
+- **141. which datasets did they experiment with?**
+  - Question ID: `3ddff6b707767c3dd54d7104fe88b628765cae58`; formats: pdf, docx.
+- **142. which languages are explored?**
+  - Question ID: `0a5ffe4697913a57fda1fd5a188cd5ed59bdc5c7`; formats: pdf, docx.
+- **145. Which dataset do they use?**
+  - Question ID: `c88a846197b72d25e04ec55f00ee3e72f655504c`; formats: pdf.
+- **147. What are the language pairs explored in this paper?**
+  - Question ID: `14b74ad5a6f5b0506511c9b454e9c464371ef8c4`; formats: pdf.
+- **148. Do they experiment with the toolkits?**
+  - Question ID: `5f2bade0881c719ab026bc2e2962e2ada96cdb25`; formats: pdf.
+- **150. What language is explored in this paper?**
+  - Question ID: `f641f561ad2ea2794a52e4e4bdd62e1f353ab797`; formats: pdf.
+- **151. What evaluation metrics were used?**
+  - Question ID: `9b97805a0c093df405391a85e4d3ab447671c86a`; formats: pdf.
+- **152. What was the score of the proposed model?**
+  - Question ID: `38f58f13c7f23442d5952c8caf126073a477bac0`; formats: pdf.
+- **153. What was the previous best model?**
+  - Question ID: `7ee5c45b127fb284a4a9e72bb9b980a602f7445a`; formats: pdf.
+- **154. Which datasets did they use for evaluation?**
+  - Question ID: `ddf5e1f600b9ce2e8f63213982ef4209bab01fd8`; formats: pdf.
+- **155. What hyperparameters are explored?**
+  - Question ID: `27275fe9f6a9004639f9ac33c3a5767fea388a98`; formats: pdf.
+- **159. What is the state-of-the-art model for the task?**
+  - Question ID: `5a22293b055f5775081d6acdc0450f7bd5f5de04`; formats: pdf.
+- **160. What is the strong baseline?**
+  - Question ID: `03c967763e51ef2537793db7902e2c9c17e43e95`; formats: pdf.
+- **161. what is the state of the art?**
+  - Question ID: `c2b8ee872b99f698b3d2082d57f9408a91e1b4c1`; formats: pdf, docx.
+- **162. what standard dataset were used?**
+  - Question ID: `8eefa116e3c3d3db751423cc4095d1c4153d3a5f`; formats: pdf, docx.
+- **163. Do they perform error analysis?**
+  - Question ID: `133eb4aa4394758be5f41744c60c99901b2bc01c`; formats: pdf.
+- **164. How do their results compare to state-of-the-art?**
+  - Question ID: `3fff37b9f68697d080dbd9d9008a63907137644e`; formats: pdf.
+- **166. what are the baseline systems?**
+  - Question ID: `642e8cf1d39faa1cd985d16750cdc6696c52db2f`; formats: pdf, docx.
+- **169. Do they evaluate only on English datasets?**
+  - Question ID: `00c57e45ac6afbdfa67350a57e81b4fad0ed2885`; formats: pdf, docx.
+- **171. How is the dataset annotated?**
+  - Question ID: `82642d3111287abf736b781043d49536fe48c350`; formats: pdf, docx.
+- **172. What dataset is used for this study?**
+  - Question ID: `5a81732d52f64e81f1f83e8fd3514251227efbc7`; formats: pdf, docx.
+- **173. what were their performance results?**
+  - Question ID: `9a8b9ea3176d30da2453cac6e9347737c729a538`; formats: pdf.
+- **177. Is the position in the sequence part of the input?**
+  - Question ID: `1be54c5b3ea67d837ffba2290a40c1e720d9587f`; formats: pdf.
+- **183. What is the dimension of the embeddings?**
+  - Question ID: `4c07c33dfaf4f3e6db55e377da6fa69825d0ba15`; formats: pdf, docx.
+- **184. What dataset is used to train the model?**
+  - Question ID: `b1ce129678e37070e69f01332f1a8587e18e06b0`; formats: pdf, docx.
+- **186. what were the baselines?**
+  - Question ID: `2ddb51b03163d309434ee403fef42d6b9aecc458`; formats: pdf.
+- **187. what competitive results did they obtain?**
+  - Question ID: `e587559f5ab6e42f7d981372ee34aebdc92b646e`; formats: pdf.
+- **191. Is the model tested against any baseline?**
+  - Question ID: `91bc8c0bc1634045177065536dd311f89134630b`; formats: pdf.
+- **193. What are the deep learning architectures used in the task?**
+  - Question ID: `53f74250948015c394e7b8438a2041fdeb330911`; formats: pdf.
+- **195. Do they train their model starting from a checkpoint?**
+  - Question ID: `7b4fb6da74e6bd1baea556788a02969134cf0800`; formats: pdf.
+- **197. What downstream tasks are evaluated?**
+  - Question ID: `f67b9bda14ec70feba2e0d10c400b2b2025a0a6a`; formats: pdf.
+- **199. what was the baseline?**
+  - Question ID: `761de1610e934189850e8fda707dc5239dd58092`; formats: pdf.
+- **205. What dataset do they use to evaluate their method?**
+  - Question ID: `2fbb6322e485e7743ec3fb4bb02d44bf4b5ea8a6`; formats: pdf, docx.
+- **207. What language(s) is/are represented in the dataset?**
+  - Question ID: `1e775cf30784e6b1c2b573294a82e145a3f959bb`; formats: pdf.
+- **208. What baseline model is used?**
+  - Question ID: `392fb87564c4f45d0d8d491a9bb217c4fce87f03`; formats: pdf.
+- **209. Which variation provides the best results on this dataset?**
+  - Question ID: `203337c15bd1ee05763c748391d295a1f6415b9b`; formats: pdf.
+- **211. What dataset is used for this work?**
+  - Question ID: `21548433abd21346659505296fb0576e78287a74`; formats: pdf.
+- **213. What was the baseline?**
+  - Question ID: `51b1142c1d23420dbf6d49446730b0e82b32137c`; formats: pdf.
+- **214. What were the datasets used in this paper?**
+  - Question ID: `58355e2a782bf145b61ee2a3e0e426119985c179`; formats: pdf.
+- **219. What is the performance of classifiers?**
+  - Question ID: `d53299fac8c94bd0179968eb868506124af407d1`; formats: pdf.
+- **220. What classifiers have been trained?**
+  - Question ID: `29f2954098f055fb19d9502572f085862d75bf61`; formats: pdf.
+- **225. What is the size of the Chinese data?**
+  - Question ID: `6a31db1aca57a818f36bba9002561724655372a7`; formats: pdf, docx.
+- **226. Did they collected the two datasets?**
+  - Question ID: `e330e162ec29722f5ec9f83853d129c9e0693d65`; formats: pdf, docx.
+- **227. What are the baselines?**
+  - Question ID: `d3093062aebff475b4deab90815004051e802aa6`; formats: pdf, docx.
+- **230. How much time takes its training?**
+  - Question ID: `7f207549c75f5c4388efc15ed28822672b845663`; formats: pdf.
+- **234. What is the average length of the title text?**
+  - Question ID: `252a645af9876241fb166e5822992ce17fec6eb6`; formats: pdf.
+- **236. What evaluation metrics are used?**
+  - Question ID: `425bd2ccfd95ead91d8f2b1b1c8ab9fc3446cb82`; formats: pdf.
+- **237. Which shallow approaches did they experiment with?**
+  - Question ID: `955de9f7412ba98a0c91998919fa048d339b1d48`; formats: pdf.
+- **240. Do they report results only on English data?**
+  - Question ID: `4ac2c3c259024d7cd8e449600b499f93332dab60`; formats: pdf.
+- **241. What type of classifiers are used?**
+  - Question ID: `bc730e4d964b6a66656078e2da130310142ab641`; formats: pdf.
+- **242. Which real-world datasets are used?**
+  - Question ID: `3941401a182a3d6234894a5c8a75d48c6116c45c`; formats: pdf.
+- **244. How are the accuracy merits of the approach demonstrated?**
+  - Question ID: `a74190189a6ced2a2d5b781e445e36f4e527e82a`; formats: pdf.
+- **252. Do they report results only on English data?**
+  - Question ID: `77c34f1033702278f7f044806c1eba0c6ecb8b04`; formats: pdf, docx.
+- **253. What baseline model is used?**
+  - Question ID: `2ee715c7c6289669f11a79743a6b2b696073805d`; formats: pdf, docx.
+- **258. Do they experiment with other tasks?**
+  - Question ID: `8df35c24af9efc3348d3b8d746df116480dfe661`; formats: pdf.
+- **259. What baselines do they introduce?**
+  - Question ID: `277a7e916e65dfefd44d2d05774f95257ac946ae`; formats: pdf.
+- **260. How large is the corpus?**
+  - Question ID: `2916bbdb95ef31ab26527ba67961cf5ec94d6afe`; formats: pdf.
+- **261. How was annotation performed?**
+  - Question ID: `f2e8497aa16327aa297a7f9f7d156e485fe33945`; formats: pdf.
+- **262. How many documents are in the new corpus?**
+  - Question ID: `9b76f428b7c8c9fc930aa88ee585a03478bff9b3`; formats: pdf.
+- **263. What baseline systems are proposed?**
+  - Question ID: `dd6b378d89c05058e8f49e48fd48f5c458ea2ebc`; formats: pdf.
+- **264. How did they obtain the dataset?**
+  - Question ID: `e35c2fa99d5c84d8cb5d83fca2b434dcd83f3851`; formats: pdf.
+- **265. What activation function do they use in their model?**
+  - Question ID: `c00ce1e3be14610fb4e1f0614005911bb5ff0302`; formats: pdf.
+- **266. What baselines do they compare to?**
+  - Question ID: `71fe5822d9fccb1cb391c11283b223dc8aa1640c`; formats: pdf.
+- **267. How are chunks defined?**
+  - Question ID: `97d0f9a1540a48e0b4d30d7084a8c524dd09a4c3`; formats: pdf.
+- **268. What features are extracted?**
+  - Question ID: `1062a0506c3691a93bb914171c2701d2ae9621cb`; formats: pdf.
+- **269. How many layers does their model have?**
+  - Question ID: `8e12b5c459fa963b3e549deadb864c244879fe82`; formats: pdf.
+- **272. How big is the dataset used in this work?**
+  - Question ID: `3e1829e96c968cbd8ad8e9ce850e3a92a76b26e4`; formats: pdf.
+- **274. What baselines were used in this work?**
+  - Question ID: `3e88fb3d28593309a307eb97e875575644a01463`; formats: pdf.
+- **275. What is the performance of their method?**
+  - Question ID: `0767ca8ff1424f7a811222ca108a33b6411aaa8a`; formats: pdf.
+- **276. Which evaluation methods are used?**
+  - Question ID: `e8f969ffd637b82d04d3be28c51f0f3ca6b3883e`; formats: pdf.
+- **277. What dataset is used in this paper?**
+  - Question ID: `46227b4265f1d300a5ed71bf40822829de662bc2`; formats: pdf.
+- **278. Which other methods do they compare with?**
+  - Question ID: `a6a48de63c1928238b37c2a01c924b852fe752f8`; formats: pdf.
+- **280. What was the baseline used?**
+  - Question ID: `7b4992e2d26577246a16ac0d1efc995ab4695d24`; formats: pdf.
+- **281. What are their results on both datasets?**
+  - Question ID: `ab9b0bde6113ffef8eb1c39919d21e5913a05081`; formats: pdf.
+- **282. What textual patterns are extracted?**
+  - Question ID: `9a9d225f9ac35ed35ea02f554f6056af3b42471d`; formats: pdf.
+- **283. Which annotated corpus did they use?**
+  - Question ID: `ea56148a8356a1918bedcf0a99ae667c27792cfe`; formats: pdf.
+- **284. Which languages are explored in this paper?**
+  - Question ID: `cd32a38e0f33b137ab590e1677e8fb073724df7f`; formats: pdf.
+- **285. what language does this paper focus on?**
+  - Question ID: `2c6b50877133a499502feb79a682f4023ddab63e`; formats: pdf.
+- **286. what evaluation metrics did they use?**
+  - Question ID: `f651cd144b7749e82aa1374779700812f64c8799`; formats: pdf.
+- **287. by how much did their model improve?**
+  - Question ID: `4625cfba3083346a96e573af5464bc26c34ec943`; formats: pdf.
+- **288. what state of the art methods did they compare with?**
+  - Question ID: `326588b1de9ba0fd049ab37c907e6e5413e14acd`; formats: pdf.
+- **289. what are the sizes of both datasets?**
+  - Question ID: `ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb`; formats: pdf.
+- **295. What experiments are conducted?**
+  - Question ID: `5c3e98e3cebaecd5d3e75ec2c9fc3dd267ac3c83`; formats: pdf.
+- **300. Do they report results only on English data?**
+  - Question ID: `f3c204723da53c7c8ef4dc1018ffbee545e81056`; formats: pdf.
+- **301. What baseline approaches does this approach out-perform?**
+  - Question ID: `0602a974a879e6eae223cdf048410b5a0111665e`; formats: pdf.
+- **302. What datasets are used?**
+  - Question ID: `56b034c303983b2e276ed6518d6b080f7b8abe6a`; formats: pdf.
+- **305. How many users do they look at?**
+  - Question ID: `692c9c5d9ff9cd3e0ce8b5e4fa68dda9bd23dec1`; formats: pdf, docx.
+- **307. What model did they use for their system?**
+  - Question ID: `3b77b4defc8a139992bd0b07b5cf718382cb1a5f`; formats: pdf, docx.
+- **310. Do they report results only on English data?**
+  - Question ID: `fd2c6c26fd0ab3c10aae4f2550c5391576a77491`; formats: pdf.
+- **312. What baseline is used?**
+  - Question ID: `de3b1145cb4111ea2d4e113f816b537d052d9814`; formats: pdf.
+- **313. What data is used in experiments?**
+  - Question ID: `132f752169adf6dc5ade3e4ca773c11044985da4`; formats: pdf.
+- **315. What is the approach of previous work?**
+  - Question ID: `012b8a89aea27485797373adbcda32f16f9d7b54`; formats: pdf.
+- **318. What evaluation metric is used?**
+  - Question ID: `0ab3df10f0b7203e859e9b62ffa7d6d79ffbbe50`; formats: pdf.
+- **319. Which languages are similar to each other?**
+  - Question ID: `92dfacbbfa732ecea006e251be415a6f89fb4ec6`; formats: pdf.
+- **323. Does the algorithm improve on the state-of-the-art methods?**
+  - Question ID: `e5c8e9e54e77960c8c26e8e238168a603fcdfcc6`; formats: pdf.
+- **324. Are the annotations automatic or manually created?**
+  - Question ID: `7793805982354947ea9fc742411bec314a6998f6`; formats: pdf.
+- **330. What baselines are used for comparison?**
+  - Question ID: `932b39fd6c47c6a880621a62e6a978491d881d60`; formats: pdf, docx.
+- **331. What datasets are used to evaluate this paper?**
+  - Question ID: `b36f867fcda5ad62c46d23513369337352aa01d2`; formats: pdf, docx.
+- **333. How big are significant improvements?**
+  - Question ID: `92294820ac0d9421f086139e816354970f066d8a`; formats: pdf.
+- **334. What metrics do they use?**
+  - Question ID: `477d9d3376af4d938bb01280fe48d9ae7c9cf7f7`; formats: pdf.
+- **335. On what datasets are experiments performed?**
+  - Question ID: `f225a9f923e4cdd836dd8fe097848da06ec3e0cc`; formats: pdf.
+- **336. What was the baseline model?**
+  - Question ID: `ff338921e34c15baf1eae0074938bf79ee65fdd2`; formats: pdf.
+- **337. What dataset did they use?**
+  - Question ID: `e807d347742b2799bc347c0eff19b4c270449fee`; formats: pdf.
+- **338. What was their highest recall score?**
+  - Question ID: `31b92c03d5b9be96abcc1d588d10651703aff716`; formats: pdf.
+- **339. What was their highest MRR score?**
+  - Question ID: `9ec1f88ceec84a10dc070ba70e90a792fba8ce71`; formats: pdf.
+- **344. Do they compare human-level performance to model performance for their dataset?**
+  - Question ID: `a69a59b6c0ab27bcee1a780d6867df21e30aec08`; formats: pdf.
+- **346. What data sources do they use for creating their dataset?**
+  - Question ID: `af5730d82535464cedfa707a03415ac2e7a21295`; formats: pdf.
+- **349. What current state of the art method was used for comparison?**
+  - Question ID: `0f567251a6566f65170a1329eeeb5105932036b2`; formats: pdf.
+- **352. How big is their created dataset?**
+  - Question ID: `1b1a30e9e68a9ae76af467e60cefb180d135e285`; formats: pdf.
+- **354. What labels do they create on their dataset?**
+  - Question ID: `73a7acf33b26f5e9475ee975ba00d14fd06f170f`; formats: pdf.
+- **355. How do they select instances to their hold-out test set?**
+  - Question ID: `dd53baf26dad3d74872f2d8956c9119a27269bd5`; formats: pdf.
+- **356. Which models/frameworks do they compare to?**
+  - Question ID: `218bc82796eb8d91611996979a4a42500131a936`; formats: pdf.
+- **358. Up to how many samples do they experiment with?**
+  - Question ID: `352bc6de5c5068c6c19062bad1b8f644919b1145`; formats: pdf.
+- **359. Do they use pretrained models?**
+  - Question ID: `d667731ea20605580c398a1224a0094d1155ebbb`; formats: pdf.
+- **360. What type of system does the baseline classification use?**
+  - Question ID: `dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596`; formats: pdf.
+- **361. What experiments were carried out on the corpus?**
+  - Question ID: `955cbea7e5ead36fb89cd6229a97ccb3febcf8bc`; formats: pdf.
+- **362. How many annotators tagged each text?**
+  - Question ID: `04d1b3b41fb62a7b896afe55e0e8bc5ffb8c6e39`; formats: pdf.
+- **363. Where did the texts in the corpus come from?**
+  - Question ID: `15cdd9ea4bae8891c1652da2ed34c87bbbd0edb8`; formats: pdf.
+- **365. What dataset do they use?**
+  - Question ID: `6ca938324dc7e1742a840d0a54dc13cc207394a1`; formats: pdf.
+- **366. What other models do they compare to?**
+  - Question ID: `4fa6fbb9df1a4c32583d4ef70d2b29ece4b3d802`; formats: pdf.
+- **368. How better is performance compared to previous state-of-the-art models?**
+  - Question ID: `5fda8539a97828e188ba26aad5cda1b9dd642bc8`; formats: pdf.
+- **371. What are strong baselines model is compared to?**
+  - Question ID: `fabcd71644bb63559d34b38d78f6ef87c256d475`; formats: pdf.
+- **372. Does the dataset feature only English language data?**
+  - Question ID: `da9c0637623885afaf023a319beee87898948fe9`; formats: pdf.
+- **373. What additional features and context are proposed?**
+  - Question ID: `8a1c0ef69b6022a0642ca131a8eacb5c97016640`; formats: pdf.
+- **374. What learning models are used on the dataset?**
+  - Question ID: `48088a842f7a433d3290eb45eb0d4c6ab1d8f13c`; formats: pdf.
+- **376. Do they report results only on English data?**
+  - Question ID: `8748e8f64af57560d124c7b518b853bf2711c13e`; formats: pdf.
+- **378. Which publicly available datasets are used?**
+  - Question ID: `c81f215d457bdb913a5bade2b4283f19c4ee826c`; formats: pdf.
+- **379. What baseline is used?**
+  - Question ID: `e101e38efaa4b931f7dd75757caacdc945bb32b4`; formats: pdf.
+- **381. What are the existing biases?**
+  - Question ID: `41b2355766a4260f41b477419d44c3fd37f3547d`; formats: pdf.
+- **382. What biases does their model capture?**
+  - Question ID: `96a4091f681872e6d98d0efee777d9e820cb8dae`; formats: pdf.
+- **383. What existing approaches do they compare to?**
+  - Question ID: `81a35b9572c9d574a30cc2164f47750716157fc8`; formats: pdf.
+- **388. Do they report results only on English data?**
+  - Question ID: `c7eb71683f53ab7acffd691a36cad6edc7f5522e`; formats: pdf.
+- **391. What is the additive modification to the objective function?**
+  - Question ID: `32d99dcd8d46e2cda04a9a9fa0e6693d2349a7a9`; formats: pdf.
+- **396. Which datasets are used for evaluation?**
+  - Question ID: `a3bb9a936f61bafb509fa12ac0a61f91abcc5106`; formats: pdf.
+- **397. What previous methods is their model compared to?**
+  - Question ID: `df6d327e176740da9edcc111a06374c54c8e809c`; formats: pdf.
+- **399. How was the dataset collected?**
+  - Question ID: `3321d8d0e190d25958e5bfe0f3438b5c2ba80fd1`; formats: pdf.
+- **404. What metrics are used for evaluation?**
+  - Question ID: `c2e475adeddcdc4d637ef0d4f5065b6a9b299827`; formats: pdf.
+- **406. What dataset is used?**
+  - Question ID: `6cd25c637c6b772ce29e8ee81571e8694549c5ab`; formats: pdf.
+- **408. What baseline model is used?**
+  - Question ID: `6bf5620f295b5243230bc97b340fae6e92304595`; formats: pdf, docx.
+- **413. What does an individual model consist of?**
+  - Question ID: `50cc6c5f2dcf5fb87b56007f6a825fa7c90b64ed`; formats: pdf, docx.
+- **415. how many tags do they look at?**
+  - Question ID: `4dc268e3d482e504ca80d2ab514e68fd9b1c3af1`; formats: pdf.
+- **416. which algorithm was the highest performer?**
+  - Question ID: `ab54cd2dc83141bad3cb3628b3f0feee9169a556`; formats: pdf.
+- **418. how large is the vocabulary?**
+  - Question ID: `b4f881331b975e6e4cab1868267211ed729d782d`; formats: pdf.
+- **419. what dataset was used?**
+  - Question ID: `79413ff5d98957c31866f22179283902650b5bb6`; formats: pdf.
+- **420. what algorithms did they use?**
+  - Question ID: `29c014baf99fb9f40b5171aab3e2c7f12a748f79`; formats: pdf.
+- **421. How does their ensemble method work?**
+  - Question ID: `09c86ef78e567033b725fc56b85c5d2602c1a7c3`; formats: pdf, docx.
+- **423. How do they show there is space for further improvement?**
+  - Question ID: `e5bc73974c79d96eee2b688e578a9de1d0eb38fd`; formats: pdf, docx.
+- **424. Do they report results only on English data?**
+  - Question ID: `2cd37743bcc7ea3bd405ce6d91e79e5339d7642e`; formats: pdf, docx.
+- **426. Which machine learning methods are used in experiments?**
+  - Question ID: `7697baf8d8d582c1f664a614f6332121061f87db`; formats: pdf, docx.
+- **427. How is the data in the new corpus come sourced?**
+  - Question ID: `1cb100182508cf55b3509283c0e2bbcd527d625e`; formats: pdf, docx.
+- **430. what topics did they label?**
+  - Question ID: `ceb767e33fde4b927e730f893db5ece947ffb0d8`; formats: pdf.
+- **432. what datasets were used?**
+  - Question ID: `c571deefe93f0a41b60f9886db119947648e967c`; formats: pdf.
+- **435. how many articles are in the dataset?**
+  - Question ID: `2a3e36c220e7b47c1b652511a4fdd7238a74a68f`; formats: pdf, docx.
+- **436. What are the state of the art models?**
+  - Question ID: `3a6e843c6c81244c14730295cfb8b865cd7ede46`; formats: pdf, docx.
+- **437. Which benchmark datasets are used?**
+  - Question ID: `fabf6fdcfb4c4c7affaa1e4336658c1e6635b1bf`; formats: pdf, docx.
+- **438. What are the network's baseline features?**
+  - Question ID: `1beb4a590fa6127a138f4ed1dd13d5d51cc96809`; formats: pdf, docx.
+- **439. What tasks are used for evaluation?**
+  - Question ID: `5c5aeee83ea3b34f5936404f5855ccb9869356c1`; formats: pdf.
+- **440. HOw does the method perform compared with baselines?**
+  - Question ID: `f8c1b17d265a61502347c9a937269b38fc3fcab1`; formats: pdf.
+- **442. What baseline method is used?**
+  - Question ID: `81d193672090295e687bc4f4ac1b7a9c76ea35df`; formats: pdf.
+- **452. What is the corpus used for the task?**
+  - Question ID: `1038542243efe5ab3e65c89385e53c4831cd9981`; formats: pdf.
+- **453. How is evaluation performed?**
+  - Question ID: `e2b0cd30cf56a4b13f96426489367024310c3a05`; formats: pdf.
+- **454. Does the experiments focus on a specific domain?**
+  - Question ID: `4e1a67f8dc68b55a5ce18e6cd385ae9ab90d891f`; formats: pdf, docx.
+- **455. how many training samples do you have for training?**
+  - Question ID: `6c96e910bd98c9fd58ba2050f99b9c9bac69840a`; formats: pdf, docx.
+- **457. how small of a dataset did they train on?**
+  - Question ID: `8060a773f6a136944f7b59758d08cc6f2a59693b`; formats: pdf, docx.
+- **458. what was their character error rate?**
+  - Question ID: `1bb7eb5c3d029d95d1abf9f2892c1ec7b6eef306`; formats: pdf, docx.
+- **461. Which existing benchmarks did they compare to?**
+  - Question ID: `f875337f2ecd686cd7789e111174d0f14972638d`; formats: pdf, docx.
+- **464. What is the benchmark dataset and is its quality high?**
+  - Question ID: `a1645d0ba50e4c29f0feb806521093e7b1459081`; formats: pdf, docx.
+- **466. By how much does their best model outperform the state-of-the-art?**
+  - Question ID: `6cd8bad8a031ce6d802ded90f9754088e0c8d653`; formats: pdf, docx.
+- **467. Which dataset do they train their models on?**
+  - Question ID: `30eacb4595014c9c0e5ee9669103d003cfdfe1e5`; formats: pdf, docx.
+- **470. How do they obtain the new context represetation?**
+  - Question ID: `0cfe0e33fbb100751fc0916001a5a19498ae8cb5`; formats: pdf, docx.
+- **471. Does the paper clearly establish that the challenges listed here exist in this dataset and task?**
+  - Question ID: `b85fc420eb2f77f6f14f375cc1fcc5155eb5c0a8`; formats: pdf, docx.
+- **473. What is the word-level baseline?**
+  - Question ID: `127d5ddfabec5c58832e5865cbd8ed0978c25a13`; formats: pdf, docx.
+- **474. What other tasks do they test their method on?**
+  - Question ID: `b91671715ad4fad56c67c28ce6f29e180fe08595`; formats: pdf, docx.
+- **475. what is the word level baseline they compare to?**
+  - Question ID: `a6d37b5975050da0b1959232ae756fc09e5f87e8`; formats: pdf, docx.
+- **476. Does the corpus contain only English documents?**
+  - Question ID: `8e44c02c2d9fa56fb74ace35ee70a5add50b52ae`; formats: pdf, docx.
+- **477. What type of evaluation is proposed for this task?**
+  - Question ID: `1522ccedbb1f668958f24cca070f640274bc2549`; formats: pdf, docx.
+- **478. What baseline system is proposed?**
+  - Question ID: `97466a37525536086ed5d6e5ed143df085682318`; formats: pdf, docx.
+- **482. Do the authors conduct experiments on the tasks mentioned?**
+  - Question ID: `1dc2da5078a7e5ea82ccd1c90d81999a922bc9bf`; formats: pdf, docx.
+- **483. Did they collect their own datasets?**
+  - Question ID: `7fa3c2c0cf7f559d43e84076a9113a390c5ba03a`; formats: pdf, docx.
+- **484. What data do they look at?**
+  - Question ID: `9a7ba5ed1779c664d2cac92494a43517d3e87c96`; formats: pdf, docx.
+- **485. What language do they explore?**
+  - Question ID: `662870a90890c620a964720b2ca122a1139410ea`; formats: pdf, docx.
+- **486. Do they report results only on English datasets?**
+  - Question ID: `92d1a6df3041667dc662376938bc65527a5a1c3c`; formats: pdf, docx.
+- **487. Which hyperparameters were varied in the experiments on the four tasks?**
+  - Question ID: `12159f04e0427fe33fa05af6ba8c950f1a5ce5ea`; formats: pdf, docx.
+- **488. Which other hyperparameters, other than number of clusters are typically evaluated in this type of research?**
+  - Question ID: `a4a1fcef760b133e9aa876ac28145ad98a609927`; formats: pdf, docx.
+- **489. How were the cluster extracted?**
+  - Question ID: `63bb2040fa107c5296351c2b5f0312336dad2863`; formats: pdf, docx.
+- **490. What tasks do they experiment with?**
+  - Question ID: `ef396a34436072cb3c40b0c9bc9179fee4a168ae`; formats: pdf, docx.
+- **492. What other evaluation metrics are looked at?**
+  - Question ID: `49c32a2a64eb41381e5f12ccea4150cac9f3303d`; formats: pdf, docx.
+- **493. What is the best reported system?**
+  - Question ID: `bbb77f2d6685c9257763ca38afaaef29044b4018`; formats: pdf, docx.
+

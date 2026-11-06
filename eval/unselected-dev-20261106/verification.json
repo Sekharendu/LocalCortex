@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "devCases": 610,
+  "queryFiltersAudited": 1686,
+  "prefetchFiltersAudited": 1684,
+  "contextScrollsAudited": 4741,
+  "heldOutPaperPayloadsRead": false,
+  "generationCalls": 0,
+  "applicationAndSplitHashesUnchanged": true,
+  "priorK5RetrievalSourceAndSparseStatsHashesMatch": true,
+  "note": "config.ts differs from the Nov 3 baseline because answer defaults changed; k5 retrieval mode, threshold, fusion, embedder and prefixes are explicitly pinned to the same values."
+}
