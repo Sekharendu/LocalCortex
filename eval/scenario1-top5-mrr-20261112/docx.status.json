@@ -1,0 +1,14 @@
+{
+  "format": "docx",
+  "completedSearches": 228,
+  "expectedSearches": 228,
+  "error": null,
+  "counts": {
+    "embeddingCalls": 114,
+    "reusedEmbeddings": 114,
+    "qdrantQueries": 355,
+    "generationCalls": 0
+  },
+  "changedInputs": [],
+  "heldOutRead": false
+}
