@@ -1,0 +1,33 @@
+
+All (570 answerable questions)
+mode   setup                    | in top-k      | in context    | context tokens (median)
+dense  top5 cap1200             | 340 ( 59.6%) | 367 ( 64.4%) | 1153
+dense  top5 cap3200             | 340 ( 59.6%) | 388 ( 68.1%) | 1479
+dense  top10 cap3200            | 421 ( 73.9%) | 478 ( 83.9%) | 2602
+dense  top15 cap3200 (current)  | 464 ( 81.4%) | 503 ( 88.2%) | 3147
+hybrid top5 cap1200             | 357 ( 62.6%) | 384 ( 67.4%) | 1150
+hybrid top5 cap3200             | 357 ( 62.6%) | 401 ( 70.4%) | 1468
+hybrid top10 cap3200            | 432 ( 75.8%) | 480 ( 84.2%) | 2580
+hybrid top15 cap3200 (current)  | 477 ( 83.7%) | 515 ( 90.4%) | 3146
+
+PDF (466 answerable questions)
+mode   setup                    | in top-k      | in context    | context tokens (median)
+dense  top5 cap1200             | 278 ( 59.7%) | 299 ( 64.2%) | 1164
+dense  top5 cap3200             | 278 ( 59.7%) | 320 ( 68.7%) | 1567
+dense  top10 cap3200            | 346 ( 74.2%) | 395 ( 84.8%) | 2698
+dense  top15 cap3200 (current)  | 382 ( 82.0%) | 414 ( 88.8%) | 3160
+hybrid top5 cap1200             | 294 ( 63.1%) | 315 ( 67.6%) | 1159
+hybrid top5 cap3200             | 294 ( 63.1%) | 332 ( 71.2%) | 1530
+hybrid top10 cap3200            | 357 ( 76.6%) | 398 ( 85.4%) | 2670
+hybrid top15 cap3200 (current)  | 395 ( 84.8%) | 422 ( 90.6%) | 3160
+
+DOCX (104 answerable questions)
+mode   setup                    | in top-k      | in context    | context tokens (median)
+dense  top5 cap1200             |  62 ( 59.6%) |  68 ( 65.4%) | 971
+dense  top5 cap3200             |  62 ( 59.6%) |  68 ( 65.4%) | 971
+dense  top10 cap3200            |  75 ( 72.1%) |  83 ( 79.8%) | 1724
+dense  top15 cap3200 (current)  |  82 ( 78.8%) |  89 ( 85.6%) | 2324
+hybrid top5 cap1200             |  63 ( 60.6%) |  69 ( 66.3%) | 970
+hybrid top5 cap3200             |  63 ( 60.6%) |  69 ( 66.3%) | 970
+hybrid top10 cap3200            |  75 ( 72.1%) |  82 ( 78.8%) | 1737
+hybrid top15 cap3200 (current)  |  82 ( 78.8%) |  93 ( 89.4%) | 2309

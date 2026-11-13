@@ -1,0 +1,36 @@
+{
+ "questions": 570,
+ "missingResults": 0,
+ "byK": {
+  "5": {
+   "dense": 340,
+   "hybrid": 357,
+   "dense_mrr": 0.394,
+   "hybrid_mrr": 0.405
+  },
+  "10": {
+   "dense": 421,
+   "hybrid": 432,
+   "dense_mrr": 0.413,
+   "hybrid_mrr": 0.42
+  },
+  "15": {
+   "dense": 464,
+   "hybrid": 477,
+   "dense_mrr": 0.419,
+   "hybrid_mrr": 0.429
+  },
+  "20": {
+   "dense": 493,
+   "hybrid": 506,
+   "dense_mrr": 0.422,
+   "hybrid_mrr": 0.431
+  },
+  "50": {
+   "dense": 548,
+   "hybrid": 560,
+   "dense_mrr": 0.425,
+   "hybrid_mrr": 0.432
+  }
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "format": "pdf",
+  "completedSearches": 4960,
+  "expectedSearches": 4960,
+  "error": null,
+  "counts": {
+    "embeddingCalls": 496,
+    "reusedEmbeddings": 4464,
+    "qdrantQueries": 7511,
+    "generationCalls": 0
+  },
+  "changedInputs": [],
+  "heldOutRead": false
+}
