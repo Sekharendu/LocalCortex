@@ -1,0 +1,155 @@
+{
+ "questions": 250,
+ "All_dense_k3": {
+  "search": 123,
+  "rerank20": 130,
+  "rerank50": 134,
+  "n": 250
+ },
+ "All_dense_k5": {
+  "search": 157,
+  "rerank20": 162,
+  "rerank50": 159,
+  "n": 250
+ },
+ "All_dense_k10": {
+  "search": 190,
+  "rerank20": 193,
+  "rerank50": 196,
+  "n": 250
+ },
+ "All_dense_k15": {
+  "search": 204,
+  "rerank20": 205,
+  "rerank50": 211,
+  "n": 250
+ },
+ "All_hybrid_k3": {
+  "search": 122,
+  "rerank20": 131,
+  "rerank50": 131,
+  "n": 250
+ },
+ "All_hybrid_k5": {
+  "search": 155,
+  "rerank20": 157,
+  "rerank50": 160,
+  "n": 250
+ },
+ "All_hybrid_k10": {
+  "search": 193,
+  "rerank20": 196,
+  "rerank50": 195,
+  "n": 250
+ },
+ "All_hybrid_k15": {
+  "search": 208,
+  "rerank20": 209,
+  "rerank50": 213,
+  "n": 250
+ },
+ "DOCX_dense_k3": {
+  "search": 51,
+  "rerank20": 50,
+  "rerank50": 51,
+  "n": 104
+ },
+ "DOCX_dense_k5": {
+  "search": 62,
+  "rerank20": 65,
+  "rerank50": 63,
+  "n": 104
+ },
+ "DOCX_dense_k10": {
+  "search": 75,
+  "rerank20": 77,
+  "rerank50": 80,
+  "n": 104
+ },
+ "DOCX_dense_k15": {
+  "search": 82,
+  "rerank20": 84,
+  "rerank50": 86,
+  "n": 104
+ },
+ "DOCX_hybrid_k3": {
+  "search": 49,
+  "rerank20": 51,
+  "rerank50": 51,
+  "n": 104
+ },
+ "DOCX_hybrid_k5": {
+  "search": 63,
+  "rerank20": 63,
+  "rerank50": 62,
+  "n": 104
+ },
+ "DOCX_hybrid_k10": {
+  "search": 75,
+  "rerank20": 79,
+  "rerank50": 80,
+  "n": 104
+ },
+ "DOCX_hybrid_k15": {
+  "search": 82,
+  "rerank20": 82,
+  "rerank50": 86,
+  "n": 104
+ },
+ "PDF_dense_k3": {
+  "search": 72,
+  "rerank20": 80,
+  "rerank50": 83,
+  "n": 146
+ },
+ "PDF_dense_k5": {
+  "search": 95,
+  "rerank20": 97,
+  "rerank50": 96,
+  "n": 146
+ },
+ "PDF_dense_k10": {
+  "search": 115,
+  "rerank20": 116,
+  "rerank50": 116,
+  "n": 146
+ },
+ "PDF_dense_k15": {
+  "search": 122,
+  "rerank20": 121,
+  "rerank50": 125,
+  "n": 146
+ },
+ "PDF_hybrid_k3": {
+  "search": 73,
+  "rerank20": 80,
+  "rerank50": 80,
+  "n": 146
+ },
+ "PDF_hybrid_k5": {
+  "search": 92,
+  "rerank20": 94,
+  "rerank50": 98,
+  "n": 146
+ },
+ "PDF_hybrid_k10": {
+  "search": 118,
+  "rerank20": 117,
+  "rerank50": 115,
+  "n": 146
+ },
+ "PDF_hybrid_k15": {
+  "search": 126,
+  "rerank20": 127,
+  "rerank50": 127,
+  "n": 146
+ },
+ "latency20": {
+  "median": 4.4,
+  "p95": 6.11
+ },
+ "latency50": {
+  "median": 11.01,
+  "p95": 15.28
+ }
+}

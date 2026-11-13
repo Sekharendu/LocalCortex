@@ -1,0 +1,70 @@
+{
+  "format": "docx",
+  "collection": "eval-s1-qwen3emb-20261113-docx",
+  "cases": 114,
+  "modes": [
+    "dense",
+    "hybrid"
+  ],
+  "topK": [
+    5,
+    10,
+    15,
+    20,
+    50
+  ],
+  "threshold": -1,
+  "fusion": "rrf",
+  "embedModel": "qwen3-embedding:0.6b",
+  "queryInstruction": "Instruct: Given a question about a scientific paper, retrieve passages from the paper that answer the question\nQuery:",
+  "prefixes": false,
+  "reranking": false,
+  "generationCalls": 0,
+  "hashes": [
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    },
+    {
+      "file": "eval/dev-set-preparation-20261103/inventory.jsonl",
+      "sha256": "f7d76d8923cbfbf8b7cf8cbd586ddd487fc78e4a843bfbf22def7f70890af988"
+    },
+    {
+      "file": "eval/dev-set-preparation-20261103/source-chunks.jsonl",
+      "sha256": "916fb0c2936494c472080b6bd31fc4a4e04f9ee707eb4e95d8cab62d864b0f60"
+    },
+    {
+      "file": "src/config.ts",
+      "sha256": "8e307394fd0efc397ab12e5db42e0dcac4177267e91aa5110c05087541bc0e64"
+    },
+    {
+      "file": "src/retrieval/retriever.ts",
+      "sha256": "6a178f0d8d758c1ae02b85a5bab3c8723410dcf1ec29d63f951ff865478cb160"
+    },
+    {
+      "file": "src/retrieval/vectorStore.ts",
+      "sha256": "b66598d532a7c809318a4e178007325c146187257bd0076be24a4d6a98314c6f"
+    },
+    {
+      "file": "src/retrieval/embedder.ts",
+      "sha256": "3048d9b1b19c3fc638970908b2f3220faac25cc933fa6e089da315e8d74729c2"
+    },
+    {
+      "file": "src/retrieval/sparse.ts",
+      "sha256": "6e3d2c14ed6d20d7c5cbd53a749e25c8f7fefaa6fcc9deec756ca94593ea6639"
+    },
+    {
+      "file": "src/retrieval/sparseStats.ts",
+      "sha256": "07318b580ea88678bd45bc328b19052406d5085660fc74687aa44ecee13de71f"
+    },
+    {
+      "file": "src/retrieval/acronyms.ts",
+      "sha256": "1a077227543808ecbf5cb67e1aba0d803b7afc417cfb0e3d6ad811405044bf16"
+    },
+    {
+      "file": "C:/Users/hp/.codex/visualizations/2026/10/29/01a1861e-e89a-7d02-8dd1-60d661cf470a/qasper-scoped-hybrid-r4/docx/sparse-stats.json",
+      "sha256": "4b4ff8b4abd36754ed0c089d7d20f0d208eb6b9c3107502498c389ae09174295"
+    }
+  ],
+  "query": "Original question (normal acronym expansion), no title wrapper, no rewrite. documentScope = only this case's own dev document."
+}

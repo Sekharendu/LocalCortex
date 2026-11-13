@@ -1,0 +1,15 @@
+{
+ "note": "10 PDF dev papers, random.Random(42).shuffle of sorted dev PDF papers with answerable questions, first 10",
+ "papers": [
+  "1608.01084",
+  "1610.08815",
+  "1804.07789",
+  "1909.13104",
+  "1910.14599",
+  "1911.03059",
+  "1912.00667",
+  "2001.07786",
+  "2002.03407",
+  "2004.01853"
+ ]
+}
