@@ -60,7 +60,7 @@ flowchart LR
 1. **Ingest.** Files are turned into text (PDF line breaks and Word headings are kept), then split along their headings and paragraphs. Documents without headings, such as a resume, get a "Title › Section" header embedded with each chunk.
 2. **Embed and store.** Each chunk is embedded by `nomic-embed-text` in Ollama and stored in Qdrant with both a dense vector and a BM25-style sparse vector.
 3. **Retrieve.** A question is embedded and matched. A calibrated relevance threshold (0.63) decides whether *anything* relevant exists. If nothing clears it, the model is told so and refuses.
-4. **Assemble the context.** A small matching document goes in whole. A long one contributes its best passages plus their neighbours, within the retained 4096-token prompt budget (estimated with the existing llama3 tokenizer).
+4. **Assemble the context.** A small matching document goes in whole. A long one contributes its best passages plus their neighbours, within the 5000-token prompt budget (estimated with the existing llama3 tokenizer).
 5. **Answer.** Cloudflare Qwen3 answers in plain sentences, streamed token by token. Sources come from retrieval, never from the model, so they can't be made up.
 
 Follow-ups that point back ("what about part-timers?") are first rewritten into standalone questions, so retrieval works on them like a first question.
@@ -265,7 +265,7 @@ is `dense` or `hybrid`. It searches the default collection. Invalid input return
 
 ## Hosted generation and privacy
 
-The fixed generation/rewrite model is `@cf/qwen/qwen3-30b-a3b-fp8`. Cloudflare's [model schema](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/) documents a **2000-token default output limit**; answer requests omit `max_tokens` and use that default. Rewrites explicitly request **48 output tokens** with temperature 0. The existing **512-token answer reserve is context accounting, not a generation cap**. The llama3 tokenizer and 4096-token context budget are retained estimates, not Qwen's tokenizer or hosted window configuration.
+The fixed generation/rewrite model is `@cf/qwen/qwen3-30b-a3b-fp8`. Cloudflare's [model schema](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/) documents a provider default of 2000 output tokens; this application explicitly caps answers at **512 tokens**. Rewrites retain their shorter explicit 48-token cap. The default is prompt C with **15 hits, 3200 context tokens per long document and a 5000-token total budget**. `RAG_PROFILE=legacy` restores the old strict prompt, 5 hits, 1200 context and 4096 total; answer output remains explicitly capped at512 in both profiles. These budgets still use the existing approximate llama3 tokenizer, not Qwen's exact tokenizer or hosted window configuration.
 
 Thinking is disabled by rendering [Qwen's published no-thinking template](https://huggingface.co/Qwen/Qwen3-30B-A3B-FP8/blob/main/tokenizer_config.json) with a closed empty thinking block, using Cloudflare's documented [raw prompt mode](https://developers.cloudflare.com/workers-ai/features/prompting/). No unsupported `enable_thinking` parameter is sent. This combines documented capabilities and has not been verified end to end.
 
@@ -284,7 +284,7 @@ Local infrastructure uses the defaults from `docker compose up -d`; generation a
 | `CLOUDFLARE_ACCOUNT_ID` / `CLOUDFLARE_API_TOKEN` | required | Backend account ID and Workers AI token |
 | `OLLAMA_EMBED_MODEL` / `OLLAMA_EMBED_DIM` | `nomic-embed-text` / `768` | The embedding model and its dimension. Change both together, then re-ingest |
 | `RETRIEVE_SCORE_THRESHOLD` | `0.63` | How relevant a passage must be before the model sees it. Re-calibrate with `scripts/calibrate-threshold.ts` after changing models |
-| `RETRIEVE_MODE` | `dense` | `dense` or `hybrid` (dense + BM25, fused in Qdrant). They tie on the eval sets |
+| `RETRIEVE_MODE` | `hybrid` | `hybrid` (dense + BM25, fused in Qdrant) or `dense`. Hybrid put the answer in context 90.4% vs 88.2% on the QASPER dev set; they tie on the handbook eval sets |
 | `QUERY_REWRITE` | on | Rewrite referring follow-ups into standalone questions. `0` to disable |
 | `MAX_INGEST_BYTES` | 50 MB | Upload size limit |
 
@@ -302,11 +302,11 @@ Local infrastructure uses the defaults from `docker compose up -d`; generation a
 | `OLLAMA_EMBED_PREFIXES` | on | nomic-embed-text's `search_query: ` / `search_document: ` task prefixes. `0` to disable (re-ingest after changing) |
 | `CLOUDFLARE_ACCOUNT_ID` / `CLOUDFLARE_API_TOKEN` | required | Backend credentials for fixed model `@cf/qwen/qwen3-30b-a3b-fp8` |
 | `CLOUDFLARE_GEN_TIMEOUT_MS` | `180000` | Generation timeout covering response headers and body |
-| `OLLAMA_NUM_CTX` | `4096` | Legacy context budget estimate, not a Cloudflare window setting |
+| `OLLAMA_NUM_CTX` | `5000` | Legacy context budget estimate, not a Cloudflare window setting |
 | `QDRANT_COLLECTION` | `rag` | Default collection |
-| `RETRIEVE_TOP_K` | `5` | Passages retrieved per question |
+| `RETRIEVE_TOP_K` | `15` | Passages retrieved per question |
 | `RETRIEVE_SCORE_THRESHOLD` | `0.63` | Minimum cosine score for a question to get any context |
-| `RETRIEVE_MODE` | `dense` | `dense` or `hybrid` |
+| `RETRIEVE_MODE` | `hybrid` | `hybrid` or `dense` |
 | `RETRIEVE_FUSION` | `rrf` | Hybrid fusion: `rrf` (dense weighted 2:1) or `dbsf` |
 | `RETRIEVE_FOLLOWUP_FLOOR` | `0.57` | Minimum score a follow-up must reach on its own, so an off-topic follow-up can't borrow relevance from the previous question |
 | `RETRIEVE_EXPAND_CONTEXT` | on | Whole small documents and neighbouring passages in the context. `0` for plain top chunks |
@@ -401,3 +401,16 @@ The reasoning behind each design decision, and what was measured and discarded, 
 <div align="center">
 <sub>Built with Ollama, Qdrant, Postgres, LangChain text splitters, Express and React.</sub>
 </div>
+## Optional hosted reranking
+
+`RERANK_ENABLED=0` (default) preserves the existing retrieval path. Set `RERANK_ENABLED=1` on the backend to rerank up to 50 candidates with Cloudflare's fixed `@cf/baai/bge-reranker-base` model, using the existing `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`. The selected final count is `topK` (default 5; enabled mode accepts integers 1–50). The low-level retrieval and MCP retrieval-only tool remain unchanged.
+
+The existing dense/hybrid relevance gates, document/version scope, follow-up floor and same-document expansion run before reranking. Missing or ambiguous scope and empty results make no reranker call. The query is the successful standalone follow-up rewrite, otherwise the previous user question plus a newline plus the current question, otherwise the original question. Known acronym expansion is applied once to each question, matching retrieval. No document-title stripping is added. Original candidate passage text and metadata are sent unchanged. Retrieval `score` remains cosine/fused similarity; optional `rerankScore` controls ranking and hit priority during context-budget selection, with input order breaking ties. No new relevance threshold is introduced.
+
+Explicitly enabled reranking fails closed with a pre-stream 503 on provider, credential, mapping, timeout or capacity errors. It has no retries or waiting queue, allows two in-flight calls per API process (replicas multiply that budget), and covers headers and body consumption with a 15-second timeout. Disconnect cancellation releases the body, listener, timer and slot. Native fetch uses its existing runtime connection management; no custom HTTP or database pool is added. Requests and responses are not persistently cached.
+
+Resource limits are 2 KiB UTF-8 per query, 8 KiB per candidate, 50 candidates and 64 KiB per provider response; inputs exceeding them fail rather than being silently truncated. These byte bounds are **not** BGE token limits. Cloudflare lists a 512-token input window; its exact hosted truncation policy and maximum contexts are not published. The retained llama3 tokenizer cannot establish BGE token counts. Long-input behavior and hosted quality remain unverified until a permitted smoke/evaluation runs. See [model and native schema](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/) and [supported model windows](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/).
+
+Enabling reranking sends up to 50 candidate passages and the retrieval query to Cloudflare in addition to generation traffic. Workers AI's shared free allocation is 10,000 neurons/day, resetting at 00:00 UTC; paid accounts can be billed beyond it. A bounded number of requests does not ensure free use. Verify billing protection and remaining allowance before any free-only experiment. See [Cloudflare pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+Answer profiles: `RAG_PROFILE=new` (default) selects prompt C and 3200/5000/15. `RAG_PROFILE=legacy` selects strict A and 1200/4096/5. Internal callers can select an immutable per-request preset with `answerProfile: "legacy"` or `"new"`; explicit paper selection uses the existing internal `documentScope`, without adding a title to the question. No new public HTTP selector is exposed.

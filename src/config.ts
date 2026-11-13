@@ -26,10 +26,11 @@ export const retrievalConfig = {
   // own: 0.57 is just above the highest general-knowledge score in calibration (0.567).
   followupFloor: Number(process.env.RETRIEVE_FOLLOWUP_FLOOR ?? 0.57),
   collection: process.env.QDRANT_COLLECTION ?? "rag",
-  // Dense is the default: with task prefixes on, dense and hybrid tie on the eval sets
-  // (105/113 each), and dense needs no sparse fusion or relevance probe. Set
-  // RETRIEVE_MODE=hybrid to fuse dense + BM25 sparse instead.
-  mode: (process.env.RETRIEVE_MODE === "hybrid" ? "hybrid" : "dense") as "dense" | "hybrid",
+  // Hybrid (dense + BM25 sparse, fused in Qdrant) is the default: on the QASPER dev set
+  // (570 answerable questions, top 15, assembled context) it put the answer chunk in the
+  // context 90.4% vs dense 88.2% at the same context size (SESSION-LOG §7). The handbook
+  // eval sets tie (105/113 each). Set RETRIEVE_MODE=dense for dense-only search.
+  mode: (process.env.RETRIEVE_MODE === "dense" ? "dense" : "hybrid") as "dense" | "hybrid",
   // Hybrid-mode fusion: "rrf" (rank-only) or "dbsf" (score-magnitude-aware).
   fusion: (process.env.RETRIEVE_FUSION === "dbsf" ? "dbsf" : "rrf") as "rrf" | "dbsf",
 };
