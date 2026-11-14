@@ -1,0 +1,571 @@
+caseId,format,question,labelledChunks,gate-off dense top5,gate-off dense top15,gate-off hybrid top5,gate-off hybrid top15,gate-on dense top5,gate-on dense top15,gate-on hybrid top5,gate-on hybrid top15
+"pdf/1912.01214/b6f15fb6279b82e34a5bf4828b7b5ddabfdf1d54",pdf,"which multilingual approaches do they compare with?","51 52",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1912.01214/f5e6f43454332e0521a778db0b769481e23e7682",pdf,"what are the pivot-based baselines?","14 15 47 51 60 61",rank 3,rank 3,rank 1,rank 1,rank 3,rank 3,rank 1,rank 1
+"pdf/1912.01214/9a05a5f4351db75da371f7ac12eb0b03607c4b87",pdf,"which datasets did they experiment with?","40",missed,rank 9,rank 2,rank 2,missed,rank 9,rank 2,rank 2
+"pdf/1912.01214/5eda469a8a77f028d0c5f1acd296111085614537",pdf,"what language pairs are explored?","41 42 43 46",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1810.08699/18c5d366b1da8447b5404eab71f4cc658ba12e6f",pdf,"what ner models were evaluated?","35 36 37 40",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1810.08699/b5e4866f0685299f1d7af267bbcc4afe2aab806f",pdf,"what is the source of the news sentences?","10 21",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1810.08699/1f085b9bb7bfd0d6c8cba1a9d73f08fcf2da7590",pdf,"did they use a crowdsourcing platform for manual annotations?","16 21 29",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1609.00425/b6ae8e10c6a0d34c834f18f66ab730b670fb528c",pdf,"what are the topics pulled from Reddit?","12 48 49",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1609.00425/a87a009c242d57c51fc94fe312af5e02070f898b",pdf,"What predictive model do they build?","45 46",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1801.05147/ef4dba073d24042f24886580ae77add5326f2130",pdf,"What accuracy does the proposed system achieve?","66 69",rank 5,rank 5,missed,rank 7,refused,refused,refused,refused
+"pdf/1801.05147/2df4a045a9cd7b44874340b6fdf9308d3c55327a",pdf,"What crowdsourcing platform is used?","54",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1909.09067/9eabb54c2408dac24f00f92cf1061258c7ea2e1a",pdf,"Which information about text structure is included in the corpus?","10 11 43",rank 5,rank 5,missed,rank 7,rank 5,rank 5,missed,rank 7
+"pdf/1909.09067/3d013f15796ae7fed5272183a166c45f16e24e39",pdf,"Which information about typography is included in the corpus?","10 11 25 43 44",rank 3,rank 3,missed,rank 4,rank 3,rank 3,missed,rank 4
+"pdf/2003.03106/66c96c297c2cffdf5013bab5e95b59101cb38655",pdf,"What is the performance of BERT on the task?","55 56 69 76 77",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/2003.03106/6b53e1f46ae4ba9b75117fc6e593abded89366be",pdf,"What are the other algorithms tested?","35 36 37 40 41",missed,missed,rank 4,rank 4,missed,missed,rank 4,rank 4
+"pdf/2003.03106/c0bee6539eb6956a7347daa9d2419b367bd02064",pdf,"Does BERT reach the best performance among all the algorithms compared?","55 56 77 78 81 84",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/2003.03106/3de0487276bb5961586acc6e9f82934ef8cb668c",pdf,"What are the clinical datasets used in the paper?","10 22 23 24 25 30",rank 4,rank 4,rank 2,rank 2,rank 4,rank 4,rank 1,rank 2
+"pdf/1708.01464/113d791df6fcfc9cecfb7b1bebaf32cc2e4402ab",pdf,"how is model compactness measured?","47",missed,rank 14,missed,missed,refused,refused,refused,refused
+"pdf/1708.01464/0752d71a0a1f73b3482a888313622ce9e9870d6e",pdf,"what was the baseline?","38",rank 1,rank 1,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1708.01464/55c8f7acbfd4f5cde634aaecd775b3bb32e9ffa3",pdf,"what evaluation metrics were used?","34 35 36",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1708.01464/4eaf9787f51cd7cdc45eb85cf223d752328c6ee4",pdf,"what datasets did they use?","26 28 29",missed,rank 7,rank 2,rank 2,missed,rank 7,rank 2,rank 2
+"pdf/2002.03407/31735ec3d83c40b79d11df5c34154849aeb3fb47",pdf,"Who were the human evaluators used?","57 58",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2002.03407/10d450960907091f13e0be55f40bcb96f44dd074",pdf,"Is the template-based model realistic?  ","34 53 54 55 56 57",rank 2,rank 2,rank 4,rank 4,rank 2,rank 2,rank 4,rank 4
+"pdf/2002.03407/b5608076d91450b0d295ad14c3e3a90d7e168d0e",pdf,"Is the student reflection data very different from the newspaper data?  ","6 10 11",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/2002.03407/c21b87c97d1afac85ece2450ee76d01c946de668",pdf,"What is the recent abstractive summarization method in this paper?","20 21",rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4
+"pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e",pdf,"Why are prior knowledge distillation techniques models are ineffective in producing student models with vocabularies different from the original teacher models?  ","6 7",rank 2,rank 2,rank 4,rank 4,rank 2,rank 2,rank 4,rank 4
+"pdf/1909.11687/efe9bad55107a6be7704ed97ecce948a8ca7b1d2",pdf,"What state-of-the-art compression techniques were used in the comparison?","42 43 55 56",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1804.05918/f17ca24b135f9fe6bb25dc5084b13e1637ec7744",pdf,"What discourse relations does it work best/worst for?","42 56 57 62 67 68 71",rank 3,rank 3,rank 2,rank 2,rank 3,rank 3,rank 2,rank 2
+"pdf/1804.05918/bd5bd1765362c2d972a762ca12675108754aa437",pdf,"How much does this model improve state-of-the-art?","67 68 69 71",rank 4,rank 4,missed,rank 6,rank 4,rank 4,missed,rank 6
+"pdf/1901.05287/d27438b11bc70e706431dda0af2b1c0b0d209f96",pdf,"Were any of these tasks evaluated in any previous work?","2 3 4 7 8 26",missed,rank 10,missed,rank 6,missed,rank 10,missed,rank 6
+"pdf/1912.04961/99e78c390932594bd833be0f5c890af5c605d808",pdf,"What is the baseline?","42",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1912.04961/861187338c5ad445b9acddba8f2c7688785667b1",pdf,"Is the data de-identified?","19",missed,missed,rank 3,rank 4,refused,refused,refused,refused
+"pdf/1912.04961/f161e6d5aecf8fae3a26374dcb3e4e1b40530c95",pdf,"What embeddings are used?","15 44",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",pdf,"What datasets did they use for evaluation?","22 23 24 26 27 29",rank 2,rank 2,rank 3,rank 2,rank 2,rank 2,rank 3,rank 2
+"pdf/1910.10781/0810b43404686ddfe4ca84783477ae300fdd2ea4",pdf,"On top of BERT does the RNN layer work better or the transformer layer?","7 34 35 45",rank 4,rank 4,missed,rank 6,rank 4,rank 4,missed,rank 6
+"pdf/1911.06964/1ff0fccf0dca95a6630380c84b0422bed854269a",pdf,"How are models evaluated in this human-machine communication game?","20 21",missed,rank 8,missed,rank 9,missed,rank 8,missed,rank 9
+"pdf/1911.06964/3d7d865e905295d11f1e85af5fa89b210e3e9fdf",pdf,"How many participants were trying this communication game?","28",rank 5,rank 5,missed,rank 6,rank 5,rank 5,missed,rank 6
+"pdf/1911.06964/2ad4d3d222f5237ed97923640bc8e199409cbe52",pdf,"What user variations have been tested?","28",rank 2,rank 2,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1911.06964/3fad42be0fb2052bb404b989cc7d58b440cd23a0",pdf,"What are the baselines used?","26",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/2001.02284/ee417fea65f9b1029455797671da0840c8c1abbe",pdf,"Do they use off-the-shelf NLP systems to build their assitant?","24 31 32",missed,rank 13,missed,missed,missed,rank 13,missed,missed
+"pdf/2001.02284/ca5a82b54cb707c9b947aa8445aac51ea218b23a",pdf,"How does the IPA label data after interacting with users?","53 62 63 65 66",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/2001.02284/da55bd769721b878dd17f07f124a37a0a165db02",pdf,"What kind of repetitive and time-consuming activities does their assistant handle?","15 16 51",missed,missed,missed,rank 8,missed,missed,missed,rank 8
+"pdf/2002.01664/feb448860918ef5b905bb25d7b855ba389117c1f",pdf,"How was the audio data gathered?","1 9 22 23",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2002.01664/4bc2784be43d599000cb71d31928908250d4cef3",pdf,"What is the GhostVLAD approach?","13 14 17 18",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2002.01664/75df70ce7aa714ec4c6456d0c51f82a16227f2cb",pdf,"Which 7 Indian languages do they experiment with?","22 24",rank 1,rank 1,rank 3,rank 3,rank 1,rank 1,rank 3,rank 3
+"pdf/1808.09111/6424e442b34a576f904d9649d63acf1e4fdefdfc",pdf,"What datasets do they evaluate on?","400",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1808.09111/5eabfc6cc8aa8a99e6e42514ef9584569cb75dec",pdf,"Do they evaluate only on English datasets?","400",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1808.09111/887c6727e9f25ade61b4853a869fe712fe0b703d",pdf,"What is the invertibility condition?","184",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1809.00540/a99fdd34422f4231442c220c97eafc26c76508dd",pdf,"Do they use graphical models?","58 59",rank 4,rank 4,rank 5,rank 5,refused,refused,refused,refused
+"pdf/1809.00540/2c78993524ca62bf1f525b60f2220a374d0e3535",pdf,"What are the sources of the datasets?","50 81",rank 4,rank 4,rank 5,rank 5,rank 4,rank 4,rank 5,rank 5
+"pdf/1809.00540/d604f5fb114169f75f9a38fab18c1e866c5ac28b",pdf,"What metric is used for evaluation?","58 59 60 63 68 69 70",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"pdf/1912.13337/e97186c51d4af490dba6faaf833d269c8256426c",pdf,"Are the automatically constructed datasets subject to quality control?","34 35 37 38 39 45 46 49 50 51 52 55 56 57 58 59 61 65 66 67 68 69 127 128",rank 3,rank 3,rank 4,rank 4,rank 3,rank 3,rank 4,rank 4
+"pdf/1912.13337/5bb3c27606c59d73fd6944ba7382096de4fa58d8",pdf,"Do they focus on Reading Comprehension or multiple choice question answering?","3 4 34 35",missed,rank 8,missed,rank 10,missed,rank 8,missed,rank 10
+"pdf/1912.13337/8de9f14c7c4f37ab103bc8a639d6d80ade1bc27b",pdf,"After how many hops does accuracy decrease?","21",rank 3,rank 3,rank 1,rank 1,rank 3,rank 3,rank 1,rank 1
+"pdf/1912.13337/85590bb26fed01a802241bc537d85ba5ef1c6dc2",pdf,"How do they control for annotation artificats?","75 76 77 78 79 80 81",rank 5,rank 5,missed,rank 7,rank 5,rank 5,missed,rank 7
+"pdf/1912.13337/75ff6e425ce304a35f18c0230c0d13d3913a31a9",pdf,"Is WordNet useful for taxonomic reasoning for this task?","13",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1809.01541/5cb610d3d5d7d447b4cd5736d6a7d8262140af58",pdf,"How do they perform multilingual training?","19 20",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1809.01541/c32adef59efcb9d1a5b10e1d7c999a825c9e6d9a",pdf,"What languages are evaluated?","17",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1809.01541/b9d168da5321a7d7b812c52bb102a05210fe45bd",pdf,"Does the model have attention?","5 6 11",rank 4,rank 4,rank 3,rank 3,rank 4,rank 4,rank 3,rank 3
+"pdf/1809.01541/0c234db3b380c27c4c70579a5d6948e1e3b24ff1",pdf,"What architecture does the decoder have?","11",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1809.01541/fa527becb8e2551f4fd2ae840dbd4a68971349e0",pdf,"What architecture does the encoder have?","11",rank 3,rank 3,rank 1,rank 1,rank 3,rank 3,rank 1,rank 1
+"pdf/1809.01541/32a3c248b928d4066ce00bbb0053534ee62596e7",pdf,"What is MSD prediction?","3 4 9",rank 5,rank 5,rank 5,rank 5,rank 5,rank 5,rank 5,rank 5
+"pdf/1802.06024/286078813136943dfafb5155ee15d2429e7601d9",pdf,"How much better than the baseline is LiLi?","82 89 90 91 94 95",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1802.06024/8f16dc7d7be0d284069841e456ebb2c69575b32b",pdf,"What baseline is used in the experiments?","89 90 91",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1802.06024/a7d020120a45c39bee624f65443e09b895c10533",pdf,"In what way does LiLi imitate how humans acquire knowledge and perform inference during an interactive conversation?","13 14 15 16",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1802.06024/585626d18a20d304ae7df228c2128da542d248ff",pdf,"What metrics are used to establish that this makes chatbots more knowledgeable and better at learning and conversation? ","91 92",missed,rank 10,missed,rank 11,missed,rank 10,missed,rank 11
+"pdf/1802.06024/bfc2dc913e7b78f3bd45e5449d71383d0aa4a890",pdf,"What are the components of the general knowledge learning engine?","16 17 36 37 38 39 40 41",rank 1,rank 1,rank 3,rank 3,rank 1,rank 1,rank 3,rank 3
+"pdf/1710.07960/0ba3ea93eef5660a79ea3c26c6a270eac32dfa4c",pdf,"Did they use a crowdsourcing platform for annotations?","63",rank 4,rank 4,missed,rank 6,rank 4,rank 4,missed,rank 6
+"pdf/1710.07960/5e324846a99a5573cd2e843d1657e87f4eb22fa6",pdf,"How do they deal with unknown distribution senses?","6 7 21 35 36 66 67",rank 3,rank 3,rank 2,rank 2,rank 3,rank 3,rank 2,rank 2
+"pdf/1912.08960/50e80cfa84200717921840fddcf3b051a9216ad8",pdf,"Are the images from a specific domain?","11 19",missed,missed,missed,rank 15,missed,missed,missed,rank 15
+"pdf/1912.08960/b1bc9ae9d40e7065343c12f860a461c7c730a612",pdf,"Which datasets are used?","11 24 25 34 35",rank 5,rank 5,rank 4,rank 4,rank 5,rank 5,rank 4,rank 4
+"pdf/1912.08960/63a1cbe66fd58ff0ead895a8bac1198c38c008aa",pdf,"Which existing models are evaluated?","38 39 41",missed,rank 8,missed,rank 10,missed,rank 8,missed,rank 10
+"pdf/1912.08960/509af1f11bd6f3db59284258e18fdfebe86cae47",pdf,"How is diversity measured?","31 32 33",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 2
+"pdf/1909.09587/37be0d479480211291e068d0d3823ad0c13321d3",pdf,"What is the model performance on target language reading comprehension?","14 15 16 17 19 20 21",missed,rank 10,missed,rank 13,missed,rank 10,missed,rank 13
+"pdf/1909.09587/a3d9b101765048f4b61cbd3eaa2439582ebb5c77",pdf,"What source-target language pairs were used in this work? ","10 11 16 17 20 21",rank 3,rank 3,rank 4,rank 4,rank 3,rank 3,rank 4,rank 4
+"pdf/1909.09587/009ce6f2bea67e7df911b3f93443b23467c9f4a1",pdf,"What model is used as a baseline?  ","9 13 14 18 61",missed,rank 8,missed,rank 10,missed,rank 8,missed,rank 10
+"pdf/1909.09587/55569d0a4586d20c01268a80a7e31a17a18198e2",pdf,"what does the model learn in zero-shot setting?","10 14",missed,rank 10,missed,rank 9,missed,rank 10,missed,rank 9
+"pdf/1802.07862/7cd22ca9e107d2b13a7cc94252aaa9007976b338",pdf,"Do they inspect their model to see if their model learned to associate image parts with words related to entities?","60 62 63",missed,rank 7,missed,rank 9,missed,rank 7,missed,rank 9
+"pdf/1802.07862/adbf33c6144b2f5c40d0c6a328a92687a476f371",pdf,"Does their NER model learn NER from both text and images?","12 13 52 53",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1802.07862/f7a89b9cd2792f23f2cb43d50a01b8218a6fbb24",pdf,"Which types of named entities do they recognize?","43 44 50 53",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1802.07862/a0543b4afda15ea47c1e623c7f00d4aaca045be0",pdf,"Can named entities in SnapCaptions be discontigious?","46",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1802.07862/1591068b747c94f45b948e12edafe74b5e721047",pdf,"How large is their MNER SnapCaptions dataset?","43",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2004.01853/193ee49ae0f8827a6e67388a10da59e137e7769f",pdf,"What is masked document generation?","10 73",rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4
+"pdf/2004.01853/ed2eb4e54b641b7670ab5a7060c7b16c628699ab",pdf,"Which of the three pretraining tasks is the most helpful?","75",rank 4,rank 4,rank 3,rank 3,rank 4,rank 4,rank 3,rank 3
+"pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",pdf,"What useful information does attention capture?","9 46 59",missed,rank 7,rank 3,rank 3,missed,rank 7,rank 3,rank 3
+"pdf/1710.03348/91e326fde8b0a538bc34d419541b5990d8aae14b",pdf,"What datasets are used?","25 36 38 39",rank 4,rank 4,rank 1,rank 1,rank 4,rank 4,rank 1,rank 1
+"pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",pdf,"In what cases is attention different from alignment?","33 46 54",missed,missed,missed,rank 11,missed,missed,missed,rank 10
+"pdf/1809.01202/4cbe5a36b492b99f9f9fea8081fe4ba10a7a0e94",pdf,"What baselines did they consider?","49",missed,rank 7,rank 5,rank 5,missed,rank 7,rank 5,rank 5
+"pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",pdf,"What types of social media did they consider?","26",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1909.02027/2c7e94a65f5f532aa31d3e538dcab0468a43b264",pdf,"How was the dataset annotated?","12 13 14",rank 4,rank 4,missed,rank 8,rank 4,rank 4,missed,rank 8
+"pdf/1909.02027/149da739b1c19a157880d9d4827f0b692006aa2c",pdf,"Which classifiers are evaluated?","23 24",missed,rank 8,missed,rank 9,missed,rank 8,missed,rank 9
+"pdf/1909.02027/27de1d499348e17fec324d0ef00361a490659988",pdf,"What is the size of this dataset?","9 10 12",missed,rank 11,missed,rank 12,missed,rank 11,missed,rank 12
+"pdf/1909.02027/cfcdd73e712caf552ba44d0aa264d8dace65a589",pdf,"Where does the data come from?","12 13 14 15",rank 2,rank 2,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1911.02855/23b2901264bda91045258b5d4120879ae292e950",pdf,"What are method improvements of F1 for paraphrase identification?","54 55",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1911.02855/b5bc34e1e381dbf972d0b594fe8c66ff75305d71",pdf,"What are method's improvements of F1 for NER task for English and Chinese datasets?","50 103",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"pdf/1911.02855/72f7ef55e150e16dcf97fe443aff9971a32414ef",pdf,"What are method's improvements of F1 w.r.t. baseline BERT tagger for Chinese POS datasets?","43 44",rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4
+"pdf/1911.02855/20e38438471266ce021817c6364f6a46d01564f2",pdf,"How are weights dynamically adjusted?","12 13 14 33 34 35 36",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1906.01081/28067da818e3f61f8b5152c0d42a531bf0f987d4",pdf,"Ngrams of which length are aligned using PARENT?","19",missed,rank 13,missed,rank 12,missed,rank 13,missed,rank 12
+"pdf/1906.01081/bf3b27a4f4be1f9ae31319877fd0c75c03126fd5",pdf,"How many people participated in their evaluation study of table-to-text models?","51",missed,rank 7,missed,rank 12,missed,rank 7,missed,rank 12
+"pdf/1906.01081/ffa7f91d6406da11ddf415ef094aaf28f3c3872d",pdf,"By how much more does PARENT correlate with human judgements in comparison to other text generation metrics?","54 55 56 73 74",rank 2,rank 2,rank 4,rank 4,rank 2,rank 2,rank 4,rank 4
+"pdf/1812.10479/b634ff1607ce5756655e61b9a6f18bc736f84c83",pdf,"Which stock market sector achieved the best performance?","211",rank 4,rank 4,missed,rank 7,rank 4,rank 4,missed,rank 7
+"pdf/1611.01576/2f901dab6b757e12763b23ae8b37ae2e517a2271",pdf,"What languages pairs are used in machine translation?","53 54",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1611.01576/b591853e938984e6069d738371500ebdec50d256",pdf,"What sentiment classification dataset is used?","34 35",rank 2,rank 2,rank 1,rank 2,rank 2,rank 2,rank 2,rank 1
+"pdf/1611.01576/a130306c6662ff489df13fb3f8faa7cba8c52a21",pdf,"What pooling function is used?","15 16 17",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1904.09535/b1cf5739467ba90059add58d11b73d075a11ec86",pdf,"Do they report results only on English?","27 34",missed,rank 10,rank 4,rank 5,refused,refused,refused,refused
+"pdf/1904.09535/2ea4347f1992b0b3958c4844681ff0fe4d0dd1dd",pdf,"What neural network modules are included in NeuronBlocks?","16 18 19 20 21",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1904.09535/4f253dfced6a749bf57a1b4984dc962ce9550184",pdf,"How do the authors evidence the claim that many engineers find it a big overhead to choose from multiple frameworks, models and optimization techniques?","6",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1911.03059/dc1cec824507fc85ac1ba87882fe1e422ff6cffb",pdf,"what datasets did they use?","17",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1911.03059/f428618ca9c017e0c9c2a23515dab30a7660f65f",pdf,"what ml based approaches were compared?","3 4",rank 5,rank 5,missed,rank 6,rank 5,rank 5,missed,rank 6
+"pdf/1706.08198/8ce11515634236165cdb06ba80b9a36a8b9099a2",pdf,"Is pre-training effective in their evaluation?","2 6 7 9 10 11 15 28 44 45 46",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1706.08198/6024039bbd1118c5dab86c41cce1175d99f10a25",pdf,"What parallel corpus did they use?","32 33 50",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1909.08089/de5b6c25e35b3a6c5e40e350fc5e52c160b33490",pdf,"How much does their model outperform existing models?","57 62 64 65 75",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1909.08089/b66c9a4021b6c8529cac1a2b54dacd8ec79afa5f",pdf,"What do they mean by global and local context?","9 15 34",missed,rank 7,missed,rank 8,missed,rank 7,missed,rank 8
+"pdf/1910.09982/6bfba3ddca5101ed15256fca75fcdc95a53cece7",pdf,"What are the 18 propaganda techniques?","10 11 12 13 14 15 16 17 18 19 20 26 27",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.09982/df5a4505edccc0ee11349ed6e7958cf6b84c9ed4",pdf,"What dataset was used?","21 22 23",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1910.09982/fd753ab5177d7bd27db0e0afc12411876ee607df",pdf,"What was the baseline for this task?","30 31",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1609.00559/88e62ea7a4d1d2921624b8480b5c6b50cfa5ad42",pdf,"What is a second order co-ocurrence matrix?","6 7",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1609.00559/4dcf67b5e7bd1422e7e70c657f6eacccd8de06d3",pdf,"How many humans participated?","42 44",rank 2,rank 2,rank 2,rank 3,refused,refused,refused,refused
+"pdf/1609.00559/8b3d3953454c88bde88181897a7a2c0c8dd87e23",pdf,"What embedding techniques are explored in the paper?","62 63 68",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1604.00727/784ce5a983c5f2cc95a2c60ce66f2a8a50f3636f",pdf,"Do the authors also try the model on other datasets?","42",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1604.00727/7705dd04acedaefee30d8b2c9978537afb2040dc",pdf,"What word level and character level model baselines are used?","41 42",missed,rank 13,missed,missed,missed,rank 13,missed,missed
+"pdf/1608.01084/1f07e837574519f2b696f3d6fa3230af0b931e5d",pdf,"Did they only experiment with one language pair?","39 41",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1904.10503/5a65ad10ff954d0f27bb3ccd9027e3d8f7f6bb76",pdf,"Which other approaches do they compare their model with?","40",missed,missed,missed,rank 12,missed,missed,missed,rank 11
+"pdf/1904.10503/729694a9fe1e05d329b7a4078a596fe606bc5a95",pdf,"What results do they achieve using their proposed approach?","38",missed,missed,missed,rank 12,missed,missed,missed,rank 12
+"pdf/1904.10503/1c997c268c68149ae6fb43d83ffcd53f0e7fe57e",pdf,"How do they combine a deep learning model with a knowledge base?","24 29 30",rank 4,rank 4,rank 2,rank 2,rank 4,rank 4,rank 2,rank 2
+"pdf/1912.01772/5cc2daca2a84ddccba9cdd9449e51bb3f64b3dde",pdf,"What are the models used for the baseline of the three NLP tasks?","39 40 41 44 47",missed,rank 7,missed,rank 10,missed,rank 7,missed,rank 10
+"pdf/1912.01772/f9bf6bef946012dd42835bf0c547c0de9c1d229f",pdf,"How is non-standard pronunciation identified?","23 24 27",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"pdf/1603.01987/6a633811019e9323dc8549ad540550d27aa6d972",pdf,"Is it valid to presume a bad medical wikipedia article should not contain much domain-specific jargon?","38 39",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1908.06941/6b9b9e5d154cb963f6d921093539490daa5ebbae",pdf,"What novel PMI variants are introduced?","19 20",rank 4,rank 4,rank 1,rank 1,rank 4,rank 4,rank 1,rank 1
+"pdf/1908.06941/bc4dca3e1e83f3b4bbb53a31557fc5d8971603b2",pdf,"What semantic and syntactic tasks are used as probes?","23 24 25 26",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1908.06941/d46c0ea1ba68c649cc64d2ebb6af20202a74a3c7",pdf,"What are the disadvantages to clipping negative PMI?","31 32",rank 3,rank 3,rank 4,rank 4,rank 3,rank 3,rank 4,rank 4
+"pdf/1908.06941/6844683935d0d8f588fa06530f5068bf3e1ed0c0",pdf,"Why are statistics from finite corpora unreliable?","4",rank 3,rank 3,rank 1,rank 1,rank 3,rank 3,rank 1,rank 1
+"pdf/1702.03856/8acab64ba72831633e8cc174d5469afecccf3ae9",pdf,"what is the domain of the corpus?","8",rank 2,rank 2,rank 3,rank 3,refused,refused,refused,refused
+"pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",pdf,"what challenges are identified?","9 20 21 23 26 27",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1702.03856/72755c2d79210857cfff60bfbcb55f83c71ada51",pdf,"what is the size of the speech corpus?","16 17",missed,rank 8,rank 5,rank 5,missed,rank 8,rank 5,rank 5
+"pdf/1904.01548/7d2f812cb345bb3ab91eb8cbbdeefd4b58f65569",pdf,"Which two pairs of ERPs from the literature benefit from joint training?","23",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1904.01548/bd6dc38a9ac8d329114172194b0820766458dacc",pdf,"What datasets are used?","17 23",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1606.03676/3ddff6b707767c3dd54d7104fe88b628765cae58",pdf,"which datasets did they experiment with?","35 37 38",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1606.03676/0a5ffe4697913a57fda1fd5a188cd5ed59bdc5c7",pdf,"which languages are explored?","37 38",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1802.00396/06be47e2f50b902b05ebf1ff1c66051925f5c247",pdf,"Do they use number of votes as an indicator of preference?","57",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1802.00396/c88a846197b72d25e04ec55f00ee3e72f655504c",pdf,"Which dataset do they use?","18",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1911.03343/78292bc57ee68fdb93ed45430d80acca25a9e916",pdf,"How did they extend LAMA evaluation framework to focus on negation?","4 5 21",missed,rank 7,missed,rank 6,missed,rank 7,missed,rank 6
+"pdf/1805.08241/14b74ad5a6f5b0506511c9b454e9c464371ef8c4",pdf,"What are the language pairs explored in this paper?","31",rank 1,rank 1,rank 2,rank 1,rank 1,rank 1,rank 2,rank 2
+"pdf/1907.04433/5f2bade0881c719ab026bc2e2962e2ada96cdb25",pdf,"Do they experiment with the toolkits?","26 27 31",missed,rank 13,missed,rank 6,refused,refused,refused,refused
+"pdf/2001.09215/bcc0cd4e262f2db4270429ab520971bcf39414cf",pdf,"How many tweets were collected?","5 6 7",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2001.09215/f641f561ad2ea2794a52e4e4bdd62e1f353ab797",pdf,"What language is explored in this paper?","8",missed,rank 14,missed,rank 15,refused,refused,refused,refused
+"pdf/1904.07904/9b97805a0c093df405391a85e4d3ab447671c86a",pdf,"What evaluation metrics were used?","10 11",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 2
+"pdf/1904.07904/38f58f13c7f23442d5952c8caf126073a477bac0",pdf,"What was the score of the proposed model?","29 30",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1904.07904/7ee5c45b127fb284a4a9e72bb9b980a602f7445a",pdf,"What was the previous best model?","31 33 38",rank 3,rank 3,rank 2,rank 1,rank 3,rank 3,rank 2,rank 2
+"pdf/1904.07904/ddf5e1f600b9ce2e8f63213982ef4209bab01fd8",pdf,"Which datasets did they use for evaluation?","23 24 25",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/2003.11645/27275fe9f6a9004639f9ac33c3a5767fea388a98",pdf,"What hyperparameters are explored?","26",rank 5,rank 5,rank 2,rank 2,rank 5,rank 5,rank 2,rank 2
+"pdf/2003.11645/ef3567ce7301b28e34377e7b62c4ec9b496f00bf",pdf,"What Named Entity Recognition dataset is used?","20",missed,missed,missed,rank 11,missed,missed,missed,rank 11
+"pdf/2003.11645/7595260c5747aede0b32b7414e13899869209506",pdf,"What sentiment analysis dataset is used?","20",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2003.11645/c2d1387e08cf25cb6b1f482178cca58030e85b70",pdf,"Do they test both skipgram and c-bow?","26",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1909.02304/5a22293b055f5775081d6acdc0450f7bd5f5de04",pdf,"What is the state-of-the-art model for the task?","58",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1909.02304/03c967763e51ef2537793db7902e2c9c17e43e95",pdf,"What is the strong baseline?","57 67",missed,missed,missed,rank 12,refused,refused,refused,refused
+"pdf/1608.06757/c2b8ee872b99f698b3d2082d57f9408a91e1b4c1",pdf,"what is the state of the art?","50",missed,rank 11,missed,missed,refused,refused,refused,refused
+"pdf/1608.06757/8eefa116e3c3d3db751423cc4095d1c4153d3a5f",pdf,"what standard dataset were used?","10 43 44 45 50",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2001.03131/a778b8204a415b295f73b93623d09599f242f202",pdf,"What is the Random Kitchen Sink approach?","22 23",missed,rank 6,missed,rank 7,refused,refused,refused,refused
+"pdf/1606.02891/642e8cf1d39faa1cd985d16750cdc6696c52db2f",pdf,"what are the baseline systems?","4 5 6",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1803.09123/493e971ee3f57a821ef1f67ef3cd47ade154e7c4",pdf,"What word embeddings do they test?","3 24 30 31",rank 4,rank 4,rank 5,rank 5,rank 4,rank 4,rank 5,rank 5
+"pdf/1803.09123/8dd8e5599fc56562f2acbc16dd8544689cddd938",pdf,"How do they define similar equations?","57 58 59 60",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1701.08229/00c57e45ac6afbdfa67350a57e81b4fad0ed2885",pdf,"Do they evaluate only on English datasets?","8 9",missed,missed,rank 4,rank 4,missed,missed,rank 4,rank 4
+"pdf/1701.08229/22714f6cad2d5c54c28823e7285dc85e8d6bc109",pdf,"What are the three steps to feature elimination?","18 19 20",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1701.08229/82642d3111287abf736b781043d49536fe48c350",pdf,"How is the dataset annotated?","3 8 9 21 22 24 25 26 27 28 29 31 32 33",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1701.08229/5a81732d52f64e81f1f83e8fd3514251227efbc7",pdf,"What dataset is used for this study?","8",missed,rank 11,missed,rank 6,missed,rank 11,missed,rank 6
+"pdf/1912.06262/9a8b9ea3176d30da2453cac6e9347737c729a538",pdf,"what were their performance results?","49 50",rank 1,rank 1,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",pdf,"where did they obtain the annotated clinical notes from?","37",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1806.00738/c37f65c9f0d543a35c784263b79236ccf1c44fac",pdf,"What model is used to encode the images?","9 10 11",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1806.00738/584af673429c7f8621c6bf83362a37048daa0e5d",pdf,"How is the sequential nature of the story captured?","11 12 14 15",rank 5,rank 5,missed,rank 6,rank 5,rank 5,missed,rank 6
+"pdf/1806.00738/1be54c5b3ea67d837ffba2290a40c1e720d9587f",pdf,"Is the position in the sequence part of the input?","10",missed,rank 9,missed,rank 9,missed,rank 9,missed,rank 9
+"pdf/1806.00738/b08f88d1facefceb87e134ba2c1fa90035018e83",pdf,"Do the decoder LSTMs all have the same weights?","12 13",rank 5,rank 5,rank 4,rank 4,rank 5,rank 5,rank 4,rank 4
+"pdf/1811.00147/b06512c17d99f9339ffdab12cedbc63501ff527e",pdf,"Is fine-tuning required to incorporate these embeddings into existing models?","49 50",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1811.00147/fd8e23947095fe2230ffe1a478945829b09c8c95",pdf,"How are meaningful chains in the graph selected?","36 42 43 49 50",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1806.04330/8bf7f1f93d0a2816234d36395ab40c481be9a0e0",pdf,"Do the authors also analyze transformer-based architectures?","21",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1610.09225/3611a72f754de1e256fbd25b012197e1c24e8470",pdf,"Do they remove seasonality from the time series?","19 20",missed,rank 10,missed,rank 14,refused,refused,refused,refused
+"pdf/1610.09225/4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",pdf,"What is the dimension of the embeddings?","27",rank 3,rank 3,rank 3,rank 3,refused,refused,refused,refused
+"pdf/1610.09225/b1ce129678e37070e69f01332f1a8587e18e06b0",pdf,"What dataset is used to train the model?","17 18 19",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1811.05711/0689904db9b00a814e3109fb1698086370a28fa2",pdf,"Which text embedding methodologies are used?","21 22 39 40",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1904.03288/2ddb51b03163d309434ee403fef42d6b9aecc458",pdf,"what were the baselines?","35",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1904.03288/e587559f5ab6e42f7d981372ee34aebdc92b646e",pdf,"what competitive results did they obtain?","33 34 35",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1909.13714/f68508adef6f4bcdc0cc0a3ce9afc9a2b6333cc5",pdf,"By how much is performance improved with multimodality?","11 15 16 17 18",rank 5,rank 5,rank 3,rank 3,rank 5,rank 5,rank 3,rank 3
+"pdf/1909.13714/5563a3538d311c979c2fb83c1cc9afc66ff6fffc",pdf,"Is collected multimodal in cabin dataset public?","5",missed,rank 11,missed,rank 13,missed,rank 11,missed,rank 13
+"pdf/1910.05603/91bc8c0bc1634045177065536dd311f89134630b",pdf,"Is the model tested against any baseline?","9 15",rank 4,rank 4,rank 1,rank 2,rank 4,rank 4,rank 1,rank 1
+"pdf/1910.05603/fe1dcd6ef1f8618bbceee418f07cafe63a8efe08",pdf,"What is the language model combination technique used in the paper?","15 16",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1910.05603/53f74250948015c394e7b8438a2041fdeb330911",pdf,"What are the deep learning architectures used in the task?","6",rank 5,rank 5,rank 4,rank 4,refused,refused,refused,refused
+"pdf/1909.03405/bdc91d1283a82226aeeb7a2f79dbbc57d3e84a1a",pdf,"How much is performance improved on NLI?","42 50 51 64",rank 2,rank 2,rank 3,rank 3,refused,refused,refused,refused
+"pdf/1909.03405/7b4fb6da74e6bd1baea556788a02969134cf0800",pdf,"Do they train their model starting from a checkpoint?","32 33 34",rank 3,rank 3,rank 5,rank 4,refused,refused,refused,refused
+"pdf/1909.03405/bc31a3d2f7c608df8c019a64d64cb0ccc5669210",pdf,"What BERT model do they test?","32",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1801.07887/f67b9bda14ec70feba2e0d10c400b2b2025a0a6a",pdf,"What downstream tasks are evaluated?","6",missed,rank 14,missed,rank 14,missed,rank 14,missed,rank 14
+"pdf/1801.07887/1cfed6b0c9b5a079a51166209649a987e7553e4e",pdf,"What is active learning?","3",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1907.03060/761de1610e934189850e8fda707dc5239dd58092",pdf,"what was the baseline?","31 32 33 93 95 96",missed,rank 6,rank 5,rank 5,missed,rank 6,rank 5,rank 5
+"pdf/2002.04095/f8da63df16c4c42093e5778c01a8e7e9b270142e",pdf,"How is segmentation quality evaluated?","24 30 33 35",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/1710.04203/c09a92e25e6a81369fcc4ae6045491f2690ccc10",pdf,"How do they compare lexicons?","62 63",rank 2,rank 2,rank 5,rank 3,rank 2,rank 2,rank 5,rank 3
+"pdf/1911.01371/051df74dc643498e95d16e58851701628fdfd43e",pdf,"How did they obtain the OSG dataset?","34",missed,rank 7,missed,rank 10,missed,rank 7,missed,rank 10
+"pdf/1911.01371/33554065284110859a8ea3ca7346474ab2cab100",pdf,"How large is the Twitter dataset?","33",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1701.02962/2fbb6322e485e7743ec3fb4bb02d44bf4b5ea8a6",pdf,"What dataset do they use to evaluate their method?","50 53",rank 5,rank 5,rank 4,rank 4,rank 5,rank 5,rank 4,rank 4
+"pdf/1806.05504/ef7212075e80bf35b7889dc8dd52fcbae0d1400a",pdf,"Why are current ELS's not sufficiently effective?","20 22",rank 2,rank 2,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1909.13104/1e775cf30784e6b1c2b573294a82e145a3f959bb",pdf,"What language(s) is/are represented in the dataset?","21 22",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1909.13104/392fb87564c4f45d0d8d491a9bb217c4fce87f03",pdf,"What baseline model is used?","41 42 43",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1909.13104/203337c15bd1ee05763c748391d295a1f6415b9b",pdf,"Which variation provides the best results on this dataset?","43 44",missed,rank 13,missed,rank 15,missed,rank 13,missed,rank 15
+"pdf/1909.13104/d004ca2e999940ac5c1576046e30efa3059832fa",pdf,"What are the different variations of the attention-based approach which are examined?","30 41 42 43",rank 5,rank 5,missed,rank 7,rank 5,rank 5,missed,rank 7
+"pdf/1909.13104/21548433abd21346659505296fb0576e78287a74",pdf,"What dataset is used for this work?","7 8",missed,rank 15,missed,rank 13,missed,rank 15,missed,rank 13
+"pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",pdf,"What types of online harassment are studied?","8 19 20",missed,rank 8,rank 4,rank 4,missed,rank 8,rank 4,rank 4
+"pdf/1909.13104/51b1142c1d23420dbf6d49446730b0e82b32137c",pdf,"What was the baseline?","42",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1909.13104/58355e2a782bf145b61ee2a3e0e426119985c179",pdf,"What were the datasets used in this paper?","7 8 19 20 21",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2002.02070/25c1c4a91f5dedd4e06d14121af3b5921db125e9",pdf,"Is car-speak language collection of abstract features that classifier is later trained on?","1 9 10 16 21",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2002.02070/f88036174b4a0dbf4fe70ddad884d16082c5748d",pdf,"Is order of ""words"" important in car speak language?","17 20",rank 3,rank 3,rank 4,rank 4,rank 3,rank 3,rank 4,rank 4
+"pdf/2002.02070/a267d620af319b48e56c191aa4c433ea3870f6fb",pdf,"What are labels in car speak language dataset?","15 16 20",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/2002.02070/899ed05c460bf2aa0aa65101cad1986d4f622652",pdf,"How big is dataset of car-speak language?","15 16",rank 4,rank 4,missed,rank 7,rank 4,rank 4,missed,rank 7
+"pdf/2002.02070/d53299fac8c94bd0179968eb868506124af407d1",pdf,"What is the performance of classifiers?","21 22 24",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2002.02070/29f2954098f055fb19d9502572f085862d75bf61",pdf,"What classifiers have been trained?","21 22",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 2,rank 2
+"pdf/2002.02070/6bf93968110c6e3e3640360440607744007a5228",pdf,"How does car speak pertains to a car's physical attributes?","1 10",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1611.03599/37a79be0148e1751ffb2daabe4c8ec6680036106",pdf,"What topic is covered in the Chinese Facebook data? ","41 42",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1611.03599/518dae6f936882152c162058895db4eca815e649",pdf,"How many layers does the UTCNN model have?","29 30 31 32 33 37 38 39",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1611.03599/e44a6bf67ce3fde0c6608b150030e44d87eb25e3",pdf,"What topics are included in the debate data?","48",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1611.03599/6a31db1aca57a818f36bba9002561724655372a7",pdf,"What is the size of the Chinese data?","41 46",rank 1,rank 1,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1611.03599/e330e162ec29722f5ec9f83853d129c9e0693d65",pdf,"Did they collected the two datasets?","40 48 49",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1611.03599/d3093062aebff475b4deab90815004051e802aa6",pdf,"What are the baselines?","57 58 59 60",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1908.10084/4944cd597b836b62616a4e37c045ce48de8c82ca",pdf,"What transfer learning tasks are evaluated?","10 52 53 54 55",rank 3,rank 3,rank 2,rank 2,rank 3,rank 3,rank 2,rank 2
+"pdf/1908.10084/a29c071065d26e5ee3c3bcd877e7f215c59d1d33",pdf,"What metrics are used for the STS tasks?","32",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/1908.10084/7f207549c75f5c4388efc15ed28822672b845663",pdf,"How much time takes its training?","21 22",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1908.10084/2e89ebd2e4008c67bb2413699589ee55f59c4f36",pdf,"How are the siamese networks trained?","22 23 24 25 26",missed,rank 7,missed,rank 10,missed,rank 7,missed,rank 10
+"pdf/1908.10084/e2db361ae9ad9dbaa9a85736c5593eb3a471983d",pdf,"What other sentence embeddings methods are evaluated?","12 28 48 53 55 58",rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4
+"pdf/1707.06806/ed67359889cf61fa11ee291d6c378cccf83d599d",pdf,"Which pretrained word vectors did they use?","17 18 36",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1707.06806/425bd2ccfd95ead91d8f2b1b1c8ab9fc3446cb82",pdf,"What evaluation metrics are used?","7 29",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1707.06806/955de9f7412ba98a0c91998919fa048d339b1d48",pdf,"Which shallow approaches did they experiment with?","34",rank 5,rank 5,missed,rank 6,rank 5,rank 5,missed,rank 6
+"pdf/1707.06806/3b371ea554fa6639c76a364060258454e4b931d4",pdf,"Where do they obtain the news videos from?","29 30 31",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",pdf,"What is the source of the news articles?","29 30 31 32",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1912.00667/4ac2c3c259024d7cd8e449600b499f93332dab60",pdf,"Do they report results only on English data?","49 50",missed,rank 6,missed,rank 11,refused,refused,refused,refused
+"pdf/1912.00667/bc730e4d964b6a66656078e2da130310142ab641",pdf,"What type of classifiers are used?","32 50",missed,rank 10,missed,missed,missed,rank 10,missed,missed
+"pdf/1912.00667/3941401a182a3d6234894a5c8a75d48c6116c45c",pdf,"Which real-world datasets are used?","47 48 49",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1912.00667/67e9e147b2cab5ba43572ce8a17fc863690172f0",pdf,"How are the interpretability merits of the approach demonstrated?","75 76",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1912.00667/a74190189a6ced2a2d5b781e445e36f4e527e82a",pdf,"How are the accuracy merits of the approach demonstrated?","54 57",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1912.00667/43f074bacabd0a355b4e0f91a1afd538c0a6244f",pdf,"How is the keyword specific expectation elicited from the crowd?","30 31",missed,rank 14,missed,missed,missed,rank 14,missed,missed
+"pdf/1912.08904/78a5546e87d4d88e3d9638a0a8cd0b7debf1f09d",pdf,"What functionality does Macaw provide?","8 9 18 19 20 21 30",missed,rank 11,rank 2,rank 2,missed,rank 11,rank 2,rank 2
+"pdf/1912.08904/375b281e7441547ba284068326dd834216e55c07",pdf,"What is a wizard of oz setup?","16 17",rank 3,rank 3,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1912.08904/05c49b9f84772e6df41f530d86c1f7a1da6aa489",pdf,"What interface does Macaw currently have?","11 24 25 26 27",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1912.08904/6ecb69360449bb9915ac73c0a816c8ac479cbbfc",pdf,"What modalities are supported by Macaw?","11",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1912.08904/68df324e5fa697baed25c761d0be4c528f7f5cf7",pdf,"What are the different modules in Macaw?","13 18 19 20 21",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1703.10344/77c34f1033702278f7f044806c1eba0c6ecb8b04",pdf,"Do they report results only on English data?","6 9 18 82 83 85",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1703.10344/2ee715c7c6289669f11a79743a6b2b696073805d",pdf,"What baseline model is used?","92 93 105 106",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1703.10344/61a9ea36ddc37c60d1a51dabcfff9445a2225725",pdf,"What news article sources are used?","18 85 86",missed,rank 7,missed,rank 7,missed,rank 7,missed,rank 7
+"pdf/1703.10344/cc850bc8245a7ae790e1f59014371d4f35cd46d7",pdf,"How do they determine the exact section to use the input article?","60 61 87 88",missed,missed,missed,rank 13,missed,missed,missed,rank 13
+"pdf/1703.10344/984fc3e726848f8f13dfe72b89e3770d00c3a1af",pdf,"What features are used to represent the novelty of news articles to entity pages?","58 59",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1703.10344/fb1227b3681c69f60eb0539e16c5a8cd784177a7",pdf,"What features are used to represent the salience and relative authority of entities?","47 48 49 53 54",rank 3,rank 3,rank 4,rank 4,rank 3,rank 3,rank 4,rank 4
+"pdf/2003.13032/277a7e916e65dfefd44d2d05774f95257ac946ae",pdf,"What baselines do they introduce?","27 29 30 31 36 40 41",rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4
+"pdf/2003.13032/2916bbdb95ef31ab26527ba67961cf5ec94d6afe",pdf,"How large is the corpus?","18",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2003.13032/f2e8497aa16327aa297a7f9f7d156e485fe33945",pdf,"How was annotation performed?","14 15 16 17",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2003.13032/9b76f428b7c8c9fc930aa88ee585a03478bff9b3",pdf,"How many documents are in the new corpus?","18",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2003.13032/dd6b378d89c05058e8f49e48fd48f5c458ea2ebc",pdf,"What baseline systems are proposed?","27 29 30 36 40 41",rank 5,rank 5,rank 3,rank 3,rank 5,rank 5,rank 3,rank 3
+"pdf/1910.06592/e35c2fa99d5c84d8cb5d83fca2b434dcd83f3851",pdf,"How did they obtain the dataset?","21 22 23",missed,missed,missed,rank 9,refused,refused,refused,refused
+"pdf/1910.06592/c00ce1e3be14610fb4e1f0614005911bb5ff0302",pdf,"What activation function do they use in their model?","28 29",rank 3,rank 3,rank 1,rank 1,rank 3,rank 3,rank 1,rank 1
+"pdf/1910.06592/71fe5822d9fccb1cb391c11283b223dc8aa1640c",pdf,"What baselines do they compare to?","24 25 26 27 28",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.06592/97d0f9a1540a48e0b4d30d7084a8c524dd09a4c3",pdf,"How are chunks defined?","5 9 10 11",rank 1,rank 1,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1910.06592/1062a0506c3691a93bb914171c2701d2ae9621cb",pdf,"What features are extracted?","12 13 14 15 16 17",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.06592/483a699563efcb8804e1861b18809279f21c7610",pdf,"Was the approach used in this work to detect fake news fully supervised?","9 10",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1910.06592/d3ff2986ca8cb85a9a5cec039c266df756947b43",pdf,"Based on this paper, what is the more predictive set of features to detect fake news?","34",missed,rank 8,missed,rank 14,missed,rank 8,missed,rank 14
+"pdf/1910.06592/3e1829e96c968cbd8ad8e9ce850e3a92a76b26e4",pdf,"How big is the dataset used in this work?","20 22 23",missed,missed,missed,rank 14,refused,refused,refused,refused
+"pdf/1910.06592/2317ca8d475b01f6632537b95895608dc40c4415",pdf,"How is a ""chunk of posts"" defined in this work?","5 9 10 11",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.06592/3e88fb3d28593309a307eb97e875575644a01463",pdf,"What baselines were used in this work?","24 25 26 27 28",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1706.01678/e8f969ffd637b82d04d3be28c51f0f3ca6b3883e",pdf,"Which evaluation methods are used?","41",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"pdf/1706.01678/46227b4265f1d300a5ed71bf40822829de662bc2",pdf,"What dataset is used in this paper?","16",missed,rank 14,missed,rank 7,missed,rank 14,missed,rank 7
+"pdf/1706.01678/a6a48de63c1928238b37c2a01c924b852fe752f8",pdf,"Which other methods do they compare with?","35 40 44",missed,missed,rank 3,rank 3,missed,missed,rank 3,rank 3
+"pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",pdf,"How are sentences selected from the summary graph?","22 23 29 30 31",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1707.05236/7b4992e2d26577246a16ac0d1efc995ab4695d24",pdf,"What was the baseline used?","27",missed,rank 15,missed,missed,refused,refused,refused,refused
+"pdf/1707.05236/ab9b0bde6113ffef8eb1c39919d21e5913a05081",pdf,"What are their results on both datasets?","25 26 27 28 29 31",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1707.05236/9a9d225f9ac35ed35ea02f554f6056af3b42471d",pdf,"What textual patterns are extracted?","15 16 17 18",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1707.05236/ea56148a8356a1918bedcf0a99ae667c27792cfe",pdf,"Which annotated corpus did they use?","22 23 24",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1707.05236/cd32a38e0f33b137ab590e1677e8fb073724df7f",pdf,"Which languages are explored in this paper?","22 23 24",missed,rank 13,missed,missed,missed,rank 13,missed,missed
+"pdf/1810.04428/2c6b50877133a499502feb79a682f4023ddab63e",pdf,"what language does this paper focus on?","18 19",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1810.04428/f651cd144b7749e82aa1374779700812f64c8799",pdf,"what evaluation metrics did they use?","28 29",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1810.04428/4625cfba3083346a96e573af5464bc26c34ec943",pdf,"by how much did their model improve?","35 36 37",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1810.04428/326588b1de9ba0fd049ab37c907e6e5413e14acd",pdf,"what state of the art methods did they compare with?","30 32 33 34",rank 5,rank 5,missed,rank 6,rank 5,rank 5,missed,rank 6
+"pdf/1810.04428/ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb",pdf,"what are the sizes of both datasets?","27 28",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/2004.02192/55507f066073b29c1736b684c09c045064053ba9",pdf,"What are the distinctive characteristics of how Arabic speakers use offensive language?","39 40 41 42 43 44 46 47 48 49",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/2004.02192/e838275bb0673fba0d67ac00e4307944a2c17be3",pdf,"How did they analyze which topics, dialects and gender are most associated with tweets?","36 37 38 39",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2004.02192/8dda1ef371933811e2a25a286529c31623cca0c6",pdf,"How many annotators tagged each tweet?","26 27",missed,rank 8,missed,rank 8,missed,rank 8,missed,rank 8
+"pdf/2004.02192/b3de9357c569fb1454be8f2ac5fcecaea295b967",pdf,"How many tweets are in the dataset?","5",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/2004.02192/59e58c6fc63cf5b54b632462465bfbd85b1bf3dd",pdf,"In what way is the offensive dataset not biased by topic, dialect or target?","4 5 6",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1909.06200/5c3e98e3cebaecd5d3e75ec2c9fc3dd267ac3c83",pdf,"What experiments are conducted?","6 33 51 52 53 61 72 73 79 81",missed,missed,rank 4,rank 4,refused,refused,refused,refused
+"pdf/1909.06200/3f0ae9b772eeddfbfd239b7e3196dc6dfa21365f",pdf,"What is the combination of rewards for reinforcement learning?","14 40",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1909.06200/14b8ae5656e7d4ee02237288372d9e682b24fdb8",pdf,"What are the difficulties in modelling the ironic pattern?","4 5 7",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1909.06200/e3a2d8886f03e78ed5e138df870f48635875727e",pdf,"How did the authors find ironic data on twitter?","11 14 25 26",rank 4,rank 4,rank 2,rank 2,rank 4,rank 4,rank 2,rank 2
+"pdf/1909.06200/62f27fe08ddb67f16857fab2a8a721926ecbb6fb",pdf,"Who judged the irony accuracy, sentiment preservation and content preservation?","58 59 60 64",rank 5,rank 5,rank 3,rank 3,rank 5,rank 5,rank 3,rank 3
+"pdf/1908.09246/0602a974a879e6eae223cdf048410b5a0111665e",pdf,"What baseline approaches does this approach out-perform?","52 53 56 62 63 64",rank 2,rank 2,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1908.09246/56b034c303983b2e276ed6518d6b080f7b8abe6a",pdf,"What datasets are used?","4 50",rank 5,rank 5,rank 1,rank 1,rank 5,rank 5,rank 1,rank 1
+"pdf/1908.09246/15e481e668114e4afe0c78eefb716ffe1646b494",pdf,"What alternative to Gibbs sampling is used?","23 24",rank 3,rank 3,rank 1,rank 1,rank 3,rank 3,rank 1,rank 1
+"pdf/1908.09246/3d7a982c718ea6bc7e770d8c5da564fbb9d11951",pdf,"How does this model overcome the assumption that all words in a document are generated from a single event?","1 7 9 10 11 21 31 42 48 64",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1612.08205/692c9c5d9ff9cd3e0ce8b5e4fa68dda9bd23dec1",pdf,"How many users do they look at?","7 28",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1612.08205/935d6a6187e6a0c9c0da8e53a42697f853f5c248",pdf,"What do they mean by a person's industry?","4",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1612.08205/3b77b4defc8a139992bd0b07b5cf718382cb1a5f",pdf,"What model did they use for their system?","32",rank 5,rank 5,missed,rank 9,rank 5,rank 5,missed,rank 9
+"pdf/1612.08205/01a41c0a4a7365cd37d28690735114f2ff5229f2",pdf,"What social media platform did they look at?","21",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1612.08205/cd2878c5a52542ddf080b20bec005d9a74f2d916",pdf,"What are the industry classes defined in this paper?","12 56",missed,rank 8,missed,rank 11,missed,rank 8,missed,rank 11
+"pdf/1907.09369/fd2c6c26fd0ab3c10aae4f2550c5391576a77491",pdf,"Do they report results only on English data?","21",missed,rank 6,missed,rank 8,missed,rank 6,missed,rank 8
+"pdf/1907.09369/6b6d498546f856ac20958f666fc3fd55811347e2",pdf,"What are the hyperparameters of the bi-GRU?","23 32",missed,rank 6,missed,rank 6,refused,refused,refused,refused
+"pdf/1907.09369/de3b1145cb4111ea2d4e113f816b537d052d9814",pdf,"What baseline is used?","13 14 17",missed,rank 11,missed,rank 9,refused,refused,refused,refused
+"pdf/1907.09369/132f752169adf6dc5ade3e4ca773c11044985da4",pdf,"What data is used in experiments?","13 14 17 18",rank 3,rank 3,rank 5,rank 4,rank 3,rank 3,rank 5,rank 4
+"pdf/1907.09369/1d9aeeaa6efa1367c22be0718f5a5635a73844bd",pdf,"What meaningful information does the GRU model capture, which traditional ML models do not?","25",missed,rank 13,rank 5,rank 5,missed,rank 13,rank 5,rank 5
+"pdf/1911.07555/012b8a89aea27485797373adbcda32f16f9d7b54",pdf,"What is the approach of previous work?","11 12 13 14",rank 4,rank 4,rank 5,rank 5,refused,refused,refused,refused
+"pdf/1911.07555/c598028815066089cc1e131b96d6966d2610467a",pdf,"Is the lexicon the same for all languages?","20",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1911.07555/ca4daafdc23f4e23d933ebabe682e1fe0d4b95ed",pdf,"How do they obtain the lexicon?","20",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1911.07555/0ab3df10f0b7203e859e9b62ffa7d6d79ffbbe50",pdf,"What evaluation metric is used?","23 28",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1911.07555/92dfacbbfa732ecea006e251be415a6f89fb4ec6",pdf,"Which languages are similar to each other?","4 5",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"pdf/1911.07555/c8541ff10c4e0c8e9eb37d9d7ea408d1914019a9",pdf,"Which datasets are employed for South African languages LID?","7 8 9 10",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1911.07555/307e8ab37b67202fe22aedd9a98d9d06aaa169c5",pdf,"Does the paper report the performance of a baseline model on South African languages LID?","23 25 27",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1911.07555/e5c8e9e54e77960c8c26e8e238168a603fcdfcc6",pdf,"Does the algorithm improve on the state-of-the-art methods?","23 25 27",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1804.11346/7793805982354947ea9fc742411bec314a6998f6",pdf,"Are the annotations automatic or manually created?","27 28",rank 1,rank 1,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1804.11346/2ceced87af4c8fdebf2dc959aa700a5c95bd518f",pdf,"Is the dataset balanced between speakers of different L1s?","19 20",missed,rank 10,missed,rank 7,missed,rank 10,missed,rank 7
+"pdf/1804.11346/72ed5fed07ace5e3ffe9de6c313625705bc8f0c7",pdf,"How long are the essays on average?","23",rank 1,rank 1,rank 3,rank 3,rank 1,rank 1,rank 3,rank 3
+"pdf/1611.08661/b49598b05358117ab1471b8ebd0b042d2f04b2a4",pdf,"What neural models are used to encode the text?","18 19 24",rank 1,rank 1,rank 2,rank 1,rank 1,rank 1,rank 2,rank 1
+"pdf/1611.08661/932b39fd6c47c6a880621a62e6a978491d881d60",pdf,"What baselines are used for comparison?","42 43",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1611.08661/b36f867fcda5ad62c46d23513369337352aa01d2",pdf,"What datasets are used to evaluate this paper?","35 36",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.06036/1d197cbcac7b3f4015416f0152a6692e881ada6c",pdf,"How they extract ""structured answer-relevant relation""?","15 16 24 25",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1910.06036/92294820ac0d9421f086139e816354970f066d8a",pdf,"How big are significant improvements?","49 55",missed,rank 9,missed,rank 13,refused,refused,refused,refused
+"pdf/1910.06036/477d9d3376af4d938bb01280fe48d9ae7c9cf7f7",pdf,"What metrics do they use?","49",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.06036/f225a9f923e4cdd836dd8fe097848da06ec3e0cc",pdf,"On what datasets are experiments performed?","6 45",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",pdf,"What was the baseline model?","58",missed,missed,rank 3,rank 3,missed,missed,rank 3,rank 3
+"pdf/2002.01984/e807d347742b2799bc347c0eff19b4c270449fee",pdf,"What dataset did they use?","6 7",missed,rank 6,rank 2,rank 2,missed,rank 6,rank 2,rank 2
+"pdf/2002.01984/31b92c03d5b9be96abcc1d588d10651703aff716",pdf,"What was their highest recall score?","61",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2002.01984/9ec1f88ceec84a10dc070ba70e90a792fba8ce71",pdf,"What was their highest MRR score?","10 69",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1909.00326/aef607d2ac46024be17b1ddd0ed3f13378c563a6",pdf,"How do they measure which words are under-translated by NMT models?","63 64 67",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",pdf,"How do their models decide how much improtance to give to the output words?","23 26 27 28",missed,rank 8,missed,rank 6,missed,rank 8,missed,rank 6
+"pdf/1909.00326/6c91d44d5334a4ac80100eead4e105d34e99a284",pdf,"Which model architectures do they test their word importance approach on?","32",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1910.14599/b3d01ac226ee979e188a4141877a6d2a5482de98",pdf,"What are the weaknesses found by non-expert annotators of current state-of-the-art NLI models?","5 6",missed,rank 6,rank 5,rank 7,missed,rank 6,rank 5,rank 7
+"pdf/1910.14599/af5730d82535464cedfa707a03415ac2e7a21295",pdf,"What data sources do they use for creating their dataset?","27 28 32 33 34",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/1910.14599/ee2c9bc24d70daa0c87e38e0558e09ab97feb4f2",pdf,"Do they use active learning to create their dataset?","14 15 16",missed,rank 14,missed,rank 11,missed,rank 14,missed,rank 11
+"pdf/1906.00790/b249b60a8c94d0e40d65f1ffdfcac527dab57516",pdf,"Do the hashtag and SemEval datasets contain only English data?","42 44",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1906.00790/0f567251a6566f65170a1329eeeb5105932036b2",pdf,"What current state of the art method was used for comparison?","14 57",missed,missed,missed,rank 15,missed,missed,missed,rank 15
+"pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f",pdf,"What set of approaches to hashtag segmentation are proposed?","17 18 23 26 28 30 82",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1906.00790/60ce4868af45753c9e124e64e518c32376f12694",pdf,"How is the dataset of hashtags sourced?","42 44 77",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1903.03530/1b1a30e9e68a9ae76af467e60cefb180d135e285",pdf,"How big is their created dataset?","27 28 38",rank 4,rank 4,rank 3,rank 3,refused,refused,refused,refused
+"pdf/1903.03530/2c85865a65acd429508f50b5e4db9674813d67f2",pdf,"Which data do they use as a starting point for the dialogue dataset?","26 32",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1903.03530/73a7acf33b26f5e9475ee975ba00d14fd06f170f",pdf,"What labels do they create on their dataset?","17 18 19 30 52",missed,rank 10,missed,missed,missed,rank 10,missed,missed
+"pdf/1903.03530/dd53baf26dad3d74872f2d8956c9119a27269bd5",pdf,"How do they select instances to their hold-out test set?","54",rank 3,rank 3,rank 3,rank 3,refused,refused,refused,refused
+"pdf/1712.05608/218bc82796eb8d91611996979a4a42500131a936",pdf,"Which models/frameworks do they compare to?","4 11 27 28 29",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1712.05608/b21bc09193699dc9cfad523f3d5542b0b2ff1b8e",pdf,"Which classification algorithm do they use for s2sL?","4 7 11",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1712.05608/352bc6de5c5068c6c19062bad1b8f644919b1145",pdf,"Up to how many samples do they experiment with?","20 21 22 25 31",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"pdf/1806.05513/dea9e7fe8e47da5e7f31d9b1a46ebe34e731a596",pdf,"What type of system does the baseline classification use?","38 39 42",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1806.05513/955cbea7e5ead36fb89cd6229a97ccb3febcf8bc",pdf,"What experiments were carried out on the corpus?","42",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1806.05513/04d1b3b41fb62a7b896afe55e0e8bc5ffb8c6e39",pdf,"How many annotators tagged each text?","16 23",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1806.05513/15cdd9ea4bae8891c1652da2ed34c87bbbd0edb8",pdf,"Where did the texts in the corpus come from?","14 15",missed,rank 10,missed,rank 15,missed,rank 10,missed,rank 15
+"pdf/1903.09722/ab0fd94dfc291cf3e54e9b7a7f78b852ddc1a797",pdf,"What is the previous state-of-the-art in summarization?","31 34 35",missed,rank 7,rank 2,rank 2,missed,rank 7,rank 2,rank 2
+"pdf/1903.09722/6ca938324dc7e1742a840d0a54dc13cc207394a1",pdf,"What dataset do they use?","12 13 14 15 16 33",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1903.09722/4fa6fbb9df1a4c32583d4ef70d2b29ece4b3d802",pdf,"What other models do they compare to?","34 35",missed,rank 10,rank 2,rank 2,missed,rank 10,rank 2,rank 2
+"pdf/1903.09722/4d47bef19afd70c10bbceafd1846516546641a2f",pdf,"What language model architectures are used?","17 18",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.14537/5fda8539a97828e188ba26aad5cda1b9dd642bc8",pdf,"How better is performance compared to previous state-of-the-art models?","62 65 66 67 68",rank 1,rank 1,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1910.14537/709feae853ec0362d4e883db8af41620da0677fe",pdf,"How does Gaussian-masked directional multi-head attention works?","36 38 39",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1910.14537/186b7978ee33b563a37139adff1da7d51a60f581",pdf,"What is meant by closed test setting?","12",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.14537/fabcd71644bb63559d34b38d78f6ef87c256d475",pdf,"What are strong baselines model is compared to?","62",missed,missed,missed,rank 8,refused,refused,refused,refused
+"pdf/1808.10245/da9c0637623885afaf023a319beee87898948fe9",pdf,"Does the dataset feature only English language data?","5 6 7",rank 1,rank 1,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1808.10245/8a1c0ef69b6022a0642ca131a8eacb5c97016640",pdf,"What additional features and context are proposed?","20 21 22 23 24",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1808.10245/48088a842f7a433d3290eb45eb0d4c6ab1d8f13c",pdf,"What learning models are used on the dataset?","9 13 14 15 16 17 18 19 20",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1808.10245/4907096cf16d506937e592c50ae63b642da49052",pdf,"What examples of the difficulties presented by the context-dependent nature of online aggression do they authors give?","4 5",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"pdf/1910.12574/8748e8f64af57560d124c7b518b853bf2711c13e",pdf,"Do they report results only on English data?","41 42 43 44 45",missed,rank 8,missed,rank 15,missed,rank 8,missed,rank 15
+"pdf/1910.12574/893ec40b678a72760b6802f6abf73b8f487ae639",pdf,"What evidence do the authors present that the model can capture some biases in data annotation and collection?","68 69",missed,rank 9,missed,missed,missed,rank 9,missed,missed
+"pdf/1910.12574/c81f215d457bdb913a5bade2b4283f19c4ee826c",pdf,"Which publicly available datasets are used?","41 42 43 44 45",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.12574/e101e38efaa4b931f7dd75757caacdc945bb32b4",pdf,"What baseline is used?","53",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1910.12574/afb77b11da41cd0edcaa496d3f634d18e48d7168",pdf,"What new fine-tuning methods are presented?","34 35 36 38 39 40 41 54",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.12574/41b2355766a4260f41b477419d44c3fd37f3547d",pdf,"What are the existing biases?","23 24 62 63 67",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1910.12574/96a4091f681872e6d98d0efee777d9e820cb8dae",pdf,"What biases does their model capture?","67 68",missed,missed,missed,rank 14,missed,missed,missed,rank 14
+"pdf/1910.12574/81a35b9572c9d574a30cc2164f47750716157fc8",pdf,"What existing approaches do they compare to?","53",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1805.03710/9c44df7503720709eac933a15569e5761b378046",pdf,"For which languages do they build word embeddings for?","30",missed,missed,missed,rank 10,missed,missed,missed,rank 10
+"pdf/1805.03710/b7381927764536bd97b099b6a172708125364954",pdf,"How do they evaluate their resulting word embeddings?","24 25 26",missed,rank 13,missed,rank 13,missed,rank 13,missed,rank 13
+"pdf/1805.03710/df95b3cb6aa0187655fd4856ae2b1f503d533583",pdf,"What types of subwords do they incorporate in their model?","6 14 16 17",missed,missed,missed,rank 8,missed,missed,missed,rank 8
+"pdf/1805.03710/f7ed3b9ed469ed34f46acde86b8a066c52ecf430",pdf,"Which matrix factorization methods do they use?","10 11 13",rank 2,rank 2,rank 4,rank 4,rank 2,rank 2,rank 4,rank 4
+"pdf/1807.07279/c7eb71683f53ab7acffd691a36cad6edc7f5522e",pdf,"Do they report results only on English data?","18 66",missed,missed,missed,rank 15,missed,missed,missed,rank 15
+"pdf/1807.07279/17a1eff7993c47c54eddc7344e7454fbe64191cd",pdf,"What experiments do they use to quantify the extent of interpretability?","92 93 94 95",rank 3,rank 3,rank 2,rank 2,rank 3,rank 3,rank 2,rank 2
+"pdf/1807.07279/a5e5cda1f6195ab1336855f1e39a609d61326d62",pdf,"Along which dimension do the semantically related words take larger values?","17 18",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1807.07279/32d99dcd8d46e2cda04a9a9fa0e6693d2349a7a9",pdf,"What is the additive modification to the objective function?","16 17",missed,rank 8,rank 5,rank 5,missed,rank 8,rank 5,rank 5
+"pdf/1906.07662/8d074aabf4f51c8455618c5bf7689d3f62c4da1d",pdf,"What are the limitations of existing Vietnamese word segmentation systems?","9 28 30",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1906.07662/fe2666ace293b4bfac3182db6d0c6f03ea799277",pdf,"Why challenges does word segmentation in Vietnamese pose?","50 51 52",rank 4,rank 4,rank 1,rank 1,rank 4,rank 4,rank 1,rank 1
+"pdf/1906.07662/70a1b0f9f26f1b82c14783f1b76dfb5400444aa4",pdf,"How successful are the approaches used to solve word segmentation in Vietnamese?","8 9",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1906.07662/d3ca5f1814860a88ff30761fec3d860d35e39167",pdf,"Which approaches have been applied to solve word segmentation in Vietnamese?","8 27 28 32 34 36 38",missed,rank 6,rank 5,rank 5,missed,rank 6,missed,rank 5
+"pdf/1908.05441/a3bb9a936f61bafb509fa12ac0a61f91abcc5106",pdf,"Which datasets are used for evaluation?","45 46",missed,rank 7,missed,rank 6,missed,rank 7,missed,rank 6
+"pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c",pdf,"What previous methods is their model compared to?","33 34 39 97",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1908.05441/3321d8d0e190d25958e5bfe0f3438b5c2ba80fd1",pdf,"How was the dataset collected?","22",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1909.03135/5aa12b4063d6182a71870c98e4e1815ff3dc8a72",pdf,"Do the authors mention any downside of lemmatizing input before training ELMo?","44",missed,rank 15,missed,missed,missed,rank 15,missed,missed
+"pdf/1909.03135/22815878083ebd2f9e08bc33a5e733063dac7a0f",pdf,"What other examples of morphologically-rich languages do the authors give?","9 18 27",missed,rank 13,missed,missed,missed,rank 13,missed,missed
+"pdf/1909.03135/220d11a03897d85af91ec88a9b502815c7d2b6f3",pdf,"Why is lemmatization not necessary in English?","3 4",missed,rank 8,rank 3,rank 3,missed,rank 8,rank 3,rank 3
+"pdf/1909.03135/d509081673f5667060400eb325a8050fa5db7cc8",pdf,"How big was the corpora they trained ELMo on?","12 13 14",rank 3,rank 3,rank 4,rank 4,rank 3,rank 3,rank 4,rank 4
+"pdf/1804.07789/c2e475adeddcdc4d637ef0d4f5065b6a9b299827",pdf,"What metrics are used for evaluation?","54",rank 5,rank 5,rank 2,rank 2,rank 5,rank 5,rank 2,rank 2
+"pdf/1804.07789/cb6a8c642575d3577d1840ca2f4cd2cc2c3397c5",pdf,"Do they use pretrained embeddings?","53",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1804.07789/6cd25c637c6b772ce29e8ee81571e8694549c5ab",pdf,"What dataset is used?","44 45 46 49 67",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1804.07789/1088255980541382a2aa2c0319427702172bbf84",pdf,"What is a bifocal attention mechanism?","12 28 35 36",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1603.01514/6bf5620f295b5243230bc97b340fae6e92304595",pdf,"What baseline model is used?","40 41",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1603.01514/4986f420884f917d1f60d3cea04dc8e64d3b5bf1",pdf,"Which additional latent variables are used in the model?","6 7 24 25",missed,rank 11,missed,rank 13,missed,rank 11,missed,rank 13
+"pdf/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d",pdf,"Which parallel corpora are used?","44 45 46",missed,rank 6,missed,rank 9,missed,rank 6,missed,rank 9
+"pdf/1603.01514/111afb77cfbf4c98e0458606378fa63a0e965e36",pdf,"Overall, does having parallel data improve semantic role induction across multiple languages?","73 74",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/1603.01514/6568a31241167f618ef5ede939053feaa2fb0d7e",pdf,"Do they add one latent variable for each language pair in their Bayesian model?","24 25",rank 4,rank 4,missed,rank 6,rank 4,rank 4,missed,rank 6
+"pdf/1603.01514/50cc6c5f2dcf5fb87b56007f6a825fa7c90b64ed",pdf,"What does an individual model consist of?","12",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1603.01514/0fc2b5bc2ead08a6fe0280fb3a47477c6df1587c",pdf,"Do they improve on state-of-the-art semantic role induction?","49 50",missed,missed,missed,rank 13,missed,missed,missed,rank 13
+"pdf/1908.04042/4dc268e3d482e504ca80d2ab514e68fd9b1c3af1",pdf,"how many tags do they look at?","15",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/1908.04042/ab54cd2dc83141bad3cb3628b3f0feee9169a556",pdf,"which algorithm was the highest performer?","48",missed,rank 11,missed,rank 10,missed,rank 11,missed,rank 10
+"pdf/1908.04042/249c805ee6f2ebe4dbc972126b3d82fb09fa3556",pdf,"how is diversity measured?","40",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",pdf,"how large is the vocabulary?","20 21",rank 5,rank 5,rank 4,rank 4,rank 5,rank 5,rank 4,rank 4
+"pdf/1908.04042/79413ff5d98957c31866f22179283902650b5bb6",pdf,"what dataset was used?","15 16 17 18 19 30",missed,rank 9,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1908.04042/29c014baf99fb9f40b5171aab3e2c7f12a748f79",pdf,"what algorithms did they use?","12 21",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1610.00956/09c86ef78e567033b725fc56b85c5d2602c1a7c3",pdf,"How does their ensemble method work?","96",rank 3,rank 3,rank 5,rank 5,rank 3,rank 3,rank 5,rank 5
+"pdf/1610.00956/d67c01d9b689c052045f3de1b0918bab18c3f174",pdf,"How large are the improvements of the Attention-Sum Reader model when using the BookTest dataset?","53 54 55",missed,rank 6,rank 3,rank 3,missed,rank 6,rank 3,rank 3
+"pdf/1610.00956/e5bc73974c79d96eee2b688e578a9de1d0eb38fd",pdf,"How do they show there is space for further improvement?","65 66 67",missed,rank 12,rank 5,rank 5,missed,rank 12,rank 5,rank 5
+"pdf/1601.02403/2cd37743bcc7ea3bd405ce6d91e79e5339d7642e",pdf,"Do they report results only on English data?","104 105",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",pdf,"What argument components do the ML methods aim to identify?","151",rank 5,rank 5,missed,rank 6,rank 5,rank 5,missed,rank 6
+"pdf/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",pdf,"Which machine learning methods are used in experiments?","279",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",pdf,"How is the data in the new corpus come sourced?","104 105 106",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1601.02403/d6401cece55a14d2a35ba797a0878dfe2deabedc",pdf,"What challenges do different registers and domains pose to this task?","102 103",missed,missed,missed,rank 14,missed,missed,missed,rank 14
+"pdf/1810.12085/ceb767e33fde4b927e730f893db5ece947ffb0d8",pdf,"what topics did they label?","19 20 22",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"pdf/1810.12085/c2cb6c4500d9e02fc9a1bdffd22c3df69655189f",pdf,"did they compare with other extractive summarization methods?","30 31 33 39 40 41 43",missed,rank 8,rank 2,rank 2,missed,rank 8,rank 3,rank 2
+"pdf/1810.12085/c571deefe93f0a41b60f9886db119947648e967c",pdf,"what datasets were used?","14 15",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",pdf,"what levels of document preprocessing are looked at?","5 6 12 17 18",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1610.07809/e54257585cc75564341eb02bdc63ff8111992f82",pdf,"what keyphrase extraction models were reassessed?","12",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1610.07809/2a3e36c220e7b47c1b652511a4fdd7238a74a68f",pdf,"how many articles are in the dataset?","0 2 9 10",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1610.08815/3a6e843c6c81244c14730295cfb8b865cd7ede46",pdf,"What are the state of the art models?","63 75",missed,rank 7,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1610.08815/fabf6fdcfb4c4c7affaa1e4336658c1e6635b1bf",pdf,"Which benchmark datasets are used?","46 55 56 57",missed,rank 7,rank 4,rank 4,missed,rank 7,rank 4,rank 4
+"pdf/1610.08815/1beb4a590fa6127a138f4ed1dd13d5d51cc96809",pdf,"What are the network's baseline features?","51 52 53",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1909.00015/5c5aeee83ea3b34f5936404f5855ccb9869356c1",pdf,"What tasks are used for evaluation?","30 33 34",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1909.00015/f8c1b17d265a61502347c9a937269b38fc3fcab1",pdf,"HOw does the method perform compared with baselines?","36 37 39",missed,rank 6,rank 4,rank 4,missed,rank 6,rank 3,rank 4
+"pdf/1909.00015/5913930ce597513299e4b630df5e5153f3618038",pdf,"How does their model improve interpretability compared to softmax transformers?","10 17 18 78",missed,rank 12,missed,rank 8,missed,rank 12,missed,rank 8
+"pdf/2001.01269/81d193672090295e687bc4f4ac1b7a9c76ea35df",pdf,"What baseline method is used?","14",missed,rank 12,missed,rank 14,missed,rank 12,missed,rank 14
+"pdf/2001.01269/cf171fad0bea5ab985c53d11e48e7883c23cdc44",pdf,"What details are given about the Twitter dataset?","41 42 43",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2001.01269/2a564b092916f2fabbfe893cf13de169945ef2e1",pdf,"What details are given about the movie domain dataset?","40 41",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/2001.01269/0d34c0812f1e69ea33f76ca8c24c23b0415ebc8d",pdf,"Which hand-crafted features are combined with word2vec?","37 38 39",missed,rank 11,missed,rank 14,missed,rank 11,missed,rank 14
+"pdf/2001.01269/73e83c54251f6a07744413ac8b8bed6480b2294f",pdf,"What word-based and dictionary-based feature are used?","17 18 22",missed,rank 12,missed,rank 14,missed,rank 12,missed,rank 14
+"pdf/2001.01269/3355918bbdccac644afe441f085d0ffbbad565d7",pdf,"How are the supervised scores of the words calculated?","30",missed,rank 10,missed,rank 10,missed,rank 10,missed,rank 10
+"pdf/1908.07195/43eecc576348411b0634611c81589f618cd4fddf",pdf,"What GAN models were used as baselines to compare against?","47 48 49",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"pdf/1908.07195/79f9468e011670993fd162543d1a4b3dd811ac5d",pdf,"How much improvement is gained from Adversarial Reward Augmented Maximum Likelihood (ARAML)?","58 67 68",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/2001.07786/1038542243efe5ab3e65c89385e53c4831cd9981",pdf,"What is the corpus used for the task?","9 10",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/2001.07786/e2b0cd30cf56a4b13f96426489367024310c3a05",pdf,"How is evaluation performed?","12",rank 1,rank 1,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1703.04001/4e1a67f8dc68b55a5ce18e6cd385ae9ab90d891f",pdf,"Does the experiments focus on a specific domain?","12 13",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1703.07090/8060a773f6a136944f7b59758d08cc6f2a59693b",pdf,"how small of a dataset did they train on?","15 43",missed,rank 11,missed,rank 15,missed,rank 11,missed,rank 15
+"pdf/1703.07090/1bb7eb5c3d029d95d1abf9f2892c1ec7b6eef306",pdf,"what was their character error rate?","55 60 61",missed,rank 12,missed,missed,missed,rank 12,missed,missed
+"pdf/1703.07090/c0af8b7bf52dc15e0b33704822c4a34077e09cd1",pdf,"which lstm models did they compare with?","35 55 60",missed,rank 7,rank 3,rank 3,missed,rank 7,rank 3,rank 3
+"pdf/1611.02988/fa30a938b58fc05131c3854f12efe376cbad887f",pdf,"What was their performance on emotion detection?","50",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1611.02988/f875337f2ecd686cd7789e111174d0f14972638d",pdf,"Which existing benchmarks did they compare to?","19 20",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1611.02988/de53af4eddbc30c808d90b8a11a29217d377569e",pdf,"Which Facebook pages did they look at?","13 14",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1604.08504/dac087e1328e65ca08f66d8b5307d6624bf3943f",pdf,"LDA is an unsupervised method; is this paper introducing an unsupervised approach to spam detection?","31 34",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1604.08504/a1645d0ba50e4c29f0feb806521093e7b1459081",pdf,"What is the benchmark dataset and is its quality high?","24 27 28 29 35",rank 1,rank 1,rank 1,rank 1,refused,refused,refused,refused
+"pdf/1604.08504/3cd185b7adc835e1c4449eff81222f5fc15c8500",pdf,"How do they detect spammers?","19 20 22 31",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1605.07333/6cd8bad8a031ce6d802ded90f9754088e0c8d653",pdf,"By how much does their best model outperform the state-of-the-art?","2 41 42 43",missed,rank 7,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",pdf,"Which dataset do they train their models on?","27 28 42 43 47",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1605.07333/0f7867f888109b9e000ef68965df4dde2511a55f",pdf,"How does their simple voting scheme work?","39",rank 1,rank 1,rank 2,rank 2,refused,refused,refused,refused
+"pdf/1605.07333/e2e977d7222654ee8d983fd8ba63b930e9a5a691",pdf,"Which variant of the recurrent neural network do they use?","34",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1605.07333/0cfe0e33fbb100751fc0916001a5a19498ae8cb5",pdf,"How do they obtain the new context represetation?","5 11 12 13",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1605.03481/b85fc420eb2f77f6f14f375cc1fcc5155eb5c0a8",pdf,"Does the paper clearly establish that the challenges listed here exist in this dataset and task?","7 8",missed,rank 7,missed,rank 7,missed,rank 7,missed,rank 7
+"pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",pdf,"Is this hashtag prediction task an established task, or something new?","17",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"pdf/1605.03481/127d5ddfabec5c58832e5865cbd8ed0978c25a13",pdf,"What is the word-level baseline?","24 25",missed,missed,rank 4,rank 4,missed,missed,rank 4,rank 4
+"pdf/1605.03481/b91671715ad4fad56c67c28ce6f29e180fe08595",pdf,"What other tasks do they test their method on?","32",missed,rank 8,rank 4,rank 4,missed,rank 8,rank 4,rank 4
+"pdf/1605.03481/a6d37b5975050da0b1959232ae756fc09e5f87e8",pdf,"what is the word level baseline they compare to?","24 25",missed,rank 12,rank 3,rank 3,missed,rank 12,rank 3,rank 3
+"pdf/1704.04452/8e44c02c2d9fa56fb74ace35ee70a5add50b52ae",pdf,"Does the corpus contain only English documents?","9 10 11",missed,rank 6,missed,rank 6,missed,rank 6,missed,rank 6
+"pdf/1704.04452/1522ccedbb1f668958f24cca070f640274bc2549",pdf,"What type of evaluation is proposed for this task?","73",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1704.04452/97466a37525536086ed5d6e5ed143df085682318",pdf,"What baseline system is proposed?","73",missed,rank 10,missed,rank 7,missed,rank 10,missed,rank 7
+"pdf/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",pdf,"How were crowd workers instructed to identify important elements in large document collections?","27 28",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"pdf/1704.04452/d6191c4643201262a770947fc95a613f57bedb6b",pdf,"Which collections of web documents are included in the corpus?","42 43",missed,missed,missed,rank 14,missed,missed,missed,rank 14
+"pdf/1704.04452/ffeb67a61ecd09542b1c53c3e4c3abd4da0496a8",pdf,"How do the authors define a concept map?","4 5 14",rank 1,rank 1,rank 2,rank 1,rank 1,rank 1,rank 1,rank 2
+"pdf/1608.01884/1dc2da5078a7e5ea82ccd1c90d81999a922bc9bf",pdf,"Do the authors conduct experiments on the tasks mentioned?","20 25",missed,missed,missed,missed,refused,refused,refused,refused
+"pdf/1608.01884/7fa3c2c0cf7f559d43e84076a9113a390c5ba03a",pdf,"Did they collect their own datasets?","13",missed,rank 11,missed,rank 11,refused,refused,refused,refused
+"pdf/1608.01884/9a7ba5ed1779c664d2cac92494a43517d3e87c96",pdf,"What data do they look at?","16 17",missed,rank 8,missed,rank 8,refused,refused,refused,refused
+"pdf/1608.01884/662870a90890c620a964720b2ca122a1139410ea",pdf,"What language do they explore?","8 9 11 12 20 21 23 24 25 28",rank 2,rank 2,rank 4,rank 4,rank 2,rank 2,rank 4,rank 4
+"pdf/1705.01265/92d1a6df3041667dc662376938bc65527a5a1c3c",pdf,"Do they report results only on English datasets?","13",missed,rank 6,missed,rank 6,missed,rank 6,missed,rank 6
+"pdf/1705.01265/12159f04e0427fe33fa05af6ba8c950f1a5ce5ea",pdf,"Which hyperparameters were varied in the experiments on the four tasks?","14 15 21 25 26 35 36 37 46",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"pdf/1705.01265/a4a1fcef760b133e9aa876ac28145ad98a609927",pdf,"Which other hyperparameters, other than number of clusters are typically evaluated in this type of research?","6",missed,rank 7,missed,rank 10,missed,rank 7,missed,rank 10
+"pdf/1705.01265/63bb2040fa107c5296351c2b5f0312336dad2863",pdf,"How were the cluster extracted? ","14",missed,rank 7,missed,rank 8,missed,rank 7,missed,rank 8
+"pdf/1705.04153/ef396a34436072cb3c40b0c9bc9179fee4a168ae",pdf,"What tasks do they experiment with?","11",missed,missed,missed,rank 13,refused,refused,refused,refused
+"pdf/1701.05574/49c32a2a64eb41381e5f12ccea4150cac9f3303d",pdf,"What other evaluation metrics are looked at?","71 72",missed,missed,missed,missed,missed,missed,missed,missed
+"pdf/1701.05574/bbb77f2d6685c9257763ca38afaaef29044b4018",pdf,"What is the best reported system?","62 63 70 71 72",missed,rank 11,missed,missed,refused,refused,refused,refused
+"pdf/1701.05574/74b338d5352fe1a6fd592e38269a4c81fe79b866",pdf,"What cognitive features are used?","56",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1609.00425/b6ae8e10c6a0d34c834f18f66ab730b670fb528c",docx,"what are the topics pulled from Reddit?","15 51",rank 5,rank 5,missed,rank 6,rank 5,rank 5,missed,rank 6
+"docx/1609.00425/a87a009c242d57c51fc94fe312af5e02070f898b",docx,"What predictive model do they build?","47",missed,rank 6,missed,rank 11,missed,rank 6,missed,rank 11
+"docx/1611.01576/2f901dab6b757e12763b23ae8b37ae2e517a2271",docx,"What languages pairs are used in machine translation?","50 51",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1611.01576/b591853e938984e6069d738371500ebdec50d256",docx,"What sentiment classification dataset is used?","33",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1611.01576/a130306c6662ff489df13fb3f8faa7cba8c52a21",docx,"What pooling function is used?","15 16",rank 3,rank 3,rank 1,rank 1,rank 3,rank 3,rank 1,rank 1
+"docx/1609.00559/88e62ea7a4d1d2921624b8480b5c6b50cfa5ad42",docx,"What is a second order co-ocurrence matrix?","8 9",missed,rank 7,missed,rank 6,missed,rank 7,missed,rank 6
+"docx/1609.00559/4dcf67b5e7bd1422e7e70c657f6eacccd8de06d3",docx,"How many humans participated?","49 51",rank 3,rank 3,rank 4,rank 4,refused,refused,refused,refused
+"docx/1609.00559/8b3d3953454c88bde88181897a7a2c0c8dd87e23",docx,"What embedding techniques are explored in the paper?","70 71 75",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1604.00727/784ce5a983c5f2cc95a2c60ce66f2a8a50f3636f",docx,"Do the authors also try the model on other datasets?","47",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1604.00727/7705dd04acedaefee30d8b2c9978537afb2040dc",docx,"What word level and character level model baselines are used?","46 47",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1608.01084/1f07e837574519f2b696f3d6fa3230af0b931e5d",docx,"Did they only experiment with one language pair?","52 53 54",missed,rank 8,missed,rank 9,missed,rank 8,missed,rank 10
+"docx/1603.01987/6a633811019e9323dc8549ad540550d27aa6d972",docx,"Is it valid to presume a bad medical wikipedia article should not contain much domain-specific jargon?","43 44",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1702.03856/8acab64ba72831633e8cc174d5469afecccf3ae9",docx,"what is the domain of the corpus?","10",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",docx,"what challenges are identified?","10 21 22 25 28",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1702.03856/72755c2d79210857cfff60bfbcb55f83c71ada51",docx,"what is the size of the speech corpus?","17 18",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"docx/1606.03676/3ddff6b707767c3dd54d7104fe88b628765cae58",docx,"which datasets did they experiment with?","30 31",missed,rank 11,missed,rank 7,missed,rank 11,missed,rank 7
+"docx/1606.03676/0a5ffe4697913a57fda1fd5a188cd5ed59bdc5c7",docx,"which languages are explored?","31",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"docx/1608.06757/8eefa116e3c3d3db751423cc4095d1c4153d3a5f",docx,"what standard dataset were used?","29 30",rank 3,rank 3,rank 2,rank 2,rank 3,rank 3,rank 2,rank 2
+"docx/1606.02891/642e8cf1d39faa1cd985d16750cdc6696c52db2f",docx,"what are the baseline systems?","5 6 7 8",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1701.08229/00c57e45ac6afbdfa67350a57e81b4fad0ed2885",docx,"Do they evaluate only on English datasets?","10 11 12",missed,missed,rank 3,rank 3,missed,missed,rank 3,rank 3
+"docx/1701.08229/22714f6cad2d5c54c28823e7285dc85e8d6bc109",docx,"What are the three steps to feature elimination?","17 26 27 28",rank 1,rank 1,rank 1,rank 2,rank 1,rank 1,rank 2,rank 2
+"docx/1701.08229/82642d3111287abf736b781043d49536fe48c350",docx,"How is the dataset annotated?","4 10 11 20 21 23 24 30 32 35 36 37",rank 2,rank 2,rank 1,rank 1,rank 2,rank 2,rank 1,rank 1
+"docx/1701.08229/5a81732d52f64e81f1f83e8fd3514251227efbc7",docx,"What dataset is used for this study?","10",rank 4,rank 4,rank 1,rank 1,rank 4,rank 4,rank 1,rank 1
+"docx/1610.09225/3611a72f754de1e256fbd25b012197e1c24e8470",docx,"Do they remove seasonality from the time series?","22",rank 3,rank 3,rank 5,rank 5,refused,refused,refused,refused
+"docx/1610.09225/4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",docx,"What is the dimension of the embeddings?","31",rank 1,rank 1,rank 1,rank 1,refused,refused,refused,refused
+"docx/1610.09225/b1ce129678e37070e69f01332f1a8587e18e06b0",docx,"What dataset is used to train the model?","19 20 21",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1701.02962/2fbb6322e485e7743ec3fb4bb02d44bf4b5ea8a6",docx,"What dataset do they use to evaluate their method?","49 52",rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4
+"docx/1611.03599/37a79be0148e1751ffb2daabe4c8ec6680036106",docx,"What topic is covered in the Chinese Facebook data? ","42 43",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"docx/1611.03599/518dae6f936882152c162058895db4eca815e649",docx,"How many layers does the UTCNN model have?","31 32 33 34 35 36 37 38 39",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1611.03599/e44a6bf67ce3fde0c6608b150030e44d87eb25e3",docx,"What topics are included in the debate data?","48",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1611.03599/6a31db1aca57a818f36bba9002561724655372a7",docx,"What is the size of the Chinese data?","42 46",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"docx/1611.03599/e330e162ec29722f5ec9f83853d129c9e0693d65",docx,"Did they collected the two datasets?","41 48 49",rank 3,rank 3,rank 1,rank 1,rank 3,rank 3,rank 1,rank 1
+"docx/1611.03599/d3093062aebff475b4deab90815004051e802aa6",docx,"What are the baselines?","57 58 59 60",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1703.10344/77c34f1033702278f7f044806c1eba0c6ecb8b04",docx,"Do they report results only on English data?","8 21 112 113 114",missed,rank 14,missed,rank 9,missed,rank 14,missed,rank 9
+"docx/1703.10344/2ee715c7c6289669f11a79743a6b2b696073805d",docx,"What baseline model is used?","70 71 120 121",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"docx/1703.10344/61a9ea36ddc37c60d1a51dabcfff9445a2225725",docx,"What news article sources are used?","21 114",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"docx/1703.10344/cc850bc8245a7ae790e1f59014371d4f35cd46d7",docx,"How do they determine the exact section to use the input article?","85 116",rank 4,rank 4,rank 5,rank 4,rank 4,rank 4,rank 5,rank 5
+"docx/1703.10344/984fc3e726848f8f13dfe72b89e3770d00c3a1af",docx,"What features are used to represent the novelty of news articles to entity pages?","67 68",rank 5,rank 5,missed,rank 6,rank 5,rank 5,missed,rank 6
+"docx/1703.10344/fb1227b3681c69f60eb0539e16c5a8cd784177a7",docx,"What features are used to represent the salience and relative authority of entities?","53 54 55 60 61",rank 4,rank 4,missed,rank 6,rank 4,rank 4,missed,rank 6
+"docx/1612.08205/692c9c5d9ff9cd3e0ce8b5e4fa68dda9bd23dec1",docx,"How many users do they look at?","8 32",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1612.08205/935d6a6187e6a0c9c0da8e53a42697f853f5c248",docx,"What do they mean by a person's industry?","5",rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2,rank 2
+"docx/1612.08205/3b77b4defc8a139992bd0b07b5cf718382cb1a5f",docx,"What model did they use for their system?","38",missed,rank 6,missed,rank 7,missed,rank 6,missed,rank 7
+"docx/1612.08205/01a41c0a4a7365cd37d28690735114f2ff5229f2",docx,"What social media platform did they look at?","26",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1611.08661/b49598b05358117ab1471b8ebd0b042d2f04b2a4",docx,"What neural models are used to encode the text?","22 23 24 28",rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4
+"docx/1611.08661/932b39fd6c47c6a880621a62e6a978491d881d60",docx,"What baselines are used for comparison?","47 49",missed,rank 10,rank 3,rank 3,missed,rank 10,rank 4,rank 3
+"docx/1611.08661/b36f867fcda5ad62c46d23513369337352aa01d2",docx,"What datasets are used to evaluate this paper?","40",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1603.01514/6bf5620f295b5243230bc97b340fae6e92304595",docx,"What baseline model is used?","35",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1603.01514/4986f420884f917d1f60d3cea04dc8e64d3b5bf1",docx,"Which additional latent variables are used in the model?","7 18",rank 4,rank 4,rank 2,rank 2,rank 4,rank 4,rank 2,rank 2
+"docx/1603.01514/747b847d687f703cc20a87877c5b138f26ff137d",docx,"Which parallel corpora are used?","41 42",missed,rank 10,missed,rank 11,missed,rank 10,missed,rank 11
+"docx/1603.01514/111afb77cfbf4c98e0458606378fa63a0e965e36",docx,"Overall, does having parallel data improve semantic role induction across multiple languages?","69 70",missed,rank 6,missed,rank 8,missed,rank 6,missed,rank 8
+"docx/1603.01514/6568a31241167f618ef5ede939053feaa2fb0d7e",docx,"Do they add one latent variable for each language pair in their Bayesian model?","18",missed,rank 8,missed,rank 7,missed,rank 8,missed,rank 7
+"docx/1603.01514/50cc6c5f2dcf5fb87b56007f6a825fa7c90b64ed",docx,"What does an individual model consist of?","11",rank 2,rank 2,rank 1,rank 2,rank 2,rank 2,rank 1,rank 2
+"docx/1603.01514/0fc2b5bc2ead08a6fe0280fb3a47477c6df1587c",docx,"Do they improve on state-of-the-art semantic role induction?","46",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1610.00956/09c86ef78e567033b725fc56b85c5d2602c1a7c3",docx,"How does their ensemble method work?","79",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"docx/1610.00956/d67c01d9b689c052045f3de1b0918bab18c3f174",docx,"How large are the improvements of the Attention-Sum Reader model when using the BookTest dataset?","54 55",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1610.00956/e5bc73974c79d96eee2b688e578a9de1d0eb38fd",docx,"How do they show there is space for further improvement?","67 68 69",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1601.02403/2cd37743bcc7ea3bd405ce6d91e79e5339d7642e",docx,"Do they report results only on English data?","101 102",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",docx,"What argument components do the ML methods aim to identify?","144",rank 3,rank 3,rank 3,rank 4,rank 3,rank 3,rank 3,rank 4
+"docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",docx,"Which machine learning methods are used in experiments?","245",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",docx,"How is the data in the new corpus come sourced?","101 102 103",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1601.02403/d6401cece55a14d2a35ba797a0878dfe2deabedc",docx,"What challenges do different registers and domains pose to this task?","100",missed,rank 15,missed,rank 13,missed,rank 15,missed,rank 13
+"docx/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",docx,"what levels of document preprocessing are looked at?","7 12 13 14",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1610.07809/e54257585cc75564341eb02bdc63ff8111992f82",docx,"what keyphrase extraction models were reassessed?","12",missed,rank 10,missed,rank 12,missed,rank 10,missed,rank 12
+"docx/1610.07809/2a3e36c220e7b47c1b652511a4fdd7238a74a68f",docx,"how many articles are in the dataset?","1 4 8 10",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1610.08815/3a6e843c6c81244c14730295cfb8b865cd7ede46",docx,"What are the state of the art models?","66 79",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1610.08815/fabf6fdcfb4c4c7affaa1e4336658c1e6635b1bf",docx,"Which benchmark datasets are used?","47 57 58 59",missed,rank 11,missed,rank 5,missed,rank 11,missed,rank 5
+"docx/1610.08815/1beb4a590fa6127a138f4ed1dd13d5d51cc96809",docx,"What are the network's baseline features?","54",rank 3,rank 3,rank 2,rank 2,rank 3,rank 3,rank 2,rank 2
+"docx/1703.04001/4e1a67f8dc68b55a5ce18e6cd385ae9ab90d891f",docx,"Does the experiments focus on a specific domain?","14 15",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1703.07090/8060a773f6a136944f7b59758d08cc6f2a59693b",docx,"how small of a dataset did they train on?","19 58",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1703.07090/c0af8b7bf52dc15e0b33704822c4a34077e09cd1",docx,"which lstm models did they compare with?","45",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1611.02988/fa30a938b58fc05131c3854f12efe376cbad887f",docx,"What was their performance on emotion detection?","54",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1611.02988/f875337f2ecd686cd7789e111174d0f14972638d",docx,"Which existing benchmarks did they compare to?","21 23",missed,rank 10,rank 4,rank 5,missed,rank 10,rank 4,rank 5
+"docx/1611.02988/de53af4eddbc30c808d90b8a11a29217d377569e",docx,"Which Facebook pages did they look at?","16",rank 1,rank 1,rank 2,rank 2,rank 1,rank 1,rank 2,rank 2
+"docx/1604.08504/dac087e1328e65ca08f66d8b5307d6624bf3943f",docx,"LDA is an unsupervised method; is this paper introducing an unsupervised approach to spam detection?","35",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1604.08504/a1645d0ba50e4c29f0feb806521093e7b1459081",docx,"What is the benchmark dataset and is its quality high?","30 32 33 37 38",rank 2,rank 2,rank 4,rank 4,rank 2,rank 2,rank 4,rank 4
+"docx/1604.08504/3cd185b7adc835e1c4449eff81222f5fc15c8500",docx,"How do they detect spammers?","23 24 28 35",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1605.07333/6cd8bad8a031ce6d802ded90f9754088e0c8d653",docx,"By how much does their best model outperform the state-of-the-art?","2 8 45 47",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",docx,"Which dataset do they train their models on?","30 45 47",missed,rank 7,missed,rank 7,missed,rank 7,missed,rank 7
+"docx/1605.07333/0f7867f888109b9e000ef68965df4dde2511a55f",docx,"How does their simple voting scheme work?","43",rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4,rank 4
+"docx/1605.07333/e2e977d7222654ee8d983fd8ba63b930e9a5a691",docx,"Which variant of the recurrent neural network do they use?","38",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1605.07333/0cfe0e33fbb100751fc0916001a5a19498ae8cb5",docx,"How do they obtain the new context represetation?","6 14 15",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1605.03481/b85fc420eb2f77f6f14f375cc1fcc5155eb5c0a8",docx,"Does the paper clearly establish that the challenges listed here exist in this dataset and task?","7 8",missed,rank 10,missed,missed,missed,rank 10,missed,missed
+"docx/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",docx,"Is this hashtag prediction task an established task, or something new?","20",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1605.03481/127d5ddfabec5c58832e5865cbd8ed0978c25a13",docx,"What is the word-level baseline?","29 30",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1605.03481/b91671715ad4fad56c67c28ce6f29e180fe08595",docx,"What other tasks do they test their method on?","37",rank 3,rank 3,rank 2,rank 2,rank 3,rank 3,rank 2,rank 2
+"docx/1605.03481/a6d37b5975050da0b1959232ae756fc09e5f87e8",docx,"what is the word level baseline they compare to?","29 30",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1704.04452/8e44c02c2d9fa56fb74ace35ee70a5add50b52ae",docx,"Does the corpus contain only English documents?","10",missed,rank 12,missed,rank 13,missed,rank 12,missed,rank 13
+"docx/1704.04452/1522ccedbb1f668958f24cca070f640274bc2549",docx,"What type of evaluation is proposed for this task?","81",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1704.04452/97466a37525536086ed5d6e5ed143df085682318",docx,"What baseline system is proposed?","81",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",docx,"How were crowd workers instructed to identify important elements in large document collections?","28 29",rank 2,rank 2,rank 3,rank 3,rank 2,rank 2,rank 3,rank 3
+"docx/1704.04452/d6191c4643201262a770947fc95a613f57bedb6b",docx,"Which collections of web documents are included in the corpus?","46",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"docx/1704.04452/ffeb67a61ecd09542b1c53c3e4c3abd4da0496a8",docx,"How do the authors define a concept map?","5 15",rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1,rank 1
+"docx/1608.01884/1dc2da5078a7e5ea82ccd1c90d81999a922bc9bf",docx,"Do the authors conduct experiments on the tasks mentioned?","24 28 31",missed,missed,missed,missed,refused,refused,refused,refused
+"docx/1608.01884/7fa3c2c0cf7f559d43e84076a9113a390c5ba03a",docx,"Did they collect their own datasets?","14",rank 1,rank 1,rank 1,rank 1,refused,refused,refused,refused
+"docx/1608.01884/9a7ba5ed1779c664d2cac92494a43517d3e87c96",docx,"What data do they look at?","19",missed,rank 14,missed,rank 14,refused,refused,refused,refused
+"docx/1608.01884/662870a90890c620a964720b2ca122a1139410ea",docx,"What language do they explore?","9 13 24 25 26 28 29 31 34",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"docx/1705.01265/92d1a6df3041667dc662376938bc65527a5a1c3c",docx,"Do they report results only on English datasets?","15",missed,rank 8,rank 5,rank 5,missed,rank 8,rank 5,rank 6
+"docx/1705.01265/12159f04e0427fe33fa05af6ba8c950f1a5ce5ea",docx,"Which hyperparameters were varied in the experiments on the four tasks?","16 23 36 37",rank 3,rank 3,rank 3,rank 4,rank 3,rank 3,rank 3,rank 4
+"docx/1705.01265/a4a1fcef760b133e9aa876ac28145ad98a609927",docx,"Which other hyperparameters, other than number of clusters are typically evaluated in this type of research?","6",missed,missed,missed,missed,missed,missed,missed,missed
+"docx/1705.01265/63bb2040fa107c5296351c2b5f0312336dad2863",docx,"How were the cluster extracted? ","16",rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3,rank 3
+"docx/1705.04153/ef396a34436072cb3c40b0c9bc9179fee4a168ae",docx,"What tasks do they experiment with?","14",rank 5,rank 5,rank 4,rank 4,rank 5,rank 5,rank 4,rank 4
+"docx/1701.05574/49c32a2a64eb41381e5f12ccea4150cac9f3303d",docx,"What other evaluation metrics are looked at?","54",rank 5,rank 5,rank 5,rank 5,rank 5,rank 5,rank 5,rank 5
+"docx/1701.05574/bbb77f2d6685c9257763ca38afaaef29044b4018",docx,"What is the best reported system?","53 54",rank 3,rank 3,rank 5,rank 5,refused,refused,refused,refused
+"docx/1701.05574/74b338d5352fe1a6fd592e38269a4c81fe79b866",docx,"What cognitive features are used?","41 42",missed,rank 11,missed,rank 12,missed,rank 11,missed,rank 12
