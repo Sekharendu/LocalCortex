@@ -130,6 +130,25 @@ describe("vectorStore", () => {
     expect(doc1Hits.length).toBeGreaterThanOrEqual(1);
   });
 
+  test.skipIf(!qdrantUp)("a document larger than one Qdrant request (3,500 chunks) is saved in full", async () => {
+    // One request with all 3,500 points is ~35 MB of JSON, over Qdrant's 32 MB default
+    // body limit; this failed before upserts were batched (JPMorgan/CVS 10-K filings).
+    const BIG = "big-doc";
+    const text = "x".repeat(500);
+    const big: ChunkPoint[] = Array.from({ length: 3500 }, (_, i) => ({
+      id: randomUUID(),
+      denseVector: Array.from({ length: DIM }, (_, k) => Math.sin(i * 7 + k)),
+      sparseVector: EMPTY_SPARSE,
+      payload: { text, source: "big.pdf", chunkIndex: i, documentId: BIG },
+    }));
+    try {
+      await upsertChunks(TEST_COLLECTION, big);
+      expect(await countByDocumentId(TEST_COLLECTION, BIG)).toBe(3500);
+    } finally {
+      await deleteByDocumentId(TEST_COLLECTION, BIG);
+    }
+  }, 120_000);
+
   describe("hybridSearch", () => {
     const HYBRID_DOC = "hybrid-doc";
 

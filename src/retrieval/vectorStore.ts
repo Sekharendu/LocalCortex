@@ -144,12 +144,28 @@ export async function upsertChunks(collection: string, chunks: ChunkPoint[]): Pr
     },
     payload: c.payload as unknown as Record<string, unknown>,
   }));
+  // Batched: Qdrant refuses request bodies over 32 MB by default, and one 768-dim point with
+  // its sparse vector and text is ~9-10 KB of JSON, so a single request failed above ~3,100
+  // chunks (300-page filings). If a later batch fails, the batches already written are deleted
+  // (best effort) so a failed ingest never leaves a half-saved document behind.
+  let written = 0;
   try {
-    await client.upsert(collection, { points, wait: true });
+    for (let i = 0; i < points.length; i += UPSERT_BATCH_SIZE) {
+      const batch = points.slice(i, i + UPSERT_BATCH_SIZE);
+      await client.upsert(collection, { points: batch, wait: true });
+      written += batch.length;
+    }
   } catch (e) {
+    if (written > 0) {
+      const ids = points.slice(0, written).map((p) => p.id);
+      await client.delete(collection, { points: ids, wait: true }).catch(() => undefined);
+    }
     throw new CollectionError(`Failed to upsert ${points.length} chunks into '${collection}'`, { cause: e });
   }
 }
+
+/** Points per Qdrant upsert request; 256 points is ~2.5 MB of JSON, far under the 32 MB limit. */
+export const UPSERT_BATCH_SIZE = 256;
 
 /**
  * Dense-only search: nearest neighbors of `queryVector` on the `dense` named vector,
