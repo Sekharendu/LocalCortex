@@ -1,0 +1,351 @@
+[
+ {
+  "sample": "first 18",
+  "doc": "AMCOR_2022_8K_dated-2022-07-01.pdf",
+  "headings": 2,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "AMCOR_2023Q4_EARNINGS.pdf",
+  "headings": 17,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "FOOTLOCKER_2022_8K_dated-2022-05-20.pdf",
+  "headings": 0,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "BESTBUY_2023_10K.pdf",
+  "headings": 70,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "BESTBUY_2024Q2_10Q.pdf",
+  "headings": 26,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "JOHNSON_JOHNSON_2023_8K_dated-2023-08-30.pdf",
+  "headings": 12,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "MGMRESORTS_2022Q4_EARNINGS.pdf",
+  "headings": 6,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "agilysys-inc_2019.pdf",
+  "headings": 41,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "altium-limited_2019.pdf",
+  "headings": 100,
+  "belowFirst": 37,
+  "aboveAfter": 21,
+  "examples": [
+   "p3 \"Directors\": 421 chars below-but-before, 31 above-but-after",
+   "p3 \"Company secretaries\": 203 chars below-but-before, 31 above-but-after",
+   "p3 \"Notice of annual general meeting\": 203 chars below-but-before, 76 above-but-after",
+   "p3 \"Auditor\": 13 chars below-but-before, 295 above-but-after"
+  ]
+ },
+ {
+  "sample": "first 18",
+  "doc": "clearfield-inc_2019.pdf",
+  "headings": 33,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "first 18",
+  "doc": "Stone (unit).pdf",
+  "headings": 12,
+  "belowFirst": 10,
+  "aboveAfter": 0,
+  "examples": [
+   "p1 \"Antiquity\": 1121 chars below-but-before, 0 above-but-after",
+   "p1 \"Britain and Ireland\": 493 chars below-but-before, 0 above-but-after",
+   "p1 \"England\": 493 chars below-but-before, 0 above-but-after",
+   "p2 \"Scotland\": 914 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "first 18",
+  "doc": "List of Governors of Florida.pdf",
+  "headings": 13,
+  "belowFirst": 8,
+  "aboveAfter": 0,
+  "examples": [
+   "p1 \"List of governors of Florida\": 357 chars below-but-before, 0 above-but-after",
+   "p1 \"Governors\": 1008 chars below-but-before, 0 above-but-after",
+   "p1 \"Federal military commissioner\": 1008 chars below-but-before, 0 above-but-after",
+   "p2 \"Governors of the State of Florida\": 2086 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "first 18",
+  "doc": "Seth Gilliam.pdf",
+  "headings": 8,
+  "belowFirst": 7,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Seth Gilliam\": 0 chars below-but-before, 314 above-but-after",
+   "p1 \"Early life\": 1877 chars below-but-before, 0 above-but-after",
+   "p1 \"Career\": 1806 chars below-but-before, 0 above-but-after",
+   "p2 \"Filmography\": 1047 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "first 18",
+  "doc": "Felix Leiter.pdf",
+  "headings": 11,
+  "belowFirst": 5,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Felix Leiter\": 0 chars below-but-before, 383 above-but-after",
+   "p1 \"Novels\": 671 chars below-but-before, 0 above-but-after",
+   "p3 \"Films\": 332 chars below-but-before, 0 above-but-after",
+   "p3 \"Eon Productions films\": 332 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "first 18",
+  "doc": "Ben Platt (actor).pdf",
+  "headings": 17,
+  "belowFirst": 13,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Ben Platt\": 0 chars below-but-before, 302 above-but-after",
+   "p1 \"Early life and education\": 754 chars below-but-before, 0 above-but-after",
+   "p2 \"Career\": 3023 chars below-but-before, 0 above-but-after",
+   "p4 \"Theatre credits\": 1013 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "first 18",
+  "doc": "Jake T. Austin.pdf",
+  "headings": 10,
+  "belowFirst": 6,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Jake T. Austin\": 0 chars below-but-before, 308 above-but-after",
+   "p1 \"Early life\": 597 chars below-but-before, 0 above-but-after",
+   "p3 \"Personal life\": 604 chars below-but-before, 0 above-but-after",
+   "p4 \"Filmography\": 1091 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "first 18",
+  "doc": "Adam Pascal.pdf",
+  "headings": 14,
+  "belowFirst": 11,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Adam Pascal\": 0 chars below-but-before, 297 above-but-after",
+   "p1 \"Early life\": 1010 chars below-but-before, 0 above-but-after",
+   "p1 \"Career\": 315 chars below-but-before, 0 above-but-after",
+   "p1 \"Stage work\": 315 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "first 18",
+  "doc": "Laura Bell Bundy.pdf",
+  "headings": 17,
+  "belowFirst": 15,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Laura Bell Bundy\": 0 chars below-but-before, 293 above-but-after",
+   "p1 \"Early life\": 946 chars below-but-before, 0 above-but-after",
+   "p2 \"Career\": 2743 chars below-but-before, 0 above-but-after",
+   "p2 \"Stage\": 2743 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "FOOTLOCKER_2022_8K_dated_2022-08-19.pdf",
+  "headings": 0,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "AMCOR_2023Q2_10Q.pdf",
+  "headings": 38,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "Pfizer_2023Q2_10Q.pdf",
+  "headings": 59,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "AMD_2022_10K.pdf",
+  "headings": 109,
+  "belowFirst": 0,
+  "aboveAfter": 0,
+  "examples": []
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "cal-maine-foods-inc_2019.pdf",
+  "headings": 73,
+  "belowFirst": 3,
+  "aboveAfter": 0,
+  "examples": [
+   "p2 \"South Carolina\": 226 chars below-but-before, 98 above-but-after",
+   "p2 \"CAL-MAINE FOODS LOCATIONS\": 559 chars below-but-before, 21 above-but-after",
+   "p87 \"Public Accounting Firm\": 223 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "iselect-ltd_2019.pdf",
+  "headings": 180,
+  "belowFirst": 45,
+  "aboveAfter": 27,
+  "examples": [
+   "p3 \"NON-IFRS INFORMATION\": 0 chars below-but-before, 483 above-but-after",
+   "p3 \"Inside\": 2531 chars below-but-before, 0 above-but-after",
+   "p4 \"About\": 211 chars below-but-before, 0 above-but-after",
+   "p7 \"Financial performance\": 0 chars below-but-before, 907 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "List of cities in India by population.pdf",
+  "headings": 8,
+  "belowFirst": 3,
+  "aboveAfter": 0,
+  "examples": [
+   "p12 \"See also\": 500 chars below-but-before, 0 above-but-after",
+   "p12 \"Notes\": 362 chars below-but-before, 0 above-but-after",
+   "p12 \"References\": 218 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "List of districts of Nepal.pdf",
+  "headings": 13,
+  "belowFirst": 10,
+  "aboveAfter": 2,
+  "examples": [
+   "p1 \"List of districts of Nepal\": 339 chars below-but-before, 0 above-but-after",
+   "p1 \"Districts are subdivided in municipalities and rur\": 331 chars below-but-before, 246 above-but-after",
+   "p1 \"Rukum District were divided into Parasi District a\": 283 chars below-but-before, 246 above-but-after",
+   "p1 \"History\": 1001 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "Kaley Cuoco.pdf",
+  "headings": 10,
+  "belowFirst": 7,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Kaley Cuoco\": 0 chars below-but-before, 319 above-but-after",
+   "p1 \"Early life\": 1267 chars below-but-before, 0 above-but-after",
+   "p1 \"Career\": 747 chars below-but-before, 0 above-but-after",
+   "p2 \"Personal life\": 571 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "Diana Rigg.pdf",
+  "headings": 15,
+  "belowFirst": 12,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Diana Rigg\": 0 chars below-but-before, 383 above-but-after",
+   "p1 \"Biography\": 522 chars below-but-before, 0 above-but-after",
+   "p1 \"Early life and education\": 472 chars below-but-before, 0 above-but-after",
+   "p2 \"Theatre career\": 2958 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "California State Assembly.pdf",
+  "headings": 20,
+  "belowFirst": 12,
+  "aboveAfter": 3,
+  "examples": [
+   "p1 \"California State Assembly\": 0 chars below-but-before, 335 above-but-after",
+   "p1 \"Leadership\": 0 chars below-but-before, 1635 above-but-after",
+   "p1 \"Terms of office\": 736 chars below-but-before, 0 above-but-after",
+   "p2 \"Meeting place\": 0 chars below-but-before, 903 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "List of heads of government of Mexico City.pdf",
+  "headings": 5,
+  "belowFirst": 4,
+  "aboveAfter": 0,
+  "examples": [
+   "p2 \"Governors of the Federal District\": 639 chars below-but-before, 0 above-but-after",
+   "p8 \"Heads of Government of the Federal District/Mexico\": 1187 chars below-but-before, 0 above-but-after",
+   "p9 \"See also\": 410 chars below-but-before, 0 above-but-after",
+   "p9 \"External links\": 280 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "Derek Theler.pdf",
+  "headings": 11,
+  "belowFirst": 7,
+  "aboveAfter": 1,
+  "examples": [
+   "p1 \"Derek Theler\": 0 chars below-but-before, 296 above-but-after",
+   "p1 \"Acting career\": 1631 chars below-but-before, 0 above-but-after",
+   "p2 \"Personal life\": 615 chars below-but-before, 0 above-but-after",
+   "p2 \"Filmography\": 496 chars below-but-before, 0 above-but-after"
+  ]
+ },
+ {
+  "sample": "unseen 14",
+  "doc": "France at the Rugby World Cup.pdf",
+  "headings": 16,
+  "belowFirst": 9,
+  "aboveAfter": 3,
+  "examples": [
+   "p2 \"By position\": 600 chars below-but-before, 0 above-but-after",
+   "p5 \"Third-place play-off\": 768 chars below-but-before, 0 above-but-after",
+   "p6 \"Final\": 578 chars below-but-before, 0 above-but-after",
+   "p7 \"Third-place play-off\": 256 chars below-but-before, 0 above-but-after"
+  ]
+ }
+]
