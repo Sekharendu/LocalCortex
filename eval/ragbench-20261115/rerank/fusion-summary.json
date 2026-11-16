@@ -1,0 +1,157 @@
+{
+ "questions": 541,
+ "candidates": 20,
+ "groups": {
+  "all": {
+   "questions": 541,
+   "hybrid_blend": {
+    "top1": "231 -> 270 (fixed 51, broke 12)",
+    "top5": "407 -> 424 (fixed 30, broke 13)",
+    "top15": "469 -> 482 (fixed 13, broke 0)",
+    "mrr": "0.564 -> 0.628"
+   },
+   "hybrid_rerank": {
+    "top1": "231 -> 291 (fixed 102, broke 42)",
+    "top5": "407 -> 435 (fixed 51, broke 23)",
+    "top15": "469 -> 477 (fixed 14, broke 6)",
+    "mrr": "0.564 -> 0.657"
+   },
+   "dense_blend": {
+    "top1": "246 -> 269 (fixed 37, broke 14)",
+    "top5": "389 -> 417 (fixed 36, broke 8)",
+    "top15": "462 -> 471 (fixed 11, broke 2)",
+    "mrr": "0.572 -> 0.618"
+   },
+   "dense_rerank": {
+    "top1": "246 -> 284 (fixed 91, broke 53)",
+    "top5": "389 -> 429 (fixed 60, broke 20)",
+    "top15": "462 -> 471 (fixed 13, broke 4)",
+    "mrr": "0.572 -> 0.645"
+   }
+  },
+  "financebench": {
+   "questions": 111,
+   "hybrid_blend": {
+    "top1": "39 -> 43 (fixed 8, broke 4)",
+    "top5": "64 -> 70 (fixed 10, broke 4)",
+    "top15": "82 -> 84 (fixed 2, broke 0)",
+    "mrr": "0.448 -> 0.486"
+   },
+   "hybrid_rerank": {
+    "top1": "39 -> 46 (fixed 15, broke 8)",
+    "top5": "64 -> 68 (fixed 14, broke 10)",
+    "top15": "82 -> 83 (fixed 3, broke 2)",
+    "mrr": "0.448 -> 0.511"
+   },
+   "dense_blend": {
+    "top1": "39 -> 39 (fixed 4, broke 4)",
+    "top5": "67 -> 72 (fixed 9, broke 4)",
+    "top15": "83 -> 85 (fixed 2, broke 0)",
+    "mrr": "0.457 -> 0.472"
+   },
+   "dense_rerank": {
+    "top1": "39 -> 43 (fixed 14, broke 10)",
+    "top5": "67 -> 69 (fixed 12, broke 10)",
+    "top15": "83 -> 85 (fixed 2, broke 0)",
+    "mrr": "0.457 -> 0.499"
+   }
+  },
+  "tat": {
+   "questions": 124,
+   "hybrid_blend": {
+    "top1": "63 -> 69 (fixed 9, broke 3)",
+    "top5": "100 -> 104 (fixed 6, broke 2)",
+    "top15": "113 -> 115 (fixed 2, broke 0)",
+    "mrr": "0.634 -> 0.690"
+   },
+   "hybrid_rerank": {
+    "top1": "63 -> 80 (fixed 27, broke 10)",
+    "top5": "100 -> 110 (fixed 11, broke 1)",
+    "top15": "113 -> 115 (fixed 2, broke 0)",
+    "mrr": "0.634 -> 0.744"
+   },
+   "dense_blend": {
+    "top1": "55 -> 59 (fixed 7, broke 3)",
+    "top5": "85 -> 96 (fixed 11, broke 0)",
+    "top15": "102 -> 107 (fixed 5, broke 0)",
+    "mrr": "0.560 -> 0.609"
+   },
+   "dense_rerank": {
+    "top1": "55 -> 76 (fixed 29, broke 8)",
+    "top5": "85 -> 102 (fixed 19, broke 2)",
+    "top15": "102 -> 107 (fixed 5, broke 0)",
+    "mrr": "0.560 -> 0.699"
+   }
+  },
+  "nq": {
+   "questions": 154,
+   "hybrid_blend": {
+    "top1": "57 -> 71 (fixed 17, broke 3)",
+    "top5": "123 -> 125 (fixed 6, broke 4)",
+    "top15": "136 -> 141 (fixed 5, broke 0)",
+    "mrr": "0.543 -> 0.623"
+   },
+   "hybrid_rerank": {
+    "top1": "57 -> 79 (fixed 35, broke 13)",
+    "top5": "123 -> 129 (fixed 13, broke 7)",
+    "top15": "136 -> 140 (fixed 5, broke 1)",
+    "mrr": "0.543 -> 0.660"
+   },
+   "dense_blend": {
+    "top1": "74 -> 84 (fixed 14, broke 4)",
+    "top5": "121 -> 124 (fixed 5, broke 2)",
+    "top15": "138 -> 141 (fixed 4, broke 1)",
+    "mrr": "0.608 -> 0.671"
+   },
+   "dense_rerank": {
+    "top1": "74 -> 80 (fixed 24, broke 18)",
+    "top5": "121 -> 130 (fixed 13, broke 4)",
+    "top15": "138 -> 140 (fixed 4, broke 2)",
+    "mrr": "0.608 -> 0.664"
+   }
+  },
+  "feta": {
+   "questions": 152,
+   "hybrid_blend": {
+    "top1": "72 -> 87 (fixed 17, broke 2)",
+    "top5": "120 -> 125 (fixed 8, broke 3)",
+    "top15": "138 -> 142 (fixed 4, broke 0)",
+    "mrr": "0.614 -> 0.684"
+   },
+   "hybrid_rerank": {
+    "top1": "72 -> 86 (fixed 25, broke 11)",
+    "top5": "120 -> 128 (fixed 13, broke 5)",
+    "top15": "138 -> 139 (fixed 4, broke 3)",
+    "mrr": "0.614 -> 0.691"
+   },
+   "dense_blend": {
+    "top1": "78 -> 87 (fixed 12, broke 3)",
+    "top5": "116 -> 125 (fixed 11, broke 2)",
+    "top15": "139 -> 138 (fixed 0, broke 1)",
+    "mrr": "0.629 -> 0.680"
+   },
+   "dense_rerank": {
+    "top1": "78 -> 85 (fixed 24, broke 17)",
+    "top5": "116 -> 128 (fixed 16, broke 4)",
+    "top15": "139 -> 139 (fixed 2, broke 2)",
+    "mrr": "0.629 -> 0.688"
+   }
+  }
+ },
+ "top5_by_weight_info_only": {
+  "hybrid w=0.0": 407,
+  "hybrid w=0.3": 424,
+  "hybrid w=0.5": 424,
+  "hybrid w=0.7": 433,
+  "hybrid w=1.0": 435,
+  "dense w=0.0": 389,
+  "dense w=0.3": 409,
+  "dense w=0.5": 417,
+  "dense w=0.7": 427,
+  "dense w=1.0": 429
+ },
+ "reranker_seconds_per_question": {
+  "median": 6.26,
+  "mean": 6.37
+ }
+}
