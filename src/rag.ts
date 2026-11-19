@@ -10,6 +10,7 @@ import { rerank } from "./retrieval/reranker.js";
 import { expandAcronyms } from "./retrieval/acronyms.js";
 import type { Citation } from "./types.js";
 import { resolveDocumentScope, scopeQuestion, type DocumentScope } from "./retrieval/documentScope.js";
+import { planSummary, prepareSummary, messageSetup, type SummarySetup } from "./summarise.js";
 
 export interface RetrieveForQuestionResult {
   documentScope: DocumentScope;
@@ -181,6 +182,12 @@ export async function answerQuestion(
   question: string,
   opts: AskOptions = {},
 ): Promise<AnswerResult> {
+  const summary = await summarySetup(question, opts, false);
+  if (summary) {
+    let answer = "";
+    for await (const t of summary.tokens) answer += t;
+    return { answer: answer.trim(), chunks: [], citations: summary.citations };
+  }
   const { prompt, systemPrompt, chunks } = await retrieveForQuestion(question, opts);
   const answer = await generate(prompt, { signal: opts.signal, system: systemPrompt, maxTokens: answerConfig.maxOutputTokens, ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}) });
   return { answer, chunks, citations: buildCitations(chunks) };
@@ -206,9 +213,28 @@ export async function answerQuestionStream(
   question: string,
   opts: AskOptions = {},
 ): Promise<StreamSetup> {
+  const summary = await summarySetup(question, opts, true);
+  if (summary) return summary;
   const { prompt, systemPrompt, chunks } = await retrieveForQuestion(question, opts);
   return {
     tokens: generateStream(prompt, opts.signal, { system: systemPrompt, maxTokens: answerConfig.maxOutputTokens, ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}) }),
     citations: buildCitations(chunks),
   };
+}
+
+/**
+ * "Summarise <document>" requests (src/summarise.ts), handled before retrieval: they name
+ * a document, so the relevance gate does not apply. null for every other message, which
+ * then takes the normal path unchanged. Eager like retrieveForQuestion: the document
+ * listing and chunk reads happen here, so a Qdrant outage is a pre-stream failure.
+ * An explicit documentScope (evaluation) is a retrieval constraint: skip summaries then.
+ */
+async function summarySetup(question: string, opts: AskOptions, stream: boolean): Promise<SummarySetup | null> {
+  if (opts.documentScope) return null;
+  const collection = opts.collection ?? retrievalConfig.collection;
+  opts.signal?.throwIfAborted();
+  const plan = await planSummary(question, opts.history ?? [], { collection });
+  if (!plan) return null;
+  if (plan.kind === "message") return messageSetup(plan.text);
+  return prepareSummary(plan.doc, question, { collection, stream, signal: opts.signal });
 }
