@@ -1,0 +1,31 @@
+Test A (calc rule) -- frozen 2026-11-18T17:29:12.683343+00:00; graded by one grader (Claude), arithmetic checked in Python.
+OVERALL: FAIL
+
+A1: FAIL  -- new prompt: >= 6/30 graded C (review run: 0/30) AND <= 8/30 refusals (review run: 16/30)
+    {"newC": 1, "newR": 7, "of": 30}
+A2: PASS  -- new prompt: <= 2/40 get worse. Worse = graded W or R (PLAN.txt: 'go from C to W/R'); C->P reported separately
+    {"newWorse": 0, "of": 40, "worseIds": []}
+A3: PASS  -- new prompt: 10/10 PASS (no FAIL; AMBIGUOUS read by hand and counted PASS only if it is a refusal with no fabricated fact)
+    {"newPass": 10, "of": 10}
+A4: PASS  -- new prompt: 0 style leaks and 0 wrongly refused (the current result is 0/0; the paired current run is reported too)
+    {"newAnswers": 16, "newLeaks": 0, "newRefused": 0}
+A5: PASS  -- new prompt: >= 8/10 refused or name the missing input, AND 0 invented numbers
+    {"newRefused": 10, "newInvented": 0, "of": 10}
+
+A1 targets current {'C': 0, 'P': 3, 'W': 13, 'R': 14}  new {'C': 1, 'P': 11, 'W': 11, 'R': 7}
+  moves: tat-0785 R->W, tat-0631 R->W, financebench-0116 R->P, financebench-0071 R->P, financebench-0008 R->P, financebench-0013 W->P, financebench-0026 P->C, financebench-0068 R->P, financebench-0070 W->P, financebench-0082 W->P, financebench-0087 R->P, financebench-0112 W->P
+A2 guards  current {'C': 39, 'P': 1, 'W': 0, 'R': 0}  new {'C': 38, 'P': 2, 'W': 0, 'R': 0}
+  moves: feta-0438 C->P
+A3 halluc PASS current 10/10 new 10/10
+A4 style current {'answers': 16, 'leaks': 0, 'refused': 1}  new {'answers': 16, 'leaks': 0, 'refused': 0}  (current fu-3-t2 refusal: the app's rewrite step gave 'What about for the dependents?' -> 0 chunks; not caused by the answer prompt)
+A5 absent {'current': {'refusedOrNamesMissing': 10, 'invented': 0}, 'new': {'refusedOrNamesMissing': 10, 'invented': 0}}  (all 20 answers are the plain refusal sentence; none names the missing input)
+
+Invented numbers (not in prompt, not correctly derived; in A1 these are mostly wrong arithmetic on right inputs):
+  A1 current: [('tat-0629', ['163.6']), ('financebench-0057', ['101.0']), ('financebench-0070', ['39.89']), ('financebench-0082', ['2.17']), ('financebench-0112', ['698,834'])]
+  A1 new: [('financebench-0116', ['3.59']), ('financebench-0071', ['16.4']), ('tat-0629', ['163.4']), ('tat-0683', ['103.5']), ('financebench-0008', ['2.86']), ('financebench-0013', ['35.2']), ('financebench-0057', ['101.0']), ('financebench-0068', ['40.0']), ('financebench-0070', ['44.00']), ('financebench-0082', ['3.49']), ('financebench-0087', ['7.5']), ('financebench-0112', ['14.7'])]
+  A2 current: []
+  A2 new: []
+  A5 current: []
+  A5 new: []
+
+Neurons used 3232.2 of cap 3500; answer calls 212, rewrite calls 6.
