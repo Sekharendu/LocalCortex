@@ -1274,7 +1274,7 @@ The additions to unrecognized tax benefits related to the current
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(i know its a squestiosn that involves sumation but how can we do it correctly so that it answers corrrectly)
 
 **Model answer, top 15:**
 
@@ -1405,7 +1405,7 @@ Basic $ 2.35 $ 1.26 $ 0.54 $ 0.58 $ 1.68
 
 > The year-over-year change in unadjusted operating income from FY2015 to FY2016 is 12.0%.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(incorrect))
 
 **Model answer, top 15:**
 
@@ -1438,7 +1438,7 @@ eligible dependents. The health care plan for shore-based employees and their de
 
 > The company provides certain postretirement health care and life insurance benefits to qualifying domestic retirees and their eligible dependents. The health care plan for shore-based employees and their dependents and seagoing licensed deck officers and their dependents is contributory at retirement, while the life insurance plan for all employees is noncontributory. Postretirement medical coverage is provided to shore-based employees hired prior to January 1, 2005, and all Deck Officers who retire and have met minimum age and service requirements. The company does not currently fund these benefit arrangements and has the right to amend or terminate the health care and life insurance benefits at any time.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -1495,7 +1495,7 @@ Honours Best Video Nominated [289]
 
 > The Mnet Asian Music Awards was held in Hong Kong in 2012.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -1589,7 +1589,7 @@ respectively. Refer to Note 6 for additional information.
 
 > The average total VaR decreased by $7 million for the three months ended June 30, 2023, compared with the same period in the prior year, predominantly driven by risk reductions impacting Credit Portfolio VaR as well as fixed income.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c(loved the explanation but firstly it should have said a simple yes/no then the explanation )
 
 **Model answer, top 15:**
 
@@ -1670,7 +1670,7 @@ Exhibit No. Description of Exhibit
 
 > The gain accruing to Johnson & Johnson as a result of the separation of its Consumer Health business segment is approximately $20 billion in the third quarter of 2023.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -1725,7 +1725,7 @@ Theatre
 
 > Sam Underwood appeared in the plays "Candida" and "Equus," which were directed by Tony Walton.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -1808,7 +1808,7 @@ Other rides and attractions
 
 > In 2015, Gotham City included "The Joker: Chaos Coaster," which is a Larson Giant Loop ride, and "Harley Quinn Spinsanity," which is a Tilt-A-Whirl family ride.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c(good, better thatn the referenced answer)
 
 **Model answer, top 15:**
 
@@ -1886,7 +1886,7 @@ Date Home Score Away Place
 
 > The last time Italy won a game in the Six Nations was in 2015, when they scored their second away win versus Scotland.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(it should have been november 2016)
 
 **Model answer, top 15:**
 
@@ -1953,7 +1953,7 @@ Forfeited/cancelled (i) (398,347) $ 57.88 (7,569,714) $ 59.36
 
 > The Distributions from Choice Properties for the quarters ended in 2019 is 82 and for the quarters ended in 2018 is 43.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(the exact numbers are not provided)
 
 **Model answer, top 15:**
 
@@ -2058,7 +2058,7 @@ respectively.[35][39] The single reached the number two on the Hot R&B Singles c
 
 > Waiting to Exhale Original Soundtrack Album won the Outstanding Soundtrack Album at the NAACP Image Awards in 1996.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2154,7 +2154,7 @@ Regarding her sexuality, Schilling stated: "I’ve had very serious relationship
 
 > Taylor Schilling plays Piper Chapman in Orange Is the New Black.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2197,7 +2197,7 @@ Employee compensation and benefit plans 3,869 4,287
 
 > Prepaid expenditures in 2019 were $5,621 and in 2018 were $7,108.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2282,7 +2282,7 @@ Auditorium Concert
 
 > In 2003, Adam Pascal performed as Theo in the film "School of Rock." In 2004, he performed as Nicholi in the film "Temptation." In 2005, he performed as Roger Davis in the film "Rent."
 
-Your grade (top 10): ____
+Your grade (top 10): ____w( the correct ans was in chunk 6 only , then why it soverlooked it at)
 
 **Model answer, top 15:**
 
@@ -2394,7 +2394,7 @@ Total debt $ 150,639 $ 150,868
 
 > Verizon's total debt was $150.9 billion as of December 31, 2021, and as of December 31, 2022, Verizon had approximately $130.6 billion of outstanding unsecured indebtedness, $9.4 billion of unused borrowing capacity under our existing revolving credit facility and $20.0 billion of outstanding secured indebtedness. Therefore, Verizon decreased its debt on the balance sheet between the 2021 and 2022 fiscal periods.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2446,7 +2446,7 @@ At the 2017 Laurence Olivier Awards, the London production received a
 
 > "Harry Potter and the Cursed Child" premiered on 30 July 2016 at the Palace Theatre, London. It opened on Broadway on 22 April 2018 at the Lyric Theatre.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2494,7 +2494,7 @@ considerably. Miss India World 1997, Diana Hayden won the title of Miss World 19
 
 > The first Indian woman to be crowned Miss Universe was Sushmita Sen. She won the Miss Universe title in 1994 after winning the Miss India crown.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2538,7 +2538,7 @@ Filmography
 
 > In 2011, Lesley-Ann Brandt played the following roles: Fatima Tazi in "Chuck," Naevia in "Spartacus: Gods of the Arena," Camille Jordanson in "CSI: NY," Valerie Khoury in "InSight," Adriana in "Memphis Beat," Violet in "Duke," and Cassie in "Zombie Apocalypse."
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(the courrect chunks were not retrieved and soi i dont know whts corrfet)
 
 **Model answer, top 15:**
 
@@ -2570,7 +2570,7 @@ contractual term of 4 years, a three year vesting term, and a weighted average e
 
 > The model used to determine the weighted average fair value of options granted is the Black-Scholes option pricing model.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2725,7 +2725,7 @@ combined
 
 > The 3.0 L Duratec 30 V6 engine has a gas mileage of 20/28/23 FWD; 18/26/20 AWD, gasoline/E85 flex fuel. The 2.5 L Duratec 25 I4 engine has a gas mileage of 23 mpg city/33 mpg highway/26 mpg combined (automatic); 22/30/25 (selectshift, SE/SEL trims); 22/32/25 (manual, S trim); 22/29/24 (manual, SE trim).
 
-Your grade (top 10): ____
+Your grade (top 10): ____pc/()missin g info)
 
 **Model answer, top 15:**
 
@@ -2813,7 +2813,7 @@ Bellisario made her acting debut in the 1988 film Last Rites at the age of three
 
 > Troian Bellisario played Alex Drake on Pretty Little Liars.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2846,7 +2846,7 @@ final would be at the Stade de France in Saint-Denis.[1]
 
 > The cities in France that hosted the 2007 Rugby World Cup games are Saint-Denis, Marseille, Paris, Lens, Lyon, Nantes, Toulouse, Saint-Étienne, and Bordeaux.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -2906,7 +2906,7 @@ All matches 275 99 115 61
 
 > Barcelona has 115 total wins compared to Real Madrid's 99, in total matches between the two teams.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c(more info should have been procided)
 
 **Model answer, top 15:**
 
@@ -2954,7 +2954,7 @@ to 262 players. Having won 13 Premier League championships, Manchester United ha
 
 > To qualify for a Premier League medal, a player needs to have played in a minimum of five matches for a title-winning team.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3009,7 +3009,7 @@ Miss Nana Noodleman in the animated film Sing.
 
 > In 2015, Jennifer Saunders voiced Queen Elizabeth II in the animated film Minions. In 2016, she voiced Nana Noodleman in the animated film Sing.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3062,7 +3062,7 @@ Cable-ships and submersibles $ 246.5 $ 251.1
 
 > Cable-ships and submersibles decreased from $251.1 million in 2018 to $246.5 million in 2019.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c(the exact diff would have made it best)
 
 **Model answer, top 15:**
 
@@ -3106,7 +3106,7 @@ Classic Mac OS
 
 > Microsoft Internet Explorer 2 was released for Windows 95, Windows NT 3.51, and NT 4.0.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3160,7 +3160,7 @@ Family Television Awards, she won Favorite Sister, for her performance.
 
 > McGowan was nominated for Best New Cast Member at the 2001 Wand Awards and won Favorite Sister at the 2005 Family Television Awards.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3240,7 +3240,7 @@ Atlanta.[23]
 > Davis Love III: 1992, 2003
 > Tiger Woods: 2001, 2013
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3337,7 +3337,7 @@ with Customers," for further information.
 
 > The table provides information for the years 2019, 2018, and 2017.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3385,7 +3385,7 @@ uncertain date from c. 1300, describes stones of 5 merchants' pounds used for
 
 > The stone as a weight measurement comes from the use of stones for weights, a practice that dates back into antiquity. The name "stone" derives from this practice.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3494,7 +3494,7 @@ Balance at end of year 4,325 4,302 4,280
 
 > Coca Cola's FY2021 COGS % margin is 40%. This is calculated by dividing the Cost of goods sold ($15,357 million) by Net Operating Revenues ($38,655 million) and multiplying by 100.
 
-Your grade (top 10): ____
+Your grade (top 10): ____pc(precisely it is 39.7 igm which should haveen better if mentioned)
 
 **Model answer, top 15:**
 
@@ -3553,7 +3553,7 @@ Liston Pressly, a car salesman. She was raised in a Christian
 
 > Joy Turner is a character played by Jaime Pressly on the NBC sitcom My Name Is Earl.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3616,7 +3616,7 @@ and the 142nd Open Championship, held from 18–21 July at Muirfield
 
 > Phil Mickelson is the American golfer who has won 5 majors, including the 2013 Open Championship.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3647,7 +3647,7 @@ generated from operating activities of RMB50,604 million, offset by payments for
 
 > The group had a free cash flow of RMB37,896 million for the fourth quarter of 2019.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3680,7 +3680,7 @@ and unvested restricted shares. Due to the net loss in the year ended June 3, 20
 
 > Diluted net income per share is calculated by dividing net income by the weighted-average number of common shares outstanding during the period plus the dilutive effects of stock options and unvested restricted shares.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -3741,7 +3741,7 @@ A340-200 and a Boeing 777-200ER for use by the King of Saudi Arabia. The Crown P
 
 > The flight has 12 aircraft.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c(in the chunks its mentioned that it shoul be 6)
 
 **Model answer, top 15:**
 
@@ -3806,7 +3806,7 @@ technical skills and creativity; due to his agility, finesse and versatility as 
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w( the currect answer was there in the chunks)
 
 **Model answer, top 15:**
 
@@ -3866,7 +3866,7 @@ Not applicable.
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____so no chunk wiht relevant info was retrieved
 
 **Model answer, top 15:**
 
@@ -3974,7 +3974,7 @@ Accumulated other comprehensive loss (23) (45)
 >
 > However, working capital may not be the most relevant metric for a utility company like American Water Works, as their operations are typically capital-intensive with long-term assets and liabilities. The company's financial health is more closely tied to its ability to generate consistent cash flow from operations and manage long-term debt, rather than short-term liquidity.
 
-Your grade (top 10): ____
+Your grade (top 10): ____DOnt u know since i'm  not in to accounting terms, so you check it out
 
 **Model answer, top 15:**
 
@@ -4020,7 +4020,7 @@ Break, Lori Grimes in AMC's The Walking Dead and Katie Bowman
 
 > Sarah Wayne Callies plays Rick's wife, Lori Grimes, in The Walking Dead.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -4124,7 +4124,7 @@ Acquired deferred revenue adjustment 1,497 7,457 12,853 — —
 
 > The total revenue growth rate for FY2019 to FY2020 for Square, Inc. is 101.5%.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -4246,7 +4246,7 @@ Lois & Clark: The New
 
 > Thomas F. Wilson portrayed Biff Tannen in the 1985 movie Back to the Future.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -4324,7 +4324,7 @@ Chinchwad 1,729,359 1,012,472 Maharashtra
 
 > The most populous city in India as per the 2011 census is Mumbai with a population of 12,442,373.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -4426,7 +4426,7 @@ On December 22, 2017, the 2017 Tax Reform Act was signed into law making signifi
 
 > Income before income taxes was the largest in 2017.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(it should have been 2019)
 
 **Model answer, top 15:**
 
@@ -4505,7 +4505,7 @@ See also
 
 > The Thomas Fire was declared 100 percent contained on January 12, 2018, at 281,893 acres.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c( a liitel more clarifying resposne is appreciated)
 
 **Model answer, top 15:**
 
@@ -4637,7 +4637,7 @@ Repurchase of Class B Common Stock (54) (227) (4,056) (4,283)
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w( )the relevant info was therin the chunk ig
 
 **Model answer, top 15:**
 
@@ -4683,7 +4683,7 @@ Total deferred tax liabilities 29,425 25,685
 
 > The change in Deferred tax assets: Other from December 31, 2019 to December 31, 2018 is an increase of $9,129 thousand.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -4763,7 +4763,7 @@ Hospital (2003-2007), Schuyler Joplin in One Life to Live
 
 > Scott Clifton has played the following television roles since 2003: Dillon Quartermaine in General Hospital (2003–2007), Schuyler Joplin in One Life to Live (2009–2010), and Liam Spencer in The Bold and the Beautiful (2010–present).
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -4819,7 +4819,7 @@ Paid-in additional capital 590,436 587,826
 
 > The average Net deferred tax liabilities for December 31, 2018 to 2019 is $73,099. This is calculated by taking the average of $73,365 for December 31, 2018, and $72,833 for December 31, 2019.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -4861,7 +4861,7 @@ King's grandmother is Elaine Farrar. She has an older sister named Kelli
 
 > Hunter King plays Summer Newman on The Young and the Restless.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -4928,7 +4928,7 @@ Prepaid maintenance $ 6,218 $ 5,888
 
 > $5,888
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -5043,7 +5043,7 @@ Table Games Hold Adjusted Las Vegas Strip Resorts Same-Store
 
 > The Las Vegas Strip Resorts had the highest EBITDAR contribution for MGM during FY2022.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -5089,7 +5089,7 @@ Money Sdn. Bhd (“iMoney”) on 1 December 2017. iMoney
 
 > The payroll tax increased from $3,035,000 in 2018 to $2,657,000 in 2019, resulting in a percentage change of -12.45%.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -5175,7 +5175,7 @@ Statements that constitute forward-looking statements within the meaning of the 
 
 > PepsiCo operates in more than 200 countries and territories. The specific geographies mentioned include the United States, Canada, Latin America, Europe, Africa, the Middle East, South Asia, Asia Pacific, Australia, New Zealand, China, and other regions.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -5216,7 +5216,7 @@ Revenge.
 
 > Christa B. Allen plays young Jenna Rink in 13 Going on 30.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -5298,7 +5298,7 @@ Total current assets 1,538,291 1,517,161
 
 > The adjustments due to Topic 606 for Contract Assets were $90,841.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -5360,7 +5360,7 @@ Hunnam was born in Newcastle upon Tyne, England, the son of William
 
 > Jackson "Jax" Teller is the character's nickname, and his real name is Jackson Teller.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -5428,7 +5428,7 @@ Price/Mix % 2 2 2 4 1 3
 
 > The comparable constant currency growth for Amcor's net sales for the fiscal year 2023 vs. fiscal year 2022 was 1%.
 
-Your grade (top 10): ____
+Your grade (top 10): ____recehck the answe, i'm nout ae=ble to judge it
 
 **Model answer, top 15:**
 
@@ -5483,7 +5483,7 @@ source (WP:CITE, WP:RS) (HG) (3.3.5)). The present address (URL) is a permanent 
 
 > Sebastian Vettel won the 2018 Formula One Australian Grand Prix tournament.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -5538,7 +5538,7 @@ Cumulative losses to be recovered prior to payment of dividend
 
 > The Net income (loss) attributable to Cal-Maine Foods, Inc. available for dividend in 2019 was $54,229 compared to $51,279 in 2018. Therefore, the increase is $2,950.
 
-Your grade (top 10): ____
+Your grade (top 10): ____i didnot find any relvent data from the chunks abt it
 
 **Model answer, top 15:**
 
@@ -5619,7 +5619,7 @@ packaging machines. The purchase consideration of $45 million is subject to cust
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(correct info are present in teh chubnks)
 
 **Model answer, top 15:**
 
@@ -5724,7 +5724,12 @@ Provision for income taxes (Note 8) (491) (111) (256)
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(the info is here in the chunk )
+
+```
+Operating income 2,112 509 1,306
+```
+
 
 **Model answer, top 15:**
 
@@ -5769,7 +5774,12 @@ Flyweight Demetrious Johnson Sep 22, 2012 11
 
 > The current light heavyweight champion is Stipe Miocic.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w( incorrect info extracted from chunjk, here sithe correct one )
+
+```
+Light Heavyweight Daniel Cormier May 23, 2015 2
+```
+
 
 **Model answer, top 15:**
 
@@ -5878,7 +5888,12 @@ See accompanying notes.
 
 > The FY2018 - FY2019 change in unadjusted operating income % margin for Walmart is -0.1%.
 
-Your grade (top 10): ____
+Your grade (top 10): ____shouldn't it be 0.2% ''
+
+```
+Operating income as a percentage of net sales 4.3% 4.1% 4.7%
+```
+
 
 **Model answer, top 15:**
 
@@ -5937,7 +5952,7 @@ Year Title Role Notes
 
 > John Matuszak's first two movie roles were as O.W. Shaddock in "North Dallas Forty" (1979) and as Tonda in "Caveman" (1981).
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -6028,7 +6043,7 @@ Dona D. Young 53,876,257 6,074,467 10,716,259 6,884,223
 
 > Yes, Richard A. Johnson had substantially more votes against joining than the other nominees. He received 16,105,005 votes against, which is significantly higher than the votes against for the other nominees.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -6148,7 +6163,7 @@ interests 93 80 37
 
 > $59,268
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -6186,7 +6201,7 @@ District officials include:
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(correct info was there in the chubk))
 
 **Model answer, top 15:**
 
@@ -6261,7 +6276,7 @@ Early life
 
 > Kaley Cuoco plays Penny on The Big Bang Theory.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c(full name would have maed it perfect)
 
 **Model answer, top 15:**
 
@@ -6336,7 +6351,7 @@ Early life
 
 > The actress that plays Penny on The Big Bang Theory is Kaley Cuoco.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c(full name would have maed it perfect)
 
 **Model answer, top 15:**
 
@@ -6443,7 +6458,7 @@ Best Musical Won
 
 > The Lion King won the following Tony Awards: Best Musical, Best Scenic Design, Tony Award for Best Costume Design, Tony Award for Best Lighting Design, Tony Award for Best Choreography, and Tony Award for Best Direction of a Musical.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -6483,7 +6498,7 @@ Height Weight 40-yard dash 20-yard shuttle Three-cone drill Vertical jump Broad 
 
 > Matt Cassel played four seasons at USC. His overall totals were 20 completions, 33 attempts, 192 yards, 0 touchdowns, and 1 interception.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -6529,7 +6544,7 @@ Venue: Football Park Crowd: 56,717[48]
 
 > Fos Williams coached Port Adelaide to nine premierships. In the 1965 SANFL Grand Final, he coached Port Adelaide in front of 62,543 people at Adelaide Oval.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -6607,7 +6622,7 @@ After taking some smaller parts on television productions such as The
 
 > Emma Chambers plays Alice in The Vicar of Dibley.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -6648,7 +6663,7 @@ These amounts represent liabilities for goods and services provided to the Group
 
 > The percentage increase in other payables from 2018 to 2019 is 163.4%.
 
-Your grade (top 10): ____
+Your grade (top 10): ____w(incorrect info retrived from chubk s, the calcuation goes by (11898-9488)/9488 *100)
 
 **Model answer, top 15:**
 
@@ -6680,7 +6695,7 @@ and through the second quarter of 2023. These charges include costs and expenses
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____Ig insuffcent chubksa re retreived
 
 **Model answer, top 15:**
 
@@ -6714,7 +6729,7 @@ pregnancy.[3] In the following days, Lindsay Arnold, Sharna Burgess, Witney Cars
 
 > Normani Kordei is a Fifth Harmony singer, and David Ross is a former MLB catcher. Normani Kordei's partner was Valentin Chmerkovskiy, and they finished third place. David Ross's partner was Lindsay Arnold, and they finished as the runner-up.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -6958,7 +6973,7 @@ Front—Progressive 1440 days
 
 > The chief minister of Nagaland in 2018 was Neiphiu Rio.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -7031,7 +7046,7 @@ Rank Lane Name Nationality Time Reaction Time Notes
 
 > Christian Coleman beat Bolt in the third semi-final.
 
-Your grade (top 10): ____
+Your grade (top 10): ____c
 
 **Model answer, top 15:**
 
@@ -7078,7 +7093,7 @@ to the debts of its subsidiaries
 
 > The provided context is insufficient to answer this question.
 
-Your grade (top 10): ____
+Your grade (top 10): ____you check this, not into accounting as much 
 
 **Model answer, top 15:**
 
