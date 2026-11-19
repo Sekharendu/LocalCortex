@@ -1,0 +1,111 @@
+{
+  "snapshot": "RERANK-1-r1",
+  "base": "2f3bae4422a3814af8419de920a47ef61f5ea935",
+  "branch": "v2/cloudflare-inference",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "ec0b1d2d528a8b9b32334ff089f7ab28d1433e2d4517d007f0cb9980589ee79f",
+      "bytes": 28771
+    },
+    {
+      "file": "docker-compose.yml",
+      "sha256": "24318112e645ff0539f7578c835e684c3055b276ca3bd359d80c60290fc67ca4",
+      "bytes": 4353
+    },
+    {
+      "file": "docs/decisions.md",
+      "sha256": "03d21873acab04916d50eb572237031088424f6211852f89392f7ae147d52109",
+      "bytes": 7897
+    },
+    {
+      "file": "src/config.ts",
+      "sha256": "e2560e8baf3a94a272d6e83db65f0434bdee1c8cd14c343b90f7010a5cca072b",
+      "bytes": 4825
+    },
+    {
+      "file": "src/errors.ts",
+      "sha256": "1d5befa3bc543ea563bdb42e540abf45a1460d82475ec4fd32517796146a683f",
+      "bytes": 1206
+    },
+    {
+      "file": "src/rag.ts",
+      "sha256": "28ee971c125b646536746010fd52f75c5e6f0ba93996e7d4f30c41a6775cbf93",
+      "bytes": 9317
+    },
+    {
+      "file": "src/retrieval/context.ts",
+      "sha256": "a6cf67f11c8e56962203debb5250cbb25da8a2b986706456a6df1d79eff59aef",
+      "bytes": 7135
+    },
+    {
+      "file": "src/retrieval/retriever.ts",
+      "sha256": "6a178f0d8d758c1ae02b85a5bab3c8723410dcf1ec29d63f951ff865478cb160",
+      "bytes": 8436
+    },
+    {
+      "file": "src/retrieval/reranker.ts",
+      "sha256": "a1ac1f33384c3fdca98b7fb81beca164e6f74a4b9c10c91b479772434dd97f25",
+      "bytes": 5472
+    },
+    {
+      "file": "tests/context.test.ts",
+      "sha256": "a228bf73e78411339acab6bd3fbd376c5e033de7f8dcafa3f1966eac6ec2c0c3",
+      "bytes": 7824
+    },
+    {
+      "file": "tests/reranker.test.ts",
+      "sha256": "c948f8ee0ce83f5b25b885f22792cb18a239027bd9e69928878366a591b15300",
+      "bytes": 5999
+    },
+    {
+      "file": "tests/rerankIntegration.test.ts",
+      "sha256": "a14acc2edfed1e824b04e3cf4725ecc3077318f52646752ed4766e5a67eb1cf6",
+      "bytes": 6403
+    },
+    {
+      "file": "eval/reranker-dev-20261102-r1/attempts.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "eval/reranker-dev-20261102-r1/prepare.mjs",
+      "sha256": "f2d144c3cef3373fbb6b1c904fa108cef13ead2fc740367ae81707184b0d60d0",
+      "bytes": 4773
+    },
+    {
+      "file": "eval/reranker-dev-20261102-r1/README.md",
+      "sha256": "03f1cd2c253d0149be94de70f5d075e74744c61e344fe22a04f48ecd675cba25",
+      "bytes": 2457
+    },
+    {
+      "file": "eval/reranker-dev-20261102-r1/report.mjs",
+      "sha256": "3a0361e00bde0b6eda750739faa0a8835d502182cb6dae1643628c0bcfe034a1",
+      "bytes": 3973
+    },
+    {
+      "file": "eval/reranker-dev-20261102-r1/requests.jsonl",
+      "sha256": "dc977e3936a33068f6086fd2c5408d77cc739100f388241a508f8e470c995480",
+      "bytes": 1176751
+    },
+    {
+      "file": "eval/reranker-dev-20261102-r1/sample-manifest.json",
+      "sha256": "d9b23a1a100755bf2f40a49dd50adc0d607c4877a48dc6509de75845e186ba39",
+      "bytes": 8397
+    }
+  ],
+  "diffSha256": "dc181d3480d7f1f277e023a1a074170184a78f083b794677407b371cd825d1ff",
+  "decisionsPreservation": {
+    "method": "Only append operation used; existing dirty QH-SCOPE-1 entry preserved. complete.diff includes that pre-existing change; RERANK-1 section is the task addition.",
+    "preRerankPrefixBytes": 6070,
+    "preRerankPrefixSha256": "e9075bd12bd4901fe56d75e11c5265d4f44c1f4a604d63559237adac2425d4b7"
+  },
+  "indexPreserved": "D\tAGENTS.md",
+  "unrelatedExcluded": [
+    "AGENTS.md staged deletion/local file",
+    "docs/evaluation/",
+    "other eval/ folders",
+    "scripts/evaluation*",
+    "tests/documentScope.test.ts"
+  ]
+}

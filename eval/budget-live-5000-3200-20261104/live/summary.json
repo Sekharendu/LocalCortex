@@ -1,0 +1,80 @@
+{
+  "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+  "attempts": 20,
+  "stopReason": null,
+  "changedInputs": [],
+  "variants": [
+    {
+      "id": "previous",
+      "totalCap": 4096,
+      "contextCap": 1200,
+      "calls": 10,
+      "succeeded": 10,
+      "failed": 0,
+      "latencyMs": {
+        "mean": 1317.7181300000002,
+        "median": 801.4728000000005,
+        "min": 504.9528999999966,
+        "p95": 4355.096700000001,
+        "max": 4355.096700000001
+      },
+      "usageRecords": 10,
+      "totalInputTokens": 15935,
+      "totalOutputTokens": 386,
+      "totalTokens": 16321,
+      "totalNeurons": 85.45596551895142,
+      "meanContextTokensEstimate": 1164.4,
+      "meanPromptTokensEstimate": 1583.4,
+      "maxPromptTokensEstimate": 1602,
+      "exactQuoteCovered": 6,
+      "finishReasons": [
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop"
+      ]
+    },
+    {
+      "id": "new",
+      "totalCap": 5000,
+      "contextCap": 3200,
+      "calls": 10,
+      "succeeded": 10,
+      "failed": 0,
+      "latencyMs": {
+        "mean": 1199.3081399999996,
+        "median": 956.201149999999,
+        "min": 607.5634000000009,
+        "p95": 2763.3732,
+        "max": 2763.3732
+      },
+      "usageRecords": 10,
+      "totalInputTokens": 33702,
+      "totalOutputTokens": 451,
+      "totalTokens": 34153,
+      "totalNeurons": 169.6017656326294,
+      "meanContextTokensEstimate": 2893.7,
+      "meanPromptTokensEstimate": 3312.8,
+      "maxPromptTokensEstimate": 3592,
+      "exactQuoteCovered": 7,
+      "finishReasons": [
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop",
+        "stop"
+      ]
+    }
+  ]
+}

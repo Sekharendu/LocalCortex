@@ -1,0 +1,16 @@
+{
+  "status": "stopped",
+  "failure": "RerankingError: Cloudflare reranking failed",
+  "attempts": 49,
+  "previousAttempts": 19,
+  "completedPools": 28,
+  "skippedPools": 0,
+  "timeouts": 1,
+  "expectedPools": 468,
+  "reportedRunNeurons": 77.56238741378763,
+  "usageRecords": 28,
+  "changedInputs": [],
+  "generationCalls": 0,
+  "newRetrievalCalls": 0,
+  "heldOutContentRead": false
+}

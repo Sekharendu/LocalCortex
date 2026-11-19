@@ -1,0 +1,255 @@
+{
+  "dev": [
+    {
+      "arm": "A",
+      "cases": 40,
+      "counts": {
+        "adequate": 29,
+        "partial": 3,
+        "wrong": 2,
+        "refused": 6
+      },
+      "percentages": {
+        "adequate": 72.5,
+        "partial": 7.5,
+        "wrong": 5,
+        "refused": 15
+      },
+      "wrongRefusals": 4,
+      "meanInputTokens": 3281.475,
+      "maxInputTokens": 3799,
+      "meanOutputTokens": 51.75,
+      "maxOutputTokens": 120,
+      "meanTotalTokens": 3333.225,
+      "maxTotalTokens": 3884,
+      "meanNeurons": 16.75251761674881,
+      "maxNeurons": 20.572742462158203,
+      "totalNeurons": 670.1007046699524,
+      "latencyMs": {
+        "mean": 1725.3692099999994,
+        "median": 1113.2969499999963,
+        "max": 13080.745900000002,
+        "p95": 2194.1503999999986
+      },
+      "meanContextTokensEstimate": 2770.425,
+      "cachedTokens": 0,
+      "maxProviderPromptPlus512": 4311
+    },
+    {
+      "arm": "B",
+      "cases": 40,
+      "counts": {
+        "adequate": 28,
+        "partial": 2,
+        "wrong": 6,
+        "refused": 4
+      },
+      "percentages": {
+        "adequate": 70,
+        "partial": 5,
+        "wrong": 15,
+        "refused": 10
+      },
+      "wrongRefusals": 2,
+      "meanInputTokens": 3197.3,
+      "maxInputTokens": 3713,
+      "meanOutputTokens": 62.225,
+      "maxOutputTokens": 164,
+      "meanTotalTokens": 3259.525,
+      "maxTotalTokens": 3808,
+      "meanNeurons": 16.682466861605644,
+      "maxNeurons": 20.84511947631836,
+      "totalNeurons": 667.2986744642258,
+      "latencyMs": {
+        "mean": 1475.4876749999999,
+        "median": 1107.570050000002,
+        "max": 11163.556400000001,
+        "p95": 2221.784799999994
+      },
+      "meanContextTokensEstimate": 2770.425,
+      "cachedTokens": 0,
+      "maxProviderPromptPlus512": 4225
+    }
+  ],
+  "devChanges": {
+    "improved": 3,
+    "worse": 4,
+    "same": 33
+  },
+  "offtopic": [
+    {
+      "arm": "A",
+      "cases": 39,
+      "pureRejections": 39,
+      "rejectionRate": 100,
+      "supportedRelatedAnswers": 0,
+      "unsupportedAnswers": 0,
+      "byGroup": [
+        {
+          "group": "near-miss",
+          "cases": 29,
+          "rejected": 29
+        },
+        {
+          "group": "unrelated",
+          "cases": 10,
+          "rejected": 10
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "cases": 39,
+      "pureRejections": 38,
+      "rejectionRate": 97.43589743589743,
+      "supportedRelatedAnswers": 1,
+      "unsupportedAnswers": 0,
+      "byGroup": [
+        {
+          "group": "near-miss",
+          "cases": 29,
+          "rejected": 28
+        },
+        {
+          "group": "unrelated",
+          "cases": 10,
+          "rejected": 10
+        }
+      ]
+    }
+  ],
+  "offtopicUsage": [
+    {
+      "arm": "A",
+      "cases": 39,
+      "counts": {
+        "adequate": 0,
+        "partial": 0,
+        "wrong": 0,
+        "refused": 39
+      },
+      "percentages": {
+        "adequate": 0,
+        "partial": 0,
+        "wrong": 0,
+        "refused": 100
+      },
+      "wrongRefusals": 0,
+      "meanInputTokens": 1533.3333333333333,
+      "maxInputTokens": 1539,
+      "meanOutputTokens": 11,
+      "maxOutputTokens": 11,
+      "meanTotalTokens": 1544.3333333333333,
+      "maxTotalTokens": 1550,
+      "meanNeurons": 7.426247352208847,
+      "maxNeurons": 7.45245361328125,
+      "totalNeurons": 289.623646736145,
+      "latencyMs": {
+        "mean": 1748.7767282051277,
+        "median": 682.7280000000028,
+        "max": 10640.509900000005,
+        "p95": 10378.850399999996
+      },
+      "meanContextTokensEstimate": 1116,
+      "cachedTokens": 0,
+      "maxProviderPromptPlus512": 2051
+    },
+    {
+      "arm": "B",
+      "cases": 39,
+      "counts": {
+        "adequate": 0,
+        "partial": 1,
+        "wrong": 0,
+        "refused": 38
+      },
+      "percentages": {
+        "adequate": 0,
+        "partial": 2.5641025641025643,
+        "wrong": 0,
+        "refused": 97.43589743589743
+      },
+      "wrongRefusals": 0,
+      "meanInputTokens": 1447.3333333333333,
+      "maxInputTokens": 1453,
+      "meanOutputTokens": 12.384615384615385,
+      "maxOutputTokens": 65,
+      "meanTotalTokens": 1459.7179487179487,
+      "maxTotalTokens": 1518,
+      "meanNeurons": 7.070729231223082,
+      "maxNeurons": 8.700376510620117,
+      "totalNeurons": 275.7584400177002,
+      "latencyMs": {
+        "mean": 1388.2330897435932,
+        "median": 720.1369999999879,
+        "max": 12149.041200000007,
+        "p95": 10475.637399999978
+      },
+      "meanContextTokensEstimate": 1116,
+      "cachedTokens": 0,
+      "maxProviderPromptPlus512": 1965
+    }
+  ],
+  "totalReportedNeurons": 1902.7814658880234,
+  "evidenceCounts": {
+    "complete": 36,
+    "partial": 2,
+    "absent": 2
+  },
+  "gapVerdicts": {
+    "correct": 6,
+    "partly_correct": 2,
+    "incorrect": 4,
+    "ambiguous": 1,
+    "qualified_correct": 1
+  },
+  "lenientSensitivity": {
+    "description": "Only the three secondary false-gap borderline cases use their frozen alternative grades; all other judgments unchanged.",
+    "countsA": {
+      "adequate": 29,
+      "partial": 3,
+      "wrong": 2,
+      "refused": 6
+    },
+    "countsB": {
+      "adequate": 30,
+      "partial": 3,
+      "wrong": 3,
+      "refused": 4
+    },
+    "improved": 3,
+    "worse": 2,
+    "same": 35
+  },
+  "audit": {
+    "appAndInputHashesUnchanged": true,
+    "devCases40": 40,
+    "previousSampleReproduced": true,
+    "allPairedContextsIdentical": true,
+    "all158CallsSucceeded": true,
+    "allCallsExplicitMax512": true,
+    "all79ArmBWirePromptsFreeOfForbiddenPhrase": true,
+    "allActualPromptPlus512Within5000": true,
+    "grading": {
+      "method": "All 158 answers individually read in randomized order, arm labels/paired counterparts hidden until grades saved. AI review, not independent human certification. Wording may reveal likely variant.",
+      "gradeSha256": "41a6225577c252c1e97f151c3f150ee256e4fc4d711be0f7e97f2ccf4f5f95ad",
+      "devCounts": {
+        "adequate": 57,
+        "partial": 5,
+        "wrong": 8,
+        "refused": 10
+      },
+      "gapAudits": 14
+    },
+    "noRetrievalCalls": true,
+    "noRerankerCalls": true,
+    "noRewriteCalls": true,
+    "noGraderModelCalls": true,
+    "noHeldOutTestContentRead": true,
+    "negatives": "Full intended employee handbook supplied identically to both prompts, bypassing retrieval. This is a generation rejection stress test, not production app retrieval/rejection rate. 15 is requested maximum; fixture has one available passage.",
+    "tokenAccounting": "Provider-reported actual prompt/output tokens; context-only token estimates use existing llama3 tokenizer. Same context is frozen using strict budget to avoid instruction-overhead changes affecting selection.",
+    "accountUsage": "Per-call reported Neurons only; current account allowance/billing balance could not be verified with existing token.",
+    "samples": "40 dev case units =38 unique original question IDs across35 papers; PDF/DOCX duplicates retained. Single response per arm; no claim of statistical certainty.",
+    "timestamps": "ISO UTC in per-call logs; user-facing experiment date 2026-11-04 Asia/Calcutta."
+  }
+}

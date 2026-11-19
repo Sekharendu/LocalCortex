@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "error": null,
+  "cases": 80,
+  "completedPairs": 80,
+  "expectedVariantRuns": 80,
+  "sparseStatsSha256": "4b4ff8b4abd36754ed0c089d7d20f0d208eb6b9c3107502498c389ae09174295",
+  "splitUnchanged": true,
+  "productionSourceMismatches": [],
+  "answerGenerationCalls": 0
+}

@@ -1,0 +1,155 @@
+[
+  {
+    "caseId": "pdf/1804.05918/bd5bd1765362c2d972a762ca12675108754aa437",
+    "mode": "dense",
+    "candidates": 50,
+    "requestSha256": "76ec485ca0c588855f6a26d06c15da9c5330ead292b1359c77e212f8c8c1eb85",
+    "event": "reserved",
+    "attempt": 19,
+    "at": "2026-11-02T20:31:16.233Z",
+    "question": "How much does this model improve state-of-the-art?",
+    "group": "ready-short-quote-proxy",
+    "failure": {
+      "event": "failed-stop",
+      "attempt": 19,
+      "elapsedMs": 15011.899800000003,
+      "error": "RerankingError: Reranking cancelled or timed out"
+    }
+  },
+  {
+    "caseId": "pdf/1909.09587/37be0d479480211291e068d0d3823ad0c13321d3",
+    "mode": "hybrid",
+    "candidates": 50,
+    "requestSha256": "e2c98da54df063efa7036c60a6185ef13c55ad55e4de39d0991f5a2f906c4d64",
+    "event": "reserved",
+    "attempt": 48,
+    "at": "2026-11-02T20:33:42.838Z",
+    "question": "What is the model performance on target language reading comprehension?",
+    "group": "ready-long-quote-proxy",
+    "failure": {
+      "event": "failed-timeout-no-retry",
+      "attempt": 48,
+      "elapsedMs": 15013.518200000002,
+      "error": "RerankingError: Reranking cancelled or timed out"
+    }
+  },
+  {
+    "caseId": "pdf/1909.09587/a3d9b101765048f4b61cbd3eaa2439582ebb5c77",
+    "mode": "dense",
+    "candidates": 50,
+    "requestSha256": "1e4ef9ebd35d5f0dea16f3a075bc5c50ed85b2de8daf0c2ec735dd71a24799ad",
+    "event": "reserved",
+    "attempt": 49,
+    "at": "2026-11-02T20:33:57.857Z",
+    "question": "What source-target language pairs were used in this work? ",
+    "group": "ready-short-quote-proxy",
+    "failure": {
+      "event": "failed-stop",
+      "attempt": 49,
+      "elapsedMs": 4143.441099999996,
+      "error": "RerankingError: Cloudflare reranking failed"
+    }
+  },
+  {
+    "caseId": "pdf/1710.04203/c09a92e25e6a81369fcc4ae6045491f2690ccc10",
+    "mode": "dense",
+    "candidates": 50,
+    "requestSha256": "39c313e57ec3096ca4a0b2460c4e76a35be9dfdfbc7ff1f87f111bb4faa34d5a",
+    "event": "reserved",
+    "attempt": 117,
+    "at": "2026-11-02T20:37:18.785Z",
+    "question": "How do they compare lexicons?",
+    "group": "ready-long-quote-proxy",
+    "failure": {
+      "event": "failed-timeout-no-retry",
+      "attempt": 117,
+      "elapsedMs": 15015.153999999995,
+      "error": "RerankingError: Reranking cancelled or timed out"
+    }
+  },
+  {
+    "caseId": "pdf/1710.04203/c09a92e25e6a81369fcc4ae6045491f2690ccc10",
+    "mode": "hybrid",
+    "candidates": 50,
+    "requestSha256": "b94ea0cbb22dd8c6cb06e278ac9e6c2812abeac92859bdc9afdcc2fe1ac950b6",
+    "event": "reserved",
+    "attempt": 118,
+    "at": "2026-11-02T20:37:33.810Z",
+    "question": "How do they compare lexicons?",
+    "group": "ready-long-quote-proxy",
+    "failure": {
+      "event": "failed-network-no-retry",
+      "attempt": 118,
+      "elapsedMs": 4060.4216999999917,
+      "error": "RerankingError: Cloudflare reranking failed"
+    }
+  },
+  {
+    "caseId": "pdf/1707.06806/ed67359889cf61fa11ee291d6c378cccf83d599d",
+    "mode": "hybrid",
+    "candidates": 50,
+    "requestSha256": "4c90a7e7e0b1f1aea5b57655de4e8bea0fe0e7f92006ed2b661cfc6a51d29d17",
+    "event": "reserved",
+    "attempt": 142,
+    "at": "2026-11-02T20:38:10.902Z",
+    "question": "Which pretrained word vectors did they use?",
+    "group": "ready-long-quote-proxy",
+    "failure": {
+      "event": "failed-timeout-no-retry",
+      "attempt": 142,
+      "elapsedMs": 15006.548700000014,
+      "error": "RerankingError: Reranking cancelled or timed out"
+    }
+  },
+  {
+    "caseId": "pdf/1707.06806/425bd2ccfd95ead91d8f2b1b1c8ab9fc3446cb82",
+    "mode": "dense",
+    "candidates": 50,
+    "requestSha256": "8908857a8457ad48e045a0902173b383e22fe446ebc3fc1320a114360a797332",
+    "event": "reserved",
+    "attempt": 143,
+    "at": "2026-11-02T20:38:25.914Z",
+    "question": "What evaluation metrics are used?",
+    "group": "ready-short-quote-proxy",
+    "failure": {
+      "event": "failed-network-no-retry",
+      "attempt": 143,
+      "elapsedMs": 4093.601400000014,
+      "error": "RerankingError: Cloudflare reranking failed"
+    }
+  },
+  {
+    "caseId": "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",
+    "mode": "dense",
+    "candidates": 50,
+    "requestSha256": "28aa1f0fc965aa6c589e280dc711e9864712810f94638494278d625b6c35980b",
+    "event": "reserved",
+    "attempt": 315,
+    "at": "2026-11-02T20:42:01.864Z",
+    "question": "Is this hashtag prediction task an established task, or something new?",
+    "group": "ready-long-quote-proxy",
+    "failure": {
+      "event": "failed-timeout-no-retry",
+      "attempt": 315,
+      "elapsedMs": 15015.309999999998,
+      "error": "RerankingError: Reranking cancelled or timed out"
+    }
+  },
+  {
+    "caseId": "docx/1611.08661/b49598b05358117ab1471b8ebd0b042d2f04b2a4",
+    "mode": "hybrid",
+    "candidates": 50,
+    "requestSha256": "c6bf5097375dcc7861c8fa29e852a80fdda2b4caa54df4d0ceeff22e4336d1cc",
+    "event": "reserved",
+    "attempt": 380,
+    "at": "2026-11-02T20:43:19.232Z",
+    "question": "What neural models are used to encode the text?",
+    "group": "ready-long-quote-proxy",
+    "failure": {
+      "event": "failed-timeout-no-retry",
+      "attempt": 380,
+      "elapsedMs": 15008.79469999997,
+      "error": "RerankingError: Reranking cancelled or timed out"
+    }
+  }
+]

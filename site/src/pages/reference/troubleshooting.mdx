@@ -20,7 +20,7 @@ Find the symptom you're seeing, then try the fix. Most problems come from a cont
 | `/health` shows `"postgres": false`, or chats return `503` | The Postgres container is down. Start it with `docker compose up -d postgres`. |
 | Chats return `500 relation "conversations" does not exist` | The database tables haven't been created. Run `pnpm db:migrate`. |
 | Uploads fail with `Failed to reach Ollama embed endpoint` | The embedding model isn't downloaded. Run `docker exec -it local-rag-ollama ollama pull nomic-embed-text`. |
-| Questions fail with `Failed to reach Ollama generate endpoint` | The answer model isn't downloaded. Run `docker exec -it local-rag-ollama ollama pull llama3`. |
+| Questions fail with a Cloudflare generation error | Set backend `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`, verify Workers AI permissions and internet access. `/health` checks local services only. |
 | `Embedding dimension mismatch: expected 768, got N` | `OLLAMA_EMBED_MODEL` was changed without `OLLAMA_EMBED_DIM`. Set **both**, then re-upload your documents. |
 | Models and documents are gone after `docker compose down -v` | `-v` deletes the Docker volumes. Pull the models again and re-upload your documents. Next time, use `docker compose down` without `-v`. |
 

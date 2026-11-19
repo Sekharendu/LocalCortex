@@ -1,0 +1,3064 @@
+134 PDF misses; sample of 20 (seeded)
+
+
+######## 1. pdf/1804.11346/2ceced87af4c8fdebf2dc959aa700a5c95bd518f
+Q: Is the dataset balanced between speakers of different L1s?
+kind: yes/no | labelled chunks: [19,20] | top5: [16,36,17,35,1]
+GOLD: [{"spans":[],"free":"","yesno":false,"evidence":["FLOAT SELECTED: Table 2: Distribution by L1s and source corpora."]},{"spans":[],"free":"","yesno":false,"evidence":["FLOAT SELECTED: Table 2: Distribution by L1s and source corpora."]}]
+LABELLED CHUNK TEXT:
+[19] Figure 1: Topic distribution by number of texts. Each bar represents one of the 148 topics.
+COPLE2 PEAPL2 LEIRIA TOTAL
+Arabic 13 1 0 14
+Chinese 323 32 0 355
+Dutch 17 26 0 43
+English 142 62 31 235
+French 59 38 7 104
+German 86 88 40 214
+Italian 49 83 83 215
+Japanese 52 15 0 67
+Korean 9 9 48 66
+Polish 31 28 12 71
+Romanian 12 16 51 79
+Russian 80 11 1 92
+Spanish 147 68 56 271
+Swedish 16 2 1 19
+Tetum 22 1 0 23
+Total 1,058 480 330 1,868
+Table 2: Distribution by L1s and source corpora.
+[20] Table 2: Distribution by L1s and source corpora.
+Those topics are presented to the students in or-
+der to produce a written text. As a whole, texts
+from PEAPL2 and Leiria represent 36 different
+stimuli or topics in the dataset. In COPLE2 cor-
+pus the written texts correspond to written exer-
+cises done during Portuguese lessons, or to official
+Portuguese proficiency tests. For this reason, the
+topics considered in COPLE2 corpus are different
+from the topics in Leiria and PEAPL2. The num-
+CONTEXT (3 passages):
+--- from chunk 0
+A Portuguese Native Language Identification Dataset
+Iria del R´ıo1, Marcos Zampieri2, Shervin Malmasi3,4
+1University of Lisbon, Center of Linguistics-CLUL, Portugal
+2University of Wolverhampton, United Kingdom
+3Harvard Medical School, United States
+4Macquarie University, Australia
+igayo@letras.ulisboa.pt
+Abstract
+In this paper we present NLI-PT, the first Por-
+tuguese dataset compiled for Native Language
+Identification (NLI), the task of identifying
+an author’s first language based on their sec-
+ond language writing. The dataset includes
+1,868 student essays written by learners of
+European Portuguese, native speakers of the
+following L1s: Chinese, English, Spanish,
+German, Russian, French, Japanese, Italian,
+Dutch, Tetum, Arabic, Polish, Korean, Roma-
+nian, and Swedish. NLI-PT includes the origi-
+nal student text and four different types of an-
+notation: POS, fine-grained POS, constituency
+parses, and dependency parses. NLI-PT can
+be used not only in NLI but also in research
+on several topics in the field of Second Lan-
+guage Acquisition and educational NLP. We
+discuss possible applications of this dataset
+and present the results obtained for the first
+lexical baseline system for Portuguese NLI.
+1 Introduction
+Several learner corpora have been compiled for
+English, such as the International Corpus of
+Learner English (Granger, 2003). The importance
+--- from chunk 15
+3 Corpus Description
+3.1 Collection methodology
+The data was collected from three different learner
+corpora of Portuguese: (i) COPLE2; (ii) Leiria
+corpus, and (iii) PEAPL27 as presented in Table 3.
+COPLE2 LEIRIA PEAPL2 TOTAL
+Texts 1,058 330 480 1,868
+Tokens 201,921 57,358 121,138 380,417
+Types 9,373 4,504 6,808 20,685
+TTR 0.05 0.08 0.06 0.05
+Table 1: Distribution of the dataset: Number of texts,
+tokens, types, and type/token ratio (TTER) per source
+corpus.
+corpus.
+The three corpora contain written productions
+from learners of Portuguese with different profi-
+ciency levels and native languages (L1s). In the
+dataset we included all the data in COPLE2 and
+sections of PEAPL2 and Leiria corpus.
+The main variable we used for text selection
+was the presence of specific L1s. Since the three
+corpora consider different L1s, we decided to use
+the L1s present in the largest corpus, COPLE2,
+as the reference. Therefore, we included in the
+dataset texts corresponding to the following 15
+L1s: Chinese, English, Spanish, German, Russian,
+French, Japanese, Italian, Dutch, Tetum, Arabic,
+Polish, Korean, Romanian, and Swedish. It was
+the case that some of the L1s present in COPLE2
+were not documented in the other corpora. The
+number of texts from each L1 is presented in Ta-
+ble 2.
+Concerning the corpus design, there is some
+variability among the sources we used. Leiria cor-
+pus and PEAPL2 followed a similar approach for
+data collection and show a close design. They
+consider a close list of topics, called “stimulus”,
+which belong to three general areas: (i) the in-
+dividual; (ii) the society; (iii) the environment.
+7In the near future we want to incorporate also data from
+the CAL2 corpus.
+--- from chunk 34
+NLI-PT which contain the largest number of texts
+in this sub-set and run a simple linear SVM (Fan
+et al., 2008) classifier using a bag of words model
+to identify the L1 of each text. The languages
+included in this experiment were Chinese (355
+texts), English (236 texts), German (214 texts),
+Italian (216 texts), and Spanish (271 texts).
+We evaluated the model using stratified 10-fold
+cross-validation, achieving 70% accuracy. An im-
+portant limitation of this experiment is that it does
+not account for topic bias, an important issue in
+NLI (Malmasi, 2016). This is due to the fact that
+NLI-PT is not balanced by topic and the model
+could be learning topic associations instead.9 In
+future work we would like to carry out using syn-
+tactic features such as function words, syntactic
+relations and POS annotation.
+5 Conclusion and Future Work
+This paper presented NLI-PT, the first Portuguese
+dataset compiled for NLI. NLI-PT contains 1,868
+texts written by speakers of 15 L1s amounting to
+over 380,000 tokens.
+As discussed in Section 4, NLI-PT opens sev-
+eral avenues for future research. It can be used
+for different research purposes beyond NLI such
+as grammatical error correction and CALL. An ex-
+periment with the texts written by the speakers of
+five L1s: Chinese, English, German, Italian, and
+Spanish using a bag of words model achieved 70%
+accuracy. We are currently experimenting with
+different features taking advantage of the annota-
+tion available in NLI-PT thus reducing topic bias
+in classification.
+In future work we would like to include more
+texts in the dataset following the same methodol-
+ogy and annotation.
+9See Malmasi (2016, p. 23) for a detailed discussion.
+
+######## 2. pdf/1911.03343/78292bc57ee68fdb93ed45430d80acca25a9e916
+Q: How did they extend LAMA evaluation framework to focus on negation?
+kind: extractive span + free-form | labelled chunks: [4,5,21] | top5: [25,0,27,1,24]
+GOLD: [{"spans":["To this end, we introduce the negated LAMA dataset. We construct it by simply inserting negation elements (e.g., “not”) in LAMA cloze statement"],"free":"","yesno":null,"evidence":["This work analyzes the understanding of pretrained language models of factual and commonsense knowledge stored in negated statements. To this end, we introduce the negated LAMA dataset. We construct it by simply inserting negation elements (e.g., “not”) in LAMA cloze statement (e.g., “The theory of "]},{"spans":[],"free":"Create the negated LAMA dataset and  query the pretrained language models with both original LAMA and negated LAMA statements and compare their predictions.","yesno":null,"evidence":["This work analyzes the understanding of pretrained language models of factual and commonsense knowledge stored in negated statements. To this end, we introduce the negated LAMA dataset. We construct it by simply inserting negation elements (e.g., “not”) in LAMA cloze statement (e.g., “The theory of "]}]
+LABELLED CHUNK TEXT:
+[4] This work analyzes the understanding of pre-
+trained language models of factual and common-
+sense knowledge stored in negated statements. To
+this end, we introduce the negated LAMA dataset.
+We construct it by simply inserting negation el-
+ements (e.g., “not”) in LAMA cloze statement
+(e.g., “The theory of relativity was not developed by
+[MASK].”). In our experiments, we query the pre-
+trained language models with both original LAMA
+and negated LAMA statements and compare their
+[5] and negated LAMA statements and compare their
+predictions in terms of rank correlation and overlap
+of top predictions. We find that the predicted filler
+words often have high overlap. Thus, negating a
+cloze statement does not change the predictions in
+many cases – but of course it should as our exam-
+ple “birds can fly” vs. “birds cannot fly” shows. We
+identify and analyze a subset of cloze statements
+where predictions are different. We find that BERT
+[21] Cat does not require [MASK]. food (-3.0), feeding ( -3.2), breeding (-4.1)
+(D)
+The theory of relativity was developed by [MASK]. Einstein Einstein (-0.3), Newton (-1.6), Maxwell (-5.2)
+The theory of relativity was not developed by [MASK]. Einstein (-0.6), Newton ( -2.0), Galileo (-4.0)
+Chloroplasts need [MASK] to replicate. light time (-2.3), enzymes (-2.4), energy (-2.4)
+Chloroplasts do not need [MASK] to replicate. enzymes (-1.7), oxygen ( -1.8), water (-2.4)
+CONTEXT (2 passages):
+--- from chunk 0
+Negated LAMA: Birds cannot fly
+Nora Kassner, Hinrich Sch ¨utze
+Center for Information and Language Processing (CIS)
+LMU Munich, Germany
+kassner@cis.lmu.de
+Abstract
+Pretrained language models have achieved re-
+markable improvements in a broad range of
+natural language processing tasks, including
+question answering (QA). To analyze pre-
+trained language model performance on QA,
+we extend the LAMA (Petroni et al., 2019)
+evaluation framework by a component that is
+focused on negation. We find that pretrained
+language models are equally prone to gener-
+ate facts (“birds can fly”) and their negation
+(“birds cannot fly”). This casts doubt on the
+claim that pretrained language models have ad-
+equately learned factual knowledge.
+1 Introduction
+Pretrained language models like Transformer-XL
+(Dai et al., 2019), ELMo (Peters et al., 2018) and
+BERT (Devlin et al., 2019) have emerged as univer-
+sal tools that capture a diverse range of linguistic
+and factual knowledge.
+Recently, Petroni et al. (2019) introduced LAMA
+(LAnguage Model Analysis) to investigate to what
+extent pretrained language models have the capac-
+ity to recall factual knowledge without the use of
+fine-tuning. The training objective of pretrained
+language models is to predict masked tokens in
+a sequence. With this “fill-in-the-blank” scheme,
+question answering tasks can be reformulated as
+--- from chunk 23
+linguistic knowledge stored in pretrained embed-
+dings (Jumelet and Hupkes, 2018; Gulordava et al.,
+2018; Giulianelli et al., 2018; McCoy et al., 2019;
+Dasgupta et al., 2018; Martin and Linzen, 2018;
+Warstadt and Bowman, 2019; Kann et al., 2019).
+Concerning negation the following papers are of
+interest: Warstadt et al. (2019) analyze the gram-
+matical knowledge captured by BERT. In a case
+study, they test for correct licensing environments
+for negative polarity items. They study a set of
+classifiers distinguishing between grammatically
+correct and incorrect sentences. We take a different
+approach by focusing on factual knowledge stored
+in negated statements. Grammatically correct state-
+ments can still be factually false (e.g., “General
+relativity, Newton develop”).
+Kim et al. (2019) investigate the understanding
+of function words – among them negation parti-
+cles – using an entailment- and classification-based
+approach. They analyze the ability of different
+model architectures and training objectives to cap-
+ture knowledge of single sentences. The models are
+fine-tuned to the task of interest. We on the other
+hand question to what extend factual knowledge
+present in negated statements is indirectly acquired
+during pretraining.
+Ettinger (2019) defines three psycholinguistic di-
+agnostics for language models and applies them in
+a case study to BERT. Negation is examined using
+a dataset of 72 simple sentences querying for cate-
+gory membership. A supplementary dataset of 16
+sentences queries again for the ”to be” relation only
+but including more natural sentence structure. Our
+work covers 51,329 negated statements covering a
+wide range of topics and relations. In the SQuAD
+based dataset we cover more natural language in
+terms of context and relation. In contrast to Et-
+tinger (2019), we do not see a reliable preference
+of the true completions to false in the more natural
+negated statements.
+Ribeiro et al. (2018) test for comprehension of
+minimally modified statements in an adversarial
+setup while trying to keep the overall semantics the
+same. We try to maximize the change in semantics
+and invert meaning.
+6 Conclusion
+We show that pretrained language models have
+problems handling negation. Output predictions
+for the original LAMA query and the negated state-
+ment are highly correlated.
+Even though this elegant approach of querying
+a language model without fine-tuning allows for
+truly open domain question answering, promoting
+an answer no matter what is not always the better
+solution. Refraining from giving an answer can
+be more appropriate, making knowledge graphs
+currently a more reliable choice for question an-
+swering.
+References
+Chris Alberti, Kenton Lee, and Michael Collins. 2019.
+A bert baseline for the natural questions. ArXiv,
+
+######## 3. pdf/1909.06200/14b8ae5656e7d4ee02237288372d9e682b24fdb8
+Q: What are the difficulties in modelling the ironic pattern?
+kind: extractive span + free-form | labelled chunks: [4,5,7] | top5: [1,12,79,10,78]
+GOLD: [{"spans":["obscure and hard to understand"," lack of previous work and baselines on irony generation"],"free":"","yesno":null,"evidence":["Although some previous studies focus on irony detection, little attention is paid to irony generation. As ironies can strengthen sentiments and express stronger emotions, we mainly focus on generating ironic sentences. Given a non-ironic sentence, we implement a neural network to transfer it to an i"]},{"spans":[],"free":"ironies are often obscure and hard to understand","yesno":null,"evidence":["Although some previous studies focus on irony detection, little attention is paid to irony generation. As ironies can strengthen sentiments and express stronger emotions, we mainly focus on generating ironic sentences. Given a non-ironic sentence, we implement a neural network to transfer it to an i"]}]
+LABELLED CHUNK TEXT:
+[4] is negative in sentiment polarity and the output should be ironic and negative in sentiment as well, such as “I like it
+when my plans get ruined". The speaker uses “like" to be ironic and express his or her negative sentiment. At the
+same time, our model can preserve contents which are irrelevant to sentiment polarity and irony. According to the
+categories mentioned in [6], irony can be classified into 3 classes: verbal irony by means of a polarity contrast, the
+[5] sentences containing expression whose polarity is inverted between the intended and the literal evaluation; other types
+of verbal irony, the sentences that show no polarity contrast between the literal and intended meaning but are still
+ironic; and situational irony, the sentences that describe situations that fail to meet some expectations. As ironies in
+the latter two categories are obscure and hard to understand, we decide to only focus on ironies in the first category in
+[7] work and baselines on irony generation, we implement our model based on style transfer. Our work will not only
+provide the first large-scale irony dataset but also make our model as a benchmark for the irony generation.
+Recently, unsupervised style transfer becomes a very popular topic. Many state-of-the-art studies try to solve the task
+with sequence-to-sequence (seq2seq) framework. There are three main ways to build up models. The first is to learn
+CONTEXT (3 passages):
+--- from chunk 0
+A NEURAL APPROACH TO IRONY GENERATION
+A PREPRINT
+Mengdi Zhu, Zhiwei Yu, Xiaojun Wan
+Peking University
+{1600012990,yuzw,wanxiaojun}@pku.edu.cn
+September 17, 2019
+ABSTRACT
+Ironies can not only express stronger emotions but also show a sense of humor. With the development
+of social media, ironies are widely used in public. Although many prior research studies have been
+conducted in irony detection, few studies focus on irony generation. The main challenges for irony
+generation are the lack of large-scale irony dataset and difficulties in modeling the ironic pattern. In
+this work, we first systematically define irony generation based on style transfer task. To address the
+lack of data, we make use of twitter and build a large-scale dataset. We also design a combination of
+rewards for reinforcement learning to control the generation of ironic sentences. Experimental results
+demonstrate the effectiveness of our model in terms of irony accuracy, sentiment preservation, and
+content preservation1.
+1 Introduction
+The irony is a kind of figurative language, which is widely used on social media [1]. The irony is defined as a clash
+between the intended meaning of a sentence and its literal meaning [2]. As an important aspect of language, irony plays
+an essential role in sentiment analysis [3, 1] and opinion mining [4, 5].
+--- from chunk 9
+A PREPRINT - SEPTEMBER 17, 2019
+and reinforcement learning [9]. The third is to remove style attribute words from the input sentence and combine
+the remaining content with new style attribute words [10, 11]. The first method usually obtains better performances
+via adversarial training with discriminators. The style-independent content representation, nevertheless, is not easily
+obtained [12], which results in poor performances. The second method is suitable for complex styles which are difficult
+to model and describe. The model can learn the deep semantic features by itself but sometimes the model is sensitive
+to parameters and hard to train. The third method succeeds to preserve content but cannot work for some complex
+styles such as democratic and republican. Sentences with those styles usually do not have specific style attribute words.
+Unfortunately, due to the lack of large irony dataset and difficulties of modeling ironies, there has been little work trying
+to generate ironies based on seq2seq framework as far as we know. Inspired by methods for style transfer, we decide to
+implement a specifically designed model based on unsupervised style transfer to explore irony generation.
+In this paper, in order to address the lack of irony data, we first crawl over 2M tweets from twitter to build a dataset
+with 262,755 ironic and 112,330 non-ironic tweets. Then, due to the lack of parallel data, we propose a novel model to
+transfer non-ironic sentences to ironic sentences in an unsupervised way. As ironic style is hard to model and describe,
+we implement our model with the control of classifiers and reinforcement learning. Different from other studies in style
+transfer, the transformation from non-ironic to ironic sentences has to preserve sentiment polarity as mentioned above.
+Therefore, we not only design an irony reward to control the irony accuracy and implement denoising auto-encoder and
+back-translation to control content preservation but also design a sentiment reward to control sentiment preservation.
+Experimental results demonstrate that our model achieves a high irony accuracy with well-preserved sentiment and
+content. The contributions of our work are as follows:
+• To our knowledge, our work is the first attempt to specifically define irony generation and generate ironic
+sentences via seq2seq neural network.
+--- from chunk 77
+fluency of the output sentence and we also try this method. Nonetheless, pre-training a language model
+with tweets and using it to generate rewards is difficult because tweets are more casual and have more noise.
+Rewards from that kind of language model are usually not accurate and may confuse the model. In the future,
+we should come up with better methods to model language fluency with the consideration of irony accuracy,
+sentiment and content preservation, especially for tweets.
+• Improper Words: As ironic style is hard for our model to learn, it may generate some improper words which
+make the sentence strange. As the example shown in the Table 5, the sentiment word in the input sentence is
+“wonderful" and the model should change it into a negative word such as “sad" to make the output sentence
+ironic. However, the model changes “friday" and “fifa" which are not related to ironic styles. We have not
+found a very effective method to address this issue and maybe we should further explore stronger models to
+learn ironic styles better.
+5.7 Additional Experiments
+In this section, we describe some additional experiments on the transformation from ironic sentences to non-ironic
+sentences. Sometimes ironies are hard to understand and may cause misunderstanding, for which our task also explores
+the transformation from ironic sentences to non-ironic sentences.
+As shown in Table 6, we also conduct automatic evaluations and the conclusions are similar to those of the transformation
+from non-ironic sentences to ironic sentences. As for human evaluation results in Table 7, our model still can achieve the
+second-best results in sentiment and content preservation. Nevertheless, DualRL system and ours get poor performances
+9
+
+######## 4. pdf/1701.05574/bbb77f2d6685c9257763ca38afaaef29044b4018
+Q: What is the best reported system?
+kind: extractive span + free-form | labelled chunks: [62,63,70,71,72] | top5: [53,66,78,3,32]
+GOLD: [{"spans":[],"free":"Gaze Sarcasm using Multi Instance Logistic Regression.","yesno":null,"evidence":["FLOAT SELECTED: Table 3: Classification results for different feature combinations. P→ Precision, R→Recall, F→ F˙score, Kappa→ Kappa statistics show agreement with the gold labels. Subscripts 1 and -1 correspond to sarcasm and non-sarcasm classes respectively."]},{"spans":["the MILR classifier"],"free":"","yesno":null,"evidence":["For all regular classifiers, the gaze features are averaged across participants and augmented with linguistic and sarcasm related features. For the MILR classifier, the gaze features derived from each participant are augmented with linguistic features and thus, a multi instance “bag” of features is ","For all the classifiers, our feature combination outperforms the baselines (considering only unigram features) as well as BIBREF3 , with the MILR classifier getting an F-score improvement of 3.7% and Kappa difference of 0.08. We also achieve an improvement of 2% over the baseline, using SVM classifi"]}]
+LABELLED CHUNK TEXT:
+[62] Sarcasm (Joshi et. al.) 59.9 78.7 72.1 61.4 77.6 71.9 60.6 78.2 72 0.39
+Gaze 65.9 75.9 72.4 49.7 86 73.2 56.7 80.6 72.2 0.38
+Gaze+Sarcasm 63.7 79.5 74 61.7 80.9 74.1 62.7 80.2 74 0.43
+Multi Instance Logistic Regression: Best Performing Classifier
+Gaze 65.3 77.2 73 53 84.9 73.8 58.5 80.8 73.1 0.41
+Gaze+Sarcasm 62.5 84 76.5 72.6 76.7 75.3 67.2 80.2 75.7 0.47
+Table 3: Classification results for different feature combinations. P→ Precision, R→ Recall, F→ F˙score,
+[63] Kappa→ Kappa statistics show agreement with the gold labels. Subscripts 1 and -1 correspond to sar-
+casm and non-sarcasm classes respectively.
+Sentence Gold SarcasmGaze Gaze+Sarcasm
+1. I would like to live in Manchester, England. The transition between Manch-
+ester and death would be unnoticeable. S NS S S
+2. Helped me a lot with my panic attacks. I took 6 mg a day for almost 20 years.
+Can’t stop of course but it makes me feel very comfortable. NS S NS NS
+[70] based on Information Gain and Attribute Evalu-
+ation based on Chi-squared test. The length of the
+bar corresponds to the average merit of the feature.
+Features marked with * are gaze features.
+For all regular classifiers, the gaze features are
+averaged across participants and augmented with
+linguistic and sarcasm related features. For the
+MILR classifier, the gaze features derived from
+each participant are augmented with linguistic fea-
+tures and thus, a multi instance “bag” of features is
+[71] formed for each sentence in the training data. This
+multi-instance dataset is given to an MILR clas-
+sifier, which follows the standard multi instance
+assumption to derive class-labels for each bag.
+For all the classifiers, our feature combination
+outperforms the baselines (considering only uni-
+gram features) as well as (Joshi et al., 2015), with
+the MILR classifier getting an F-score improve-
+ment of 3.7% and Kappa difference of 0.08. We
+also achieve an improvement of 2% over the base-
+[72] also achieve an improvement of 2% over the base-
+line, using SVM classifier, when we employ our
+feature set. We also observe that the gaze fea-
+tures alone, also capture the differences between
+sarcasm and non-sarcasm classes with a high-
+precision but a low recall.
+To see if the improvement obtained is statisti-
+cally significant over the state-of-the art system
+with textual sarcasm features alone, we perform
+McNemar test. The output of the SVM classifier
+CONTEXT (6 passages):
+--- from chunk 0
+Harnessing Cognitive Features for Sarcasm Detection
+Abhijit Mishra†, Diptesh Kanojia†,♣, Seema Nagar ?, Kuntal Dey?,
+Pushpak Bhattacharyya†
+†Indian Institute of Technology Bombay, India
+♣IITB-Monash Research Academy, India
+?IBM Research, India
+†{abhijitmishra, diptesh, pb}@cse.iitb.ac.in
+?{senagar3, kuntadey}@in.ibm.com
+Abstract
+In this paper, we propose a novel mecha-
+nism for enriching the feature vector, for
+the task of sarcasm detection, with cogni-
+tive features extracted from eye-movement
+--- from chunk 2
+text. We observe the difference in the be-
+haviour of the eye, while reading sarcastic
+and non sarcastic sentences. Motivated by
+this observation, we augment traditional
+linguistic and stylistic features for sarcasm
+detection with the cognitive features ob-
+tained from readers eye movement data.
+We perform statistical classification using
+the enhanced feature set so obtained. The
+augmented cognitive features improve sar-
+casm detection by 3.7% (in terms of F-
+score), over the performance of the best
+reported system.
+1 Introduction
+Sarcasm is an intensive, indirect and complex con-
+struct that is often intended to express contempt
+or ridicule 1. Sarcasm, in speech, is multi-modal,
+involving tone, body-language and gestures along
+with linguistic artifacts used in speech. Sarcasm
+in text, on the other hand, is more restrictive when
+it comes to such non-linguistic modalities. This
+makes recognizing textual sarcasm more challeng-
+ing for both humans and machines.
+1The Free Dictionary
+Sarcasm detection plays an indispensable role
+in applications like online review summarizers, di-
+alog systems, recommendation systems and senti-
+ment analyzers. This makes automatic detection
+of sarcasm an important problem. However, it
+has been quite difficult to solve such a problem
+with traditional NLP tools and techniques. This is
+--- from chunk 31
+tences are mixed with non sarcastic text, which
+does not give prior knowledge about whether the
+forthcoming text will be sarcastic or not.
+The eye-tracking experiment is conducted by
+following the standard norms in eye-movement
+research (Holmqvist et al., 2011). At a time,
+one sentence is displayed to the reader along
+with the “aspect” with respect to which the an-
+notation has to be provided. While reading, an
+SR-Research Eyelink-1000 eye-tracker (monocu-
+lar remote mode, sampling rate 500Hz) records
+several eye-movement parameters like fixations (a
+long stay of gaze) and saccade (quick jumping of
+gaze between two positions of rest) and pupil size.
+The accuracy of polarity annotation varies be-
+tween 72%-91% for sarcastic texts and 75%-91%
+for non-sarcastic text, showing the inherent dif-
+ficulty of sentiment annotation, when sarcasm
+is present in the text under consideration. An-
+notation errors may be attributed to: (a) lack
+of patience/attention while reading, (b) issues
+related to text comprehension, and (c) confu-
+sion/indecisiveness caused due to lack of context.
+For our analysis, we do not discard the incor-
+rect annotations present in the database. Since
+our system eventually aims to involve online read-
+ers for sarcasm detection, it will be hard to segre-
+gate readers who misinterpret the text. We make
+--- from chunk 52
+tence
+Textual Number of Words (LEN) Integer Number of words in the sentence
+Avg. Fixation Duration (FDUR) Real Sum of fixation duration divided by word count
+Avg. Fixation Count (FC) Real Sum of fixation counts divided by word count
+Avg. Saccade Length (SL) Real Sum of saccade lengths (measured by number of words)
+divided by word count
+Simple Regression Count (REG) Real Total number of gaze regressions
+Gaze Skip count (SKIP) Real Number of words skipped divided by total word count
+Based Count of regressions from second half
+to first half of the sentence (RSF)
+Real Number of regressions from second half of the sentence
+to the first half of the sentence (given the sentence is
+divided into two equal half of words)
+Largest Regression Position (LREG) Real Ratio of the absolute position of the word from which a
+regression with the largest amplitude (number of pixels)
+is observed, to the total word count of sentence
+Edge density of the saliency gaze
+graph (ED)
+Real Ratio of the number of directed edges to vertices in the
+saliency gaze graph (SGG)
+Fixation Duration at Left/Source
+(F1H, F1S)
+Real Largest weighted degree (LWD) and second largest
+weighted degree (SWD) of the SGG considering the fix-
+ation duration of word i of edge Eij
+Complex Fixation Duration at Right/Target
+(F2H, F2S)
+Real LWD and SWD of the SGG considering the fixation du-
+ration of word j of edge Eij
+Gaze Forward Saccade Word Count of
+--- from chunk 65
+formance of multiple classification techniques on
+our dataset through a stratified 10-fold cross val-
+idation. We also compare the classification accu-
+racy of our system and the best available systems
+proposed by Riloff et al. (2013) and Joshi et al.
+(2015) on our dataset. Using Weka (Hall et al.,
+2009) and LibSVM (Chang and Lin, 2011) APIs,
+we implement the following classifiers:
+• N¨aive Bayes classifier
+• Support Vector Machines (Cortes and Vap-
+nik, 1995) with default hyper-paramaters
+• Multilayer Feed Forward Neural Network
+• Multi Instance Logistic Regression
+(MILR) (Xu and Frank, 2004)
+6.1 Results
+Table 3 shows the classification results consider-
+ing various feature combinations for different clas-
+sifiers and other systems. These are:
+• Unigram (with principal components of uni-
+gram feature vectors),
+• Sarcasm (the feature-set reported by Joshi et
+al. (2015) subsuming unigram features and
+features from other reported systems)
+• Gaze (the simple and complex cognitive fea-
+tures we introduce, along with readability
+and word count features), and
+• Gaze+Sarcasm (the complete set of features).
+--- from chunk 77
+stratified (keeping the class ratio constant) random
+train-test split of 80%:20%. We train our classifier
+with 100%, 90%, 80% and 70% of the training
+data with our whole feature set, and the feature
+combination from Joshi et al. (2015). The good-
+ness of our system is demonstrated by improve-
+ments in F-score and Kappa statistics, shown in
+Figure 3.
+We further analyze the importance of features
+by ranking the features based on (a) Chi squared
+test, and (b) Information Gain test, using Weka’s
+attribute selection module. Figure 4 shows the top
+20 ranked features produced by both the tests. For
+both the cases, we observe 16 out of top 20 fea-
+tures to be gaze features. Further, in each of the
+cases, Average Fixation Duration per Word and
+Largest Regression Position are seen to be the two
+most significant features.
+6.4 Example Cases
+Table 4 shows a few example cases from the ex-
+periment with stratified 80%-20% train-test split.
+• Example sentence 1 is sarcastic, and requires
+extra-linguistic knowledge (about poor living
+conditions at Manchester). Hence, the sar-
+casm detector relying only on textual features
+is unable to detect the underlying incongruity.
+However, our system predicts the label suc-
+cessfully, possibly helped by the gaze fea-
+tures.
+• Similarly, for sentence 2, the false sense of
+presence of incongruity (due to phrases like
+“Helped me” and “Can’t stop”) affects the
+
+######## 5. pdf/1910.12574/893ec40b678a72760b6802f6abf73b8f487ae639
+Q: What evidence do the authors present that the model can capture some biases in data annotation and collection?
+kind: free-form | labelled chunks: [68,69] | top5: [23,3,42,60,1]
+GOLD: [{"spans":[],"free":"The authors showed few tweets where neither and implicit hatred content exist but the model was able to discriminate","yesno":null,"evidence":["By examining more samples and with respect to recently studies BIBREF2, BIBREF24, BIBREF19, it is clear that many errors are due to biases from data collection BIBREF19 and rules of annotation BIBREF24 and not the classifier itself. Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords a"]}]
+LABELLED CHUNK TEXT:
+[68] tions do not confirm the low performance of our classifier because annotators
+tended to annotate many samples containing disrespectful words as hate or of-
+fensive without any presumption about the social context of tweeters such as
+the speakers identity or dialect, whereas they were just offensive or even neither
+tweets. Tweets IDs 6, 8, and 10 are some samples containing offensive words and
+slurs which arenot hate or offensive in all cases and writers of them used this
+[69] type of language in their daily communications. Given these pieces of evidence,
+by considering the content of tweets, we can see in tweets IDs 3, 4, and 9 that
+our BERT-based classifier can discriminate tweets in which neither and implicit
+hatred content exist. One explanation of this observation may be the pre-trained
+general knowledge that exists in our model. Since the pre-trained BERT model
+is trained on general corpora, it has learned general knowledge from normal tex-
+CONTEXT (4 passages):
+--- from chunk 0
+A BERT-Based Transfer Learning Approach for
+Hate Speech Detection in Online Social Media
+Marzieh Mozafari1, Reza Farahbakhsh1, and No¨el Crespi1
+CNRS UMR5157, T´el´ecom SudParis, Institut Polytechnique de Paris, ´Evry, France
+{marzieh.mozafari, reza.farahbakhsh, noel.crespi}@telecom-sudparis.eu
+Abstract. Generated hateful and toxic content by a portion of users
+in social media is a rising phenomenon that motivated researchers to
+dedicate substantial efforts to the challenging direction of hateful con-
+tent identification. We not only need an efficient automatic hate speech
+detection model based on advanced machine learning and natural lan-
+guage processing, but also a sufficiently large amount of annotated data
+to train a model. The lack of a sufficient amount of labelled hate speech
+data, along with the existing biases, has been the main issue in this do-
+main of research. To address these needs, in this study we introduce a
+novel transfer learning approach based on an existing pre-trained lan-
+guage model called BERT (Bidirectional Encoder Representations from
+Transformers). More specifically, we investigate the ability of BERT at
+capturing hateful context within social media content by using new fine-
+tuning methods based on transfer learning. To evaluate our proposed ap-
+proach, we use two publicly available datasets that have been annotated
+for racism, sexism, hate, or offensive content on Twitter. The results show
+that our solution obtains considerable performance on these datasets in
+terms of precision and recall in comparison to existing approaches. Con-
+sequently, our model can capture some biases in data annotation and
+collection process and can potentially lead us to a more accurate model.
+Keywords: hate speech detection, transfer learning, language model-
+ing, BERT, fine-tuning, NLP, social media.
+1 Introduction
+1 Introduction
+People are increasingly using social networking platforms such as Twitter, Face-
+book, YouTube, etc. to communicate their opinions and share information. Al-
+though the interactions among users on these platforms can lead to constructive
+conversations, they have been increasingly exploited for the propagation of abu-
+sive language and the organization of hate-based activities [1, 16], especially due
+to the mobility and anonymous environment of these online platforms. Violence
+--- from chunk 22
+4 Marzieh Mozafari et al.
+word/character dependencies (order information). Waseem et al. [23] brought a
+new insight to hate speech and abusive language detection tasks by proposing
+a multi-task learning framework to deal with datasets across different annota-
+tion schemes, labels, or geographic and cultural influences from data sampling.
+Founta et al. [7] built a unified classification model that can efficiently han-
+dle different types of abusive language such as cyberbullying, hate, sarcasm,
+etc. using raw text and domain-specific metadata from Twitter. Furthermore,
+researchers have recently focused on the bias derived from the hate speech train-
+ing datasets [2,21,24]. Davidson et al. [2] showed that there were systematic and
+substantial racial biases in five benchmark Twitter datasets annotated for offen-
+sive language detection. Wiegand et al. [24] also found that classifiers trained
+on datasets containing more implicit abuse (tweets with some abusive words)
+are more affected by biases rather than once trained on datasets with a high
+proportion of explicit abuse samples (tweets containing sarcasm, jokes, etc.).
+Transfer Learning: Pre-trained vector representations of words, embeddings,
+extracted from vast amounts of text data have been encountered in almost every
+language-based tasks with promising results. Two of the most frequently used
+context-independent neural embeddings are word2vec and Glove extracted from
+--- from chunk 41
+applying softmax on the input, the classification operation is performed.
+4 Experiments and Results
+We first introduce datasets used in our study and then investigate the different
+fine-tuning strategies for hate speech detection task. We also include the details
+of our implementation and error analysis in the respective subsections.
+4.1 Dataset Description
+We evaluate our method on two widely-studied datasets provided by Waseem
+and Hovey [22] and Davidson et al. [3]. Waseem and Hovy [22] collected 16k
+of tweets based on an initial ad-hoc approach that searched common slurs and
+terms related to religious, sexual, gender, and ethnic minorities. They annotated
+their dataset manually as racism, sexism, or neither. To extend this dataset,
+Waseem [20] also provided another dataset containing 6.9k of tweets annotated
+with both expert and crowdsourcing users as racism, sexism, neither, or both.
+Since both datasets are overlapped partially and they used the same strategy
+--- from chunk 59
+Figures 2 and 3. According to Figure 2 for Waseem-dataset, it is obvious that
+the model can separate sexism from racism content properly. Only two samples
+belonging to racism class are misclassified as sexism and none of the sexism
+samples are misclassified as racism. A large majority of the errors come from
+misclassifying hateful categories (racism and sexism) as hatless (neither) and
+vice versa. 0.9% and 18.5% of all racism samples are misclassified as sexism and
+neither respectively whereas it is 0% and 12.7% for sexism samples. Almost 12%
+of neither samples are misclassified as racism or sexism. As Figure 3 makes clear
+for Davidson-dataset, the majority of errors are related to hate class where the
+model misclassified hate content as offensive in 63% of the cases. However, 2.6%
+and 7.9% of offensive and neither samples are misclassified respectively.
+Fig. 2: Waseem-datase’s confusion matrix Fig. 3: Davidson-dataset’s confusion matrix
+To understand better the mislabeled items by our model, we did a manual
+inspection on a subset of the data and record some of them in Tables 3 and 4.
+Considering the words such as “daughters”, “women”, and “burka” in tweets
+with IDs 1 and 2 in Table 3, it can be understood that our BERT based classi-
+fier is confused with the contextual semantic between these words in the samples
+and misclassified them as sexism because they are mainly associated to feminin-
+
+######## 6. pdf/1810.04428/2c6b50877133a499502feb79a682f4023ddab63e
+Q: what language does this paper focus on?
+kind: extractive span | labelled chunks: [18,19] | top5: [45,47,55,46,56]
+GOLD: [{"spans":["English"],"free":"","yesno":null,"evidence":["We collected a simplified dataset from Simple English Wikipedia that are freely available, which has been previously used for many text simplification methods BIBREF0 , BIBREF10 , BIBREF3 . The simple English Wikipedia is pretty easy to understand than normal English Wikipedia. We downloaded all art"]},{"spans":["Simple English"],"free":"","yesno":null,"evidence":["We collected a simplified dataset from Simple English Wikipedia that are freely available, which has been previously used for many text simplification methods BIBREF0 , BIBREF10 , BIBREF3 . The simple English Wikipedia is pretty easy to understand than normal English Wikipedia. We downloaded all art"]}]
+LABELLED CHUNK TEXT:
+[18] sidering simplified data plays an important role in boosting fluency for phrase-based text simplification,
+and we investigate the use of simplified data for text simplification. We are the first to show that we can
+effectively adapt neural translation models for text simplifiation with simplified corpora.
+3 NMT Training with Simplified Corpora
+3.1 Simplified Corpora
+We collected a simplified dataset from Simple English Wikipedia that are freely avail-
+[19] able1, which has been previously used for many text simplification methods (Biran et al., 2011;
+Coster and Kauchak, 2011; Zhu et al., 2010). The simple English Wikipedia is pretty easy to understand
+than normal English Wikipedia. We downloaded all articles from Simple English Wikipedia. For these
+1simple.wikipedia.org
+CONTEXT (3 passages):
+--- from chunk 0
+arXiv:1810.04428v1 [cs.CL] 10 Oct 2018
+Improving Neural Text Simplification Model with Simplified Corpora
+Jipeng Qiang
+Department of Computer Science, Yangzhou University/ Yangzhou, Jiangsu, China
+jpqiang@yzu.edu.cn
+Abstract
+Text simplification (TS) can be viewed as monolingual translation task, translating between text
+variations within a single language. Recent neural TS models draw on insights from neural
+--- from chunk 44
+Holger Schwenk, and Yoshua Bengio. 2014. Learning phrase representations using rnn encoder-decoder for
+statistical machine translation. arXiv preprint arXiv:1406.1078.
+[Coster and Kauchak2011] William Coster and David Kauchak. 2011. Simple english wikipedia: a new text sim-
+plification task. In Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics:
+Human Language Technologies: short papers-Volume 2, pages 665–669. Association for Computational Lin-
+guistics.
+[Ganitkevitch et al.2013] Juri Ganitkevitch, Benjamin Van Durme, and Chris Callison-Burch. 2013. Ppdb: The
+paraphrase database. In In Proceedings of NAACL-HLT, pages 758–764.
+[Glavaˇs and ˇStajner2015] Goran Glavaˇs and Sanja ˇStajner. 2015. Simplifying lexical simplification: do we need
+simplified corpora? In Proceedings of the 53rd Annual Meeting of the Association for Computational Linguis-
+tics and the 7th International Joint Conference on Natural Language Processing (Volume 2: Short Papers),
+volume 2, pages 63–68.
+[Hwang et al.2015] William Hwang, Hannaneh Hajishirzi, Mari Ostendorf, and Wei Wu. 2015. Aligning sentences
+from standard wikipedia to simple wikipedia. In Proceedings of the 2015 Conference of the North American
+Chapter of the Association for Computational Linguistics: Human Language Technologies, pages 211–217.
+[Kauchak2013] David Kauchak. 2013. Improving text simplification language modeling using unsimplified text
+data. In Meeting of the Association for Computational Linguistics, pages 1537–1546.
+[Kincaid et al.1975] Peter J Kincaid, Robert P Fishburne, Rogers Jr L Richard, and Brad S Chissom. 1975. Deriva-
+tion of new readability formulas (automated readability index, fog count and flesch reading ease formula) for
+navy enlisted personnel. Technical report, DTIC Document.
+[Klein et al.2017] Guillaume Klein, Yoon Kim, Yuntian Deng, Jean Senellart, and Alexander M. Rush. 2017.
+Opennmt: Open-source toolkit for neural machine translation. In Proc. ACL.
+[Manning et al.2014] Christopher D Manning, Mihai Surdeanu, John Bauer, Jenny Finkel, Steven J Bethard, and
+--- from chunk 54
+pages 97–102.
+[Sutskever et al.2014] Ilya Sutskever, Oriol Vinyals, and Quoc V Le. 2014. Sequence to sequence learning with
+neural networks. In Advances in neural information processing systems, pages 3104–3112.
+[Wang et al.2016] Tong Wang, Ping Chen, Kevin Amaral, and Jipeng Qiang. 2016. An experimental study of lstm
+encoder-decoder model for text simplification. arXiv preprint arXiv:1609.03663.
+[Woodsend and Lapata2011] Kristian Woodsend and Mirella Lapata. 2011. Learning to simplify sentences with
+quasi-synchronous grammar and integer programming. In Proceedings of the conference on empirical methods
+in natural language processing, pages 409–420. Association for Computational Linguistics.
+[Wubben et al.2012] Sander Wubben, Antal Van Den Bosch, and Emiel Krahmer. 2012. Sentence simplification by
+monolingual machine translation. In Proceedings of the conference on empirical methods in natural language
+processing, pages 1015–1024. In Proceedings of the 50th ACL.
+[Xu et al.2016] Wei Xu, Courtney Napoles, Ellie Pavlick, Quanze Chen, and Chris Callison-Burch. 2016. Opti-
+mizing statistical machine translation for text simplification. Transactions of the Association for Computational
+Linguistics, 4:401–415.
+[Zhang and Lapata2017] Xingxing Zhang and Mirella Lapata. 2017. Sentence simplification with deep reinforce-
+ment learning. arXiv preprint arXiv:1703.10931.
+[Zhu et al.2010] Zhemin Zhu, Delphine Bernhard, and Iryna Gurevych. 2010. A monolingual tree-based transla-
+tion model for sentence simplification. In Proceedings of the 23rd international conference on computational
+linguistics, pages 1353–1361. Association for Computational Linguistics.
+
+######## 7. pdf/1703.07090/1bb7eb5c3d029d95d1abf9f2892c1ec7b6eef306
+Q: what was their character error rate?
+kind: free-form | labelled chunks: [55,60,61] | top5: [47,42,11,2,58]
+GOLD: [{"spans":[],"free":"2.49% for  layer-wise training, 2.63% for distillation, 6.26% for transfer learning.","yesno":null,"evidence":["FLOAT SELECTED: Table 3. The CER and RTF of 9-layers, 2-layers regular-trained and 2-laryers distilled LSTM.","FLOAT SELECTED: Table 2. The CER of 6 to 9-layers models trained by regular Xavier Initialization, layer-wise training with CE criterion and CE + sMBR criteria. The teacher of 9-layer model is 8-layers sMBR model, while the others’ teacher is CE model.","FLOAT SELECTED: Table 4. The CER of different 2-layers models, which are Shenma distilled model, Amap model further trained with Amap dataset, and Shenma model trained with sMBR on Amap dataset."]},{"spans":[],"free":"Their best model achieved a 2.49% Character Error Rate.","yesno":null,"evidence":["FLOAT SELECTED: Table 3. The CER and RTF of 9-layers, 2-layers regular-trained and 2-laryers distilled LSTM.","FLOAT SELECTED: Table 2. The CER of 6 to 9-layers models trained by regular Xavier Initialization, layer-wise training with CE criterion and CE + sMBR criteria. The teacher of 9-layer model is 8-layers sMBR model, while the others’ teacher is CE model."]}]
+LABELLED CHUNK TEXT:
+[55] Layer CER (%)
+Xavier Init CE Layer-wise CE CE+sMBR
+6 3.72 - 2.85
+7 3.93 3.68 2.81
+8 3.81 3.60 2.77
+9 3.87 2.82 2.49
+Table 2. The CER of 6 to 9-layers models trained by regular
+Xavier Initialization, layer-wise training with CE criterion and CE
++ sMBR criteria. The teacher of 9-layer model is 8-layers sMBR
+model, while the others’ teacher is CE model.
+the total dataset for sMBR training. There is no obvious
+performance enhancement when the size of sMBR training
+dataset increases.
+[60] only little knowledge of deep network is lost. Moreover, CER
+of 2-layers distilled LSTM decreases relative 14%, compared
+with 2-layers regular-trained LSTM.
+Models CER (%) RTF
+9-layers LSTM 2.49 0.74
+2-layers regular-trained LSTM 3.06 0.36
+2-laryers distilled LSTM 2.63 0.35
+Table 3. The CER and RTF of 9-layers, 2-layers regular-trained
+and 2-laryers distilled LSTM.
+Training methods CER (%)
+Shenma model 7.87
+Amap CE + sMBR 6.81
+Shenma model + Amap sMBR 6.26
+[61] Amap CE + sMBR 6.81
+Shenma model + Amap sMBR 6.26
+Table 4. The CER of different 2-layers models, which are Shenma
+distilled model, Amap model further trained with Amap dataset, and
+Shenma model trained with sMBR on Amap dataset.
+5.3. Transfer Learning
+2-layers distilled model of Shenma voice search has shown
+a impressive performance on Shenma Test, and we call it
+Shenma model. It is trained for generic search scenario, but
+it has less adaptation for specific scenario like Amap voice
+CONTEXT (5 passages):
+--- from chunk 0
+arXiv:1703.07090v1 [cs.CL] 21 Mar 2017
+DEEP LSTM FOR LARGE VOCABULARY CONTINUOUS SPEECH RECOGNITION
+Xu Tian, Jun Zhang, Zejun Ma, Yi He, Juan Wei, Peihao Wu, Wenchang Situ, Shuai Li, Yang Zhang
+Alibaba Shenma Search, Beijing, China
+{xu.tian, zj102217, zejun.mamzj, heyi.hy, wj80290, peihao.wph, wenchang.situwc, voolc.li, zy80232}@alibaba-inc.com
+ABSTRACT
+Recurrent neural networks (RNNs), especially long short-
+term memory (LSTM) RNNs, are effective network for se-
+quential task like speech recognition. Deeper LSTM models
+perform well on large vocabulary continuous speech recogni-
+tion, because of their impressive learning ability. However,
+it is more difficult to train a deeper network. We introduce
+a training framework with layer-wise training and exponen-
+tial moving average methods for deeper LSTM models. It is
+a competitive framework that LSTM models of more than 7
+layers are successfully trained on Shenma voice search data
+in Mandarin and they outperform the deep LSTM models
+trained by conventional approach. Moreover, in order for on-
+line streaming speech recognition applications, the shallow
+model with low real time factor is distilled from the very deep
+model. The recognition accuracy have little loss in the dis-
+tillation process. Therefore, the model trained with the pro-
+posed training framework reduces relative 14% character er-
+ror rate, compared to original model which has the similar
+real-time capability. Furthermore, the novel transfer learning
+strategy with segmental Minimum Bayes-Risk is also intro-
+duced in the framework. The strategy makes it possible that
+training with only a small part of dataset could outperform
+full dataset training from the beginning.
+1. INTRODUCTION
+Recently, deep neural network has been widely employed
+in various recognition tasks. Increasing the depth of neural
+network is a effective way to improve the performance, and
+--- from chunk 10
+erage parameters can be used as the estimator of them, if the
+size of training data is large enough [16]. One pass learn-
+ing is then proposed, which is the combination of learning
+rate schedule and averaged SGD using moving average [17].
+Exponential moving average (EMA) is proposed as a non-
+interference method[18]. EMA model is not broadcasted to
+workers to update their local models, and it is applied as the
+final model of entire training process. EMA method is uti-
+lized with model averaging and BMUF to further decrease
+the character error rate (CER). It is also easy to implement in
+existing parallel training systems.
+Frame stacking can also speed up the training time [19].
+The super frame is stacked by several regular frames, and it
+contains the information of them. Thus, the network can see
+multiple frames at a time, as the super frame is new input.
+Frame stacking can also lead to faster decoding.
+For streaming voice search service, it needs to display in-
+termediate recognition results while users are still speaking.
+As a result, the system needs to fulfill high real-time require-
+ment, and we prefer unidirectional LSTM network rather than
+bidirectional one. High real-time requirement means low real
+time factor (RTF), but the RTF of deep LSTM model is higher
+--- from chunk 41
+good performance in frame level classification, sequence dis-
+criminative training is required to adapt new model to specific
+scenario additionally. Moreover, it does not need alignment
+from HMM-GMM system, and it also saves amount of time
+to prepare alignment.
+4. EXPERIMENTS
+4.1. Training Data
+A large quantity of labeled data is needed for training a more
+accurate acoustic model. We collect the 17000 hours labeled
+data from Shenma voice search, which is one of the most pop-
+ular mobile search engines in China. The dataset is created
+from anonymous online users’ search queries in Mandarin,
+and all audio file’s sampling rate is 16kHz, recorded by mo-
+bile phones. This dataset consists of many different condi-
+tions, such as diverse noise even low signal-to-noise, babble,
+dialects, accents, hesitation and so on.
+In the Amap, which is one of the most popular web map-
+ping and navigation services in China, users can search loca-
+tions and navigate to locations they want though voice search.
+To present the performance of transfer learning with sequence
+discriminative training, the model trained from Shenma voice
+search which is greneric scenario transfer its knowledge to
+the model of Amap voice search. 7300 hours labeled data
+is collected in the similar way of Shenma voice search data
+collection.
+Two dataset is divided into training set, validation set and
+test set separately, and the quantity of them is shown in Ta-
+--- from chunk 46
+is unidirectional LSTM-based.
+A 26-dimensional filter bank and 2-dimensional pitch fea-
+ture is extracted for each frame, and is concatenated with
+first and second order difference as the final input of the net-
+work. The super frame are stacked by 3 frames without over-
+lapping. The architecture we trained consists of two LSTM
+layers with sigmoid activation function, followed by a full-
+connection layer. The out layer is a softmax layer with 11088
+hidden markov model (HMM) tied-states as output classes,
+the loss function is cross-entropy (CE). The performance met-
+ric of the system in Mandarin is reported with character error
+rate (CER). The alignment of frame-level ground truth is ob-
+tained by GMM-HMM system. Mini-batched SGD is utilized
+with momentum trick and the network is trained for a total
+of 4 epochs. The block learning rate and block momentum
+of BMUF are set as 1 and 0.9. 5-gram language model is
+leveraged in decoder, and the vocabulary size is as large as
+760000. Differentials of recurrent layers is limited to range
+[-10000,10000], while gradients are clipped to range [-5, 5]
+and cell activations clipped to range [-50, 50]. After training
+with CE loss, sMBR loss is employed to further improve the
+performance.
+It has shown that BMUF outperforms traditional model
+averaging method, and it is utilized at the synchronization
+phase. After synchronizing with BMUF, EMA method fur-
+--- from chunk 57
+sMBR, while the other teacher model is CE model. As shown
+in Table 2, the layer-wise trained models always performs
+better than the models with Xavier initialization, as the model
+is deep. Therefore, for the last layer training, we choose
+8-layers sMBR model as the teacher model instead of CE
+model. A comparison between 6-layers and 9-layers sMBR
+models shows that 3 additional layers of layer-wise training
+brings relative 12.6% decreasing of CER. It is also significant
+that the averaged CER of sMBR models with different lay-
+ers decreases absolute 0.73% approximately compared with
+CE models, so the improvement of sequence discriminative
+learning is promising.
+5.2. Distillation
+9-layers unidirectional LSTM model achieves outstanding
+performance, but meanwhile it is too computationally expen-
+sive to allow deployment in real time recognition system. In
+order to ensure real-time of the system, the number of lay-
+ers needs to be reduced. The shallower network can learn the
+knowledge of deeper network with distillation. It is found that
+RTF of 2-layers network is acceptable, so the knowledge is
+distilled from 9-layers well-trained model to 2-layers model.
+Table 3 shows that distillation from 9-layers to 2-layers brings
+RTF decrease of relative 53%, while CER only increases 5%.
+The knowledge of deep network is almost transfered with
+distillation, Distillation brings promising RTF reduction, but
+
+######## 8. pdf/1704.04452/8e44c02c2d9fa56fb74ace35ee70a5add50b52ae
+Q: Does the corpus contain only English documents?
+kind: yes/no | labelled chunks: [9,10,11] | top5: [67,68,22,66,72]
+GOLD: [{"spans":[],"free":"","yesno":true,"evidence":["To overcome these issues, we present a corpus creation method that effectively combines automatic preprocessing, scalable crowdsourcing and high-quality expert annotations. Using it, we can avoid the high effort for single annotators, allowing us to scale to document clusters that are 15 times large","FLOAT SELECTED: Figure 2: Excerpt from a summary concept map on the topic “students loans without credit history”."]},{"spans":[],"free":"","yesno":null,"evidence":[]},{"spans":[],"free":"","yesno":null,"evidence":[]}]
+LABELLED CHUNK TEXT:
+[9] students
+student
+loans
+cost of their
+college education
+a credit-worthy
+cosigner
+sufficient
+credit history
+a steady
+income
+private lending
+institutions
+federal
+student loans
+credit check
+U.S. Department
+of Schooling
+are
+offered to
+do not have
+require a borrower
+to have
+regularly offer
+pay for
+help
+students cover
+will need to
+apply with
+not
+requiring
+provide a significant
+financial aid to
+offered by
+Figure 2: Excerpt from a summary concept map on the topic “students loans without credit history”.
+[10] To overcome these issues, we present a corpus
+creation method that effectively combines auto-
+matic preprocessing, scalable crowdsourcing and
+high-quality expert annotations. Using it, we can
+avoid the high effort for single annotators, allow-
+ing us to scale to document clusters that are 15
+times larger than in traditional summarization cor-
+pora. We created a new corpus of 30 topics, each
+with around 40 source documents on educational
+topics and a summarizing concept map that is the
+[11] topics and a summarizing concept map that is the
+consensus of many crowdworkers (see Figure 2).
+As a crucial step of the corpus creation, we de-
+veloped a new crowdsourcing scheme called low-
+context importance annotation. In contrast to tra-
+ditional approaches, it allows us to determine im-
+portant elements in a document cluster without re-
+quiring annotators to read all documents, making
+it feasible to crowdsource the task and overcome
+quality issues observed in previous work (Lloret
+CONTEXT (4 passages):
+--- from chunk 0
+Bringing Structure into Summaries:
+Crowdsourcing a Benchmark Corpus of Concept Maps
+Tobias Falke and Iryna Gurevych
+Research Training Group AIPHES and UKP Lab
+Department of Computer Science, Technische Universit¨at Darmstadt
+https://www.aiphes.tu-darmstadt.de
+Abstract
+Concept maps can be used to concisely
+represent important information and bring
+structure into large document collections.
+Therefore, we study a variant of multi-
+document summarization that produces
+--- from chunk 21
+that is directly interpretable and useful for a user.
+In contrast, these intermediate graphs, e.g. AMR,
+are hardly useful for a typical, non-linguist user.
+For traditional summarization, the most well-
+known datasets emerged out of the DUC and TAC
+competitions.2 They provide clusters of news
+articles with gold-standard summaries. Extend-
+ing these efforts, several more specialized corpora
+have been created: With regard to size, Nakano
+et al. (2010) present a corpus of summaries for
+large-scale collections of web pages. Recently,
+corpora with more heterogeneous documents have
+been suggested, e.g. (Zopf et al., 2016) and
+(Benikova et al., 2016). The corpus we present
+combines these aspects, as it has large clusters of
+heterogeneous documents, and provides a neces-
+sary benchmark to evaluate the proposed task.
+For concept map generation, one corpus with
+human-created summary concept maps for student
+essays has been created (Villalon et al., 2010). In
+contrast to our corpus, it only deals with single
+documents, requires a two orders of magnitude
+smaller amount of compression of the input and
+is not publicly available .
+Other types of information representation that
+also model concepts and their relationships are
+knowledge bases, such as Freebase (Bollacker
+et al., 2009), and ontologies. However, they both
+--- from chunk 65
+to join as a binary decision on all pairs of com-
+mon concepts, observing an agreement of 95%
+(κ = 0.70). And finally, we compared which
+concept labels the annotators decided to include in
+the final map, observing 85% (κ = 0.69) agree-
+ment. Hence, the annotation shows substantial
+agreement (Landis and Koch, 1977).
+6 Corpus Analysis
+In this section, we describe our newly created cor-
+pus, which, in addition to having summaries in
+the form of concept maps, differs from traditional
+summarization corpora in several aspects.
+6.1 Document Clusters
+Size The corpus consists of document clusters
+for 30 different topics. Each of them contains
+around 40 documents with on average 2413 to-
+kens, which leads to an average cluster size of
+97,880 token. With these characteristics, the docu-
+ment clusters are 15 times larger than typical DUC
+clusters of ten documents and five times larger
+than the 25-document-clusters (Table 2). In addi-
+tion, the documents are also more variable in terms
+of length, as the (length-adjusted) standard devia-
+tion is twice as high as in the other corpora. With
+these properties, the corpus represents an interest-
+ing challenge towards real-world application sce-
+narios, in which users typically have to deal with
+much more than ten documents.
+Genres Because we used a large web crawl
+as the source for our corpus, it contains docu-
+ments from a variety of genres. To further an-
+alyze this property, we categorized a sample of
+50 documents from the corpus. Among them,
+we found professionally written articles and blog
+posts (28%), educational material for parents and
+kids (26%), personal blog posts (16%), forum dis-
+cussions and comments (12%), commented link
+collections (12%) and scientific articles (6%).
+Textual Heterogeneity In addition to the vari-
+ety of genres, the documents also differ in terms
+of language use. To capture this property, we
+follow Zopf et al. (2016) and compute, for every
+topic, the average Jensen-Shannon divergence be-
+tween the word distribution of one document and
+the word distribution in the remaining documents.
+The higher this value is, the more the language dif-
+fers between documents. We found the average di-
+vergence over all topics to be 0.3490, whereas it is
+--- from chunk 71
+per Map Token Character
+Concepts 25.0 ± 0.0 3.2 ± 0.5 22.0 ± 4.1
+Relations 25.2 ± 1.3 3.2 ± 0.5 17.1 ± 2.6
+Table 3: Size of concept maps (mean with std).
+relations consist on average of 3.2 tokens, whereas
+the latter are a bit shorter in characters.
+To obtain a better picture of what kind of text
+spans have been used as labels, we automatically
+tagged them with their part-of-speech and deter-
+mined their head with a dependency parser. Con-
+cept labels tend to be headed by nouns (82%) or
+verbs (15%), while they also contain adjectives,
+prepositions and determiners. Relation labels, on
+the other hand, are almost always headed by a verb
+(94%) and contain prepositions, nouns and parti-
+cles in addition. These distributions are very sim-
+ilar to those reported by Villalon et al. (2010) for
+their (single-document) concept map corpus.
+Analyzing the graph structure of the maps, we
+found that all of them are connected. They have
+on average 7.2 central concepts with more than
+one relation, while the remaining ones occur in
+only one proposition. We found that achieving a
+higher number of connections would mean com-
+promising importance, i.e. including less impor-
+tant propositions, and decided against it.
+7 Baseline Experiments
+In this section, we briefly describe a baseline and
+evaluation scripts that we release, with a detailed
+documentation, along with the corpus.
+
+######## 9. pdf/1808.09111/5eabfc6cc8aa8a99e6e42514ef9584569cb75dec
+Q: Do they evaluate only on English datasets?
+kind: yes/no | labelled chunks: [400] | top5: [422,171,406,172,428]
+GOLD: [{"spans":[],"free":"","yesno":true,"evidence":["For both POS tagging and dependency parsing, we run experiments on the Wall Street Journal (WSJ) portion of the Penn Treebank. To create the observed data embeddings, we train skip-gram word embeddings BIBREF7 that are found to capture syntactic properties well when trained with small context window"]},{"spans":[],"free":"","yesno":null,"evidence":[]}]
+LABELLED CHUNK TEXT:
+[400] experimental setup. We then instantiate our ap-
+proach with Markov and DMV-structured syntax
+models, and report results on POS tagging and de-
+pendency grammar induction respectively. Lastly,
+we analyze the learned latent embeddings.
+4.1 Data
+For both POS tagging and dependency parsing, we
+run experiments on the Wall Street Journal (WSJ)
+portion of the Penn Treebank.3 To create the ob-
+served data embeddings, we train skip-gram word
+embeddings (Mikolov et al., 2013) that are found
+CONTEXT (5 passages):
+--- from chunk 0
+Unsupervised Learning of Syntactic Structure
+with Invertible Neural Projections
+Junxian He Graham Neubig Taylor Berg-Kirkpatrick
+Language Technologies Institute
+School of Computer Science
+Carnegie Mellon University
+{junxianh, gneubig, tberg}@cs.cmu.edu
+Abstract
+Unsupervised learning of syntactic structure is
+typically performed using generative models
+with discrete latent variables and multinomial
+parameters. In most cases, these models have
+not leveraged continuous word representa-
+--- from chunk 170
+and marginal likelihood computation procedures
+so long as inference is tractable in the underlying
+syntax model. In §3.1 we show that this derivation
+corresponds to an alternate view of our approach
+whereby we jointly learn a mapping of observed
+word embeddings to a new embedding space that
+is more suitable for the syntax model, but include
+an additional Jacobian regularization term to pre-
+vent information loss.
+Recent work has sought to take advantage
+of word embeddings in unsupervised generative
+models with alternate approaches (Lin et al., 2015;
+Tran et al., 2016; Jiang et al., 2016; Han et al.,
+2017). Lin et al. (2015) build an HMM with Gaus-
+sian emissions on observed word embeddings, but
+they do not attempt to learn new embeddings. Tran
+et al. (2016), Jiang et al. (2016), and Han et al.
+(2017) extend HMM or dependency model with
+valence (DMV) (Klein and Manning, 2004) with
+multinomials that use word (or tag) embeddings
+in their parameterization. However, they do not
+represent the embeddings as latent variables.
+In experiments, we instantiate our approach us-
+ing both a Markov-structured syntax model and
+a tree-structured syntax model – specifically, the
+DMV. We evaluate on two tasks: part-of-speech
+(POS) induction and unsupervised dependency
+parsing without gold POS tags. Experimental re-
+sults on the Penn Treebank (Marcus et al., 1993)
+demonstrate that our approach improves the ba-
+sic HMM and DMV by a large margin, lead-
+ing to the state-of-the-art results on POS induc-
+tion, and state-of-the-art results on unsupervised
+dependency parsing in the difficult training sce-
+nario where neither gold POS annotation nor
+punctuation-based constraints are available.
+2 Model
+As an illustrative example, we first present a base-
+--- from chunk 405
+and test on the entire WSJ corpus (49208 sen-
+tences, 1M tokens). We use 45 tag clusters, the
+number of POS tags that appear in WSJ cor-
+pus. We train the discrete HMM and the Gaus-
+sian HMM (Lin et al., 2015) as baselines. For the
+Gaussian HMM, mean vectors of Gaussian emis-
+sions are initialized with the empirical mean of all
+word vectors with an additive noise. We assume
+diagonal covariance matrix for p(ei|zi) and initial-
+ize it with the empirical variance of the word vec-
+tors. Following Lin et al. (2015), the covariance
+matrix is fixed during training. The multinomial
+probabilities are initialized as θkv ∝ exp(ukv),
+where ukv ∼ U [0, 1]. For our approach, we
+initialize the syntax model and Gaussian param-
+eters with the pre-trained Gaussian HMM. The
+weights of layers in the rectified network are ini-
+tialized from a uniform distribution with mean
+zero and a standard deviation of √1/nin, where
+nin is the input dimension.4 We evaluate the per-
+formance of POS tagging with both Many-to-One
+(M-1) accuracy (Johnson, 2007) and V-Measure
+(VM) (Rosenberg and Hirschberg, 2007). Given
+a model we found that the tagging performance is
+well-correlated with the training data likelihood,
+thus we use training data likelihood as a unsuper-
+vised criterion to select the trained model over 10
+random restarts after training 50 epochs. We re-
+peat this process 5 times and report the mean and
+--- from chunk 421
+Ours (4 layers) 58.4 (1.9) 46.2 (2.3)
+Ours (8 layers) 60.2 (1.3) 47.9 (1.2)
+Ours (16 layers) 54.1 (8.5) 43.9 (5.7)
+w/ gold POS tags (for reference only)
+DMV (Klein and Manning, 2004) 55.1 39.7
+UR-A E-DMV (Tu and Honavar, 2012) 71.4 57.0
+MaxEnc (Le and Zuidema, 2015) 73.2 65.8
+Neural E-DMV (Jiang et al., 2016) 72.5 57.6
+CRFAE (Cai et al., 2017) 71.7 55.7
+L-NDMV (Big training data) (Han et al., 2017) 77.2 63.2
+Table 2: Directed dependency accuracy on section 23 of
+WSJ, evaluating on sentences of length 6 10 and all lengths.
+Starred entries (∗) denote that the system benefits from ad-
+ditional punctuation-based constraints. Standard deviation is
+given in parentheses when available.
+parameters are initialized in the same way as in
+the POS tagging experiment. The directed depen-
+dency accuracy (DDA) is used for evaluation and
+we report accuracy on sentences of length 6 10
+and all lengths. We train the parser until training
+data likelihood converges, and report the mean and
+standard deviation over 20 random restarts.
+Comparison with other related work. Our
+model directly observes word embeddings and
+does not require gold POS tags during training.
+Thus, results from related work trained on gold
+tags are not directly comparable. However, to
+measure how these systems might perform with-
+out gold tags, we run three recent state-of-the-
+art systems in our experimental setting: UR-
+--- from chunk 427
+internal boundary information. DMV, UR-A E-
+DMV, Neural E-DMV, and CRFAE suffer a large
+decrease in performance when trained on unsu-
+pervised tags – an effect also seen in previous
+work (Spitkovsky et al., 2011a; Cohen et al.,
+2011). Since our approach induces latent POS
+tags jointly with dependency trees, it may be able
+to learn POS clusters that are more amenable to
+grammar induction than the unsupervised tags.
+We observe that CRFAE underperforms its gold-
+tag counterpart substantially. This may largely be
+a result of the model’s reliance on prior linguistic
+rules that become unavailable when gold POS tag
+types are unknown. Many extensions to DMV can
+be considered orthogonal to our approach – they
+essentially focus on improving the syntax model.
+It is possible that incorporating these more sophis-
+ticated syntax models into our approach may lead
+to further improvements.
+4.5 Sensitivity Analysis
+Impact of Initialization. In the above experi-
+ments we initialize the structured syntax compo-
+nents with the pre-trained Gaussian or discrete
+baseline, which is shown as a useful technique
+to help train our deep models. We further study
+the results with fully random initialization. In the
+POS tagging experiment, we report the results in
+Table 3. While the performance with 4 layers is
+comparable to the pre-trained Gaussian initializa-
+
+######## 10. pdf/1701.05574/74b338d5352fe1a6fd592e38269a4c81fe79b866
+Q: What cognitive features are used?
+kind: free-form | labelled chunks: [56] | top5: [75,7,9,67,46]
+GOLD: [{"spans":[],"free":"Readability (RED),  Number of Words (LEN), Avg. Fixation Duration (FDUR), Avg. Fixation Count (FC), Avg. Saccade Length (SL), Regression Count (REG), Skip count (SKIP), Count of regressions from second half\nto first half of the sentence (RSF), Largest Regression Position (LREG),  Edge density of the saliency gaze\ngraph (ED),  Fixation Duration at Left/Source\n(F1H, F1S),  Fixation Duration at Right/Target\n(F2H, F2S),  Forward Saccade Word Count of\nSource (PSH, PSS),  Forward SaccadeWord Count of Destination\n(PSDH, PSDS), Regressive Saccade Word Count of\nSource (RSH, RSS),  Regressive Saccade Word Count of\nDestination (RSDH, RSDS)","yesno":null,"evidence":["FLOAT SELECTED: Table 2: The complete set of features used in our system."]}]
+LABELLED CHUNK TEXT:
+[56] regressive saccades between words i and j of an edge
+Eij
+Regressive Saccade Word Count of
+Destination (RSDH, RSDS)
+Real LWD and SWD of the SGG considering the total
+distance (word count) of regressive saccades between
+words i and j of an edge Eij
+Table 2: The complete set of features used in our system.
+tion characteristics. A saliency graph for a sen-
+tence S for a reader R, represented as G = (V, E),
+is a graph with vertices (V ) and edges (E) where
+each vertex v ∈ V corresponds to a word in
+CONTEXT (5 passages):
+--- from chunk 0
+Harnessing Cognitive Features for Sarcasm Detection
+Abhijit Mishra†, Diptesh Kanojia†,♣, Seema Nagar ?, Kuntal Dey?,
+Pushpak Bhattacharyya†
+†Indian Institute of Technology Bombay, India
+♣IITB-Monash Research Academy, India
+?IBM Research, India
+†{abhijitmishra, diptesh, pb}@cse.iitb.ac.in
+?{senagar3, kuntadey}@in.ibm.com
+Abstract
+In this paper, we propose a novel mecha-
+nism for enriching the feature vector, for
+the task of sarcasm detection, with cogni-
+tive features extracted from eye-movement
+--- from chunk 6
+of any other information, such a system may
+not be able to comprehend that prioritizing the
+air-conditioning facilities of the theater over the
+movie experience indicates a negative sentiment
+towards the movie. This gives an intuition to why,
+for sarcasm detection, it is necessary to go beyond
+textual analysis.
+We aim to address this problem by exploiting
+the psycholinguistic side of sarcasm detection, us-
+ing cognitive features extracted with the help of
+eye-tracking. A motivation to consider cogni-
+tive features comes from analyzing human eye-
+movement trajectories that supports the conjec-
+ture: Reading sarcastic texts induces distinctive
+eye movement patterns, compared to literal texts.
+The cognitive features, derived from human eye
+movement patterns observed during reading, in-
+clude two primary feature types:
+1. Eye movement characteristic features of
+readers while reading given text, comprising
+gaze-fixaions (i.e,longer stay of gaze on a vi-
+sual object), forward and backward saccades
+(i.e., quick jumping of gaze between two po-
+sitions of rest).
+arXiv:1701.05574v1 [cs.CL] 19 Jan 2017
+2. Features constructed using the statistical and
+deeper structural information contained in
+graph, created by treating words as vertices
+and saccades between a pair of words as
+edges.
+The cognitive features, along with textual fea-
+tures used in best available sarcasm detectors, are
+used to train binary classifiers against given sar-
+casm labels. Our experiments show significant im-
+provement in classification accuracy over the state
+of the art, by performing such augmentation.
+Feasibility of Our Approach
+Since our method requires gaze data from human
+readers to be available, the methods practicability
+becomes questionable. We present our views on
+this below.
+Availability of Mobile Eye-trackers
+Availability of inexpensive embedded eye-trackers
+on hand-held devices has come close to reality
+now. This opens avenues to get eye-tracking
+data from inexpensive mobile devices from a huge
+--- from chunk 45
+possibly arise from literal texts. We believe that a
+combination of linguistic features, readability of
+text and features derived from scanpaths would
+help discriminative machine learning models learn
+sarcasm better.
+5 Features for Sarcasm Detection
+We describe the features used for sarcasm detec-
+tion in Table 2. The features enlisted under lex-
+ical,implicit incongruity and explicit incongruity
+are borrowed from various literature (predomi-
+nantly from Joshi et al. (2015)). These features
+are essential to separate sarcasm from other forms
+semantic incongruity in text (for example ambi-
+guity arising from semantic ambiguity or from
+metaphors). Two additional textual features viz.
+readability and word count of the text are also
+taken under consideration. These features are used
+to reduce the effect of text hardness and text length
+on the eye-movement patterns.
+5.1 Simple Gaze Based Features
+Readers’ eye-movement behavior, characterized
+by fixations, forward saccades, skips and regres-
+sions, can be directly quantified by simple statis-
+tical aggregation (i.e., either computing features
+for individual participants and then averaging or
+performing a multi-instance based learning as ex-
+plained in section 6). Since these eye-movement
+attributes relate to the cognitive process in reading
+(Rayner and Sereno, 1994), we consider these as
+--- from chunk 66
+nik, 1995) with default hyper-paramaters
+• Multilayer Feed Forward Neural Network
+• Multi Instance Logistic Regression
+(MILR) (Xu and Frank, 2004)
+6.1 Results
+Table 3 shows the classification results consider-
+ing various feature combinations for different clas-
+sifiers and other systems. These are:
+• Unigram (with principal components of uni-
+gram feature vectors),
+• Sarcasm (the feature-set reported by Joshi et
+al. (2015) subsuming unigram features and
+features from other reported systems)
+• Gaze (the simple and complex cognitive fea-
+tures we introduce, along with readability
+and word count features), and
+• Gaze+Sarcasm (the complete set of features).
+70 80 90 100
+60
+65
+70
+75
+Training data %
+Avg. F-Score
+70 80 90 100
+0.2
+0.4
+Training data %
+Avg. Kappa
+(a) (b)
+Unigrams Gaze
+Sarcasm Sarcasm+Gaze
+Figure 3: Effect of training data size on classifica-
+tion in terms of (a) F-score and (b) Kappa statistics
+20 40 60 80 100
+RED
+*RDSH*
+*ED*
+*FC*
+*PSS*
+*RSH*
+*PSH*
++VE
+*F1S*
+*SKIP*
+*SL*
+*F1H*
+*RSS*
+IMP
+*F2S*
+UNI
+LEN
+*F2H*
+*LREG*
+*FDUR*
+*RDSH*
+*ED*
+*FC*
+*PSS*
+*RSH*
+*PSH*
+*F1S*
+*SKIP*
+*SL*
+*F1H*
+*RSS*
+*F2S*
+*F2H*
+*LREG*
+*FDUR*
+X: Avg. Merit (Chi-squared)
+--- from chunk 74
+in 95% confidence interval.
+6.2 Considering Reading Time as a Cognitive
+Feature along with Sarcasm Features
+One may argue that, considering simple measures
+of reading effort like “reading time” as cognitive
+feature instead of the expensive eye-tracking fea-
+tures for sarcasm detection may be a cost-effective
+solution. To examine this, we repeated our ex-
+periments with “reading time” considered as the
+only cognitive feature, augmented with the tex-
+tual features. The F-scores of all the classifiers
+turn out to be close to that of the classifiers con-
+sidering sarcasm feature alone and the difference
+in the improvement is not statistically significant
+(p > 0.05). One the other hand, F-scores with
+gaze features are superior to the F-scores when
+reading time is considered as a cognitive feature.
+6.3 How Effective are the Cognitive Features
+We examine the effectiveness of cognitive features
+on the classification accuracy by varying the input
+training data size. To examine this, we create a
+
+######## 11. pdf/1911.03059/f428618ca9c017e0c9c2a23515dab30a7660f65f
+Q: what ml based approaches were compared?
+kind: extractive span | labelled chunks: [3,4] | top5: [8,1,30,35,24]
+GOLD: [{"spans":["Multi-Layer Perceptron (MLP), Naive Bayes Classifier (NBC), Support Vector Machine (SVM), Gradient Boosting Classifier (GBC), Stochastic Gradient Descent (SGD), K Nearest Neighbour (K-NN) and Random Forest (RF)"],"free":"","yesno":null,"evidence":["In this research, we briefly discuss the steps of QA system and compare the performance of seven machine learning based classifiers (Multi-Layer Perceptron (MLP), Naive Bayes Classifier (NBC), Support Vector Machine (SVM), Gradient Boosting Classifier (GBC), Stochastic Gradient Descent (SGD), K Near"]},{"spans":["Multi-Layer Perceptron","Naive Bayes Classifier","Support Vector Machine","Gradient Boosting Classifier","Stochastic Gradient Descent","K Nearest Neighbour","Random Forest"],"free":"","yesno":null,"evidence":["In this research, we briefly discuss the steps of QA system and compare the performance of seven machine learning based classifiers (Multi-Layer Perceptron (MLP), Naive Bayes Classifier (NBC), Support Vector Machine (SVM), Gradient Boosting Classifier (GBC), Stochastic Gradient Descent (SGD), K Near"]}]
+LABELLED CHUNK TEXT:
+[3] Answering (QA) System is an integral part of our daily
+life because of the high amount of usage of Internet for
+information acquisition. In recent years, most of the research
+works related to QA are based on English language such as
+IBM Watson, Wolfram Alpha. Bengali speakers often fall in
+difficulty while communicating in English [5].
+In this research, we briefly discuss the steps of QA system
+and compare the performance of seven machine learning
+[4] based classifiers (Multi-Layer Perceptron (MLP), Naive Bayes
+Classifier (NBC), Support Vector Machine (SVM), Gradi-
+ent Boosting Classifier (GBC), Stochastic Gradient Descent
+(SGD), K Nearest Neighbour (K-NN) and Random Forest
+(RF)) in classifying Bengali questions to classes based on their
+anticipated answers. Bengali questions have flexible inquiring
+ways, so there are many difficulties associated with Bengali
+QC [14]. As there is no rich corpus of questions in Ben-
+CONTEXT (5 passages):
+--- from chunk 0
+A Comprehensive Comparison of Machine Learning
+Based Methods Used in Bengali Question
+Classification
+Afra Anika, Md. Hasibur Rahman, Salekul Islam, Abu Shafin Mohammad Mahdee Jameel and
+Chowdhury Rafeed Rahman
+Computer Science and Engineering(CSE)
+United International University(UIU)
+Dhaka, Bangladesh
+{aanika161034,mrahman161260}@bscse.uiu.ac.bd and {salekul,mahdee,rafeed}@cse.uiu.ac.bd
+Abstract—QA classification system maps questions asked by
+humans to an appropriate answer category. A sound question
+classification (QC) system model is the pre-requisite of a sound
+QA system. This work demonstrates phases of assembling a
+QA type classification model. We present a comprehensive
+comparison (performance and computational complexity) among
+some machine learning based approaches used in QC for Bengali
+language.
+Index Terms—Question Classification (QC), Question Answer
+(QA), Answer Category (AC), Machine Learning (ML), Natural
+Language Processing (NLP)
+I. INTRODUCTION
+Question classification (QC) deals with question analysis
+and question labeling based on the expected answer type. The
+goal of QC is to assign classes accurately to the questions
+based on expected answer. In modern system, there are two
+types of questions [14]. One is Factoid question which is
+about providing concise facts and another one is Complex
+question that has a presupposition which is complex. Question
+--- from chunk 7
+by F. A. Mohammed, K. Nasser, & H. M. Harb and Syntactic
+open domain Arabic QA system for factoid questions [7] by
+Fareed et al. QA systems have been built on different analysis
+methods such as morphological analysis [12], syntactical anal-
+ysis [29], semantic analysis [24] and expected answer Type
+analysis [4].
+B. Research Works Related to Question Classifications
+Researches on question classification, question taxonomies
+and QA system have been undertaken in recent years. There
+are two types of approaches for question classification ac-
+cording to Banerjee et al in [1] - by rules and by machine
+learning approach. Rule based approaches use some hard
+coded grammar rules to map the question to an appropriate
+answer type [21] [23]. Machine Learning based approaches
+have been used by Zhang et al and Md. Aminul Islam et al in
+[28] and [14]. Many classifiers have been used in machine
+learning for QC such as Support Vector Machine (SVM)
+[28] [19], Support Vector Machines and Maximum Entropy
+Model [13], Naive Bayes (NB), Kernel Naive Bayes (KNB),
+Decision Tree (DT) and Rule Induction (RI) [1]. In [14], they
+claimed to achieve average precision of 0.95562 for coarse
+class and 0.87646 for finer class using Stochastic Gradient
+Descent (SGD).
+arXiv:1911.03059v2 [cs.CL] 19 Nov 2019
+--- from chunk 23
+system. In the first setup, we eliminate the stop words from
+the text using another dataset containing only stop words. At
+second step, we work without eliminating the stop words from
+the text which gives better result than the first setup.
+B. Classification Algorithms
+1) Multi Layer Perceptron (MLP): MLP contains three
+layers - an input layer, an output layer and some hidden
+layers. Input layer receives the signal, the output layer gives
+a decision or prediction about the input and the computation
+of the MLP is conducted in the hidden layers. In our system,
+we use 100 layers. For weight optimization, we use Limited-
+memory BroydenFletcherGoldfarbShanno (LBFGS) optimiza-
+tion algorithm.
+2) Support Vector Machine (SVM): SVM gives an optimal
+hyper-plane and it maximizes the margin between classes. We
+use Radial Basis Function (RBF) kernel in our system to make
+decision boundary curve-shaped. For decision function shape,
+we use the original one-vs-one (ovo) decision function.
+3) Naive Bayesian Classifier (NBC): NBC is based on
+Bayes’ Theorem which gives probability of an event occur-
+rence based on some conditions related to that event. We use
+Multinomial Naive Bayes Classifier with smoothing parameter
+equals to 0.1. A zero probability cancels the effects of all the
+other probabilities.
+4) Stochastic Gradient Descent (SGD): Stochastic gradient
+descent optimizes an objective function with suitable smooth-
+--- from chunk 29
+extracting features. Figure 3 shows the average results of
+different classifiers in a bar chart with and without eliminating
+stop words from the questions.
+Overall, SGD has shown the best performance on
+our dataset as it introduces non-linearity and uses back-
+propagation for updating parameter weights using loss func-
+tion calculated on training set into classification. K-NN has
+shown the weakest performance overall, as this algorithm has
+a bad reputation of not working well in high dimensional data
+[20]. MLP and SVM have shown similar performance. MLP
+takes advantage of multiple hidden layers in order to take non-
+linearly separable samples in a linearly separable condition.
+SVM accomplishes this same feat by taking the samples to a
+higher dimensional hyperplane where the samples are linearly
+separable. Gradient Boosting Classifier (GBC) and Random
+Forest (RF) both utilize a set of decision trees and achieve
+similar results (RF performs slightly without eliminating stop
+words). Naive Bayesian Classifier (NBC) shows performance
+on per with GBC and RF algorithms. The overall better
+performance of all the algorithms when provided with stop
+words show the importance of stop words in Bengali QA
+classification.
+Figure 4 shows the predictions of some particular questions
+by each of the classifiers. The input is a full question and the
+output is the class of the question.
+D. Computational Complexity
+--- from chunk 34
+system development. Future work should aim at developing a
+richer corpus of Bengali questions which will help in getting
+better vector representation of words and thus will facilitate
+deep learning based automatic feature extraction.
+REFERENCES
+[1] Somnath Banerjee and Sivaji Bandyopadhyay. Bengali question clas-
+sification: Towards developing qa system. In Proceedings of the 3rd
+Workshop on South and Southeast Asian Natural Language Processing,
+pages 25–40, 2012.
+[2] Somnath Banerjee and Sivaji Bandyopadhyay. An empirical study
+of combing multiple models in bengali question classification. In
+Proceedings of the Sixth International Joint Conference on Natural
+Language Processing, pages 892–896, 2013.
+[3] Somnath Banerjee and Sivaji Bandyopadhyay. Ensemble approach for
+fine-grained question classification in bengali. In 27th Pacific Asia
+Conference on Language, Information, and Computation, pages 75–84,
+2013.
+2013.
+[4] Farah Benamara. Cooperative question answering in restricted domains:
+the webcoop experiment. In Proceedings of the Conference on Question
+Answering in Restricted Domains, pages 31–38, 2004.
+[5] Sanchita Bhattacharya. A study on the factors affecting esl learners
+english speaking skills. Nation, page 7, 2001.
+[6] Ethnologue. List of 200 most spoken languages, 2018 (accessed October
+3, 2018).
+[7] Noha S Fareed. Syntactic open domain arabic question/answering
+
+######## 12. pdf/1812.10479/b634ff1607ce5756655e61b9a6f18bc736f84c83
+Q: Which stock market sector achieved the best performance?
+kind: free-form | labelled chunks: [211] | top5: [35,154,155,42,200]
+GOLD: [{"spans":[],"free":"Energy with accuracy of 0.538","yesno":null,"evidence":["FLOAT SELECTED: Table 8: Sector-level performance comparison."]},{"spans":[],"free":"Energy","yesno":null,"evidence":["FLOAT SELECTED: Table 7: Our volatility model performance compared with GARCH(1,1). Best performance in bold. Our model has superior performance across the three evaluation metrics and taking into consideration the state-of-the-art volatility proxies, namely Garman-Klass (σ̂PK) and Parkinson (σ̂PK)."]}]
+LABELLED CHUNK TEXT:
+[211] σP K 0.410 2.09E-05 2.98E-03
+Table 7: Our volatility model performance compared with GARCH(1,1). Best
+performance in bold. Our model has superior performance across the three evaluation metrics
+and taking into consideration the state-of-the-art volatility proxies, namely Garman-Klass
+(̂ σP K ) and Parkinson (̂σP K ).
+39
+CONTEXT (5 passages):
+--- from chunk 0
+Multimodal deep learning for short-term stock volatility
+prediction
+Marcelo Sardelicha,∗, Suresh Manandhara
+aDepartment of Computer Science Deramore Lane, University of York, Heslington, York,
+YO10 5GH, UK
+Abstract
+Stock market volatility forecasting is a task relevant to assessing market risk.
+We investigate the interaction between news and prices for the one-day-ahead
+volatility prediction using state-of-the-art deep learning approaches. The pro-
+--- from chunk 34
+a mechanical way to aggregate the most relevant stocks in a given industry/-
+sector. An ETF is a fund that owns assets, e.g. stock shares or currencies, but,
+unlike mutual funds are traded in stock exchanges. These ETFs are extremely
+liquid and track different investment themes. We decided to use SPDR Setcor
+Funds constituents stocks in our work since the company is the largest provider
+of sector funds in the United States. We included in our analysis the top 5
+(five) sector ETFs by financial trading volume (as in Jan/2018). Among the
+most traded sectors we also filtered out the sectors that were similar to each
+other. For example, the Consumer Staples and Consumer Discretionary sectors
+are both part of the parent Consumer category. For each of the top 5 sectors
+we selected the top 10 holdings, which are deemed the most relevant stocks.
+Table 1, details our dataset sectors and its respective stocks.
+3.2. Stock specific data
+We assume that an individual stock news as the one that explicitly mention
+the stock name or any of its surface forms in the headline. As an illustration,
+in order to collect all news for the stock code PG, Procter & Gamble company
+name, we search all the headlines with any of these words: Procter&Gamble
+OR Procter and Gamble OR P&G. In this example, the first word is just the
+company name and the remaining words are the company surface forms.
+--- from chunk 41
+• Convert the news date and time to Eastern Daylight Time (EDT)7.
+• Categorize the news release time. We consider the following category set:
+{before market, during market , after market, holidays, weekends}.
+during market contains news between 9:30AM and 4:00PM. before market
+before 9:30AM and after market after 4:00PM.
+The time categories prevents any misalignment between text and stock price
+data8. Moreover, it prevents data leakage and, consequently, unrealistic pre-
+dictive model performance. In general, news released after 4:00PM EDT can
+drastically change market expectations and the returns calculated using close
+to close prices as in the GARCH(1,1) model (see Equation 1). Following [4],
+to deal with news misalignment, news issued after 4:00PM (after market) are
+grouped with the pre-market (before market) on the following trading day.
+Table 2 shows the distribution of news per sector for each time category.
+We can see a high concentration of news released before the market opens (55%
+on average). In contrast, using a corpus compiled from message boards, a large
+occurrence of news during market hours was found [4]. This behaviour indicating
+day traders’ activity. Our corpus comprise financial news agency headlines, a
+content more focused on corporate events (e.g. lawsuits, merges & acquisitions,
+research & development) and on economic news (see Table 3 for a sample of
+--- from chunk 153
+model (+ News BiLSTM (MP) + NRA), our Price only (unimodal) model and
+GARCH(1,1). The results clearly demonstrate the superiority of our model,
+being more accurate than GRACH for both volatility proxies. We note that
+evaluating the GARCH(1,1) model relying on standard MSE and MAE error
+metrics should be taken with a grain of salt. [36] provides the background theory
+and arguments supporting R2 as the metric of choice to evaluate the predictive
+power of a volatility model. In any case, the outperformance or our model with
+respect to GARCH(1,1) permeates all three metrics, name R2, M SE and M AE.
+6.4. Sector-level results
+Company sectors are expected to have different risk levels, in the sense that
+each sector is driven by different types of news and economic cycles. Moreover,
+by performing a sector-level analysis we were initially interested in understand-
+ing if the outperformance of our model with respect to GARCH(1,1) was the
+27
+result of a learning bias to a given sector or if, as turned out to be the case,
+the superior performance of our model spreads across a diversified portfolio of
+sectors.
+In order to evaluate the performance per sector, we first separate the con-
+stituents stocks for each sector in Table 1. Then, we calculate the same metrics
+discussed in the previous section for each sector individually.
+Table 8 reports our experimental results segregated by sector. We observe
+that the GRACH model accuracy, measured using the R2 score, has a high
+degree of variability among sectors. For example, the accuracy ranges from
+0.15 to 0.44 for the HealthCare and Energy sector, respectively. This high
+degree of variability is in agreement with previous results reported in [17], but
+in the context of long-term (quarterly) volatility predictions. Although the
+GARCH(1,1) accuracy is sector-dependent, without any exception, our model
+--- from chunk 199
+Financial Services Group (PNC)
+Table 1: Corpus sectors and respective constituent stocks. For each sector we selected
+the top 10 stock holdings (as in January 2018). Stock codes in parentheses.
+36
+Sector ETF before during after
+market market market
+Consumer Staples 54% 31% 15%
+Energy 44% 36% 20%
+Utilities 58% 31% 11%
+Healthcare 55% 28% 17%
+Financials 63% 24% 13%
+total 84,556 40,996 21231
+Table 2: Distribution of headlines per sector according to market hours.
+The majority of the 146,783 headlines are released before 9:30AM (before market).
+The category after market includes news released after 4:00PM EDT. We count the
+categories holiday and weekend as before market since they impact the following
+working day.
+Date and time Headline
+2011-12-13 00:18:39 EDT Valero reports power outage at Port
+Arthur refinery
+2007-04-17 08:54:27 EDT Wells Fargo profit rises 11 pct on com-
+mercial loans
+2017-12-14 14:40:31 EDT Perrigo lines up bid for Merck’s con-
+sumer health unit
+2007-01-03 10:27:42 EDT UPDATE 1-Bear Stearns ups Merck to
+outperform
+2010-02-23 13:35:11 EDT Exxon Mobil says remains bullish on
+Nigeria
+
+######## 13. pdf/1705.04153/ef396a34436072cb3c40b0c9bc9179fee4a168ae
+Q: What tasks do they experiment with?
+kind: extractive span | labelled chunks: [11] | top5: [49,54,31,53,48]
+GOLD: [{"spans":["text classification and text semantic matching"],"free":"","yesno":null,"evidence":["We evaluate our models on two typical tasks: text classification and text semantic matching. The results show that our models are more expressive due to their learning to learn nature, yet without increasing the number of model's parameters. Moreover, we find certain composition operations can be le"]},{"spans":["text classification and text semantic matching"],"free":"","yesno":null,"evidence":["We evaluate our models on two typical tasks: text classification and text semantic matching. The results show that our models are more expressive due to their learning to learn nature, yet without increasing the number of model's parameters. Moreover, we find certain composition operations can be le"]}]
+LABELLED CHUNK TEXT:
+[11] and samples. The dynamic compositional network then ap-
+plies those context-specific parameters to the current input
+information. Both meta and dynamic networks are differen-
+tiable such that the overall networks can be trained in an end-
+to-end fashion. Additional, to reduce the complexity of the
+whole networks, we define the dynamic weight matrix in a
+manner simulating low-rank matrix decomposition.
+We evaluate our models on two typical tasks: text classi-
+CONTEXT (4 passages):
+--- from chunk 0
+Dynamic Compositional Neural Networks over Tree Structure
+Pengfei Liu Xipeng Qiu∗ Xuanjing Huang
+Shanghai Key Laboratory of Intelligent Information Processing, Fudan University
+School of Computer Science, Fudan University
+825 Zhangheng Road, Shanghai, China
+{pfliu14,xpqiu,xjhuang}@fudan.edu.cn
+Abstract
+Tree-structured neural networks have proven to
+be effective in learning semantic representations
+by exploiting syntactic information. In spite of
+their success, most existing models suffer from
+--- from chunk 30
+a
+b
+1 1
+ˆ[ , ]h h3
+ˆh( )
+1
+a
+h( )
+2
+a
+h2 2
+ˆ[ , ]h h( )
+3
+a
+h( )
+1
+b
+h( )
+2
+b
+h( )
+3
+b
+hFigure 3: Illustration of DC-TreeNN Matching Network.
+As shown in Figure 3, given two sentences xa and xb, the
+representation of each sentence hR can be computed by one
+basic TreeNN.
+h(a)
+R = DC-TreeNN(xR, hl
+R, hr
+R, θa) (19)
+h(b)
+R = DC-TreeNN(xR, hl
+R, hr
+R, θb) (20)
+where R denotes the root node of a tree. θa and θb are gen-
+erated by a shared meta TreeNN. Then, the representation of
+each sentence will be fed into a multi-layer perceptron to ob-
+tain a unified representation for the final relationship classifi-
+cation.
+The sample-specific but shared meta TreeNN ensures that,
+on the one hand we can dynamically model the diversity of
+semantic compositionality, on the other hand we can capture
+the general rules across different samples.
+5 Experiment
+To make a comprehensive evaluation, we assess our model on
+five text classification tasks and a semantic matching task.
+5.1 Training and Hyperparameters
+Loss Function Given a sentence (or sentence pair) and its
+label, the output of a neural network is the probabilities of the
+different classes. The parameters of the network are trained to
+minimise the cross-entropy of the predicted and true label dis-
+tributions. To minimize the objective, we use stochastic gra-
+dient descent with the diagonal variant of AdaGrad [Duchi et
+al., 2011].
+Initialization and Hyperparameters The word embed-
+--- from chunk 47
+vector size leads to a better performance. For example,
+the performance on IE and QC datasets reaches the max-
+imum when the size of z equals 40, while for the other
+three datasets MR, SST and SUBJ, the model obtains the
+best performance with the value of 30, 30 and 20 respec-
+tively.
+Understanding the Neuron’s Behaviours As described in
+previous sections, we know the compositional function is
+changed cross child nodes over a tree, which is controlled
+by a latent vector z. To get an intuitive understanding of how
+the controlling vector z works, we design an experiment to
+examine the neuron’s behaviours of z on each node. More
+concretely, we refer to zjk as the activation of the k-neuron
+at node j, where j ∈ {1, . . . , N } and k ∈ {1, . . . , z}. Then
+we randomly sample some sentences on the development set
+from the datasets we used. By visualizing the latent vector
+zj and analyzing the maximum activation, we can find what
+kinds of patterns the current neuron focuses on.
+Table 5 illustrates multiple interpretable neurons and some
+representative words or phrases which can activate these neu-
+rons. We can observe that:
+• For some simple tasks such as text classification,
+meta network will integrate useful semantic information
+into the the generation process of compositional func-
+tion. These semantic bias before composition are task-
+specific.
+For example, the 21-st neuron is more sensitive to emo-
+tional terms, which can be understood as a sentinel,
+telling the basic neural network that an informative
+phrase is coming, more attention should be paid in the
+1With the same parameters, the RecNN obtain 74% accuracy in
+our implementation
+--- from chunk 52
+Type Neurons Examples Explanations
+Semantic Lexical 17-th fun, glad, terrific, wonderful, refreshing Words related to sentiment
+Phrasal 21-st pick holes, see red, in stitches, split hairs Phrases related to sentiment
+Syntactic
+Noun Phrase 45-th blond boy, pink shirt, green grass, black dog Containing modifiers related to color
+Verb Phrase 27-th waking up, take off, pulling up, driving down Phrases constructed by light-verb
+11-th slicing a potato, playing guitar, chopping butter Verb-object phrases
+Prep. Phrase 13-th on a track, in rocky area, on a stage, over water Phrases related to places
+Table 5: Multiple interpretable neurons and the words/phrases captured by these neurons. The last column gives the explanations
+of corresponding neuron’s behaviours.
+process of composition. Figure 5-(a) shows a visualiza-
+tion. We can see in this sentence, the neuron has real-
+ized that this idiomatic collocation “in stitches” is
+a key pattern, which is crucial for the final sentiment pre-
+diction.
+• For more complicated tasks such as semantic match-
+ing, a well-grounded understanding of the syntactic
+structure is crucial. In this context, we find that a
+meta network could capture some syntactic informa-
+tion. For example, the 27-th neuron monitors phrases
+constructed by light-verb. As shown in Figure 5-(b),
+the verb phrase “taking off” has been attended for
+forthcoming compositional operation, which is more
+useful for judging the semantic relation between the
+sentence pair “An airplane is taking off/A
+plane is landing”.
+6 Related Work
+One thread of related work is the exploration of different
+kinds of compositional function over tree structures. Socher
+et al. [2012] proposed the recursive neural network with stan-
+dard compositional function. After that, some extensions are
+introduced to enhance the expressive power of compositional
+
+######## 14. pdf/2001.02284/da55bd769721b878dd17f07f124a37a0a165db02
+Q: What kind of repetitive and time-consuming activities does their assistant handle?
+kind: extractive span | labelled chunks: [15,16,51] | top5: [3,87,2,0,1]
+GOLD: [{"spans":[],"free":"","yesno":null,"evidence":[]},{"spans":[" What kind of topic (or sub-topic) a student has a problem with","At which examination mode (i.e., quiz, chapter level training or exercise, section level training or exercise, or final examination) the student is working right now"," the exact question number and exact problem formulation"],"free":"","yesno":null,"evidence":["In general, student questions can be grouped into three main categories: organizational questions (e.g., course certificate), contextual questions (e.g., content, theorem) and mathematical questions (e.g., exercises, solutions). To assist a student with a mathematical question, a tutor has to know t"]}]
+LABELLED CHUNK TEXT:
+[15] sist a student with a mathematical question, a tutor has to
+know the following regular information: What kind of topic
+(or sub-topic) a student has a problem with. At which exam-
+ination mode (i.e., quiz, chapter level training or exercise,
+section level training or exercise, or final examination) the
+student is working right now. And finally, the exact question
+number and exact problem formulation. This means that a
+tutor has to request the same information every time a new
+[16] dialogue opens, which is very time consuming and could be
+successfully solved by means of an IPA dialogue bot.
+3 Model
+The main objective of the proposed system is to interact with
+students at the beginning of every conversation and gather
+information on the topic (and sub-topic), examination mode
+and level, question number and exact problem formulation.
+Therefore, the system saves time for tutors and allows them
+to handle solely complex mathematical questions. Besides
+[51] rameters such as the relevance threshold, prefix length7 and
+minimum should match8 parameter did not bring significant
+improvements. To cope with this problem, we implemented
+a verification step, where a user is given a chance to correct
+the erroneously retrieved information.
+The overall feedback from the tutors included reduced
+repetitive activities as well as reduced waiting times for stu-
+dents until their questions were processed. Also, tutors re-
+CONTEXT (2 passages):
+--- from chunk 0
+Multipurpose Intelligent Process Automation via Conversational Assistant
+Alena Moiseeva1, Dietrich Trautmann1, Michael Heimann2, Hinrich Sch ¨utze1
+1Center for Information and Language Processing (CIS), LMU Munich, Germany
+2integral learning GmbH, Berlin, Germany
+alena@cis.lmu.de; inquiries@cislmu.org
+Abstract
+Intelligent Process Automation (IPA) is an emerging tech-
+nology with a primary goal to assist the knowledge worker
+by taking care of repetitive, routine and low-cognitive tasks.
+Conversational agents that can interact with users in a natu-
+ral language are a potential application for IPA systems. Such
+intelligent agents can assist the user by answering specific
+questions and executing routine tasks that are ordinarily per-
+formed in a natural language (i.e., customer support).
+In this work, we tackle a challenge of implementing an IPA
+conversational assistant in a real-world industrial setting with
+a lack of structured training data. Our proposed system brings
+two significant benefits: First, it reduces repetitive and time-
+consuming activities and, therefore, allows workers to focus
+on more intelligent processes. Second, by interacting with
+users, it augments the resources with structured and to some
+extent labeled training data. We showcase the usage of the
+latter by re-implementing several components of our system
+with Transfer Learning (TL) methods.
+1 Introduction
+Robotic Process Automation (RPA) is a type of software
+bots that simulates hand-operated human activities like en-
+tering data into a system, registering into accounts, and ac-
+complishing straightforward but repetitive workflows (Mo-
+hanty and Vyas 2018). However, one of the drawbacks of
+RPA-bots is their susceptibility to changes in defined scenar-
+ios: being designed for a particular task, the RPA-bot is usu-
+ally not adaptable to other domains or even light modifica-
+tions in a workflow (Mohanty and Vyas 2018). This inabil-
+ity to readjust to shifting conditions gave rise to Intelligent
+Process Automation (IPA) systems. IPA-bots combine RPA
+with Artificial Intelligence (AI) and thus are able to execute
+more cognitively demanding tasks that require i.a. reason-
+ing and language understanding. Hence, IPA-bots advanced
+beyond automating shallow “click tasks” and can perform
+jobs more intelligently – by means of machine learning al-
+gorithms. Such IPA-systems undertake time-consuming and
+--- from chunk 86
+lished rule- and template-based approaches which are cur-
+rently utilized in an industrial setting.
+9 Conclusions
+In this work, we implemented a dialogue system for In-
+telligent Process Automation purposes that simultaneously
+solves two problems: First, it reduces repetitive and time-
+consuming activities and, therefore, allows workers of the e-
+learning platform to focus on solely mathematical and hence
+more cognitively demanding questions. Second, by interact-
+ing with users, it augments the resources with structured and
+labeled training data for further possible implementation of
+learnable dialogue components. The realization of such a
+system was connected with many challenges. Among oth-
+ers were missing structured data, ambiguous or erroneous
+user-generated text and the necessity to deal with already
+existing corporate tools and their design. The introduced
+model allowed us to accumulate structured and to some ex-
+tent labeled data without any special efforts from the hu-
+man (i.e., tutors) side (e.g., manual annotation of existing
+dialogues, change of the conversational structure). Once we
+collected structured dialogues, we were able to re-train spe-
+
+######## 15. pdf/1904.03288/2ddb51b03163d309434ee403fef42d6b9aecc458
+Q: what were the baselines?
+kind: free-form | labelled chunks: [35] | top5: [20,46,38,10,23]
+GOLD: [{"spans":[],"free":"","yesno":null,"evidence":[]},{"spans":[],"free":"LF-MMI Attention\nSeq2Seq \nRNN-T \nChar E2E LF-MMI \nPhone E2E LF-MMI \nCTC + Gram-CTC","yesno":null,"evidence":["We also evaluate the Jasper model's performance on a conversational English corpus. The Hub5 Year 2000 (Hub5'00) evaluation (LDC2002S09, LDC2005S13) is widely used in academia. It is divided into two subsets: Switchboard (SWB) and Callhome (CHM). The training data for both the acoustic and language ","FLOAT SELECTED: Table 7: Hub5’00, WER (%)"]}]
+LABELLED CHUNK TEXT:
+[35] wav2letter++ [27] ConvLM 7.5 4.1
+E2E LF-MMI [14] 3-gram - 4.1
+Jasper 10x3 - 16.1 13.3
+Jasper 10x3 4-gram 9.9 7.1
+Jasper 10x3 Transformer-XL 9.3 6.9
+It is divided into two subsets: Switchboard (SWB) and Call-
+home (CHM). The training data for both the acoustic and
+language models consisted of the 2000hr Fisher+Switchboard
+training data (LDC2004S13, LDC2005S13, LDC97S62).
+Jasper DR 10x5 was trained using SGD with momentum for
+50 epochs. We compare to other models trained using the same
+CONTEXT (5 passages):
+--- from chunk 0
+Jasper: An End-to-End Convolutional Neural Acoustic Model
+Jason Li1, Vitaly Lavrukhin1, Boris Ginsburg1, Ryan Leary1, Oleksii Kuchaiev1,
+Jonathan M. Cohen1, Huyen Nguyen1, Ravi Teja Gadde2
+1NVIDIA, Santa Clara, USA
+2New York University, New York, USA
+{jasoli,vlavrukhin,bginsburg,rleary,okuchaiev,jocohen,chipn}@nvidia.com,rtg267@nyu.edu
+Abstract
+In this paper we report state-of-the-art results on LibriSpeech
+among end-to-end speech recognition models without any ex-
+--- from chunk 9
+2. Jasper Architecture
+Jasper is a family of end-to-end ASR models that replace acous-
+tic and pronunciation models with a convolutional neural net-
+work. Jasper uses mel-filterbank features calculated from 20ms
+windows with a 10ms overlap, and outputs a probability dis-
+tribution over characters per frame2. Jasper has a block archi-
+tecture: a Jasper BxR model has B blocks, each with R sub-
+blocks. Each sub-block applies the following operations: a 1D-
+convolution, batch norm, ReLU, and dropout. All sub-blocks in
+a block have the same number of output channels.
+Each block input is connected directly into the last sub-
+block via a residual connection. The residual connection is
+first projected through a 1x1 convolution to account for differ-
+ent numbers of input and output channels, then through a batch
+norm layer. The output of this batch norm layer is added to the
+output of the batch norm layer in the last sub-block. The re-
+sult of this sum is passed through the activation function and
+dropout to produce the output of the current block.
+1We follow Hadian et. al’s definition of end-to-end [14]: “flat-
+start training of a single DNN in one stage without using any previ-
+ously trained models, forced alignments, or building state-tying deci-
+sion trees.”
+2We use 40 features for WSJ and 64 for LibriSpeech and F+S.
+arXiv:1904.03288v3 [eess.AS] 27 Aug 2019
+--- from chunk 19
+while masking before convolution gives a lower WER, using
+masks for both convolutions and batch norm results in worse
+performance.
+3 Jasper 5x3 models contain one block of each B1 to B5.
+As a final note, we found that training with weight norm
+was very unstable leading to exploding activations.
+Table 2: Normalization and Activation: Greedy WER, Lib-
+riSpeech after 50 epochs
+Model Normalization Activation Dev
+Clean Other
+Jasper 5x3
+Batch Norm
+ReLU 8.82 23.26
+cReLU 8.89 23.02
+lReLU 11.31 26.90
+GLU 9.46 24.30
+GAU 9.41 24.65
+Layer Norm
+ReLU 8.82 22.83
+cReLU 9.14 23.26
+lReLU 11.29 26.35
+(masked) GLU 12.62 29.22
+GAU 8.35 23.07
+Weight Norm
+ReLU 9.98 24.87
+cReLU 11.25 26.87
+lReLU 11.87 27.54
+GLU 11.05 27.10
+GAU 11.25 27.70
+Jasper 10x4
+Batch Norm ReLU 6.15 17.58
+Layer Norm ReLU 6.56 18.48
+(Masked) GAU 7.14 19.19
+Table 3: Sequence Masking: Greedy WER, LibriSpeech for
+Jasper 10x4 after 50 epochs
+Model Masking Dev
+Clean Other
+Jasper DR 10x4 None 5.88 17.62
+Jasper DR 10x4 BN Mask 5.92 17.63
+Jasper DR 10x4 Conv Mask 5.66 16.77
+Jasper DR 10x4 Conv+BN Mask 5.80 16.97
+2.2. Residual Connections
+For models deeper than Jasper 5x3, we observe consistently
+that residual connections are necessary for training to converge.
+In addition to the simple residual and dense residual model
+described above, we investigated DenseNet [16] and DenseR-
+Net [17] variants of Jasper. Both connect the outputs of each
+sub-block to the inputs of following sub-blocks within a block.
+DenseRNet, similar to Dense Residual, connects the output of
+each block to the input of all following blocks. DenseNet and
+DenseRNet combine residual connections using concatenation
+whereas Residual and Dense Residual use addition. We found
+that Dense Residual and DenseRNet perform similarly with
+each performing better on specific subsets of LibriSpeech. We
+decided to use Dense Residual for subsequent experiments. The
+main reason is that due to concatenation, the growth factor for
+DenseNet and DenseRNet requires tuning for deeper models
+whereas Dense Residual does not have a growth factor.
+2.3. Language Model
+A language model (LM) is a probability distribution over ar-
+bitrary symbol sequences P (w1, ..., wn) such that more likely
+sequences are assigned higher probabilities. LMs are frequently
+used to condition beam search. During decoding, candidates are
+evaluated using both acoustic scores and LM scores. Traditional
+N-gram LMs have been augmented with neural LMs in recent
+work [21, 22, 23].
+--- from chunk 37
+4. Conclusions
+We have presented a new family of neural architectures for end-
+to-end speech recognition. Inspired by wav2letter’s convolu-
+tional approach, we build a deep and scalable model, which
+requires a well-designed residual topology, effective regulariza-
+tion, and a strong optimizer. As our architecture studies demon-
+strated, a combination of standard components leads to SOTA
+results on LibriSpeech and competitive results on other bench-
+marks. Our Jasper architecture is highly efficient for training
+and inference, and serves as a good baseline approach on top of
+which to explore more sophisticated regularization, data aug-
+mentation, loss functions, language models, and optimization
+strategies. We are interested to see if our approach can continue
+to scale to deeper models and larger datasets.
+5. References
+[1] A. Waibel, T. Hanazawa, G. Hinton, K. Shirano, and K. Lang, “A
+time-delay neural network architecture for isolated word recogni-
+tion,” IEEE Trans. on Acoustics, Speech and Signal Processing,
+1989.
+[2] Y. Bengio, R. De Mori, G. Flammia, and R. Kompe, “Global opti-
+mization of a neural network-hidden markov model hybrid,” IEEE
+Transactions on Neural Networks, 3(2), 252259, 1992.
+[3] A. Graves and J. Schmidhuber, “Framewise phoneme classifica-
+--- from chunk 45
+optimization,” CoRR, vol. abs/1412.6980, 2014.
+[16] G. Huang, Z. Liu, L. van der Maaten, and K. Q. Weinberger,
+“Densely connected convolutional networks,” arXiv preprint
+arXiv:1608.06993, 2016.
+[17] J. Tang, Y. Song, L. Dai, and I. McLoughlin, “Acoustic modeling
+with densely connected residual network for multichannel speech
+recognition,” in Proc. Interspeech 2018, 2018, pp. 1783–1787.
+[18] J. L. Ba, J. R. Kiros, and G. E. Hinton, “Layer normalization,”
+CoRR, vol. abs/1607.06450, 2016.
+[19] A. van den Oord et al., “Conditional image generation
+with pixelcnn decoders,” in Advances in Neural Information
+Processing Systems 29, D. D. Lee, M. Sugiyama, U. V. Luxburg,
+I. Guyon, and R. Garnett, Eds. Curran Associates, Inc., 2016,
+pp. 4790–4798.
+[20] C. Laurent, G. Pereyra, P. Brakel, Y. Zhang, and Y. Bengio, “Batch
+normalized recurrent neural networks,” in 2016 IEEE Interna-
+tional Conference on Acoustics, Speech and Signal Processing
+(ICASSP), March 2016, pp. 2657–2661.
+[21] A. Zeyer, K. Irie, R. Schlter, and H. Ney, “Improved training
+of end-to-end attention models for speech recognition,” in Proc.
+Interspeech 2018, 2018, pp. 7–11.
+[22] D. Povey et al., “Semi-orthogonal low-rank matrix factorization
+for deep neural networks,” in Interspeech, 2018.
+[23] K. J. Han, A. Chandrashekaran, J. Kim, and I. R. Lane, “The
+CAPIO 2017 conversational speech recognition system,” CoRR,
+vol. abs/1801.00059, 2018.
+
+######## 16. pdf/1801.05147/2df4a045a9cd7b44874340b6fdf9308d3c55327a
+Q: What crowdsourcing platform is used?
+kind: free-form | labelled chunks: [54] | top5: [18,64,85,4,76]
+GOLD: [{"spans":[],"free":"","yesno":null,"evidence":[]},{"spans":[],"free":"They did not use any platform, instead they hired undergraduate students to do the annotation.","yesno":null,"evidence":["With the purpose of obtaining evaluation datasets from crowd annotators, we collect the sentences from two domains: Dialog and E-commerce domain. We hire undergraduate students to annotate the sentences. They are required to identify the predefined types of entities in the sentences. Together with t"]}]
+LABELLED CHUNK TEXT:
+[54] Experiments
+Data Sets
+With the purpose of obtaining evaluation datasets from
+crowd annotators, we collect the sentences from two do-
+mains: Dialog and E-commerce domain. We hire undergrad-
+uate students to annotate the sentences. They are required to
+identify the predefined types of entities in the sentences. To-
+gether with the guideline document, the annotators are edu-
+cated some tips in fifteen minutes and also provided with 20
+exemplifying sentences.
+CONTEXT (6 passages):
+--- from chunk 0
+Adversarial Learning for Chinese NER from Crowd Annotations∗
+Yaosheng Yang1, Meishan Zhang4, Wenliang Chen1
+Wei Zhang2, Haofen Wang3, Min Zhang1
+1School of Computer Science and Technology, Soochow University, China
+2Alibaba Group and 3Shenzhen Gowild Robotics Co. Ltd
+4School of Computer Science and Technology, Heilongjiang University, China
+1ysyang@stu.suda.edu.cn, {wlchen, minzhang}@suda.edu.cn
+4mason.zms@gmail.com, 2lantu.zw@alibaba-inc.com, 3wang haofen@gowild.cn
+Abstract
+--- from chunk 3
+scores than strong baseline systems.
+Introduction
+There has been significant progress on Named Entity Recog-
+nition (NER) in recent years using models based on machine
+learning algorithms (Zhao and Kit 2008; Collobert et al.
+2011; Lample et al. 2016). As with other Natural Language
+Processing (NLP) tasks, building NER systems typically re-
+quires a massive amount of labeled training data which are
+annotated by experts. In real applications, we often need to
+consider new types of entities in new domains where we do
+not have existing annotated data. For such new types of en-
+tities, however, it is very hard to find experts to annotate the
+data within short time limits and hiring experts is costly and
+non-scalable, both in terms of time and money.
+In order to quickly obtain new training data, we can use
+crowdsourcing as one alternative way at lower cost in a
+short time. But as an exchange, crowd annotations from non-
+experts may be of lower quality than those from experts. It
+is one biggest challenge to build a powerful NER system on
+such a low quality annotated data. Although we can obtain
+high quality annotations for each input sentence by majority
+voting, it can be a waste of human labors to achieve such
+a goal, especially for some ambiguous sentences which may
+require a number of annotations to reach an agreement. Thus
+∗The corresponding author is Wenliang Chen.
+--- from chunk 17
+2017; Gui et al. 2017), cross-lingual (Chen et al. 2016;
+Kim et al. 2017) and multi-task learning (Chen et al. 2017;
+Liu, Qiu, and Huang 2017). All these settings involve the
+feature divergences between the training and test examples,
+and aim to learn invariant features across the divergences by
+an additional adversarial discriminator, such as domain dis-
+criminator. Our work is similar to these work but is applies
+on crowdsourcing learning, aiming to find invariant features
+among different crowdsourcing workers.
+Crowdsourcing. Most NLP tasks require a massive amount
+of labeled training data which are annotated by experts.
+However, hiring experts is costly and non-scalable, both in
+terms of time and money. Instead, crowdsourcing is another
+solution to obtain labeled data at a lower cost but with rela-
+tive lower quality than those from experts. Snow et al. (2008)
+collected labeled results for several NLP tasks from Amazon
+Mechanical Turk and demonstrated that non-experts annota-
+tions were quite useful for training new systems. In recent
+years, a series of work have focused on how to use crowd-
+sourcing data efficiently in tasks such as classification (Felt
+et al. 2015; Bi et al. 2014), and compare quality of crowd
+and expert labels (Dumitrache, Aroyo, and Welty 2017).
+In sequence labeling tasks, Dredze, Talukdar, and Cram-
+mer (2009) viewed this task as a multi-label problem while
+--- from chunk 63
+200, and the best-epoch model is chosen according to the de-
+velopment performances. We use RMSprop (Tieleman and
+Hinton 2012) with a learning rate 10−3 to update model pa-
+rameters, and use l2-regularization by a parameter 10−5. We
+adopt the dropout technique to avoid overfitting by a drop
+value of 0.2.
+Comparison Systems
+The proposed approach (henceforward referred to as AL-
+Crowd) is compared with the following systems:
+• CRF: We use the Crfsuite2 tool to train a model on the
+crowdsourcing labeled data. As for the feature settings,
+we use the supervised version of Zhao and Kit (2008).
+• CRF-VT: We use the same settings of the CRF system,
+except that the training data is the voted version, whose
+groundtruths are produced by majority voting at the char-
+acter level for each annotated sentence.
+• CRF-MA: The CRF model proposed by Rodrigues,
+Pereira, and Ribeiro (2014), which uses a prior distributa-
+tion to model multiple crowdsourcing annotators. We use
+the source code provided by the authors.
+• LSTM-CRF: Our baseline system trained on the crowd-
+sourcing labeled data.
+• LSTM-CRF-VT: Our baseline system trained on the voted
+corpus, which is the same as CRF-VT.
+1https://code.google.com/archive/p/word2vec
+2http://www.chokkan.org/software/crfsuite/
+Model P R F1
+CRF 89.48 70.38 78.79
+CRF-VT 85.16 65.07 73.77
+CRF-MA 72.83 90.79 80.82
+LSTM-CRF 90.50 79.97 84.91
+LSTM-CRF-VT 88.68 75.51 81.57
+LSTM-Crowd 86.40 83.43 84.89
+ALCrowd 89.56 82.70 85.99
+--- from chunk 75
+ing worker independent features. Among all the systems,
+ALCrowd performs the best, and significantly better than
+all the other models (the p-value is below 10−5 by using
+t-test). The results indicate that with the help of adversarial
+training, our system can learn a better feature representation
+from crowd annotation.
+Discussion
+Impact of Character Embeddings. First, we investigate the
+effect of the pretrained character embeddings in our pro-
+posed crowdsourcing learning model. The comparison re-
+sults are shown in Figure 2, where Random refers to the
+random initialized character embeddings, and Pretrained
+refers to the embeddings pretrained on the unlabeled data.
+According to the results, we find that our model with the
+pretrained embeddings significantly outperforms that using   
+   
+   
+   
+   
+   
+   
+
+
+  
+  
+
+  
+    
+Figure 3: Case studies of different systems, where named
+entities are illustrated by square brackets.
+the random embeddings, demonstrating that the pretrained
+embeddings successfully provide useful information.
+Case Studies. Second, we present several case studies in or-
+der to study the differences between our baseline and the
+worker adversarial models. We conduct a closed test on the
+--- from chunk 84
+processing (almost) from scratch. The Journal of Machine
+Learning Research 12:2493–2537.
+[2015] Denton, E. L.; Chintala, S.; Fergus, R.; et al. 2015.
+Deep generative image models using a laplacian pyramid of
+adversarial networks. In NIPS, 1486–1494.
+[2009] Dredze, M.; Talukdar, P. P.; and Crammer, K. 2009.
+Sequence learning from data with multiple labels. In Work-
+shop Co-Chairs, 39.
+[2017] Dumitrache, A.; Aroyo, L.; and Welty, C. 2017.
+Crowdsourcing ground truth for medical relation extraction.
+arXiv preprint arXiv:1701.02185.
+[2015] Dyer, C.; Ballesteros, M.; Ling, W.; Matthews, A.;
+and Smith, N. A. 2015. Transition-based dependency pars-
+ing with stack long short-term memory. In ACL, 334–343.
+[2015] Felt, P.; Black, K.; Ringger, E. K.; Seppi, K. D.; and
+Haertel, R. 2015. Early gains matter: A case for prefer-
+ring generative over discriminative crowdsourcing models.
+In HLT-NAACL, 882–891.
+[2016] Ganin, Y.; Ustinova, E.; Ajakan, H.; Germain, P.;
+Larochelle, H.; Laviolette, F.; Marchand, M.; and Lempit-
+sky, V. 2016. Domain-adversarial training of neural net-
+works. Journal of Machine Learning Research 17(59):1–35.
+[2014] Goodfellow, I.; Pouget-Abadie, J.; Mirza, M.; Xu, B.;
+Warde-Farley, D.; Ozair, S.; Courville, A.; and Bengio, Y.
+2014. Generative adversarial nets. In NIPS, 2672–2680.
+[2005] Graves, A., and Schmidhuber, J. 2005. Framewise
+
+######## 17. pdf/1912.13337/85590bb26fed01a802241bc537d85ba5ef1c6dc2
+Q: How do they control for annotation artificats?
+kind: extractive span | labelled chunks: [75,76,77,78,79,80,81] | top5: [29,63,141,70,65]
+GOLD: [{"spans":[" we use several of the MCQA baseline models first introduced in BIBREF0"],"free":"","yesno":null,"evidence":["Probing Methodology and Modeling ::: Task Definition and Modeling ::: Baselines and Sanity Checks.","When creating synthetic datasets, it is important to ensure that systematic biases, or annotation artifacts BIBREF41, are not introduced into the resulting probes and that the target datasets are sufficiently challenging (or good, in the sense of BIBREF42). To test for this, we use several of the MC"]},{"spans":["Choice-Only model, which is a variant of the well-known hypothesis-only baseline","Choice-to-choice model, tries to single out a given answer choice relative to other choices","Question-to-choice model, in contrast, uses the contextual representations for each question and individual choice and an attention model Att model to get a score"],"free":"","yesno":null,"evidence":["When creating synthetic datasets, it is important to ensure that systematic biases, or annotation artifacts BIBREF41, are not introduced into the resulting probes and that the target datasets are sufficiently challenging (or good, in the sense of BIBREF42). To test for this, we use several of the MC","Following the notation from BIBREF0, for any given sequence $s$ of tokens in $\\lbrace q^{(j)}, a_{1}^{(j)},...,a_{N}^{(j)}\\rbrace $ in $D$, an encoding of $s$ is given as $h_{s}^{(j)} = \\textbf {BiLSTM}(\\textsc {embed}(s)) \\in \\mathbb {R}^{|s| \\times 2h}$ (where $h$ is the dimension of the hidden st","With these contextual representations, different baseline models can be constructed. For example, a Choice-Only model, which is a variant of the well-known hypothesis-only baseline used in NLI BIBREF46, scores each choice $c_{i}$ in the following way:","for $\\textbf {W}^{T} \\in \\mathbb {R}^{2h}$ independently of the question and assigns a probability to each answer $p_{i}^{(j)} \\propto e^{\\alpha _{i}^{(j)}}$.","A slight variant of this model, the Choice-to-choice model, tries to single out a given answer choice relative to other choices by scoring all choice pairs $\\alpha _{i,i^{\\prime }}^{(j)} = \\textsc {Att}(r^{(j)}_{c_{i}},r^{(j)}_{c_{i^{\\prime }}}) \\in \\mathbb {R}$ using a learned attention mechanism A","A Question-to-choice model, in contrast, uses the contextual representations for each question and individual choice and an attention model Att model to get a score $\\alpha ^{(j)}_{q,i} = \\textsc {Att}(r^{(j)}_{q},r^{(j)}_{c_{i}}) \\in \\mathbb {R}$ as above. Here we also experiment with using ESIM BI"]}]
+LABELLED CHUNK TEXT:
+[75] large model from Liu et al. (2019b), which is
+a more robustly trained version of the original
+BERT model. Our system uses the implementa-
+tions provided in AllenNLP (Gardner et al., 2018)
+and Huggingface (Wolf et al., 2019).
+Baselines and Sanity Checks. When creating
+synthetic datasets, it is important to ensure that
+systematic biases, or annotation artifacts (Guru-
+rangan et al., 2018), are not introduced into the re-
+sulting probes and that the target datasets are suf-
+[76] ficiently challenging (or good, in the sense of He-
+witt and Liang (2019)). To test for this, we use
+several of the MCQA baseline models first intro-
+duced in Mihaylov et al. (2018), which take in-
+spiration from the LSTM-based models used in
+Conneau et al. (2017) for NLI and various partial-
+input baselines based on these models.
+Following Mihaylov et al. (2018)’s notation, for
+any sequence s of tokens in {q(j), a(j)
+1 , ..., a(j)
+N } ∈
+D, an encoding of s is given as the following:
+h(j)
+[77] h(j)
+s = BiLSTM(EMBED(s)) ∈ R|s|×2h,
+where h is the dimension of the hidden state in
+each directional network, and EMBED(·) assigns
+a token-level embeddings to each token in s7. A
+contextual representation for each s is then built
+by applying an element-wise max operation over
+hs as follows:
+r(j)
+s = max(h(j)
+s ) ∈ R2h
+With these contextual representations, different
+baseline models can be constructed. For exam-
+ple, a Choice-Only model, a variant of the well-
+[78] ple, a Choice-Only model, a variant of the well-
+known hypothesis-only baseline used in NLI (Po-
+liak et al., 2018b), scores each choice ci in the fol-
+lowing way: α(j)
+i = WT r(j)
+ci ∈ R for WT ∈ R2h
+independently of the question and assigns a prob-
+ability to each answer p(j)
+i ∝ eα(j)
+i .
+7As in Mihaylov et al. (2018), we experiment with us-
+ing both GloVe (Pennington et al., 2014) and ELMo (Peters
+et al., 2018) pre-trained embeddings for EMBED.
+A slight variant of this model, the Choice-to-
+[79] A slight variant of this model, the Choice-to-
+choice model, tries to single out a given answer
+choice relative to other choices by scoring all
+choice pairs α(j)
+i,i′ = ATT(r(j)
+ci , r(j)
+ci′ ) ∈ R using a
+learned attention mechanism ATT and finding the
+choice with the minimal similarity to other options
+(for full details, see their original paper). In using
+these partial-input baselines, which we train di-
+rectly on each target probe, we can check whether
+[80] rectly on each target probe, we can check whether
+systematic biases related to answer choices were
+introduced into the data creation process.
+A Question-to-choice model, in contrast, uses
+the contextual representations for each question
+and individual choice and an attention model ATT
+model to get a score α(j)
+q,i = ATT(r(j)
+q , r(j)
+ci ) ∈ R
+as above. Here we also experiment with using
+ESIM (Chen et al., 2017) to generate the con-
+textual representations for q, ci (which includes
+[81] textual representations for q, ci (which includes
+token-wise attention), as well as a VecSimilar-
+ity model that measures the average (cosine) vec-
+tor similarity between question and answer to-
+kens: α(j)
+q,i = SIM(EMBED(q(j)), EMBED(c(j)
+i )).
+These sets of baselines, which have been shown
+to be weak on other benchmark MCQA tasks, are
+primarily used not as competitive models but to
+check for artifacts between questions and answers
+that are not captured in the partial-input baselines.
+CONTEXT (5 passages):
+--- from chunk 0
+What Does My QA Model Know?
+Devising Controlled Probes using Expert Knowledge
+Kyle Richardson and Ashish Sabharwal
+Allen Institute for AI, Seattle, WA, USA
+{kyler,ashishs}@allenai.org
+Abstract
+Open-domain question answering (QA) in-
+volves many knowledge and reasoning chal-
+lenges, but are successful QA models actu-
+ally learning such knowledge when trained
+on benchmark QA tasks? We investigate
+this via several new diagnostic tasks probing
+whether multiple-choice QA models know
+--- from chunk 28
+The use of lexical resources such as WordNet
+to construct datasets has a long history, and has re-
+cently appeared in work on adversarial attacks (Jia
+and Liang, 2017) and general task construction
+(Pilehvar and Camacho-Collados, 2019). In the
+area of MCQA, there is related work on construct-
+ing questions from tuples (Jauhar et al., 2016; Tal-
+mor et al., 2019b), both of which involve standard
+crowd annotation to elicit question-answer pairs
+(see also Seyler et al. (2017); Reddy et al. (2017)).
+In contrast to this work, we focus on generating
+data in an entirely automatic and silver-standard
+fashion (i.e., in a way that potentially introduces a
+little noise), which obviates the need for expensive
+annotation and gives us the flexibility to construct
+much larger datasets that control a rich set of se-
+mantic aspects of the target questions. Following
+standard practices in MCQA dataset creation (e.g.,
+Khot et al., 2020), however, we perform crowd-
+sourcing to obtain conservative (in the sense of
+Nangia and Bowman (2019)) estimates of human
+performance on our main evaluation sets, to com-
+pare against model performance.
+While our probing methodology is amenable to
+any domain, we focus on probing open-domain
+--- from chunk 62
+3.1.3 Human Performance
+We report human scores on the individual test sets
+in WordNetQA (see bottom of Table 7). This is
+done in two ways.
+First, for our test sets generated for definitions
+and synonyms that cover a large set of discon-
+nected concepts in the WordNet graph and where
+it is infeasible to annotate individual instances of
+concepts, we estimate human performance by hav-
+ing crowd-workers on Amazon Mechanical Turk
+answer a random sample of 500 test questions.
+Scores are computed by taking the majority vote
+for each question among 5 annotators. This fol-
+lows exactly the evaluation protocol employed by
+Nangia and Bowman (2019) and is a conservative
+estimate in that crowd annotators received virtu-
+ally no training and no qualification exam before
+participating in the task.
+Second, for our hypernymy and hyponymy test
+sets, which cover a smaller number of densely-
+connected concepts, we annotated smaller gold-
+standard test sets that include a sample of around
+2,000 random questions that cover a large propor-
+tion of the concepts being probed and that have
+high human performance. To do this, we fol-
+low the annotation strategy described above, and
+greedily apply filtering to remove questions in-
+correctly answered by human annotators, which
+follows prior work on building evaluation sets
+for MCQA (Mihaylov et al., 2018; Talmor et al.,
+2019b; Khot et al., 2020).
+3.2 DictionaryQA
+The DictionaryQA dataset is created from the En-
+glish dictionary GCIDE built largely from the
+Webster’s Revised Unabridged Dictionary (Web-
+ster, 1913), which has previously been used in
+other NLP studies due to its large size and public
+availability (Hill et al., 2016). Each dictionary en-
+try consists of a word, its part-of-speech, its defini-
+tion, and an optional example sentence, as shown
+for an example in Table 5.
+GCIDE Dictionary Entries
+word: gift, pos: n., definition: Anything given; anything
+voluntarily transferred by one person to another without
+compensation; a present; entry example: None.
+--- from chunk 69
+words that represent a different word sense (e.g.,
+the alternative definitions of gift in Table 5), and
+randomly chosen definitions if needed to create a
+5-way multiple choice question. As above, we re-
+serve a maximum of 3k examples for training, and
+use the same amount for development.
+Our initial attempts at building this dataset
+via standard random splitting resulted in certain
+systematic biases, revealed by high performance
+of the choice-only model we used as a control.
+Among other factors, we found the use of defini-
+tions from entries without example sentences as
+distractors (see again Table 5) to have a surprising
+correlation with such biases. Filtering such dis-
+tractors helped improve the quality of this probe.
+For assessing human performance, we anno-
+tated a smaller gold-standard test set consisting of
+around 1,100 questions using the crowd-sourcing
+elicitation setup described in Section 3.1.
+4 Probing Methodology and Modeling
+Given the probes above, we now can start to an-
+swer the empirical questions posed at the begin-
+ning. Our main focus is on looking at transformer-
+based MCQA models trained on science bench-
+marks in Table 6. We start with our target MCQA
+models, as well as several control baselines.
+4.1 Task Definition and Modeling
+Given a dataset D = {(q(d), {a(d)
+1 , ..., a(d)
+N })}|D|
+d
+--- from chunk 140
+Atticus Geiger, Ignacio Cases, Lauri Karttunen, and
+Chris Potts. 2019. Posing Fair Generalization Tasks
+for Natural Language Inference. In Proceedings of
+EMNLP.
+Atticus Geiger, Kyle Richardson, and Christopher
+Potts. 2020. Modular Representation Under-
+lies Systematic Generalization in Neural Natu-
+ral Language Inference Models. arXiv preprint
+arXiv:2004.14623.
+Max Glockner, Vered Shwartz, and Yoav Goldberg.
+2018. Breaking NLI Systems with Sentences that
+Require Simple Lexical Inferences. In Proceedings
+of ACL.
+Suchin Gururangan, Swabha Swayamdipta, Omer
+Levy, Roy Schwartz, Samuel Bowman, and Noah A
+Smith. 2018. Annotation Artifacts in Natural Lan-
+guage Inference Data. In Proceedings of NAACL.
+Catherine Havasi, Robert Speer, and Jason Alonso.
+2007. ConceptNet 3: a Flexible, Multilingual Se-
+mantic Network for Common Sense Knowledge. In
+Proceedings of Recent Advances in NLP.
+John Hewitt and Percy Liang. 2019. Designing and
+Interpreting Probes with Control Tasks. In Proceed-
+ings of EMNLP.
+Felix Hill, Kyunghyun Cho, Anna Korhonen, and
+Yoshua Bengio. 2016. Learning to Understand
+Phrases by Embedding the Dictionary. TACL, 4:17–
+30.
+Sujay Kumar Jauhar, Peter Turney, and Eduard Hovy.
+2016. Tables as Semi-Structured Knowledge for
+Question Answering. In Proceedings of ACL.
+Robin Jia and Percy Liang. 2017. Adversarial Ex-
+
+######## 18. pdf/1910.12574/8748e8f64af57560d124c7b518b853bf2711c13e
+Q: Do they report results only on English data?
+kind: yes/no | labelled chunks: [41,42,43,44,45] | top5: [67,23,70,56,35]
+GOLD: [{"spans":[],"free":"","yesno":null,"evidence":[]},{"spans":[],"free":"","yesno":true,"evidence":["We evaluate our method on two widely-studied datasets provided by Waseem and Hovey BIBREF5 and Davidson et al. BIBREF9. Waseem and Hovy BIBREF5 collected $16k$ of tweets based on an initial ad-hoc approach that searched common slurs and terms related to religious, sexual, gender, and ethnic minoriti"]}]
+LABELLED CHUNK TEXT:
+[41] applying softmax on the input, the classification operation is performed.
+4 Experiments and Results
+We first introduce datasets used in our study and then investigate the different
+fine-tuning strategies for hate speech detection task. We also include the details
+of our implementation and error analysis in the respective subsections.
+4.1 Dataset Description
+We evaluate our method on two widely-studied datasets provided by Waseem
+[42] and Hovey [22] and Davidson et al. [3]. Waseem and Hovy [22] collected 16k
+of tweets based on an initial ad-hoc approach that searched common slurs and
+terms related to religious, sexual, gender, and ethnic minorities. They annotated
+their dataset manually as racism, sexism, or neither. To extend this dataset,
+Waseem [20] also provided another dataset containing 6.9k of tweets annotated
+with both expert and crowdsourcing users as racism, sexism, neither, or both.
+[43] Since both datasets are overlapped partially and they used the same strategy
+[44] A BERT-based hate speech detection approach in social media 7
+in definition of hateful content, we merged these two datasets following Waseem
+et al. [23] to make our imbalance data a bit larger. Davidson et al. [3] used
+the Twitter API to accumulate 84.4 million tweets from 33,458 twitter users
+containing particular terms from a pre-defined lexicon of hate speech words and
+phrases, called Hatebased.org. To annotate collected tweets as Hate, Offensive,
+[45] or Neither, they randomly sampled 25k tweets and asked users of CrowdFlower
+crowdsourcing platform to label them. In detail, the distribution of different
+classes in both datasets will be provided in Subsection 4.3.
+4.2 Pre-Processing
+We find mentions of users, numbers, hashtags, URLs and common emoticons and
+replace them with the tokens <user>,<number>,<hashtag>,<url>,<emoticon>.
+We also find elongated words and convert them into short and standard format;
+CONTEXT (5 passages):
+--- from chunk 0
+A BERT-Based Transfer Learning Approach for
+Hate Speech Detection in Online Social Media
+Marzieh Mozafari1, Reza Farahbakhsh1, and No¨el Crespi1
+CNRS UMR5157, T´el´ecom SudParis, Institut Polytechnique de Paris, ´Evry, France
+{marzieh.mozafari, reza.farahbakhsh, noel.crespi}@telecom-sudparis.eu
+Abstract. Generated hateful and toxic content by a portion of users
+in social media is a rising phenomenon that motivated researchers to
+--- from chunk 22
+4 Marzieh Mozafari et al.
+word/character dependencies (order information). Waseem et al. [23] brought a
+new insight to hate speech and abusive language detection tasks by proposing
+a multi-task learning framework to deal with datasets across different annota-
+tion schemes, labels, or geographic and cultural influences from data sampling.
+Founta et al. [7] built a unified classification model that can efficiently han-
+dle different types of abusive language such as cyberbullying, hate, sarcasm,
+etc. using raw text and domain-specific metadata from Twitter. Furthermore,
+researchers have recently focused on the bias derived from the hate speech train-
+ing datasets [2,21,24]. Davidson et al. [2] showed that there were systematic and
+substantial racial biases in five benchmark Twitter datasets annotated for offen-
+sive language detection. Wiegand et al. [24] also found that classifiers trained
+on datasets containing more implicit abuse (tweets with some abusive words)
+are more affected by biases rather than once trained on datasets with a high
+proportion of explicit abuse samples (tweets containing sarcasm, jokes, etc.).
+Transfer Learning: Pre-trained vector representations of words, embeddings,
+extracted from vast amounts of text data have been encountered in almost every
+language-based tasks with promising results. Two of the most frequently used
+context-independent neural embeddings are word2vec and Glove extracted from
+--- from chunk 34
+eral information whereas the higher layers contain task-specific information [4],
+and we can fine-tune them with different learning rates. Here, four different fine-
+tuning approaches are implemented that exploit pre-trained BERTbase trans-
+former encoders for our classification task. More information about these trans-
+former encoders’ architectures are presented in [4]. In the fine-tuning phase, the
+model is initialized with the pre-trained parameters and then are fine-tuned us-
+ing the labelled datasets. Different fine-tuning approaches on the hate speech
+detection task are depicted in Figure 1, in which Xi is the vector representation
+of token i in a tweet sample, and are explained in more detail as follows:
+1. BERT based fine-tuning: In the first approach, which is shown in
+Figure 1a, very few changes are applied to the BERTbase. In this architecture,
+only the [CLS] token output provided by BERT is used. The [CLS] output, which
+is equivalent to the [CLS] token output of the 12th transformer encoder, a vector
+of size 768, is given as input to a fully connected network without hidden layer.
+The softmax activation function is applied to the hidden layer to classify.
+2. Insert nonlinear layers: Here, the first architecture is upgraded and an
+architecture with a more robust classifier is provided in which instead of using
+a fully connected network without hidden layer, a fully connected network with
+--- from chunk 55
+provides the best results as F1- score of 88% and 92% for datasets of Waseem and
+Davidson and it clearly exceeds the baselines. Intuitively, this makes sense that
+combining all pre-trained BERT layers with a CNN yields better results in which
+our model uses all the information included in different layers of pre-trained
+BERT during the fine-tuning phase. This information contains both syntactical
+and contextual features coming from lower layers to higher layers of BERT.
+Table 2: Results on the trial data using pre-trained BERT model with different fine-
+tuning strategies and comparison with results in the literature.
+Method Datasets Precision(%) Recall(%) F1-Score(%)
+Waseem and Hovy [22] Waseem 72.87 77.75 73.89
+Davidson et al. [3] Davidson 91 90 90
+Waseem et al. [23] Waseem - - 80
+Davidson - - 89
+BERTbase
+Waseem 81 81 81
+Davidson 91 91 91
+BERTbase + Nonlinear Layers Waseem 73 85 76
+Davidson 76 78 77
+BERTbase + LSTM Waseem 87 86 86
+Davidson 91 92 92
+BERTbase + CNN Waseem 89 87 88
+Davidson 92 92 92
+--- from chunk 66
+7 @user: Some black guy at my school asked if there were colored printers in the
+library. ”It’s 2014 man you can use any printer you want I said. Hate Neither
+8 RT @user: @user typical coon activity. Hate Neither
+9 @user: @user @user White people need those weapons to defend themselves
+from the subhuman trash your sort unleashes on us. Neither Hate
+10 RT @user: Finally! Warner Bros. making superhero films starring a woman,
+person of color and actor who identifies as ””queer””; Neither Offensive
+dictionary of keywords (Hatebase lexicon) to sample tweets for training, they in-
+cluded some biases in the collected data. Especially for Davidson-dataset, some
+tweets with specific language (written within the African American Vernacular
+English) and geographic restriction (United States of America) are oversam-
+pled such as tweets containing disparage words “nigga”, “faggot”, “coon”, or
+“queer”, result in high rates of misclassification. However, these misclassifica-
+tions do not confirm the low performance of our classifier because annotators
+tended to annotate many samples containing disrespectful words as hate or of-
+fensive without any presumption about the social context of tweeters such as
+the speakers identity or dialect, whereas they were just offensive or even neither
+tweets. Tweets IDs 6, 8, and 10 are some samples containing offensive words and
+slurs which arenot hate or offensive in all cases and writers of them used this
+type of language in their daily communications. Given these pieces of evidence,
+by considering the content of tweets, we can see in tweets IDs 3, 4, and 9 that
+our BERT-based classifier can discriminate tweets in which neither and implicit
+hatred content exist. One explanation of this observation may be the pre-trained
+general knowledge that exists in our model. Since the pre-trained BERT model
+is trained on general corpora, it has learned general knowledge from normal tex-
+tual data without any purposely hateful or offensive language. Therefore, despite
+the bias in the data, our model can differentiate hate and offensive samples ac-
+curately by leveraging knowledge-aware language understanding that it has and
+it can be the main reason for high misclassifications of hate samples as offensive
+(in reality they are more similar to offensive rather than hate by considering
+social context, geolocation, and dialect of tweeters).
+5 Conclusion
+5 Conclusion
+Conflating hatred content with offensive or harmless language causes online au-
+tomatic hate speech detection tools to flag user-generated content incorrectly.
+Not addressing this problem may bring about severe negative consequences for
+
+######## 19. pdf/1605.03481/b85fc420eb2f77f6f14f375cc1fcc5155eb5c0a8
+Q: Does the paper clearly establish that the challenges listed here exist in this dataset and task?
+kind: yes/no | labelled chunks: [7,8] | top5: [1,37,44,33,16]
+GOLD: [{"spans":[],"free":"","yesno":true,"evidence":["Encouraged by their findings, we extend their approach to a much larger unicode character set, and model long sequences of text as functions of their constituent characters (including white-space). We focus on social media posts from the website Twitter, which are an excellent testing ground for cha"]}]
+LABELLED CHUNK TEXT:
+[7] of their constituent characters (including white-
+space). We focus on social media posts from
+the website Twitter, which are an excellent test-
+ing ground for character based models due to the
+noisy nature of text. Heavy use of slang and
+abundant misspellings means that there are many
+orthographically and semantically similar tokens,
+and special characters such as emojis are also im-
+mensely popular and carry useful semantic infor-
+mation. In our moderately sized training dataset
+[8] mation. In our moderately sized training dataset
+of 2 million tweets, there were about 0.92 mil-
+lion unique word types. It would be expensive
+to capture all these phenomena in a word based
+model in terms of both the memory requirement
+(for the increased vocabulary) and the amount of
+training data required for effective learning. Ad-
+ditional benefits of the character based approach
+arXiv:1605.03481v2 [cs.LG] 17 May 2016
+CONTEXT (5 passages):
+--- from chunk 0
+Tweet2Vec: Character-Based Distributed
+Representations for Social Media
+Bhuwan Dhingra1, Zhong Zhou2, Dylan Fitzpatrick1,2
+Michael Muehl1 and William W. Cohen1
+1School of Computer Science, Carnegie Mellon University, Pittsburgh, PA, USA
+2Heinz College, Carnegie Mellon University, Pittsburgh, PA, USA
+{bdhingra,djfitzpa,mmuehl}@andrew.cmu.edu
+zhongzhou@cmu.edu wcohen@cs.cmu.edu
+Abstract
+Text from social media provides a set of
+challenges that can cause traditional NLP
+approaches to fail. Informal language,
+spelling errors, abbreviations, and special
+characters are all commonplace in these
+posts, leading to a prohibitively large vo-
+cabulary size for word-level approaches.
+We propose a character composition
+model, tweet2vec, which finds vector-
+space representations of whole tweets by
+learning complex, non-local dependencies
+in character sequences. The proposed
+model outperforms a word-level baseline
+at predicting user-annotated hashtags as-
+sociated with the posts, doing significantly
+better when the input contains many out-
+of-vocabulary words or unusual character
+sequences. Our tweet2vec encoder is pub-
+licly available1.
+1 Introduction
+We understand from Zipf’s Law that in any nat-
+ural language corpus a majority of the vocabu-
+lary word types will either be absent or occur in
+low frequency. Estimating the statistical proper-
+--- from chunk 15
+of-the-art approaches. While (Ling et al., 2015)
+generate word embeddings from character repre-
+sentations, we propose to generate vector repre-
+sentations of entire tweets from characters in our
+tweet2vec model.
+Our work adds to the growing body of work
+showing the applicability of character models for a
+variety of NLP tasks such as Named Entity Recog-
+nition (Santos and Guimarães, 2015), POS tag-
+ging (Santos and Zadrozny, 2014), text classifica-
+tion (Zhang et al., 2015) and language modeling
+(Karpathy et al., 2015; Kim et al., 2015).
+Previously, (Luong et al., 2013) dealt with
+the problem of estimating rare word representa-
+tions by building them from their constituent mor-
+phemes. While they show improved performance
+over word-based models, their approach requires
+a morpheme parser for preprocessing which may
+not perform well on noisy text like Twitter. Also
+the space of all morphemes, though smaller than
+the space of all words, is still large enough that
+modelling all morphemes is impractical.
+Hashtag prediction for social media has been
+addressed earlier, for example in (Weston et al.,
+2014; Godin et al., 2013). (Weston et al., 2014)
+also use a neural architecture, but compose text
+embeddings from a lookup table of words. They
+also show that the learned embeddings can gener-
+alize to an unrelated task of document recommen-
+--- from chunk 32
+epoch to the next. The models converge in about
+20 epochs. Code for training both the models is
+publicly available on github.
+4.4 Results
+We test the character and word-level variants by
+predicting hashtags for a held-out test set of posts.
+Since there may be more than one correct hashtag
+per post, we generate a ranked list of tags for each
+Model Precision
+@1
+Recall
+@10
+Mean
+Rank
+Full test set (50K)
+word 24.1% 42.8% 133
+tweet2vec 28.4% 48.5% 104
+Rare words test set (2K)
+word 20.4% 37.2% 167
+tweet2vec 32.9% 51.3% 104
+Frequent words test set (2K)
+word 20.9% 41.3% 133
+tweet2vec 23.9% 44.2% 112
+Table 3: Hashtag prediction results. Best numbers
+for each test set are in bold.
+post from the output posteriors, and report aver-
+age precision@1, recall@10 and mean rank of the
+correct hashtags. These are listed in Table 3.
+To see the performance of each model on posts
+containing rare words (RW) and frequent words
+(FW) we selected two test sets each containing
+2,000 posts. We populated these sets with posts
+which had the maximum and minimum number
+of out-of-vocabulary words respectively, where
+vocabulary is defined by the 20K most frequent
+words. Overall, tweet2vec outperforms the word
+model, doing significantly better on RW test set
+and comparably on FW set. This improved perfor-
+mance comes at the cost of increased training time
+--- from chunk 36
+(a) Full Test Set (b) Rare Words Test Set (c) Frequent Words Test Set
+Figure 2: Precision @1 v Number of model parameters for word model and tweet2vec.
+Dataset # Hashtags word tweet2vec
+small 933 28.0% 33.1%
+medium 2039 24.1% 28.4%
+large 5114 20.1% 24.6%
+Table 4: Precision @1 as training data size and
+number of output labels is increased. Note that the
+test set is different for each setting.
+set described above. There is not much variation in
+the performance, and moreover tweet2vec always
+outperforms the word based model for the same
+number of parameters.
+Table 4 compares the models as complexity of
+the task is increased. We created 3 datasets (small,
+medium and large) with an increasing number of
+hashtags to be predicted. This was done by vary-
+ing the lower threshold of the minimum number
+of tags per post for it to be included in the dataset.
+Once again we observe that tweet2vec outperforms
+its word-based counterpart for each of the three
+settings.
+Finally, table 1 shows some predictions from
+the word level model and tweet2vec. We selected
+these to highlight some strengths of the character
+based approach - it is robust to word segmenta-
+tion errors and spelling mistakes, effectively inter-
+prets emojis and other special characters to make
+predictions, and also performs comparably to the
+word-based approach for in-vocabulary tokens.
+--- from chunk 43
+Wesley De Neve, Benjamin Schrauwen, and Rik
+Van de Walle. 2013. Using topic models for twit-
+ter hashtag recommendation. In Proceedings of the
+22nd international conference on World Wide Web
+companion, pages 593–596. International World
+Wide Web Conferences Steering Committee.
+[Grbovic et al.2015] Mihajlo Grbovic, Nemanja Djuric,
+Vladan Radosavljevic, Fabrizio Silvestri, and
+Narayan Bhamidipati. 2015. Context-and content-
+aware embeddings for query rewriting in sponsored
+search. In Proceedings of the 38th International
+ACM SIGIR Conference on Research and Devel-
+opment in Information Retrieval, pages 383–392.
+ACM.
+[Hochreiter and Schmidhuber1997] Sepp Hochreiter
+and Jürgen Schmidhuber. 1997. Long short-term
+memory. Neural computation, 9(8):1735–1780.
+[Karpathy et al.2015] Andrej Karpathy, Justin Johnson,
+and Fei-Fei Li. 2015. Visualizing and un-
+derstanding recurrent networks. arXiv preprint
+arXiv:1506.02078.
+[Kim et al.2015] Yoon Kim, Yacine Jernite, David Son-
+tag, and Alexander M Rush. 2015. Character-
+aware neural language models. arXiv preprint
+arXiv:1508.06615.
+[Kiros et al.2015] Ryan Kiros, Yukun Zhu, Ruslan
+Salakhutdinov, Richard S Zemel, Antonio Torralba,
+
+######## 20. pdf/1601.02403/d6401cece55a14d2a35ba797a0878dfe2deabedc
+Q: What challenges do different registers and domains pose to this task?
+kind: extractive span | labelled chunks: [102,103] | top5: [98,260,26,300,352]
+GOLD: [{"spans":["linguistic variability"],"free":"","yesno":null,"evidence":["As a main field of interest in the current study, we chose controversies in education. One distinguishing feature of educational topics is their breadth of sub-topics and points of view, as they attract researchers, practitioners, parents, students, or policy-makers. We assume that this diversity le"]}]
+LABELLED CHUNK TEXT:
+[102] discussed in the survey in section 3.1 (e.g., domain restrictions, missing connection to
+argumentation theories, non-reported reliability or detailed schemes).
+4.1 Topics and registers
+As a main field of interest in the current study, we chose controversies in education. One
+distinguishing feature of educational topics is their breadth of sub-topics and points of
+view, as they attract researchers, practitioners, parents, students, or policy-makers. We
+[103] assume that this diversity leads to the linguistic variability of the education topics and
+thus represents a challenge for NLP. In a cooperation with researchers from the German
+137
+CONTEXT (6 passages):
+--- from chunk 0
+Argumentation Mining in User-Generated
+Web Discourse
+Ivan Habernal∗
+German Institute for Educational
+Research
+and
+Technische Universität Darmstadt
+Iryna Gurevych∗∗
+Technische Universität Darmstadt
+and
+German Institute for Educational
+Research
+The goal of argumentation mining, an evolving research field in computational linguistics, is to
+design methods capable of analyzing people’s argumentation. In this article, we go beyond the
+--- from chunk 25
+Computational Linguistics Volume 43, Number 1
+r Can we adapt models from argumentation theories, that have been usually
+lacking empirical evidence on large real-world corpora, for modeling
+argumentation in user-generated Web content?
+r What are the desired properties of the argumentation model and is there a
+trade-off between model complexity and annotation reliability?
+r What phenomena are typical of argumentation on the Web, how to
+approach their modeling, and what challenges do they pose?
+r What is the impact of different controversial topics and are there
+differences in argumentation between various registers?
+r What computational approaches can be used to analyze arguments on the
+Web?
+In this article, we push the boundaries of the argumentation mining field by focus-
+ing on several novel aspects. We tackle the above-mentioned research questions as well
+as the previously discussed challenges and issues. First, we target user-generated Web
+discourse from several domains across various registers, to examine how argumentation
+is communicated in different contexts. Second, we bridge the gap between argumen-
+tation theories and argumentation mining through selecting the argumenation model
+based on research into argumentation theories and related fields in communication
+studies or psychology. In particular, we adapt normative models from argumentation
+theory to perform empirical research in NLP and support our application of argumen-
+--- from chunk 97
+of the phenomena. The annotation scheme is claimed to cover three dimensions of an
+utterance, namely speech act, topic, and response or reference to a previous utterance.
+They annotated 21 dialogs and reached Krippendorff’s α between 0.38 and 0.57.
+Summary of related work section. Given the broad landscape of various approaches to
+argument analysis and persuasion studies presented in this section, we would like to
+stress some novel aspects of the current article. First, we aim at adapting a model of
+argument based on research by argumentation scholars, both theoretical and empirical.
+We pose several pragmatical constraints, such as register independence (generaliza-
+tion over several registers). Second, our emphasis is put on reliable annotations and
+sufficient data size (about 90k tokens). Third, we deal with fairly unrestricted Web-
+based sources, so additional steps of distinguishing whether the texts are argumentative
+are required. Argumentation mining has been a rapidly evolving field with several
+major venues in 2015. We encourage readers to consult an upcoming survey article
+by Lippi and Torroni (2016) or the proceedings of the 2nd Argumentation Mining
+workshop (Cardie 2015) to keep up with recent developments. However, to the best
+of our knowledge, the main findings of this article have not yet been made obsolete by
+--- from chunk 259
+model and reached moderate inter-annotator agreement in the logos dimension (Krip-
+pendorff’s αU 0.48). These results make the annotated corpora suitable for training and
+evaluation computational models and each of these two annotation studies will have
+their experimental counterparts in the following section.
+5. Experiments
+This section presents experiments conducted on the annotated corpora introduced in
+section 4. We put the main focus on identifying argument components in the discourse.28
+To comply with the machine learning terminology, in this section we will use the term
+domain as an equivalent to a topic (remember that our dataset includes six different
+topics; see section 4.1).
+We evaluate three different scenarios. First, we report ten-fold cross validation over
+a random ordering of the entire data set. Second, we deal with in-domain ten-fold cross
+validation for each of the six domains. Third, in order to evaluate the domain portability
+of our approach, we train the system on five domains and test on the remaining one for
+all six domains (which we report as cross-domain validation).
+5.1 Identification of argument components
+In the following experiment, we focus on automatic identification of arguments in the
+discourse. Our approach is based on supervised and semi-supervised machine learning
+methods on the gold data Toulmin dataset introduced in section 4.4.
+--- from chunk 299
+many disagreements in the annotations, as discussed in section 4.4.8, and were hard to
+recognize for the humans too. Second, these four classes have very few instances in the
+corpus (about 3.4%, see Table 8), so the classifier suffers from the lack of training data.
+The results for the in-domain cross validation scenario are shown in Table 10. Similarly
+to the cross-validation scenario, the overall best results were achieved using the largest
+feature set (01234). For mainstreaming and red-shirting, the best results were achieved
+using only the feature set 4 (embeddings). These two domains contain also fewer docu-
+ments, compared to other domains (refer to Table 2). We suspect that embeddings-based
+features convey important information when not enough in-domain data are available.
+This observation will become apparent in the next experiment.
+The cross-domain experiments yield rather poor results for most of the feature
+combinations (Table 11). However, using only feature set 4 (embeddings), the system
+performance increases rapidly, so it is even comparable to numbers achieved in the in-
+domain scenario. These results indicate that embedding features generalize well across
+domains in our task of argument component identification. We leave investigating
+better performing vector representations, such as paragraph vectors (Le and Mikolov
+2014), for future work.
+161
+--- from chunk 351
+Articles and blogs were also selected manually; we skimmed the texts quickly to
+check if they discuss the given topic in an argumentative manner. Since we wanted to
+ensure the reliability of the extracted texts in terms of proper paragraph formatting and
+boiler-content removal, we extracted the texts manually. For each document we also
+kept the paragraph formatting, as paragraphs play an important role in argumentative
+discourse (McGee 2014).
+The top ten source domains from the total number of 117 unique domains are listed
+in Table 1. Table 2 shows the document distribution with respect to the registers and
+topics.
+167
+Computational Linguistics Volume 43, Number 1
+Appendix B: Examples of annotated documents from the second annotation study
+Example 1
+An example of argument annotation with a re-stated claim and both dimensions (logos,
+pathos). With the first sentence (“Depriving your child of a basic education...”) the
+author appeals to emotions and uses figurative language (“child abuse,” “ruin whole
+life”). The argument is extracted under the original text. Phrases in italics summarize

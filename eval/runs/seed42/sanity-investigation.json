@@ -1,0 +1,32 @@
+{
+  "status": "sanity_stopped_ground_truth_mismatch",
+  "retrievalCasesRun": 40,
+  "exactCapturedRankingAndTextMatches": 32,
+  "triggerCaseId": "pdf/1911.02855/20e38438471266ce021817c6364f6a46d01564f2",
+  "observedAnyAnchorHitRate": 0.025,
+  "capturedTop5AnchorHits": 2,
+  "explanation": "The triggering case current top-five identities, order and text match captured production exactly. Diagnostic sourceEvidence includes generic dynamic-weighting mentions already in the original top five alongside the missing (1-p) mechanism. Counting any supporting anchor as a complete answer produces a false-positive hit. Other cases show ranking differences, so full production equivalence is not established. No further retrieval was run; no anchors were removed to force zero.",
+  "productionSourcesUnchanged": true,
+  "sameTop5IdentitySet": 39,
+  "orderOnlyDifferences": 7,
+  "differentTop5IdentitySet": 1,
+  "differenceExamples": [
+    {
+      "caseId": "pdf/1708.01464/4eaf9787f51cd7cdc45eb85cf223d752328c6ee4",
+      "captured": [
+        44,
+        37,
+        66,
+        0,
+        68
+      ],
+      "current": [
+        44,
+        37,
+        66,
+        0,
+        67
+      ]
+    }
+  ]
+}

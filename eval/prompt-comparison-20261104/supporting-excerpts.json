@@ -1,0 +1,113 @@
+[
+  {
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "question": "How were crowd workers instructed to identify important elements in large document collections?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 2,
+        "text": "lso much more efficient and scalable, as it does not require workers to read all documents in a cluster.\n# Task Design\n\nWe break down the task of importance annotation to the level of single propositions. The goal of our crowdsourcing scheme is to obtain a score for each proposition indicating its importance in a document cluster, such that a ranking according to the score would reveal what is most important and should be included in a summary. In contrast to other work, we do not show the documents to the workers at all, but provide only a description of the document cluster's topic along with the propositions\n. This ensures that tasks are small, simple and can be done quickly (see Figure FIGREF4 ).\nIn preliminary tests, we found that this design, despite the minimal context, works reasonably on our focused clusters on common educational topics. For inst"
+      },
+      {
+        "passageIndex": 2,
+        "text": "out reading the documents.\nWe distinguish two task variants:\nInstead of enforcing binary importance decisions, we use a 5-point Likert-scale to allow more fine-grained annotations. The obtained labels are translated into scores (5..1) and the average of all scores for a proposition is used as an estimate for its importance. This follows the idea that while single workers might find the task subjective, the consensus of multiple workers, represented in the average score, tends to be less subjective due to the \u201cwisdom of the crowd\u201d\n. We randomly group five propositions into a task."
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",
+    "question": "Is this hashtag prediction task an established task, or something new?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 3,
+        "text": "rphemes, though smaller than\nthe space of all words, is still large enough that\nmodelling all morphemes is impractical.\nHashtag prediction for social media has been\naddressed earlier, for example in (Weston et al.,\n2014; Godin et al., 2013). (Weston et al., 2014)\nalso use a neural architecture, but compose text\nembeddings from a lookup table of words. They\nalso show that the learned embeddings can gener-\nalize to an unrelated task of document recommen-\ndation, justifying the use of hashtags as supervi-\nsion for learning text representations.\n3 Tweet2Vec\nBi-GRU Encoder: Figure 1 shows our model\nfor encoding tweets. It uses a similar structure to\nthe C2W model in (Ling et al., 2015), with LSTM\nunits replaced with GRU units.\nThe input to the network is defined by an al-\nphabet of characters C (this may include the en-\ntire unicode character set). The inpu"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "question": "what challenges are identified?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 4,
+        "text": "text, which may be\nuseful in many situations where no other speech\ntechnology is available. Our analysis also points to\nseveral possible improvements. Poor cross-speaker\nmatches and low audio coverage prevent our sys-\ntem from achieving a high recall, suggesting the\nof use speech features that are effective in multi-\nspeaker settings (Kamper et al., 2015; Kamper\net al., 2016a) and speaker normalization (Zeghi-\ndour et al., 2016). Finally, Bansal et al. (2017)\nrecently showed that UTD can be improved using\nthe translations themselves as a source of informa-\ntion, which suggests joint learning as an attractive\narea for future work.\nOn the other hand, poor precision is most likely\ndue to the simplicity of our MT model, and de-\nsigning a model whose assumptions match our data"
+      },
+      {
+        "passageIndex": 4,
+        "text": "he\nof use speech features that are effective in multi-\nspeaker settings (Kamper et al., 2015; Kamper\net al., 2016a) and speaker normalization (Zeghi-\ndour et al., 2016). Finally, Bansal et al. (2017)\nrecently showed that UTD can be improved using\nthe translations themselves as a source of informa-\ntion, which suggests joint learning as an attractive\narea for future work.\nOn the other hand, poor precision is most likely\ndue to the simplicity of our MT model, and de-\nsigning a model whose assumptions match our data"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",
+    "question": "How are sentences selected from the summary graph?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 3,
+        "text": "So, to extract important information from the sen-\ntence. We try to find the entity being talked about\nin the sentence, we consider the most referred en-\ntity (one that occurs most frequently in the text),\nnow for the main verb associated with the entity in\nthe sentence, we find the verb closest to this entity\nin the AMR graph. We define the closest verb as\nthe one which lies first in the path from the entity\nto the root.\nWe start by finding the position of the most re-\nferred entity in the graph, then we find the closest\nverb to the entity. and finally select the subtree\nhanging from that verb as the summary AMR.\n4.3 Step 3: Summary Generation\nTo generate sentences from the extracted AMR\ngraphs we can use already available generators.\nWe use Neural AMR ( Konstas et al. (2017)) as it\nprovides state of the art results in sentence gener-\na"
+      },
+      {
+        "passageIndex": 3,
+        "text": "for the main verb associated with the entity in\nthe sentence, we find the verb closest to this entity\nin the AMR graph. We define the closest verb as\nthe one which lies first in the path from the entity\nto the root.\nWe start by finding the position of the most re-\nferred entity in the graph, then we find the closest\nverb to the entity. and finally select the subtree\nhanging from that verb as the summary AMR.\n4.3 Step 3: Summary Generation\nTo generate sentences from the extracted AMR\ngraphs we can use already available generators.\nWe use Neural AMR ( Konstas et al. (2017)) as it\nprovides state of the art results in sentence gener-\nation. We also use Flanigan et al. (2016) (JAMR-\nGenerator) in one of the experiments in the next\nsection. Generators significantly effect the results,\nwe will analyze the effectiveness of generator in\nthe ne"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "question": "how large is the vocabulary?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 5,
+        "text": ", we collect Amazon review keywords for 2,896\ne-books (publishers: Kiwi, Rowohlt, Fischer, and Droemer), which\nleads to 33,663 distinct review keywords and on average 30 keyword\nassignments per e-book.\n2.2 Tag Recommendation Approaches\nWe implement three types of tag recommendation approaches, i.e.,\n(i) popularity-based, (ii) similarity-based (i.e., using content infor-\nmation), and (iii) hybrid approaches. Due to the lack of personalized\ntags (i.e., we do not know which user has assigned a tag), we do not"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+    "question": "How do their models decide how much improtance to give to the output words?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 5,
+        "text": "t word makes to every\noutput word, forming a contribution matrix of size\nM \u00d7 N , where N is the output sentence length.\nGiven the contribution matrix, we can obtain the\nword importance of each input word to the entire\noutput sentence. To this end, for each input word,\nwe first aggregate its contribution values to all out-\nput words by the sum operation, and then normal-\nize all sums through the Softmax function. Fig-\nure 1 illustrates an example of the calculated word\nimportance and the contribution matrix, where an\nEnglish sentence is translated into a French sen-\ntence using the Transformer model. A negative"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+    "question": "What types of online harassment are studied?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 0,
+        "text": "guage inspired from social science work. They categorized\nthe sexist tweets into the categories of indirect harassment, information threat,\nsexual harassment and physical harassment. In the next year the same authors\nproposed [4] a more comprehensive categorization of online harassment in social\nmedia e.g. twitter into the following categories, indirect harassment, information\nthreat, sexual harassment, physical harassment and not sexist.\nFor the detection of hate speech in social media like twitter, many approaches\nhave been proposed. Jha and Mamidi [1] tested support vector machine, bi-\ndirectional RNN encoder-decoder and FastText on hostile and benevolent sexist\ntweets. They also used SentiWordNet and subjectivity lexicon on the extracted\nphrases to show the polarity of the tweets. Sharifirad et al. [5] trained, tested\nand "
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "question": "where did they obtain the annotated clinical notes from?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 3,
+        "text": "ECEMBER 25, 2019\n4 Experiments\n4.1 Data\nDespite the greater similarity between our task and the 2013 ShARe/CLEF Task 1, we use the clinical notes from\nthe CE task in 2010 i2b2/VA on account of 1) the data from 2010 i2b2/VA being easier to access and parse, 2) 2013\nShARe/CLEF containing disjoint entities and hence requiring more complicated tagging schemes. The synthesized user\nqueries are generated using the aforementioned dermatology glossary. Tagged sentences are extracted from the clinical\nnotes. Sentences with no clinical entity present are ignored. 22,489 tagged sentences are extracted from the clinical\nnotes. We will refer to these tagged sentences interchangeably as the i2b2 data. The sentences are shuffled and split\ninto train/dev/test set with a ratio of 7:2:1. The synthesized user queries are composed by randomly selecting sever"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+    "question": "What was the baseline model?",
+    "sharedByBothArms": true,
+    "excerpts": [
+      {
+        "passageIndex": 8,
+        "text": " we also have done experiments on\nList-type and Yes/No questions.\n5.1 Entailment improves Yes/No accuracy\nWe started by answering always YES (in batch 2 and 3) to get the baseline perfor-\nmance. For batch 4 we used entailment. Our algorithm was very simple: Given a\nquestion we iterate through the candidate sentences and try to find any candidate\nsentence is contradicting the question (with confidence over 50%), if so \u2019No\u2019 is\nreturned as answer, else \u2019Yes\u2019 is returned. In batch 4 this strategy produced better\n12\nthan the BioAsq baseline performance, and compared to our other systems, the use\nof entailment increased the performance by about 13% (macro F1 score). We used\n\u2019AllenNlp\u2019 [7] entailment library to find entailment of the candidate sentences with\nquestion.\n5.2 For List-type the URLs have negative impact\nOverall, we followed"
+      }
+    ]
+  }
+]

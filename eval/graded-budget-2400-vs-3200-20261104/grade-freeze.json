@@ -1,0 +1,11 @@
+{
+  "method": "AI reading; shuffled; arm labels and pairing hidden until these 80 judgments were saved",
+  "gradeSha256": "bf9003463cf38fe424bb12505c12af0779a6977692c36d017705d976dc586e20",
+  "counts": {
+    "adequate": 56,
+    "partial": 7,
+    "wrong": 4,
+    "refused": 13
+  },
+  "wrongRefusals": 8
+}

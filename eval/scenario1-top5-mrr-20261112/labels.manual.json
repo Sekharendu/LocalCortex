@@ -1,0 +1,11 @@
+{
+ "note": "Manual answer-location decisions for the 14 cases automatic matching could not locate. Chunk indices refer to the frozen dev chunk snapshot.",
+ "overrides": {
+  "pdf/1910.14537/5fda8539a97828e188ba26aad5cda1b9dd642bc8": {"group": "answerable", "relevantChunks": [62,65,66,67,68], "why": "Answer is in Table 5 / Table 6 values (chunks 65-68) and the results sentence (62)."},
+  "docx/1701.05574/74b338d5352fe1a6fd592e38269a4c81fe79b866": {"group": "answerable", "relevantChunks": [41,42], "why": "Table 2 is absent from the DOCX, but chunks 41-42 describe the readability/word-count and gaze features in text."},
+  "docx/1608.06757/c2b8ee872b99f698b3d2082d57f9408a91e1b4c1": {"group": "answer-missing-from-file", "relevantChunks": [], "why": "Answer list lives only in Table 2, which the supplied DOCX does not contain."},
+  "docx/1612.08205/cd2878c5a52542ddf080b20bec005d9a74f2d916": {"group": "answer-missing-from-file", "relevantChunks": [], "why": "Industry list lives only in Table 1/7, which the supplied DOCX does not contain."},
+  "docx/1703.07090/1bb7eb5c3d029d95d1abf9f2892c1ec7b6eef306": {"group": "answer-missing-from-file", "relevantChunks": [], "why": "CER values live only in Tables 2-4, which the supplied DOCX does not contain."}
+ },
+ "noEvidenceNoRule": "Yes/no references whose answer is No and that cite no evidence at all are grouped as 'no-answer-passage (No without evidence)': no chunk can contain that answer."
+}

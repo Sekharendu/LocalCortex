@@ -1,0 +1,17 @@
+{
+  "fullSuite": {
+    "passed": 199,
+    "skipped": 28,
+    "failed": 0,
+    "command": "node node_modules/vitest/vitest.mjs run",
+    "environment": "Live model/database probes disabled; localhost HTTP tests enabled"
+  },
+  "appTypecheck": "passed, tsc --noEmit",
+  "testTypecheck": "passed, tsc --noEmit -p tsconfig.test.json",
+  "diffCheck": "passed",
+  "profileSmokes": {
+    "new": "79 historical C prompts exactly matched; defaults3200/5000/15/512",
+    "legacy": "79 strict prompts exactly matched; defaults1200/4096/5/512"
+  },
+  "noPushOrDeployment": true
+}

@@ -1,0 +1,124 @@
+{
+  "format": "docx",
+  "collection": "eval-qasper-full2-20261028-primary-r3-docx",
+  "cases": 114,
+  "allowedDocumentIds": [
+    "01fa4fe1-a205-42d3-9530-020a96f347c7",
+    "0dc08813-fb04-4192-91ac-0229b7a0c2df",
+    "0de3a548-43cd-4857-92c1-75e0b41da4cd",
+    "1107d7b6-592c-430b-b8e0-39dcb52dc1d3",
+    "21f1cd74-42c8-4918-921a-b92fa05e7122",
+    "2c47a43f-d771-4a39-a5b0-1eede56b4bc3",
+    "3805c120-45e0-44fd-95e2-a8b9abcee11f",
+    "41fbc381-4753-4922-9b49-e7162f6a491f",
+    "49555980-e481-4682-a9bc-846614225d99",
+    "59b845f6-0c0c-4079-8d0a-cca94f0f6ee6",
+    "5e9c8004-58c1-49aa-81d5-eb841f34b8d5",
+    "60987f92-7207-4a19-992b-6028a68251c3",
+    "6137bb08-91d9-4f48-bc29-3333fbe4f272",
+    "72a23f18-8f88-4348-b81d-2f5cf6d3c149",
+    "749c633b-cf05-4c4d-8cb9-3b3d20f1df6d",
+    "75142a53-bdb0-4508-b1cd-42ebdbe4db9c",
+    "7ad87be7-728b-497d-8dcc-c95cc3e84b92",
+    "81a6177c-d6bd-4184-a39f-59e4fb2d66f4",
+    "82a2457d-6afc-48b1-a20e-3eecafd22fcb",
+    "82acb473-8aa1-4dc0-ba73-24af245f904c",
+    "85b2b741-a0e3-48bb-93d1-2b73dfa7510d",
+    "86e19e9a-4ebd-4d26-bc40-d149bbc76858",
+    "8d771c95-66f6-4442-9bea-12a727b3acca",
+    "91cfee7a-b523-441d-af4e-632525dac8a3",
+    "ac3efb47-604c-4aaa-b354-3156318761f4",
+    "ac6ca744-2801-4dd3-9050-c2c69e5cf009",
+    "c4e88f68-f5b6-4dba-97f0-fe33c5ec9326",
+    "c6c56785-2f9e-4335-826a-6142ad8dc0a9",
+    "d8b80e7e-bd69-42e2-aaa6-ec5c16f49a58",
+    "e9455795-74e5-4610-a136-4aad42a283a8",
+    "ed49c51c-0667-4b52-8cb1-4e19baeed625",
+    "f4fd1070-0ed2-4bbc-a46b-db68fc5fb652",
+    "fe59eea4-15b4-4be5-bb98-db812bc29dfe"
+  ],
+  "hashes": [
+    {
+      "file": "src/config.ts",
+      "sha256": "8e307394fd0efc397ab12e5db42e0dcac4177267e91aa5110c05087541bc0e64"
+    },
+    {
+      "file": "src/rag.ts",
+      "sha256": "8576f129dafb6495e1294e7c60523769c966b0b02b2942a055c3cbbed1534244"
+    },
+    {
+      "file": "src/generation/llm.ts",
+      "sha256": "29a18e52b0f0ed46baa73b1994098db7f6ae95e7099de672396a7e648c13a30e"
+    },
+    {
+      "file": "src/generation/promptBuilder.ts",
+      "sha256": "fcbd3fe2133ec48343f3d8fba2986ae0affcef600f451a2b4499633af4778cc5"
+    },
+    {
+      "file": "src/generation/promptVariants.ts",
+      "sha256": "5cec2e527a8c08c57521349b2e5d1154cfe2920572311f3367d0807413c15f8a"
+    },
+    {
+      "file": "src/retrieval/retriever.ts",
+      "sha256": "6a178f0d8d758c1ae02b85a5bab3c8723410dcf1ec29d63f951ff865478cb160"
+    },
+    {
+      "file": "src/retrieval/context.ts",
+      "sha256": "a6cf67f11c8e56962203debb5250cbb25da8a2b986706456a6df1d79eff59aef"
+    },
+    {
+      "file": "src/retrieval/vectorStore.ts",
+      "sha256": "b66598d532a7c809318a4e178007325c146187257bd0076be24a4d6a98314c6f"
+    },
+    {
+      "file": "src/retrieval/embedder.ts",
+      "sha256": "3048d9b1b19c3fc638970908b2f3220faac25cc933fa6e089da315e8d74729c2"
+    },
+    {
+      "file": "src/retrieval/sparse.ts",
+      "sha256": "6e3d2c14ed6d20d7c5cbd53a749e25c8f7fefaa6fcc9deec756ca94593ea6639"
+    },
+    {
+      "file": "src/retrieval/sparseStats.ts",
+      "sha256": "07318b580ea88678bd45bc328b19052406d5085660fc74687aa44ecee13de71f"
+    },
+    {
+      "file": "src/retrieval/acronyms.ts",
+      "sha256": "1a077227543808ecbf5cb67e1aba0d803b7afc417cfb0e3d6ad811405044bf16"
+    },
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    },
+    {
+      "file": "eval/dev-set-preparation-20261103/inventory.jsonl",
+      "sha256": "f7d76d8923cbfbf8b7cf8cbd586ddd487fc78e4a843bfbf22def7f70890af988"
+    },
+    {
+      "file": "eval/dev-set-preparation-20261103/ready.jsonl",
+      "sha256": "3d2fe52144fa1312e6ccecc3ae0ab11dc93ae395e80364f1fec4ac80351ffadb"
+    },
+    {
+      "file": "eval/runs/seed42/dev-sources.jsonl",
+      "sha256": "a409da1ebd95a6e4a446b51e4b4b6b145f7c0c491825aa04d72a44d2273e0e31"
+    },
+    {
+      "file": "C:/Users/hp/.codex/visualizations/2026/10/29/01a1861e-e89a-7d02-8dd1-60d661cf470a/qasper-scoped-hybrid-r4/docx/sparse-stats.json",
+      "sha256": "4b4ff8b4abd36754ed0c089d7d20f0d208eb6b9c3107502498c389ae09174295"
+    }
+  ],
+  "query": "Original question, no title wrapper, no selected source-paper identity. All dev documents in this format collection compete.",
+  "settings": {
+    "mode": "hybrid",
+    "fusion": "rrf",
+    "threshold": 0.63,
+    "topK": 15,
+    "context": 3200,
+    "total": 5000,
+    "reranking": false
+  },
+  "extraK5": "Independent k=5 search for the 234 previously quote-scorable cases; not a slice of k=15.",
+  "generationCalls": 0,
+  "selection": "All 610 existing dev case units; PDF/DOCX remain separate existing collections.",
+  "caveat": "QASPER source paper is a scoring target only. Other-source answers can be valid; vague questions lack their original paper context."
+}

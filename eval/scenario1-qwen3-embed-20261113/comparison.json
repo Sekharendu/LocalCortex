@@ -1,0 +1,152 @@
+{
+ "All_dense_k5": {
+  "nomic": 85,
+  "qwen": 79,
+  "n": 139
+ },
+ "All_dense_k10": {
+  "nomic": 104,
+  "qwen": 99,
+  "n": 139
+ },
+ "All_dense_k15": {
+  "nomic": 115,
+  "qwen": 115,
+  "n": 139
+ },
+ "All_dense_k20": {
+  "nomic": 121,
+  "qwen": 124,
+  "n": 139
+ },
+ "All_dense_k50": {
+  "nomic": 136,
+  "qwen": 136,
+  "n": 139
+ },
+ "All_hybrid_k5": {
+  "nomic": 88,
+  "qwen": 80,
+  "n": 139
+ },
+ "All_hybrid_k10": {
+  "nomic": 102,
+  "qwen": 106,
+  "n": 139
+ },
+ "All_hybrid_k15": {
+  "nomic": 113,
+  "qwen": 115,
+  "n": 139
+ },
+ "All_hybrid_k20": {
+  "nomic": 119,
+  "qwen": 120,
+  "n": 139
+ },
+ "All_hybrid_k50": {
+  "nomic": 137,
+  "qwen": 137,
+  "n": 139
+ },
+ "DOCX_dense_k5": {
+  "nomic": 62,
+  "qwen": 57,
+  "n": 104
+ },
+ "DOCX_dense_k10": {
+  "nomic": 75,
+  "qwen": 72,
+  "n": 104
+ },
+ "DOCX_dense_k15": {
+  "nomic": 82,
+  "qwen": 85,
+  "n": 104
+ },
+ "DOCX_dense_k20": {
+  "nomic": 87,
+  "qwen": 91,
+  "n": 104
+ },
+ "DOCX_dense_k50": {
+  "nomic": 101,
+  "qwen": 101,
+  "n": 104
+ },
+ "DOCX_hybrid_k5": {
+  "nomic": 63,
+  "qwen": 56,
+  "n": 104
+ },
+ "DOCX_hybrid_k10": {
+  "nomic": 75,
+  "qwen": 77,
+  "n": 104
+ },
+ "DOCX_hybrid_k15": {
+  "nomic": 82,
+  "qwen": 83,
+  "n": 104
+ },
+ "DOCX_hybrid_k20": {
+  "nomic": 85,
+  "qwen": 88,
+  "n": 104
+ },
+ "DOCX_hybrid_k50": {
+  "nomic": 102,
+  "qwen": 102,
+  "n": 104
+ },
+ "PDF_dense_k5": {
+  "nomic": 23,
+  "qwen": 22,
+  "n": 35
+ },
+ "PDF_dense_k10": {
+  "nomic": 29,
+  "qwen": 27,
+  "n": 35
+ },
+ "PDF_dense_k15": {
+  "nomic": 33,
+  "qwen": 30,
+  "n": 35
+ },
+ "PDF_dense_k20": {
+  "nomic": 34,
+  "qwen": 33,
+  "n": 35
+ },
+ "PDF_dense_k50": {
+  "nomic": 35,
+  "qwen": 35,
+  "n": 35
+ },
+ "PDF_hybrid_k5": {
+  "nomic": 25,
+  "qwen": 24,
+  "n": 35
+ },
+ "PDF_hybrid_k10": {
+  "nomic": 27,
+  "qwen": 29,
+  "n": 35
+ },
+ "PDF_hybrid_k15": {
+  "nomic": 31,
+  "qwen": 32,
+  "n": 35
+ },
+ "PDF_hybrid_k20": {
+  "nomic": 34,
+  "qwen": 32,
+  "n": 35
+ },
+ "PDF_hybrid_k50": {
+  "nomic": 35,
+  "qwen": 35,
+  "n": 35
+ }
+}

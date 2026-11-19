@@ -1,0 +1,42 @@
+[
+  {
+    "status": "ready-long-quote-proxy",
+    "cases": 119,
+    "previouslyFailed": 66,
+    "previouslyAcceptable": 53,
+    "savedPools": [
+      {
+        "mode": "dense",
+        "cases": 114,
+        "allReferenceQuotesInFirst5": 60,
+        "allReferenceQuotesWithin50": 103
+      },
+      {
+        "mode": "hybrid",
+        "cases": 114,
+        "allReferenceQuotesInFirst5": 60,
+        "allReferenceQuotesWithin50": 105
+      }
+    ]
+  },
+  {
+    "status": "ready-short-quote-proxy",
+    "cases": 115,
+    "previouslyFailed": 71,
+    "previouslyAcceptable": 44,
+    "savedPools": [
+      {
+        "mode": "dense",
+        "cases": 109,
+        "allReferenceQuotesInFirst5": 51,
+        "allReferenceQuotesWithin50": 96
+      },
+      {
+        "mode": "hybrid",
+        "cases": 109,
+        "allReferenceQuotesInFirst5": 48,
+        "allReferenceQuotesWithin50": 96
+      }
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "status": "invalid_ground_truth_sanity_stopped",
+  "reason": "Recorded supporting anchors include facts already retrieved without the missing answer mechanism. Raw anchor hits are not verified answer recall. See sanity-investigation.json. No further retrieval is permitted in this run.",
+  "metric": "Raw diagnostic-anchor recovery only; not verified complete-answer recall. Recorded supporting anchors are not a certified answer-chunk gold set.",
+  "groupCounts": {
+    "chunk_omission": 236,
+    "scope_rejection": 19,
+    "acceptable": 204
+  },
+  "table": [
+    {
+      "group": "chunk_omission",
+      "devCases": 236,
+      "k5": "INVALID answer recall: 1/40 raw anchor hits; stopped",
+      "k10": "NOT RUN",
+      "k20": "NOT RUN",
+      "k50": "NOT RUN"
+    },
+    {
+      "group": "acceptable",
+      "devCases": 204,
+      "k5": "NOT RUN",
+      "k10": "NOT RUN",
+      "k20": "NOT RUN",
+      "k50": "NOT RUN"
+    },
+    {
+      "group": "scope_rejection",
+      "devCases": 19,
+      "k5": "NOT RUN",
+      "k10": "NOT RUN",
+      "k20": "NOT RUN",
+      "k50": "NOT RUN"
+    }
+  ]
+}

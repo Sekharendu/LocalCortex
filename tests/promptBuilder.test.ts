@@ -1,3 +1,4 @@
+import { C_REMINDER as ANSWER_REMINDER } from "../src/generation/promptVariants.js";
 import { describe, test, expect } from "vitest";
 import {
   buildPrompt,
@@ -5,7 +6,6 @@ import {
   HISTORY_MAX_MESSAGES,
   HISTORY_MAX_ASSISTANT_CHARS,
   NO_CONTEXT_INSTRUCTION,
-  ANSWER_REMINDER,
   type HistoryMessage,
 } from "../src/generation/promptBuilder.js";
 import type { RetrievedChunk } from "../src/retrieval/retriever.js";
@@ -24,7 +24,7 @@ const history: HistoryMessage[] = [
 describe("buildPrompt with history", () => {
   test("includes the conversation after the context, before the question", () => {
     const prompt = buildPrompt("And after five years?", [chunk], history);
-    const ctx = prompt.indexOf("Context:");
+    const ctx = prompt.indexOf("Context passages:");
     const conv = prompt.indexOf("Conversation so far");
     const q = prompt.indexOf("Question: And after five years?");
     expect(ctx).toBeGreaterThan(-1);

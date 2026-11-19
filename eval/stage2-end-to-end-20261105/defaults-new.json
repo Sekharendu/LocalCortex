@@ -1,0 +1,13 @@
+{
+  "profile": "new",
+  "settings": {
+    "topK": 15,
+    "numCtx": 5000,
+    "chunkedDocMaxTokens": 3200,
+    "promptVariant": "concise"
+  },
+  "maxOutputTokens": 512,
+  "historicalPromptsExactlyReproduced": 79,
+  "systemSha256": "0f81025cf4908acb3554539a931fe127a8fda44ef5bc56b3aa0afa72c5e10980",
+  "networkCalls": 0
+}

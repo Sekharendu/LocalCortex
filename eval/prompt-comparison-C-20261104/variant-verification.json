@@ -1,0 +1,9 @@
+{
+  "priorAandBPromptsAndSystemsExactlyReproduced": 158,
+  "currentContextPairsIdenticalToPrior": 79,
+  "CInstructionForbiddenMatches": 0,
+  "CEntirePromptSourceMatches": 13,
+  "affectedDevCases": 11,
+  "preflightException": "Source words preserved; literal full-prompt word exclusion cannot coexist with unchanged context.",
+  "BNewCalls": 0
+}

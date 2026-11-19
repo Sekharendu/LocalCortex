@@ -1,0 +1,317 @@
+[
+  {
+    "caseId": "pdf/1912.08960/63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+    "question": "Which existing models are evaluated?",
+    "firstMatchRank": 4,
+    "method": "exact-quote",
+    "goldQuote": "LRCN1u",
+    "retrievedChunk": {
+      "text": "they do not reflect the successively closing gap of caption\ntruthfulness scores between two Existential datasets,\nor the substantial difference in caption truthfulness be-\ntween captions on Existential-MultiShapes and\nSpatial-MultiShapes.\nIn the remainder of the paper we discuss in detail the di-\nagnostic results of the LRCN1u model demonstrated by the\nGTD evaluation framework.\nPerfect grammaticality for all caption types. As shown in\nFigure 4, generated captions for all types of ShapeWorldICE",
+      "source": "1912.08960.pdf",
+      "page": 5,
+      "score": 0.4909091,
+      "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+      "chunkIndex": 51
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1909.09587/a3d9b101765048f4b61cbd3eaa2439582ebb5c77",
+    "question": "What source-target language pairs were used in this work? ",
+    "firstMatchRank": 3,
+    "method": "exact-quote",
+    "goldQuote": "English",
+    "retrievedChunk": {
+      "text": "with a number of combinations of source-target\nlanguage pair to explore the cross-lingual ability\nof multi-BERT. Surprisingly, we find that the mod-\nels have the ability to transfer between low lexi-\ncal similarity language pair, such as English and\nChinese. Recent studies (Lample and Conneau,\n2019; Devlin et al., 2018; Wu and Dredze, 2019)\nshow that cross-lingual language models have the\nability to enable preliminary zero-shot transfer on\nsimple natural language understanding tasks, but",
+      "source": "1909.09587.pdf",
+      "page": 1,
+      "score": 0.7,
+      "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+      "chunkIndex": 7
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1909.02027/149da739b1c19a157880d9d4827f0b692006aa2c",
+    "question": "Which classifiers are evaluated?",
+    "firstMatchRank": 2,
+    "method": "exact-quote",
+    "goldQuote": "BERT",
+    "retrievedChunk": {
+      "text": "of-scope prediction methods with a new dataset\nconsisting of carefully collected out-of-scope data.\nOur findings indicate that certain models like\nBERT perform better on in-scope classification,\nbut all methods investigated struggle with identify-\ning out-of-scope queries. Models that incorporate\nmore out-of-scope training data tend to improve\non out-of-scope performance, yet such data is ex-\npensive and difficult to generate. We believe our\nanalysis and dataset will lead to developing better,",
+      "source": "1909.02027.pdf",
+      "page": 5,
+      "score": 0.64285713,
+      "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+      "chunkIndex": 46
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/2002.02070/a267d620af319b48e56c191aa4c433ea3870f6fb",
+    "question": "What are labels in car speak language dataset?",
+    "firstMatchRank": 1,
+    "method": "exact-quote",
+    "goldQuote": "car ",
+    "retrievedChunk": {
+      "text": "Understanding Car-Speak:\nReplacing Humans in Dealerships\nHabeeb Hooshmand and James Caverlee\n(habeebh,caverlee)@tamu.edu\nDepartment of Computer Science and Engineering\nTexas A&M University, USA\nABSTRACT\nA large portion of the car-buying experience in the United States\ninvolves interactions at a car dealership. At the dealership, the car-\nbuyer relays their needs to a sales representative. However, most\ncar-buyers are only have an abstract description of the vehicle they",
+      "source": "2002.02070.pdf",
+      "page": 1,
+      "score": 1.1666667,
+      "documentId": "23994c59-e0d3-4bc8-8d6d-d4021a0418fe",
+      "chunkIndex": 0
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1912.00667/bc730e4d964b6a66656078e2da130310142ab641",
+    "question": "What type of classifiers are used?",
+    "firstMatchRank": 2,
+    "method": "exact-quote",
+    "goldQuote": "probabilistic model",
+    "retrievedChunk": {
+      "text": "learning models for event detection. In summary, our work\nmakes the following key contributions:\n• A novel human-AI loop approach for micropost event de-\ntection that jointly discovers informative keywords and\nestimates their expectation;\n• A unified probabilistic model that infers keyword expec-\ntation and simultaneously performs model training;\n• An extensive empirical evaluation of our approach on\nmultiple real-world datasets demonstrating that our ap-",
+      "source": "1912.00667.pdf",
+      "page": 2,
+      "score": 0.8333334,
+      "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+      "chunkIndex": 15
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1910.06592/3e88fb3d28593309a307eb97e875575644a01463",
+    "question": "What baselines were used in this work?",
+    "firstMatchRank": 1,
+    "method": "exact-quote",
+    "goldQuote": "LR + Bag-of-words",
+    "retrievedChunk": {
+      "text": "Baselines. We compare our approach (FacTweet) to the following set of baselines:\n– LR + Bag-of-words: We aggregate the tweets of a feed and we use a bag-of-words\nrepresentation with a logistic regression (LR) classifier.\n– Tweet2vec: We use the Bidirectional Gated recurrent neural network model pro-\nposed in [6]. We keep the default parameters that were provided with the imple-\nmentation. To represent the tweets, we use the decoded embedding produced by the",
+      "source": "1910.06592.pdf",
+      "page": 4,
+      "score": 0.7254902,
+      "documentId": "713b6487-164b-4341-92a2-01f815f73f0d",
+      "chunkIndex": 24
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/2004.02192/55507f066073b29c1736b684c09c045064053ba9",
+    "question": "What are the distinctive characteristics of how Arabic speakers use offensive language?",
+    "firstMatchRank": 4,
+    "method": "exact-quote",
+    "goldQuote": "Direct name calling",
+    "retrievedChunk": {
+      "text": "sive to better understand how Arabic speakers use\noffensive language. Here is a breakdown of usage:\nDirect name calling: The most frequent attack is\nto call a person an animal name, and the most used",
+      "source": "2004.02192.pdf",
+      "page": 4,
+      "score": 0.42857143,
+      "documentId": "03d291f5-64a2-4b85-b166-77c7278070bc",
+      "chunkIndex": 40
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1908.09246/56b034c303983b2e276ed6518d6b080f7b8abe6a",
+    "question": "What datasets are used?",
+    "firstMatchRank": 1,
+    "method": "exact-quote",
+    "goldQuote": "Google dataset",
+    "retrievedChunk": {
+      "text": "we see the superior performance of AEM across\nall datasets, with more significant improvement on\nthe for Google datasets (long text).\nWe next visualize the detected events based on\nthe discriminative features learned by the trained\nD network in AEM. The t-SNE (Maaten and Hin-\nton, 2008) visualization results on the datasets are\nshown in Figure 2. For clarity, each subplot is\nplotted on a subset of the dataset containing ten\nrandomly selected events. It can be observed that",
+      "source": "1908.09246.pdf",
+      "page": 8,
+      "score": 0.7380953,
+      "documentId": "fbc89d87-7502-4821-bbc4-cf021a0b6487",
+      "chunkIndex": 65
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1907.09369/132f752169adf6dc5ade3e4ca773c11044985da4",
+    "question": "What data is used in experiments?",
+    "firstMatchRank": 5,
+    "method": "exact-quote",
+    "goldQuote": "Wang et al.",
+    "retrievedChunk": {
+      "text": "shev 2015; Wang et al. 2018; Zhang et al. 2016). But de-\ntecting emotions in textual data is a relatively new area\nthat demands more research. There have been many at-\ntempts to detect emotions in text using conventional ma-\nchine learning techniques and handcrafted features in which\ngiven the dataset, the authors try to find the best feature\nset that represents the most and the best information about\nthe text, then passing the converted text as feature vectors",
+      "source": "1907.09369.pdf",
+      "page": 1,
+      "score": 0.3357143,
+      "documentId": "9aee3c15-d1e1-4e95-a88d-99ee826eb6df",
+      "chunkIndex": 6
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1911.07555/c8541ff10c4e0c8e9eb37d9d7ea408d1914019a9",
+    "question": "Which datasets are employed for South African languages LID?",
+    "firstMatchRank": 5,
+    "method": "exact-quote",
+    "goldQuote": "DSL 2015",
+    "retrievedChunk": {
+      "text": "African context. An in depth survey of algorithms, features, datasets, shared tasks and evaluation\nmethods may be found in [1].\nThe datasets for the DSL 2015 & DSL 2017 shared tasks [2] are often used in LID benchmarks and\nalso available on Kaggle 2. The DSL datasets, like other LID datasets, consists of text sentences\nlabelled by language. The 2017 dataset, for example, contains 14 languages over 6 language groups\nwith 18000 training samples and 1000 testing samples per language.",
+      "source": "1911.07555.pdf",
+      "page": 2,
+      "score": 0.4107143,
+      "documentId": "2b6e8445-d390-4e7a-9682-0654814acbaa",
+      "chunkIndex": 8
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1906.07662/d3ca5f1814860a88ff30761fec3d860d35e39167",
+    "question": "Which approaches have been applied to solve word segmentation in Vietnamese?",
+    "firstMatchRank": 4,
+    "method": "exact-quote",
+    "goldQuote": "Conditional Random Fields ",
+    "retrievedChunk": {
+      "text": "guages, such as: Chinese, Japanese, Burmese (Myanmar) and\nThai [4], [5], [6], [7]. Approaches for word segmentation\ntask are variety, from lexicon-based to machine learning-based\nmethods. Recently, machine learning-based methods are used\nwidely to solve this issue, such as: Support Vector Machine or\nConditional Random Fields [8], [9]. In general, Chinese is a\nlanguage which has the most studies on the word segmentation\nissue. However, there is a lack of survey of word segmentation",
+      "source": "1906.07662.pdf",
+      "page": 1,
+      "score": 0.42857146,
+      "documentId": "bb12e4c0-b4b6-4bf2-8970-9bb654bd420b",
+      "chunkIndex": 6
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1908.05441/a3bb9a936f61bafb509fa12ac0a61f91abcc5106",
+    "question": "Which datasets are used for evaluation?",
+    "firstMatchRank": 1,
+    "method": "exact-quote",
+    "goldQuote": "TREC",
+    "retrievedChunk": {
+      "text": "inference, this work makes the following contributions:\n1. We provide a large challenge dataset of question clas-\nsification labels for 7,787 standardized science exam\nquestions labeled using a hierarchical taxonomy of 406\ndetailed problem types across 6 levels of granularity. To\nthe best of our knowledge this is the most detailed ques-\ntion classification dataset constructed by nearly an order\nof magnitude, while also being 30% larger than TREC,",
+      "source": "1908.05441.pdf",
+      "page": 2,
+      "score": 0.8333334,
+      "documentId": "a4425726-7a6f-4450-bb13-e4328fd298c1",
+      "chunkIndex": 12
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",
+    "question": "What argument components do the ML methods aim to identify?",
+    "firstMatchRank": 3,
+    "method": "exact-quote",
+    "goldQuote": "claim",
+    "retrievedChunk": {
+      "text": "Habernal and Gurevych Argumentation Mining in User-Generated Web Discourse\nAn argument consists of different components (such as premises, backing, etc.) which\nare implicitly linked to the claim. In principle one document can contain multiple\nindependent arguments.29 However, only 4% of the documents in our dataset contain\narguments for both sides of the issue. Thus we simplify the task and assume there is\nonly one argument per document.30",
+      "source": "1601.02403.pdf",
+      "page": 33,
+      "score": 0.61904764,
+      "documentId": "663870eb-be19-4fb7-9fa0-111ed1cb169d",
+      "chunkIndex": 264
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1909.00015/5c5aeee83ea3b34f5936404f5855ccb9869356c1",
+    "question": "What tasks are used for evaluation?",
+    "firstMatchRank": 2,
+    "method": "exact-quote",
+    "goldQuote": " four machine translation tasks",
+    "retrievedChunk": {
+      "text": "is given in Appendix C.\nProposition 1 provides the remaining missing\npiece needed for training adaptively sparse Trans-\nformers. In the following section, we evaluate this\nstrategy on neural machine translation, and analyze\nthe behavior of the learned attention heads.\n4 Experiments\nWe apply our adaptively sparse Transformers on\nfour machine translation tasks. For comparison,\na natural baseline is the standard Transformer ar-\nchitecture using the softmax transform in its multi-",
+      "source": "1909.00015.pdf",
+      "page": 4,
+      "score": 0.8333334,
+      "documentId": "07611604-108b-44af-a9f7-e2ef5dc16a92",
+      "chunkIndex": 30
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "pdf/1908.07195/43eecc576348411b0634611c81589f618cd4fddf",
+    "question": "What GAN models were used as baselines to compare against?",
+    "firstMatchRank": 1,
+    "method": "exact-quote",
+    "goldQuote": "MLE",
+    "retrievedChunk": {
+      "text": "datasets are presented in Table 2.\n4.2 Baselines\nWe compared our model with MLE, RL and GAN\nbaselines. Since COCO and EMNLP2017 WMT\ndon’t have input while WeiboDial regards posts\nas input, we chose the following baselines respec-\ntively:\nMLE: a RNN model trained with MLE objective\n(Graves, 2013). Its extension, Seq2Seq, can work\non the dialogue dataset (Sutskever et al., 2014).\nSeqGAN: The first text GAN model that updates\nthe generator with policy gradient based on the re-",
+      "source": "1908.07195.pdf",
+      "page": 6,
+      "score": 0.7666667,
+      "documentId": "db9c79de-092f-40e5-870a-199f04b26612",
+      "chunkIndex": 47
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "docx/1608.06757/8eefa116e3c3d3db751423cc4095d1c4153d3a5f",
+    "question": "what standard dataset were used?",
+    "firstMatchRank": 4,
+    "method": "exact-quote",
+    "goldQuote": "GENIA",
+    "retrievedChunk": {
+      "text": "Table TABREF45 shows the results of biomedical entity recognition compared to the participants of the JNLPBA 2004 bio-entity recognition task BIBREF14 . We notice that for these well-written Medline abstracts, there is not such a strong skew between precision and recall. Our DATEXIS-NER system outperforms the HMM, MEMM, CRF and CDN based models with a micro-F1 score of 84%. However, the highly specialized GENIA chunker for LingPipe achieves higher scores",
+      "source": "1608.06757.docx",
+      "score": 0.4047619,
+      "documentId": "f4fd1070-0ed2-4bbc-a46b-db68fc5fb652",
+      "chunkIndex": 40
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "docx/1611.03599/d3093062aebff475b4deab90815004051e802aa6",
+    "question": "What are the baselines?",
+    "firstMatchRank": 1,
+    "method": "exact-quote",
+    "goldQuote": "CNN",
+    "retrievedChunk": {
+      "text": "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text",
+      "source": "1611.03599.docx",
+      "score": 1.1666667,
+      "documentId": "7ad87be7-728b-497d-8dcc-c95cc3e84b92",
+      "chunkIndex": 0
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "docx/1610.08815/3a6e843c6c81244c14730295cfb8b865cd7ede46",
+    "question": "What are the state of the art models?",
+    "firstMatchRank": 3,
+    "method": "exact-quote",
+    "goldQuote": "BIBREF8 ",
+    "retrievedChunk": {
+      "text": "# Sarcasm Datasets Used in the Experiment\nThis dataset was created by BIBREF8 . The tweets were downloaded from Twitter using #sarcasm as a marker for sarcastic tweets. It is a monolingual English dataset which consists of a balanced distribution of 50,000 sarcastic tweets and 50,000 non-sarcastic tweets.",
+      "source": "1610.08815.docx",
+      "score": 0.4318182,
+      "documentId": "d8b80e7e-bd69-42e2-aaa6-ec5c16f49a58",
+      "chunkIndex": 57
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "docx/1610.08815/fabf6fdcfb4c4c7affaa1e4336658c1e6635b1bf",
+    "question": "Which benchmark datasets are used?",
+    "firstMatchRank": 2,
+    "method": "exact-quote",
+    "goldQuote": " dataset was created by BIBREF8",
+    "retrievedChunk": {
+      "text": "# Sarcasm Datasets Used in the Experiment\nThis dataset was created by BIBREF8 . The tweets were downloaded from Twitter using #sarcasm as a marker for sarcastic tweets. It is a monolingual English dataset which consists of a balanced distribution of 50,000 sarcastic tweets and 50,000 non-sarcastic tweets.",
+      "source": "1610.08815.docx",
+      "score": 0.8333334,
+      "documentId": "d8b80e7e-bd69-42e2-aaa6-ec5c16f49a58",
+      "chunkIndex": 57
+    },
+    "alsoInSavedProductionTop5": true
+  },
+  {
+    "caseId": "docx/1701.05574/49c32a2a64eb41381e5f12ccea4150cac9f3303d",
+    "question": "What other evaluation metrics are looked at?",
+    "firstMatchRank": 1,
+    "method": "exact-quote",
+    "goldQuote": "F-score",
+    "retrievedChunk": {
+      "text": ". The augmented cognitive features improve sarcasm detection by 3.7% (in terms of F-score), over the performance of the best reported system.",
+      "source": "1701.05574.docx",
+      "score": 0.9166667,
+      "documentId": "0dc08813-fb04-4192-91ac-0229b7a0c2df",
+      "chunkIndex": 3
+    },
+    "alsoInSavedProductionTop5": true
+  }
+]

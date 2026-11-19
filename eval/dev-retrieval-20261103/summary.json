@@ -1,0 +1,67 @@
+{
+  "cases": 234,
+  "liveRetrieveCalls": 936,
+  "actualLocalEmbeddings": 234,
+  "embeddingResponsesReused": 702,
+  "qdrantQueries": 1602,
+  "cohorts": [
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "dense",
+      "questions": 119,
+      "independentFirst5": 62,
+      "first5OfK50": 62,
+      "within10OfK50": 82,
+      "within20OfK50": 95,
+      "within50": 108,
+      "gateRejected": 2,
+      "k5OrderDiffersFromK50": 0
+    },
+    {
+      "group": "ready-long-quote-proxy",
+      "mode": "hybrid",
+      "questions": 119,
+      "independentFirst5": 62,
+      "first5OfK50": 62,
+      "within10OfK50": 84,
+      "within20OfK50": 98,
+      "within50": 110,
+      "gateRejected": 2,
+      "k5OrderDiffersFromK50": 21
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "dense",
+      "questions": 115,
+      "independentFirst5": 55,
+      "first5OfK50": 55,
+      "within10OfK50": 67,
+      "within20OfK50": 89,
+      "within50": 102,
+      "gateRejected": 10,
+      "k5OrderDiffersFromK50": 0
+    },
+    {
+      "group": "ready-short-quote-proxy",
+      "mode": "hybrid",
+      "questions": 115,
+      "independentFirst5": 50,
+      "first5OfK50": 51,
+      "within10OfK50": 61,
+      "within20OfK50": 88,
+      "within50": 102,
+      "gateRejected": 10,
+      "k5OrderDiffersFromK50": 28
+    }
+  ],
+  "rerankCalls": 0,
+  "answerGenerationCalls": 0,
+  "settings": {
+    "threshold": 0.63,
+    "prefixes": true,
+    "fusion": "rrf",
+    "selectedPaper": true,
+    "titleWrapper": false
+  },
+  "note": "Every literal quote of one eligible reference must be covered; reference alternatives remain separate. Quote coverage is not semantic completeness or answer accuracy."
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "caseId": "pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",
+    "question": "How is the data in the new corpus come sourced?",
+    "arm": "A",
+    "grade": "partial",
+    "alternativeGrade": "adequate",
+    "reason": "Question can be read as collection procedure rather than exhaustive source types."
+  },
+  {
+    "caseId": "pdf/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",
+    "question": "what levels of document preprocessing are looked at?",
+    "arm": "A",
+    "grade": "adequate",
+    "alternativeGrade": "adequate",
+    "reason": "Calling additional summarization fourth level is informal; underlying operations are supported."
+  },
+  {
+    "caseId": "pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "question": "what challenges are identified?",
+    "arm": "B",
+    "grade": "wrong",
+    "alternativeGrade": "adequate",
+    "reason": "Core challenges are correct; strict grade penalizes false unrequested solutions caveat."
+  },
+  {
+    "caseId": "pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",
+    "question": "How are sentences selected from the summary graph?",
+    "arm": "B",
+    "grade": "wrong",
+    "alternativeGrade": "partial",
+    "reason": "Core selection summary has useful information; a lenient rubric could treat the false graph-procedure caveat as secondary."
+  },
+  {
+    "caseId": "pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",
+    "question": "In what cases is attention different from alignment?",
+    "arm": "B",
+    "grade": "adequate",
+    "alternativeGrade": "adequate",
+    "reason": "Other cases is vague; source has other attention mechanisms/roles but primarily noun/verb analysis."
+  },
+  {
+    "caseId": "pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",
+    "question": "What useful information does attention capture?",
+    "arm": "A",
+    "grade": "wrong",
+    "alternativeGrade": "adequate",
+    "reason": "Core verb finding correct; strict grade penalizes unsupported syntactic extension."
+  },
+  {
+    "caseId": "pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",
+    "question": "What useful information does attention capture?",
+    "arm": "B",
+    "grade": "wrong",
+    "alternativeGrade": "adequate",
+    "reason": "Core verb finding correct; strict grade penalizes unsupported syntactic extension."
+  },
+  {
+    "caseId": "pdf/1810.04428/ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb",
+    "question": "what are the sizes of both datasets?",
+    "arm": "A",
+    "grade": "partial",
+    "alternativeGrade": "adequate",
+    "reason": "Training-size-only interpretation possible; conflicting reference totals."
+  },
+  {
+    "caseId": "pdf/1810.04428/ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb",
+    "question": "what are the sizes of both datasets?",
+    "arm": "B",
+    "grade": "partial",
+    "alternativeGrade": "adequate",
+    "reason": "A training-size-only reading is possible; gold alternatives conflict on totals."
+  },
+  {
+    "caseId": "pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f",
+    "question": "What set of approaches to hashtag segmentation are proposed?",
+    "arm": "B",
+    "grade": "partial",
+    "alternativeGrade": "partial",
+    "reason": "Implementation details gap is broad; neural implementation missing while baseline beam search is described."
+  },
+  {
+    "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+    "question": "What types of online harassment are studied?",
+    "arm": "B",
+    "grade": "wrong",
+    "alternativeGrade": "adequate",
+    "reason": "If other types means other target experimental categories rather than any passage content, core answer is adequate."
+  }
+]

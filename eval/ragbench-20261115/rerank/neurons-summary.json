@@ -1,0 +1,283 @@
+{
+ "top10": {
+  "calls": 100,
+  "failed": 0,
+  "retried": 0,
+  "neurons": {
+   "n": 100,
+   "mean": 16.6,
+   "sd": 3.36,
+   "min": 8.16,
+   "median": 16.67,
+   "p90": 20.84,
+   "max": 27.39,
+   "total": 1659.8
+  },
+  "promptTokensQwen": {
+   "n": 100,
+   "mean": 3341.4,
+   "sd": 671.14,
+   "min": 1673,
+   "median": 3375,
+   "p90": 4195,
+   "max": 4943,
+   "total": 334140
+  },
+  "outputTokens": {
+   "n": 100,
+   "mean": 37.6,
+   "sd": 36.03,
+   "min": 7,
+   "median": 29,
+   "p90": 61,
+   "max": 292,
+   "total": 3760
+  },
+  "promptTokensLlama3": {
+   "n": 100,
+   "mean": 2936.25,
+   "sd": 509.02,
+   "min": 1529,
+   "median": 2992,
+   "p90": 3468,
+   "max": 3517,
+   "total": 293625
+  },
+  "promptChars": {
+   "n": 100,
+   "mean": 10933.11,
+   "sd": 1916.35,
+   "min": 5768,
+   "median": 11026,
+   "p90": 13362,
+   "max": 14442,
+   "total": 1093311
+  },
+  "passagesSent": {
+   "n": 100,
+   "mean": 5.86,
+   "sd": 2.69,
+   "min": 1,
+   "median": 6,
+   "p90": 10,
+   "max": 11,
+   "total": 586
+  },
+  "secondsPerCall": {
+   "n": 100,
+   "mean": 0.88,
+   "sd": 0.4,
+   "min": 0.5,
+   "median": 0.78,
+   "p90": 1.36,
+   "max": 3.31,
+   "total": 87.5
+  },
+  "hitMaxTokens512": 0,
+  "answerChunkInPicked": 90,
+  "answerTextInPrompt": 93,
+  "saidInsufficient": 10
+ },
+ "top15": {
+  "calls": 100,
+  "failed": 0,
+  "retried": 0,
+  "neurons": {
+   "n": 100,
+   "mean": 18.45,
+   "sd": 2.62,
+   "min": 8.16,
+   "median": 18.72,
+   "p90": 20.98,
+   "max": 24.36,
+   "total": 1844.7
+  },
+  "promptTokensQwen": {
+   "n": 100,
+   "mean": 3745.51,
+   "sd": 532.31,
+   "min": 1673,
+   "median": 3852,
+   "p90": 4224,
+   "max": 5044,
+   "total": 374551
+  },
+  "outputTokens": {
+   "n": 100,
+   "mean": 36.93,
+   "sd": 30.09,
+   "min": 7,
+   "median": 29,
+   "p90": 71,
+   "max": 197,
+   "total": 3693
+  },
+  "promptTokensLlama3": {
+   "n": 100,
+   "mean": 3302.13,
+   "sd": 414.53,
+   "min": 1529,
+   "median": 3463,
+   "p90": 3493,
+   "max": 3511,
+   "total": 330213
+  },
+  "promptChars": {
+   "n": 100,
+   "mean": 12305.23,
+   "sd": 1925.84,
+   "min": 5768,
+   "median": 12592,
+   "p90": 14325,
+   "max": 15848,
+   "total": 1230523
+  },
+  "passagesSent": {
+   "n": 100,
+   "mean": 8.2,
+   "sd": 4.32,
+   "min": 1,
+   "median": 8,
+   "p90": 14,
+   "max": 16,
+   "total": 820
+  },
+  "secondsPerCall": {
+   "n": 100,
+   "mean": 0.93,
+   "sd": 0.99,
+   "min": 0.49,
+   "median": 0.78,
+   "p90": 1.17,
+   "max": 10.46,
+   "total": 92.7
+  },
+  "hitMaxTokens512": 0,
+  "answerChunkInPicked": 91,
+  "answerTextInPrompt": 93,
+  "saidInsufficient": 11
+ },
+ "paired_top15_minus_top10": {
+  "questions": 100,
+  "neurons": {
+   "n": 100,
+   "mean": 1.85,
+   "sd": 2.07,
+   "min": -8.78,
+   "median": 1.85,
+   "p90": 4.53,
+   "max": 7.06,
+   "total": 184.8
+  },
+  "promptTokens": {
+   "n": 100,
+   "mean": 404.11,
+   "sd": 384.96,
+   "min": -101,
+   "median": 371,
+   "p90": 980,
+   "max": 1435,
+   "total": 40411
+  },
+  "top15MoreNeurons": 85,
+  "samePrompt": 4
+ },
+ "noise_same_prompt_twice": {
+  "top10": {
+   "questions": 20,
+   "promptTokensIdentical": 20,
+   "sameAnswerText": 15,
+   "absNeuronDiff": {
+    "n": 20,
+    "mean": 0.06,
+    "sd": 0.23,
+    "min": 0.0,
+    "median": 0.0,
+    "p90": 0.12,
+    "max": 1.04,
+    "total": 1.2
+   },
+   "absOutputTokenDiff": {
+    "n": 20,
+    "mean": 2.05,
+    "sd": 7.58,
+    "min": 0,
+    "median": 0,
+    "p90": 4,
+    "max": 34,
+    "total": 41
+   },
+   "absSecondsDiff": {
+    "n": 20,
+    "mean": 0.21,
+    "sd": 0.19,
+    "min": 0.0,
+    "median": 0.17,
+    "p90": 0.48,
+    "max": 0.8,
+    "total": 4.3
+   }
+  },
+  "top15": {
+   "questions": 20,
+   "promptTokensIdentical": 20,
+   "sameAnswerText": 16,
+   "absNeuronDiff": {
+    "n": 20,
+    "mean": 0.05,
+    "sd": 0.17,
+    "min": 0.0,
+    "median": 0.0,
+    "p90": 0.46,
+    "max": 0.61,
+    "total": 1.1
+   },
+   "absOutputTokenDiff": {
+    "n": 20,
+    "mean": 1.75,
+    "sd": 5.45,
+    "min": 0,
+    "median": 0,
+    "p90": 15,
+    "max": 20,
+    "total": 35
+   },
+   "absSecondsDiff": {
+    "n": 20,
+    "mean": 0.31,
+    "sd": 0.51,
+    "min": 0.0,
+    "median": 0.14,
+    "p90": 1.24,
+    "max": 2.15,
+    "total": 6.2
+   }
+  }
+ },
+ "rate_check_neurons_minus_4625in_30475out_per_M": {
+  "n": 240,
+  "mean": -0.0,
+  "sd": 0.0,
+  "min": -0.0,
+  "median": -0.0,
+  "p90": -0.0,
+  "max": -0.0,
+  "total": -0.4
+ },
+ "neurons_by_source_mean": {
+  "feta top10": 15.26,
+  "feta top15": 17.89,
+  "financebench top10": 18.84,
+  "financebench top15": 19.32,
+  "nq top10": 15.56,
+  "nq top15": 17.47,
+  "tat top10": 17.87,
+  "tat top15": 19.74
+ },
+ "wallClock": {
+  "first": "2026-11-17T06:37:57.099Z",
+  "last": "2026-11-17T06:43:58.827Z",
+  "totalCalls": 240,
+  "totalNeurons": 4178.0
+ }
+}

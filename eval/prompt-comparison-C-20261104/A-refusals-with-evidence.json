@@ -1,0 +1,366 @@
+[
+  {
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "cohort": "dev",
+    "question": "How were crowd workers instructed to identify important elements in large document collections?",
+    "paperId": "1704.04452",
+    "evidence": {
+      "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+      "question": "How were crowd workers instructed to identify important elements in large document collections?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "4e02f11019de460893117c370ca8bd0268a5a9fde3fa657448b7bc2ef793985a",
+      "focusRefusalCase": true
+    },
+    "change": "improved",
+    "categoryChanged": true,
+    "arms": {
+      "A": {
+        "blindId": "R54",
+        "grade": "refused",
+        "reason": "Wrong refusal: actual supplied task-design paragraph explains topic descriptions/propositions and importance scoring.",
+        "cohort": "dev",
+        "absenceClaims": [
+          {
+            "sentence": "The provided context is insufficient to answer this question.",
+            "kind": "refusal_insufficiency",
+            "truth": "false",
+            "reason": "Wrong refusal: actual supplied task-design paragraph explains topic descriptions/propositions and importance scoring."
+          }
+        ],
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 2594,
+          "completion_tokens": 11,
+          "total_tokens": 2605,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 12.33138656616211
+        },
+        "elapsedMs": 784.3824999999997,
+        "promptSha256": "73cdc7b23f853fbc279cb2a7b2f9c43f6cb83c98c08d7936993daa1920779e50",
+        "wirePromptSha256": "ff7eff18c9e9f21ce2e46055663319dd526ab35e0dfac24b828eff6a1d30d4df"
+      },
+      "C": {
+        "blindId": "R13",
+        "grade": "adequate",
+        "reason": "Explains topic descriptions, individual propositions, 5-point importance scoring and no document reading; all explicitly supplied.",
+        "cohort": "dev",
+        "answer": "Crowd workers were instructed to identify important elements in large document collections by being provided with a description of the document cluster's topic along with propositions. They were not shown the documents themselves, but instead were asked to score each proposition's importance using a 5-point Likert-scale. This approach allowed them to determine important elements without requiring them to read all documents in a cluster.",
+        "usage": {
+          "prompt_tokens": 2516,
+          "completion_tokens": 76,
+          "total_tokens": 2592,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 13.951528549194336
+        },
+        "elapsedMs": 1762.731399999997,
+        "promptSha256": "57cc553cee8da86abc6a061376085e3acee76d58adeba9505fbcf94a77229da0",
+        "wirePromptSha256": "c42379299efa7d18e011e9cf0454fb84c64b09fa5d61df262f5878c0cc22f15c"
+      },
+      "B": {
+        "blindId": "R35",
+        "grade": "adequate",
+        "reason": "Explains topic description, individual propositions and 5-point importance scoring without reading all documents; supplied text supports each claim.",
+        "cohort": "dev",
+        "answer": "Crowd workers were instructed to identify important elements in large document collections by being provided with a description of the document cluster's topic along with individual propositions. They were asked to score each proposition's importance using a 5-point Likert-scale, without needing to read all the documents in the cluster. This approach, called low-context importance annotation, allowed them to efficiently determine important elements by focusing on single propositions rather than entire documents.",
+        "usage": {
+          "prompt_tokens": 2508,
+          "completion_tokens": 86,
+          "total_tokens": 2594,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 14.219281196594238
+        },
+        "elapsedMs": 955.704899999997,
+        "promptSha256": "0cf52dd973d408cc6ee3fd92fe9357bf423a476e84268a2db1ec1eaeba5620c4",
+        "wirePromptSha256": "ed47e5d16a85ba07c605910cc7224781d3cfe91c525041dcf592bcab1b0e6e58",
+        "savedReference": true,
+        "originalStartedAt": "2026-11-04T14:29:53.509Z"
+      }
+    }
+  },
+  {
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "cohort": "dev",
+    "question": "how large is the vocabulary?",
+    "paperId": "1908.04042",
+    "evidence": {
+      "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+      "question": "how large is the vocabulary?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "7fe14c5da34f7ba10b26d0fac9dc0879e545b4f85a4c089207c1cb8a143d130c",
+      "focusRefusalCase": true
+    },
+    "change": "same",
+    "categoryChanged": false,
+    "arms": {
+      "A": {
+        "blindId": "R118",
+        "grade": "refused",
+        "reason": "Wrong refusal: actual supplied passages include 33,663 vocabulary count.",
+        "cohort": "dev",
+        "absenceClaims": [
+          {
+            "sentence": "The provided context is insufficient to answer this question.",
+            "kind": "refusal_insufficiency",
+            "truth": "false",
+            "reason": "Wrong refusal: actual supplied passages include 33,663 vocabulary count."
+          }
+        ],
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3636,
+          "completion_tokens": 11,
+          "total_tokens": 3647,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.15019989013672
+        },
+        "elapsedMs": 799.102899999998,
+        "promptSha256": "6bca5c294ba6aba2dad7260b73eb0ee39d271d37568e7be134331ab211e9fc9d",
+        "wirePromptSha256": "88d5b08bb4506d1dcf0cbab7ee7e8ae0891c6a7017272770f2df7e7e4e9a8304"
+      },
+      "C": {
+        "blindId": "R18",
+        "grade": "refused",
+        "reason": "Wrong refusal: supplied text explicitly states 33,663 distinct review keywords.",
+        "cohort": "dev",
+        "absenceClaims": [
+          {
+            "sentence": "The provided context is insufficient to answer this question.",
+            "kind": "refusal_insufficiency",
+            "truth": "false",
+            "reason": "Wrong refusal: supplied text explicitly states 33,663 distinct review keywords."
+          }
+        ],
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3558,
+          "completion_tokens": 11,
+          "total_tokens": 3569,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 16.78948211669922
+        },
+        "elapsedMs": 735.6448999999993,
+        "promptSha256": "4c615b44641a49afde17cda39c98432612aaa03d7dced490b12cd3d3f0917be5",
+        "wirePromptSha256": "dc7e0a3d57a8d4500a71a2439902f3d5fafd28a733cffd8440b45a848e4e1940"
+      },
+      "B": {
+        "blindId": "R119",
+        "grade": "refused",
+        "reason": "Refuses despite 33663 vocabulary count in supplied passages.",
+        "cohort": "dev",
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3550,
+          "completion_tokens": 11,
+          "total_tokens": 3561,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 16.752487182617188
+        },
+        "elapsedMs": 985.2108000000007,
+        "promptSha256": "30c850ae115a4c6e016b2ef870499e7e8b9e214695aaa4451c1685ac6e10fb7e",
+        "wirePromptSha256": "ffe27bb997a1b77852f1244c5b2e53ce8fb7efce16a4a14ad9acfc39c29d5875",
+        "savedReference": true,
+        "originalStartedAt": "2026-11-04T14:30:53.940Z"
+      }
+    }
+  },
+  {
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "cohort": "dev",
+    "question": "where did they obtain the annotated clinical notes from?",
+    "paperId": "1912.06262",
+    "evidence": {
+      "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+      "question": "where did they obtain the annotated clinical notes from?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "4429931873c9b4ce976341dd8080e95287c207e7111720c4003252c27caacf3d",
+      "focusRefusalCase": true
+    },
+    "change": "improved",
+    "categoryChanged": true,
+    "arms": {
+      "A": {
+        "blindId": "R10",
+        "grade": "refused",
+        "reason": "Wrong refusal: supplied experiment/data passage explicitly identifies i2b2/VA source.",
+        "cohort": "dev",
+        "absenceClaims": [
+          {
+            "sentence": "The provided context is insufficient to answer this question.",
+            "kind": "refusal_insufficiency",
+            "truth": "false",
+            "reason": "Wrong refusal: supplied experiment/data passage explicitly identifies i2b2/VA source."
+          }
+        ],
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3742,
+          "completion_tokens": 11,
+          "total_tokens": 3753,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.640405654907227
+        },
+        "elapsedMs": 698.1027999999933,
+        "promptSha256": "b1934916a649ddf04219930eff67cd986e8c05a391fd707bc26f44927225f50b",
+        "wirePromptSha256": "bd6bf7dd9d00b56dbe23b9910e8bcd9d8a266dd95be2dce11a033e13ec732030"
+      },
+      "C": {
+        "blindId": "R04",
+        "grade": "adequate",
+        "reason": "Correctly identifies the 2010 i2b2/VA CE task source.",
+        "cohort": "dev",
+        "answer": "The annotated clinical notes were obtained from the CE task in 2010 i2b2/VA.",
+        "usage": {
+          "prompt_tokens": 3664,
+          "completion_tokens": 24,
+          "total_tokens": 3688,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.675859451293945
+        },
+        "elapsedMs": 1686.5869000000093,
+        "promptSha256": "ad9f96e86ec2a77f02b05e87a2c02741ea0f95b0f99259651e7dca3b804fecc3",
+        "wirePromptSha256": "ca09ec275d295c9ee5a6a3c071bfc09481b10972845d8fca6b98bc802dc1e841"
+      },
+      "B": {
+        "blindId": "R53",
+        "grade": "adequate",
+        "reason": "Correctly identifies 2010 i2b2/VA CE task as source of clinical notes.",
+        "cohort": "dev",
+        "answer": "The annotated clinical notes were obtained from the 2010 i2b2/VA CE task.",
+        "usage": {
+          "prompt_tokens": 3656,
+          "completion_tokens": 23,
+          "total_tokens": 3679,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.608388900756836
+        },
+        "elapsedMs": 915.482799999998,
+        "promptSha256": "53449622c83e260177c58cd0f3df0fe0b84489a69aad4023668a8346b4f7901c",
+        "wirePromptSha256": "c0e0d42068aa22f7252b2dfab65f3d6bffcf0f4c124044d19c6c69684567febe",
+        "savedReference": true,
+        "originalStartedAt": "2026-11-04T14:31:15.601Z"
+      }
+    }
+  },
+  {
+    "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+    "cohort": "dev",
+    "question": "What was the baseline model?",
+    "paperId": "2002.01984",
+    "evidence": {
+      "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+      "question": "What was the baseline model?",
+      "status": "complete",
+      "reason": "The assembled passages contain a complete reference alternative or its required factual components; literal reference coverage is also recorded separately.",
+      "exactQuoteProxy": true,
+      "sameForBothArms": true,
+      "contextSha256": "2b4f7996455e711b8258cab043b216f8faf112bb3891af13dac14374be202a84",
+      "focusRefusalCase": true
+    },
+    "change": "same",
+    "categoryChanged": false,
+    "arms": {
+      "A": {
+        "blindId": "R127",
+        "grade": "refused",
+        "reason": "Wrong refusal: supplied text explicitly defines always-YES baseline.",
+        "cohort": "dev",
+        "absenceClaims": [
+          {
+            "sentence": "The provided context is insufficient to answer this question.",
+            "kind": "refusal_insufficiency",
+            "truth": "false",
+            "reason": "Wrong refusal: supplied text explicitly defines always-YES baseline."
+          }
+        ],
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3636,
+          "completion_tokens": 11,
+          "total_tokens": 3647,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 17.15019989013672
+        },
+        "elapsedMs": 608.0965999999898,
+        "promptSha256": "dcc69d0b696e067dd45929b34ad1b5b253680c8e6898dbdfba4424657599e642",
+        "wirePromptSha256": "d7365c468fede0a0ff8a4ebaf0fb660613442e6fdfbdce3a0ad54887324b4914"
+      },
+      "C": {
+        "blindId": "R70",
+        "grade": "refused",
+        "reason": "Wrong refusal: actual supplied text says always YES in batches2/3 to obtain baseline performance.",
+        "cohort": "dev",
+        "absenceClaims": [
+          {
+            "sentence": "The provided context is insufficient to answer this question.",
+            "kind": "refusal_insufficiency",
+            "truth": "false",
+            "reason": "Wrong refusal: actual supplied text says always YES in batches2/3 to obtain baseline performance."
+          }
+        ],
+        "answer": "The provided context is insufficient to answer this question.",
+        "usage": {
+          "prompt_tokens": 3558,
+          "completion_tokens": 11,
+          "total_tokens": 3569,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 16.78948211669922
+        },
+        "elapsedMs": 683.1688999999897,
+        "promptSha256": "177e8fd4221fcce66c29b7a68dfd7b169c308aa31ce9f11504bd3816d600fd2a",
+        "wirePromptSha256": "f5ed089c72036a52b45d0380d8a403eca1c475076a26ca4a2af2ef037c7b3077"
+      },
+      "B": {
+        "blindId": "R106",
+        "grade": "refused",
+        "reason": "Only claims baseline is not mentioned; actual supplied text specifies always YES. Wrong refusal, not a substantive partial answer.",
+        "cohort": "dev",
+        "answer": "The baseline model is not explicitly mentioned in the provided context.",
+        "usage": {
+          "prompt_tokens": 3550,
+          "completion_tokens": 13,
+          "total_tokens": 3563,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "neurons": 16.81343650817871
+        },
+        "elapsedMs": 826.75,
+        "promptSha256": "c8ab291d8179e4bb1db1e696878667a5bf094e37d46abc79b82c42c162b8f344",
+        "wirePromptSha256": "1e733099dd405a610f5140e6bc47a0915de74989703a1a567fd0c944de050c53",
+        "savedReference": true,
+        "originalStartedAt": "2026-11-04T14:31:21.193Z"
+      }
+    }
+  }
+]

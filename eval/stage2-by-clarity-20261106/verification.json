@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "matchedDevCaseUnits": 200,
+  "matchedArms": 400,
+  "earlier40CaseUnits": 40,
+  "noUnmatchedClarityLabels": true,
+  "allGradesAndClarityLabelsPreserved": true,
+  "same25GateCaseIdsInBothArms": true,
+  "exact57MembershipMatchesSavedNewArmEvidenceLabels": true,
+  "rank16to50Count": 14,
+  "diagnosticSetsOverlap": true,
+  "inputHashesUnchanged": true,
+  "searches": 0,
+  "embeddingCalls": 0,
+  "generationCalls": 0,
+  "heldOutPaperContentRead": false
+}

@@ -1,0 +1,62 @@
+{
+  "splitSha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8",
+  "devPapers": 140,
+  "inventoryPapers": 140,
+  "inventoryCases": 610,
+  "verdicts": {
+    "acceptable": 204,
+    "ambiguous": 119,
+    "failed": 287
+  },
+  "statuses": {
+    "ambiguous-review": 119,
+    "chunk-boundary-review": 11,
+    "gold-source-mapping-review": 173,
+    "ready-long-quote-proxy": 119,
+    "ready-short-quote-proxy": 115,
+    "reference-disagreement-review": 7,
+    "scope-rejection-control": 19,
+    "unanswerable-control": 22,
+    "yes-no-evidence-review": 25
+  },
+  "answerTypes": {
+    "mixed-reference-types": 52,
+    "text": 460,
+    "unanswerable": 28,
+    "yes-no": 70
+  },
+  "readyCases": 234,
+  "readyCasesWithBothSavedPools": 223,
+  "readyByVerdict": {
+    "acceptable": 97,
+    "failed": 137
+  },
+  "readyWithNoSingleChunkAlternative": 35,
+  "readyWithSomeMultiChunkAlternative": 48,
+  "calls": {
+    "retrieval": 0,
+    "inference": 0,
+    "generation": 0
+  },
+  "rules": [
+    "Exact whole quotes after whitespace normalization only; no fuzzy repairs or range-overlap success.",
+    "At least one fully source-mapped, whole-chunk-coverable reference alternative required. Never count only the mapped subset of a reference.",
+    "Short-only references separate; mixed answer types, ambiguous diagnoses, scope rejections and yes/no/unanswerable controls separate.",
+    "All-reference-quote coverage is a proxy, not established sufficient evidence or complete answer accuracy.",
+    "Baselines reuse Q saved top50 pools; their first5 slice is not an independent production k5 run."
+  ],
+  "baselineQuoteCoverage": [
+    {
+      "mode": "dense",
+      "cases": 223,
+      "allReferenceQuotesInFirst5": 111,
+      "allReferenceQuotesWithin50": 199
+    },
+    {
+      "mode": "hybrid",
+      "cases": 223,
+      "allReferenceQuotesInFirst5": 108,
+      "allReferenceQuotesWithin50": 201
+    }
+  ]
+}

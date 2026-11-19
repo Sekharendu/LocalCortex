@@ -1,0 +1,103 @@
+EXACT SYSTEM
+
+You are a retrieval-augmented assistant. Answer using ONLY the context
+passages in the user's prompt. Never use outside knowledge, and never
+speculate, fabricate or guess.
+
+How to answer:
+- If the passages contain the answer, or part of it, give what they
+  state, directly and in full sentences, including any conditions,
+  limits or exceptions they give. Do not comment on what the passages
+  leave out unless the question asks for something they clearly do not
+  state.
+- Only if nothing in the passages is relevant to the question, say
+  exactly: "The provided context is insufficient to answer this
+  question."
+- If no context was provided at all, say exactly: "I could not find any
+  relevant information in the knowledge base to answer this question."
+
+Style: start with the answer itself, as if you simply know it. Never
+answer with just a name or a bare yes/no; when asked who or what
+something is, give the key facts the context provides. Do not mention
+the context, the passages or file names, and do not describe how you
+found the answer ("According to...", "Based on the context..."). Do not
+add a sources line; sources are displayed separately.
+
+EXACT USER MESSAGE
+
+Context passages:
+
+Argumentation Mining in User-Generated Web Discourse
+# Abstract
+
+The goal of argumentation mining, an evolving research field in computational linguistics, is to design methods capable of analyzing people's argumentation. In this article, we go beyond the state of the art in several ways. (i) We deal with actual Web data and take up the challenges given by the variety of registers, multiple domains, and unrestricted noisy user-generated Web discourse
+. (ii) We bridge the gap between normative argumentation theories and argumentation phenomena encountered in actual data by adapting an argumentation model tested in an extensive annotation study. (iii) We create a new gold standard corpus (90k tokens in 340 documents) and experiment with several machine learning methods to identify argument components. We offer the data, source codes, and annotation guidelines to the community under free licenses
+. Our findings show that argumentation mining in user-generated Web discourse is a feasible but challenging task.
+
+---
+
+. These findings may also serve as empirical evidence to issues that are on the spot of current argumentation research.
+From the computational perspective, we experiment on the annotated data using various machine learning methods in order to extract argument structure from documents. We propose several novel feature sets and identify configurations that run best in in-domain and cross-domain scenarios. To foster research in the community, we provide the annotated data as well as all the experimental software under free license.
+The rest of the article is structured as follows. First, we provide an essential background in argumentation theory in section SECREF2 . Section SECREF3 surveys related work in several areas. Then we introduce the dataset and two annotation studies in section SECREF4 . Section SECREF5 presents our experimental work and discusses the results and errors and section SECREF6 concludes this article.
+
+---
+
+Arguments in the legal domain were targeted in BIBREF11 . Using argumentation formalism inspired by Walton.2012, they employed multinomial Naive Bayes classifier and maximum entropy model for classifying argumentative sentences on the AraucariaDB corpus BIBREF45 . The same test dataset was used by Feng.Hirst.2011, who utilized the C4.5 decision classifier
+. Rooney.et.al.2012 investigated the use of convolution kernel methods for classifying whether a sentence belongs to an argumentative element or not using the same corpus.
+Stab.Gurevych.2014b classified sentences to four categories (none, major claim, claim, premise) using their previously annotated corpus BIBREF7 and reached 0.72 macro- INLINEFORM0 score. In contrast to our work, their documents are expected to comply with a certain structure of argumentative essays and are assumed to always contain argumentation.
+Biran.Rambow.2011 identified justifications on the sentence level using a naive Bayes classifier over a feature set based on statistics from the RST Treebank, namely n-grams which were manually processed by deleting n-grams that “seemed irrelevant, ambiguous or domain-specific.”
+Llewellyn2014 experimented with classifying tweets into several argumentative categories, namely claims and counter-claims (with and without evidence) and verification inquiries previously annotated by Procter.et.al.2013. They used unigrams, punctuations, and POS as features in three classifiers.
+Park.Cardie.2014 classified propositions into three classes (unverifiable, verifiable non-experimental, and verifiable experimental) and ignored non-argumentative texts. Using multi-class SVM and a wide range of features (n-grams, POS, sentiment clue words, tense, person) they achieved Macro INLINEFORM0 0.69.
+Peldszus.2014 experimented with a rather complex labeling schema of argument segments, but their data were artificially created for their task and manually cleaned, such as removing segments that did not meet the criteria or non-argumentative segments.
+In the first step of their two-phase approach, Goudas.et.al.2014 sampled the dataset to be balanced and identified argumentative sentences with INLINEFORM0 0.77 using the maximum entropy classifier. For identifying premises, they used BIO encoding of tokens and achieved INLINEFORM1 score 0.42 using CRFs.
+Saint-Dizier.2012 developed a Prolog engine using a lexicon of 1300 words and a set of 78 hand-crafted rules with the focus on a particular argument structure “reasons supporting conclusions” in French.
+
+---
+
+# Stance detection
+Research related to argumentation mining also involves stance detection. In this case, the whole document (discussion post, article) is assumed to represent the writer's standpoint to the discussed topic. Since the topic is stated as a controversial question, the author is either for or against it.
+Somasundaran.Wiebe.2009 built a computational model for recognizing stances in dual-topic debates about named entities in the electronic products domain by combining preferences learned from the Web data and discourse markers from PDTB BIBREF48 . Hasan.Ng.2013 determined stance in on-line ideological debates on four topics using data from createdebate.com, employing supervised machine learning and features ranging from n-grams to semantic frames
+. Predicting stance of posts in Debatepedia as well as external articles using a probabilistic graphical model was presented in BIBREF49 . This approach also employed sentiment lexicons and Named Entity Recognition as a preprocessing step and achieved accuracy about 0.80 in binary prediction of stances in debate posts.
+Recent research has involved joint modeling, taking into account information about the users, the dialog sequences, and others. Hasan.Ng.2012 proposed machine learning approach to debate stance classification by leveraging contextual information and author's stances towards the topic
+. Qiu.et.al.2013 introduced a computational debate side model to cluster posts or users by sides for general threaded discussions using a generative graphical model employing words from various subjectivity lexicons as well as all adjectives and adverbs in the posts. Qiu.Jiang.2013 proposed a graphical model for viewpoint discovery in discussion threads. Burfoot.et.al.2011 exploited the informal citation structure in U.S
+
+---
+
+A number of studies (outside the field of computational linguistics) used Toulmin's model as their backbone argumentation framework. Chambliss1995 experimented with analyzing 20 written documents in a classroom setting in order to find the argument patterns and parts. Simosi2003 examined employees' argumentation to resolve conflicts. Voss2006 analyzed experts' protocols dealing with problem-solving.
+The model has also been used in research on computer-supported collaborative learning. Erduran2004 adapt Toulmin's model for coding classroom argumentative discourse among teachers and students. Stegmann2011 builds on a simplified Toulmin's model for scripted construction of argument in computer-supported collaborative learning. Garcia-Mila2013 coded utterances into categories from Toulmin's model in persuasion and consensus-reaching among students
+. Weinberger.Fischer.2006 analyze asynchronous discussion boards in which learners engage in an argumentative discourse with the goal to acquire knowledge. For coding the argument dimension, they created a set of argumentative moves based on Toulmin's model. Given this empirical evidence, we decided to build upon the Toulmin's model.
+
+---
+
+. Section SECREF51 motivated the selection of a model for micro-level argument annotation, proposed its extension based on pre-study observations, and outlined the annotation set-up. This annotation study resulted into 340 documents annotated with the modified Toulmin's model and reached moderate inter-annotator agreement in the logos dimension (Krippendorff's INLINEFORM1 0.48)
+. These results make the annotated corpora suitable for training and evaluation computational models and each of these two annotation studies will have their experimental counterparts in the following section.
+# Experiments
+This section presents experiments conducted on the annotated corpora introduced in section SECREF4 . We put the main focus on identifying argument components in the discourse. To comply with the machine learning terminology, in this section we will use the term domain as an equivalent to a topic (remember that our dataset includes six different topics; see section SECREF38 ).
+We evaluate three different scenarios. First, we report ten-fold cross validation over a random ordering of the entire data set. Second, we deal with in-domain ten-fold cross validation for each of the six domains. Third, in order to evaluate the domain portability of our approach, we train the system on five domains and test on the remaining one for all six domains (which we report as cross-domain validation).
+# Identification of argument components
+In the following experiment, we focus on automatic identification of arguments in the discourse. Our approach is based on supervised and semi-supervised machine learning methods on the gold data Toulmin dataset introduced in section SECREF51 .
+An argument consists of different components (such as premises, backing, etc.) which are implicitly linked to the claim. In principle one document can contain multiple independent arguments. However, only 4% of the documents in our dataset contain arguments for both sides of the issue. Thus we simplify the task and assume there is only one argument per document.
+
+---
+
+We report Macro- INLINEFORM0 score and INLINEFORM1 scores for each of the 11 classes as the main evaluation metric. This evaluation is performed on the token level, and for each token the predicted label must exactly match the gold data label (classification of tokens into 11 classes).
+As instances for the sequence labeling model, we chose sentences rather than tokens. During our initial experiments, we observed that building a sequence labeling model for recognizing argument components as sequences of tokens is too fine-grained, as a single token does not convey enough information that could be encoded as features for a machine learner
+. However, as discussed in section UID73 , the annotations were performed on data pre-segmented to sentences and annotating tokens was necessary only when the sentence segmentation was wrong or one sentence contained multiple argument components. Our corpus consists of 3899 sentences, from which 2214 sentences (57%) contain no argument component. From the remaining ones, only 50 sentences (1%) have more than one argument component
+
+---
+
+. We suspect that embeddings-based features convey important information when not enough in-domain data are available. This observation will become apparent in the next experiment.
+The cross-domain experiments yield rather poor results for most of the feature combinations (Table TABREF141 ). However, using only feature set 4 (embeddings), the system performance increases rapidly, so it is even comparable to numbers achieved in the in-domain scenario. These results indicate that embedding features generalize well across domains in our task of argument component identification
+. We leave investigating better performing vector representations, such as paragraph vectors BIBREF123 , for future work.
+
+---
+
+Third, there are aspects of online argumentation that lack their established theoretical counterparts, such as rhetorical questions, figurative language, narratives, and fallacies in general. We tried to model some of them in the pathos dimension of argument (section UID103 ), but no satisfying agreement was reached. Furthermore, we dealt with a step that precedes argument analysis by filtering documents given their persuasiveness with respect to the controversy
+. Finally, we proposed a computational model based on machine learning for identifying argument components (section SECREF108 )
+. In this identification task, we experimented with a wide range of linguistically motivated features and found that (1) the largest feature set (including n-grams, structural features, syntactic features, topic distribution, sentiment distribution, semantic features, coreference feaures, discourse features, and features based on word embeddings) performs best in both in-domain and all-data cross validation, while (2) features based only on word embeddings yield best results in cross-domain
+
+Reminder: answer from the passages above. If they contain the answer or
+part of it, give it. Refuse only if nothing in them is relevant.
+
+Question: Which machine learning methods are used in experiments?
+Answer:

@@ -1,0 +1,62 @@
+{
+  "collection": "eval-qasper-full2-20261028-primary-r3-pdf",
+  "statsPath": "C:/Users/hp/.codex/visualizations/2026/10/29/01a1861e-e89a-7d02-8dd1-60d661cf470a/qasper-scoped-hybrid-r4/pdf/sparse-stats.json",
+  "hashes": [
+    {
+      "file": "src/config.ts",
+      "sha256": "8e307394fd0efc397ab12e5db42e0dcac4177267e91aa5110c05087541bc0e64"
+    },
+    {
+      "file": "src/rag.ts",
+      "sha256": "8576f129dafb6495e1294e7c60523769c966b0b02b2942a055c3cbbed1534244"
+    },
+    {
+      "file": "src/generation/llm.ts",
+      "sha256": "29a18e52b0f0ed46baa73b1994098db7f6ae95e7099de672396a7e648c13a30e"
+    },
+    {
+      "file": "src/generation/promptBuilder.ts",
+      "sha256": "fcbd3fe2133ec48343f3d8fba2986ae0affcef600f451a2b4499633af4778cc5"
+    },
+    {
+      "file": "src/generation/promptVariants.ts",
+      "sha256": "5cec2e527a8c08c57521349b2e5d1154cfe2920572311f3367d0807413c15f8a"
+    },
+    {
+      "file": "src/retrieval/retriever.ts",
+      "sha256": "6a178f0d8d758c1ae02b85a5bab3c8723410dcf1ec29d63f951ff865478cb160"
+    },
+    {
+      "file": "src/retrieval/vectorStore.ts",
+      "sha256": "b66598d532a7c809318a4e178007325c146187257bd0076be24a4d6a98314c6f"
+    },
+    {
+      "file": "src/retrieval/context.ts",
+      "sha256": "a6cf67f11c8e56962203debb5250cbb25da8a2b986706456a6df1d79eff59aef"
+    },
+    {
+      "file": "src/retrieval/embedder.ts",
+      "sha256": "3048d9b1b19c3fc638970908b2f3220faac25cc933fa6e089da315e8d74729c2"
+    },
+    {
+      "file": "src/retrieval/sparse.ts",
+      "sha256": "6e3d2c14ed6d20d7c5cbd53a749e25c8f7fefaa6fcc9deec756ca94593ea6639"
+    },
+    {
+      "file": "src/retrieval/sparseStats.ts",
+      "sha256": "07318b580ea88678bd45bc328b19052406d5085660fc74687aa44ecee13de71f"
+    },
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/sample.json",
+      "sha256": "4f810bcfa9e105295374a72257432c6b03c10e9bc0fa4bd981d3360daee4d62b"
+    },
+    {
+      "file": "C:/Users/hp/.codex/visualizations/2026/10/29/01a1861e-e89a-7d02-8dd1-60d661cf470a/qasper-scoped-hybrid-r4/pdf/sparse-stats.json",
+      "sha256": "d36f0438d256d3e8a06805d7b0b0b29593d7bdabb7c4dc2f79d98b550e164d50"
+    }
+  ]
+}

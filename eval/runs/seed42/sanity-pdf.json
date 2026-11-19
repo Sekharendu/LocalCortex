@@ -1,0 +1,3224 @@
+{
+  "status": "pipeline_mismatch",
+  "stoppedReason": "Chunk-omission evidence recall@5 is nonzero; stop requested by user. Script does not establish a production-equivalent baseline.",
+  "format": "pdf",
+  "phase": "sanity",
+  "scopeHandling": "Replay exact saved production decision to avoid reading held-out catalog titles",
+  "sparseStatsSha256": "d36f0438d256d3e8a06805d7b0b0b29593d7bdabb7c4dc2f79d98b550e164d50",
+  "frozenRunSha256": "4a7298c0d410ee82ca59d527b002156b89d2fde11ad2bd032cd4ea3633cae9e3",
+  "rows": [
+    {
+      "caseId": "pdf/1912.01214/b6f15fb6279b82e34a5bf4828b7b5ddabfdf1d54",
+      "paperId": "1912.01214",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 4,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 76,
+          "text": "lingual neural machine translation. In EMNLP.\nFirat, O.; Cho, K.; and Bengio, Y. 2016. Multi-way, mul-\ntilingual neural machine translation with a shared attention\nmechanism. In HLT-NAACL.\nFu, Y.; Hospedales, T. M.; Xiang, T. Y.; and Gong, S.\n2015. Transductive multi-view zero-shot learning. IEEE\nTransactions on Pattern Analysis and Machine Intelligence\n37:2332–2345.\nGu, J.; Wang, Y.; Cho, K.; and Li, V. O. K. 2019. Improved\nzero-shot neural machine translation via ignoring spurious",
+          "score": 0.7666667,
+          "source": "1912.01214.pdf",
+          "page": 8
+        },
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 11,
+          "text": "a common zero-shot scenario where there are a lot\nof source↔pivot and pivot↔target parallel data but no\nsource↔target parallel data. In this scenario, we propose\na simple but effective transfer approach, the key idea\nof which is to relieve the burden of the domain shift\nproblem by means of cross-lingual pre-training. To this\nend, we firstly investigate the performance of two exist-\ning cross-lingual pre-training methods proposed by Lam-\nple and Conneau (2019) in zero-shot translation scenario.",
+          "score": 0.64285713,
+          "source": "1912.01214.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 13,
+          "text": "which uses the cross-lingual language model pre-training\nto enable a high performance on zero-shot translation.\n• We propose a novel pre-training method called BRLM,\nwhich can effectively alleviates the distance between dif-\nferent source language spaces.\n• Our proposed approach significantly improves zero-shot\ntranslation performance, consistently surpassing pivot-\ning and multilingual approaches. Meanwhile, the perfor-\nmance on supervised translation direction remains the",
+          "score": 0.61904764,
+          "source": "1912.01214.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 53,
+          "text": "model to translate between any zero-shot directions, which\nis more efficient than pivoting. Regarding the comparison\nbetween transfer approaches, our cross-lingual pretraining\nbased transfer outperforms transfer method that does not use\npretraining by a large margin.\nResults on Europarl Dataset. Regarding comparison be-\ntween the baselines in table 2, we find that pivoting is the\nstrongest baseline that has significant advantage over other",
+          "score": 0.5909091,
+          "source": "1912.01214.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 3,
+          "text": "then directly applied in zero-shot translation scenario. Exper-\niments on two public datasets show that our approach signif-\nicantly outperforms strong pivot-based baseline and various\nmultilingual NMT approaches.\nIntroduction\nAlthough Neural Machine Translation (NMT) has domi-\nnated recent research on translation tasks (Wu et al. 2016;\nVaswani et al. 2017; Hassan et al. 2018), NMT heavily relies\non large-scale parallel data, resulting in poor performance",
+          "score": 0.48333335,
+          "source": "1912.01214.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1912.01214/5eda469a8a77f028d0c5f1acd296111085614537",
+      "paperId": "1912.01214",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 1,
+          "text": "Abstract\nTransfer learning between different language pairs has shown\nits effectiveness for Neural Machine Translation (NMT) in\nlow-resource scenario. However, existing transfer methods\ninvolving a common target language are far from success in\nthe extreme scenario of zero-shot translation, due to the lan-\nguage space mismatch problem between transferor (the par-\nent model) and transferee (the child model) on the source\nside. To address this challenge, we propose an effective trans-",
+          "score": 0.8095238,
+          "source": "1912.01214.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 20,
+          "text": "performance between distant languages is still far from\nexpectation.\nOur proposed method belongs to the transfer learning,\nbut it is different from traditional transfer methods which\ntrain a parent model as starting point. Before training a par-\nent model, our approach fully leverages cross-lingual pre-\ntraining methods to make all source languages share the\nsame feature space and thus enables a smooth transition for\nzero-shot translation.\nApproach",
+          "score": 0.6111111,
+          "source": "1912.01214.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 24,
+          "text": "ity of the universal encoder.\nThe key difficulty of this method is to ensure the intermedi-\nate representations of the universal encoder are language in-\nvariant. In the rest of this section, we first present two exist-\ning methods yet to be explored in zero-shot translation, and\nthen propose a straightforward but effective cross-lingual\npre-training method. In the end, we present the whole train-\ning and inference protocol for transfer.\nMasked and Translation Language Model\nPretraining",
+          "score": 0.6111111,
+          "source": "1912.01214.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 13,
+          "text": "which uses the cross-lingual language model pre-training\nto enable a high performance on zero-shot translation.\n• We propose a novel pre-training method called BRLM,\nwhich can effectively alleviates the distance between dif-\nferent source language spaces.\n• Our proposed approach significantly improves zero-shot\ntranslation performance, consistently surpassing pivot-\ning and multilingual approaches. Meanwhile, the perfor-\nmance on supervised translation direction remains the",
+          "score": 0.6,
+          "source": "1912.01214.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 53,
+          "text": "model to translate between any zero-shot directions, which\nis more efficient than pivoting. Regarding the comparison\nbetween transfer approaches, our cross-lingual pretraining\nbased transfer outperforms transfer method that does not use\npretraining by a large margin.\nResults on Europarl Dataset. Regarding comparison be-\ntween the baselines in table 2, we find that pivoting is the\nstrongest baseline that has significant advantage over other",
+          "score": 0.33333334,
+          "source": "1912.01214.pdf",
+          "page": 5
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1810.08699/18c5d366b1da8447b5404eab71f4cc658ba12e6f",
+      "paperId": "1810.08699",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 4,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 0,
+          "text": "arXiv:1810.08699v1 [cs.CL] 19 Oct 2018\npioNER: Datasets and Baselines for Armenian\nNamed Entity Recognition\nTsolak Ghukasyan1, Garnik Davtyan2, Karen Avetisyan3, Ivan Andrianov4\nIvannikov Laboratory for System Programming at Russian-Armenian University1,2,3, Yerevan, Armenia\nIvannikov Institute for System Programming of the Russian Academy of Sciences4, Moscow, Russia\nEmail: {1tsggukasyan,2garnik.davtyan,3karavet,4ivan.andrianov}@ispras.ru\nAbstract—In this work, we tackle the problem of Armenian",
+          "score": 1.1666667,
+          "source": "1810.08699.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 8,
+          "text": "absence of a benchmark dataset of Armenian texts for named\nentity recognition. We propose a gold-standard corpus with\nmanual annotation of CoNLL named entity categories: person,\nlocation, and organization [9] [10], hoping it will be used to\nevaluate future named entity recognition models.\nFurthermore, popular entity recognition models were ap-\nplied to the mentioned data in order to obtain baseline results\nfor future research in the area. Along with the datasets, we",
+          "score": 0.8333334,
+          "source": "1810.08699.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 51,
+          "text": "models, and a gold-standard corpus for testing. It is worth to\nunderline the importance of the latter corpus, as we aim it\nto serve as a benchmark for future named entity recognition\nsystems designed for the Armenian language. Along with the",
+          "score": 0.56666666,
+          "source": "1810.08699.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 52,
+          "text": "corpora, we publish GloVe word vector models trained on a\ncollection of Armenian texts.\nAdditionally, to establish the applicability of Wikipedia-\nbased approaches for the Armenian language, we provide eval-\nuation results for 3 different named entity recognition systems\ntrained and tested on our datasets. The results reinforce the\nability of deep learning approaches in achieving relatively high\nrecall values for this specific task, as well as the power of",
+          "score": 0.53333336,
+          "source": "1810.08699.pdf",
+          "page": 6
+        },
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 2,
+          "text": "models. Alongside the datasets, we release 50-, 100-, 200-, 300-\ndimensional GloVe word embeddings trained on a collection of\nArmenian texts from Wikipedia, news, blogs, and encyclopedia.\nIndex Terms—machine learning, deep learning, natural lan-\nguage processing, named entity recognition, word embeddings\nI. INTRODUCTION\nNamed entity recognition is an important task of natural\nlanguage processing, featuring in many popular text processing",
+          "score": 0.45,
+          "source": "1810.08699.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1810.08699/b5e4866f0685299f1d7af267bbcc4afe2aab806f",
+      "paperId": "1810.08699",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 2,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 0,
+          "text": "arXiv:1810.08699v1 [cs.CL] 19 Oct 2018\npioNER: Datasets and Baselines for Armenian\nNamed Entity Recognition\nTsolak Ghukasyan1, Garnik Davtyan2, Karen Avetisyan3, Ivan Andrianov4\nIvannikov Laboratory for System Programming at Russian-Armenian University1,2,3, Yerevan, Armenia\nIvannikov Institute for System Programming of the Russian Academy of Sciences4, Moscow, Russia\nEmail: {1tsggukasyan,2garnik.davtyan,3karavet,4ivan.andrianov}@ispras.ru\nAbstract—In this work, we tackle the problem of Armenian",
+          "score": 1.1666667,
+          "source": "1810.08699.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 8,
+          "text": "absence of a benchmark dataset of Armenian texts for named\nentity recognition. We propose a gold-standard corpus with\nmanual annotation of CoNLL named entity categories: person,\nlocation, and organization [9] [10], hoping it will be used to\nevaluate future named entity recognition models.\nFurthermore, popular entity recognition models were ap-\nplied to the mentioned data in order to obtain baseline results\nfor future research in the area. Along with the datasets, we",
+          "score": 0.73333335,
+          "source": "1810.08699.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 7,
+          "text": "languages by extracting Wikipedia article texts with outgoing\nlinks and turning those links into named entity annotations\nbased on the target article’s type [6]. Sysoev and Andrianov\nused a similar approach for the Russian language [7] [8].\nBased on its success for a wide range of languages, our choice\nfell on this model to tackle automated data generation and\nannotation for the Armenian language.\nAside from the lack of training data, we also address the",
+          "score": 0.56666666,
+          "source": "1810.08699.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 2,
+          "text": "models. Alongside the datasets, we release 50-, 100-, 200-, 300-\ndimensional GloVe word embeddings trained on a collection of\nArmenian texts from Wikipedia, news, blogs, and encyclopedia.\nIndex Terms—machine learning, deep learning, natural lan-\nguage processing, named entity recognition, word embeddings\nI. INTRODUCTION\nNamed entity recognition is an important task of natural\nlanguage processing, featuring in many popular text processing",
+          "score": 0.48571432,
+          "source": "1810.08699.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 19,
+          "text": "273037 and 218737 lines. The smaller size of our generated\ndata can be attributed to the strict selection of candidate\nsentences as well as simply to the relatively small size of\nArmenian Wikipedia.\nThe accuracy of annotation in the generated corpus heavily\nrelies on the quality of links in Wikipedia articles. During gen-\neration, we assumed that first mentions of all named entities\nhave an outgoing link to their article, however this was not al-",
+          "score": 0.42424244,
+          "source": "1810.08699.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1609.00425/a87a009c242d57c51fc94fe312af5e02070f898b",
+      "paperId": "1609.00425",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "cc55dd45-028e-4a9f-bd35-2bc800260ebd",
+          "chunkIndex": 76,
+          "text": "model may allow future researchers to probe these\nquestions more deeply.\n7 Conclusion\nWe have constructed the first corpus of social me-\ndia posts annotated with dogmatism scores, allowing\nus to explore linguistic features of dogmatism and\nbuild a predictive model that analyzes new content.\nWe apply this model to Reddit, where we discover\nbehavioral predictors of dogmatism and topical pat-\nterns in the comments of dogmatic users.\nCould we use this computational model to help",
+          "score": 1.1666667,
+          "source": "1609.00425.pdf",
+          "page": 9
+        },
+        {
+          "documentId": "cc55dd45-028e-4a9f-bd35-2bc800260ebd",
+          "chunkIndex": 43,
+          "text": "dicts dogmatism in comments. A predictive model\nfurther validates our feature sets, and also allows us\nto analyze dogmatism in millions of other Reddit\ncomments in a scalable way, with multiple uses in\nongoing, downstream analyses.\nPrediction task. Our goal is (1) to understand\nhow well we can use the strategies in Section 3\nto predict dogmatism, and (2) to test the domain-\nindependence of these strategies. First, we test the\nperformance of our model under cross-validation",
+          "score": 0.625,
+          "source": "1609.00425.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "cc55dd45-028e-4a9f-bd35-2bc800260ebd",
+          "chunkIndex": 1,
+          "text": "of dogmatism described by existing psychol-\nogy theories (such as over-confidence), find-\ning they have predictive power. We also find\nevidence for new signals of dogmatism, such\nas the tendency of dogmatic posts to refrain\nfrom signaling cognitive processes. When we\nuse our predictive model to analyze millions\nof other Reddit posts, we find evidence that\nsuggests dogmatism is a deeper personality\ntrait, present for dogmatic users across many\ndifferent domains, and that users who engage",
+          "score": 0.5151515,
+          "source": "1609.00425.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "cc55dd45-028e-4a9f-bd35-2bc800260ebd",
+          "chunkIndex": 0,
+          "text": "Identifying Dogmatism in Social Media: Signals and Models\nEthan Fast and Eric Horvitz\nethaen@stanford.edu, horvitz@microsoft.com\nAbstract\nWe explore linguistic and behavioral features\nof dogmatism in social media and construct\nstatistical models that can identify dogmatic\ncomments. Our model is based on a corpus of\nReddit posts, collected across a diverse set of\nconversational topics and annotated via paid\ncrowdsourcing. We operationalize key aspects\nof dogmatism described by existing psychol-",
+          "score": 0.4761905,
+          "source": "1609.00425.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "cc55dd45-028e-4a9f-bd35-2bc800260ebd",
+          "chunkIndex": 62,
+          "text": "tively associated with dogmatism. ↑ means the feature is pos-\nitively predictive with dogmatism, and ↓ means the feature is\nnegatively predictive. For example, the more subreddits a user\nposts in, the less likely they are to be dogmatic. All features are\nstatistically significant (p < 0.001).\nsee dramatically different results. For example, the\nsubreddits most linked to science through user posts\nare UpliftingNews, photoshopbattles, and firstworl-\ndanarchist, and millionairemakers.",
+          "score": 0.45,
+          "source": "1609.00425.pdf",
+          "page": 7
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1801.05147/ef4dba073d24042f24886580ae77add5326f2130",
+      "paperId": "1801.05147",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 2,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "6af6c28c-8522-4da9-9cce-917cbfe8f301",
+          "chunkIndex": 5,
+          "text": "experts may be of lower quality than those from experts. It\nis one biggest challenge to build a powerful NER system on\nsuch a low quality annotated data. Although we can obtain\nhigh quality annotations for each input sentence by majority\nvoting, it can be a waste of human labors to achieve such\na goal, especially for some ambiguous sentences which may\nrequire a number of annotations to reach an agreement. Thus\n∗The corresponding author is Wenliang Chen.",
+          "score": 0.75757575,
+          "source": "1801.05147.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "6af6c28c-8522-4da9-9cce-917cbfe8f301",
+          "chunkIndex": 13,
+          "text": "datasets to verify the effectiveness of the proposed adversar-\nial neural network model. The results show that our system\noutperforms very strong baseline systems. In summary, we\nmake the following contributions:\n• We propose a crowd-annotation learning model based on\nadversarial neural networks. The model uses labeled data\ncreated by non-experts to train a NER classifier and simul-\ntaneously learns the common and private features among\nthe non-expert annotators.",
+          "score": 0.6,
+          "source": "1801.05147.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "6af6c28c-8522-4da9-9cce-917cbfe8f301",
+          "chunkIndex": 80,
+          "text": "ing worker independent features.\nConclusions\nIn this paper, we presented an approach to performing crowd\nannotation learning based on the idea of adversarial training\nfor Chinese Named Entity Recognition (NER). In our ap-\nproach, we use a common and private Bi-LSTMs for rep-\nresenting annotator-generic and -specific information, and\nlearn a label Bi-LSTM from the crowd-annotated NE label\nsequences. Finally, the proposed approach adopts a LSTM-",
+          "score": 0.5,
+          "source": "1801.05147.pdf",
+          "page": 7
+        },
+        {
+          "documentId": "6af6c28c-8522-4da9-9cce-917cbfe8f301",
+          "chunkIndex": 6,
+          "text": "∗The corresponding author is Wenliang Chen.\nCopyright c© 2018, Association for the Advancement of Artificial\nIntelligence (www.aaai.org). All rights reserved.\nmajority work directly build models on crowd annotations,\ntrying to model the differences among annotators, for exam-\nple, some of the annotators may be more trustful (Rodrigues,\nPereira, and Ribeiro 2014; Nguyen et al. 2017).\nHere we focus mainly on the Chinese NER, which is more\ndifficult than NER for other languages such as English for",
+          "score": 0.5,
+          "source": "1801.05147.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "6af6c28c-8522-4da9-9cce-917cbfe8f301",
+          "chunkIndex": 81,
+          "text": "CRF model to perform tagging. In our experiments, we cre-\nate two data sets for Chinese NER tasks in the dialog and e-\ncommerce domains. The experimental results show that the\nproposed approach outperforms strong baseline systems.",
+          "score": 0.48717952,
+          "source": "1801.05147.pdf",
+          "page": 7
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1909.09067/9eabb54c2408dac24f00f92cf1061258c7ea2e1a",
+      "paperId": "1909.09067",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 1,
+          "text": "automatic readability assessment and auto-\nmatic text simplification of German. The\ncorpus is compiled from web sources and\nconsists of approximately 211,000 sen-\ntences. As a novel contribution, it con-\ntains information on text structure, typog-\nraphy, and images, which can be exploited\nas part of machine learning approaches to\nreadability assessment and text simplifica-\ntion. The focus of this publication is on\nrepresenting such information as an exten-\nsion to an existing corpus standard.",
+          "score": 1.1666667,
+          "source": "1909.09067.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 49,
+          "text": "level of difficulty of a simplified German text. To\nour knowledge, this is the first study to deliver em-\npirical proof of the relevance of such features.\n4 Conclusion and Outlook\nWe have introduced a corpus compiled for use\nin automatic readability assessment and automatic\ntext simplification of German. While such tasks\nhave been addressed for other languages, research\non German is still scarce. The features exploited\nas part of machine learning approaches to read-",
+          "score": 0.7,
+          "source": "1909.09067.pdf",
+          "page": 6
+        },
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 0,
+          "text": "arXiv:1909.09067v1 [cs.CL] 19 Sep 2019\nA Corpus for Automatic Readability Assessment and Text Simplification\nof German\nAlessia Battisti\nInstitute of Computational Linguistics\nUniversity of Zurich\nAndreasstrasse 15, 8050 Zurich\nalessia.battisti@uzh.ch\nSarah Ebling\nInstitute of Computational Linguistics\nUniversity of Zurich\nAndreasstrasse 15, 8050 Zurich\nebling@cl.uzh.ch\nAbstract\nIn this paper, we present a corpus for use in\nautomatic readability assessment and auto-",
+          "score": 0.61904764,
+          "source": "1909.09067.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 10,
+          "text": "pora. Specifically, for automatic text simplifica-\ntion via machine translation, pairs of standard-\nlanguage/simplified-language texts aligned at the\nsentence level (i.e., parallel corpora) are needed.\nThe paper at hand introduces a corpus devel-\noped for use in automatic readability assessment\nand automatic text simplification of German. The\nfocus of this publication is on representing infor-\nmation that is valuable for these tasks but that hith-",
+          "score": 0.5833334,
+          "source": "1909.09067.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 50,
+          "text": "as part of machine learning approaches to read-\nability assessment so far typically include surface\nand/or (deeper) linguistic features. The corpus\npresented in this paper additionally contains infor-\nmation on text structure, typography, and images.\nThese features have been shown to be indicative\nof simple vs. complex texts both theoretically and,\nusing the corpus described in this paper, empiri-\ncally.\nInformation on text structure, typography, and",
+          "score": 0.47692308,
+          "source": "1909.09067.pdf",
+          "page": 6
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1909.09067/3d013f15796ae7fed5272183a166c45f16e24e39",
+      "paperId": "1909.09067",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 1,
+          "text": "automatic readability assessment and auto-\nmatic text simplification of German. The\ncorpus is compiled from web sources and\nconsists of approximately 211,000 sen-\ntences. As a novel contribution, it con-\ntains information on text structure, typog-\nraphy, and images, which can be exploited\nas part of machine learning approaches to\nreadability assessment and text simplifica-\ntion. The focus of this publication is on\nrepresenting such information as an exten-\nsion to an existing corpus standard.",
+          "score": 1.1666667,
+          "source": "1909.09067.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 0,
+          "text": "arXiv:1909.09067v1 [cs.CL] 19 Sep 2019\nA Corpus for Automatic Readability Assessment and Text Simplification\nof German\nAlessia Battisti\nInstitute of Computational Linguistics\nUniversity of Zurich\nAndreasstrasse 15, 8050 Zurich\nalessia.battisti@uzh.ch\nSarah Ebling\nInstitute of Computational Linguistics\nUniversity of Zurich\nAndreasstrasse 15, 8050 Zurich\nebling@cl.uzh.ch\nAbstract\nIn this paper, we present a corpus for use in\nautomatic readability assessment and auto-",
+          "score": 0.73333335,
+          "source": "1909.09067.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 49,
+          "text": "level of difficulty of a simplified German text. To\nour knowledge, this is the first study to deliver em-\npirical proof of the relevance of such features.\n4 Conclusion and Outlook\nWe have introduced a corpus compiled for use\nin automatic readability assessment and automatic\ntext simplification of German. While such tasks\nhave been addressed for other languages, research\non German is still scarce. The features exploited\nas part of machine learning approaches to read-",
+          "score": 0.7,
+          "source": "1909.09067.pdf",
+          "page": 6
+        },
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 10,
+          "text": "pora. Specifically, for automatic text simplifica-\ntion via machine translation, pairs of standard-\nlanguage/simplified-language texts aligned at the\nsentence level (i.e., parallel corpora) are needed.\nThe paper at hand introduces a corpus devel-\noped for use in automatic readability assessment\nand automatic text simplification of German. The\nfocus of this publication is on representing infor-\nmation that is valuable for these tasks but that hith-",
+          "score": 0.5833334,
+          "source": "1909.09067.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 50,
+          "text": "as part of machine learning approaches to read-\nability assessment so far typically include surface\nand/or (deeper) linguistic features. The corpus\npresented in this paper additionally contains infor-\nmation on text structure, typography, and images.\nThese features have been shown to be indicative\nof simple vs. complex texts both theoretically and,\nusing the corpus described in this paper, empiri-\ncally.\nInformation on text structure, typography, and",
+          "score": 0.4107143,
+          "source": "1909.09067.pdf",
+          "page": 6
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/2003.03106/66c96c297c2cffdf5013bab5e95b59101cb38655",
+      "paperId": "2003.03106",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 0,
+          "text": "Sensitive Data Detection and Classification in Spanish Clinical Text:\nExperiments with BERT\nAitor Garc´ıa-Pablos, Naiara Perez, Montse Cuadros\nSNLT group at Vicomtech Foundation, Basque Research and Technology Alliance (BRTA)\nDonostia/San-Sebasti´an, 20009, Spain\n{agarciap, nperez, mcuadros}@vicomtech.org\nAbstract\nMassive digital data processing provides a wide range of opportunities and benefits, but at the cost of endangering personal data privacy.",
+          "score": 1,
+          "source": "2003.03106.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 22,
+          "text": "mentation without the CRF layer.\n3. Materials and Methods\nThe aim of this paper is to evaluate BERT’s multilingual\nmodel and compare it to other established machine-learning\nalgorithms in a specific task: sensitive data detection and\nclassification in Spanish clinical free text. This section de-\nscribes the data involved in the experiments and the systems\nevaluated. Finally, we introduce the experimental setup.\n3.1. Data\nTwo datasets are exploited in this article. Both datasets",
+          "score": 1,
+          "source": "2003.03106.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 10,
+          "text": "conduct several experiments in sensitive information de-\ntection and classification on Spanish clinical text using\nBERT (from ‘Bidirectional Encoder Representations from\nTransformers’) (Devlin et al., 2019) as the base for a se-\nquence labelling approach. The experiments are carried\nout on two datasets: the MEDDOCAN: Medical Document\nAnonymization shared task dataset (Marimon et al., 2019),\nand NUBES (Lima et al., 2019), a corpus of real medical",
+          "score": 0.65,
+          "source": "2003.03106.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 56,
+          "text": "rent state of the art for sensitive information detection and\nclassification in Spanish clinical text. Specifically, we in-\nclude the results of a domain-independent NLNDE model\n(S2), and the results of a model enriched with domain-\nspecific embeddings (S3). Finally, we include the results\nobtained by Mao and Liu (2019) with a CRF output layer\non top of BERT embeddings. MEDDOCAN consists of\ntwo scenarios:\nDetection - This evaluation measures how good a system",
+          "score": 0.53333336,
+          "source": "2003.03106.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 11,
+          "text": "reports in Spanish. In these experiments, we compare the\nperformance of BERT with other machine-learning-based\nsystems, some of which use language-specific features. Our\naim is to evaluate how good a BERT-based model performs\nwithout language nor domain specialisation apart from the\ntraining data labelled for the task at hand.\nThe rest of the paper is structured as follows: the next sec-\ntion describes related work about data anonymisation in",
+          "score": 0.45238096,
+          "source": "2003.03106.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/2003.03106/6b53e1f46ae4ba9b75117fc6e593abded89366be",
+      "paperId": "2003.03106",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 22,
+          "text": "mentation without the CRF layer.\n3. Materials and Methods\nThe aim of this paper is to evaluate BERT’s multilingual\nmodel and compare it to other established machine-learning\nalgorithms in a specific task: sensitive data detection and\nclassification in Spanish clinical free text. This section de-\nscribes the data involved in the experiments and the systems\nevaluated. Finally, we introduce the experimental setup.\n3.1. Data\nTwo datasets are exploited in this article. Both datasets",
+          "score": 1,
+          "source": "2003.03106.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 0,
+          "text": "Sensitive Data Detection and Classification in Spanish Clinical Text:\nExperiments with BERT\nAitor Garc´ıa-Pablos, Naiara Perez, Montse Cuadros\nSNLT group at Vicomtech Foundation, Basque Research and Technology Alliance (BRTA)\nDonostia/San-Sebasti´an, 20009, Spain\n{agarciap, nperez, mcuadros}@vicomtech.org\nAbstract\nMassive digital data processing provides a wide range of opportunities and benefits, but at the cost of endangering personal data privacy.",
+          "score": 1,
+          "source": "2003.03106.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 10,
+          "text": "conduct several experiments in sensitive information de-\ntection and classification on Spanish clinical text using\nBERT (from ‘Bidirectional Encoder Representations from\nTransformers’) (Devlin et al., 2019) as the base for a se-\nquence labelling approach. The experiments are carried\nout on two datasets: the MEDDOCAN: Medical Document\nAnonymization shared task dataset (Marimon et al., 2019),\nand NUBES (Lima et al., 2019), a corpus of real medical",
+          "score": 0.6,
+          "source": "2003.03106.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 56,
+          "text": "rent state of the art for sensitive information detection and\nclassification in Spanish clinical text. Specifically, we in-\nclude the results of a domain-independent NLNDE model\n(S2), and the results of a model enriched with domain-\nspecific embeddings (S3). Finally, we include the results\nobtained by Mao and Liu (2019) with a CRF output layer\non top of BERT embeddings. MEDDOCAN consists of\ntwo scenarios:\nDetection - This evaluation measures how good a system",
+          "score": 0.5833334,
+          "source": "2003.03106.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 11,
+          "text": "reports in Spanish. In these experiments, we compare the\nperformance of BERT with other machine-learning-based\nsystems, some of which use language-specific features. Our\naim is to evaluate how good a BERT-based model performs\nwithout language nor domain specialisation apart from the\ntraining data labelled for the task at hand.\nThe rest of the paper is structured as follows: the next sec-\ntion describes related work about data anonymisation in",
+          "score": 0.4107143,
+          "source": "2003.03106.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1708.01464/113d791df6fcfc9cecfb7b1bebaf32cc2e4402ab",
+      "paperId": "1708.01464",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 2,
+          "text": "the intrinsic similarities between different\nwriting systems. We show an 11% im-\nprovement in phoneme error rate over an\napproach based on adapting high-resource\nmonolingual g2p models to low-resource\nlanguages. Our model is also much more\ncompact relative to previous approaches.\n1 Introduction\nAccurate grapheme-to-phoneme conversion (g2p)\nis important for any application that depends on\nthe sometimes inconsistent relationship between\nspoken and written language. Most prominently,",
+          "score": 0.75757575,
+          "source": "1708.01464.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 55,
+          "text": "ding space is what leads to our models’ very\ngood performance on WER 100. Even when the",
+          "score": 0.5555556,
+          "source": "1708.01464.pdf",
+          "page": 6
+        },
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 37,
+          "text": "are. Such statistics would be especially interest-\ning for evaluating a multilingual system, because\ndifferent languages often map the same grapheme\nto phonemes that are only subtly different from",
+          "score": 0.5,
+          "source": "1708.01464.pdf",
+          "page": 4
+        },
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 23,
+          "text": "of two separate encoders which process the input\nEnc. & dec. model type LSTM\nAttention General\nEnc. & dec. layers 2\nHidden layer size 150\nSource embedding size 150\nTarget embedding size 150\nBatch size 64\nOptimizer SGD\nLearning rate 1.0\nTraining epochs 13\nTable 1: Hyperparameters for multilingual g2p\nmodels\nin forward and reverse directions. We used long\nshort-term memory units (Hochreiter and Schmid-\nhuber, 1997) for both the encoder and decoder.\nFor the attention mechanism, we used the general",
+          "score": 0.5,
+          "source": "1708.01464.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 24,
+          "text": "For the attention mechanism, we used the general\nglobal attention architecture described by Luong\net al. (2015).\nWe implemented2 all models with OpenNMT\n(Klein et al., 2017). Our hyperparameters, which\nwe determined by experimentation, are listed in\nTable 1.\n4.2 Training Multilingual Models\nPresenting pronunciation data in several languages\nto the network might create problems because dif-\nferent languages have different pronunciation pat-\nterns. For example, the string ‘real’ is pronounced",
+          "score": 0.4,
+          "source": "1708.01464.pdf",
+          "page": 3
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1708.01464/4eaf9787f51cd7cdc45eb85cf223d752328c6ee4",
+      "paperId": "1708.01464",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 44,
+          "text": "NoLangID-Adapted 85.11 48.24 55.93\nNoLangID-All 83.65 47.13 51.87\nTable 4: Adapted Results\n6.5 High Resource Results\nHaving shown that our model exceeds the perfor-\nmance of the wFST-adaptation approach, we next\ncompare it to the baseline models for just high\nresource languages. The wFST models here are\npurely monolingual – they do not use data adap-\ntation because there is sufficient training data for\neach of them. Full results are presented in Table 5.",
+          "score": 0.6666667,
+          "source": "1708.01464.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 37,
+          "text": "are. Such statistics would be especially interest-\ning for evaluating a multilingual system, because\ndifferent languages often map the same grapheme\nto phonemes that are only subtly different from",
+          "score": 0.5909091,
+          "source": "1708.01464.pdf",
+          "page": 4
+        },
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 66,
+          "text": "the WFST framework. Natural Language Engineer-\ning 22(6):907–938.\nRobert ¨Ostling and J¨org Tiedemann. 2017. Continuous\nmultilinguality with language vectors. EACL 2017\npage 644.\nKanishka Rao, Fuchun Peng, Has¸im Sak, and\nFranc¸oise Beaufays. 2015. Grapheme-to-phoneme\nconversion using long short-term memory recurrent\nneural networks. In International Conference on\nAcoustics, Speech and Signal Processing (ICASSP).\npages 4225–4229.\nTim Schlippe, Wolf Quaschningk, and Tanja Schultz.",
+          "score": 0.5,
+          "source": "1708.01464.pdf",
+          "page": 8
+        },
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 0,
+          "text": "Massively Multilingual Neural Grapheme-to-Phoneme Conversion\nBen Peters\nSaarland University\nSaarbr¨ucken, Germany\nbenzurdopeters@gmail.com\nJon Dehdari and Josef van Genabith\nDFKI & Saarland University\nSaarbr¨ucken, Germany\nfirstname.lastname@dfki.de\nAbstract\nGrapheme-to-phoneme conversion (g2p)\nis necessary for text-to-speech and auto-\nmatic speech recognition systems. Most\ng2p systems are monolingual: they require\nlanguage-specific data or handcrafting of",
+          "score": 0.4666667,
+          "source": "1708.01464.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 67,
+          "text": "2014. Combining grapheme-to-phoneme converter\noutputs for enhanced pronunciation generation in\nlow-resource scenarios. In International Work-\nshop on Spoken Language Technologies for Under-\nresourced Languages (SLTU). pages 139–145.\nYulia Tsvetkov, Sunayana Sitaram, Manaal Faruqui,\nGuillaume Lample, Patrick Littell, David\nMortensen, Alan W Black, Lori Levin, and Chris\nDyer. 2016. Polyglot neural language models: A\ncase study in cross-lingual phonetic representation",
+          "score": 0.4,
+          "source": "1708.01464.pdf",
+          "page": 8
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/2002.03407/31735ec3d83c40b79d11df5c34154849aeb3fb47",
+      "paperId": "2002.03407",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 0,
+          "text": "arXiv:2002.03407v1 [cs.CL] 9 Feb 2020\nAbstractive Summarization for Low Resource Data using Domain Transfer and\nData Synthesis\nAhmed Magooda1, Diane Litman1\n1 Computer Science Department, University of Pittsburgh\nPittsburgh, PA, USA\naem132@pitt.edu, dlitman@pitt.edu\nAbstract\nTraining abstractive summarization models typically requires\nlarge amounts of data, which can be a limitation for many\ndomains. In this paper we explore using domain transfer and",
+          "score": 1.1666667,
+          "source": "2002.03407.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 60,
+          "text": "Conclusions and Future Work\nWe explored improving the performance of neural abstrac-\ntive summarizers when applied to the low resource domain\nof student reflections using three approaches: domain trans-\nfer, data synthesis and the combination of both. For domain\ntransfer, state of the art abstractive summarization model\nwas pretrained using out-of-domain data (CNN/DM), then\ntuned using in-domain data (student reflections). The pro-\ncess of tuning improved ROUGE scores on the student re-",
+          "score": 0.8333334,
+          "source": "2002.03407.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 5,
+          "text": "Copyright c© 2019, Association for the Advancement of Artificial\nIntelligence (www.aaai.org). All rights reserved.\ncomplex neural abstractive summarization models in such\ndomains will not yield good performing models, and we will\nindeed later show that this is the case for student reflections.\nTo improve performance in low resource do-\nmains, we explore three directions. First, we ex-\nplore domain transfer for abstractive summariza-\ntion. While domain transfer is not new, compared",
+          "score": 0.6,
+          "source": "2002.03407.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 9,
+          "text": "in an end-to-end setting.\nTo our knowledge, training such neural abstractive sum-\nmarization models in low resource domains using domain\ntransfer has not been thoroughly explored on domains dif-\nferent than news. For example, (Nallapati et al. 2016) re-\nported the results of training on CNN/DM data while eval-\nuating on DUC data without any tuning. Note that these",
+          "score": 0.5,
+          "source": "2002.03407.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 6,
+          "text": "tion. While domain transfer is not new, compared\nto prior summarization studies (Hua and Wang 2017;\nKeneshloo, Ramakrishnan, and Reddy 2019), our training\n(news) and tuning (student reflection) domains are quite dis-\nsimilar, and the in-domain data is small. Second, we propose\na template-based synthesis method to create synthesized\nsummaries, then explore the effect of enriching training data\nfor abstractive summarization using the proposed model",
+          "score": 0.4722222,
+          "source": "2002.03407.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/2002.03407/c21b87c97d1afac85ece2450ee76d01c946de668",
+      "paperId": "2002.03407",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 4,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 0,
+          "text": "arXiv:2002.03407v1 [cs.CL] 9 Feb 2020\nAbstractive Summarization for Low Resource Data using Domain Transfer and\nData Synthesis\nAhmed Magooda1, Diane Litman1\n1 Computer Science Department, University of Pittsburgh\nPittsburgh, PA, USA\naem132@pitt.edu, dlitman@pitt.edu\nAbstract\nTraining abstractive summarization models typically requires\nlarge amounts of data, which can be a limitation for many\ndomains. In this paper we explore using domain transfer and",
+          "score": 1.1666667,
+          "source": "2002.03407.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 5,
+          "text": "Copyright c© 2019, Association for the Advancement of Artificial\nIntelligence (www.aaai.org). All rights reserved.\ncomplex neural abstractive summarization models in such\ndomains will not yield good performing models, and we will\nindeed later show that this is the case for student reflections.\nTo improve performance in low resource do-\nmains, we explore three directions. First, we ex-\nplore domain transfer for abstractive summariza-\ntion. While domain transfer is not new, compared",
+          "score": 0.7,
+          "source": "2002.03407.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 60,
+          "text": "Conclusions and Future Work\nWe explored improving the performance of neural abstrac-\ntive summarizers when applied to the low resource domain\nof student reflections using three approaches: domain trans-\nfer, data synthesis and the combination of both. For domain\ntransfer, state of the art abstractive summarization model\nwas pretrained using out-of-domain data (CNN/DM), then\ntuned using in-domain data (student reflections). The pro-\ncess of tuning improved ROUGE scores on the student re-",
+          "score": 0.6666667,
+          "source": "2002.03407.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 6,
+          "text": "tion. While domain transfer is not new, compared\nto prior summarization studies (Hua and Wang 2017;\nKeneshloo, Ramakrishnan, and Reddy 2019), our training\n(news) and tuning (student reflection) domains are quite dis-\nsimilar, and the in-domain data is small. Second, we propose\na template-based synthesis method to create synthesized\nsummaries, then explore the effect of enriching training data\nfor abstractive summarization using the proposed model",
+          "score": 0.65,
+          "source": "2002.03407.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 9,
+          "text": "in an end-to-end setting.\nTo our knowledge, training such neural abstractive sum-\nmarization models in low resource domains using domain\ntransfer has not been thoroughly explored on domains dif-\nferent than news. For example, (Nallapati et al. 2016) re-\nported the results of training on CNN/DM data while eval-\nuating on DUC data without any tuning. Note that these",
+          "score": 0.4166667,
+          "source": "2002.03407.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1909.11687/efe9bad55107a6be7704ed97ecce948a8ca7b1d2",
+      "paperId": "1909.11687",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 5,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 0,
+          "text": "Under review as a conference paper at ICLR 2020\nEXTREME LANGUAGE MODEL COMPRESSION WITH\nOPTIMAL SUBWORDS AND SHARED PROJECTIONS\nSanqiang Zhao, Raghav Gupta, Yang Song, Denny Zhou\nGoogle AI, USA\n{sanqiang, raghavgupta, yangso, dennyzhou}@google.com\nABSTRACT\nPre-trained deep neural network language models such as ELMo, GPT, BERT\nand XLNet have recently achieved state-of-the-art performance on a variety of\nlanguage understanding tasks. However, their size makes them impractical for a",
+          "score": 1.1666667,
+          "source": "1909.11687v1.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 79,
+          "text": "Under review as a conference paper at ICLR 2020\nAbigail See, Minh-Thang Luong, and Christopher D Manning. Compression of neural machine\ntranslation models via pruning. In Proceedings of The 20th SIGNLL Conference on Computa-\ntional Natural Language Learning, pp. 291–301, 2016.\nRico Sennrich, Barry Haddow, and Alexandra Birch. Neural machine translation of rare words with\nsubword units. In Proceedings of the 54th Annual Meeting of the Association for Computational",
+          "score": 0.5909091,
+          "source": "1909.11687v1.pdf",
+          "page": 10
+        },
+        {
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 3,
+          "text": "is able to compress the BERTBASE model by more than 60x, with only a minor\ndrop in downstream task metrics, resulting in a language model with a footprint of\nunder 7MB. Experimental results also demonstrate higher compression efficiency\nand accuracy when compared with other state-of-the-art compression techniques.\n1 INTRODUCTION\nRecently, contextual-aware language models such as ELMo (Peters et al., 2018), GPT (Radford",
+          "score": 0.5833334,
+          "source": "1909.11687v1.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 12,
+          "text": "variables. This allows for more direct layer-wise transfer of knowledge to the student model.\nUsing the combination of dual training and shared variable projections, we train a 12-layer highly-\ncompressed student BERT model, achieving a maximum compression ratio of ∼61.94x (with 48\ndimension size) compared to the teacher BERTBASE model. We conduct experiments for measuring\nboth generalized language modeling perspective and for downstream tasks, demonstrating competi-",
+          "score": 0.54285717,
+          "source": "1909.11687v1.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 21,
+          "text": "in the model vocabulary. In this section, we first discuss the rationale behind this reduction and the\nchallenges it introduces, followed by our techniques, namely dual training and shared projection.\n3.1 OPTIMAL SUBWORD EMBEDDINGS VIA KNOWLEDGE DISTILLATION\nWe follow the general knowledge distillation paradigm of training a small student model from a large\nteacher model. Our teacher model is a 12-layer uncased BERTBASE, trained with 30522 WordPiece",
+          "score": 0.45833334,
+          "source": "1909.11687v1.pdf",
+          "page": 3
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1804.05918/f17ca24b135f9fe6bb25dc5084b13e1637ec7744",
+      "paperId": "1804.05918",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 2,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 0,
+          "text": "Improving Implicit Discourse Relation Classification by Modeling\nInter-dependencies of Discourse Units in a Paragraph\nZeyu Dai, Ruihong Huang\nDepartment of Computer Science and Engineering\nTexas A&M University\n{jzdaizeyu, huangrh}@tamu.edu\nAbstract\nWe argue that semantic meanings of a sentence\nor clause can not be interpreted independently\nfrom the rest of a paragraph, or independently\nfrom all discourse relations and the overall\nparagraph-level discourse structure. With the",
+          "score": 1.1666667,
+          "source": "1804.05918.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 1,
+          "text": "paragraph-level discourse structure. With the\ngoal of improving implicit discourse relation\nclassification, we introduce a paragraph-level\nneural networks that model inter-dependencies\nbetween discourse units as well as discourse\nrelation continuity and patterns, and predict a\nsequence of discourse relations in a paragraph.\nExperimental results show that our model out-\nperforms the previous state-of-the-art systems\non the benchmark corpus of PDTB.\n1 Introduction",
+          "score": 0.8333334,
+          "source": "1804.05918.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 17,
+          "text": "However, nearly all the previous works assume\nthat a pair of discourse units is independent from\nits wider paragraph-level contexts and build their\ndiscourse relation prediction models based on only\ntwo relevant discourse units. In contrast, we model\ninter-dependencies of discourse units in a para-\ngraph when building discourse unit representa-\ntions; in addition, we model global continuity and\npatterns in a sequence of discourse relations, in-\ncluding both implicit and explicit relations.",
+          "score": 0.5833334,
+          "source": "1804.05918.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 24,
+          "text": "further modeling semantic dependencies between\ndiscourse units within paragraph. The final soft-\nmax prediction layer will concatenate representa-\ntions of two adjacent discourse units and predict\nthe discourse relation between them.\nWord Vectors as Input: The input of the\nparagraph-level discourse relation prediction\n1In PDTB, most of discourse relations were annotated be-\ntween two adjacent sentences or two adjacent clauses. For\nexceptional cases, we applied heuristics to convert them.",
+          "score": 0.56666666,
+          "source": "1804.05918.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 5,
+          "text": "interactions between discourse units using neural\ntensor networks or attention mechanisms in neu-\nral nets. However, most of existing approaches\nignore wider paragraph-level contexts beyond the\ntwo discourse units that are examined for predict-\ning a discourse relation in between.\nTo further improve implicit discourse relation\nprediction, we aim to improve discourse unit rep-\nresentations by positioning a discourse unit (DU)\nin its wider context of a paragraph. The key obser-",
+          "score": 0.3611111,
+          "source": "1804.05918.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1804.05918/bd5bd1765362c2d972a762ca12675108754aa437",
+      "paperId": "1804.05918",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 0,
+          "text": "Improving Implicit Discourse Relation Classification by Modeling\nInter-dependencies of Discourse Units in a Paragraph\nZeyu Dai, Ruihong Huang\nDepartment of Computer Science and Engineering\nTexas A&M University\n{jzdaizeyu, huangrh}@tamu.edu\nAbstract\nWe argue that semantic meanings of a sentence\nor clause can not be interpreted independently\nfrom the rest of a paragraph, or independently\nfrom all discourse relations and the overall\nparagraph-level discourse structure. With the",
+          "score": 1,
+          "source": "1804.05918.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 1,
+          "text": "paragraph-level discourse structure. With the\ngoal of improving implicit discourse relation\nclassification, we introduce a paragraph-level\nneural networks that model inter-dependencies\nbetween discourse units as well as discourse\nrelation continuity and patterns, and predict a\nsequence of discourse relations in a paragraph.\nExperimental results show that our model out-\nperforms the previous state-of-the-art systems\non the benchmark corpus of PDTB.\n1 Introduction",
+          "score": 1,
+          "source": "1804.05918.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 17,
+          "text": "However, nearly all the previous works assume\nthat a pair of discourse units is independent from\nits wider paragraph-level contexts and build their\ndiscourse relation prediction models based on only\ntwo relevant discourse units. In contrast, we model\ninter-dependencies of discourse units in a para-\ngraph when building discourse unit representa-\ntions; in addition, we model global continuity and\npatterns in a sequence of discourse relations, in-\ncluding both implicit and explicit relations.",
+          "score": 0.65,
+          "source": "1804.05918.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 24,
+          "text": "further modeling semantic dependencies between\ndiscourse units within paragraph. The final soft-\nmax prediction layer will concatenate representa-\ntions of two adjacent discourse units and predict\nthe discourse relation between them.\nWord Vectors as Input: The input of the\nparagraph-level discourse relation prediction\n1In PDTB, most of discourse relations were annotated be-\ntween two adjacent sentences or two adjacent clauses. For\nexceptional cases, we applied heuristics to convert them.",
+          "score": 0.44444445,
+          "source": "1804.05918.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 62,
+          "text": "when applied to Bi-LSTMs, improved implicit\ndiscourse relation prediction performance. How-\never, the performance on the three small classes\n(Comp, Cont and Temp) remains low.\nThe third section of table 3 shows the\nmulti-class classification results of our proposed\nparagraph-level neural network models that cap-\nture inter-dependencies among discourse units.\nThe first row shows the performance of a variant of\nour basic model, where we only identify implicit",
+          "score": 0.4107143,
+          "source": "1804.05918.pdf",
+          "page": 7
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",
+      "paperId": "1910.10781",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 8,
+          "text": "archy of representations (segment-wise and document-wise),\nwe refer to them as Hierarchical Transformers. To the best\nof our knowledge, no attempt has been done before to use\nthe Transformer architecture for classification of such long\nsequences.\nOur novel contributions are:\n• Two extensions - RoBERT and ToBERT - to the BERT\nmodel, which enable its application in classification of\nlong texts by performing segmentation and using an-\nother layer on top of the segment representations.",
+          "score": 1.1666667,
+          "source": "1910.10781.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 0,
+          "text": "arXiv:1910.10781v1 [cs.CL] 23 Oct 2019\nHIERARCHICAL TRANSFORMERS FOR LONG DOCUMENT CLASSIFICATION\nRaghavendra Pappagari1, Piotr ˙Zelasko2, Jes´us Villalba1, Yishay Carmiel2, and Najim Dehak1\n1Center for Language and Speech Processing, Johns Hopkins University, Baltimore, MD\n2Avaya Conversational Intelligence\n{rpappag1,jvillal7,ndehak3}@jhu.edu\npetezor@gmail.com, ycarmiel@avaya.com\nABSTRACT\nBERT, which stands for Bidirectional Encoder Represen-",
+          "score": 0.75,
+          "source": "1910.10781.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 11,
+          "text": "in [16] but it is prohibitive for very long documents. In [17],\ndataset collected from arXiv papers is used for classification.\nFor classification, they sample random blocks of words and\nuse them together for classification instead of using full doc-\nument which may work well as arXiv papers are usually co-\nherent and well written on a well defined topic. Their method\nmay not work well on spoken conversations as random block\nof words usually do not represent topic of full conversation.",
+          "score": 0.53333336,
+          "source": "1910.10781.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 4,
+          "text": "others [2]. While well-suited to dealing with relatively short\nsequences, Transformers suffer from a major issue that hin-\nders their applicability in classification of long sequences, i.e.\nthey are able to consume only a limited context of symbols as\ntheir input [3].\nThere are several natural language (NLP) processing tasks\nthat involve such long sequences. Of particular interest are\ntopic identification of spoken conversations [4, 5, 6] and call",
+          "score": 0.51111114,
+          "source": "1910.10781.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 12,
+          "text": "Several researchers addressed the problem of predicting\ncustomer satisfaction [7, 8, 9, 10]. In most of these works,\nlogistic regression, SVM, CNN are applied on different kinds\nof representations.\nIn [18], authors use BERT for document classification but\nthe average document length is less than BERT maximum\nlength 512. TransformerXL [3] is an extension to the Trans-\nformer architecture that allows it to better deal with long in-\nputs for the language modelling task. It relies on the auto-",
+          "score": 0.5,
+          "source": "1910.10781.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1910.10781/0810b43404686ddfe4ca84783477ae300fdd2ea4",
+      "paperId": "1910.10781",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 8,
+          "text": "archy of representations (segment-wise and document-wise),\nwe refer to them as Hierarchical Transformers. To the best\nof our knowledge, no attempt has been done before to use\nthe Transformer architecture for classification of such long\nsequences.\nOur novel contributions are:\n• Two extensions - RoBERT and ToBERT - to the BERT\nmodel, which enable its application in classification of\nlong texts by performing segmentation and using an-\nother layer on top of the segment representations.",
+          "score": 1.1666667,
+          "source": "1910.10781.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 12,
+          "text": "Several researchers addressed the problem of predicting\ncustomer satisfaction [7, 8, 9, 10]. In most of these works,\nlogistic regression, SVM, CNN are applied on different kinds\nof representations.\nIn [18], authors use BERT for document classification but\nthe average document length is less than BERT maximum\nlength 512. TransformerXL [3] is an extension to the Trans-\nformer architecture that allows it to better deal with long in-\nputs for the language modelling task. It relies on the auto-",
+          "score": 0.5833334,
+          "source": "1910.10781.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 0,
+          "text": "arXiv:1910.10781v1 [cs.CL] 23 Oct 2019\nHIERARCHICAL TRANSFORMERS FOR LONG DOCUMENT CLASSIFICATION\nRaghavendra Pappagari1, Piotr ˙Zelasko2, Jes´us Villalba1, Yishay Carmiel2, and Najim Dehak1\n1Center for Language and Speech Processing, Johns Hopkins University, Baltimore, MD\n2Avaya Conversational Intelligence\n{rpappag1,jvillal7,ndehak3}@jhu.edu\npetezor@gmail.com, ycarmiel@avaya.com\nABSTRACT\nBERT, which stands for Bidirectional Encoder Represen-",
+          "score": 0.5833334,
+          "source": "1910.10781.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 20,
+          "text": "ity as the number of classes) activations to obtain the final\npredictions.\nWith this approach, we overcome BERT’s computational\ncomplexity, reducing it to O(n/k∗k2) = O(nk) for RoBERT,\nwith k denoting the segment size (the LSTM component has\nnegligible linear complexity O(k)). The positional embed-\ndings are also no longer an issue.\n3.3. Transformer over BERT\nGiven that Transformers’ edge over recurrent networks is\ntheir ability to effectively capture long distance relationships",
+          "score": 0.5833333,
+          "source": "1910.10781.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 3,
+          "text": "obtain a significant improvement over the baseline models in\ntwo of them.\nIndex Terms— Transformer, BERT, Recurrent Neural\nNetworks,Topic Identification, Customer Satisfaction Predic-\ntion\n1. INTRODUCTION\nBidirectional Encoder Representations from Transformers\n(BERT) is a novel Transformer [1] model, which recently\nachieved state-of-the-art performance in several language\nunderstanding tasks, such as question answering, natural lan-\nguage inference, semantic similarity, sentiment analysis, and",
+          "score": 0.45555556,
+          "source": "1910.10781.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1911.06964/3d7d865e905295d11f1e85af5fa89b210e3e9fdf",
+      "paperId": "1911.06964",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 2,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 0,
+          "text": "Learning Autocomplete Systems\nas a Communication Game\nMina Lee1, Tatsunori B. Hashimoto1,2, Percy Liang1\n1 Department of Computer Science 2 Department of Statistics\nStanford University\n{minalee, pliang}@cs.stanford.edu thashim@stanford.edu\nAbstract\nWe study textual autocomplete—the task of predicting a full sentence from a partial\nsentence—as a human-machine communication game. Specifically, we consider\nthree competing goals for effective communication: use as few tokens as possible",
+          "score": 1.1666667,
+          "source": "1911.06964-retry.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 51,
+          "text": "approach in that it requires a base listener or speaker, which ensures that the resulting schemes\nare interpretable. In contrast, we constrain our schemes to be keywords and optimize the resulting\nschemes.\nThere is a growing literature on learning communication schemes through two-player games. Such\nproblems have been explored in negotiation [21], cooperative communication [5], and multi-agent\ngames [27]. The majority of these approaches optimize a single, task-oriented metric (i.e. accuracy).",
+          "score": 0.8333334,
+          "source": "1911.06964-retry.pdf",
+          "page": 7
+        },
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 9,
+          "text": "in our user study.\n2 Approach\nConsider a communication game in which the goal is for a user to communicate a target sequence\nx = (x1, ..., xm) to a system by passing a sequence of keywords z = (z1, ..., zn). The user generates\nkeywords z using an encoding strategy qα(z | x), and the system attempts to guess the target sequence\nx via a decoding strategy pβ (x | z).\nA good communication scheme (qα, pβ ) should be both efficient and accurate. Specifically, we prefer",
+          "score": 0.53571427,
+          "source": "1911.06964-retry.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 47,
+          "text": "Association for Computational Linguistics (ACL), pages 290–297, 2005.\n[34] S. I. Wang, P. Liang, and C. Manning. Learning language games through interaction. In\nAssociation for Computational Linguistics (ACL), 2016.\n[35] Y. Wang, B. Dai, L. Kong, X. Ma, S. M. Erfani, J. Bailey, S. Xia, L. Song, and H. Zha. Learning\ndeep hidden nonlinear dynamics from aggregate data. In Uncertainty in Artificial Intelligence\n(UAI), 2018.",
+          "score": 0.44761905,
+          "source": "1911.06964-retry.pdf",
+          "page": 6
+        },
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 37,
+          "text": "[10] J. Foerster, Y. M. Assael, N. de Freitas, and S. Whiteson. Learning to communicate with deep\nmulti-agent reinforcement learning. In Advances in Neural Information Processing Systems\n(NeurIPS), pages 2137–2145, 2016.\n[11] M. Frank and N. D. Goodman. Predicting pragmatic reasoning in language games. Science,\n336:998–998, 2012.\n[12] D. Golland, P. Liang, and D. Klein. A game-theoretic approach to generating spatial descriptions.",
+          "score": 0.4166667,
+          "source": "1911.06964-retry.pdf",
+          "page": 5
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1911.06964/3fad42be0fb2052bb404b989cc7d58b440cd23a0",
+      "paperId": "1911.06964",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 51,
+          "text": "approach in that it requires a base listener or speaker, which ensures that the resulting schemes\nare interpretable. In contrast, we constrain our schemes to be keywords and optimize the resulting\nschemes.\nThere is a growing literature on learning communication schemes through two-player games. Such\nproblems have been explored in negotiation [21], cooperative communication [5], and multi-agent\ngames [27]. The majority of these approaches optimize a single, task-oriented metric (i.e. accuracy).",
+          "score": 1,
+          "source": "1911.06964-retry.pdf",
+          "page": 7
+        },
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 0,
+          "text": "Learning Autocomplete Systems\nas a Communication Game\nMina Lee1, Tatsunori B. Hashimoto1,2, Percy Liang1\n1 Department of Computer Science 2 Department of Statistics\nStanford University\n{minalee, pliang}@cs.stanford.edu thashim@stanford.edu\nAbstract\nWe study textual autocomplete—the task of predicting a full sentence from a partial\nsentence—as a human-machine communication game. Specifically, we consider\nthree competing goals for effective communication: use as few tokens as possible",
+          "score": 1,
+          "source": "1911.06964-retry.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 9,
+          "text": "in our user study.\n2 Approach\nConsider a communication game in which the goal is for a user to communicate a target sequence\nx = (x1, ..., xm) to a system by passing a sequence of keywords z = (z1, ..., zn). The user generates\nkeywords z using an encoding strategy qα(z | x), and the system attempts to guess the target sequence\nx via a decoding strategy pβ (x | z).\nA good communication scheme (qα, pβ ) should be both efficient and accurate. Specifically, we prefer",
+          "score": 0.65,
+          "source": "1911.06964-retry.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 37,
+          "text": "[10] J. Foerster, Y. M. Assael, N. de Freitas, and S. Whiteson. Learning to communicate with deep\nmulti-agent reinforcement learning. In Advances in Neural Information Processing Systems\n(NeurIPS), pages 2137–2145, 2016.\n[11] M. Frank and N. D. Goodman. Predicting pragmatic reasoning in language games. Science,\n336:998–998, 2012.\n[12] D. Golland, P. Liang, and D. Klein. A game-theoretic approach to generating spatial descriptions.",
+          "score": 0.4,
+          "source": "1911.06964-retry.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 49,
+          "text": "A Related work\nOur goal of learning efficient communication schemes in an autocomplete task is closely related to a\nrich literature on communication and compression.\nLearning communication schemes. Tradeoffs between communication efficiency (both informa-\ntion theoretically and computationally) and accuracy have been studied both in the machine learning\n[20] and cognitive science [19] literatures, where much of the focus has been on understanding the",
+          "score": 0.33333334,
+          "source": "1911.06964-retry.pdf",
+          "page": 7
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/2002.01664/75df70ce7aa714ec4c6456d0c51f82a16227f2cb",
+      "paperId": "2002.01664",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "5a1bf0fa-be9e-4645-844b-678f26afbaf3",
+          "chunkIndex": 8,
+          "text": "language identification task. Mainly we propose Ghost-\nVLAD based pooling method for language identification.\nInspired by the recent work by W. Xie et al. [9] and Y. Zhong\net al. [10], we use Ghost-VLAD to improve the accuracy of\nlanguage identification task for Indian languages. We explore\nmultiple pooling strategies including NetVLAD pooling [11],\nAverage pooling and Statistics pooling( as proposed in X-\nvectors [7]) and show that Ghost-VLAD pooling is the best",
+          "score": 0.9,
+          "source": "2002.01664.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "5a1bf0fa-be9e-4645-844b-678f26afbaf3",
+          "chunkIndex": 10,
+          "text": "experiments, and in section 5, we describe the results.\n1http://www.newsonair.com/\narXiv:2002.01664v1 [cs.CL] 5 Feb 2020",
+          "score": 0.8666667,
+          "source": "2002.01664.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "5a1bf0fa-be9e-4645-844b-678f26afbaf3",
+          "chunkIndex": 9,
+          "text": "pooling strategy for language identification. Our model ob-\ntains the best accuracy of 98.24%, and it outperforms all the\nother previously proposed pooling methods. We conduct all\nour experiments on 635hrs of audio data for 7 Indian lan-\nguages collected from All India Radio news channel1. The\npaper is organized as follows. In section 2, we explain the\nproposed pooling method for language identification. In sec-\ntion 3, we explain our dataset. In section 4, we describe the",
+          "score": 0.6666667,
+          "source": "2002.01664.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "5a1bf0fa-be9e-4645-844b-678f26afbaf3",
+          "chunkIndex": 37,
+          "text": "originally proposed for face recognition to improve language\nidentification performance for Indian languages. We collected\nand curated 630 hrs audio data from news All India Radio\nnews channel for 7 Indian languages. Our experimental re-\nsults shows that our approach outperforms the previous state\nof the art methods by an absolute 1.88% F1-score. We have\nalso conducted experiments with different pooling strategies\nproposed in the past, and the GhostVLAD pooling approach",
+          "score": 0.64285713,
+          "source": "2002.01664.pdf",
+          "page": 4
+        },
+        {
+          "documentId": "5a1bf0fa-be9e-4645-844b-678f26afbaf3",
+          "chunkIndex": 2,
+          "text": "improvement of 1.88% in F1-score and achieves 98.43% F1-\nscore on the held-out test data. We compare our system with\nvarious pooling approaches and show that GhostVLAD is the\nbest pooling approach for this task. We also provide visu-\nalization of the utterance level embeddings generated using\nGhost-VLAD pooling and show that this method creates em-\nbeddings which has very good language discriminative fea-\ntures.\nIndex Terms— Indian language identification, GhostVLAD,\nPooling methods.",
+          "score": 0.45238096,
+          "source": "2002.01664.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1809.00540/2c78993524ca62bf1f525b60f2220a374d0e3535",
+      "paperId": "1809.00540",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 4,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 86,
+          "text": "streams. In SDM, pages 479–483. SIAM.\nAmr Ahmed, Qirong Ho, Jacob Eisenstein, Eric Xing,\nAlexander J Smola, and Choon Hui Teo. 2011. Uni-\nfied analysis of streaming news. In Proceedings\nof the 20th international conference on World wide\nweb, pages 267–276. ACM.\nJames Allan, Jaime Carbonell, George Doddington,\nJonathan Yamron, Yiming Yang, et al. 1998. Topic\ndetection and tracking pilot study: Final report. In\nProceedings of the DARPA broadcast news tran-\nscription and understanding workshop.",
+          "score": 0.6666667,
+          "source": "1809.00540.pdf",
+          "page": 9
+        },
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 1,
+          "text": "Abstract\nClustering news across languages enables\nefficient media monitoring by aggregating ar-\nticles from multilingual sources into coherent\nstories. Doing so in an online setting allows\nscalable processing of massive news streams.\nTo this end, we describe a novel method for\nclustering an incoming stream of multilingual\ndocuments into monolingual and crosslingual\nstory clusters. Unlike typical clustering\napproaches that consider a small and known\nnumber of labels, we tackle the problem of",
+          "score": 0.5,
+          "source": "1809.00540.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 95,
+          "text": "ligence Research, 55:283–316.\nMotoki Sato, Austin J Brockmeier, Georgios Kontonat-\nsios, Tingting Mu, John Y Goulermas, Jun’ichi Tsu-\njii, and Sophia Ananiadou. 2017. Distributed docu-\nment and phrase co-embeddings for descriptive clus-\ntering. In Proceedings of EACL.\nJosef Steinberger. 2016. MediaGist: A cross-lingual\nanalyser of aggregated news and commentaries. In\nProceedings of ACL.\nJunyuan Xie, Ross Girshick, and Ali Farhadi. 2016.\nUnsupervised deep embedding for clustering analy-",
+          "score": 0.5,
+          "source": "1809.00540.pdf",
+          "page": 10
+        },
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 51,
+          "text": "dataset consists of 77,268, 118,045 and 134,243\ndocuments for Spanish, English and German, re-\nspectively.\nThe conclusions from our experiments are: (a)\nthe weighting of the similarity metric features using\nSVM significantly outperforms unsupervised base-\nlines such as CluStream (Table 2); (b) the SVM\napproach significantly helps to learn when to cre-\nate a new cluster, compared to simple grid search\n2https://github.com/rupnikj/jair_paper\n3The code and data we used is available at https://",
+          "score": 0.4625,
+          "source": "1809.00540.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 2,
+          "text": "number of labels, we tackle the problem of\ndiscovering an ever growing number of cluster\nlabels in an online fashion, using real news\ndatasets in multiple languages. Our method\nis simple to implement, computationally\nefficient and produces state-of-the-art results\non datasets in German, English and Spanish.\n1 Introduction\nFollowing developing news stories is imperative to\nmaking real-time decisions on important political\nand public safety matters. Given the abundance of",
+          "score": 0.3357143,
+          "source": "1809.00540.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1809.00540/d604f5fb114169f75f9a38fab18c1e866c5ac28b",
+      "paperId": "1809.00540",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 6,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 95,
+          "text": "ligence Research, 55:283–316.\nMotoki Sato, Austin J Brockmeier, Georgios Kontonat-\nsios, Tingting Mu, John Y Goulermas, Jun’ichi Tsu-\njii, and Sophia Ananiadou. 2017. Distributed docu-\nment and phrase co-embeddings for descriptive clus-\ntering. In Proceedings of EACL.\nJosef Steinberger. 2016. MediaGist: A cross-lingual\nanalyser of aggregated news and commentaries. In\nProceedings of ACL.\nJunyuan Xie, Ross Girshick, and Ali Farhadi. 2016.\nUnsupervised deep embedding for clustering analy-",
+          "score": 0.6666667,
+          "source": "1809.00540.pdf",
+          "page": 10
+        },
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 48,
+          "text": "cross-validation on this data to select the best\nmodel, and train both a separate model for each\nlanguage according to Γ0 and a crosslingual model\naccording to Γ1.\n5 Experiments\nOur system was designed to cluster documents\nfrom a (potentially infinite) real-word data stream.\nThe datasets typically used in the literature (TDT,\nReuters) have a small number of clusters (≈ 20)\nwith coarse topics (economy, society, etc.), and\ntherefore are not relevant to the use case of me-",
+          "score": 0.5,
+          "source": "1809.00540.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 38,
+          "text": "with using document timestamp features, as ex-\nplained in §4.1. We use a new set of diverse times-\ntamp features in addition to the simple absolute\ndifference (in hours) between timestamps used by\nRupnik et al. (2016).\n4.1 Similarity Metrics\nOur similarity metric computes weighted cosine\nsimilarity on the different subvectors, both in the\ncase of monolingual clustering and crosslingual\nclustering. Formally, for the monolingual case, the\nsimilarity is given by a function defined as:",
+          "score": 0.5,
+          "source": "1809.00540.pdf",
+          "page": 4
+        },
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 51,
+          "text": "dataset consists of 77,268, 118,045 and 134,243\ndocuments for Spanish, English and German, re-\nspectively.\nThe conclusions from our experiments are: (a)\nthe weighting of the similarity metric features using\nSVM significantly outperforms unsupervised base-\nlines such as CluStream (Table 2); (b) the SVM\napproach significantly helps to learn when to cre-\nate a new cluster, compared to simple grid search\n2https://github.com/rupnikj/jair_paper\n3The code and data we used is available at https://",
+          "score": 0.45238096,
+          "source": "1809.00540.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 49,
+          "text": "therefore are not relevant to the use case of me-\ndia monitoring we treat - as it requires much more\nfine-grained story clusters about particular events.\nTo evaluate our approach, we adapted a dataset\nconstructed for the different purpose of binary clas-\nsification of joining cluster pairs.2 We processed it\nto become a collection of articles annotated with\nmonolingual and crosslingual cluster labels.3\nStatistics about this dataset are given in Ta-\nble 1. As described further, we tune the hyper-",
+          "score": 0.4,
+          "source": "1809.00540.pdf",
+          "page": 5
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1912.13337/85590bb26fed01a802241bc537d85ba5ef1c6dc2",
+      "paperId": "1912.13337",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 6,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 0,
+          "text": "What Does My QA Model Know?\nDevising Controlled Probes using Expert Knowledge\nKyle Richardson and Ashish Sabharwal\nAllen Institute for AI, Seattle, WA, USA\n{kyler,ashishs}@allenai.org\nAbstract\nOpen-domain question answering (QA) in-\nvolves many knowledge and reasoning chal-\nlenges, but are successful QA models actu-\nally learning such knowledge when trained\non benchmark QA tasks? We investigate\nthis via several new diagnostic tasks probing\nwhether multiple-choice QA models know",
+          "score": 1.1666667,
+          "source": "1912.13337.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 32,
+          "text": "to construct the probes, represented as abstract triples.\nQA models in the domain on grade-school level\nscience using a standard suite of benchmark QA\ndatasets (see Table 6). Our choice of this domain\nis based on the following considerations: it is well-\nstudied qualitatively (Davis, 2016), making it rel-\natively easy to know the types of probes and di-\nagnostic tests to construct using existing expert\nknowledge. For example, the manual analysis of",
+          "score": 0.73333335,
+          "source": "1912.13337.pdf",
+          "page": 4
+        },
+        {
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 9,
+          "text": "tion (Clark et al., 2018; Boratko et al., 2018).\nTo address this challenge, we propose system-\natically constructing model competence probes by\nexploiting structured information contained in ex-\npert knowledge sources such as knowledge graphs\nand lexical taxonomies. Importantly, these probes\nare diagnostic tasks, designed not to impart new\nknowledge but to assess what models trained on\nstandard QA benchmarks already know; as such,\nthey serve as proxies for the types of questions",
+          "score": 0.6666667,
+          "source": "1912.13337.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 1,
+          "text": "whether multiple-choice QA models know\ndefinitions and taxonomic reasoning—two\nskills widespread in existing benchmarks\nand fundamental to more complex reason-\ning. We introduce a methodology for auto-\nmatically building probe datasets from ex-\npert knowledge sources, allowing for sys-\ntematic control and a comprehensive eval-\nuation. We include ways to carefully\ncontrol for artifacts that may arise dur-\ning this process. Our evaluation confirms\nthat transformer-based multiple-choice QA",
+          "score": 0.5833334,
+          "source": "1912.13337.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 15,
+          "text": "specific knowledge or reasoning skills. In contrast,\nwe focus on models heavily trained for benchmark\nQA tasks, where such tasks are known to require\ncertain types of knowledge and reasoning skills.\nWe probe whether such skills are actually learned\nby QA models, either during LM pre-training or\nwhen training for the QA tasks.\nRecognizing the need for suitable controls in\nany synthetic probing methodology (Hewitt and\nLiang, 2019; Talmor et al., 2019a), we introduce",
+          "score": 0.39285713,
+          "source": "1912.13337.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1809.01541/5cb610d3d5d7d447b4cd5736d6a7d8262140af58",
+      "paperId": "1809.01541",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "5320e61e-bd96-4ffb-9d14-61aefe8913e4",
+          "chunkIndex": 0,
+          "text": "Copenhagen at CoNLL–SIGMORPHON 2018: Multilingual Inflection in\nContext with Explicit Morphosyntactic Decoding\nYova Kementchedjhieva\nUniversity of Copenhagen\nyova@di.ku.dk\nJohannes Bjerva\nUniversity of Copenhagen\nbjerva@di.ku.dk\nIsabelle Augenstein\nUniversity of Copenhagen\naugenstein@di.ku.dk\nAbstract\nThis paper documents the Team Copenhagen\nsystem which placed first in the CoNLL–\nSIGMORPHON 2018 shared task on univer-\nsal morphological reinflection, Task 2 with an",
+          "score": 1.1666667,
+          "source": "1809.01541.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "5320e61e-bd96-4ffb-9d14-61aefe8913e4",
+          "chunkIndex": 2,
+          "text": "ture over character sequences with three core\ninnovations, all contributing to an improve-\nment in performance: (1) a wide context win-\ndow; (2) a multi-task learning approach with\nthe auxiliary task of MSD prediction; (3) train-\ning models in a multilingual fashion.\n1 Introduction\nThis paper describes our approach and results\nfor Task 2 of the CoNLL–SIGMORPHON 2018\nshared task on universal morphological reinflec-\ntion (Cotterell et al., 2018). The task is to generate",
+          "score": 0.8333334,
+          "source": "1809.01541.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "5320e61e-bd96-4ffb-9d14-61aefe8913e4",
+          "chunkIndex": 45,
+          "text": "multi-task learning for different languages.\nAcknowledgements\nWe gratefully acknowledge the support of the\nNVIDIA Corporation with the donation of the Ti-\ntan Xp GPU used for this research.\nReferences\nToms Bergmanis, Katharina Kann, Hinrich Sch¨utze,\nand Sharon Goldwater. 2017. Training data aug-\nmentation for low-resource morphological inflec-\ntion. Proceedings of the CoNLL SIGMORPHON\n2017 Shared Task: Universal Morphological Rein-\nflection, pages 31–39.",
+          "score": 0.4,
+          "source": "1809.01541.pdf",
+          "page": 6
+        },
+        {
+          "documentId": "5320e61e-bd96-4ffb-9d14-61aefe8913e4",
+          "chunkIndex": 4,
+          "text": "SIGMORPHON 2018: in Track 1 the context is\ngiven in terms of word forms, lemmas and mor-\nphosyntactic descriptions (MSD); in Track 2 only\nword forms are available. See Table 1 for an ex-\nample. Task 2 is additionally split in three settings\nbased on data size: high, medium and low, with\nhigh-resource datasets consisting of up to 70K in-\nstances per language, and low-resource datasets\nconsisting of only about 1K instances.\nThe baseline provided by the shared task organ-",
+          "score": 0.3809524,
+          "source": "1809.01541.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "5320e61e-bd96-4ffb-9d14-61aefe8913e4",
+          "chunkIndex": 1,
+          "text": "sal morphological reinflection, Task 2 with an\noverall accuracy of 49.87. Task 2 focuses on\nmorphological inflection in context: generat-\ning an inflected word form, given the lemma of\nthe word and the context it occurs in. Previous\nSIGMORPHON shared tasks have focused on\ncontext-agnostic inflection—the “inflection in\ncontext” task was introduced this year. We ap-\nproach this with an encoder-decoder architec-\nture over character sequences with three core",
+          "score": 0.36764705,
+          "source": "1809.01541.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1802.06024/8f16dc7d7be0d284069841e456ebb2c69575b32b",
+      "paperId": "1802.06024",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 0,
+          "text": "arXiv:1802.06024v2 [cs.CL] 24 Feb 2018\nTowards a Continuous Knowledge Learning Engine for Chatbots\nSahisnu Mazumder, Nianzu Ma, Bing Liu\nDepartment of Computer Science, University of Illinois at Chicago, IL, USA\nsahisnumazumder@gmail.com, nma4@uic.edu, liub@cs.uic.edu\nAbstract\nAlthough chatbots have been very popular\nin recent years, they still have some serious\nweaknesses which limit the scope of their ap-\nplications. One major weakness is that they\ncannot learn new knowledge during the con-",
+          "score": 1.1666667,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 1,
+          "text": "cannot learn new knowledge during the con-\nversation process, i.e., their knowledge is fixed\nbeforehand and cannot be expanded or up-\ndated during conversation. In this paper, we\npropose to build a general knowledge learn-\ning engine for chatbots to enable them to con-\ntinuously and interactively learn new knowl-\nedge during conversations. As time goes by,\nthey become more and more knowledgeable\nand better and better at learning and conver-\nsation. We model the task as an open-world",
+          "score": 0.75,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 103,
+          "text": "5 Conclusion\nIn this paper, we are interested in building a\ngeneric engine for continuous knowledge learning\nin human-machine conversations. We first showed\nthat the problem underlying the engine can be for-\nmulated as an open-world knowledge base com-\npletion (OKBC) problem. We then proposed an\nlifelong interactive learning and inference (LiLi)\napproach to solving the OKBC problem. OKBC\nis a generalization of KBC. LiLi solves the OKBC\nproblem by first formulating a query-specific in-",
+          "score": 0.61904764,
+          "source": "1802.06024.pdf",
+          "page": 10
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 5,
+          "text": "do not explicitly or implicitly learn new knowl-\nedge in the conversation process. This seriously\nlimits the scope of their applications. In contrast,\nwe humans constantly learn new knowledge in our\nconversations. Even if some existing systems can\nuse very large knowledge bases either harvested\nfrom a large data source such as the Web or built\nmanually, these KBs still miss a large number of\nfacts (knowledge) (West et al., 2014). It is thus\nimportant for a chatbot to continuously learn new",
+          "score": 0.5,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 24,
+          "text": "and knowledge retention for future use. To the best\nof our knowledge, our work is the first to address\nthe OKBC problem and to propose an interactive\nlearning mechanism to solve it in a continuous or\nlifelong manner. We empirically verify the effec-\ntiveness of LiLi on two standard real-world KBs:\nFreebase and WordNet. Experimental results show\n4Note that the user query and responses are in triples as\nwe are not building a conversation system but a knowledge",
+          "score": 0.36666667,
+          "source": "1802.06024.pdf",
+          "page": 3
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1802.06024/585626d18a20d304ae7df228c2128da542d248ff",
+      "paperId": "1802.06024",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 1,
+          "text": "cannot learn new knowledge during the con-\nversation process, i.e., their knowledge is fixed\nbeforehand and cannot be expanded or up-\ndated during conversation. In this paper, we\npropose to build a general knowledge learn-\ning engine for chatbots to enable them to con-\ntinuously and interactively learn new knowl-\nedge during conversations. As time goes by,\nthey become more and more knowledgeable\nand better and better at learning and conver-\nsation. We model the task as an open-world",
+          "score": 1,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 0,
+          "text": "arXiv:1802.06024v2 [cs.CL] 24 Feb 2018\nTowards a Continuous Knowledge Learning Engine for Chatbots\nSahisnu Mazumder, Nianzu Ma, Bing Liu\nDepartment of Computer Science, University of Illinois at Chicago, IL, USA\nsahisnumazumder@gmail.com, nma4@uic.edu, liub@cs.uic.edu\nAbstract\nAlthough chatbots have been very popular\nin recent years, they still have some serious\nweaknesses which limit the scope of their ap-\nplications. One major weakness is that they\ncannot learn new knowledge during the con-",
+          "score": 1,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 5,
+          "text": "do not explicitly or implicitly learn new knowl-\nedge in the conversation process. This seriously\nlimits the scope of their applications. In contrast,\nwe humans constantly learn new knowledge in our\nconversations. Even if some existing systems can\nuse very large knowledge bases either harvested\nfrom a large data source such as the Web or built\nmanually, these KBs still miss a large number of\nfacts (knowledge) (West et al., 2014). It is thus\nimportant for a chatbot to continuously learn new",
+          "score": 0.56666666,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 103,
+          "text": "5 Conclusion\nIn this paper, we are interested in building a\ngeneric engine for continuous knowledge learning\nin human-machine conversations. We first showed\nthat the problem underlying the engine can be for-\nmulated as an open-world knowledge base com-\npletion (OKBC) problem. We then proposed an\nlifelong interactive learning and inference (LiLi)\napproach to solving the OKBC problem. OKBC\nis a generalization of KBC. LiLi solves the OKBC\nproblem by first formulating a query-specific in-",
+          "score": 0.5,
+          "source": "1802.06024.pdf",
+          "page": 10
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 6,
+          "text": "important for a chatbot to continuously learn new\nknowledge in the conversation process to expand\nits KB and to improve its conversation ability.\nIn recent years, researchers have studied the\nproblem of KB completion, i.e., inferring new facts\n(knowledge) automatically from existing facts in a\nKB. KB completion (KBC) is defined as a binary\nclassification problem: Given a query triple, (s, r,\nt), we want to predict whether the source entity\ns and target entity t can be linked by the relation",
+          "score": 0.45833334,
+          "source": "1802.06024.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1802.06024/bfc2dc913e7b78f3bd45e5449d71383d0aa4a890",
+      "paperId": "1802.06024",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 0,
+          "text": "arXiv:1802.06024v2 [cs.CL] 24 Feb 2018\nTowards a Continuous Knowledge Learning Engine for Chatbots\nSahisnu Mazumder, Nianzu Ma, Bing Liu\nDepartment of Computer Science, University of Illinois at Chicago, IL, USA\nsahisnumazumder@gmail.com, nma4@uic.edu, liub@cs.uic.edu\nAbstract\nAlthough chatbots have been very popular\nin recent years, they still have some serious\nweaknesses which limit the scope of their ap-\nplications. One major weakness is that they\ncannot learn new knowledge during the con-",
+          "score": 1,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 1,
+          "text": "cannot learn new knowledge during the con-\nversation process, i.e., their knowledge is fixed\nbeforehand and cannot be expanded or up-\ndated during conversation. In this paper, we\npropose to build a general knowledge learn-\ning engine for chatbots to enable them to con-\ntinuously and interactively learn new knowl-\nedge during conversations. As time goes by,\nthey become more and more knowledgeable\nand better and better at learning and conver-\nsation. We model the task as an open-world",
+          "score": 1,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 103,
+          "text": "5 Conclusion\nIn this paper, we are interested in building a\ngeneric engine for continuous knowledge learning\nin human-machine conversations. We first showed\nthat the problem underlying the engine can be for-\nmulated as an open-world knowledge base com-\npletion (OKBC) problem. We then proposed an\nlifelong interactive learning and inference (LiLi)\napproach to solving the OKBC problem. OKBC\nis a generalization of KBC. LiLi solves the OKBC\nproblem by first formulating a query-specific in-",
+          "score": 0.65,
+          "source": "1802.06024.pdf",
+          "page": 10
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 5,
+          "text": "do not explicitly or implicitly learn new knowl-\nedge in the conversation process. This seriously\nlimits the scope of their applications. In contrast,\nwe humans constantly learn new knowledge in our\nconversations. Even if some existing systems can\nuse very large knowledge bases either harvested\nfrom a large data source such as the Web or built\nmanually, these KBs still miss a large number of\nfacts (knowledge) (West et al., 2014). It is thus\nimportant for a chatbot to continuously learn new",
+          "score": 0.4166667,
+          "source": "1802.06024.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 2,
+          "text": "sation. We model the task as an open-world\nknowledge base completion problem and pro-\npose a novel technique called lifelong inter-\nactive learning and inference (LiLi) to solve\nit. LiLi works by imitating how humans ac-\nquire knowledge and perform inference during\nan interactive conversation. Our experimental\nresults show LiLi is highly promising.\n1 Introduction\nChatbots such as dialog and question-answering\nsystems have a long history in AI and natural lan-",
+          "score": 0.3968254,
+          "source": "1802.06024.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1912.08960/b1bc9ae9d40e7065343c12f860a461c7c730a612",
+      "paperId": "1912.08960",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 27,
+          "text": "over 90% for corpora with shorter sentences and more lim-\nited vocabulary (for details see Flickinger (2011)). Since the\nShapeWorld training data – the only language source for\nmodels to learn from – is generated using the same gram-\nmar, the ERG has ∼100% coverage of grammaticality in the\nmodel output space.\nTruthfulness\nThe second aspect we investigate is truthfulness, that is,\nwhether a candidate caption is compatible with the content",
+          "score": 0.74358976,
+          "source": "1912.08960.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 0,
+          "text": "Going Beneath the Surface: Evaluating Image Captioning for Grammaticality,\nTruthfulness and Diversity\nHuiyuan Xie1, Tom Sherborne2, Alexander Kuhnle1, Ann Copestake1\n1Department of Computer Science and Technology, University of Cambridge\n2School of Informatics, University of Edinburgh\n{hx255,aok25,aac10}@cam.ac.uk, tom.sherborne@ed.ac.uk\nAbstract\nImage captioning as a multimodal task has drawn much in-\nterest in recent years. However, evaluation for this task re-",
+          "score": 0.6,
+          "source": "1912.08960.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 57,
+          "text": "on different ShapeWorldICE datasets.\nCaption diversity benefits from varied language con-\nstructions in the training data. The diversity ratios of\ngenerated captions for different ShapeWorldICE datasets\nare illustrated in Figure 6. We can see that the diver-\nsity of inferred captions is largely sensitive to the caption\nvariability in the dataset itself. For simple datasets (such\nas Existential-OneShape) where language construc-\ntions in the training set are less diverse, the output captions",
+          "score": 0.55263156,
+          "source": "1912.08960.pdf",
+          "page": 6
+        },
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 1,
+          "text": "mains a challenging problem. Existing evaluation metrics fo-\ncus on surface similarity between a candidate caption and\na set of reference captions, and do not check the actual re-\nlation between a caption and the underlying visual content.\nWe introduce a new diagnostic evaluation framework for the\ntask of image captioning, with the goal of directly assessing\nmodels for grammaticality, truthfulness and diversity (GTD)\nof generated captions. We demonstrate the potential of our",
+          "score": 0.54285717,
+          "source": "1912.08960.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 34,
+          "text": "sidered the same, while “A shape is red” is different.\nFigure 2: Performance comparison of the\nShow&Tell model and the LRCN1u model on\nExistential-MultiShapes. SnT represents the\nShow&Tell model while LRCN represents the LRCN1u\nmodel. Grammaticality, Truthfulness and Diversity refer\nto the grammaticality ratio, the truthfulness ratio and the\ndiversity ratio of generated captions, respectively.\nExperimental Setup\nDatasets\nWe develop a variety of ShapeWorldICE datasets, with a",
+          "score": 0.53333336,
+          "source": "1912.08960.pdf",
+          "page": 4
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1912.08960/63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "paperId": "1912.08960",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 1,
+          "text": "mains a challenging problem. Existing evaluation metrics fo-\ncus on surface similarity between a candidate caption and\na set of reference captions, and do not check the actual re-\nlation between a caption and the underlying visual content.\nWe introduce a new diagnostic evaluation framework for the\ntask of image captioning, with the goal of directly assessing\nmodels for grammaticality, truthfulness and diversity (GTD)\nof generated captions. We demonstrate the potential of our",
+          "score": 0.9166667,
+          "source": "1912.08960.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 32,
+          "text": "images as a proxy for optimal caption diversity, and com-\npare it with the empirical output diversity of the evaluated\nmodel on these test images. Practically, we look at language",
+          "score": 0.7,
+          "source": "1912.08960.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 10,
+          "text": "metrics have undeniably been useful for real-world caption-\ning evaluation, their focus on approximate surface compari-\nson limits deeper insights into the learning process and even-\ntual behavior of captioning models.\nTo address this problem, we propose a set of principled eval-\nuation criteria which evaluate image captioning models for\ngrammaticality, truthfulness and diversity (GTD). These cri-\nteria correspond to necessary requirements for image cap-",
+          "score": 0.6666667,
+          "source": "1912.08960.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 51,
+          "text": "they do not reflect the successively closing gap of caption\ntruthfulness scores between two Existential datasets,\nor the substantial difference in caption truthfulness be-\ntween captions on Existential-MultiShapes and\nSpatial-MultiShapes.\nIn the remainder of the paper we discuss in detail the di-\nagnostic results of the LRCN1u model demonstrated by the\nGTD evaluation framework.\nPerfect grammaticality for all caption types. As shown in\nFigure 4, generated captions for all types of ShapeWorldICE",
+          "score": 0.4909091,
+          "source": "1912.08960.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 0,
+          "text": "Going Beneath the Surface: Evaluating Image Captioning for Grammaticality,\nTruthfulness and Diversity\nHuiyuan Xie1, Tom Sherborne2, Alexander Kuhnle1, Ann Copestake1\n1Department of Computer Science and Technology, University of Cambridge\n2School of Informatics, University of Edinburgh\n{hx255,aok25,aac10}@cam.ac.uk, tom.sherborne@ed.ac.uk\nAbstract\nImage captioning as a multimodal task has drawn much in-\nterest in recent years. However, evaluation for this task re-",
+          "score": 0.45,
+          "source": "1912.08960.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1909.09587/37be0d479480211291e068d0d3823ad0c13321d3",
+      "paperId": "1909.09587",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 2,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 1,
+          "text": "interest in cross-lingual transfer learning. In\nthis paper, we systematically explore zero-\nshot cross-lingual transfer learning on reading\ncomprehension tasks with a language repre-\nsentation model pre-trained on multi-lingual\ncorpus. The experimental results show that\nwith pre-trained language representation zero-\nshot learning is feasible, and translating the\nsource data into the target language is not nec-\nessary and even degrades the performance. We",
+          "score": 1.1666667,
+          "source": "1909.09587.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 0,
+          "text": "arXiv:1909.09587v1 [cs.CL] 15 Sep 2019\nZero-shot Reading Comprehension by Cross-lingual Transfer Learning\nwith Multi-lingual Language Representation Model\nTsung-Yuan Hsu∗ Chi-liang Liu∗\nGraduate Institute of Communication Engineering\nNational Taiwan University\n{sivia89024, liangtaiwan1230, tlkagkb93901106}@gmail.com\nHung-yi Lee\nAbstract\nBecause it is not feasible to collect training\ndata for every language, there is a growing\ninterest in cross-lingual transfer learning. In",
+          "score": 0.8333334,
+          "source": "1909.09587.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 5,
+          "text": "RC dataset are often far from trivial. Therefore,\nthe setup of transfer learning, especially zero-shot\nlearning, is of extraordinary importance.\nExisting methods (Asai et al., 2018) of cross-\nlingual transfer learning on RC datasets often\ncount on machine translation (MT) to translate\ndata from source language into target language,\nor vice versa. These methods may not require a\nwell-annotated RC dataset for the target language,\nwhereas a high-quality MT model is needed as a",
+          "score": 0.525,
+          "source": "1909.09587.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 6,
+          "text": "whereas a high-quality MT model is needed as a\ntrade-off, which might not be available when it\ncomes to low-resource languages.\nIn this paper, we leverage pre-trained multilin-\ngual language representation, for example, BERT\nlearned from multilingual un-annotated sentences\n(multi-BERT), in cross-lingual zero-shot RC. We\nfine-tune multi-BERT on the training set in source\nlanguage, then test the model in target language,\nwith a number of combinations of source-target",
+          "score": 0.5,
+          "source": "1909.09587.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 8,
+          "text": "simple natural language understanding tasks, but\nzero-shot transfer of RC has not been studied. To\nour knowledge, this is the first work systematically\nexploring the cross-lingual transferring ability of\nmulti-BERT on RC tasks.\n2 Zero-shot Transfer with Multi-BERT\nMulti-BERT has showcased its ability to en-\nable cross-lingual zero-shot learning on the natu-\nral language understanding tasks including XNLI\n(Conneau et al., 2018), NER, POS, Dependency",
+          "score": 0.5,
+          "source": "1909.09587.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1909.09587/a3d9b101765048f4b61cbd3eaa2439582ebb5c77",
+      "paperId": "1909.09587",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 3,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 1,
+          "text": "interest in cross-lingual transfer learning. In\nthis paper, we systematically explore zero-\nshot cross-lingual transfer learning on reading\ncomprehension tasks with a language repre-\nsentation model pre-trained on multi-lingual\ncorpus. The experimental results show that\nwith pre-trained language representation zero-\nshot learning is feasible, and translating the\nsource data into the target language is not nec-\nessary and even degrades the performance. We",
+          "score": 1.1666667,
+          "source": "1909.09587.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 0,
+          "text": "arXiv:1909.09587v1 [cs.CL] 15 Sep 2019\nZero-shot Reading Comprehension by Cross-lingual Transfer Learning\nwith Multi-lingual Language Representation Model\nTsung-Yuan Hsu∗ Chi-liang Liu∗\nGraduate Institute of Communication Engineering\nNational Taiwan University\n{sivia89024, liangtaiwan1230, tlkagkb93901106}@gmail.com\nHung-yi Lee\nAbstract\nBecause it is not feasible to collect training\ndata for every language, there is a growing\ninterest in cross-lingual transfer learning. In",
+          "score": 0.73333335,
+          "source": "1909.09587.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 7,
+          "text": "with a number of combinations of source-target\nlanguage pair to explore the cross-lingual ability\nof multi-BERT. Surprisingly, we find that the mod-\nels have the ability to transfer between low lexi-\ncal similarity language pair, such as English and\nChinese. Recent studies (Lample and Conneau,\n2019; Devlin et al., 2018; Wu and Dredze, 2019)\nshow that cross-lingual language models have the\nability to enable preliminary zero-shot transfer on\nsimple natural language understanding tasks, but",
+          "score": 0.7,
+          "source": "1909.09587.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 8,
+          "text": "simple natural language understanding tasks, but\nzero-shot transfer of RC has not been studied. To\nour knowledge, this is the first work systematically\nexploring the cross-lingual transferring ability of\nmulti-BERT on RC tasks.\n2 Zero-shot Transfer with Multi-BERT\nMulti-BERT has showcased its ability to en-\nable cross-lingual zero-shot learning on the natu-\nral language understanding tasks including XNLI\n(Conneau et al., 2018), NER, POS, Dependency",
+          "score": 0.5833334,
+          "source": "1909.09587.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 6,
+          "text": "whereas a high-quality MT model is needed as a\ntrade-off, which might not be available when it\ncomes to low-resource languages.\nIn this paper, we leverage pre-trained multilin-\ngual language representation, for example, BERT\nlearned from multilingual un-annotated sentences\n(multi-BERT), in cross-lingual zero-shot RC. We\nfine-tune multi-BERT on the training set in source\nlanguage, then test the model in target language,\nwith a number of combinations of source-target",
+          "score": 0.45238096,
+          "source": "1909.09587.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1802.07862/f7a89b9cd2792f23f2cb43d50a01b8218a6fbb24",
+      "paperId": "1802.07862",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 6,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 0,
+          "text": "Multimodal Named Entity Recognition for Short Social Media Posts\nSeungwhan Moon1,2, Leonardo Neves2, Vitor Carvalho3\n1 Language Technologies Institute, Carnegie Mellon University\n2 Snap Research\n3 Intuit\nseungwhm@cs.cmu.edu, lneves@snap.com, vitor carvalho@intuit.com\nAbstract\nWe introduce a new task called Multimodal\nNamed Entity Recognition (MNER) for noisy\nuser-generated data such as tweets or Snapchat\ncaptions, which comprise short text with ac-\ncompanying images. These social media posts",
+          "score": 0.78571427,
+          "source": "1802.07862.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 74,
+          "text": "state-of-the-art baselines when text was the only\nmodality available, by better combining word and\ncharacter level information.",
+          "score": 0.75,
+          "source": "1802.07862.pdf",
+          "page": 8
+        },
+        {
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 75,
+          "text": "References\nGustavo Aguilar, Suraj Maharjan, A. Pastor Lopez-\nMonroy, and Thamar Solorio. 2017. A multi-task\napproach for named entity recognition in social me-\ndia data. ACL WNUT Workshop .\nStanislaw Antol, Aishwarya Agrawal, Jiasen Lu, Mar-\ngaret Mitchell, Dhruv Batra, C Lawrence Zitnick,\nand Devi Parikh. 2015. Vqa: Visual question an-\nswering. In ICCV.\nTimothy Baldwin, Marie-Catherine de Marneffe,\nBo Han, Young-Bum Kim, Alan Ritter, and Wei\nXu. 2015. Shared tasks of the 2015 workshop on",
+          "score": 0.6666667,
+          "source": "1802.07862.pdf",
+          "page": 9
+        },
+        {
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 6,
+          "text": "named entities via word context resolution (e.g.\nLSTM with word embeddings) combined with\ncharacter-level features (e.g. CharLSTM/CNN),\nseveral additional challenges remain for recog-\nnizing named entities from extremely short and\ncoarse text found in social media posts. For in-\nstance, short social media posts often do not pro-\nvide enough textual contexts to resolve polyse-\nmous entities (e.g. “monopoly is da best ”,\nwhere ‘monopoly’ may refer to a board game",
+          "score": 0.4666667,
+          "source": "1802.07862.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 79,
+          "text": "arXiv preprint arXiv:1603.01354 .\nAndrew McCallum and Wei Li. 2003. Early results for\nnamed entity recognition with conditional random\nfields, feature induction and web-enhanced lexicons.\nIn NAACL.\nTomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey\nDean. 2013. Efficient estimation of word represen-\ntations in vector space. ICLR .\nSeungwhan Moon and Jaime Carbonell. 2017. Com-\npletely heterogeneous transfer learning with atten-\ntion: What and what not to transfer. IJCAI .",
+          "score": 0.4,
+          "source": "1802.07862.pdf",
+          "page": 9
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/2004.01853/ed2eb4e54b641b7670ab5a7060c7b16c628699ab",
+      "paperId": "2004.01853",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 2,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "65ef0212-5ab7-44de-9629-eb41c2968ef6",
+          "chunkIndex": 81,
+          "text": "6 Conclusion\nWe proposed STEP, a SEQ2SEQ transformer pre-\ntraining approach, for abstractive document sum-\nmarization. Specifically, three pre-training tasks\nare designed, sentence reordering, next sentence\ngeneration, and masked document generation.\nWhen we only employ the unlabeled documents\nin the training splits of summarization datasets to\npre-training STEP with our proposed tasks, the\nsummarization model based on the pre-trained\nSTEP outperforms the best published abstrac-",
+          "score": 1.1666667,
+          "source": "2004.01853v1.pdf",
+          "page": 8
+        },
+        {
+          "documentId": "65ef0212-5ab7-44de-9629-eb41c2968ef6",
+          "chunkIndex": 1,
+          "text": "usually modeled as a sequence-to-sequence\n(SEQ2SEQ) learning problem. SEQ2SEQ\nTransformers are powerful models for this\nproblem. Unfortunately, training large\nSEQ2SEQ Transformers on limited super-\nvised summarization data is challenging.\nWe therefore propose STEP (as shorthand\nfor Sequence-to-Sequence TransformEr Pre-\ntraining), which can be trained on large scale\nunlabeled documents. Specifically, STEP is\npre-trained using three different tasks, namely",
+          "score": 0.6666667,
+          "source": "2004.01853v1.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "65ef0212-5ab7-44de-9629-eb41c2968ef6",
+          "chunkIndex": 2,
+          "text": "pre-trained using three different tasks, namely\nsentence reordering, next sentence generation,\nand masked document generation. Experi-\nments on two summarization datasets show\nthat all three tasks can improve performance\nupon a heavily tuned large SEQ2SEQ Trans-\nformer which already includes a strong pre-\ntrained encoder by a large margin. By us-\ning our best task to pre-train STEP, we out-\nperform the best published abstractive model\non CNN/DailyMail by 0.8 ROUGE-2 and New",
+          "score": 0.64285713,
+          "source": "2004.01853v1.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "65ef0212-5ab7-44de-9629-eb41c2968ef6",
+          "chunkIndex": 23,
+          "text": "(2019) tested their model on sentence-level tasks\n(e.g., machine translation and sentence compres-\nsion), while we aim to solve document-level tasks\n(e.g., abstractive document summarization).\n3 Sequence-to-Sequence Transformer\nPre-training\nThis section first introduces the backbone archi-\ntecture of our abstractive summarization model\nSTEP. We then describe methods to pre-train STEP\nand finally move on to the fine-tuning on summa-\nrization datasets.\n3.1 Architecture",
+          "score": 0.56666666,
+          "source": "2004.01853v1.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "65ef0212-5ab7-44de-9629-eb41c2968ef6",
+          "chunkIndex": 11,
+          "text": "covers a masked document to its original form.\nAfter pre-trianing STEP using the three tasks on\nunlabeled documents, we fine-tune it on super-\nvised summarization datasets.\nWe evaluate our methods on two summarization\ndatasets (i.e., the CNN/DailyMail and the New\nYork Times datasets). Experiments show that all\nthree tasks we propose can improve upon a heavily\ntuned large SEQ2SEQ Transformer which already\nincludes a strong pre-trained encoder by a large",
+          "score": 0.45,
+          "source": "2004.01853v1.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1710.03348/91e326fde8b0a538bc34d419541b5990d8aae14b",
+      "paperId": "1710.03348",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 4,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 0,
+          "text": "What does Attention in Neural Machine Translation\nPay Attention to?\nHamidreza Ghader and Christof Monz\nInformatics Institute, University of Amsterdam, The Netherlands\nh.ghader, c.monz@uva.nl\nAbstract\nAttention in neural machine translation\nprovides the possibility to encode relevant\nparts of the source sentence at each trans-\nlation step. As a result, attention is con-\nsidered to be an alignment model as well.\nHowever, there is no work that specifically\nstudies attention and provides analysis of",
+          "score": 1.1666667,
+          "source": "1710.03348.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 2,
+          "text": "We show that attention is different from\nalignment in some cases and is capturing\nuseful information other than alignments.\n1 Introduction\nNeural machine translation (NMT) has gained a\nlot of attention recently due to its substantial im-\nprovements in machine translation quality achiev-\ning state-of-the-art performance for several lan-\nguages (Luong et al., 2015b; Jean et al., 2015;\nWu et al., 2016). The core architecture of neural\nmachine translation models is based on the gen-",
+          "score": 0.6666667,
+          "source": "1710.03348.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 15,
+          "text": "analysis for morphological information, Belinkov\net al. (2017) show that attention has also some ef-\nfect on the information that the encoder of neural\nmachine translation system encodes in its output\nhidden states. As part of their analysis they show\nthat a neural machine translation system that has\nan attention model can learn the POS tags of the\nsource side more efficiently than a system without\nattention.\nRecently, Koehn and Knowles (2017) carried",
+          "score": 0.54285717,
+          "source": "1710.03348.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 69,
+          "text": "Association for Computational Linguistics and the\n7th International Joint Conference on Natural Lan-\nguage Processing (Volume 1: Long Papers), pages\n1–10, Beijing, China. Association for Computa-\ntional Linguistics.\nPhilipp Koehn and Rebecca Knowles. 2017. Six\nchallenges for neural machine translation. arXiv\npreprint arXiv:1706.03872.\nLemao Liu, Masao Utiyama, Andrew Finch, and Ei-\nichiro Sumita. 2016. Neural machine translation\nwith supervised attention. In Proceedings of COL-",
+          "score": 0.53571427,
+          "source": "1710.03348.pdf",
+          "page": 9
+        },
+        {
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 70,
+          "text": "with supervised attention. In Proceedings of COL-\nING 2016, the 26th International Conference on\nComputational Linguistics: Technical Papers, pages\n3093–3102, Osaka, Japan. The COLING 2016 Or-\nganizing Committee.\nThang Luong, Hieu Pham, and Christopher D. Man-\nning. 2015a. Effective approaches to attention-\nbased neural machine translation. pages 1412–1421.\nThang Luong, Ilya Sutskever, Quoc Le, Oriol Vinyals,\nand Wojciech Zaremba. 2015b. Addressing the rare",
+          "score": 0.44444445,
+          "source": "1710.03348.pdf",
+          "page": 9
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+      "paperId": "1809.01202",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "35b3a79e-2d8a-4321-bf33-fd8c1178166b",
+          "chunkIndex": 75,
+          "text": "explanations within reviews can better target the\nreasons for the negative review.\n6 Conclusion\nWe developed a pipeline for causal explanation\nanalysis over social media text, including both\ncausality prediction and causal explanation iden-\ntification. We examined a variety of model\ntypes and RNN architectures for each part of the\npipeline, finding an SVM best for causality pre-\ndiction and a hierarchy of BiLSTMs for causal ex-\nplanation identification, suggesting the later task",
+          "score": 0.8333334,
+          "source": "1809.01202.pdf",
+          "page": 8
+        },
+        {
+          "documentId": "35b3a79e-2d8a-4321-bf33-fd8c1178166b",
+          "chunkIndex": 76,
+          "text": "relies more heavily on sequential information. In\nfact, we found replacing either layer of the hier-",
+          "score": 0.74358976,
+          "source": "1809.01202.pdf",
+          "page": 8
+        },
+        {
+          "documentId": "35b3a79e-2d8a-4321-bf33-fd8c1178166b",
+          "chunkIndex": 8,
+          "text": "In this paper, we introduce causal explanation\nanalysis and its subtasks of detecting the presence\nof causality (causality prediction) and identifying\nexplanatory phrases (causal explanation identifi-\ncation). There are many challenges to achiev-\ning these task. First, the ungrammatical texts in\nsocial media incur poor syntactic parsing results\nwhich drastically affect the performance of dis-\ncourse relation parsing pipelines 1. Many causal\nrelations are implicit and do not contain any dis-",
+          "score": 0.5,
+          "source": "1809.01202.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "35b3a79e-2d8a-4321-bf33-fd8c1178166b",
+          "chunkIndex": 79,
+          "text": "media analyses and ultimately enables new appli-\ncations beyond the current state of the art.\nAcknowledgments\nThis work was supported, in part, by a grant from\nthe Templeton Religion Trust (ID #TRT0048).\nThe funders had no role in study design, data col-\nlection and analysis, decision to publish, or prepa-\nration of the manuscript. We also thank Laura\nSmith, Yiyi Chen, Greta Jawel and Vanessa Her-\nnandez for their work in identifying causal expla-\nnations.\nReferences",
+          "score": 0.5,
+          "source": "1809.01202.pdf",
+          "page": 9
+        },
+        {
+          "documentId": "35b3a79e-2d8a-4321-bf33-fd8c1178166b",
+          "chunkIndex": 1,
+          "text": "ples of personal writing. Automatic identifi-\ncation of causal explanations in social media,\nwhile challenging in relying on contextual and\nsequential cues, offers a larger-scale alterna-\ntive to expensive manual ratings and opens the\ndoor for new applications (e.g. studying pre-\nvailing beliefs about causes, such as climate\nchange). Here, we explore automating causal\nexplanation analysis, building on discourse\nparsing, and presenting two novel subtasks:",
+          "score": 0.45238096,
+          "source": "1809.01202.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1909.02027/149da739b1c19a157880d9d4827f0b692006aa2c",
+      "paperId": "1909.02027",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 2,
+          "text": "oriented agent must handle. We evaluate a\nrange of benchmark classifiers on our dataset\nalong with several different out-of-scope iden-\ntification schemes. We find that while the clas-\nsifiers perform well on in-scope intent classi-\nfication, they struggle to identify out-of-scope\nqueries. Our dataset and evaluation fill an im-\nportant gap in the field, offering a way of more\nrigorously and realistically benchmarking text\nclassification in task-driven dialog systems.\n1 Introduction",
+          "score": 0.9166667,
+          "source": "1909.02027.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 46,
+          "text": "of-scope prediction methods with a new dataset\nconsisting of carefully collected out-of-scope data.\nOur findings indicate that certain models like\nBERT perform better on in-scope classification,\nbut all methods investigated struggle with identify-\ning out-of-scope queries. Models that incorporate\nmore out-of-scope training data tend to improve\non out-of-scope performance, yet such data is ex-\npensive and difficult to generate. We believe our\nanalysis and dataset will lead to developing better,",
+          "score": 0.64285713,
+          "source": "1909.02027.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 22,
+          "text": "training examples, rather than 100. These are in-\ntended to represent production scenarios where\ndata may be in limited or uneven supply.\n3 Benchmark Evaluation\nTo quantify the challenges that our new dataset\npresents, we evaluated the performance of a range\nof classifier models3 and out-of-scope prediction\nschemes.\n3.1 Classifier Models\nSVM: A linear support vector machine with bag-\nof-words sentence representations.\nMLP: A multi-layer perceptron with USE embed-",
+          "score": 0.5952381,
+          "source": "1909.02027.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 9,
+          "text": "Correctly identifying out-of-scope cases is thus\ncrucial in deployed systems—both to avoid per-\nforming the wrong action and also to identify po-\ntential future directions for development. How-\never, this problem has seen little attention in anal-\nyses and evaluations of intent classification sys-\ntems.\nThis paper fills this gap by analyzing intent\nclassification performance with a focus on out-of-\nscope handling. To do so, we constructed a new\ndataset with 23,700 queries that are short and un-",
+          "score": 0.53333336,
+          "source": "1909.02027.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 45,
+          "text": "derson et al., 2014a), and DSTC 3 (Henderson\net al., 2014b) contain “chatbot style” queries, but\nthe datasets are focused on state tracking. More-\nover, most if not all queries in these datasets are\nin-scope. In contrast, the focus of our analysis is\non both in- and out-of-scope queries that challenge\na virtual assistant to determine whether it can pro-\nvide an acceptable response.\n6 Conclusion\nThis paper analyzed intent classification and out-\nof-scope prediction methods with a new dataset",
+          "score": 0.5151515,
+          "source": "1909.02027.pdf",
+          "page": 5
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1909.02027/cfcdd73e712caf552ba44d0aa264d8dace65a589",
+      "paperId": "1909.02027",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 1,
+      "matchedAnchors": [],
+      "found": false,
+      "result": [
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 9,
+          "text": "Correctly identifying out-of-scope cases is thus\ncrucial in deployed systems—both to avoid per-\nforming the wrong action and also to identify po-\ntential future directions for development. How-\never, this problem has seen little attention in anal-\nyses and evaluations of intent classification sys-\ntems.\nThis paper fills this gap by analyzing intent\nclassification performance with a focus on out-of-\nscope handling. To do so, we constructed a new\ndataset with 23,700 queries that are short and un-",
+          "score": 0.8666667,
+          "source": "1909.02027.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 46,
+          "text": "of-scope prediction methods with a new dataset\nconsisting of carefully collected out-of-scope data.\nOur findings indicate that certain models like\nBERT perform better on in-scope classification,\nbut all methods investigated struggle with identify-\ning out-of-scope queries. Models that incorporate\nmore out-of-scope training data tend to improve\non out-of-scope performance, yet such data is ex-\npensive and difficult to generate. We believe our\nanalysis and dataset will lead to developing better,",
+          "score": 0.8333334,
+          "source": "1909.02027.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 45,
+          "text": "derson et al., 2014a), and DSTC 3 (Henderson\net al., 2014b) contain “chatbot style” queries, but\nthe datasets are focused on state tracking. More-\nover, most if not all queries in these datasets are\nin-scope. In contrast, the focus of our analysis is\non both in- and out-of-scope queries that challenge\na virtual assistant to determine whether it can pro-\nvide an acceptable response.\n6 Conclusion\nThis paper analyzed intent classification and out-\nof-scope prediction methods with a new dataset",
+          "score": 0.65384614,
+          "source": "1909.02027.pdf",
+          "page": 5
+        },
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 8,
+          "text": "Out-of-scope queries are inevitable for a task-\noriented dialog system, as most users will not be\nfully cognizant of the system’s capabilities, which\nare limited by the fixed number of intent classes.\narXiv:1909.02027v1 [cs.CL] 4 Sep 2019",
+          "score": 0.4,
+          "source": "1909.02027.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 0,
+          "text": "An Evaluation Dataset for Intent Classification\nand Out-of-Scope Prediction\nStefan Larson Anish Mahendran Joseph J. Peper Christopher Clarke\nAndrew Lee Parker Hill Jonathan K. Kummerfeld Kevin Leach\nMichael A. Laurenzano Lingjia Tang Jason Mars\nClinc, Inc.\nAnn Arbor, MI, USA\nstefan@clinc.com\nAbstract\nTask-oriented dialog systems need to know\nwhen a query falls outside their range of sup-\nported intents, but current text classification\ncorpora only define label sets that cover ev-",
+          "score": 0.35238096,
+          "source": "1909.02027.pdf",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "caseId": "pdf/1911.02855/20e38438471266ce021817c6364f6a46d01564f2",
+      "paperId": "1911.02855",
+      "format": "pdf",
+      "group": "chunk_omission",
+      "k": 5,
+      "eligible": true,
+      "anchorCount": 5,
+      "matchedAnchors": [
+        "c628b8ed-0368-453b-9800-abc8456c9032",
+        "8ce06ce8-abf2-459f-9019-147130a6769f"
+      ],
+      "found": true,
+      "result": [
+        {
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 3,
+          "text": "associate training examples with dynamically\nadjusted weights to deemphasize easy-negative\nexamples. Experimental results show that this\nstrategy narrows down the gap between the F1\nscore in evaluation and the dice loss in training.\nWith the proposed training objective, we ob-\nserve significant performance boosts over a\nwide range of data imbalanced NLP tasks.\nNotably, we are able to achieve SOTA re-\nsults on CTB5, CTB6 and UD1.4 for the part\nof speech tagging task, and competitive or",
+          "score": 0.78571427,
+          "source": "1911.02855.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 24,
+          "text": "normally used to address the the case where we\nwish that not all xi are treated equally: associating\ndifferent classes with different weighting factor α\nor resampling the datasets. For the former, Eq.1 is\nadjusted as follows:\nWeighted CE = − 1\nN\nX\ni\nαi\nX\nj∈{0,1}\nyij log pij\n(2)\nwhere αi ∈ [0, 1] may be set by the inverse class\nfrequency or treated as a hyperparameter to set by\ncross validation. In this work, we use lg( n−nt\nnt +K)\nto calculate the coefficient α, where nt is the num-",
+          "score": 0.71929824,
+          "source": "1911.02855.pdf",
+          "page": 3
+        },
+        {
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 2,
+          "text": "replacement of the standard cross-entropy ob-\njective for data-imbalanced NLP tasks. Dice\nloss is based on the Sørensen–Dice coefficient\n(Sorensen, 1948) or Tversky index (Tversky,\n1977), which attaches similar importance to\nfalse positives and false negatives, and is more\nimmune to the data-imbalance issue. To further\nalleviate the dominating influence from easy-\nnegative examples in training, we propose to\nassociate training examples with dynamically",
+          "score": 0.5555556,
+          "source": "1911.02855.pdf",
+          "page": 1
+        },
+        {
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 15,
+          "text": "lated work is presented in Section 2. We describe\ndifferent proposed losses in Section 3. Experimen-\ntal results are presented in Section 4. We perform\nablation studies in Section 5, followed by a brief\nconclusion in Section 6.\n2 Related Work\n2.1 Data Resampling\nThe idea of weighting training examples has a\nlong history. Importance sampling (Kahn and Mar-\nshall, 1953) assigns weights to different samples\nand changes the data distribution. Boosting algo-",
+          "score": 0.5,
+          "source": "1911.02855.pdf",
+          "page": 2
+        },
+        {
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 22,
+          "text": "NLP tasks as the training objective and propose a\ndynamic weight adjusting strategy to address the\ndominating influence of easy-negative examples.\n3 Losses\n3.1 Notation\nFor illustration purposes, we use the binary clas-\nsification task to demonstrate how different losses\nwork. The mechanism can be easily extended to\nmulti-class classification. Let X denote a set of\ntraining instances and each instance xi ∈ X is as-\nsociated with a golden binary label yi = [yi0, yi1]",
+          "score": 0.4909091,
+          "source": "1911.02855.pdf",
+          "page": 3
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "caseId": "pdf/1912.01214/b6f15fb6279b82e34a5bf4828b7b5ddabfdf1d54",
+      "paperId": "1912.01214",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "9049300a-ada7-43fd-8b2f-9b3ffa4e2d32",
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 18,
+          "textSha256": "67b5478e92f5a40ed40f151b0cb13f1ef3dfa8efbe9186471316520b7ed5c164",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "86ceeec0-70dc-44f7-bd9f-0acaed636b99",
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 44,
+          "textSha256": "838c72451ed61786f0665aad004b29421687f0a5cc7cac57509c4f88266f2f6f",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "c43cfc1a-5a61-4145-b9d6-c03310ba8b3b",
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 51,
+          "textSha256": "61a8ba37afa2ce766f3a9f2ab35c0c13753fcc9619e3a69812d19eb069c6bdb9",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "a868a3af-fcf5-42cc-8e95-eeb17a34d6a7",
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 17,
+          "textSha256": "e27e596b0129c9a06d5139cad64d62d468ef91660878ed6111acc0678d5d3e72",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1912.01214/5eda469a8a77f028d0c5f1acd296111085614537",
+      "paperId": "1912.01214",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "8d08d35d-7c5b-49a4-a1ed-f8f5475d4da5",
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 41,
+          "textSha256": "799615bc8606fd97f268617623e8828ffd8d451ab40f389b9637db13eab017cb",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "a25234a2-46d5-4cd6-809b-b23588b3fdd0",
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 4,
+          "textSha256": "cb23ca591a0fb3bfba5c36adf7bd13a02753402e0bf298380bca65eec0d38bf9",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "900b2cdd-b221-44e4-be3b-eaec2015e920",
+          "documentId": "729bb8d5-c884-4668-95bf-1cdc63ab54e4",
+          "chunkIndex": 46,
+          "textSha256": "3033650cd5ab579229e3feaf08c1e73069d9983ed88c3b8496e35b78867f5a61",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1810.08699/18c5d366b1da8447b5404eab71f4cc658ba12e6f",
+      "paperId": "1810.08699",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "af36678f-8e29-4780-9852-e3a11932891d",
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 36,
+          "textSha256": "6c8158b17ed5c65c1958fcba68d69040aef762bc8ea646efbb0ff1507a2f1669",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "2fcd2ad9-b396-46e2-a066-694ace9b0ab3",
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 38,
+          "textSha256": "7e036ca57986f0ec19639e3b48fca944b1103ffb4354fdecd78dd654fbe50c57",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "a2146319-9eb4-4163-8868-0660e70fc4e5",
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 39,
+          "textSha256": "002f2f9c3cb5b7a442180ca4c7d69516b9d46862816c3891505b23259b566a4f",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "c1d2019f-eacf-4079-88fa-f92df57591c8",
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 37,
+          "textSha256": "eb6fa070303e15bf61b7c0dd0442e30a31fcf6ea2e711de5d19acc249488894a",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1810.08699/b5e4866f0685299f1d7af267bbcc4afe2aab806f",
+      "paperId": "1810.08699",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "4c59c0bf-6487-409d-954a-57ae849b4465",
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 22,
+          "textSha256": "859de1f6d8771c2f666134198c88225b7ad1d39783b04fb4b441151b2e010d55",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "e4140f54-1bb6-48eb-990b-4fb6eddf3d4f",
+          "documentId": "b65ca1eb-4a01-43e0-8bf6-1a1a6a1a7280",
+          "chunkIndex": 23,
+          "textSha256": "20df27ebcb65394f1cae73b3a094d48d6aa96b8756ed8b9aad9ccd6986604828",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1609.00425/a87a009c242d57c51fc94fe312af5e02070f898b",
+      "paperId": "1609.00425",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "59ca26c3-af7f-45cd-8f46-0f4e9d154ff6",
+          "documentId": "cc55dd45-028e-4a9f-bd35-2bc800260ebd",
+          "chunkIndex": 45,
+          "textSha256": "ca50a519f22f3ba0466c1dd63e35c9ede37227c56a7bd4e66a52bb3535d52725",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1801.05147/ef4dba073d24042f24886580ae77add5326f2130",
+      "paperId": "1801.05147",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "bb0c8a18-f063-4b0b-ae24-7458237fcefe",
+          "documentId": "6af6c28c-8522-4da9-9cce-917cbfe8f301",
+          "chunkIndex": 65,
+          "textSha256": "fd02421f979b56a13d0bdcc58e9b6852d880f1b9101b632b7e1ad3ae162260b2",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "451c0486-ded0-49b0-99d3-1d3d07b51000",
+          "documentId": "6af6c28c-8522-4da9-9cce-917cbfe8f301",
+          "chunkIndex": 66,
+          "textSha256": "d49f3a5bddd71d429a85a7cfb00cd9f63cfb0a596df6e660e57c0c162424af51",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1909.09067/9eabb54c2408dac24f00f92cf1061258c7ea2e1a",
+      "paperId": "1909.09067",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "63e20ef0-05d5-451e-8e1e-28dc03140bbf",
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 43,
+          "textSha256": "cd9f93ee1a500161ac52d8caf93e59be601e7be66c9bbada4da84192c3f99092",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1909.09067/3d013f15796ae7fed5272183a166c45f16e24e39",
+      "paperId": "1909.09067",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "c4c0f560-5a31-44c8-b675-e1d53324d257",
+          "documentId": "d0a3ae6a-c05e-4404-aeb2-4c06b078af61",
+          "chunkIndex": 44,
+          "textSha256": "3e32e6e2675e55436c40d226e79fbb894e68005fa3387f69f5c920d484e1e42c",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/2003.03106/66c96c297c2cffdf5013bab5e95b59101cb38655",
+      "paperId": "2003.03106",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "d6284dab-d1ae-411e-9fd8-37a53a85ca30",
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 50,
+          "textSha256": "c27bed93f1eab98dfc96ed46a3e7c7b1731fa8e641f33f60fceaedd4ced73e6a",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "3fba2777-36e7-4f2b-badd-1cf251cc4001",
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 74,
+          "textSha256": "3cdb4af3ab0cb634ebf698b517ea2a8d6d22b30aa810f905b70f75d86ccef6f3",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "0ad11355-3baf-4af4-8a02-32a2077f1f74",
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 75,
+          "textSha256": "c6ccab88a2e15e3a92c2bbef014a7ffcd7a57eda5b78c16ad4e5cd67d9b92ec1",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/2003.03106/6b53e1f46ae4ba9b75117fc6e593abded89366be",
+      "paperId": "2003.03106",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "6e2ef2b2-1261-4d71-a756-e221599b9159",
+          "documentId": "73bab7cd-92cb-41fe-8bf8-0697a33342a0",
+          "chunkIndex": 36,
+          "textSha256": "41d374ba4ccd937a127bd2f9569570ca6139fb8e63b691eab4e51d9988df8591",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1708.01464/113d791df6fcfc9cecfb7b1bebaf32cc2e4402ab",
+      "paperId": "1708.01464",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "346633a0-727c-41ef-a073-689e4cf9511c",
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 47,
+          "textSha256": "fafa009d85b58e3a7e71e4696a8edd50a254b3ba643fe4c79a547b5a3811589a",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1708.01464/4eaf9787f51cd7cdc45eb85cf223d752328c6ee4",
+      "paperId": "1708.01464",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "736d8a6c-f0d8-4123-b0a5-26fd2a567aef",
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 28,
+          "textSha256": "7a0e9a9be48f610bb90c690c6002c6c5bd0bd3ad7037de425983e7b6a0863104",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "f57dd0e9-6bca-4f9d-9ea7-15bdf1dfcaff",
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 29,
+          "textSha256": "9a0bb2725af7e680dc23a5754881f7f85b42402fef4793c6ce98760ede67a5af",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "66440e59-38d8-43e4-b60d-a4599bdb32a9",
+          "documentId": "0d0e726a-e953-4946-bb0d-ca6a71e49361",
+          "chunkIndex": 33,
+          "textSha256": "ca5ee443613d18827dd44655963e7cf4ed45c4c7c51aef56a1921aeaf7dcbbba",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/2002.03407/31735ec3d83c40b79d11df5c34154849aeb3fb47",
+      "paperId": "2002.03407",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "1f2ff1af-516d-44c8-86dd-6326a386e9ad",
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 58,
+          "textSha256": "439879adcfcc6cd031e0d135f1a92b983a53d309ddc07e9e40613c1678597004",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/2002.03407/c21b87c97d1afac85ece2450ee76d01c946de668",
+      "paperId": "2002.03407",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "32e94c59-b5e1-40f2-a86c-fa45de1bd151",
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 8,
+          "textSha256": "27bfee7586e1da6ef0c9be6acd262d0eff071277dc01c9f199c06b393b2659c3",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "c30919e5-7bba-4a39-8090-eba69fbe55d3",
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 20,
+          "textSha256": "4c8bc2914bb17fe771f2bf32e46e60f74f429cb766721e05b3f1e7fc19a2b902",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "3e3a42b1-9eb7-47c1-a17f-a6e1410ac23a",
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 27,
+          "textSha256": "f2842bc5d28c4d0af3935c2ca3f565f27302b3f429638a80b66a617e447bd79e",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "1f2ff1af-516d-44c8-86dd-6326a386e9ad",
+          "documentId": "c94472d7-4317-46ef-9900-d582b2262358",
+          "chunkIndex": 58,
+          "textSha256": "439879adcfcc6cd031e0d135f1a92b983a53d309ddc07e9e40613c1678597004",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1909.11687/efe9bad55107a6be7704ed97ecce948a8ca7b1d2",
+      "paperId": "1909.11687",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "18f92f97-c283-4880-856e-acdb0c2f7180",
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 43,
+          "textSha256": "e54e1200068c4a1e30a65e91f9c70448a0266ac5e21958833d0469a6ee521d1b",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "55b5900f-cff2-4fcf-b0b9-a5bff4fbd58c",
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 50,
+          "textSha256": "5d48a8d77136a90cd6d2f23df1dca31e6efe01fd351ba8fb356c9fd6109f72c6",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "92fec503-8764-45ad-bcb4-741d285da595",
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 51,
+          "textSha256": "7bf92d7195d644062ba10e4996777db36526b01e2a61c3df26a64e923c529421",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "0f578307-6934-4781-a93e-1bd3f5a17363",
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 53,
+          "textSha256": "82aa90753672bb287817e9ddec0a298fa085a6fa0e3739d1b8249f1022771ff6",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "7b17bb4e-a935-4175-81ac-a42f2d97bf27",
+          "documentId": "35b32729-7df1-4e74-808f-f6edb07d91e5",
+          "chunkIndex": 56,
+          "textSha256": "f5d85992389a15cbc230e7908e14e527175a77c3aa18fedbb3ef7acaf4e6ee40",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1804.05918/f17ca24b135f9fe6bb25dc5084b13e1637ec7744",
+      "paperId": "1804.05918",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "22aa1509-ed3d-44e0-836e-d95148d72d64",
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 56,
+          "textSha256": "193f5e4f070e9d35faf178fae66ddd05502598879b960fcb8139d4a1108e8191",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "9b71550d-fa98-4814-a968-dec3589c5be3",
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 65,
+          "textSha256": "28cf659f070a7b2e3b3cd204fc5dc49166e3e577814335931d05f2bc8454072b",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1804.05918/bd5bd1765362c2d972a762ca12675108754aa437",
+      "paperId": "1804.05918",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "aa8c16bc-6be0-4882-9fc1-ba2d5ff3ffb6",
+          "documentId": "7b8f0562-bf4a-4baf-aca3-ef1664cb77dc",
+          "chunkIndex": 69,
+          "textSha256": "35d8560ec8cc79eeff8ae39bf1e9a8c8d7d41e10dea20d8d969bf7d0135e40fb",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",
+      "paperId": "1910.10781",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "1381d926-f0b8-430f-90e2-ccdd121ea1fa",
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 23,
+          "textSha256": "ca59dc9ab66204b11a5397a6f0189985df4c25b84348e422afb267291b62da17",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "15b386f1-f2b8-4ec6-bdd8-b7c3cb0c17aa",
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 26,
+          "textSha256": "47b98b5e5390e03a735833840d3087106568f7100a49687058a7f0ac1318afe6",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "74e45ea0-42f4-4aae-85d6-66d1cf9f43fa",
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 28,
+          "textSha256": "2ae1667378f5b34e90a38b675b5a4d871ecf912c4b15124eb479b370e95b6210",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1910.10781/0810b43404686ddfe4ca84783477ae300fdd2ea4",
+      "paperId": "1910.10781",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "fdd2caa0-d5f6-46a1-887d-222d2d419ada",
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 34,
+          "textSha256": "56d27a7e913576c19f0a144f04985ed7c960f8ade5953378c4b4dff9e34d6037",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "96285b89-bb4d-41ca-82c9-d79a48b69a5b",
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 40,
+          "textSha256": "57fcd6fdbbb5b83f8507439217191bcddb33cd5261494ce50630410374ee80ba",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "f006bdd3-d753-42c6-943c-627899ab0209",
+          "documentId": "fab72676-f39e-40c6-9f73-3425ae302deb",
+          "chunkIndex": 43,
+          "textSha256": "349b4b7f1ccebe49928e71d80ae1c442dab11c96c831be45a75f98ec45a66f0d",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1911.06964/3d7d865e905295d11f1e85af5fa89b210e3e9fdf",
+      "paperId": "1911.06964",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "96612d6c-1c59-4b8f-9332-aff0df89bb89",
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 28,
+          "textSha256": "30d354e6b6ac39a9fe755040e72f79e550e65747bd39e516870355cca54942c3",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "b8be23a9-5033-47f6-8776-c6ca25aaec38",
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 73,
+          "textSha256": "cde36b3639de409289605c744a1f522e867afefd93037802213ee2914f2851a6",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1911.06964/3fad42be0fb2052bb404b989cc7d58b440cd23a0",
+      "paperId": "1911.06964",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "addbbc2e-923f-44ec-b98a-a13c1ebed038",
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 16,
+          "textSha256": "71528a2efb94f07c5032215aa895df59bccd34d6c892f71772d8cf43cfdf8366",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "9f8f6534-d04d-4ba9-89d1-fcfe9edb0271",
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 17,
+          "textSha256": "57c293a481c55f0f92b44614865fcee3efa7a6fc2b6562367ab220603cd97762",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "44b961d5-ee6c-40f5-a133-356011f9c62e",
+          "documentId": "d3884551-9648-48af-831a-f8d8681bdbc3",
+          "chunkIndex": 26,
+          "textSha256": "04b2d1e91dd4028049c24a9c601fab3e9b6d49bb6ad229d44341cb8ced754fae",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/2002.01664/75df70ce7aa714ec4c6456d0c51f82a16227f2cb",
+      "paperId": "2002.01664",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "168e9de9-686c-4ab9-a403-cf1d2e7411c6",
+          "documentId": "5a1bf0fa-be9e-4645-844b-678f26afbaf3",
+          "chunkIndex": 24,
+          "textSha256": "fd00cf5a2b2209ae4fec9efae90e62627e6ba1f38db3e33a552c3872df8d880e",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1809.00540/2c78993524ca62bf1f525b60f2220a374d0e3535",
+      "paperId": "1809.00540",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "57fd65e7-a526-4ef0-acd2-f735163cab46",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 49,
+          "textSha256": "552b42bd9695df730379764ee1c4e633f656d5376f7b93d31ff243c9f84a43a0",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "28515583-1c5a-476a-aa31-5e1cf0b23236",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 38,
+          "textSha256": "813571e56e311aa67b4cf1e5cddf6b701a6293b528bcda3dc8b6d78904e0ee9f",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "b9515575-676d-46e8-bca4-42611ce943ba",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 53,
+          "textSha256": "19a93c6511f71b9cbf64120c6dec420f2c16b6d4c6b3a5125a1393a00ac62869",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "46623977-c03d-4f9f-8588-eaf248cf5bd6",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 79,
+          "textSha256": "6e95f088e93af558745fcfa03f956992026a6bcbc823c6f7d651e2c4fdff4ebd",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1809.00540/d604f5fb114169f75f9a38fab18c1e866c5ac28b",
+      "paperId": "1809.00540",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "4182270d-fed7-4550-b058-e6834d4dddc8",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 14,
+          "textSha256": "228a6b77ce30375ec4cdb5b483ff3292267a25367c18269939b29bcc7fb4f827",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "6b8984a3-e87d-414e-a7a8-07bf35179a3a",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 55,
+          "textSha256": "ea83f1e30a41cad3076c80dd83b8bb19224e06fca085237374c8715074ba6f67",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "ea55dc37-85e5-4004-ab3b-aa07b9f0d139",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 58,
+          "textSha256": "b83c052b69c687fdef97b268dd667b83efa8b4fddd5a17bd1d1ce13749c85c2c",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "41d16946-c819-4246-8550-ab8db3cc1530",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 63,
+          "textSha256": "68ea56122215ca732f697903fafa475e4982ae4781f0c14fb85eed6cfc6f211c",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "864cc201-7c9d-434a-9e2c-130a75c12aaf",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 69,
+          "textSha256": "898e785fb5b6c9406563e19bd859358c93f3adafae1b605e4c503392aca1916a",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "84632e22-e392-4a07-9eba-75086f9d8146",
+          "documentId": "7690f534-59cb-4683-9e83-cc5c2b5baedd",
+          "chunkIndex": 70,
+          "textSha256": "f0bab381d9d9a263d4b6b66c4da19069827f0a6d88cad523c674340cbb08c340",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1912.13337/85590bb26fed01a802241bc537d85ba5ef1c6dc2",
+      "paperId": "1912.13337",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "6a5df4ec-0248-44f5-85b0-61062e163aab",
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 69,
+          "textSha256": "536d8d12b155aaa30b82bfbe84b5de71be8d400a311a85ca6ef4775cc3e52ec0",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "24da682d-8c43-422f-ac9a-3cbb19d7ffa4",
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 70,
+          "textSha256": "b78586520167d8d68f373aa6eb0efe2d81d548c6990aca12f37cc549f1840c57",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "83a4eb02-bbfc-4390-bf29-96435f43b4a1",
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 77,
+          "textSha256": "72b5f102fc69bb535392781c205878e277570f79e97038fc86409b6b2d6cc225",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "35563930-f80f-44a7-9e79-c0f61f1995b0",
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 94,
+          "textSha256": "a129b278e7cd24b128cc3f25a17955b365c9bf7594572e7613c5a57a6d18e3bb",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "f44132b5-2350-4f1d-a484-4dd143a7c725",
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 97,
+          "textSha256": "d3bde6d0cd521f16b5886b11dac0a2244882c5323a53a337d2ffd334cf999c4f",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "2cc09823-d13c-4902-9978-bebb25b38c5d",
+          "documentId": "a4fd5fe9-80e4-4e69-90fc-620832a3f14a",
+          "chunkIndex": 100,
+          "textSha256": "e8a8390198777ae6365a1fac8f6f51057258f3b64dcfd72e6632fc68076e4349",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1809.01541/5cb610d3d5d7d447b4cd5736d6a7d8262140af58",
+      "paperId": "1809.01541",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "bae45554-9dc0-499e-b238-6d74bcee2cc3",
+          "documentId": "5320e61e-bd96-4ffb-9d14-61aefe8913e4",
+          "chunkIndex": 20,
+          "textSha256": "efe78caae441598d8fe883fc048872fe22fbe5def2d09c234d003d2548294ca5",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1802.06024/8f16dc7d7be0d284069841e456ebb2c69575b32b",
+      "paperId": "1802.06024",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "097441d7-0d68-406e-8ded-0362b7fae2ca",
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 83,
+          "textSha256": "fef0dd6518c12d2bcd7ce56a73ef1780eb6f4c088f18e1b2b6d43e5406df4791",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "99293353-ed40-45b6-92bc-6fcb1bcce3f3",
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 90,
+          "textSha256": "79605a06493f48c8da339d119f440eb7ce8ee5dd61f12460914f75916e00f8e8",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "f8d71fcc-eefa-435c-811e-93755407ae21",
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 91,
+          "textSha256": "525efe00e04588202fe85063bb7f191a7fe25523d907aa7051e2f6b0bad559d8",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1802.06024/585626d18a20d304ae7df228c2128da542d248ff",
+      "paperId": "1802.06024",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "f8d71fcc-eefa-435c-811e-93755407ae21",
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 91,
+          "textSha256": "525efe00e04588202fe85063bb7f191a7fe25523d907aa7051e2f6b0bad559d8",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1802.06024/bfc2dc913e7b78f3bd45e5449d71383d0aa4a890",
+      "paperId": "1802.06024",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "00a5acf2-fe0d-4103-8575-29afba548e37",
+          "documentId": "35a00370-3ef5-4677-acd6-2b0a17c2cfb0",
+          "chunkIndex": 37,
+          "textSha256": "be3b88395022e62506cb3770133b9bd2d5d9ad6ebf9db1bfc842f01003271c84",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1912.08960/b1bc9ae9d40e7065343c12f860a461c7c730a612",
+      "paperId": "1912.08960",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "a5fb7bb3-8bfd-4681-8cab-737fda9d059e",
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 23,
+          "textSha256": "9336468ce4a8a227aea3727f0a85819d19474867f749a1561577cc556905f2d8",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "1701e66d-920c-41eb-b1de-724ae63752a3",
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 24,
+          "textSha256": "3a04383e2ccbcf37d757da0a7691567f084ec1ab9b9d646bb89dc153d9f4082a",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "9223f062-9283-42dc-a1dd-2e59d695dc06",
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 53,
+          "textSha256": "7814b57afc17477ed3ef46346f97b04b6f50c50e920b6f17a16b4c91829c74fc",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1912.08960/63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "paperId": "1912.08960",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "08f63c96-f3c5-4745-a174-d5b22a33332b",
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 34,
+          "textSha256": "29b0dcf8df5622999f96817bd9a888a070cc8d0be1695c4a947aeb3c669d81bf",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "94406dd8-8dc8-4974-a9dc-23055fec3a3d",
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 38,
+          "textSha256": "46aade7783270feb93b88d713579fa0492a73a7f72ff37bad87f3659285f5ebe",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "443b9322-1ec0-4255-b757-b8e08a4017f4",
+          "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+          "chunkIndex": 39,
+          "textSha256": "c12007518b9a184eb29e5cfdb1e3bc3f19d109cd6e2b05ee75f32b4a56c6e6c3",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1909.09587/37be0d479480211291e068d0d3823ad0c13321d3",
+      "paperId": "1909.09587",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "574be59a-6178-478b-9aac-b89918686e25",
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 16,
+          "textSha256": "cd1be157782fd8d3c4707baa02ea1a534833b2bbbdda99f761c2071d0bfe42a3",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "2fd4ea32-3ce1-4c3a-846b-0d13de151dfb",
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 21,
+          "textSha256": "3b1fb2daeb52d14c67b2d8049e2caad40a2ac1359a056aa723b7790f2635db53",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1909.09587/a3d9b101765048f4b61cbd3eaa2439582ebb5c77",
+      "paperId": "1909.09587",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "be592c4e-a141-4ef9-81e4-de71dc53c30f",
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 17,
+          "textSha256": "de38ea8e78d002290431d360d8e75b7085c3d8ca3f372cf94358c588ab50904c",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "574be59a-6178-478b-9aac-b89918686e25",
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 16,
+          "textSha256": "cd1be157782fd8d3c4707baa02ea1a534833b2bbbdda99f761c2071d0bfe42a3",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "a080e100-f43f-4e97-96da-74c21a0fefde",
+          "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+          "chunkIndex": 22,
+          "textSha256": "5723685177af2598d80a9b47f736715ef46a26d5c75907226f545b787e23cfec",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1802.07862/f7a89b9cd2792f23f2cb43d50a01b8218a6fbb24",
+      "paperId": "1802.07862",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "78967990-8137-4777-8e15-eb9b2ebd4c52",
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 44,
+          "textSha256": "8d1d037b010bdf0f08f49760af8f179057c3069e35c16ae5466425a7673c70ce",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "cc3cae7e-e96a-48ca-a476-6da6070e56d6",
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 50,
+          "textSha256": "74a4be97b9fc212f235c686e0fc768a193879ffc7ad840789e64e5fa47b5a139",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "ea73d134-a02f-4d3e-87cd-b478d9d3b6c0",
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 53,
+          "textSha256": "30d116327a580add31b0d274d546f5d27168d5828b88c39d01fc42da784463cd",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "37f99731-d499-4727-b436-63e10a68f981",
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 2,
+          "textSha256": "ed91d773ebe5d3fb8b8e9134f2f1c4afce608d57d28b95919d9ef5fe329d011d",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "cc0b1b44-ef37-403e-afd7-9e17d59142d5",
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 4,
+          "textSha256": "862d68489ce7027327c92c7c7747021bba1e6e27d0ca5c549f07d460f0b2886f",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "7ce1500c-911c-472c-9de3-c53ac8f8dabf",
+          "documentId": "00345c13-6e70-422f-a527-f74972a42312",
+          "chunkIndex": 10,
+          "textSha256": "0e6a6ad0d223a361f57e73aa34903773549886272af07488bad9f422d8e9c69b",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/2004.01853/ed2eb4e54b641b7670ab5a7060c7b16c628699ab",
+      "paperId": "2004.01853",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "58bf14af-dcfe-4f45-be1f-056feef125b1",
+          "documentId": "65ef0212-5ab7-44de-9629-eb41c2968ef6",
+          "chunkIndex": 76,
+          "textSha256": "0f14ad26d828e67b1ce44a1e4b71a122de1f528c2e45d10d1e14735dd10f71c6",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "90e591a8-c27f-44fe-8769-38db1e79f2d8",
+          "documentId": "65ef0212-5ab7-44de-9629-eb41c2968ef6",
+          "chunkIndex": 77,
+          "textSha256": "e7973badf9d44a844cd2829e05559d99f645f6f1a5fb4e1d585bdc36e22a3ea3",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1710.03348/91e326fde8b0a538bc34d419541b5990d8aae14b",
+      "paperId": "1710.03348",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "3d4fc555-6107-43a3-8ef2-5f0c7dde6275",
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 22,
+          "textSha256": "5353702a13913fe065cf9a2b3b64883c1fbba2d9b06ec415ce3ab5fc7c360159",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "c0815d6a-845f-4ed4-8158-b3b3ac6f6d2e",
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 23,
+          "textSha256": "6bcd7666692db3e880be228701f20b0d35941ac8567c47a044f5ed2b88e61a31",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "54010504-e935-49eb-ac7f-d26a680bb25f",
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 25,
+          "textSha256": "c2763cbad28921acbb3b7bc113156bea4644c4ae6754aa06fe74a8f951072bc5",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "1cb397be-3488-4937-8f7a-3156d393a0de",
+          "documentId": "82510217-dab1-475a-88b1-2e2df8ad186d",
+          "chunkIndex": 36,
+          "textSha256": "0025398dd5467bbafa2555e53a8875aff1d834c2ceb10f9da0cb79fc0e7066d6",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+      "paperId": "1809.01202",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "0f43c41b-e6ee-4648-a84f-dcbf76f8f779",
+          "documentId": "35b3a79e-2d8a-4321-bf33-fd8c1178166b",
+          "chunkIndex": 26,
+          "textSha256": "d60a8d31ef792ef258f7550136ba3711fae49ccf0226ae7e02079ebbbbf2dd17",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1909.02027/149da739b1c19a157880d9d4827f0b692006aa2c",
+      "paperId": "1909.02027",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "12ae8102-1a2f-4e6d-aa94-b1a65e1cc4c8",
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 24,
+          "textSha256": "a8dc681cb346750450f8dde594ec9abce138a291c6cee0f1421b9830bae0d101",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1909.02027/cfcdd73e712caf552ba44d0aa264d8dace65a589",
+      "paperId": "1909.02027",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "ba280029-ba80-4617-b2d9-ec1ee4925cbb",
+          "documentId": "22e81601-4cf9-41d2-92eb-68d5518f776c",
+          "chunkIndex": 12,
+          "textSha256": "6091063a5d142269355753d26ac03dacc86348c7c156ead5bc9283c913ebd529",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 0
+    },
+    {
+      "caseId": "pdf/1911.02855/20e38438471266ce021817c6364f6a46d01564f2",
+      "paperId": "1911.02855",
+      "group": "chunk_omission",
+      "answerability": "answerable",
+      "anchors": [
+        {
+          "pointId": "de2e5e24-9143-4698-b8d7-f33f28ae83b8",
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 13,
+          "textSha256": "708336b31b1041b046812595fbcbb5cce308685bbd73396eaa9102b9fdccc9eb",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "8e2860dd-6a65-4a3e-a073-3b4804d3a05e",
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 30,
+          "textSha256": "47fce3edcda84c0a1c9329437de5ca06e9fd2d30a8c1e3217d283e7d0a400ca0",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "84a68e05-9aea-405f-8945-331e4e6d0bdc",
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 34,
+          "textSha256": "9ee8de200caa6d0606f3ef43b65c222ebbda01e169438ea121a733738737b855",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "c628b8ed-0368-453b-9800-abc8456c9032",
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 2,
+          "textSha256": "4d6fcc61e4026704efea322df199054724d141b8606424dd93dcd7d37260dff6",
+          "kind": "diagnostic"
+        },
+        {
+          "pointId": "8ce06ce8-abf2-459f-9019-147130a6769f",
+          "documentId": "781f39d0-514a-4328-81d4-9d93eff47dfa",
+          "chunkIndex": 3,
+          "textSha256": "9feb8e245aa902d0b43b2c495f6a5a1f99ebd9949ed28f016bd77602a5d79244",
+          "kind": "diagnostic"
+        }
+      ],
+      "capturedTop5AnchorHits": 2
+    }
+  ]
+}

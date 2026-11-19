@@ -26,7 +26,7 @@ export function EmptyState({ onSend }: { onSend(content: string): void }) {
             to get started.
           </p>
         ) : (
-          <p className="empty-sub">Answers come from your documents, on this machine.</p>
+          <p className="empty-sub">Answers use your documents. Questions, selected passages and relevant chat history are sent to Cloudflare.</p>
         )}
         <Composer onSend={onSend} disabledReason={stream ? BUSY_ELSEWHERE : null} focusKey="new" />
       </div>
@@ -140,7 +140,7 @@ export function ChatView({ id, onNewChat }: { id: string; onNewChat(): void }) {
           disabledReason={stream && !live ? BUSY_ELSEWHERE : null}
           focusKey={id}
         />
-        <p className="disclaimer">Answers are grounded in your documents and can still be wrong.</p>
+        <p className="disclaimer">Cloudflare receives questions, selected passages and relevant chat history. Answers can still be wrong.</p>
       </div>
     </>
   );

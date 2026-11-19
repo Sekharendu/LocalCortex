@@ -1,0 +1,1731 @@
+[
+ {
+  "source": "financebench",
+  "doc": "AMCOR_2022_8K_dated-2022-07-01",
+  "inHeaderTest": true,
+  "pages": 9,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 260,
+  "body": 10,
+  "biggerLines": 4,
+  "boldLines": 17,
+  "boldFontSeen": true,
+  "exBigger": [
+   "14: UNITED STATES",
+   "14: SECURITIES AND EXCHANGE COMMISSION",
+   "18: FORM 8-K",
+   "18: AMCOR PLC"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "CURRENT REPORT",
+   "Pursuant to Section 13 or 15(d)",
+   "of the Securities Exchange Act of 1934",
+   "Jersey 001-38932 98-1455367",
+   "83 Tower Road North"
+  ],
+  "ms": 635
+ },
+ {
+  "source": "financebench",
+  "doc": "AMCOR_2023Q4_EARNINGS",
+  "inHeaderTest": true,
+  "pages": 14,
+  "outline": 11,
+  "headingTags": 0,
+  "lines": 620,
+  "body": 8,
+  "biggerLines": 42,
+  "boldLines": 104,
+  "boldFontSeen": true,
+  "exBigger": [
+   "14: Amcor reports fiscal 2023 results and provides outlook for f",
+   "11: GAAP diluted EPS of 12.3 cps; Adjusted EPS of 19.3 cps",
+   "11: Fiscal 2023 Full Year Highlights",
+   "11: share; $431 million of shares repurchased (approximately 3% ",
+   "11: • Fiscal 2024 outlook: Adjusted EPS of 67-71 cents per share",
+   "10.5: We will also continue pursuing value-creating M&A and return"
+  ],
+  "exBold": [
+   "GAAP results 2022 $ million 2023 $ million",
+   "Reported ∆%",
+   "Comparable",
+   "constant",
+   "currency ∆%Adjusted non-GAAP results 2022 $ million 2023 $ m",
+   "Twelve Months Ended June 30, 2022 Twelve Months Ended June 3"
+  ],
+  "ms": 199
+ },
+ {
+  "source": "financebench",
+  "doc": "BESTBUY_2023_10K",
+  "inHeaderTest": true,
+  "pages": 75,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 661,
+  "body": 8,
+  "biggerLines": 4,
+  "boldLines": 36,
+  "boldFontSeen": true,
+  "exBigger": [
+   "9.8: UNITED STATES",
+   "9.8: SECURITIES AND EXCHANGE COMMISSION",
+   "9.8: FORM 10-K",
+   "9.8: BEST BUY FISCAL 2023 FORM 10-K"
+  ],
+  "exBold": [
+   "(Mark One)",
+   "x ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECUR",
+   "¨ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE S",
+   "Minnesota 41-0907483",
+   "7601 Penn Avenue South",
+   "Richfield, Minnesota"
+  ],
+  "ms": 174
+ },
+ {
+  "source": "financebench",
+  "doc": "BESTBUY_2024Q2_10Q",
+  "inHeaderTest": true,
+  "pages": 30,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 626,
+  "body": 8,
+  "biggerLines": 3,
+  "boldLines": 139,
+  "boldFontSeen": true,
+  "exBigger": [
+   "14.3: UNITED STATES",
+   "14.3: SECURITIES AND EXCHANGE COMMISSION",
+   "14.3: FORM 10-Q"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "(Mark One)",
+   "x QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SE",
+   "For the quarterly period ended July 29, 2023",
+   "o TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE S",
+   "For the transition period from to"
+  ],
+  "ms": 328
+ },
+ {
+  "source": "financebench",
+  "doc": "FOOTLOCKER_2022_8K_dated-2022-05-20",
+  "inHeaderTest": true,
+  "pages": 4,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 97,
+  "body": 9,
+  "biggerLines": 8,
+  "boldLines": 11,
+  "boldFontSeen": true,
+  "exBigger": [
+   "10.8: UNITED STATES",
+   "10.8: SECURITIES AND EXCHANGE COMMISSION",
+   "10.8: WASHINGTON, D.C. 20549",
+   "10.8: FORM 8-K",
+   "10.8: CURRENT REPORT",
+   "10.8: New York 1-10299 13-3513936"
+  ],
+  "exBold": [
+   "Pursuant to Section 13 or 15(d) of the Securities Exchange A",
+   "Name Votes For Votes Against Abstentions Broker Non-Votes",
+   "Votes For Votes Against Abstentions Broker Non-Votes",
+   "Votes For",
+   "1 Year",
+   "Votes For"
+  ],
+  "ms": 82
+ },
+ {
+  "source": "financebench",
+  "doc": "JOHNSON_JOHNSON_2023_8K_dated-2023-08-30",
+  "inHeaderTest": true,
+  "pages": 27,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 495,
+  "body": 7.2,
+  "biggerLines": 82,
+  "boldLines": 114,
+  "boldFontSeen": true,
+  "exBigger": [
+   "9: UNITED STATES",
+   "9: SECURITIES AND EXCHANGE COMMISSION",
+   "9: WASHINGTON, DC 20549",
+   "16.2: FORM 8-K",
+   "9: CURRENT REPORT",
+   "9: Pursuant to Section 13 or 15(d) of The"
+  ],
+  "exBold": [
+   "(incl. Consumer Health)",
+   "Johnson & Johnson and Subsidiaries",
+   "Supplementary Sales Data",
+   "Sales to customers by geographic area",
+   "Sales to customers by geographic area",
+   "Sales to customers by geographic area"
+  ],
+  "ms": 288
+ },
+ {
+  "source": "financebench",
+  "doc": "MGMRESORTS_2022Q4_EARNINGS",
+  "inHeaderTest": true,
+  "pages": 15,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 676,
+  "body": 10,
+  "biggerLines": 161,
+  "boldLines": 207,
+  "boldFontSeen": true,
+  "exBigger": [
+   "14: Exhibit 99.1",
+   "15: MGM RESORTS INTERNATIONAL REPORTS FOURTH QUARTER AND",
+   "15: FULL YEAR 2022 FINANCIAL AND OPERATING RESULTS",
+   "12: • Record Adjusted Property EBITDAR in 4Q and full year 2022 ",
+   "12: Regional Operations",
+   "12: • Share buybacks of $2.8 billion in 2022 and $352 million in"
+  ],
+  "exBold": [
+   "Change",
+   "(Dollars in millions)",
+   "Change",
+   "Change",
+   "(Dollars in millions)",
+   "Change"
+  ],
+  "ms": 456
+ },
+ {
+  "source": "financebench",
+  "doc": "FOOTLOCKER_2022_8K_dated_2022-08-19",
+  "inHeaderTest": false,
+  "pages": 31,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 370,
+  "body": 9,
+  "biggerLines": 0,
+  "boldLines": 13,
+  "boldFontSeen": true,
+  "exBigger": [],
+  "exBold": [
+   "UNITED STATES",
+   "SECURITIES AND EXCHANGE COMMISSION",
+   "WASHINGTON, D.C. 20549",
+   "FORM 8-K",
+   "CURRENT REPORT",
+   "Pursuant to Section 13 or 15(d) of the Securities Exchange A"
+  ],
+  "ms": 235
+ },
+ {
+  "source": "financebench",
+  "doc": "AMERICANWATERWORKS_2020_10K",
+  "inHeaderTest": false,
+  "pages": 152,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 570,
+  "body": 8.8,
+  "biggerLines": 5,
+  "boldLines": 41,
+  "boldFontSeen": true,
+  "exBigger": [
+   "11.5: UNITED STATES",
+   "11.5: SECURITIES AND EXCHANGE COMMISSION",
+   "11.5: FORM 10-K",
+   "10.8: ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECUR",
+   "10.8: ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE S"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "(Mark One)",
+   "For the fiscal year ended December 31, 2020",
+   "For the transition period from to",
+   "Commission file number: 001-34028",
+   "(Exact name of registrant as specified in its charter)"
+  ],
+  "ms": 211
+ },
+ {
+  "source": "financebench",
+  "doc": "AMERICANWATERWORKS_2021_10K",
+  "inHeaderTest": false,
+  "pages": 181,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 502,
+  "body": 7.1,
+  "biggerLines": 5,
+  "boldLines": 40,
+  "boldFontSeen": true,
+  "exBigger": [
+   "9.3: UNITED STATES",
+   "9.3: SECURITIES AND EXCHANGE COMMISSION",
+   "9.3: FORM 10-K",
+   "8.7: ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECUR",
+   "8.7: ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE S"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "(Mark One)",
+   "For the fiscal year ended December 31, 2021",
+   "For the transition period from to",
+   "Commission file number: 001-34028",
+   "(Exact name of registrant as specified in its charter)"
+  ],
+  "ms": 186
+ },
+ {
+  "source": "financebench",
+  "doc": "AMERICANWATERWORKS_2022_10K",
+  "inHeaderTest": false,
+  "pages": 306,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 609,
+  "body": 9,
+  "biggerLines": 5,
+  "boldLines": 42,
+  "boldFontSeen": true,
+  "exBigger": [
+   "11.7: UNITED STATES",
+   "11.7: SECURITIES AND EXCHANGE COMMISSION",
+   "11.7: FORM 10-K",
+   "10.8: ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECUR",
+   "10.8: ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE S"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "(Mark One)",
+   "For the fiscal year ended December 31, 2022",
+   "For the transition period from to",
+   "Commission file number: 001-34028",
+   "(Exact name of registrant as specified in its charter)"
+  ],
+  "ms": 396
+ },
+ {
+  "source": "financebench",
+  "doc": "NETFLIX_2015_10K",
+  "inHeaderTest": false,
+  "pages": 72,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 565,
+  "body": 8.8,
+  "biggerLines": 4,
+  "boldLines": 59,
+  "boldFontSeen": true,
+  "exBigger": [
+   "12.8: UNITED STATES SECURITIES AND EXCHANGE COMMISSION",
+   "16.2: FORM 10-K",
+   "11.5: x ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECUR",
+   "11.5: o TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE S"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "____________________________________________________________",
+   "____________________________________________________________",
+   "(Mark One)",
+   "For the fiscal year ended December 31, 2015",
+   "For the transition period from to"
+  ],
+  "ms": 142
+ },
+ {
+  "source": "financebench",
+  "doc": "JOHNSON_JOHNSON_2022_10K",
+  "inHeaderTest": false,
+  "pages": 151,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 572,
+  "body": 9,
+  "biggerLines": 5,
+  "boldLines": 49,
+  "boldFontSeen": true,
+  "exBigger": [
+   "10.8: UNITED STATES",
+   "10.8: SECURITIES AND EXCHANGE COMMISSION",
+   "10.8: Washington, D.C. 20549",
+   "10.8: FORM 10-K",
+   "16.2: JOHNSON & JOHNSON"
+  ],
+  "exBold": [
+   "☑ ANNUAL REPORT PURSUANT TO SECTION 13 OF THE SECURITIES EXC",
+   "For the fiscal year ended January 1, 2023",
+   "Transition Report Pursuant to Section 13 or 15(d) of the Sec",
+   "for the transition period from to",
+   "Commission file number 1-3215",
+   "New Jersey 22-1024240"
+  ],
+  "ms": 464
+ },
+ {
+  "source": "financebench",
+  "doc": "AMCOR_2023Q2_10Q",
+  "inHeaderTest": false,
+  "pages": 57,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 465,
+  "body": 10,
+  "biggerLines": 4,
+  "boldLines": 103,
+  "boldFontSeen": true,
+  "exBigger": [
+   "18: UNITED STATES",
+   "18: SECURITIES AND EXCHANGE COMMISSION",
+   "18: FORM 10-Q",
+   "20: AMCOR PLC"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SE",
+   "For the Quarterly Period Ended December 31, 2022",
+   "☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE S",
+   "For the transition period from __________ to __________",
+   "Commission File Number 001-38932"
+  ],
+  "ms": 535
+ },
+ {
+  "source": "financebench",
+  "doc": "WALMART_2018_10K",
+  "inHeaderTest": false,
+  "pages": 304,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 680,
+  "body": 8.8,
+  "biggerLines": 4,
+  "boldLines": 153,
+  "boldFontSeen": true,
+  "exBigger": [
+   "12.8: UNITED STATES",
+   "12.8: SECURITIES AND EXCHANGE COMMISSION",
+   "10.8: Washington, D.C. 20549",
+   "16.2: FORM 10-K"
+  ],
+  "exBold": [
+   "___________________________________________",
+   "___________________________________________",
+   "ý Annual report pursuant to section 13 or 15(d) of the Secur",
+   "¨ Transition report pursuant to section 13 or 15(d) of the S",
+   "___________________________________________",
+   "(Exact name of registrant as specified in its charter)"
+  ],
+  "ms": 238
+ },
+ {
+  "source": "financebench",
+  "doc": "WALMART_2019_10K",
+  "inHeaderTest": false,
+  "pages": 155,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 630,
+  "body": 7.1,
+  "biggerLines": 4,
+  "boldLines": 119,
+  "boldFontSeen": true,
+  "exBigger": [
+   "10.4: UNITED STATES",
+   "10.4: SECURITIES AND EXCHANGE COMMISSION",
+   "8.7: Washington, D.C. 20549",
+   "13.1: FORM 10-K"
+  ],
+  "exBold": [
+   "___________________________________________",
+   "___________________________________________",
+   "ý Annual report pursuant to section 13 or 15(d) of the Secur",
+   "¨ Transition report pursuant to section 13 or 15(d) of the S",
+   "___________________________________________",
+   "(Exact name of registrant as specified in its charter)"
+  ],
+  "ms": 246
+ },
+ {
+  "source": "financebench",
+  "doc": "WALMART_2020_10K",
+  "inHeaderTest": false,
+  "pages": 170,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 597,
+  "body": 8.8,
+  "biggerLines": 3,
+  "boldLines": 48,
+  "boldFontSeen": true,
+  "exBigger": [
+   "14.2: UNITED STATES",
+   "14.2: SECURITIES AND EXCHANGE COMMISSION",
+   "16.2: FORM 10-K"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "___________________________________________",
+   "___________________________________________",
+   "☒ Annual report pursuant to section 13 or 15(d) of the Secur",
+   "☐ Transition report pursuant to section 13 or 15(d) of the S",
+   "___________________________________________"
+  ],
+  "ms": 180
+ },
+ {
+  "source": "nq",
+  "doc": "Felix Leiter",
+  "inHeaderTest": true,
+  "pages": 9,
+  "outline": 0,
+  "headingTags": 20,
+  "lines": 375,
+  "body": 12,
+  "biggerLines": 12,
+  "boldLines": 25,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Felix Leiter",
+   "18: Novels",
+   "18: Television",
+   "14: Michael Pate: 1954",
+   "18: Films",
+   "14: Eon Productions films"
+  ],
+  "exBold": [
+   "Felix Leiter",
+   "First",
+   "appearance",
+   "In-universe information",
+   "This is an old revision of this page, as edited by 24.149.37",
+   "2017 (→ Comics). The present address (URL) is a permanent li"
+  ],
+  "ms": 157
+ },
+ {
+  "source": "nq",
+  "doc": "List of Governors of Florida",
+  "inHeaderTest": true,
+  "pages": 9,
+  "outline": 0,
+  "headingTags": 10,
+  "lines": 692,
+  "body": 8,
+  "biggerLines": 10,
+  "boldLines": 67,
+  "boldFontSeen": true,
+  "exBigger": [
+   "16.7: List of governors of Florida",
+   "12: Governors",
+   "9.3: Federal military commissioner",
+   "9.3: Governors of the Territory of Florida",
+   "9.3: Governors of the State of Florida",
+   "12: Living former governors of Florida"
+  ],
+  "exBold": [
+   "Governor of Florida",
+   "Incumbent",
+   "Rick Scott",
+   "Inaugural",
+   "holder",
+   "Commissioner Term in office Appointed by Notes"
+  ],
+  "ms": 216
+ },
+ {
+  "source": "nq",
+  "doc": "Seth Gilliam",
+  "inHeaderTest": true,
+  "pages": 4,
+  "outline": 0,
+  "headingTags": 8,
+  "lines": 130,
+  "body": 12,
+  "biggerLines": 8,
+  "boldLines": 9,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Seth Gilliam",
+   "18: Early life",
+   "18: Career",
+   "18: Filmography",
+   "14: Film",
+   "14: Television"
+  ],
+  "exBold": [
+   "Seth Gilliam",
+   "Occupation Actor",
+   "Known for The Wire",
+   "The Walking Dead",
+   "This is an old revision of this page, as edited by 190.177.1",
+   "(→ Television). The present address (URL) is a permanent lin"
+  ],
+  "ms": 92
+ },
+ {
+  "source": "nq",
+  "doc": "Stone (unit)",
+  "inHeaderTest": true,
+  "pages": 9,
+  "outline": 0,
+  "headingTags": 13,
+  "lines": 349,
+  "body": 12,
+  "biggerLines": 13,
+  "boldLines": 14,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Stone (unit)",
+   "18: Antiquity",
+   "18: Britain and Ireland",
+   "14: England",
+   "14: Scotland",
+   "14: Ireland"
+  ],
+  "exBold": [
+   "This is an old revision of this page, as edited by HiLo48 (t",
+   "2018 (Reverted unsourced changes). The present address (URL)",
+   "Commodity Number of Pounds",
+   "Pounds Unit Stone kg",
+   "City Modern",
+   "country Term used"
+  ],
+  "ms": 279
+ },
+ {
+  "source": "nq",
+  "doc": "Fiddler on the Roof (film)",
+  "inHeaderTest": false,
+  "pages": 9,
+  "outline": 0,
+  "headingTags": 17,
+  "lines": 340,
+  "body": 12,
+  "biggerLines": 17,
+  "boldLines": 11,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Fiddler on the Roof (film)",
+   "18: Plot",
+   "14: Act 1",
+   "14: Intermission",
+   "14: Act 2",
+   "18: Cast"
+  ],
+  "exBold": [
+   "Fiddler on the Roof",
+   "Screenplay by Joseph Stein",
+   "Starring Topol",
+   "Cinematography Oswald Morris",
+   "This is an old revision of this page, as edited by Darkrose2",
+   "2018. The present address (URL) is a permanent link to this "
+  ],
+  "ms": 123
+ },
+ {
+  "source": "nq",
+  "doc": "Michelle Rodriguez",
+  "inHeaderTest": false,
+  "pages": 12,
+  "outline": 0,
+  "headingTags": 18,
+  "lines": 474,
+  "body": 12,
+  "biggerLines": 18,
+  "boldLines": 11,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Michelle Rodriguez",
+   "18: Early life",
+   "18: Career",
+   "14: Film and television",
+   "14: Screenwriting",
+   "18: Personal life"
+  ],
+  "exBold": [
+   "Michelle Rodriguez",
+   "Occupation Actress",
+   "This is an old revision of this page, as edited by Geraldo P",
+   "October 2017 (Reverted 1 edit by 107.77.219.39 (talk): Rvv -",
+   "address (URL) is a permanent link to this revision, which ma",
+   "Year Title Role Notes"
+  ],
+  "ms": 201
+ },
+ {
+  "source": "nq",
+  "doc": "Melissa George",
+  "inHeaderTest": false,
+  "pages": 13,
+  "outline": 0,
+  "headingTags": 15,
+  "lines": 542,
+  "body": 12,
+  "biggerLines": 15,
+  "boldLines": 10,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Melissa George",
+   "18: Early life",
+   "18: Career",
+   "14: 1992–1998: Early work",
+   "14: 1999–2008: Film breakthrough",
+   "14: 2008–2018: Television and critical acclaim"
+  ],
+  "exBold": [
+   "Melissa George",
+   "Occupation Actress",
+   "Children 2",
+   "This is an old revision of this page, as edited by KolbertBo",
+   "2018 (Bot: HTTP→HTTPS (v485)). The present address (URL) is ",
+   "Year Title Role Notes"
+  ],
+  "ms": 211
+ },
+ {
+  "source": "nq",
+  "doc": "Kelly Bishop",
+  "inHeaderTest": false,
+  "pages": 5,
+  "outline": 0,
+  "headingTags": 10,
+  "lines": 173,
+  "body": 12,
+  "biggerLines": 10,
+  "boldLines": 8,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Kelly Bishop",
+   "18: Early life",
+   "18: Career",
+   "18: Personal life",
+   "18: Credits",
+   "14: Film"
+  ],
+  "exBold": [
+   "Kelly Bishop",
+   "This is an old revision of this page, as edited by E-Kartoff",
+   "2018. The present address (URL) is a permanent link to this ",
+   "Year Title Role Notes",
+   "Year Title Role Notes",
+   "Year Title Role Notes"
+  ],
+  "ms": 152
+ },
+ {
+  "source": "nq",
+  "doc": "Carly Chaikin",
+  "inHeaderTest": false,
+  "pages": 6,
+  "outline": 0,
+  "headingTags": 10,
+  "lines": 200,
+  "body": 12,
+  "biggerLines": 10,
+  "boldLines": 15,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Carly Chaikin",
+   "18: Early life",
+   "18: Career",
+   "18: Personal life",
+   "18: Filmography",
+   "14: Film"
+  ],
+  "exBold": [
+   "Carly Chaikin",
+   "Occupation Actress",
+   "This is an old revision of this page, as edited by DIYeditor",
+   "September 2017 (→ Personal life: tense). The present address",
+   "Year Title Role Notes",
+   "Year Title Role Notes"
+  ],
+  "ms": 102
+ },
+ {
+  "source": "nq",
+  "doc": "Total Drama All-Stars and Pahkitew Island",
+  "inHeaderTest": false,
+  "pages": 18,
+  "outline": 0,
+  "headingTags": 35,
+  "lines": 701,
+  "body": 10.9,
+  "biggerLines": 28,
+  "boldLines": 62,
+  "boldFontSeen": true,
+  "exBigger": [
+   "22.7: Total Drama All-Stars and Pahkitew Island",
+   "16.4: Synopsis",
+   "12.7: Part 1",
+   "12.7: Part 2",
+   "16.4: Plot",
+   "16.4: Episodes"
+  ],
+  "exBold": [
+   "Total Drama All-Stars",
+   "Total Drama: Pahkitew",
+   "Island",
+   "No. of episodes 26[1][2]",
+   "Release",
+   "Original network Teletoon"
+  ],
+  "ms": 225
+ },
+ {
+  "source": "nq",
+  "doc": "List of UFC champions",
+  "inHeaderTest": false,
+  "pages": 18,
+  "outline": 0,
+  "headingTags": 21,
+  "lines": 937,
+  "body": 7.1,
+  "biggerLines": 36,
+  "boldLines": 27,
+  "boldFontSeen": true,
+  "exBigger": [
+   "17.7: List of UFC champions",
+   "8.5: and began introducing weight-specific titles.[3]",
+   "8.5: 155 pounds (70 kg) and under.[4]",
+   "8.5: on FX 2.[9]",
+   "12.7: Current champions",
+   "8.5: 206 to 265 lb (93 to 120 kg)"
+  ],
+  "exBold": [
+   "Division Champion Since Defenses",
+   "Division Champion Since Defenses",
+   "No. Name Event Date Reign",
+   "(Total) Defenses",
+   "No. Name Event Date Reign",
+   "(Total) Defenses"
+  ],
+  "ms": 517
+ },
+ {
+  "source": "nq",
+  "doc": "Federer–Nadal rivalry",
+  "inHeaderTest": false,
+  "pages": 20,
+  "outline": 0,
+  "headingTags": 55,
+  "lines": 743,
+  "body": 8,
+  "biggerLines": 44,
+  "boldLines": 96,
+  "boldFontSeen": true,
+  "exBigger": [
+   "16.7: Federer–Nadal rivalry",
+   "12: History",
+   "9.3: 2004: Miami",
+   "9.3: 2005: Miami, French Open",
+   "9.3: 2006: Dubai, Monte Carlo, Rome, French Open, Wimbledon, Mast",
+   "9.3: 2007: Monte Carlo, Hamburg, French Open, Wimbledon, Masters "
+  ],
+  "exBold": [
+   "Tournament Federer Nadal",
+   "Australian Open 5 1",
+   "French Open 1 10",
+   "Wimbledon Championships 8 2",
+   "US Open 5 3",
+   "Total count 19 16"
+  ],
+  "ms": 409
+ },
+ {
+  "source": "nq",
+  "doc": "List of Sex and the City episodes",
+  "inHeaderTest": false,
+  "pages": 13,
+  "outline": 0,
+  "headingTags": 10,
+  "lines": 690,
+  "body": 12,
+  "biggerLines": 10,
+  "boldLines": 32,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: List of Sex and the City episodes",
+   "18: Series overview",
+   "18: Episodes",
+   "14: Season 1 (1998)",
+   "14: Season 2 (1999)",
+   "14: Season 3 (2000)"
+  ],
+  "exBold": [
+   "This is an old revision of this page, as edited by 203.63.10",
+   "(→ Series overview). The present address (URL) is a permanen",
+   "Season Episodes Originally aired",
+   "First aired Last aired",
+   "overall",
+   "No. in"
+  ],
+  "ms": 216
+ },
+ {
+  "source": "nq",
+  "doc": "Nina Dobrev",
+  "inHeaderTest": false,
+  "pages": 9,
+  "outline": 0,
+  "headingTags": 10,
+  "lines": 383,
+  "body": 12,
+  "biggerLines": 10,
+  "boldLines": 8,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Nina Dobrev",
+   "18: Early life",
+   "18: Career",
+   "18: Personal life",
+   "18: Filmography",
+   "14: Film"
+  ],
+  "exBold": [
+   "Nina Dobrev",
+   "Occupation Actress",
+   "Notable work The Vampire",
+   "This is an old revision of this page, as edited by 71.15.80.",
+   "(→ Personal life). The present address (URL) is a permanent ",
+   "Year Title Role Notes"
+  ],
+  "ms": 206
+ },
+ {
+  "source": "feta",
+  "doc": "Adam Pascal",
+  "inHeaderTest": true,
+  "pages": 9,
+  "outline": 0,
+  "headingTags": 14,
+  "lines": 330,
+  "body": 12,
+  "biggerLines": 14,
+  "boldLines": 7,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Adam Pascal",
+   "18: Early life",
+   "18: Career",
+   "14: Stage work",
+   "14: Music",
+   "14: Film work"
+  ],
+  "exBold": [
+   "Adam Pascal",
+   "Children 2",
+   "This is an old revision of this page, as edited by Nathaniel",
+   "March 2019. The present address (URL) is a permanent link to",
+   "Year(s) Production Role Location Category",
+   "Year Film/television Role Other notes"
+  ],
+  "ms": 140
+ },
+ {
+  "source": "feta",
+  "doc": "Ben Platt (actor)",
+  "inHeaderTest": true,
+  "pages": 11,
+  "outline": 0,
+  "headingTags": 20,
+  "lines": 414,
+  "body": 12,
+  "biggerLines": 20,
+  "boldLines": 22,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Ben Platt",
+   "18: Early life and education",
+   "18: Career",
+   "14: 2002–2014: Early stage work and The Book of Mormon",
+   "14: 2015–2017: Film career and Dear Evan Hansen",
+   "14: 2017–present: Music and Sing to Me Instead"
+  ],
+  "exBold": [
+   "Ben Platt",
+   "Occupations Actor · singer",
+   "Musical career",
+   "This is an old revision of this page, as edited by Cinemacri",
+   "April 2019 (→Film). The present address (URL) is a permanent",
+   "Year Production Role Venue Notes"
+  ],
+  "ms": 199
+ },
+ {
+  "source": "feta",
+  "doc": "Felix Leiter",
+  "inHeaderTest": true,
+  "pages": 10,
+  "outline": 0,
+  "headingTags": 20,
+  "lines": 395,
+  "body": 12,
+  "biggerLines": 12,
+  "boldLines": 27,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Felix Leiter",
+   "18: Novels",
+   "18: Television",
+   "14: Michael Pate: 1954",
+   "18: Films",
+   "14: Eon Productions films"
+  ],
+  "exBold": [
+   "Felix Leiter",
+   "First",
+   "appearance",
+   "In-universe information",
+   "This is an old revision of this page, as edited by Rodw (tal",
+   "(Disambiguating links to Spectre (link changed to Spectre (2"
+  ],
+  "ms": 167
+ },
+ {
+  "source": "feta",
+  "doc": "Jake T. Austin",
+  "inHeaderTest": true,
+  "pages": 8,
+  "outline": 0,
+  "headingTags": 14,
+  "lines": 332,
+  "body": 12,
+  "biggerLines": 14,
+  "boldLines": 6,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Jake T. Austin",
+   "18: Early life",
+   "18: Career",
+   "14: 2002–06: Beginnings",
+   "14: 2007–11: Wizards of Waverly Place",
+   "14: 2011–2015: The Fosters"
+  ],
+  "exBold": [
+   "Jake T. Austin",
+   "Occupation Actor",
+   "24 April 2019 (→Film). The present address (URL) is a perman",
+   "Year Title Role Notes",
+   "Year Title Role Notes",
+   "Year Title Role Notes"
+  ],
+  "ms": 199
+ },
+ {
+  "source": "feta",
+  "doc": "Laura Bell Bundy",
+  "inHeaderTest": true,
+  "pages": 10,
+  "outline": 0,
+  "headingTags": 17,
+  "lines": 410,
+  "body": 12,
+  "biggerLines": 17,
+  "boldLines": 20,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Laura Bell Bundy",
+   "18: Early life",
+   "18: Career",
+   "14: Stage",
+   "14: Film and television",
+   "14: Country music"
+  ],
+  "exBold": [
+   "Laura Bell Bundy",
+   "This is an old revision of this page, as edited by ZackHoltz",
+   "April 2019. The present address (URL) is a permanent link to",
+   "Title Album details",
+   "Peak chart positions",
+   "Country"
+  ],
+  "ms": 177
+ },
+ {
+  "source": "feta",
+  "doc": "Density of air",
+  "inHeaderTest": false,
+  "pages": 5,
+  "outline": 0,
+  "headingTags": 9,
+  "lines": 245,
+  "body": 8,
+  "biggerLines": 9,
+  "boldLines": 15,
+  "boldFontSeen": true,
+  "exBigger": [
+   "16.7: Density of air",
+   "12: Dry air",
+   "12: Humid air",
+   "12: Variation with altitude",
+   "12: Composition",
+   "12: See also"
+  ],
+  "exBold": [
+   "Celsius",
+   "temperature",
+   "θ [°C]",
+   "Speed of",
+   "sound",
+   "c [m/s]"
+  ],
+  "ms": 149
+ },
+ {
+  "source": "feta",
+  "doc": "Matt Cassel",
+  "inHeaderTest": false,
+  "pages": 19,
+  "outline": 0,
+  "headingTags": 29,
+  "lines": 613,
+  "body": 12,
+  "biggerLines": 17,
+  "boldLines": 42,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Matt Cassel",
+   "18: Early years",
+   "18: College career",
+   "14: Statistics",
+   "18: Professional career",
+   "14: New England Patriots"
+  ],
+  "exBold": [
+   "Matt Cassel",
+   "No. 16, 7, 8",
+   "Personal information",
+   "Career information",
+   "College: USC",
+   "This is an old revision of this page, as edited by 128.12.61"
+  ],
+  "ms": 361
+ },
+ {
+  "source": "feta",
+  "doc": "Scott Clifton",
+  "inHeaderTest": false,
+  "pages": 8,
+  "outline": 0,
+  "headingTags": 21,
+  "lines": 311,
+  "body": 12,
+  "biggerLines": 21,
+  "boldLines": 12,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Scott Clifton",
+   "18: Early life and family",
+   "18: Acting career",
+   "14: Early roles and success",
+   "14: Daytime Emmy nominations and wins",
+   "18: Musical career"
+  ],
+  "exBold": [
+   "Scott Clifton",
+   "Nationality American",
+   "This is an old revision of this page, as edited by 2601:197:",
+   "02:10, 1 March 2019. The present address (URL) is a permanen",
+   "Children 1",
+   "Title Year Role Notes"
+  ],
+  "ms": 131
+ },
+ {
+  "source": "feta",
+  "doc": "Chicago",
+  "inHeaderTest": false,
+  "pages": 51,
+  "outline": 0,
+  "headingTags": 18,
+  "lines": 1371,
+  "body": 10.8,
+  "biggerLines": 15,
+  "boldLines": 111,
+  "boldFontSeen": true,
+  "exBigger": [
+   "22.5: Chicago",
+   "16.2: Etymology and nicknames",
+   "16.2: History",
+   "12.6: Beginnings",
+   "12.6: 19th century",
+   "12.6: 20th and 21st centuries"
+  ],
+  "exBold": [
+   "Chicago, Illinois",
+   "City",
+   "Incorporated (town) August 12, 1833",
+   "Incorporated (city) March 4, 1837",
+   "Government",
+   "Area[3]"
+  ],
+  "ms": 431
+ },
+ {
+  "source": "feta",
+  "doc": "New Kids on the Block",
+  "inHeaderTest": false,
+  "pages": 12,
+  "outline": 0,
+  "headingTags": 19,
+  "lines": 472,
+  "body": 12,
+  "biggerLines": 19,
+  "boldLines": 11,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: New Kids on the Block",
+   "18: History",
+   "14: 1984–1985: Early career",
+   "14: 1986: New Kids on the Block (debut album)",
+   "14: 1988–1989: Hangin' Tough",
+   "14: 1990–1993: Step by Step and lip syncing allegations"
+  ],
+  "exBold": [
+   "This is an old revision of this page, as edited by Liberator",
+   "2019 (Reverted 1 edit by David extar Rosado (talk) to last r",
+   "present address (URL) is a permanent link to this revision, ",
+   "New Kids on the Block",
+   "Background information",
+   "Also known as NKOTB"
+  ],
+  "ms": 181
+ },
+ {
+  "source": "feta",
+  "doc": "Mad Men",
+  "inHeaderTest": false,
+  "pages": 35,
+  "outline": 0,
+  "headingTags": 19,
+  "lines": 704,
+  "body": 12,
+  "biggerLines": 19,
+  "boldLines": 17,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Mad Men",
+   "18: Production",
+   "14: Conception",
+   "14: Influences",
+   "14: Pre-production",
+   "14: Filming and production design"
+  ],
+  "exBold": [
+   "Mad Men",
+   "This is an old revision of this page, as edited by IceBrothe",
+   "April 2019. The present address (URL) is a permanent link to",
+   "Country of origin United States",
+   "Original language English",
+   "No. of seasons 7"
+  ],
+  "ms": 213
+ },
+ {
+  "source": "feta",
+  "doc": "List of UFC champions",
+  "inHeaderTest": false,
+  "pages": 25,
+  "outline": 0,
+  "headingTags": 16,
+  "lines": 989,
+  "body": 7.9,
+  "biggerLines": 39,
+  "boldLines": 20,
+  "boldFontSeen": true,
+  "exBigger": [
+   "19.8: List of UFC champions",
+   "9.5: introduction of the flyweight division to their ranks, begin",
+   "14.3: Current champions",
+   "9.5: 206 to 265 lb (93 to 120 kg)",
+   "9.5: Champion on February 7, 1997, when Mark Coleman defeated Dan",
+   "14.3: Men's championship history"
+  ],
+  "exBold": [
+   "Division Champion Since Defenses",
+   "Division Champion Since Defenses",
+   "No. Name Event Date Reign",
+   "(total) Defenses",
+   "No. Name Event Date Reign",
+   "(Total) Defenses"
+  ],
+  "ms": 285
+ },
+ {
+  "source": "feta",
+  "doc": "List of Sex and the City episodes",
+  "inHeaderTest": false,
+  "pages": 13,
+  "outline": 0,
+  "headingTags": 10,
+  "lines": 690,
+  "body": 12,
+  "biggerLines": 10,
+  "boldLines": 32,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: List of Sex and the City episodes",
+   "18: Series overview",
+   "18: Episodes",
+   "14: Season 1 (1998)",
+   "14: Season 2 (1999)",
+   "14: Season 3 (2000)"
+  ],
+  "exBold": [
+   "This is an old revision of this page, as edited by Grapesoda",
+   "2018 (→Series overview). The present address (URL) is a perm",
+   "Season Episodes Originally aired",
+   "First aired Last aired",
+   "overall",
+   "No. in"
+  ],
+  "ms": 217
+ },
+ {
+  "source": "feta",
+  "doc": "Mercury Falling",
+  "inHeaderTest": false,
+  "pages": 7,
+  "outline": 0,
+  "headingTags": 13,
+  "lines": 301,
+  "body": 12,
+  "biggerLines": 12,
+  "boldLines": 22,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: Mercury Falling",
+   "18: Songs",
+   "18: Track listing",
+   "14: B-sides",
+   "18: Personnel",
+   "18: Accolades"
+  ],
+  "exBold": [
+   "Mercury Falling",
+   "Studio album by Sting",
+   "Recorded 1995",
+   "Length 48:08",
+   "Label A&M",
+   "Sting chronology"
+  ],
+  "ms": 138
+ },
+ {
+  "source": "feta",
+  "doc": "List of largest employers",
+  "inHeaderTest": false,
+  "pages": 3,
+  "outline": 0,
+  "headingTags": 7,
+  "lines": 80,
+  "body": 12,
+  "biggerLines": 7,
+  "boldLines": 6,
+  "boldFontSeen": true,
+  "exBigger": [
+   "25: List of largest employers",
+   "18: Largest employers",
+   "18: Largest private and semiprivate employers",
+   "18: Notes",
+   "18: See also",
+   "18: References"
+  ],
+  "exBold": [
+   "Employees",
+   "Employer 2015[1] 2010[2][3] Headquarters",
+   "This is an old revision of this page, as edited by 51.7.3.7 ",
+   "private and semiprivate employers). The present address (URL",
+   "Private and semipublic companies with the most employees in ",
+   "Rank Employer Country Employees"
+  ],
+  "ms": 67
+ },
+ {
+  "source": "tat",
+  "doc": "agilysys-inc_2019",
+  "inHeaderTest": true,
+  "pages": 71,
+  "outline": 61,
+  "headingTags": 0,
+  "lines": 578,
+  "body": 10,
+  "biggerLines": 5,
+  "boldLines": 41,
+  "boldFontSeen": true,
+  "exBigger": [
+   "12: UNITED STATES",
+   "12: SECURITIES AND EXCHANGE COMMISSION",
+   "12: Washington, D.C. 20549",
+   "14: FORM 10-K",
+   "12: Part I"
+  ],
+  "exBold": [
+   "Table of Contents",
+   "ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURIT",
+   "ACT OF 1934",
+   "For the fiscal year ended March 31, 2019",
+   "TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SEC",
+   "EXCHANGE ACT OF 1934"
+  ],
+  "ms": 145
+ },
+ {
+  "source": "tat",
+  "doc": "altium-limited_2019",
+  "inHeaderTest": true,
+  "pages": 86,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 694,
+  "body": 8,
+  "biggerLines": 53,
+  "boldLines": 36,
+  "boldFontSeen": true,
+  "exBigger": [
+   "12: Contents",
+   "16: Altium Limited",
+   "12: Directors",
+   "12: Company secretaries",
+   "12: Notice of annual general meeting",
+   "12: Registered office"
+  ],
+  "exBold": [
+   "Consolidated",
+   "2019",
+   "US$’000",
+   "2018",
+   "US$’000",
+   "28,128 25,633"
+  ],
+  "ms": 1894
+ },
+ {
+  "source": "tat",
+  "doc": "clearfield-inc_2019",
+  "inHeaderTest": true,
+  "pages": 62,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 440,
+  "body": 7.8,
+  "biggerLines": 3,
+  "boldLines": 58,
+  "boldFontSeen": true,
+  "exBigger": [
+   "9.6: UNITED STATES",
+   "9.6: SECURITIES AND EXCHANGE COMMISSION",
+   "9.6: FORM 10-K"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "Commission File Number 0-16106",
+   "Minnesota 41-1347235",
+   "7050 Winnetka Avenue North",
+   "Suite 100",
+   "Brooklyn Park, Minnesota 55428 (763) 476-6866"
+  ],
+  "ms": 282
+ },
+ {
+  "source": "tat",
+  "doc": "ichor-holdings-ltd_2019",
+  "inHeaderTest": false,
+  "pages": 90,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 513,
+  "body": 8.8,
+  "biggerLines": 14,
+  "boldLines": 46,
+  "boldFontSeen": true,
+  "exBigger": [
+   "24: FORM 10-K(Annual Report)",
+   "20: Filed 03/06/20 for the Period Ending 12/27/19",
+   "14: FREMONT, CA, 94538",
+   "14: Telephone 510-897-5200",
+   "14: CIK 0001652535",
+   "14: Symbol ICHR"
+  ],
+  "exBold": [
+   "(Mark One)",
+   "☒☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECU",
+   "For the fiscal year ended December 27, 2019",
+   "☐☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE ",
+   "For the transition period from to",
+   "Commission File Number 001‑‑37961"
+  ],
+  "ms": 173
+ },
+ {
+  "source": "tat",
+  "doc": "plexus-corp_2019",
+  "inHeaderTest": false,
+  "pages": 91,
+  "outline": 35,
+  "headingTags": 0,
+  "lines": 608,
+  "body": 8.2,
+  "biggerLines": 20,
+  "boldLines": 26,
+  "boldFontSeen": true,
+  "exBigger": [
+   "10.1: UNITED STATES",
+   "10.1: SECURITIES AND EXCHANGE COMMISSION",
+   "10.1: Washington, D.C. 20549",
+   "10.1: FORM 10-K",
+   "9.5: Medical Standard ISO 13485:2016 X X X",
+   "9.5: 21 CFR Part 820 (FDA) (Finished Medical) X X X"
+  ],
+  "exBold": [
+   "ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURIT",
+   "For the fiscal year ended September 28, 2019",
+   "☐ TRANSITION REPORT PURSUANT TO SECTION 13 or 15(d) OF THE S",
+   "For the transition period from ______ to ______",
+   "Commission File Number 001-14423",
+   "Wisconsin 39-1344447"
+  ],
+  "ms": 444
+ },
+ {
+  "source": "tat",
+  "doc": "nielsen-nv_2019",
+  "inHeaderTest": false,
+  "pages": 220,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 592,
+  "body": 8.8,
+  "biggerLines": 4,
+  "boldLines": 41,
+  "boldFontSeen": true,
+  "exBigger": [
+   "13.5: UNITED STATES",
+   "13.5: SECURITIES AND EXCHANGE COMMISSION",
+   "13.5: Form 10-K",
+   "16.2: Nielsen Holdings plc"
+  ],
+  "exBold": [
+   "Washington, D.C. 20549",
+   "(Mark One)",
+   "☑ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECUR",
+   "For the fiscal year ended December 31, 2019",
+   "☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE S",
+   "For the transition period from to"
+  ],
+  "ms": 167
+ },
+ {
+  "source": "tat",
+  "doc": "teekay-corporation_2019",
+  "inHeaderTest": false,
+  "pages": 152,
+  "outline": 119,
+  "headingTags": 0,
+  "lines": 671,
+  "body": 8.5,
+  "biggerLines": 8,
+  "boldLines": 37,
+  "boldFontSeen": true,
+  "exBigger": [
+   "12: ¨ REGISTRATION STATEMENT PURSUANT TO SECTION 12(b) or (g) OF",
+   "12: EXCHANGE ACT OF 1934",
+   "12: ý ANNUAL REPORT PURSUANT TO SECTION 13 or 15(d) OF THE SECUR",
+   "12: EXCHANGE ACT OF 1934",
+   "12: ¨ TRANSITION REPORT PURSUANT TO SECTION 13 or 15(d) OF THE S",
+   "12: EXCHANGE ACT OF 1934"
+  ],
+  "exBold": [
+   "UNITED STATES",
+   "SECURITIES AND EXCHANGE COMMISSION",
+   "WASHINGTON, D.C. 20549",
+   "FORM 20-F",
+   "(Mark One)",
+   "For the fiscal year ended December 31, 2019"
+  ],
+  "ms": 146
+ },
+ {
+  "source": "tat",
+  "doc": "sykes-enterprises-incorporated_2019",
+  "inHeaderTest": false,
+  "pages": 116,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 713,
+  "body": 10,
+  "biggerLines": 9,
+  "boldLines": 82,
+  "boldFontSeen": true,
+  "exBigger": [
+   "40.7: ANNUAL",
+   "40.7: REPORT",
+   "30: 2019",
+   "12: Executive VP and CFOSYKES ANNUAL REPORT 2019 | 3BOARD OF DIR",
+   "12: CORPORATE HEADQUARTERS",
+   "12: INDEPENDENT AUDITORS"
+  ],
+  "exBold": [
+   "SYKES ENTERPRISES, INCORPORATED (“SYKES” or “the Company”) i",
+   "multi-channel demand generation and global customer engageme",
+   "provides differentiated full lifecycle customer engagement s",
+   "communications, technology, transportation & leisure and hea",
+   "differentiated full lifecycle management services platform e",
+   "customer service, technical support and retention, many of w"
+  ],
+  "ms": 387
+ },
+ {
+  "source": "tat",
+  "doc": "tencent_2019",
+  "inHeaderTest": false,
+  "pages": 274,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 446,
+  "body": 9,
+  "biggerLines": 61,
+  "boldLines": 34,
+  "boldFontSeen": true,
+  "exBigger": [
+   "42: 2019",
+   "20: Annual Report",
+   "18: CONTENTS",
+   "11.5: 2 CORPORATE INFORMATION",
+   "11.5: 3 FINANCIAL SUMMARY",
+   "11.5: 4 CHAIRMAN’S STATEMENT"
+  ],
+  "exBold": [
+   "Executive Directors",
+   "Non-Executive Directors",
+   "Independent Non-Executive Directors",
+   "Year ended 31 December",
+   "Profit before income tax 36,216 51,640 88,215 94,466 109,400",
+   "Profit for the year 29,108 41,447 72,471 79,984 95,888"
+  ],
+  "ms": 939
+ },
+ {
+  "source": "tat",
+  "doc": "overseas-shipholding-group-inc_2019",
+  "inHeaderTest": false,
+  "pages": 112,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 569,
+  "body": 10,
+  "biggerLines": 4,
+  "boldLines": 31,
+  "boldFontSeen": true,
+  "exBigger": [
+   "18: UNITED STATES",
+   "18: SECURITIES AND EXCHANGE COMMISSION",
+   "12: Washington, D.C. 20549",
+   "18: FORM 10-K"
+  ],
+  "exBold": [
+   "DOCUMENTS INCORPORATED BY REFERENCE",
+   "TABLE OF CONTENTS",
+   "PART I",
+   "PART II",
+   "PART III",
+   "PART IV"
+  ],
+  "ms": 384
+ },
+ {
+  "source": "tat",
+  "doc": "cal-maine-foods-inc_2019",
+  "inHeaderTest": false,
+  "pages": 88,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 658,
+  "body": 11,
+  "biggerLines": 2,
+  "boldLines": 34,
+  "boldFontSeen": true,
+  "exBigger": [
+   "31: 2 0 1 9 A N N U A L R E P O R T",
+   "14: CAL-MAINE FOODS LOCATIONS"
+  ],
+  "exBold": [
+   "Alabama",
+   "Arkansas",
+   "Florida",
+   "Georgia",
+   "Kansas",
+   "Kentucky"
+  ],
+  "ms": 691
+ },
+ {
+  "source": "tat",
+  "doc": "hc2-holdings-inc_2019",
+  "inHeaderTest": false,
+  "pages": 428,
+  "outline": 0,
+  "headingTags": 0,
+  "lines": 623,
+  "body": 8.1,
+  "biggerLines": 6,
+  "boldLines": 29,
+  "boldFontSeen": true,
+  "exBigger": [
+   "14.4: UNITED STATES",
+   "14.4: SECURITIES AND EXCHANGE COMMISSION",
+   "14.4: FORM 10-K",
+   "9.9: Large accelerated filer ☐ Accelerated filer ☒",
+   "9.9: Non-accelerated filer ☐ Smaller reporting company ☒",
+   "9.9: Emerging growth company ☐"
+  ],
+  "exBold": [
+   "WASHINGTON, D.C. 20549",
+   "For the fiscal year ended December 31, 2019",
+   "Commission File No. 001-35210",
+   "(Exact name of registrant as specified in its charter)",
+   "Delaware 54-1708481",
+   "(State or other jurisdiction of"
+  ],
+  "ms": 203
+ },
+ {
+  "source": "tat",
+  "doc": "george-weston-limited_2019",
+  "inHeaderTest": false,
+  "pages": 178,
+  "outline": 385,
+  "headingTags": 75,
+  "lines": 826,
+  "body": 8,
+  "biggerLines": 69,
+  "boldLines": 117,
+  "boldFontSeen": true,
+  "exBigger": [
+   "52: 2019",
+   "52: Annual Report",
+   "24: Report to Shareholders",
+   "10: delivering operational stability, and supporting each of its",
+   "10: in making steady progress against their strategic frameworks",
+   "10: we marked an important milestone in our transformation towar"
+  ],
+  "exBold": [
+   "[signed]",
+   "Galen G. Weston",
+   "[signed]",
+   "Richard Dufresne",
+   "88 Additional Information3 GEORGE WESTON LIMITED 2019 ANNUAL",
+   "NET EARNINGS AVAILABLE"
+  ],
+  "ms": 493
+ }
+]

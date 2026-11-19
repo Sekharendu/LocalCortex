@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-05T12:14:02.746Z",
+  "passed": true,
+  "cases": 57,
+  "matchedActualStage2ContextReplays": 57,
+  "newQueries": 4,
+  "searchRequests": 8,
+  "successfulEmbeddings": 4,
+  "generationCalls": 0,
+  "allProtectedFilesUnchanged": true,
+  "allFourLiveQueriesDevFilteredAndPayloadMatched": true,
+  "manualSourceAnchorsValidated": true,
+  "noHeldOutPayloadReads": true,
+  "notes": "Manual semantic targets and ambiguity flags remain reviewable judgments; assertions verify provenance, exposure and accounting, not independent human certification."
+}

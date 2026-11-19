@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-04T12:42:24.837Z",
+  "inputs": [
+    {
+      "file": "eval/dev-retrieval-20261103/pdf.results.jsonl",
+      "sha256": "e89536ec7b75bc2ea2bda81dbe0bce6935ebe8ef8b6fbb69334a0dd535ae377c"
+    },
+    {
+      "file": "eval/dev-retrieval-20261103/docx.results.jsonl",
+      "sha256": "b32299d7af906de24d583a4213ba366513668d3fd909413f2a5b304f3ba2eb2c"
+    },
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/reviewed-cases.jsonl",
+      "sha256": "43dde6060afd558186d1cb49bafd98cdd88b80ec835d7091c75be697663ecf1c"
+    },
+    {
+      "file": "eval/depth-and-answer-quality-20261104/coverage-cases.jsonl",
+      "sha256": "56ac5fad808a8b2659138704da52b047dc1faf9552372ceecd0026d5fe541712"
+    }
+  ],
+  "retrievalCalls": 0,
+  "inferenceCalls": 0,
+  "testPaperContentRead": false
+}

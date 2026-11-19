@@ -1,0 +1,49 @@
+
+All (139 answerable questions)
+mode   k  | nomic         | qwen          | margin
+dense  5  |  85 ( 61.2%) |  79 ( 56.8%) | -6 (-4.3%)
+dense  10 | 104 ( 74.8%) |  99 ( 71.2%) | -5 (-3.6%)
+dense  15 | 115 ( 82.7%) | 115 ( 82.7%) | +0 (+0.0%)
+dense  20 | 121 ( 87.1%) | 124 ( 89.2%) | +3 (+2.2%)
+dense  50 | 136 ( 97.8%) | 136 ( 97.8%) | +0 (+0.0%)
+dense  MRR@5 nomic 0.395 qwen 0.352
+hybrid 5  |  88 ( 63.3%) |  80 ( 57.6%) | -8 (-5.8%)
+hybrid 10 | 102 ( 73.4%) | 106 ( 76.3%) | +4 (+2.9%)
+hybrid 15 | 113 ( 81.3%) | 115 ( 82.7%) | +2 (+1.4%)
+hybrid 20 | 119 ( 85.6%) | 120 ( 86.3%) | +1 (+0.7%)
+hybrid 50 | 137 ( 98.6%) | 137 ( 98.6%) | +0 (+0.0%)
+hybrid MRR@5 nomic 0.407 qwen 0.370
+
+DOCX (104 answerable questions)
+mode   k  | nomic         | qwen          | margin
+dense  5  |  62 ( 59.6%) |  57 ( 54.8%) | -5 (-4.8%)
+dense  10 |  75 ( 72.1%) |  72 ( 69.2%) | -3 (-2.9%)
+dense  15 |  82 ( 78.8%) |  85 ( 81.7%) | +3 (+2.9%)
+dense  20 |  87 ( 83.7%) |  91 ( 87.5%) | +4 (+3.8%)
+dense  50 | 101 ( 97.1%) | 101 ( 97.1%) | +0 (+0.0%)
+dense  MRR@5 nomic 0.382 qwen 0.345
+hybrid 5  |  63 ( 60.6%) |  56 ( 53.8%) | -7 (-6.7%)
+hybrid 10 |  75 ( 72.1%) |  77 ( 74.0%) | +2 (+1.9%)
+hybrid 15 |  82 ( 78.8%) |  83 ( 79.8%) | +1 (+1.0%)
+hybrid 20 |  85 ( 81.7%) |  88 ( 84.6%) | +3 (+2.9%)
+hybrid 50 | 102 ( 98.1%) | 102 ( 98.1%) | +0 (+0.0%)
+hybrid MRR@5 nomic 0.393 qwen 0.347
+
+PDF (35 answerable questions)
+mode   k  | nomic         | qwen          | margin
+dense  5  |  23 ( 65.7%) |  22 ( 62.9%) | -1 (-2.9%)
+dense  10 |  29 ( 82.9%) |  27 ( 77.1%) | -2 (-5.7%)
+dense  15 |  33 ( 94.3%) |  30 ( 85.7%) | -3 (-8.6%)
+dense  20 |  34 ( 97.1%) |  33 ( 94.3%) | -1 (-2.9%)
+dense  50 |  35 (100.0%) |  35 (100.0%) | +0 (+0.0%)
+dense  MRR@5 nomic 0.434 qwen 0.374
+hybrid 5  |  25 ( 71.4%) |  24 ( 68.6%) | -1 (-2.9%)
+hybrid 10 |  27 ( 77.1%) |  29 ( 82.9%) | +2 (+5.7%)
+hybrid 15 |  31 ( 88.6%) |  32 ( 91.4%) | +1 (+2.9%)
+hybrid 20 |  34 ( 97.1%) |  32 ( 91.4%) | -2 (-5.7%)
+hybrid 50 |  35 (100.0%) |  35 (100.0%) | +0 (+0.0%)
+hybrid MRR@5 nomic 0.447 qwen 0.438
+
+dense top-5: qwen finds 9 that nomic misses; nomic finds 15 that qwen misses
+
+hybrid top-5: qwen finds 6 that nomic misses; nomic finds 14 that qwen misses

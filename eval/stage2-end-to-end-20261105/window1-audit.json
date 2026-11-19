@@ -1,0 +1,17 @@
+{
+  "atWindowPause": true,
+  "successfulCalls": 270,
+  "plannedCalls": 558,
+  "remainingCalls": 288,
+  "successfulPairs": 135,
+  "failedAttempts": 4,
+  "reportedNeurons": 3210.576611995697,
+  "unknownUsageFailureReserve": 200,
+  "selectedDocumentFiltersVerified": true,
+  "sourceHashesUnchanged": true,
+  "freshEmbeddingRequests": 274,
+  "gateRejectedSuccessfulCalls": 32,
+  "nearBudgetSuccessfulCalls": 0,
+  "heldOutPaperPayloadReads": 0,
+  "generationAndGradingComplete": false
+}

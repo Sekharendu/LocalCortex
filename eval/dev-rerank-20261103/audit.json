@@ -1,0 +1,17 @@
+{
+  "attempts": 444,
+  "completed": 435,
+  "failed": 9,
+  "emptyPools": 24,
+  "totalModeCases": 468,
+  "consecutiveLedgerNumbers": true,
+  "noRetries": true,
+  "serialRequests": true,
+  "exactRequestHashesChecked": 444,
+  "fullCandidatePermutationsChecked": 435,
+  "unchangedInputAndPriorSnapshotHashes": true,
+  "everyDevCaseAccountedFor": true,
+  "timeoutCount": 6,
+  "otherFailures": 3,
+  "reportedRunNeurons": 1092.7056924546291
+}

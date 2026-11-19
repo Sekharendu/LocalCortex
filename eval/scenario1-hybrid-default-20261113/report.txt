@@ -1,0 +1,8 @@
+default|answer-missing-from-file n=3  gate-rejected=1  answer-in-context=0 (0.0%)  median 169 ms
+default|answerable       n=570  gate-rejected=67  answer-in-context=455 (79.8%)  median 246 ms
+default|no-answer-passage n=9  gate-rejected=1  answer-in-context=0 (0.0%)  median 240 ms
+default|unanswerable     n=28  gate-rejected=5  answer-in-context=0 (0.0%)  median 238 ms
+dense|answer-missing-from-file n=3  gate-rejected=1  answer-in-context=0 (0.0%)  median 147 ms
+dense|answerable         n=570  gate-rejected=67  answer-in-context=447 (78.4%)  median 189 ms
+dense|no-answer-passage  n=9  gate-rejected=1  answer-in-context=0 (0.0%)  median 200 ms
+dense|unanswerable       n=28  gate-rejected=5  answer-in-context=0 (0.0%)  median 182 ms

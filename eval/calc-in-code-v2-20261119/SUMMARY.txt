@@ -1,0 +1,86 @@
+Calc-in-code VERSION 2 (eval/calc-in-code-v2-20261119) -- dev only, rules frozen in frozen.json before any call
+====================================================================================================
+OVERALL: FAIL
+  PASS  targets: C: v2 18/30 vs current 13/30 (needs >= 18)   [rule: v2 C >= current C + 5]
+  PASS  targets: wrong-or-invented: v2 4/30 vs current 6/30   [rule: v2 <= current]
+  FAIL  targets: refusals: v2 6/30 vs current 2/30   [rule: v2 R <= current R]
+  PASS  guards: 1/20 worse ['feta-0402']   [rule: v2 worse on <= 2/20]
+  PASS  A3: 10/10   [rule: 10/10 refused]
+  PASS  A4: leaks 0/16, wrongly refused 0/16   [rule: 0 leaks and 0 wrongly refused]
+  PASS  A5: 10/10, invented 0   [rule: >= 8/10 refused or naming the missing input, 0 invented]
+
+targets (30) C/P/W/R:
+  current  C 13  P  3  W 12  R  2   wrong-or-invented 6   narrow invented 3
+  v2       C 18  P  1  W  5  R  6   wrong-or-invented 4   narrow invented 0
+  fixed (W/R -> C/P) ['tat-0707', 'tat-0662', 'tat-0625', 'tat-0721', 'financebench-0084']
+  broke (C/P -> W/R) ['tat-0723', 'tat-0751']
+  newly C ['tat-0707', 'tat-0662', 'tat-0625', 'tat-0712', 'tat-0721', 'financebench-0084']; lost C ['tat-0751']
+guards (20) C/P/W/R:
+  current  C 15  P  2  W  1  R  2
+  v2       C 16  P  2  W  2  R  0
+  fixed (W/R -> C/P) ['financebench-0015']
+  broke (C/P -> W/R) []
+  newly C ['financebench-0015', 'feta-0478']; lost C ['feta-0402']
+  wrong-or-invented ids: current ['financebench-0084', 'tat-0619', 'tat-0622', 'tat-0662', 'tat-0721', 'tat-0752']; v2 ['tat-0619', 'tat-0622', 'tat-0626', 'tat-0752']
+  failure causes: {"v2Refused": {"fallbackProseNumberNoCalc": ["tat-0723", "tat-0751"], "fallbackGrammarNoPower": ["financebench-0102"], "modelSaidInputMissing": ["tat-0706", "tat-0689"], "bothRefused": ["tat-0749"]}, "v2Wrong": {"wrongInputsOrRow": ["tat-0622", "tat-0619"], "wrongBase": ["tat-0752"], "sumNotAverage": ["tat-0626"], "ambiguousReference": ["tat-0684"]}, "note": "no fallback came from the CALC line limit or a percent/ratio mix-up this time; the max CALC lines used was 4"}
+A3: v2 refused 10/10 (Test A stored current 10/10)
+A4: v2 leaks 0/16, wrongly refused 0/16 (Test A stored current: 1 wrongly refused); same context as Test A {'same': 24, 'of': 26, 'differ': ['fu-2-t2', 'fu-3-t2']}
+A5: v2 refused or named missing input 10/10, invented 0 (Test A stored current 10/10 R)
+
+CALC stats (v2):
+  targets: n 30, CALC produced 19, all parsed 18, provenance ok 19, prose ok 28, computed 18, status {'no-calc': 9, 'computed': 18, 'fallback': 3}
+      fallback tat-0723: prose number not in context: 36,014,000,32,543,000
+      fallback tat-0751: prose number not in context: 1,747
+      fallback financebench-0102: CALC parse/eval error: growth_factor: unexpected character "^"; cagr: unknown name growth_factor
+  guards: n 20, CALC produced 0, all parsed 0, provenance ok 0, prose ok 20, computed 0, status {'no-calc': 20}
+  A3: n 10, CALC produced 0, all parsed 0, provenance ok 0, prose ok 10, computed 0, status {'no-calc': 10}
+  A4: n 16, CALC produced 0, all parsed 0, provenance ok 0, prose ok 16, computed 0, status {'no-calc': 16}
+  A5: n 10, CALC produced 0, all parsed 0, provenance ok 0, prose ok 10, computed 0, status {'no-calc': 10}
+
+Neurons (this run's results.jsonl): 2298.4 of cap 4000
+  A3 v2 answer: 50.4
+  A4 v2 answer: 160.9
+  A4 v2 app-call: 5.6
+  A5 v2 answer: 196.8
+  guards current answer: 334.5
+  guards v2 answer: 384.5
+  targets current answer: 527.7
+  targets v2 answer: 638.0
+
+Per-item target grades (current | v2):
+  tat-0684           W | W   cur: full-year -10 (223 vs 233, in context); ref -3 uses the Q4 figures 56/59 (question ambiguous)  //  v2: same as current: full-year -10; ref -3 (Q4)
+  financebench-0106  C | C   cur: Las Vegas Strip Resorts  //  v2: Las Vegas Strip Resorts
+  financebench-0030  C | C   cur: 4.18% (167/3,991)  //  v2: code 4.18%
+  tat-0707           W | C   cur: lists the three rates, no average  //  v2: code 25 (average of 52.8/9.7/12.5); % sign missing
+  tat-0662           W | C   cur: says increased by 3,009; it decreased  //  v2: code -3,009 ("decreased -3,009", awkward sign)
+  tat-0622           W | W   cur: 17.15%; ref 19.06 (3,124/16,389)  //  v2: code 26.57% from 3,954 and 3,124 (wrong inputs); ref 19.06
+  tat-0755           C | C   cur: 10.1%  //  v2: code 10.12%
+  financebench-0083  C | C   cur: bare "3,215.4" (right; terse)  //  v2: $3,215.4 million (no CALC; model arithmetic right)
+  tat-0642           C | C   cur: decrease of 55.2%  //  v2: code -55.16%
+  financebench-0046  C | C   cur: $1,832 million  //  v2: code 1,832
+  tat-0706           W | R   cur: gives the 290 charge, not the proportion (ref 68.4)  //  v2: says the proportion is not stated; 290 and 424 are in the context
+  financebench-0053  C | C   cur: decrease 1,874 -> 1,093  //  v2: decrease, both values
+  tat-0723           P | R   cur: decreased by 90% (the context change column), not the amount 32,543  //  v2: fallback: model wrote the (right) 32,543,000 in prose with no CALC
+  tat-0625           W | C   cur: lists both years, no average  //  v2: code 11,137.50 (dangling "is calculated as follows:")
+  tat-0689           W | R   cur: lists 0.1 for both years, no average  //  v2: claims 2018 value missing; it is in the table (0.1 0.1)
+  tat-0682           C | C   cur: 340.0%  //  v2: code 340%
+  tat-0628           C | C   cur: 3.35% with worked steps  //  v2: code 3.35% and {increase} 2,753
+  tat-0712           P | C   cur: decreased 9.6 percent (right, but not the asked amount -1,221)  //  v2: code -1,221 ("decreased -1,221")
+  tat-0619           W | W   cur: calls 9,241/14,892 (total accrued liabilities row) the averages; ref 3,332  //  v2: code 12,066.50 from the wrong row (9,241/14,892); ref 3,332 from 2,720/3,944
+  tat-0721           W | C   cur: 84.7%; ref -84.51  //  v2: code -84.51%
+  tat-0751           C | R   cur: decrease of 1,747  //  v2: fallback: model wrote the (right) 1,747 in prose with no CALC
+  tat-0718           C | C   cur: -12.45% (says "increased" from 3,035 to 2,657: wording slip)  //  v2: code -12.45%
+  financebench-0102  R | R   cur: refused  //  v2: fallback: CALC used ^ (square root for CAGR); grammar has no power
+  tat-0752           W | W   cur: increase of 1.4% (wrong sign/base); ref -1.39  //  v2: code 1.41% on base 107,110 (wrong base/sign); ref -1.39
+  tat-0748           C | C   cur: decrease of 108  //  v2: decrease of 108 (no CALC)
+  tat-0741           P | P   cur: decreased from 31,254 to 25,036, no amount  //  v2: both values, no change amount
+  tat-0621           C | C   cur: 1.03% (1.035, within rounding)  //  v2: code 1.04%
+  tat-0749           R | R   cur: refused; 227,359/239,550 are in the context  //  v2: refused; inputs in the context
+  financebench-0084  W | C   cur: 0.55; ref 0.54 (0.5403)  //  v2: code 54.03% (= 0.54 as a percent)
+  tat-0626           W | W   cur: lists the yearly values as "the average"; ref -44.33  //  v2: code 133 = the sum, called the average (forgot / 3)
+
+Guards changed:
+  nq-0296: R -> W  Rocky Marciano 49-0; ref Jimmy Barry; also "according to the provided context"
+  feta-0402: C -> P  drops the district cities (Whittier, Escondido)
+  financebench-0015: R -> C  0
+  feta-0478: P -> C  Moesha, 1998 to 1999

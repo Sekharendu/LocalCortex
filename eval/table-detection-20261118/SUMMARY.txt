@@ -1,0 +1,70 @@
+TABLE DETECTION + TABLE-TITLE HEADER - DETECTION-ONLY CHECK (2026-11-18)
+Dev data only. No embedding, no ingest, no LLM, no Cloudflare. Qdrant read-only scroll of eval-ragbench-dev-20261115.
+Files: build-cache.mts (load + chunk like the pipeline, compare with Qdrant), tableHeaders.mts (detector, FROZEN),
+run.mts (stats, gap coverage, FPs, sample), stats.json, sample.txt (50 tables + 3M), fp-examples.txt, verdicts.json, peek.mts (debug).
+
+1. REPRODUCTION
+   loadDocument + chunkText(recursive, 500, fixHeadingSplit) per page gives exactly the stored chunk texts:
+   FB 73,879/73,879, tat 19,288/19,288, nq 908/908, feta 2,945/2,945 (96 docs, 97,020 chunks, 100%).
+   The header never changes chunk text or boundaries (it would only be prepended for embedding, like payload.section).
+
+2. FROZEN SETTINGS (tuned by eye on page dumps only; relevance labels never used for tuning)
+   row: line ends with number-like tokens, label <= 14 words (<= 25 if it ends with >= 2 numbers), not a sentence;
+   wrapped label lines merged into the row (up to 3 lines). label line <= 6 words (<= 8 if ends with ':').
+   table: >= 3 rows, gap <= 1 non-row line, <= 5 label lines in a row. sentence = ends '.' with >= 6 words; prose >= 16 words.
+   end: sentence, >= 2 non-row non-label lines, or a new title block (units line, or name + period line, <= 4 lines) then rows.
+   title: walk up <= 8 lines on the same page; stop at blank/row/sentence; keep ':'-ending lead-ins and wrapped lead-ins;
+   if units/period lines exist: <= 2 name lines above them + those lines; else last 2 lines; drop "(Unaudited)"; cap 200 chars.
+   skip: page-edge lines (first/last 3) repeating on >= max(3, 20% of pages), page numbers, "Table of Contents";
+   TOC filter (>= 80% rows end in one non-decreasing integer <= 500). Untitled table <= 3 lines after another is merged into it.
+   chunk: header of the table covering most of the chunk; none if the chunk holds that title or touches no table.
+
+3. PER SOURCE
+   source docs  tables  docs w/0 tables  chunks touching a table  chunks WITH header   header chars (median/p90/max)
+   FB     59    4,499   2 (both 8-Ks)     8,803 (11.9%)            5,167 (7.0%)         117 / 195 / 200
+   tat    17    1,519   0                 2,818 (14.6%)            1,566 (8.1%)          95 / 193 / 200
+   nq     10       26   4                 -                           21 (2.3%)          25
+   feta   10       62   2                 -                           45 (1.5%)          61
+   Empty headers (table found, no title): FB 138, tat 30.
+
+4. GAP COVERAGE (relevant table-like chunks WITHOUT a title, counted per question like the diagnosis)
+   FB : 453 / 510 get a header (89%; unique chunks 404/456). Of the 453: name 387, units 412, period/date 430, all three 360.
+        (stricter diagnosis regexes: statement name 283, period 258). Missed 57: 14 not in a detected table, 43 hold their own title.
+   tat: 185 / 308 get a header (60%; unique 149/252). Of the 185: name 149, units 112, period/date 149, all three 81.
+        (diagnosis regexes: name 35, period 86). Missed 123: 31 not in a table, 92 hold their own title.
+   Table-like chunks that already have a title and still get one: FB 67/532, tat 63/333.
+
+5. FALSE POSITIVES (non-table-like relevant chunks that get a header)
+   FB 97/904 (unique 84/746, ~11%), tat 58/1,265 (unique 41/1,029, ~4%).
+   Read 50 of them (fp-examples.txt): practically all are real tables the diagnosis heuristic missed (dot-leader rows
+   like Adobe's balance sheet, the last rows of a table before prose, EPS/tax-rate rows). Not one was clearly a non-table;
+   about 5 had a weak header (column words or a row label). So the true "header on a non-table" rate here is close to 0.
+   In the 50-table sample, 5 detections were not tables (footnote markers (1)(2)(3) x3, a chart axis, a Wikipedia infobox);
+   3 of those 5 had no title so no chunk gets a header; the other 2 headers are short junk.
+
+6. HAND-CHECK (50 tables, seed 118; verdicts.json)
+   title: right 16, partly 21, wrong 8, not-a-table 5      end: right 40, early 9, late 1
+   by source  FB (30): right 12, partly 15, wrong 1, not-a-table 3
+              tat (12): right 3, partly 7, wrong 1, not-a-table 1
+              Wikipedia (8): right 1, partly 0, wrong 6, not-a-table 1
+   "partly" mostly means the header has units + dates/columns but no table name, or a lead-in cut mid-sentence;
+   such headers still add the period/units the chunk lacks, which is what the gap was about.
+
+7. 3M_2023Q2_10Q balance sheet: chunk 18 holds the title -> no header; chunks 19, 20, 21 (and 22) get
+   "3M Company and Subsidiaries Consolidated Balance Sheet (Dollars in millions, except per share amount) June 30, 2023 December 31, 2022".
+   Chunk 17 gets the Comprehensive Income header (correct, it is that table). Correct.
+
+8. FAILURE PATTERNS
+   - No table name, only units/dates/columns (most "partly"): the name sits further up or in a section heading.
+   - Long lead-in sentences hit the 200-char cap or start mid-sentence.
+   - Header taken from rows of the table above (Nike t49) when two tables touch.
+   - Wrapped rows/footer glued to a row end the table early (Boeing EPS rows, Pfizer products, George Weston).
+   - Footnote-marker columns and chart axes detected as tables (mostly no title, so harmless).
+   - Wikipedia PDFs: cells wrap over many lines; titles are fragments. Do not use headers for nq/feta.
+
+9. RECOMMENDATION
+   For financial filings detection is good enough to test: 89% of FB and 60% of tat untitled table chunks would get a
+   header, almost always with units and a period, and headers on non-tables are rare. Titles are fully right only ~1/3 of
+   the time, so expect a modest gain, not a fix. Suggestion: if the re-ingest is done, enable it only for filings-like
+   docs (or skip headers for Wikipedia-style PDFs) and first try a cheap partial check: re-embed only the ~6,700 headed
+   FB+tat chunks into a copy collection instead of the full 7-8 h re-ingest.

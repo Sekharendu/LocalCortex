@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-05T08:12:37.116Z",
+  "passed": true,
+  "plannedCases": 279,
+  "successfulAnswers": 558,
+  "blindedGrades": 558,
+  "changedCategories": 70,
+  "absenceClaims": 95,
+  "freezeUnchanged": true,
+  "promptUsageScopesAndPairCountsVerified": true,
+  "executionLocksRemain": []
+}

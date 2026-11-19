@@ -1,0 +1,4 @@
+{
+  "pid": 35340,
+  "purpose": "Temporary idle-sleep prevention during the split-window evaluation; clears when the helper exits; no persistent power-plan change"
+}

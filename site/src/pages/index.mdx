@@ -3,7 +3,7 @@ import demoVideo from "../assets/localcortex-demo.webm";
 
 <div className="hero">
   <p className="hero-title">LocalCortex</p>
-  <p className="hero-subtitle">Chat with your documents. Every model, vector and message stays on your machine.</p>
+  <p className="hero-subtitle">Chat with your documents. Local retrieval and storage, Cloudflare answers.</p>
   <div className="hero-actions">
     <a className="btn btn-primary" href="/quickstart">Get started</a>
     <a className="btn btn-secondary" href="https://github.com/Sekharendu/LocalCortex" target="_blank" rel="noreferrer">View on GitHub</a>
@@ -17,10 +17,10 @@ import demoVideo from "../assets/localcortex-demo.webm";
 
 ## What is LocalCortex?
 
-LocalCortex is a fully local Retrieval-Augmented Generation (RAG) pipeline. Upload a file, ask it a question, and get an answer grounded in that file, with Ollama running the embedding and generation models, Qdrant storing the vector index, and Postgres keeping the conversation history. **No API keys, no external calls, nothing leaves your machine.**
+LocalCortex is a Retrieval-Augmented Generation (RAG) pipeline. Ollama embeds documents locally, Qdrant stores the index, and Postgres stores chats. Cloudflare Workers AI generates answers and rewrites follow-ups using Qwen3. **Questions, selected passages (possibly whole small documents), and relevant conversation/rewrite history are sent to Cloudflare.** Backend Cloudflare credentials and internet access are required.
 
 <div className="pipeline">{`A. your files ─▶ load ─▶ chunk ─▶ embed (nomic-embed-text) ─▶ Qdrant
-B. question  ─▶ retrieve ─▶ prompt ─▶ llama3 (Ollama) ─▶ answer + sources`}</div>
+B. question  ─▶ retrieve ─▶ prompt ─▶ Qwen3 (Cloudflare) ─▶ answer + sources`}</div>
 
 </section>
 
@@ -31,7 +31,7 @@ B. question  ─▶ retrieve ─▶ prompt ─▶ llama3 (Ollama) ─▶ answer 
 <div className="feature-grid">
   <div className="feature">
     <h3>Private</h3>
-    <p>No API keys, no third-party calls. Documents and conversations never leave your machine.</p>
+    <p>Documents and chats are stored locally; selected evidence and relevant conversation inputs go to Cloudflare for inference.</p>
   </div>
   <div className="feature">
     <h3>Grounded</h3>
@@ -69,7 +69,7 @@ B. question  ─▶ retrieve ─▶ prompt ─▶ llama3 (Ollama) ─▶ answer 
   <li className="stage">
     <div>
       <strong>Answer</strong>
-      <p>The matched chunks are placed in a prompt and streamed back through the local model, citations attached.</p>
+      <p>The matched chunks are placed in a prompt and streamed back through Cloudflare Qwen3, citations attached.</p>
     </div>
   </li>
 </ol>
@@ -82,7 +82,7 @@ B. question  ─▶ retrieve ─▶ prompt ─▶ llama3 (Ollama) ─▶ answer 
 
 ## Measured, not guessed
 
-Every claim on this site is backed by a script in the repo that measured it.
+The measurements below are historical V1 results with local llama3, not Cloudflare quality or latency validation. V2 has not undergone these evaluations.
 
 <table className="stats-table">
   <thead>

@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "stopReason": null,
+  "attempts": 79,
+  "completed": 79,
+  "failed": 0,
+  "reused": 1,
+  "maximumAttempts": 80,
+  "reportedRunNeurons": 611.7275519371033,
+  "usageRecords": 79,
+  "lengthLimitedAnswers": 0,
+  "changedInputs": [],
+  "retrievalCalls": 0,
+  "rerankingCalls": 0,
+  "graderInferenceCalls": 0,
+  "testPaperContentRead": false
+}

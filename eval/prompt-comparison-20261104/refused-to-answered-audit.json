@@ -1,0 +1,32 @@
+[
+  {
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "cohort": "dev",
+    "question": "How were crowd workers instructed to identify important elements in large document collections?",
+    "A": "The provided context is insufficient to answer this question.",
+    "B": "Crowd workers were instructed to identify important elements in large document collections by being provided with a description of the document cluster's topic along with individual propositions. They were asked to score each proposition's importance using a 5-point Likert-scale, without needing to read all the documents in the cluster. This approach, called low-context importance annotation, allowed them to efficiently determine important elements by focusing on single propositions rather than entire documents.",
+    "BGrade": "adequate",
+    "unsupportedClaims": [],
+    "supportAssessment": "Individually checked: every new factual claim is supported by the supplied task-design or clinical-data passage."
+  },
+  {
+    "caseId": "offtopic/27",
+    "cohort": "offtopic",
+    "question": "Can unused sick days be cashed out at the end of the year?",
+    "A": "The provided context is insufficient to answer this question.",
+    "B": "Full-time employees accrue 8 days of paid sick leave per year, credited at the start of each calendar year. Unused sick leave carries over up to a maximum of 10 days into the following year. The passages do not specify whether unused sick days can be cashed out at the end of the year.",
+    "BGrade": "partial",
+    "unsupportedClaims": [],
+    "supportAssessment": "Individually checked against full handbook: 8 days accrual and 10-day carryover cap are supported; cash-out is explicitly left unanswered."
+  },
+  {
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "cohort": "dev",
+    "question": "where did they obtain the annotated clinical notes from?",
+    "A": "The provided context is insufficient to answer this question.",
+    "B": "The annotated clinical notes were obtained from the 2010 i2b2/VA CE task.",
+    "BGrade": "adequate",
+    "unsupportedClaims": [],
+    "supportAssessment": "Individually checked: every new factual claim is supported by the supplied task-design or clinical-data passage."
+  }
+]

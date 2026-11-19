@@ -127,7 +127,10 @@ app.post("/query", async (req: Request, res: Response) => {
     return;
   }
 
+  const controller = new AbortController();
+  res.once("close", () => { if (!res.writableEnded) controller.abort(); });
   const opts = {
+    signal: controller.signal,
     topK: typeof body.topK === "number" ? body.topK : undefined,
     scoreThreshold: typeof body.scoreThreshold === "number" ? body.scoreThreshold : undefined,
     collection: typeof body.collection === "string" ? body.collection : undefined,
@@ -138,8 +141,9 @@ app.post("/query", async (req: Request, res: Response) => {
   if (!wantStream) {
     try {
       const { answer, chunks, citations } = await answerQuestion(question, opts);
-      res.json({ answer, chunks, citations });
+      if (!controller.signal.aborted) res.json({ answer, chunks, citations });
     } catch (e) {
+      if (controller.signal.aborted) return;
       const msg = e instanceof Error ? e.message : String(e);
       res.status(503).json({ error: `Failed to answer question: ${msg}` });
     }
@@ -162,6 +166,7 @@ app.post("/query", async (req: Request, res: Response) => {
     tokenStream = setup.tokens;
     citations = setup.citations;
   } catch (e) {
+    if (controller.signal.aborted) return;
     const msg = e instanceof Error ? e.message : String(e);
     res.status(503).json({ error: `Failed to answer question: ${msg}` });
     return;
@@ -179,9 +184,10 @@ app.post("/query", async (req: Request, res: Response) => {
   let firstToken = true;
   try {
     for await (const token of tokenStream) {
+      if (controller.signal.aborted) break;
       firstToken = false;
       if (!res.write(token)) {
-        await new Promise<void>((resolve) => res.once("drain", () => resolve()));
+        await drainOrClose(res);
       }
     }
   } catch (e) {
@@ -191,7 +197,7 @@ app.post("/query", async (req: Request, res: Response) => {
       res.status(503).json({ error: `Failed to answer question: ${msg}` });
       return;
     }
-    res.write(`\n\n[generation error: ${msg}]`);
+    if (!controller.signal.aborted) res.write(`\n\n[generation error: ${msg}]`);
   } finally {
     res.end();
   }
@@ -264,6 +270,7 @@ function titleFrom(text: string): string {
 /** Resolves when the socket can take more data -- or when the client goes away, so a
  * disconnect during backpressure can't leave the handler waiting forever. */
 function drainOrClose(res: Response): Promise<void> {
+  if (res.destroyed || res.writableEnded) return Promise.resolve();
   return new Promise((resolve) => {
     const done = () => {
       res.off("drain", done);
@@ -341,6 +348,8 @@ app.post(
       res.status(400).json({ error: "content is required and must be a non-empty string" });
       return;
     }
+    const controller = new AbortController();
+    res.once("close", () => { if (!res.writableEnded) controller.abort(); });
     const conversation = await getConversation(req.params.id);
     if (!conversation) {
       res.status(404).json({ error: `conversation not found: ${req.params.id}` });
@@ -357,17 +366,17 @@ app.post(
       await renameConversation(conversation.id, titleFrom(content));
     }
 
-    // Client disconnect (tab closed, Stop pressed) aborts generation so llama3 stops.
-    const controller = new AbortController();
-    res.on("close", () => {
-      if (!res.writableEnded) controller.abort();
-    });
+    // Disconnect cancellation is registered before loading/saving the conversation.
 
     let tokens: AsyncGenerator<string>;
     let citations: Citation[];
     try {
       ({ tokens, citations } = await answerQuestionStream(content, { history, signal: controller.signal }));
     } catch (e) {
+      if (controller.signal.aborted) {
+        await appendMessage(conversation.id, { role: "assistant", content: "", citations: [], status: "interrupted" });
+        return;
+      }
       const msg = e instanceof Error ? e.message : String(e);
       await appendMessage(conversation.id, { role: "assistant", content: msg, status: "error" });
       res.status(503).json({ error: `Failed to answer question: ${msg}` });
@@ -385,6 +394,7 @@ app.post(
     let status: "interrupted" | "error" | null = null;
     try {
       for await (const token of tokens) {
+        if (controller.signal.aborted) break;
         answer += token;
         if (!res.write(token)) await drainOrClose(res);
         if (controller.signal.aborted) break;

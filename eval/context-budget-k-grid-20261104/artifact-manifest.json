@@ -1,0 +1,55 @@
+{
+  "snapshot": "CONTEXT-CAP-K-GRID-20261104",
+  "files": [
+    {
+      "file": "eval/context-budget-k-grid-20261104/assembled-prompts.jsonl",
+      "sha256": "0c3b08ec112d67ebc87c2fc267c910e122adcadf236a4633ec5a3831b801b69e",
+      "bytes": 12665313
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/audit.json",
+      "sha256": "c0148ecd1232205976ce1dcda37908cc611a4ea22e7451df4035f23f4d8a3c99",
+      "bytes": 337
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/audit.mjs",
+      "sha256": "5bc129649e3de4e58cc8932aa1a90a2b5130e4b4d6442fa24a747e7c266c6ba7",
+      "bytes": 3828
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/case-results.jsonl",
+      "sha256": "52c27240128e4c65b76e01ffa1ad8ab3197cdf42f7cbd06d1ac560dd0e5e1c41",
+      "bytes": 221360
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/flips.json",
+      "sha256": "dfd9b16c0e5577bbfcd822d0cbd7a36e09f0aa7fadfecb366e0261ff80621042",
+      "bytes": 87706
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/manifest.json",
+      "sha256": "ff537c1dff667ad6b6dcd2da157b60f132ae7a792ef60e30ac77cb4a7fd43bb9",
+      "bytes": 2588
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/prompt-token-log.jsonl",
+      "sha256": "b936b9bae17605bed9d7558c56f10fd713ebeba517b7e02813096554920f46c9",
+      "bytes": 215397
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/replay.mjs",
+      "sha256": "748ec9725ee8e7191e1a1e5a86b08a8a50c094023ff0982222d566f1d4f0dec6",
+      "bytes": 11872
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/REPORT.md",
+      "sha256": "a09e6d32aef64dfd69d8bf7abc9c00878be6738fe49d9dc6f843a4fca1f3ea42",
+      "bytes": 4931
+    },
+    {
+      "file": "eval/context-budget-k-grid-20261104/summary.json",
+      "sha256": "d1232d19cdc3b19366835ae0a6fe0ae59d75b8bceef2f37017985489d6969039",
+      "bytes": 4707
+    }
+  ]
+}

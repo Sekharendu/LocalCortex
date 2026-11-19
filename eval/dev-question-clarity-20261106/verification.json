@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "questionIds": 496,
+  "caseUnits": 610,
+  "allOriginalTextsPreserved": true,
+  "allDuplicateCopiesAssignedTogether": true,
+  "groupQuestionCountsSumTo496": true,
+  "groupCaseCountsSumTo610": true,
+  "inputAndSplitHashesUnchanged": true,
+  "searchCalls": 0,
+  "embeddingCalls": 0,
+  "generationCalls": 0
+}

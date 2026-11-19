@@ -1,0 +1,382 @@
+<title>Scenario 1 Retrieval Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: question list rail on the left, one question at a time on the right; dense and hybrid side by side. */
+:root{
+  --bg:#f6f4f2; --panel:#ffffff; --sunk:#efebe8; --fg:#24201e; --muted:#6d6460; --line:#ddd6d1;
+  --accent:#a8483a; --accent-soft:#f3dfd9;
+  --good:#2f7a4a; --good-soft:#dcefe2; --warn:#9a6a12; --warn-soft:#f5ead2; --bad:#a33a3a; --bad-soft:#f6dcdc;
+  --mark-ans:#ffe28a; --mark-ev:#d9e8f7; --mark-ev-line:#4c7fb3;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1c1917; --panel:#252120; --sunk:#2d2826; --fg:#ece6e2; --muted:#a89e98; --line:#3b3431;
+  --accent:#e08f7c; --accent-soft:#4a2e28;
+  --good:#7cc795; --good-soft:#1f3a29; --warn:#e2b55a; --warn-soft:#3d321b; --bad:#ef8b8b; --bad-soft:#452525;
+  --mark-ans:#6b5a12; --mark-ev:#233a52; --mark-ev-line:#7fb0e0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1c1917; --panel:#252120; --sunk:#2d2826; --fg:#ece6e2; --muted:#a89e98; --line:#3b3431;
+  --accent:#e08f7c; --accent-soft:#4a2e28;
+  --good:#7cc795; --good-soft:#1f3a29; --warn:#e2b55a; --warn-soft:#3d321b; --bad:#ef8b8b; --bad-soft:#452525;
+  --mark-ans:#6b5a12; --mark-ev:#233a52; --mark-ev-line:#7fb0e0; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 var(--sans);font-variant-numeric:tabular-nums}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+button,select,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--mono)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);
+  padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:8px}
+.toprow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+h1{font-size:16px;font-weight:600;margin:0}
+.sub{color:var(--muted);font-size:12.5px}
+.filters{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
+.filters label{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.filters select,.filters input{background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:4px 6px;font-size:13px;text-transform:none;letter-spacing:0}
+.filters input{width:160px}
+.btn{background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.spacer{flex:1}
+.wrap{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;
+  padding-block:16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}.rail{max-height:240px}}
+.rail{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:auto;max-height:calc(100vh - 150px);position:sticky;top:130px;align-self:start}
+@media (max-width:900px){.rail{position:static}}
+.rail button{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:7px 10px;cursor:pointer}
+.rail button:hover{background:var(--sunk)}
+.rail button[aria-current="true"]{background:var(--accent-soft)}
+.rail .rq{font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rail .rp{font-size:11px;color:var(--muted);font-family:var(--mono)}
+.rail .rb{grid-row:1/3;grid-column:2;display:flex;gap:3px;align-items:center}
+.pill{font-family:var(--mono);font-size:11px;border-radius:4px;padding:1px 5px;white-space:nowrap}
+.r1{background:var(--good-soft);color:var(--good)} .r25{background:var(--warn-soft);color:var(--warn)} .r0{background:var(--bad-soft);color:var(--bad)} .rg{background:var(--sunk);color:var(--muted)}
+.judged{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+main{min-width:0;display:flex;flex-direction:column;gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0}
+.qhead{display:flex;flex-direction:column;gap:8px}
+.qtext{font-size:19px;font-weight:600;line-height:1.35;text-wrap:balance;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.chip b{color:var(--fg);font-weight:500}
+.nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:600}
+.refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.ref{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--sunk);min-width:0;display:flex;flex-direction:column;gap:6px}
+.ref .lab{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.ref ul{margin:0;padding-left:18px}
+.ans{background:var(--mark-ans);padding:0 3px;border-radius:2px}
+.hl{border-left:3px solid var(--mark-ev-line);padding:2px 8px;background:var(--mark-ev);border-radius:2px;font-size:13px}
+details.full summary{cursor:pointer;color:var(--muted);font-size:12px}
+details.full p{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:1100px){.modes{grid-template-columns:minmax(0,1fr)}}
+.modehead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.modehead h3{margin:0;font-size:15px}
+.big{font-family:var(--mono);font-size:13px}
+.chunks{display:flex;flex-direction:column;gap:8px}
+.chunk{border:1px solid var(--line);border-radius:6px;background:var(--panel);min-width:0}
+.chunk.rel{border-color:var(--good);box-shadow:inset 3px 0 0 var(--good)}
+.chunk .ch{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:6px 10px;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
+.chunk .rk{font-family:var(--mono);font-weight:500;color:var(--fg)}
+.tag{font-size:11px;border-radius:4px;padding:0 6px}
+.tag.yes{background:var(--good-soft);color:var(--good)}
+.tag.cont{background:var(--mark-ev);color:var(--mark-ev-line)}
+.chunk .tx{padding:8px 10px;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:hidden;position:relative}
+.chunk.open .tx{max-height:none}
+.chunk .more{border:0;background:none;color:var(--accent);cursor:pointer;font-size:12px;padding:0 10px 8px}
+mark.a{background:var(--mark-ans);color:inherit;border-radius:2px}
+mark.e{background:var(--mark-ev);color:inherit;border-bottom:1px solid var(--mark-ev-line)}
+.empty{padding:14px;border:1px dashed var(--line);border-radius:6px;color:var(--muted);font-size:13px}
+.judge{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.judge span{font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:var(--sunk);padding:4px 9px;cursor:pointer;font-size:12.5px;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"].y{background:var(--good);color:var(--panel)}
+.seg button[aria-pressed="true"].p{background:var(--warn);color:var(--panel)}
+.seg button[aria-pressed="true"].n{background:var(--bad);color:var(--panel)}
+textarea{width:100%;min-height:52px;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-size:13px;resize:vertical}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);align-items:center}
+.toast{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:8px 12px;border-radius:6px;font-size:13px}
+#exportBox{width:100%;min-height:120px;font-family:var(--mono);font-size:12px}
+.kbd{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px}
+@media (prefers-reduced-motion:no-preference){.chunk .tx{transition:max-height .15s}}
+</style>
+
+<header class="top">
+  <div class="toprow">
+    <h1>Scenario 1 retrieval review</h1>
+    <span class="sub">Dev set · each question searched only inside its own paper · top 5 chunks · 0.63 gate</span>
+    <span class="spacer"></span>
+    <span class="sub" id="progress"></span>
+    <button class="btn" id="exportBtn">Copy my judgments</button>
+  </div>
+  <div class="filters">
+    <label>Group<select id="fGroup"></select></label>
+    <label>Format<select id="fFmt"></select></label>
+    <label>Answer kind<select id="fKind"></select></label>
+    <label>Clarity<select id="fClarity"></select></label>
+    <label>Earlier verdict<select id="fVerdict"></select></label>
+    <label>Dense result<select id="fDense"></select></label>
+    <label>Hybrid result<select id="fHybrid"></select></label>
+    <label>Judged<select id="fJudged"></select></label>
+    <label>Search<input id="fText" type="search" placeholder="question or paper id"></label>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="rail" id="rail" aria-label="Questions"></nav>
+  <main id="main"></main>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+(function(){
+const D = JSON.parse(document.getElementById('data').textContent);
+const KEY = 'scenario1-review-v1';
+let J = {};
+try { J = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { J = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(J)); } catch(e) {} }
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $ = id => document.getElementById(id);
+
+function outcome(m){ if (m.gate) return 'gate'; if (m.rank === 1) return 'r1'; if (m.rank) return 'r25'; return 'miss'; }
+function pill(m, label){
+  const o = outcome(m);
+  const cls = {gate:'rg', r1:'r1', r25:'r25', miss:'r0'}[o];
+  const txt = o === 'gate' ? label + ' none' : o === 'miss' ? label + ' ✕' : label + m.rank;
+  return `<span class="pill ${cls}">${txt}</span>`;
+}
+
+// ---- filters
+const uniq = k => [...new Set(D.cases.map(c => c[k]))].sort();
+function fillSel(id, opts, def){
+  $(id).innerHTML = opts.map(([v,t]) => `<option value="${esc(v)}">${esc(t)}</option>`).join('');
+  $(id).value = def;
+}
+const allOpt = [['', 'All']];
+fillSel('fGroup', allOpt.concat(uniq('group').map(v => [v, v + ' (' + D.cases.filter(c=>c.group===v).length + ')'])), 'answerable');
+fillSel('fFmt', allOpt.concat(uniq('fmt').map(v => [v, v.toUpperCase()])), '');
+fillSel('fKind', allOpt.concat(uniq('kind').map(v => [v, v])), '');
+fillSel('fClarity', allOpt.concat(uniq('clarity').map(v => [v, v])), '');
+fillSel('fVerdict', allOpt.concat(uniq('verdict').map(v => [v, v])), '');
+const resOpts = allOpt.concat([['r1','Rank 1'],['r25','Rank 2–5'],['miss','Not in top 5'],['gate','Nothing returned']]);
+fillSel('fDense', resOpts, ''); fillSel('fHybrid', resOpts, '');
+fillSel('fJudged', [['', 'All'], ['no', 'Not judged yet'], ['yes', 'Judged']], '');
+
+let list = [], cur = 0;
+function applyFilters(keepId){
+  const g=$('fGroup').value, f=$('fFmt').value, k=$('fKind').value, cl=$('fClarity').value, v=$('fVerdict').value,
+        dr=$('fDense').value, hr=$('fHybrid').value, jd=$('fJudged').value, t=$('fText').value.trim().toLowerCase();
+  list = D.cases.filter(c =>
+    (!g || c.group===g) && (!f || c.fmt===f) && (!k || c.kind===k) && (!cl || c.clarity===cl) && (!v || c.verdict===v) &&
+    (!dr || outcome(c.d)===dr) && (!hr || outcome(c.h)===hr) &&
+    (!jd || (jd==='yes') === !!isJudged(c.id)) &&
+    (!t || c.q.toLowerCase().includes(t) || c.paper.includes(t)));
+  const i = keepId ? list.findIndex(c => c.id === keepId) : -1;
+  cur = i >= 0 ? i : 0;
+  renderRail(); render();
+}
+['fGroup','fFmt','fKind','fClarity','fVerdict','fDense','fHybrid','fJudged'].forEach(id => $(id).addEventListener('change', () => applyFilters(list[cur] && list[cur].id)));
+$('fText').addEventListener('input', () => applyFilters(list[cur] && list[cur].id));
+
+function isJudged(id){ const j = J[id]; return j && (j.d || j.h || j.label || j.note); }
+
+function renderRail(){
+  $('rail').innerHTML = list.length ? list.map((c,i) => `
+    <button data-i="${i}" aria-current="${i===cur}">
+      <span class="rq">${esc(c.q)}</span>
+      <span class="rb">${isJudged(c.id) ? '<span class="judged" title="Judged"></span>' : ''}${pill(c.d,'D')}${pill(c.h,'H')}</span>
+      <span class="rp">${c.fmt} · ${esc(c.paper)}</span>
+    </button>`).join('') : '<div class="empty">No questions match these filters.</div>';
+  const done = D.cases.filter(c => c.group==='answerable' && isJudged(c.id)).length;
+  $('progress').textContent = `${list.length} shown · ${done} of 570 scored questions judged`;
+}
+$('rail').addEventListener('click', e => { const b = e.target.closest('button[data-i]'); if (b) go(+b.dataset.i); });
+function go(i){
+  if (!list.length) return;
+  cur = Math.max(0, Math.min(list.length-1, i));
+  [...$('rail').querySelectorAll('button[data-i]')].forEach(b => b.setAttribute('aria-current', +b.dataset.i===cur));
+  const b = $('rail').querySelector(`button[data-i="${cur}"]`); if (b) b.scrollIntoView({block:'nearest'});
+  render(); window.scrollTo({top:0});
+  try { localStorage.setItem(KEY+'-cur', list[cur].id); } catch(e) {}
+}
+
+// ---- highlighting
+const REF = /\b(?:BIBREF|TABREF|FIGREF|SECREF|EQREF)\d+\b|\b(?:INLINEFORM|DISPLAYFORM)\d+\b/g;
+function toRe(s){
+  const words = s.trim().split(/\s+/).map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  return words.join('[\\s\\-]+');
+}
+function patterns(c){
+  const ans = [], ev = [];
+  for (const r of c.refs){
+    for (const s of r.ex){
+      for (const part of s.split(REF)){ const p = part.trim().replace(/^[,;.\s]+|[,;.\s]+$/g,''); if (p.length >= 3) ans.push(p); }
+    }
+    for (const h of (r.hl.length ? r.hl : r.ev)){
+      for (const part of h.split(REF)){
+        for (const frag of part.split(/(?<=[.;:!?])\s+|\s*[()]\s*/)){
+          const f = frag.trim().replace(/[.;:,]+$/,'');
+          if (f.split(/\s+/).length >= 5) ev.push(f);
+        }
+      }
+    }
+  }
+  const mk = arr => [...new Set(arr)].sort((a,b) => b.length - a.length).map(p => { try { return new RegExp(toRe(p), 'gi'); } catch(e) { return null; } }).filter(Boolean);
+  return { ans: mk(ans), ev: mk(ev) };
+}
+function highlight(text, pats){
+  const marks = new Array(text.length).fill(0); // 1 ev, 2 ans
+  let hasEv = false, hasAns = false;
+  for (const [res, val] of [[pats.ev,1],[pats.ans,2]]){
+    for (const re of res){
+      re.lastIndex = 0; let m;
+      while ((m = re.exec(text))){
+        if (!m[0].length){ re.lastIndex++; continue; }
+        for (let i=m.index;i<m.index+m[0].length;i++) marks[i] = Math.max(marks[i], val);
+        if (val===1) hasEv = true; else hasAns = true;
+      }
+    }
+  }
+  let out = '', i = 0;
+  while (i < text.length){
+    const v = marks[i]; let j = i; while (j < text.length && marks[j]===v) j++;
+    const seg = esc(text.slice(i,j));
+    out += v===2 ? `<mark class="a">${seg}</mark>` : v===1 ? `<mark class="e">${seg}</mark>` : seg;
+    i = j;
+  }
+  return { html: out, hasEv, hasAns };
+}
+
+// ---- render
+function refHtml(r, i){
+  const bits = [];
+  if (r.unans) bits.push('<div><span class="lab">Answer</span><div>Paper does not answer this</div></div>');
+  if (r.yn !== null && r.yn !== undefined) bits.push(`<div><span class="lab">Yes / no</span><div><span class="ans">${r.yn ? 'Yes' : 'No'}</span></div></div>`);
+  if (r.ex.length) bits.push(`<div><span class="lab">Extractive answer</span><ul>${r.ex.map(s => `<li><span class="ans">${esc(s)}</span></li>`).join('')}</ul></div>`);
+  if (r.ff) bits.push(`<div><span class="lab">Free-form answer</span><div>${esc(r.ff)}</div></div>`);
+  if (r.hl.length) bits.push(`<div><span class="lab">Highlighted evidence</span>${r.hl.map(h => `<div class="hl">${esc(h)}</div>`).join('')}</div>`);
+  if (r.ev.length) bits.push(`<details class="full"><summary>Full evidence paragraph${r.ev.length>1?'s':''} (${r.ev.length})</summary>${r.ev.map(e => `<p>${esc(e)}</p>`).join('')}</details>`);
+  return `<div class="ref"><span class="lab">Annotator ${i+1}</span>${bits.join('')}</div>`;
+}
+function chunkHtml(c, idx, rankLabel, score, page, pats){
+  const text = (D.chunks[c.doc] || {})[idx];
+  const rel = c.rel.includes(idx);
+  const h = text != null ? highlight(text, pats) : { html: '<em>text unavailable</em>', hasEv:false, hasAns:false };
+  const tags = [
+    rel ? '<span class="tag yes">labelled: has the answer</span>' : '',
+    !rel && (h.hasEv || h.hasAns) ? '<span class="tag cont">contains matching text</span>' : ''
+  ].join('');
+  const pg = page ?? ((D.pages[c.doc]||{})[idx]);
+  return `<div class="chunk${rel?' rel':''}">
+    <div class="ch"><span class="rk">${rankLabel}</span><span class="mono">chunk ${idx}</span>${pg!=null?`<span>page ${pg}</span>`:''}${score!=null?`<span class="mono">score ${score.toFixed(3)}</span>`:''}${tags}</div>
+    <div class="tx">${h.html}</div>
+    <button class="more" type="button">Show whole chunk</button>
+  </div>`;
+}
+function modeHtml(c, key, name){
+  const m = c[key], pats = c._pats;
+  const rr = m.gate ? 'nothing returned' : m.rank ? `first answer chunk at rank ${m.rank} · RR ${m.rr.toFixed(3)}` : 'answer not in top 5 · RR 0';
+  const body = m.gate || !m.top.length
+    ? `<div class="empty">No chunk scored 0.63 or higher, so retrieval returned nothing. Reciprocal rank 0.</div>`
+    : `<div class="chunks">${m.top.map(([idx,score,page],i) => chunkHtml(c, idx, '#'+(i+1), score, page, pats)).join('')}</div>`;
+  const j = (J[c.id] || {})[key] || '';
+  const b = (v, cls, t) => `<button type="button" class="${cls}" data-mode="${key}" data-v="${v}" aria-pressed="${j===v}">${t}</button>`;
+  return `<section class="card">
+    <div class="modehead"><h3>${name}</h3><span class="big">${rr}</span></div>
+    ${body}
+    <div class="judge"><span>Your call — do these 5 chunks hold the answer?</span>
+      <span class="seg">${b('yes','y','Yes')}${b('partly','p','Partly')}${b('no','n','No')}</span></div>
+  </section>`;
+}
+function render(){
+  const c = list[cur];
+  if (!c){ $('main').innerHTML = '<div class="card empty">No questions match these filters.</div>'; return; }
+  c._pats = c._pats || patterns(c);
+  const shown = new Set([...c.d.top, ...c.h.top].map(t => t[0]));
+  const outside = c.rel.filter(i => !shown.has(i));
+  const jj = J[c.id] || {};
+  const lb = (v, cls, t) => `<button type="button" class="${cls}" data-mode="label" data-v="${v}" aria-pressed="${jj.label===v}">${t}</button>`;
+  $('main').innerHTML = `
+  <section class="card qhead">
+    <div class="nav">
+      <button class="btn" id="prev" type="button">← Previous</button>
+      <button class="btn" id="next" type="button">Next →</button>
+      <span class="sub">${cur+1} of ${list.length} · keys <span class="kbd">j</span> / <span class="kbd">k</span></span>
+    </div>
+    <p class="qtext">${esc(c.q)}</p>
+    <div class="chips">
+      <span class="chip">${c.fmt.toUpperCase()} <b class="mono">${esc(c.paper)}</b></span>
+      <span class="chip">group <b>${esc(c.group)}</b></span>
+      <span class="chip">answer kind <b>${esc(c.kind)}</b></span>
+      <span class="chip">clarity <b>${esc(c.clarity)}</b></span>
+      <span class="chip">earlier verdict <b>${esc(c.verdict)}</b></span>
+      <span class="chip">answer-chunk label <b>${c.labelSource}</b>: <b class="mono">${c.rel.length ? c.rel.join(', ') : 'none'}</b></span>
+    </div>
+    ${c.why ? `<div class="sub">Manual label note: ${esc(c.why)}</div>` : ''}
+  </section>
+  <section class="card">
+    <h2>Reference answers (QASPER annotators)</h2>
+    <div class="refs">${c.refs.map(refHtml).join('')}</div>
+    <div class="legend" style="margin-top:10px"><span><mark class="a">yellow</mark> = answer text found in a chunk</span><span><mark class="e">blue</mark> = evidence sentence found in a chunk</span><span>green edge = chunk my labelling marked as holding the answer</span></div>
+  </section>
+  <div class="modes">${modeHtml(c,'d','Dense')}${modeHtml(c,'h','Hybrid')}</div>
+  ${outside.length ? `<section class="card"><h2>Labelled answer chunks that neither mode returned</h2><div class="chunks">${outside.map(i => chunkHtml(c, i, 'not retrieved', null, null, c._pats)).join('')}</div></section>` : ''}
+  <section class="card">
+    <h2>Is my answer-chunk label right?</h2>
+    <div class="judge" style="border:0;margin:0;padding:0">
+      <span class="seg">${lb('right','y','Label right')}${lb('wrong','n','Label wrong')}</span>
+    </div>
+    <div style="margin-top:8px"><textarea id="note" placeholder="Note (optional)">${esc(jj.note||'')}</textarea></div>
+  </section>`;
+  $('prev').onclick = () => go(cur-1);
+  $('next').onclick = () => go(cur+1);
+  $('note').addEventListener('input', e => { setJ(c.id, 'note', e.target.value); });
+  $('main').querySelectorAll('.chunk').forEach(ch => {
+    const tx = ch.querySelector('.tx'), more = ch.querySelector('.more');
+    requestAnimationFrame(() => { if (tx.scrollHeight <= tx.clientHeight + 2) more.hidden = true; });
+    more.onclick = () => { ch.classList.toggle('open'); more.textContent = ch.classList.contains('open') ? 'Show less' : 'Show whole chunk'; };
+  });
+  $('main').querySelectorAll('button[data-mode]').forEach(btn => btn.onclick = () => {
+    const k = btn.dataset.mode, v = btn.dataset.v;
+    const now = (J[c.id]||{})[k] === v ? '' : v;
+    setJ(c.id, k, now);
+    btn.parentElement.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v===now));
+    renderRailMarks();
+  });
+}
+function setJ(id, k, v){ J[id] = Object.assign({}, J[id], {[k]: v}); if (!v) delete J[id][k]; if (!Object.keys(J[id]).length) delete J[id]; save(); }
+function renderRailMarks(){ const sc = $('rail').scrollTop; renderRail(); $('rail').scrollTop = sc; }
+
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input,textarea,select')) return;
+  if (e.key === 'j' || e.key === 'ArrowRight') go(cur+1);
+  if (e.key === 'k' || e.key === 'ArrowLeft') go(cur-1);
+});
+
+// ---- export
+function toast(t){ $('toast').textContent = t; $('toast').hidden = false; clearTimeout(toast._t); toast._t = setTimeout(() => $('toast').hidden = true, 2600); }
+$('exportBtn').onclick = () => {
+  const out = JSON.stringify(J, null, 1);
+  const done = () => toast(`Copied ${Object.keys(J).length} judged questions. Paste them into the chat.`);
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(out).then(done, () => showBox(out));
+  } else showBox(out);
+};
+function showBox(out){
+  $('main').insertAdjacentHTML('afterbegin', `<section class="card"><h2>Your judgments — select all and copy</h2><textarea id="exportBox" readonly>${esc(out)}</textarea></section>`);
+  const b = $('exportBox'); b.focus(); b.select();
+}
+
+let startId = null; try { startId = localStorage.getItem(KEY+'-cur'); } catch(e) {}
+applyFilters(startId);
+})();
+</script>

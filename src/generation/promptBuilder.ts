@@ -1,4 +1,6 @@
+import { answerSettings } from "../config.js";
 import type { RetrievedChunk } from "../retrieval/retriever.js";
+import { PARTIAL_ANSWER_REMINDER, C_REMINDER, type PromptVariant } from "./promptVariants.js";
 
 /**
  * Variant instruction strings. The universal RAG baseline persona lives in
@@ -56,7 +58,12 @@ export function formatHistory(history: HistoryMessage[]): string {
  *   into fabricating passages. Instead emit a different variant that explicitly
  *   states no relevant context was found and instructs the model to say so.
  */
-export function buildPrompt(question: string, chunks: RetrievedChunk[], history: HistoryMessage[] = []): string {
+export function buildPrompt(
+  question: string,
+  chunks: RetrievedChunk[],
+  history: HistoryMessage[] = [],
+  variant: PromptVariant = answerSettings().promptVariant,
+): string {
   // No-context path deliberately ignores history: with nothing retrieved the model must
   // refuse, not answer from its own earlier replies.
   if (chunks.length === 0) {
@@ -72,5 +79,7 @@ export function buildPrompt(question: string, chunks: RetrievedChunk[], history:
       ? `Conversation so far (for resolving references only; answer from the Context above):\n${formatHistory(history)}\n\n`
       : "";
 
-  return `${WITH_CONTEXT_INSTRUCTION}\n\nContext:\n${contextBlock}\n\n${historyBlock}${ANSWER_REMINDER}\n\nQuestion: ${question}\nAnswer:`;
+  const opening = variant !== "legacy" ? "Context passages:\n" : `${WITH_CONTEXT_INSTRUCTION}\n\nContext:`;
+  const reminder = variant === "concise" ? C_REMINDER : variant === "partial" ? PARTIAL_ANSWER_REMINDER : ANSWER_REMINDER;
+  return `${opening}\n${contextBlock}\n\n${historyBlock}${reminder}\n\nQuestion: ${question}\nAnswer:`;
 }

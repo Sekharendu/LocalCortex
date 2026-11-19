@@ -1,0 +1,40 @@
+WORDING-GAP EVIDENCE, 2026-11-18 (dev data only; src/ and tests/ untouched; nothing committed)
+
+Claim tested: "the main reason FinanceBench answer chunks are missed is a wording gap (the question uses analyst terms, the filing uses line-item words)".
+Also tested: does Fix D (adding finance line-item terms to the query) help real answers.
+
+CHECK 3: blind second grader of the 32 FinanceBench misses (grader2.json, frozen read-only before reading grader 1)
+- Same primary cause: 24/32 (kappa 0.61). "Wording gap is the primary cause", yes or no: same verdict 26/32 (kappa 0.63).
+- Wording gap as primary cause: grader 1 18/32, grader 2 16/32, both 14/32. Wording gap named anywhere (primary or secondary): 23/32 for each grader.
+- Reading: wording gap is the largest single cause (about half of the misses), not most of them. Other causes: table/structure (f), etc.
+
+CHECK 1: word overlap between question and answer chunk (overlap-summary.json, overlap-extra.json)
+- Median share of question words found in the best answer chunk: FinanceBench 0.20, tat 0.75, nq 0.60, feta 0.50.
+- Hit rate at top 10 rises with overlap (all sources): 0-0.2 36/71, 0.2-0.4 87/115, 0.4-0.6 84/94, 0.6+ 245/261.
+- With overlap in the model, the FinanceBench penalty versus tat goes away (it even turns positive: +1.06, p 0.02).
+- Caveats: FinanceBench questions are long (median 12 content words vs 5 for tat), so a share-based overlap partly measures length.
+  Adding question length makes the FinanceBench term about 0 (p 0.82). The overlap ranges of the two sources barely meet.
+
+CHECK 2: swap the wording (swap-summary.json). Live hybrid top 20; originals re-run in the same session.
+- 2a, filing words put into the 20 wording-gap misses: answer chunk in top 10 went 0/20 -> 14/20 (fixed 14, broke 0).
+  Grader 1's 18: 0/18 -> 14/18. Grader 2's 16: 0/16 -> 11/16. Both graders' 14: 0/14 -> 11/14. MRR@20 0.017 -> 0.324.
+  Caveat: the rewriter had seen these answer chunks during check 3 (wording kept generic, but not blind).
+- 2b, 40 tat hits, blind rewrites: neutral paraphrase top 10 40/40 -> 40/40 (top 1 24 -> 24).
+  Analyst wording (same meaning, analyst terms): 40/40 -> 20/40 (broke 20, fixed 0); top 1 24/40 -> 4/40; MRR 0.73 -> 0.22.
+- Manipulation check (median overlap): 2a 0.11 -> 0.37; 2b original 0.75, neutral 0.76, analyst 0.18.
+- Reading: wording alone moves retrieval a lot in both directions. This is the strongest evidence that the gap is causal.
+
+CHECK 4: real answers, baseline vs Fix D, the 44 FinanceBench dev questions where D fired
+- Context: blend top 10 (50/50 reranker + hybrid) over the live hybrid top 20. Answer chunk in blend top 10: baseline 34/44, D 37/44.
+  The blend ranks match the stored ones for 43/44 (baseline) and 41/44 (D).
+- Model: qwen3-30b on Cloudflare. 86 calls (2/44 prompts were identical, so the answer was reused). 1,637 neurons (cap 3,000).
+- Grades (one reader, against the reference answers; answer-grades.json):
+  baseline C 10, P 1, W 7, R 26; D C 12, P 1, W 6, R 25 (each out of 44).
+  Paired (C > P > R > W): D better 8, worse 3, same 33. Sign test p about 0.23.
+  Of the 8 "better", 2 are only wrong -> refusal (0005, 0062). Correct answers gained 5 (0026, 0028, 0034, 0110, 0119), lost 3 (0057, 0068, 0082).
+  The 3 losses happened with the answer chunk still in the top 10, so they look like generation noise or distraction, not retrieval.
+- Refusals dominate: 22/44 refused under both. Many are ratio questions where the chunks are in context.
+  The bottleneck for these is the answer step, not retrieval.
+- 0096 (JPM gross margin): D pushed the answer chunk out of the top 10 (blend rank 3 -> none). Both answers are the same refusal,
+  so it cost nothing here. The reference answer ("not relevant for a bank") was given by neither.
+- Blind sheet for a human second grade: answer-grade-sheet.md (key in answer-key.json, seed 20261118).

@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-06",
+  "devCaseUnits": 610,
+  "originalQuestionIds": 496,
+  "distinctQuestionWordings": 476,
+  "groups": {
+    "standalone": {
+      "label": "Can be searched on its own",
+      "rule": "The text identifies a named method/framework/dataset or a sufficiently specified conceptual question, without needing us to invent which unnamed study is intended. Searchable does not establish a unique source or a valid single-paper gold answer.",
+      "expectedBehaviour": "Search the collection using the question; support the answer with clearly attributed sources. Ask about a version/setting if necessary.",
+      "questionIds": 52,
+      "caseUnits": 57,
+      "byFormat": {
+        "pdf": 52,
+        "docx": 5
+      }
+    },
+    "topical_missing_context": {
+      "label": "Topic is useful, but intended study/system is missing",
+      "rule": "Contains a substantive topic or methodological clue, but asks about the authors, a particular model, experiment, corpus or finding without identifying it. Plausible relevant passages can come from several studies.",
+      "expectedBehaviour": "Use existing conversation if it resolves the reference. Otherwise ask a focused question about the topic/system/experiment or offer clearly distinguished source-specific findings.",
+      "questionIds": 199,
+      "caseUnits": 243,
+      "byFormat": {
+        "pdf": 199,
+        "docx": 44
+      }
+    },
+    "generic_missing_context": {
+      "label": "Too general to identify the intended subject",
+      "rule": "Asks about unnamed data, baselines, results, language, participants, settings or features with insufficient distinctive subject information. Explicit pronouns are not required: \"What was the baseline?\" also lacks its subject.",
+      "expectedBehaviour": "Use prior conversation if available; otherwise ask what method, topic, experiment or result the user means. A document filename is not required.",
+      "questionIds": 245,
+      "caseUnits": 310,
+      "byFormat": {
+        "pdf": 245,
+        "docx": 65
+      }
+    }
+  },
+  "borderlineQuestionIds": 39,
+  "borderlineCaseUnits": 42,
+  "paperOrConversationContextMissing": {
+    "questionIds": 444,
+    "caseUnits": 553
+  },
+  "definitions": {
+    "standalone": {
+      "label": "Can be searched on its own",
+      "rule": "The text identifies a named method/framework/dataset or a sufficiently specified conceptual question, without needing us to invent which unnamed study is intended. Searchable does not establish a unique source or a valid single-paper gold answer.",
+      "expectedBehaviour": "Search the collection using the question; support the answer with clearly attributed sources. Ask about a version/setting if necessary."
+    },
+    "topical_missing_context": {
+      "label": "Topic is useful, but intended study/system is missing",
+      "rule": "Contains a substantive topic or methodological clue, but asks about the authors, a particular model, experiment, corpus or finding without identifying it. Plausible relevant passages can come from several studies.",
+      "expectedBehaviour": "Use existing conversation if it resolves the reference. Otherwise ask a focused question about the topic/system/experiment or offer clearly distinguished source-specific findings."
+    },
+    "generic_missing_context": {
+      "label": "Too general to identify the intended subject",
+      "rule": "Asks about unnamed data, baselines, results, language, participants, settings or features with insufficient distinctive subject information. Explicit pronouns are not required: \"What was the baseline?\" also lacks its subject.",
+      "expectedBehaviour": "Use prior conversation if available; otherwise ask what method, topic, experiment or result the user means. A document filename is not required."
+    }
+  },
+  "hashes": [
+    {
+      "file": "eval/dev-set-preparation-20261103/inventory.jsonl",
+      "sha256": "f7d76d8923cbfbf8b7cf8cbd586ddd487fc78e4a843bfbf22def7f70890af988"
+    },
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    }
+  ],
+  "heldOutPaperContentRead": false,
+  "embeddingCalls": 0,
+  "searchCalls": 0,
+  "generationCalls": 0,
+  "limitation": "Provisional assistant linguistic review, not independent human labels or ground truth. Groups describe standalone clarity, not answerability, retrieval correctness, answer correctness, or the causal reason for a miss. No observed failure was relabelled as acceptable."
+}

@@ -1,0 +1,346 @@
+{
+  "dev": [
+    {
+      "arm": "A",
+      "savedReference": false,
+      "cases": 40,
+      "counts": {
+        "adequate": 29,
+        "partial": 3,
+        "wrong": 2,
+        "refused": 6
+      },
+      "percentages": {
+        "adequate": 72.5,
+        "partial": 7.5,
+        "wrong": 5,
+        "refused": 15
+      },
+      "wrongRefusals": 4,
+      "meanInputTokens": 3281.475,
+      "maxInputTokens": 3799,
+      "meanOutputTokens": 53,
+      "maxOutputTokens": 141,
+      "meanTotalTokens": 3334.475,
+      "maxTotalTokens": 3858,
+      "meanNeurons": 16.790611112117766,
+      "maxNeurons": 19.898029327392578,
+      "totalNeurons": 671.6244444847107,
+      "latencyMs": {
+        "mean": 1459.1314649999986,
+        "median": 1111.94945,
+        "max": 12378.793299999998,
+        "p95": 2742.948099999998
+      }
+    },
+    {
+      "arm": "B",
+      "savedReference": true,
+      "cases": 40,
+      "counts": {
+        "adequate": 28,
+        "partial": 2,
+        "wrong": 6,
+        "refused": 4
+      },
+      "percentages": {
+        "adequate": 70,
+        "partial": 5,
+        "wrong": 15,
+        "refused": 10
+      },
+      "wrongRefusals": 2,
+      "meanInputTokens": 3197.3,
+      "maxInputTokens": 3713,
+      "meanOutputTokens": 62.225,
+      "maxOutputTokens": 164,
+      "meanTotalTokens": 3259.525,
+      "maxTotalTokens": 3808,
+      "meanNeurons": 16.682466861605644,
+      "maxNeurons": 20.84511947631836,
+      "totalNeurons": 667.2986744642258,
+      "latencyMs": {
+        "mean": 1475.4876749999999,
+        "median": 1107.570050000002,
+        "max": 11163.556400000001,
+        "p95": 2221.784799999994
+      }
+    },
+    {
+      "arm": "C",
+      "savedReference": false,
+      "cases": 40,
+      "counts": {
+        "adequate": 32,
+        "partial": 2,
+        "wrong": 2,
+        "refused": 4
+      },
+      "percentages": {
+        "adequate": 80,
+        "partial": 5,
+        "wrong": 5,
+        "refused": 10
+      },
+      "wrongRefusals": 2,
+      "meanInputTokens": 3205.425,
+      "maxInputTokens": 3721,
+      "meanOutputTokens": 56.425,
+      "maxOutputTokens": 150,
+      "meanTotalTokens": 3261.85,
+      "maxTotalTokens": 3764,
+      "meanNeurons": 16.54328774213791,
+      "maxNeurons": 20.23562240600586,
+      "totalNeurons": 661.7315096855164,
+      "latencyMs": {
+        "mean": 1594.474479999999,
+        "median": 1120.7417999999925,
+        "max": 11553.516100000008,
+        "p95": 1926.3744000000006
+      }
+    }
+  ],
+  "pairedChanges": {
+    "improved": 3,
+    "worse": 0,
+    "same": 37
+  },
+  "offtopic": [
+    {
+      "arm": "A",
+      "cases": 39,
+      "savedReference": false,
+      "pureRejections": 39,
+      "rate": 100,
+      "nonRefusalAnswers": [],
+      "unsupportedAnswers": 0,
+      "byGroup": [
+        {
+          "group": "near-miss",
+          "cases": 29,
+          "rejected": 29
+        },
+        {
+          "group": "unrelated",
+          "cases": 10,
+          "rejected": 10
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "cases": 39,
+      "savedReference": true,
+      "pureRejections": 38,
+      "rate": 97.43589743589743,
+      "nonRefusalAnswers": [
+        {
+          "caseId": "offtopic/27",
+          "question": "Can unused sick days be cashed out at the end of the year?",
+          "answer": "Full-time employees accrue 8 days of paid sick leave per year, credited at the start of each calendar year. Unused sick leave carries over up to a maximum of 10 days into the following year. The passages do not specify whether unused sick days can be cashed out at the end of the year.",
+          "grade": "partial"
+        }
+      ],
+      "unsupportedAnswers": 0,
+      "byGroup": [
+        {
+          "group": "near-miss",
+          "cases": 29,
+          "rejected": 28
+        },
+        {
+          "group": "unrelated",
+          "cases": 10,
+          "rejected": 10
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "cases": 39,
+      "savedReference": false,
+      "pureRejections": 39,
+      "rate": 100,
+      "nonRefusalAnswers": [],
+      "unsupportedAnswers": 0,
+      "byGroup": [
+        {
+          "group": "near-miss",
+          "cases": 29,
+          "rejected": 29
+        },
+        {
+          "group": "unrelated",
+          "cases": 10,
+          "rejected": 10
+        }
+      ]
+    }
+  ],
+  "offtopicUsage": [
+    {
+      "arm": "A",
+      "savedReference": false,
+      "cases": 39,
+      "counts": {
+        "adequate": 0,
+        "partial": 0,
+        "wrong": 0,
+        "refused": 39
+      },
+      "percentages": {
+        "adequate": 0,
+        "partial": 0,
+        "wrong": 0,
+        "refused": 100
+      },
+      "wrongRefusals": 0,
+      "meanInputTokens": 1533.3333333333333,
+      "maxInputTokens": 1539,
+      "meanOutputTokens": 11,
+      "maxOutputTokens": 11,
+      "meanTotalTokens": 1544.3333333333333,
+      "maxTotalTokens": 1550,
+      "meanNeurons": 7.426247352208847,
+      "maxNeurons": 7.45245361328125,
+      "totalNeurons": 289.623646736145,
+      "latencyMs": {
+        "mean": 1030.131264102562,
+        "median": 690.0267999999924,
+        "max": 10695.201700000005,
+        "p95": 2879.731700000004
+      }
+    },
+    {
+      "arm": "B",
+      "savedReference": true,
+      "cases": 39,
+      "counts": {
+        "adequate": 0,
+        "partial": 1,
+        "wrong": 0,
+        "refused": 38
+      },
+      "percentages": {
+        "adequate": 0,
+        "partial": 2.5641025641025643,
+        "wrong": 0,
+        "refused": 97.43589743589743
+      },
+      "wrongRefusals": 0,
+      "meanInputTokens": 1447.3333333333333,
+      "maxInputTokens": 1453,
+      "meanOutputTokens": 12.384615384615385,
+      "maxOutputTokens": 65,
+      "meanTotalTokens": 1459.7179487179487,
+      "maxTotalTokens": 1518,
+      "meanNeurons": 7.070729231223082,
+      "maxNeurons": 8.700376510620117,
+      "totalNeurons": 275.7584400177002,
+      "latencyMs": {
+        "mean": 1388.2330897435932,
+        "median": 720.1369999999879,
+        "max": 12149.041200000007,
+        "p95": 10475.637399999978
+      }
+    },
+    {
+      "arm": "C",
+      "savedReference": false,
+      "cases": 39,
+      "counts": {
+        "adequate": 0,
+        "partial": 0,
+        "wrong": 0,
+        "refused": 39
+      },
+      "percentages": {
+        "adequate": 0,
+        "partial": 0,
+        "wrong": 0,
+        "refused": 100
+      },
+      "wrongRefusals": 0,
+      "meanInputTokens": 1455.3333333333333,
+      "maxInputTokens": 1461,
+      "meanOutputTokens": 11,
+      "maxOutputTokens": 11,
+      "meanTotalTokens": 1466.3333333333333,
+      "maxTotalTokens": 1472,
+      "meanNeurons": 7.065530018928723,
+      "maxNeurons": 7.09173583984375,
+      "totalNeurons": 275.5556707382202,
+      "latencyMs": {
+        "mean": 968.4123871794858,
+        "median": 718.6763999999966,
+        "max": 10437.243900000001,
+        "p95": 1272.7140999999829
+      }
+    }
+  ],
+  "freshGenerationCalls": 158,
+  "newBCalls": 0,
+  "freshReportedNeurons": 1898.5352716445923,
+  "absenceAudit": {
+    "claims": 43,
+    "true": 41,
+    "false": 2,
+    "falseExtraCaveats": 0,
+    "extraCaveats": 0,
+    "zeroFalseClaimsGoalMet": false
+  },
+  "evidenceCounts": {
+    "complete": 36,
+    "partial": 2,
+    "absent": 2
+  },
+  "sensitivity": {
+    "description": "If corpus-sourcing question is accepted as collection process rather than requiring all source genres, its frozen A alternative is adequate; the corpus improvement disappears.",
+    "adequateA": 30,
+    "adequateC": 32,
+    "improved": 2,
+    "worse": 0,
+    "same": 38
+  },
+  "preflight": {
+    "priorAandBPromptsAndSystemsExactlyReproduced": 158,
+    "currentContextPairsIdenticalToPrior": 79,
+    "CInstructionForbiddenMatches": 0,
+    "CEntirePromptSourceMatches": 13,
+    "affectedDevCases": 11,
+    "preflightException": "Source words preserved; literal full-prompt word exclusion cannot coexist with unchanged context.",
+    "BNewCalls": 0
+  },
+  "grading": {
+    "method": "All158answers read individually in randomized order with arm IDs and pairing hidden; frozen before decoding. AI review, not independent human certification; wording can suggest variant.",
+    "sha256": "367bb5d2413f19b5072d7e8d75ad81e4924d2b365773185dde4a0de4a632447b",
+    "devCounts": {
+      "adequate": 61,
+      "partial": 5,
+      "wrong": 4,
+      "refused": 10
+    },
+    "extraMissingInformationCaveatsSeen": 0
+  },
+  "limitations": [
+    "40 case units represent38unique original question IDs across35papers. One generation per arm, not a statistical guarantee.",
+    "A and C are freshly generated and graded with labels hidden. B uses the previous saved run/judgments; it is historical reference, not new paired inference.",
+    "All source passages identical, but the literal forbidden-word full-prompt check found13source occurrences in11dev cases. Those source words were preserved; only C instructions have zero occurrences.",
+    "Off-topic rejection test supplies full intended sample handbook directly, bypassing retrieval. It measures generation rejection, not full production retrieval behavior.",
+    "Provider usage is actual reported tokens/Neurons; local context budgeting uses existing approximate tokenizer. Current daily account balance not verified."
+  ],
+  "audit": {
+    "allInputAndApplicationHashesUnchanged": true,
+    "allContextPairsIdentical": true,
+    "all158CallsHTTP200": true,
+    "allFinishedStop": true,
+    "explicitOutputLimit512": true,
+    "allActualPromptPlus512Within5000": true,
+    "noRetrievalCalls": true,
+    "noRerankerCalls": true,
+    "noRewriteCalls": true,
+    "noGraderModelCalls": true,
+    "noHeldOutTestContentRead": true,
+    "applicationCodeChanges": []
+  }
+}

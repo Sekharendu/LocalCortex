@@ -1,0 +1,406 @@
+{
+  "seed": 42,
+  "requestedPerClass": 10,
+  "availableHits": 20,
+  "availableMisses": 137,
+  "hits": [
+    {
+      "caseId": "pdf/1909.09587/a3d9b101765048f4b61cbd3eaa2439582ebb5c77",
+      "group": "chunk_omission",
+      "question": "What source-target language pairs were used in this work? ",
+      "hit": true,
+      "rank": 3,
+      "chunk": {
+        "text": "with a number of combinations of source-target\nlanguage pair to explore the cross-lingual ability\nof multi-BERT. Surprisingly, we find that the mod-\nels have the ability to transfer between low lexi-\ncal similarity language pair, such as English and\nChinese. Recent studies (Lample and Conneau,\n2019; Devlin et al., 2018; Wu and Dredze, 2019)\nshow that cross-lingual language models have the\nability to enable preliminary zero-shot transfer on\nsimple natural language understanding tasks, but",
+        "source": "1909.09587.pdf",
+        "page": 1,
+        "score": 0.7,
+        "documentId": "798175db-6655-4836-8f78-25a6ba74c005",
+        "chunkIndex": 7
+      },
+      "goldQuote": "English",
+      "match": {
+        "goldIndex": 1,
+        "kind": "exact-quote",
+        "quote": "English"
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "docx/1608.06757/8eefa116e3c3d3db751423cc4095d1c4153d3a5f",
+      "group": "chunk_omission",
+      "question": "what standard dataset were used?",
+      "hit": true,
+      "rank": 4,
+      "chunk": {
+        "text": "Table TABREF45 shows the results of biomedical entity recognition compared to the participants of the JNLPBA 2004 bio-entity recognition task BIBREF14 . We notice that for these well-written Medline abstracts, there is not such a strong skew between precision and recall. Our DATEXIS-NER system outperforms the HMM, MEMM, CRF and CDN based models with a micro-F1 score of 84%. However, the highly specialized GENIA chunker for LingPipe achieves higher scores",
+        "source": "1608.06757.docx",
+        "score": 0.4047619,
+        "documentId": "f4fd1070-0ed2-4bbc-a46b-db68fc5fb652",
+        "chunkIndex": 40
+      },
+      "goldQuote": "GENIA",
+      "match": {
+        "goldIndex": 6,
+        "kind": "exact-quote",
+        "quote": "GENIA"
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "pdf/2004.02192/55507f066073b29c1736b684c09c045064053ba9",
+      "group": "chunk_omission",
+      "question": "What are the distinctive characteristics of how Arabic speakers use offensive language?",
+      "hit": true,
+      "rank": 4,
+      "chunk": {
+        "text": "sive to better understand how Arabic speakers use\noffensive language. Here is a breakdown of usage:\nDirect name calling: The most frequent attack is\nto call a person an animal name, and the most used",
+        "source": "2004.02192.pdf",
+        "page": 4,
+        "score": 0.42857143,
+        "documentId": "03d291f5-64a2-4b85-b166-77c7278070bc",
+        "chunkIndex": 40
+      },
+      "goldQuote": "Direct name calling",
+      "match": {
+        "goldIndex": 1,
+        "kind": "exact-quote",
+        "quote": "Direct name calling"
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "docx/1701.05574/49c32a2a64eb41381e5f12ccea4150cac9f3303d",
+      "group": "chunk_omission",
+      "question": "What other evaluation metrics are looked at?",
+      "hit": true,
+      "rank": 1,
+      "chunk": {
+        "text": ". The augmented cognitive features improve sarcasm detection by 3.7% (in terms of F-score), over the performance of the best reported system.",
+        "source": "1701.05574.docx",
+        "score": 0.9166667,
+        "documentId": "0dc08813-fb04-4192-91ac-0229b7a0c2df",
+        "chunkIndex": 3
+      },
+      "goldQuote": "F-score",
+      "match": {
+        "goldIndex": 0,
+        "kind": "exact-quote",
+        "quote": "F-score"
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "pdf/1906.07662/d3ca5f1814860a88ff30761fec3d860d35e39167",
+      "group": "chunk_omission",
+      "question": "Which approaches have been applied to solve word segmentation in Vietnamese?",
+      "hit": true,
+      "rank": 4,
+      "chunk": {
+        "text": "guages, such as: Chinese, Japanese, Burmese (Myanmar) and\nThai [4], [5], [6], [7]. Approaches for word segmentation\ntask are variety, from lexicon-based to machine learning-based\nmethods. Recently, machine learning-based methods are used\nwidely to solve this issue, such as: Support Vector Machine or\nConditional Random Fields [8], [9]. In general, Chinese is a\nlanguage which has the most studies on the word segmentation\nissue. However, there is a lack of survey of word segmentation",
+        "source": "1906.07662.pdf",
+        "page": 1,
+        "score": 0.42857146,
+        "documentId": "bb12e4c0-b4b6-4bf2-8970-9bb654bd420b",
+        "chunkIndex": 6
+      },
+      "goldQuote": "Conditional Random Fields ",
+      "match": {
+        "goldIndex": 6,
+        "kind": "exact-quote",
+        "quote": "Conditional Random Fields "
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "docx/1610.08815/3a6e843c6c81244c14730295cfb8b865cd7ede46",
+      "group": "chunk_omission",
+      "question": "What are the state of the art models?",
+      "hit": true,
+      "rank": 3,
+      "chunk": {
+        "text": "# Sarcasm Datasets Used in the Experiment\nThis dataset was created by BIBREF8 . The tweets were downloaded from Twitter using #sarcasm as a marker for sarcastic tweets. It is a monolingual English dataset which consists of a balanced distribution of 50,000 sarcastic tweets and 50,000 non-sarcastic tweets.",
+        "source": "1610.08815.docx",
+        "score": 0.4318182,
+        "documentId": "d8b80e7e-bd69-42e2-aaa6-ec5c16f49a58",
+        "chunkIndex": 57
+      },
+      "goldQuote": "BIBREF8 ",
+      "match": {
+        "goldIndex": 1,
+        "kind": "exact-quote",
+        "quote": "BIBREF8 "
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "pdf/1908.07195/43eecc576348411b0634611c81589f618cd4fddf",
+      "group": "chunk_omission",
+      "question": "What GAN models were used as baselines to compare against?",
+      "hit": true,
+      "rank": 1,
+      "chunk": {
+        "text": "datasets are presented in Table 2.\n4.2 Baselines\nWe compared our model with MLE, RL and GAN\nbaselines. Since COCO and EMNLP2017 WMT\ndon’t have input while WeiboDial regards posts\nas input, we chose the following baselines respec-\ntively:\nMLE: a RNN model trained with MLE objective\n(Graves, 2013). Its extension, Seq2Seq, can work\non the dialogue dataset (Sutskever et al., 2014).\nSeqGAN: The first text GAN model that updates\nthe generator with policy gradient based on the re-",
+        "source": "1908.07195.pdf",
+        "page": 6,
+        "score": 0.7666667,
+        "documentId": "db9c79de-092f-40e5-870a-199f04b26612",
+        "chunkIndex": 47
+      },
+      "goldQuote": "MLE",
+      "match": {
+        "goldIndex": 0,
+        "kind": "exact-quote",
+        "quote": "MLE"
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "pdf/1912.00667/bc730e4d964b6a66656078e2da130310142ab641",
+      "group": "chunk_omission",
+      "question": "What type of classifiers are used?",
+      "hit": true,
+      "rank": 2,
+      "chunk": {
+        "text": "learning models for event detection. In summary, our work\nmakes the following key contributions:\n• A novel human-AI loop approach for micropost event de-\ntection that jointly discovers informative keywords and\nestimates their expectation;\n• A unified probabilistic model that infers keyword expec-\ntation and simultaneously performs model training;\n• An extensive empirical evaluation of our approach on\nmultiple real-world datasets demonstrating that our ap-",
+        "source": "1912.00667.pdf",
+        "page": 2,
+        "score": 0.8333334,
+        "documentId": "1dffa3c9-8a8a-4f6c-b161-b9246b851985",
+        "chunkIndex": 15
+      },
+      "goldQuote": "probabilistic model",
+      "match": {
+        "goldIndex": 0,
+        "kind": "exact-quote",
+        "quote": "probabilistic model"
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "pdf/1910.06592/3e88fb3d28593309a307eb97e875575644a01463",
+      "group": "chunk_omission",
+      "question": "What baselines were used in this work?",
+      "hit": true,
+      "rank": 1,
+      "chunk": {
+        "text": "Baselines. We compare our approach (FacTweet) to the following set of baselines:\n– LR + Bag-of-words: We aggregate the tweets of a feed and we use a bag-of-words\nrepresentation with a logistic regression (LR) classifier.\n– Tweet2vec: We use the Bidirectional Gated recurrent neural network model pro-\nposed in [6]. We keep the default parameters that were provided with the imple-\nmentation. To represent the tweets, we use the decoded embedding produced by the",
+        "source": "1910.06592.pdf",
+        "page": 4,
+        "score": 0.7254902,
+        "documentId": "713b6487-164b-4341-92a2-01f815f73f0d",
+        "chunkIndex": 24
+      },
+      "goldQuote": "LR + Bag-of-words",
+      "match": {
+        "goldIndex": 0,
+        "kind": "exact-quote",
+        "quote": "LR + Bag-of-words"
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    },
+    {
+      "caseId": "pdf/1912.08960/63a1cbe66fd58ff0ead895a8bac1198c38c008aa",
+      "group": "chunk_omission",
+      "question": "Which existing models are evaluated?",
+      "hit": true,
+      "rank": 4,
+      "chunk": {
+        "text": "they do not reflect the successively closing gap of caption\ntruthfulness scores between two Existential datasets,\nor the substantial difference in caption truthfulness be-\ntween captions on Existential-MultiShapes and\nSpatial-MultiShapes.\nIn the remainder of the paper we discuss in detail the di-\nagnostic results of the LRCN1u model demonstrated by the\nGTD evaluation framework.\nPerfect grammaticality for all caption types. As shown in\nFigure 4, generated captions for all types of ShapeWorldICE",
+        "source": "1912.08960.pdf",
+        "page": 5,
+        "score": 0.4909091,
+        "documentId": "f032a6ba-da2f-473a-aa46-481813a7a5ae",
+        "chunkIndex": 51
+      },
+      "goldQuote": "LRCN1u",
+      "match": {
+        "goldIndex": 2,
+        "kind": "exact-quote",
+        "quote": "LRCN1u"
+      },
+      "note": "Entire quoted text or same-paper interval overlap, per requested rule."
+    }
+  ],
+  "misses": [
+    {
+      "caseId": "pdf/1610.00956/e5bc73974c79d96eee2b688e578a9de1d0eb38fd",
+      "group": "chunk_omission",
+      "question": "How do they show there is space for further improvement?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "area of text comprehension. Hence we are intro-\nducing the BookTest, a new dataset very similar to\nthe Children’s Book test but more than 60 times\nlarger1 to enable training larger models even in the\ndomain of text comprehension. Furthermore the\nmethodology used to create our data can later be\nused to create even larger datasets when the need\narises thanks to further technological progress.\nWe show that if we evaluate a model trained on\nthe new dataset on the now standard Children’s",
+        "source": "1610.00956.pdf",
+        "page": 2,
+        "score": 1,
+        "documentId": "df4ba4d7-ece7-407f-93d1-eb8f5156680e",
+        "chunkIndex": 9
+      },
+      "goldQuote": "majority of questions that our system could not answer so far are in fact answerable",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "pdf/2001.01269/2a564b092916f2fabbfe893cf13de169945ef2e1",
+      "group": "chunk_omission",
+      "question": "What details are given about the movie domain dataset?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "Generating Word and Document Embeddings\nfor Sentiment Analysis\nCem Rıfkı Aydın, Tunga G¨ung¨or and Ali Erkan\nBo˘gazic¸i University\nComputer Engineering Department\nBebek, Istanbul, Turkey, 34342\ncemrifkiaydin@gmail.com, gungort@boun.edu.tr, alierkan@gmail.com\nAbstract. Sentiments of words differ from one corpus to another. Inducing gen-\neral sentiment lexicons for languages and using them cannot, in general, produce\nmeaningful results for different domains. In this paper, we combine contextual",
+        "source": "2001.01269.pdf",
+        "page": 1,
+        "score": 0.8333334,
+        "documentId": "e2d4effb-b173-45df-b843-66571d0f6e2d",
+        "chunkIndex": 0
+      },
+      "goldQuote": "The number of reviews in this movie corpus is 20,244 and the average number of words in reviews is 39. Each of these reviews has a star-rating score which is indicative of sentiment.",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "pdf/1912.08904/05c49b9f84772e6df41f530d86c1f7a1da6aa489",
+      "group": "chunk_omission",
+      "question": "What interface does Macaw currently have?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "PR appropriately (e.g., status check, comment). Simply follow the\ninstructions provided by the bot. You will only need to do this once\nacross all repos using our CLA.\n7 CONCLUSIONS\nThis paper described Macaw, an open-source platform for conver-\nsational information seeking research. Macaw supports multi-turn,\nmulti-modal, and mixed-initiative interactions. It was designed\nbased on a modular architecture that allows further improvements",
+        "source": "1912.08904.pdf",
+        "page": 4,
+        "score": 0.8666667,
+        "documentId": "a756ab3d-900f-48f5-8a8f-8d71db838676",
+        "chunkIndex": 32
+      },
+      "goldQuote": "File IO",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "pdf/1909.13104/392fb87564c4f45d0d8d491a9bb217c4fce87f03",
+      "group": "chunk_omission",
+      "question": "What baseline model is used?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "Attention-based method for categorizing\ndifferent types of online harassment language\nChristos Karatsalos and Yannis Panagiotakis\nAthens University of Economics and Business, Athens, Greece\n{ckarats, giannispanagiwtakis}@gmail.com\nAbstract. In the era of social media and networking platforms, Twit-\nter has been doomed for abuse and harassment toward users specifically\nwomen. Monitoring the contents including sexism and sexual harassment",
+        "source": "1909.13104.pdf",
+        "page": 1,
+        "score": 1,
+        "documentId": "1eee5486-c065-407f-9cb0-21707139c5f7",
+        "chunkIndex": 0
+      },
+      "goldQuote": "LastStateRNN",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "pdf/1908.05441/df6d327e176740da9edcc111a06374c54c8e809c",
+      "group": "chunk_omission",
+      "question": "What previous methods is their model compared to?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "and nearly three times the size of the largest biomedical\ndataset.\n2. We empirically demonstrate large performance gains\nof +0.12 MAP (+13.5% P@1) on science exam ques-\ntion classification using a BERT-based model over five\nprevious state-of-the art methods, while improving per-\nformance on two biomedical question datasets by 4-5%.\nThis is the first model to show consistent state-of-the-\nart performance across multiple question classification\ndatasets.",
+        "source": "1908.05441.pdf",
+        "page": 2,
+        "score": 0.8333334,
+        "documentId": "a4425726-7a6f-4450-bb13-e4328fd298c1",
+        "chunkIndex": 13
+      },
+      "goldQuote": "CNN",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "pdf/2004.02192/8dda1ef371933811e2a25a286529c31623cca0c6",
+      "group": "chunk_omission",
+      "question": "How many annotators tagged each tweet?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "225 vulgar tweets and 506 hate speech tweets, and\n8,085 clean tweets. To validate annotation quality,\nwe asked three additional annotators to annotate\ntwo tweet sample sets. The first was a random\nsample of 100 tweets containing 50 offensive and\n50 non-offensive tweets. The Inter-Annotator\nAgreement (IIA) between the annotators using\nFleiss’s Kappa coefficient (Fleiss, 1971) was\n0.92. The second was general random samples\ncontaining 100 tweets each from the dataset, and",
+        "source": "2004.02192.pdf",
+        "page": 4,
+        "score": 0.7777778,
+        "documentId": "03d291f5-64a2-4b85-b166-77c7278070bc",
+        "chunkIndex": 34
+      },
+      "goldQuote": "One",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "docx/1611.01576/b591853e938984e6069d738371500ebdec50d256",
+      "group": "chunk_omission",
+      "question": "What sentiment classification dataset is used?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "Quasi-Recurrent Neural Networks",
+        "source": "1611.01576.docx",
+        "score": 1,
+        "documentId": "21f1cd74-42c8-4918-921a-b92fa05e7122",
+        "chunkIndex": 0
+      },
+      "goldQuote": "the IMDb movie review dataset BIBREF17",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "pdf/1810.12085/c571deefe93f0a41b60f9886db119947648e967c",
+      "group": "chunk_omission",
+      "question": "what datasets were used?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "ing how much information in the discharge note can be\nfound in the rest of the patient’s EHR notes and (2)\ndevelop a classifier for labeling the topics of history of\npresent illness notes, a narrative section in the discharge\nsummary that describes the patient’s prior history and\ncurrent symptoms. Such a classifier can be used to create\ntopic specific evaluation sets for methods that perform\nextractive summarization. These aims are critical steps",
+        "source": "1810.12085.pdf",
+        "page": 1,
+        "score": 0.6818182,
+        "documentId": "9f578e8c-d15d-457d-b48a-d773d58b5e1c",
+        "chunkIndex": 7
+      },
+      "goldQuote": "MIMIC-III",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "pdf/1810.04428/f651cd144b7749e82aa1374779700812f64c8799",
+      "group": "chunk_omission",
+      "question": "what evaluation metrics did they use?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "4 Evaluation\nWe evaluate the performance of text simplification using neural machine translation on available parallel\nsentences and additional simplified sentences.\nDataset. We use two simplification datasets (WikiSmall and WikiLarge). WikiSmall consists of\nordinary and simplified sentences from the ordinary and simple English Wikipedias, which has been\nused as benchmark for evaluating text simplification (Woodsend and Lapata, 2011; Wubben et al., 2012;",
+        "source": "1810.04428.pdf",
+        "page": 4,
+        "score": 0.9166667,
+        "documentId": "42bb1014-6564-4ecd-b63d-9a5a8a223483",
+        "chunkIndex": 27
+      },
+      "goldQuote": "BLEU",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    },
+    {
+      "caseId": "pdf/1912.08904/68df324e5fa697baed25c761d0be4c528f7f5cf7",
+      "group": "chunk_omission",
+      "question": "What are the different modules in Macaw?",
+      "hit": false,
+      "rank": 1,
+      "chunk": {
+        "text": "PR appropriately (e.g., status check, comment). Simply follow the\ninstructions provided by the bot. You will only need to do this once\nacross all repos using our CLA.\n7 CONCLUSIONS\nThis paper described Macaw, an open-source platform for conver-\nsational information seeking research. Macaw supports multi-turn,\nmulti-modal, and mixed-initiative interactions. It was designed\nbased on a modular architecture that allows further improvements",
+        "source": "1912.08904.pdf",
+        "page": 4,
+        "score": 0.9166667,
+        "documentId": "a756ab3d-900f-48f5-8a8f-8d71db838676",
+        "chunkIndex": 32
+      },
+      "goldQuote": "Co-Reference Resolution",
+      "match": null,
+      "note": "No top-five chunk matched any mapped gold quote; displayed chunk is rank1, not a retrieved answer."
+    }
+  ]
+}

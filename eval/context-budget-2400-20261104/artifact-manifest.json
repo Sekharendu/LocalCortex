@@ -1,0 +1,65 @@
+{
+  "snapshot": "CONTEXT-CAP-1200-VS-2400-20261104",
+  "files": [
+    {
+      "file": "eval/context-budget-2400-20261104/assembled-prompts.jsonl",
+      "sha256": "ec23df69f2ddcf10f4860c2c7e6bd59a92ee047bd6316725fff549559e2a61de",
+      "bytes": 4611484
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/audit.json",
+      "sha256": "dd7e957bfff6ce9223f065299e320e8071ac9ba5ec72dc8937f6a503d3b66b65",
+      "bytes": 386
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/audit.mjs",
+      "sha256": "dfb6ccc3b58f7fdcfc122d0bf7cf967d090e7ec4efaf1b5b8dd3c33db10e11d0",
+      "bytes": 3360
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/case-results.jsonl",
+      "sha256": "d364b359aacccd9f061bfdf2789801a2664907bceec2f61b873b256221cd2e3a",
+      "bytes": 122361
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/gained-cases.json",
+      "sha256": "8c922d15849ff5408cb3eb32e6a2aa82a170b3107c82322515e81f1d86813f1d",
+      "bytes": 20427
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/lost-cases.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/manifest.json",
+      "sha256": "6759726dba5a33033bc9b5d2d0fe55949a4ecb9b011a3d92ce0ec83dba976fbd",
+      "bytes": 2215
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/prompt-token-log.jsonl",
+      "sha256": "cfd7ec3e15b58727e61dd8d2087de7cf8bcd546de50d0d22053fc2abff4ccc18",
+      "bytes": 178281
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/prompt-token-sample.json",
+      "sha256": "eff93db982a6cbdb69e78c25d3bdaa475e1727c910c569e0131e95e96d87611c",
+      "bytes": 17803
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/replay.mjs",
+      "sha256": "678d03199d55026d9b6ab353373e5f87be6f8d3bb93838fd4dc492258bb1fed0",
+      "bytes": 13599
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/REPORT.md",
+      "sha256": "0c8025aa96a17809be7b115be461fff8356b2bcee10428916a65d27684855a89",
+      "bytes": 5982
+    },
+    {
+      "file": "eval/context-budget-2400-20261104/summary.json",
+      "sha256": "3673153aac6d48cf20e26ad901bd11265e068adc5ea4d813f3846562b288976f",
+      "bytes": 1881
+    }
+  ]
+}

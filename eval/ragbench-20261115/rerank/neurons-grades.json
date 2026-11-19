@@ -1,0 +1,702 @@
+[
+{
+"n": 1,
+"id": "tat-0736",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 2,
+"id": "tat-0785",
+"source": "tat",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 3,
+"id": "nq-0379",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 4,
+"id": "nq-0279",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 5,
+"id": "feta-0420",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 6,
+"id": "feta-0485",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 7,
+"id": "feta-0526",
+"source": "feta",
+"top10": "P",
+"top15": "P"
+},
+{
+"n": 8,
+"id": "feta-0446",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 9,
+"id": "feta-0546",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 10,
+"id": "nq-0151",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 11,
+"id": "tat-0770",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 12,
+"id": "financebench-0065",
+"source": "financebench",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 13,
+"id": "nq-0176",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 14,
+"id": "nq-0249",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 15,
+"id": "feta-0558",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 16,
+"id": "tat-0694",
+"source": "tat",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 17,
+"id": "feta-0448",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 18,
+"id": "nq-0297",
+"source": "nq",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 19,
+"id": "tat-0711",
+"source": "tat",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 20,
+"id": "financebench-0011",
+"source": "financebench",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 21,
+"id": "tat-0746",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 22,
+"id": "feta-0442",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 23,
+"id": "financebench-0098",
+"source": "financebench",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 24,
+"id": "financebench-0091",
+"source": "financebench",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 25,
+"id": "feta-0574",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 26,
+"id": "feta-0580",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 27,
+"id": "nq-0231",
+"source": "nq",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 28,
+"id": "tat-0683",
+"source": "tat",
+"top10": "P",
+"top15": "P"
+},
+{
+"n": 29,
+"id": "feta-0606",
+"source": "feta",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 30,
+"id": "nq-0352",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 31,
+"id": "tat-0745",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 32,
+"id": "feta-0389",
+"source": "feta",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 33,
+"id": "financebench-0146",
+"source": "financebench",
+"top10": "P",
+"top15": "P"
+},
+{
+"n": 34,
+"id": "nq-0222",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 35,
+"id": "nq-0214",
+"source": "nq",
+"top10": "C",
+"top15": "W"
+},
+{
+"n": 36,
+"id": "feta-0493",
+"source": "feta",
+"top10": "W",
+"top15": "C"
+},
+{
+"n": 37,
+"id": "tat-0647",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 38,
+"id": "feta-0550",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 39,
+"id": "feta-0437",
+"source": "feta",
+"top10": "W",
+"top15": "C"
+},
+{
+"n": 40,
+"id": "nq-0367",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 41,
+"id": "feta-0438",
+"source": "feta",
+"top10": "P",
+"top15": "C"
+},
+{
+"n": 42,
+"id": "feta-0426",
+"source": "feta",
+"top10": "P",
+"top15": "P"
+},
+{
+"n": 43,
+"id": "nq-0269",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 44,
+"id": "feta-0472",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 45,
+"id": "tat-0692",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 46,
+"id": "feta-0462",
+"source": "feta",
+"top10": "P",
+"top15": "P"
+},
+{
+"n": 47,
+"id": "feta-0572",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 48,
+"id": "nq-0357",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 49,
+"id": "tat-0753",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 50,
+"id": "nq-0350",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 51,
+"id": "financebench-0068",
+"source": "financebench",
+"top10": "P",
+"top15": "P"
+},
+{
+"n": 52,
+"id": "nq-0234",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 53,
+"id": "nq-0153",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 54,
+"id": "tat-0787",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 55,
+"id": "tat-0634",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 56,
+"id": "feta-0390",
+"source": "feta",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 57,
+"id": "nq-0308",
+"source": "nq",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 58,
+"id": "financebench-0121",
+"source": "financebench",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 59,
+"id": "financebench-0047",
+"source": "financebench",
+"top10": "W",
+"top15": "R"
+},
+{
+"n": 60,
+"id": "nq-0340",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 61,
+"id": "financebench-0057",
+"source": "financebench",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 62,
+"id": "feta-0594",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 63,
+"id": "nq-0285",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 64,
+"id": "tat-0768",
+"source": "tat",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 65,
+"id": "feta-0595",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 66,
+"id": "financebench-0116",
+"source": "financebench",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 67,
+"id": "tat-0775",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 68,
+"id": "feta-0575",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 69,
+"id": "tat-0742",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 70,
+"id": "nq-0225",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 71,
+"id": "tat-0771",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 72,
+"id": "financebench-0106",
+"source": "financebench",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 73,
+"id": "tat-0718",
+"source": "tat",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 74,
+"id": "financebench-0120",
+"source": "financebench",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 75,
+"id": "nq-0182",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 76,
+"id": "tat-0750",
+"source": "tat",
+"top10": "C",
+"top15": "W"
+},
+{
+"n": 77,
+"id": "nq-0180",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 78,
+"id": "financebench-0029",
+"source": "financebench",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 79,
+"id": "nq-0158",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 80,
+"id": "tat-0641",
+"source": "tat",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 81,
+"id": "financebench-0024",
+"source": "financebench",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 82,
+"id": "financebench-0071",
+"source": "financebench",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 83,
+"id": "nq-0280",
+"source": "nq",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 84,
+"id": "financebench-0148",
+"source": "financebench",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 85,
+"id": "feta-0476",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 86,
+"id": "financebench-0080",
+"source": "financebench",
+"top10": "C",
+"top15": "P"
+},
+{
+"n": 87,
+"id": "financebench-0074",
+"source": "financebench",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 88,
+"id": "nq-0288",
+"source": "nq",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 89,
+"id": "nq-0246",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 90,
+"id": "nq-0245",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 91,
+"id": "feta-0590",
+"source": "feta",
+"top10": "C",
+"top15": "P"
+},
+{
+"n": 92,
+"id": "feta-0534",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 93,
+"id": "feta-0557",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 94,
+"id": "nq-0206",
+"source": "nq",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 95,
+"id": "tat-0629",
+"source": "tat",
+"top10": "W",
+"top15": "R"
+},
+{
+"n": 96,
+"id": "financebench-0133",
+"source": "financebench",
+"top10": "R",
+"top15": "R"
+},
+{
+"n": 97,
+"id": "feta-0415",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 98,
+"id": "nq-0262",
+"source": "nq",
+"top10": "W",
+"top15": "W"
+},
+{
+"n": 99,
+"id": "feta-0386",
+"source": "feta",
+"top10": "C",
+"top15": "C"
+},
+{
+"n": 100,
+"id": "tat-0631",
+"source": "tat",
+"top10": "R",
+"top15": "R"
+}
+]

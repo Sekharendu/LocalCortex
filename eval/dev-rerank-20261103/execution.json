@@ -1,0 +1,14 @@
+{
+  "status": "stopped",
+  "failure": "RerankingError: Reranking cancelled or timed out",
+  "attempts": 19,
+  "completedPools": 18,
+  "skippedPools": 4,
+  "expectedPools": 468,
+  "reportedRunNeurons": 48.35778803674158,
+  "usageRecords": 18,
+  "changedInputs": [],
+  "generationCalls": 0,
+  "newRetrievalCalls": 0,
+  "heldOutContentRead": false
+}

@@ -1,0 +1,1229 @@
+{
+ "groups": {
+  "financebench": {
+   "n": 111,
+   "triggered": 44,
+   "gateOff": {
+    "baseline": {
+     "top1": 39,
+     "top5": 64,
+     "top10": 79,
+     "top15": 82,
+     "top20": 85,
+     "mrr": 0.4481,
+     "gatePass": 111
+    },
+    "expanded": {
+     "top1": 46,
+     "top5": 70,
+     "top10": 83,
+     "top15": 86,
+     "top20": 88,
+     "mrr": 0.513,
+     "gatePass": 111
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 9,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 7,
+      "broke": 1
+     },
+     "top10": {
+      "fixed": 5,
+      "broke": 1
+     },
+     "top15": {
+      "fixed": 5,
+      "broke": 1
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 39,
+     "top5": 64,
+     "top10": 79,
+     "top15": 82,
+     "top20": 85,
+     "mrr": 0.4481,
+     "gatePass": 111
+    },
+    "expanded": {
+     "top1": 46,
+     "top5": 70,
+     "top10": 83,
+     "top15": 86,
+     "top20": 88,
+     "mrr": 0.513,
+     "gatePass": 111
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 9,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 7,
+      "broke": 1
+     },
+     "top10": {
+      "fixed": 5,
+      "broke": 1
+     },
+     "top15": {
+      "fixed": 5,
+      "broke": 1
+     }
+    }
+   }
+  },
+  "financebench (triggered only)": {
+   "n": 44,
+   "triggered": 44,
+   "gateOff": {
+    "baseline": {
+     "top1": 19,
+     "top5": 30,
+     "top10": 34,
+     "top15": 35,
+     "top20": 37,
+     "mrr": 0.5308,
+     "gatePass": 44
+    },
+    "expanded": {
+     "top1": 26,
+     "top5": 36,
+     "top10": 38,
+     "top15": 39,
+     "top20": 40,
+     "mrr": 0.6946,
+     "gatePass": 44
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 9,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 7,
+      "broke": 1
+     },
+     "top10": {
+      "fixed": 5,
+      "broke": 1
+     },
+     "top15": {
+      "fixed": 5,
+      "broke": 1
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 19,
+     "top5": 30,
+     "top10": 34,
+     "top15": 35,
+     "top20": 37,
+     "mrr": 0.5308,
+     "gatePass": 44
+    },
+    "expanded": {
+     "top1": 26,
+     "top5": 36,
+     "top10": 38,
+     "top15": 39,
+     "top20": 40,
+     "mrr": 0.6946,
+     "gatePass": 44
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 9,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 7,
+      "broke": 1
+     },
+     "top10": {
+      "fixed": 5,
+      "broke": 1
+     },
+     "top15": {
+      "fixed": 5,
+      "broke": 1
+     }
+    }
+   }
+  },
+  "tat": {
+   "n": 124,
+   "triggered": 11,
+   "gateOff": {
+    "baseline": {
+     "top1": 62,
+     "top5": 100,
+     "top10": 108,
+     "top15": 113,
+     "top20": 115,
+     "mrr": 0.6303,
+     "gatePass": 124
+    },
+    "expanded": {
+     "top1": 60,
+     "top5": 100,
+     "top10": 109,
+     "top15": 113,
+     "top20": 115,
+     "mrr": 0.6204,
+     "gatePass": 124
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 1,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 62,
+     "top5": 100,
+     "top10": 108,
+     "top15": 113,
+     "top20": 115,
+     "mrr": 0.6303,
+     "gatePass": 124
+    },
+    "expanded": {
+     "top1": 60,
+     "top5": 100,
+     "top10": 109,
+     "top15": 113,
+     "top20": 115,
+     "mrr": 0.6204,
+     "gatePass": 124
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 1,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   }
+  },
+  "tat (triggered only)": {
+   "n": 11,
+   "triggered": 11,
+   "gateOff": {
+    "baseline": {
+     "top1": 4,
+     "top5": 9,
+     "top10": 9,
+     "top15": 10,
+     "top20": 10,
+     "mrr": 0.5595,
+     "gatePass": 11
+    },
+    "expanded": {
+     "top1": 2,
+     "top5": 9,
+     "top10": 10,
+     "top15": 10,
+     "top20": 10,
+     "mrr": 0.4485,
+     "gatePass": 11
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 1,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 4,
+     "top5": 9,
+     "top10": 9,
+     "top15": 10,
+     "top20": 10,
+     "mrr": 0.5595,
+     "gatePass": 11
+    },
+    "expanded": {
+     "top1": 2,
+     "top5": 9,
+     "top10": 10,
+     "top15": 10,
+     "top20": 10,
+     "mrr": 0.4485,
+     "gatePass": 11
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 1,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   }
+  },
+  "nq": {
+   "n": 154,
+   "triggered": 0,
+   "gateOff": {
+    "baseline": {
+     "top1": 57,
+     "top5": 123,
+     "top10": 132,
+     "top15": 136,
+     "top20": 141,
+     "mrr": 0.5431,
+     "gatePass": 154
+    },
+    "expanded": {
+     "top1": 57,
+     "top5": 123,
+     "top10": 132,
+     "top15": 136,
+     "top20": 141,
+     "mrr": 0.5431,
+     "gatePass": 154
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 57,
+     "top5": 123,
+     "top10": 132,
+     "top15": 136,
+     "top20": 141,
+     "mrr": 0.5431,
+     "gatePass": 154
+    },
+    "expanded": {
+     "top1": 57,
+     "top5": 123,
+     "top10": 132,
+     "top15": 136,
+     "top20": 141,
+     "mrr": 0.5431,
+     "gatePass": 154
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   }
+  },
+  "nq (triggered only)": {
+   "n": 0,
+   "triggered": 0,
+   "gateOff": {
+    "baseline": {
+     "top1": 0,
+     "top5": 0,
+     "top10": 0,
+     "top15": 0,
+     "top20": 0,
+     "mrr": 0.0,
+     "gatePass": 0
+    },
+    "expanded": {
+     "top1": 0,
+     "top5": 0,
+     "top10": 0,
+     "top15": 0,
+     "top20": 0,
+     "mrr": 0.0,
+     "gatePass": 0
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 0,
+     "top5": 0,
+     "top10": 0,
+     "top15": 0,
+     "top20": 0,
+     "mrr": 0.0,
+     "gatePass": 0
+    },
+    "expanded": {
+     "top1": 0,
+     "top5": 0,
+     "top10": 0,
+     "top15": 0,
+     "top20": 0,
+     "mrr": 0.0,
+     "gatePass": 0
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   }
+  },
+  "feta": {
+   "n": 152,
+   "triggered": 0,
+   "gateOff": {
+    "baseline": {
+     "top1": 72,
+     "top5": 120,
+     "top10": 133,
+     "top15": 138,
+     "top20": 143,
+     "mrr": 0.6137,
+     "gatePass": 151
+    },
+    "expanded": {
+     "top1": 72,
+     "top5": 120,
+     "top10": 133,
+     "top15": 138,
+     "top20": 143,
+     "mrr": 0.6137,
+     "gatePass": 151
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 71,
+     "top5": 119,
+     "top10": 132,
+     "top15": 137,
+     "top20": 142,
+     "mrr": 0.6071,
+     "gatePass": 151
+    },
+    "expanded": {
+     "top1": 71,
+     "top5": 119,
+     "top10": 132,
+     "top15": 137,
+     "top20": 142,
+     "mrr": 0.6071,
+     "gatePass": 151
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   }
+  },
+  "feta (triggered only)": {
+   "n": 0,
+   "triggered": 0,
+   "gateOff": {
+    "baseline": {
+     "top1": 0,
+     "top5": 0,
+     "top10": 0,
+     "top15": 0,
+     "top20": 0,
+     "mrr": 0.0,
+     "gatePass": 0
+    },
+    "expanded": {
+     "top1": 0,
+     "top5": 0,
+     "top10": 0,
+     "top15": 0,
+     "top20": 0,
+     "mrr": 0.0,
+     "gatePass": 0
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 0,
+     "top5": 0,
+     "top10": 0,
+     "top15": 0,
+     "top20": 0,
+     "mrr": 0.0,
+     "gatePass": 0
+    },
+    "expanded": {
+     "top1": 0,
+     "top5": 0,
+     "top10": 0,
+     "top15": 0,
+     "top20": 0,
+     "mrr": 0.0,
+     "gatePass": 0
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 0,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 0,
+      "broke": 0
+     }
+    }
+   }
+  },
+  "financebench half A": {
+   "n": 56,
+   "triggered": 20,
+   "gateOff": {
+    "baseline": {
+     "top1": 20,
+     "top5": 30,
+     "top10": 36,
+     "top15": 38,
+     "top20": 40,
+     "mrr": 0.4475,
+     "gatePass": 56
+    },
+    "expanded": {
+     "top1": 22,
+     "top5": 33,
+     "top10": 38,
+     "top15": 40,
+     "top20": 42,
+     "mrr": 0.4946,
+     "gatePass": 56
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 4,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 3,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 2,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 2,
+      "broke": 0
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 20,
+     "top5": 30,
+     "top10": 36,
+     "top15": 38,
+     "top20": 40,
+     "mrr": 0.4475,
+     "gatePass": 56
+    },
+    "expanded": {
+     "top1": 22,
+     "top5": 33,
+     "top10": 38,
+     "top15": 40,
+     "top20": 42,
+     "mrr": 0.4946,
+     "gatePass": 56
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 4,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 3,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 2,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 2,
+      "broke": 0
+     }
+    }
+   }
+  },
+  "financebench half A (triggered only)": {
+   "n": 20,
+   "triggered": 20,
+   "gateOff": {
+    "baseline": {
+     "top1": 8,
+     "top5": 13,
+     "top10": 15,
+     "top15": 16,
+     "top20": 17,
+     "mrr": 0.5057,
+     "gatePass": 20
+    },
+    "expanded": {
+     "top1": 10,
+     "top5": 16,
+     "top10": 17,
+     "top15": 18,
+     "top20": 19,
+     "mrr": 0.6376,
+     "gatePass": 20
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 4,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 3,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 2,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 2,
+      "broke": 0
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 8,
+     "top5": 13,
+     "top10": 15,
+     "top15": 16,
+     "top20": 17,
+     "mrr": 0.5057,
+     "gatePass": 20
+    },
+    "expanded": {
+     "top1": 10,
+     "top5": 16,
+     "top10": 17,
+     "top15": 18,
+     "top20": 19,
+     "mrr": 0.6376,
+     "gatePass": 20
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 4,
+      "broke": 2
+     },
+     "top5": {
+      "fixed": 3,
+      "broke": 0
+     },
+     "top10": {
+      "fixed": 2,
+      "broke": 0
+     },
+     "top15": {
+      "fixed": 2,
+      "broke": 0
+     }
+    }
+   }
+  },
+  "financebench half B": {
+   "n": 55,
+   "triggered": 24,
+   "gateOff": {
+    "baseline": {
+     "top1": 19,
+     "top5": 34,
+     "top10": 43,
+     "top15": 44,
+     "top20": 45,
+     "mrr": 0.4487,
+     "gatePass": 55
+    },
+    "expanded": {
+     "top1": 24,
+     "top5": 37,
+     "top10": 45,
+     "top15": 46,
+     "top20": 46,
+     "mrr": 0.5318,
+     "gatePass": 55
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 5,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 4,
+      "broke": 1
+     },
+     "top10": {
+      "fixed": 3,
+      "broke": 1
+     },
+     "top15": {
+      "fixed": 3,
+      "broke": 1
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 19,
+     "top5": 34,
+     "top10": 43,
+     "top15": 44,
+     "top20": 45,
+     "mrr": 0.4487,
+     "gatePass": 55
+    },
+    "expanded": {
+     "top1": 24,
+     "top5": 37,
+     "top10": 45,
+     "top15": 46,
+     "top20": 46,
+     "mrr": 0.5318,
+     "gatePass": 55
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 5,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 4,
+      "broke": 1
+     },
+     "top10": {
+      "fixed": 3,
+      "broke": 1
+     },
+     "top15": {
+      "fixed": 3,
+      "broke": 1
+     }
+    }
+   }
+  },
+  "financebench half B (triggered only)": {
+   "n": 24,
+   "triggered": 24,
+   "gateOff": {
+    "baseline": {
+     "top1": 11,
+     "top5": 17,
+     "top10": 19,
+     "top15": 19,
+     "top20": 20,
+     "mrr": 0.5517,
+     "gatePass": 24
+    },
+    "expanded": {
+     "top1": 16,
+     "top5": 20,
+     "top10": 21,
+     "top15": 21,
+     "top20": 21,
+     "mrr": 0.7421,
+     "gatePass": 24
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 5,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 4,
+      "broke": 1
+     },
+     "top10": {
+      "fixed": 3,
+      "broke": 1
+     },
+     "top15": {
+      "fixed": 3,
+      "broke": 1
+     }
+    }
+   },
+   "gateOn": {
+    "baseline": {
+     "top1": 11,
+     "top5": 17,
+     "top10": 19,
+     "top15": 19,
+     "top20": 20,
+     "mrr": 0.5517,
+     "gatePass": 24
+    },
+    "expanded": {
+     "top1": 16,
+     "top5": 20,
+     "top10": 21,
+     "top15": 21,
+     "top20": 21,
+     "mrr": 0.7421,
+     "gatePass": 24
+    },
+    "fixedBroke": {
+     "top1": {
+      "fixed": 5,
+      "broke": 0
+     },
+     "top5": {
+      "fixed": 4,
+      "broke": 1
+     },
+     "top10": {
+      "fixed": 3,
+      "broke": 1
+     },
+     "top15": {
+      "fixed": 3,
+      "broke": 1
+     }
+    }
+   }
+  }
+ },
+ "blendTriggeredFinanceBench": {
+  "all": {
+   "n": 44,
+   "gateOff": {
+    "top1": {
+     "baselineBlend": 20,
+     "expandedBlend": 25
+    },
+    "top5": {
+     "baselineBlend": 31,
+     "expandedBlend": 36
+    },
+    "top10": {
+     "baselineBlend": 34,
+     "expandedBlend": 37
+    },
+    "top15": {
+     "baselineBlend": 37,
+     "expandedBlend": 38
+    },
+    "top20": {
+     "baselineBlend": 37,
+     "expandedBlend": 40
+    }
+   },
+   "gateOn": {
+    "top1": {
+     "baselineBlend": 20,
+     "expandedBlend": 25
+    },
+    "top5": {
+     "baselineBlend": 31,
+     "expandedBlend": 36
+    },
+    "top10": {
+     "baselineBlend": 34,
+     "expandedBlend": 37
+    },
+    "top15": {
+     "baselineBlend": 37,
+     "expandedBlend": 38
+    },
+    "top20": {
+     "baselineBlend": 37,
+     "expandedBlend": 40
+    }
+   }
+  },
+  "A": {
+   "n": 20,
+   "gateOff": {
+    "top1": {
+     "baselineBlend": 9,
+     "expandedBlend": 12
+    },
+    "top5": {
+     "baselineBlend": 13,
+     "expandedBlend": 15
+    },
+    "top10": {
+     "baselineBlend": 15,
+     "expandedBlend": 16
+    },
+    "top15": {
+     "baselineBlend": 17,
+     "expandedBlend": 17
+    },
+    "top20": {
+     "baselineBlend": 17,
+     "expandedBlend": 19
+    }
+   },
+   "gateOn": {
+    "top1": {
+     "baselineBlend": 9,
+     "expandedBlend": 12
+    },
+    "top5": {
+     "baselineBlend": 13,
+     "expandedBlend": 15
+    },
+    "top10": {
+     "baselineBlend": 15,
+     "expandedBlend": 16
+    },
+    "top15": {
+     "baselineBlend": 17,
+     "expandedBlend": 17
+    },
+    "top20": {
+     "baselineBlend": 17,
+     "expandedBlend": 19
+    }
+   }
+  },
+  "B": {
+   "n": 24,
+   "gateOff": {
+    "top1": {
+     "baselineBlend": 11,
+     "expandedBlend": 13
+    },
+    "top5": {
+     "baselineBlend": 18,
+     "expandedBlend": 21
+    },
+    "top10": {
+     "baselineBlend": 19,
+     "expandedBlend": 21
+    },
+    "top15": {
+     "baselineBlend": 20,
+     "expandedBlend": 21
+    },
+    "top20": {
+     "baselineBlend": 20,
+     "expandedBlend": 21
+    }
+   },
+   "gateOn": {
+    "top1": {
+     "baselineBlend": 11,
+     "expandedBlend": 13
+    },
+    "top5": {
+     "baselineBlend": 18,
+     "expandedBlend": 21
+    },
+    "top10": {
+     "baselineBlend": 19,
+     "expandedBlend": 21
+    },
+    "top15": {
+     "baselineBlend": 20,
+     "expandedBlend": 21
+    },
+    "top20": {
+     "baselineBlend": 20,
+     "expandedBlend": 21
+    }
+   }
+  }
+ },
+ "passRule": {
+  "rule": "FinanceBench hybrid top10 gain >= 5 of 111 AND no other source (tat, nq, feta, QASPER triggered) loses > 2 at top10",
+  "financebenchTop10Gain": 4,
+  "otherSourceTop10NetLoss": {
+   "tat": -1,
+   "nq": 0,
+   "feta": 0,
+   "qasper": "0 triggered"
+  },
+  "halfGainTop10": {
+   "A": 2,
+   "B": 2
+  },
+  "pass": false
+ },
+ "repro": {
+  "checked": 122,
+  "sameOrder": 68,
+  "mismatches": [
+   "financebench-0080",
+   "financebench-0005",
+   "financebench-0007",
+   "financebench-0008",
+   "financebench-0011",
+   "financebench-0013",
+   "financebench-0016",
+   "financebench-0017",
+   "financebench-0020",
+   "financebench-0024",
+   "financebench-0025",
+   "financebench-0026",
+   "financebench-0030",
+   "financebench-0031",
+   "financebench-0033",
+   "financebench-0034",
+   "financebench-0037",
+   "financebench-0040",
+   "financebench-0041",
+   "financebench-0045",
+   "financebench-0047",
+   "financebench-0057",
+   "financebench-0060",
+   "financebench-0061",
+   "financebench-0065",
+   "financebench-0071",
+   "financebench-0082",
+   "financebench-0085",
+   "financebench-0086",
+   "financebench-0087",
+   "financebench-0098",
+   "financebench-0099",
+   "financebench-0101",
+   "financebench-0103",
+   "financebench-0110",
+   "financebench-0116",
+   "financebench-0117",
+   "financebench-0119",
+   "financebench-0121",
+   "financebench-0122",
+   "financebench-0123",
+   "financebench-0124",
+   "financebench-0130",
+   "financebench-0132",
+   "financebench-0134",
+   "financebench-0144",
+   "financebench-0147",
+   "tat-0636",
+   "tat-0707",
+   "tat-0709",
+   "tat-0714",
+   "tat-0751",
+   "tat-0781",
+   "financebench-0096"
+  ],
+  "threshold": 0.63
+ },
+ "triggers": {
+  "financebench": [
+   44,
+   111
+  ],
+  "nq": [
+   0,
+   154
+  ],
+  "feta": [
+   0,
+   152
+  ],
+  "tat": [
+   11,
+   124
+  ],
+  "qasper": [
+   0,
+   496
+  ]
+ },
+ "reproDetail": {
+  "exactTop20Order": "68 of 122 (111 FinanceBench + 11 TAT triggered)",
+  "mismatchBySource": {
+   "financebench": 48,
+   "tat": 6
+  },
+  "triggered55": {
+   "sameTop20Set": 48,
+   "setDiffersByOneChunk": 7,
+   "answerChunkRankSame": 54,
+   "answerRankDiffers": "tat-0714 1->2"
+  },
+  "financebenchTriggeredTop10": {
+   "storedBaseline": 34,
+   "rerunBaseline": 34,
+   "expanded": 38
+  },
+  "note": "Comparison uses the same-session rerun as baseline for triggered questions, so drift does not leak into the effect."
+ },
+ "frozenTermList": {
+  "frozenAt": "2026-11-18T06:24:47Z",
+  "terms": 31,
+  "bugFixedOnce": "backslash word-boundary escapes lost when the file was written; all 70 patterns restored before any matching/retrieval"
+ }
+}

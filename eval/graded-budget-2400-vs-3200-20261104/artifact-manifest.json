@@ -1,0 +1,92 @@
+[
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/analysis.json",
+    "sha256": "bb920f87fb1dccde318f0ef3bacef294cb22cc9db0edf02a43e1fbe1e0354417",
+    "bytes": 6257
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/attempts.jsonl",
+    "sha256": "116b965708781b93d91bbcff608d0e4fce45bb9072c8e58ae334840de793b6a4",
+    "bytes": 11455
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/blind-contexts.jsonl",
+    "sha256": "490b828e9d08b97562fdc8d0f32b47b54b3dd939a8b2e3f7401c307ff4915dd6",
+    "bytes": 908281
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/blind-grades.jsonl",
+    "sha256": "bf9003463cf38fe424bb12505c12af0779a6977692c36d017705d976dc586e20",
+    "bytes": 26026
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/blind-key.json",
+    "sha256": "ed0ad79ee906c4ddd74d63f2664469f1c209f5e7e555a534ba1ef0ee53b041b2",
+    "bytes": 12320
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/blind-pack.mjs",
+    "sha256": "9e0c8b605de9a4545e25fa42710e1cb25bbca22a1f1f9d1cfc244db40dd86f62",
+    "bytes": 1511
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/blind-review.jsonl",
+    "sha256": "60735b5c11bd0cd889a2dfdd4c9a472417c2d18f7163cc67902544b63c7b5245",
+    "bytes": 242384
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/grade-freeze.json",
+    "sha256": "59151a61f815637c0f9ff344e55ea22b44e813af0719eedbcf6530693dccbf2c",
+    "bytes": 313
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/manifest.json",
+    "sha256": "f88c4cef61b65652d4c959f356fd605e93d89c71189c34b6a3ebbfe0073991d5",
+    "bytes": 2541
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/paired-results.jsonl",
+    "sha256": "bc108bbed762067476a78472596d1ebe202b0e029ddc3f1958a48dffb209eb2f",
+    "bytes": 88679
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/refusals.json",
+    "sha256": "9a32c47ce2c46d79a50c85b14ec96813170cbff315984dc0ef626b8ea85851fe",
+    "bytes": 18396
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/REPORT.md",
+    "sha256": "a64db9b6eb03270cc611ded3d68e21dd7f5417a05579d23b12777ce7ab75076a",
+    "bytes": 24466
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/report.mjs",
+    "sha256": "8a61c789a331be1d8a92667a7593fd6cd9af8a0f7349f701fbf08b97e09552a4",
+    "bytes": 11938
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/requests.jsonl",
+    "sha256": "a0b7db2321d95d78abc8611e78f67c61e055295b9558f52b3853c95ee8e0b57e",
+    "bytes": 2158804
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/results.jsonl",
+    "sha256": "142fb48437f61ae68966b1bd563e2bcd73948f98e10915e56c0eeff02944c4aa",
+    "bytes": 115821
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/review-rubric.md",
+    "sha256": "60befb1ac983663190ee1541ea6dce811b043cdd6389d7b826b6c7076fa7b6af",
+    "bytes": 1998
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/run.mjs",
+    "sha256": "5b552f0fc62b210c70899fa8409f8926dbbd6511a1d2c565de58469766fe5428",
+    "bytes": 10047
+  },
+  {
+    "file": "eval/graded-budget-2400-vs-3200-20261104/summary.json",
+    "sha256": "2b164cac734378bd02eb48c512da356b004101136fcf2f7c73da520aa4ca6423",
+    "bytes": 2797
+  }
+]

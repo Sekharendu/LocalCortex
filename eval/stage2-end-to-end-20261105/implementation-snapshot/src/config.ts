@@ -1,0 +1,98 @@
+// Centralized tunable defaults for the pipeline. Each knob is env-overridable so CI/ops
+// can tune without code edits, but this file is the single source of truth for "what are
+// the defaults." Add new categories here as new components grow knobs.
+
+export type AnswerProfile = "new" | "legacy";
+export const answerConfig = {
+  profile: (process.env.RAG_PROFILE === "legacy" ? "legacy" : "new") as AnswerProfile,
+  maxOutputTokens: 512,
+};
+const legacyDefaults = answerConfig.profile === "legacy";
+
+export const rerankConfig = {
+  enabled: process.env.RERANK_ENABLED === "1",
+  candidateLimit: 50,
+};
+
+export const retrievalConfig = {
+  topK: Number(process.env.RETRIEVE_TOP_K ?? (legacyDefaults ? 5 : 15)),
+  // Chosen by scripts/calibrate-threshold.ts: general-knowledge questions top out at
+  // 0.567 and answerable ones start at 0.640, so 0.63 blocks the former and refuses none
+  // of the latter (0.7 refused 9/113). Company-sounding questions the corpus can't answer
+  // overlap answerable scores; those rely on the prompt's "context is insufficient" rule.
+  scoreThreshold: Number(process.env.RETRIEVE_SCORE_THRESHOLD ?? 0.63),
+  // Follow-ups are retrieved with the previous question + the new one, which lets an
+  // off-topic follow-up borrow relevance. The new question must ALSO score this on its
+  // own: 0.57 is just above the highest general-knowledge score in calibration (0.567).
+  followupFloor: Number(process.env.RETRIEVE_FOLLOWUP_FLOOR ?? 0.57),
+  collection: process.env.QDRANT_COLLECTION ?? "rag",
+  // Dense is the default: with task prefixes on, dense and hybrid tie on the eval sets
+  // (105/113 each), and dense needs no sparse fusion or relevance probe. Set
+  // RETRIEVE_MODE=hybrid to fuse dense + BM25 sparse instead.
+  mode: (process.env.RETRIEVE_MODE === "hybrid" ? "hybrid" : "dense") as "dense" | "hybrid",
+  // Hybrid-mode fusion: "rrf" (rank-only) or "dbsf" (score-magnitude-aware).
+  fusion: (process.env.RETRIEVE_FUSION === "dbsf" ? "dbsf" : "rrf") as "rrf" | "dbsf",
+};
+
+// What the model is shown for the chunks retrieval found (src/retrieval/context.ts). All
+// sizes are llama3 tokens (counted with llama3-tokenizer-js), not characters: characters
+// per token ran 4.3 on the resume and 5.7 on the handbook, so a character cap misfits.
+export const contextConfig = {
+  // RETRIEVE_EXPAND_CONTEXT=0: show the retrieved chunks as-is (best first), for comparisons.
+  expand: process.env.RETRIEVE_EXPAND_CONTEXT !== "0",
+  // A matched document at most this long goes into the prompt whole; longer ones
+  // contribute their matched chunks plus one neighbour each side, in reading order.
+  // scripts/check-answers.ts: whole resume (~650-750 tokens) = hits + neighbours on
+  // answers; the whole handbook (1,116, near-duplicate sections) lost one answer at 1500.
+  wholeDocMaxTokens: Number(process.env.WHOLE_DOC_MAX_TOKENS ?? 1000),
+  // Most a longer document may add (hits first, then its title chunk, then neighbours).
+  // Uncapped, 48-page PDFs sent 2,000-2,650 tokens: 2x the latency, and one answer buried.
+  // 0 = no cap.
+  chunkedDocMaxTokens: Number(process.env.CHUNKED_DOC_MAX_TOKENS ?? (legacyDefaults ? 1200 : 3200)) || Infinity,
+  // CONTEXT_TITLE_CHUNK=0: don't add a chunked document's first chunk (title, authors).
+  titleChunk: process.env.CONTEXT_TITLE_CHUNK !== "0",
+  // Retained legacy context budget, estimated with llama3 tokens; not the hosted model window.
+  numCtx: Number(process.env.OLLAMA_NUM_CTX ?? (legacyDefaults ? 4096 : 5000)),
+  answerReserveTokens: Number(process.env.ANSWER_RESERVE_TOKENS ?? 512),
+};
+
+export const ingestConfig = {
+  // "auto" (default): a document with fewer than 2 markdown headings gets a "Title ›
+  // Section" prefix embedded above each chunk (see hasHeadingStructure); a document that
+  // already labels its own sections (the handbook, most .md files) gets none. "1"/"0"
+  // force it on/off for every document regardless of structure. Changes what gets
+  // embedded, so existing collections need re-ingesting after a change here.
+  contextHeaders: (process.env.INGEST_CONTEXT_HEADERS ?? "auto") as "auto" | "1" | "0",
+};
+
+export const embedConfig = {
+  dim: Number(process.env.OLLAMA_EMBED_DIM ?? 768),
+  model: process.env.OLLAMA_EMBED_MODEL ?? "nomic-embed-text",
+  url: process.env.OLLAMA_URL ?? "http://localhost:11434",
+  // nomic-embed-text expects "search_query: " / "search_document: " task prefixes; using
+  // them lifted large-corpus R@1 from 47/55 to 50/55. Set OLLAMA_EMBED_PREFIXES=0 to
+  // disable. Toggling this changes every vector: collections must be re-ingested.
+  taskPrefixes: process.env.OLLAMA_EMBED_PREFIXES !== "0",
+};
+export const rewriteConfig = {
+  // Follow-ups ("tell me more about him") are rewritten into standalone questions before
+  // retrieval, so the subject named turns ago carries through. QUERY_REWRITE=0 falls back
+  // to embedding the previous question + the new one, gated by RETRIEVE_FOLLOWUP_FLOOR.
+  enabled: process.env.QUERY_REWRITE !== "0",
+  timeoutMs: Number(process.env.REWRITE_TIMEOUT_MS ?? 60_000),
+};
+
+/** Explicit profiles are immutable request-local presets; omitted preserves env tuning. */
+export function answerSettings(profile?: AnswerProfile) {
+  if (profile) return {
+    topK: profile === "legacy" ? 5 : 15,
+    numCtx: profile === "legacy" ? 4096 : 5000,
+    chunkedDocMaxTokens: profile === "legacy" ? 1200 : 3200,
+    promptVariant: profile === "legacy" ? "legacy" as const : "concise" as const,
+  };
+  return {
+    topK: retrievalConfig.topK, numCtx: contextConfig.numCtx,
+    chunkedDocMaxTokens: contextConfig.chunkedDocMaxTokens,
+    promptVariant: legacyDefaults ? "legacy" as const : "concise" as const,
+  };
+}

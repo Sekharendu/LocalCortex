@@ -1,0 +1,11 @@
+{
+  "devCases": 40,
+  "rejectionCases": 39,
+  "calls": 158,
+  "allContextPairsIdentical": true,
+  "oldStrictContextsAndPromptsReproduced": 40,
+  "CInstructionForbiddenMatches": 0,
+  "CSourceTextForbiddenOccurrences": 13,
+  "allLocalBudgetsFit": true,
+  "appInputsFrozen": true
+}

@@ -1,0 +1,16 @@
+{
+  "plan": "RERANK-1",
+  "userReportedAtClientDate": "2026-11-02",
+  "userReported": "Free plan, and 0 neurons used as of today",
+  "evidenceType": "USER-REPORTED dashboard confirmation, not API verified",
+  "apiEvidence": "Token active; subscription and billable-usage reads HTTP403/code10000",
+  "maxAttempts": 44,
+  "maxSynthetic": 4,
+  "maxDev": 40,
+  "serial": true,
+  "retries": 0,
+  "providerUsage": "Captured only when present; no inferred neuron totals",
+  "r1ManifestSha256": "e58e8bf783624f10a607d7338d7a57bfb59882f4e062d2bbcf7208412c5212b8",
+  "sampleSha256": "d9b23a1a100755bf2f40a49dd50adc0d607c4877a48dc6509de75845e186ba39",
+  "requestsSha256": "dc977e3936a33068f6086fd2c5408d77cc739100f388241a508f8e470c995480"
+}

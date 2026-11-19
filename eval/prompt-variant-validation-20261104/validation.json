@@ -1,0 +1,49 @@
+{
+  "task": "Optional partial-answer prompt variant",
+  "flag": "AskOptions.promptVariant = partial (default legacy)",
+  "files": [
+    {
+      "file": "src/generation/promptVariants.ts",
+      "sha256": "5e251bcf10e437a03b64a32bbc27311b2caad1d0aa2903602affeb511d5b5fee"
+    },
+    {
+      "file": "src/generation/llm.ts",
+      "sha256": "bcc8dc990502d0b8fb5b21f8887f6fd153314a4b7b504136de4dada67a4b8c48"
+    },
+    {
+      "file": "src/generation/promptBuilder.ts",
+      "sha256": "8bd172bc6387d30658a5661e56d629d45773a2b9e9d6eecdbce015b4c13f90b3"
+    },
+    {
+      "file": "src/rag.ts",
+      "sha256": "b54470a4f1a8d4f7cc781fbb00f8907c394df5c58eb9c0033aa457fb5f5c4252"
+    },
+    {
+      "file": "tests/promptVariants.test.ts",
+      "sha256": "6de34694fc9c7cac82aaf66cf7ff935143bc26b814ab73b2c3d42795e6cd8a49"
+    },
+    {
+      "file": "docs/evaluation/partial-answer-prompt.md",
+      "sha256": "9b44572195ba5c77a4c9d994ddbc21cd672933c9eb491861ca87c24552a5d778"
+    }
+  ],
+  "validation": {
+    "focusedTests": "37 passed, 1 skipped across 4 files",
+    "fullSuite": "196 passed, 28 skipped; 15 passed files, 4 skipped files; exit0",
+    "applicationTypecheck": "node node_modules/typescript/bin/tsc --noEmit: exit0",
+    "testTypecheck": "node node_modules/typescript/bin/tsc --noEmit -p tsconfig.test.json: exit0",
+    "diffCheck": "git diff --check on affected tracked sources: exit0"
+  },
+  "constraints": {
+    "legacyDefaultPromptHashesVerified": true,
+    "noCloudflareCalls": true,
+    "noRetrievalOrContextBuilderLogicChanges": true,
+    "noBudgetOrOutputCapDefaultChanges": true,
+    "noHistoryHandlingChanges": true,
+    "noCommitsPushOrDeployment": true,
+    "unrelatedPendingChangesPreserved": true
+  },
+  "environment": "pnpm launcher tried inaccessible registry lookup; used installed tools directly. TEMP/TMP pointed to workspace because sandbox temp rename failed. Local HTTP tests run outside sandbox. Final suite disabled Ollama/Qdrant/Postgres probes via process-local URLs to port1. An earlier focused run with real local-stack probes completed the local Ollama tokenizer check; no Cloudflare request was made.",
+  "resourceReview": "Per-call immutable variant; no new globals/caches/listeners/pools. Existing request timeout/body cleanup unchanged; streaming adds only explicit system selection. Concurrent default/partial requests tested. No new HTTP endpoint field.",
+  "qualityLimit": "No hosted answer comparison for this wording yet; offline tests establish wiring, not correctness or hallucination improvement."
+}

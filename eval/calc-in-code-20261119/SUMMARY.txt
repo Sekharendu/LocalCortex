@@ -1,0 +1,77 @@
+Calc-in-code test (eval/calc-in-code-20261119) -- dev only, rules frozen in frozen.json before any call
+====================================================================================================
+OVERALL: FAIL
+  A1: FAIL  C=6/30, wrongOrInvented=8/30, R=10/30
+  A2: PASS  worse=1/40, worseIds=['tat-0692'], CtoP=['tat-0736']
+  A3: PASS  refused=10/10
+  A4: PASS  leaks=0/16, wronglyRefused=0/16
+  A5: PASS  refusedOrNamed=10/10, invented=0
+
+A1 (30 targets) C/P/W/R:
+  current  C  0  P  3  W 13  R 14   wrong-or-invented  9   Test A invented  5
+  testa    C  3  P 11  W 10  R  6   wrong-or-invented 16   Test A invented 11
+  calc     C  6  P  3  W 11  R 10   wrong-or-invented  8   Test A invented  1
+  calc vs current: fixed (W/R -> C/P) ['financebench-0008', 'financebench-0068', 'financebench-0082', 'financebench-0087', 'financebench-0099', 'financebench-0112', 'financebench-0116', 'tat-0768']
+                   broke (C/P -> W/R) ['financebench-0026', 'tat-0683']
+  calc vs testa: fixed (W/R -> C/P) ['financebench-0099', 'financebench-0112', 'tat-0768']
+                 broke (C/P -> W/R) ['financebench-0013', 'financebench-0026', 'financebench-0028', 'financebench-0062', 'financebench-0070', 'financebench-0071', 'tat-0629', 'tat-0683']
+  calc wrong causes: {"wrongInputsCodeExact": ["tat-0785", "tat-0631", "tat-0629", "tat-0683", "financebench-0029", "financebench-0148"], "ratioNotPercent": ["financebench-0068", "financebench-0112", "financebench-0013"], "fallbackKilledRightResult": ["financebench-0071 (8-line limit)", "financebench-0026 (prose 18.5/19.4)", "financebench-0070 (prose 1,380.5/118)"], "noCalcWrong": ["financebench-0028", "financebench-0057", "nq-0280", "feta-0389"]}
+
+A2 (40 guards) C/P/W/R:  current {'C': 39, 'P': 1, 'W': 0, 'R': 0}  testa {'C': 38, 'P': 2, 'W': 0, 'R': 0}  calc {'C': 37, 'P': 2, 'W': 0, 'R': 1}
+  worse vs current: ['tat-0692']; C->P: ['tat-0736']
+A3: calc refused 10/10 (current/testa 10/10 in Test A)
+A4: calc leaks 0/16, wrongly refused 0/16 (Test A: current 1 wrongly refused, testa 0); same context as Test A {'same': 24, 'of': 26, 'differ': ['fu-2-t2', 'fu-3-t2']}
+A5: calc refused or named missing input 10/10, invented 0 (current/testa 10/10 R in Test A)
+
+CALC block stats (calc variant):
+  A1: n 30, CALC produced 16, all parsed 15, provenance ok 15, prose ok 27, placeholders 15, CALC first 13, status {'computed': 14, 'no-calc': 13, 'fallback': 3}
+      fallback financebench-0071: more than 8 CALC lines
+      fallback financebench-0026: prose number not in context: 18.5,19.4
+      fallback financebench-0070: prose number not in context: 1,380.5,118
+  A2: n 40, CALC produced 2, all parsed 2, provenance ok 2, prose ok 39, placeholders 2, CALC first 2, status {'computed': 2, 'no-calc': 37, 'fallback': 1}
+      fallback tat-0692: prose number not in context: 4.6
+  A3: n 10, CALC produced 0, all parsed 0, provenance ok 0, prose ok 10, placeholders 0, CALC first 0, status {'no-calc': 10}
+  A4: n 16, CALC produced 0, all parsed 0, provenance ok 0, prose ok 16, placeholders 0, CALC first 0, status {'no-calc': 16}
+  A5: n 10, CALC produced 0, all parsed 0, provenance ok 0, prose ok 10, placeholders 0, CALC first 0, status {'no-calc': 10}
+
+Neurons: 3029.5 of cap 4000
+  A1 calc answer: 699.0
+  A1 current answer: 583.2
+  A1 testa answer: 656.8
+  A2 calc answer: 704.6
+  A3 calc answer: 43.2
+  A4 calc answer: 148.3
+  A4 calc app-call: 5.6
+  A5 calc answer: 188.7
+
+Per-item A1 grades (current | testa | calc):
+  tat-0785           R | W | W   calc: code-computed 7.46 from wrong total 50,247,895 (ref 17,215,800 -> 21.78); no % sign
+  financebench-0029  W | W | W   calc: code-computed -1% from a wrong formula over the growth components; ref flat
+  financebench-0148  W | W | W   calc: consolidated rows, but subtracted 2018-2019 -> -0.2 (direction reversed; ref +0.2 rise); net sales instead of total revenues (same rounding)
+  financebench-0133  R | R | R   calc: refusal
+  tat-0631           R | W | W   calc: code-computed 0.35 from the same wrong rows; ref 0.27
+  financebench-0116  R | P | C   calc: 3.46, code-computed from the right inputs
+  financebench-0071  R | P | R   calc: fallback: 10 CALC lines > 8 limit; the CALC lines were all right (would have been 10.3)
+  tat-0629           W | P | W   calc: code-computed -26.03 from wrong rows 1,364 -> 1,009; ref 25.4
+  tat-0768           W | W | C   calc: 2019
+  nq-0280            W | W | W   calc: Stipe Miocic; ref Daniel Cormier
+  feta-0389          W | W | W   calc: film roles, not Chess/Hair/24 Hour Plays
+  feta-0390          W | W | R   calc: refusal
+  tat-0683           P | P | W   calc: code-computed 184 from 325 + 43 (wrong row); ref 62.5
+  financebench-0008  R | C | C   calc: 24.26, code-computed
+  financebench-0013  W | P | W   calc: margins right as ratios 0.35/0.37/0.33 but concludes "improving"; it fell FY21->FY22
+  financebench-0026  P | C | R   calc: fallback: prose numbers 18.5/19.4 computed in the sentence (both right, would have been C)
+  financebench-0028  W | C | W   calc: 2,080 (other row), no CALC; ref 2,018
+  financebench-0034  P | P | P   calc: Xilinx amortization driver (user-graded P content)
+  financebench-0057  W | W | W   calc: no CALC; copies the text's rounded 101% as 101.0%; correct 101.5%
+  financebench-0062  R | P | R   calc: says no gross margin figures, cannot tell
+  financebench-0068  R | P | P   calc: right inputs, value right as a ratio 0.40 but shown as the "% margin" (no * 100); ref 39.7%
+  financebench-0070  W | P | R   calc: fallback: prose 1,380.5 and 118 (intermediates written in the sentence); the code result 63.86 was right
+  financebench-0081  R | R | R   calc: refusal
+  financebench-0082  W | P | C   calc: 0.68, code-computed
+  financebench-0087  R | P | C   calc: 2.72 (ref 2.7), code-computed
+  financebench-0099  R | R | C   calc: 6.25, code-computed
+  financebench-0107  R | R | R   calc: refusal
+  financebench-0112  W | W | P   calc: right inputs (EBITDA 368,109 right), value right as a ratio 0.05 but shown as the "% margin"; ref 5.4%
+  financebench-0147  R | R | R   calc: refusal
+  financebench-0149  R | R | R   calc: refusal

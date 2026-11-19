@@ -1,0 +1,83 @@
+[
+  {
+    "group": "chunk_omission",
+    "variant": "A",
+    "cases": 236,
+    "scopeRejected": 0,
+    "denseGateRejected": 0,
+    "nonemptyResults": 236,
+    "targetPaperInTop50": 236
+  },
+  {
+    "group": "chunk_omission",
+    "variant": "P",
+    "cases": 236,
+    "scopeRejected": 0,
+    "denseGateRejected": 0,
+    "nonemptyResults": 236,
+    "targetPaperInTop50": 176
+  },
+  {
+    "group": "chunk_omission",
+    "variant": "Q",
+    "cases": 236,
+    "scopeRejected": 0,
+    "denseGateRejected": 27,
+    "nonemptyResults": 209,
+    "targetPaperInTop50": 209
+  },
+  {
+    "group": "acceptable",
+    "variant": "A",
+    "cases": 204,
+    "scopeRejected": 0,
+    "denseGateRejected": 0,
+    "nonemptyResults": 204,
+    "targetPaperInTop50": 204
+  },
+  {
+    "group": "acceptable",
+    "variant": "P",
+    "cases": 204,
+    "scopeRejected": 0,
+    "denseGateRejected": 1,
+    "nonemptyResults": 203,
+    "targetPaperInTop50": 162
+  },
+  {
+    "group": "acceptable",
+    "variant": "Q",
+    "cases": 204,
+    "scopeRejected": 0,
+    "denseGateRejected": 16,
+    "nonemptyResults": 188,
+    "targetPaperInTop50": 188
+  },
+  {
+    "group": "scope_rejection",
+    "variant": "A",
+    "cases": 19,
+    "scopeRejected": 19,
+    "denseGateRejected": 0,
+    "nonemptyResults": 0,
+    "targetPaperInTop50": 0
+  },
+  {
+    "group": "scope_rejection",
+    "variant": "P",
+    "cases": 19,
+    "scopeRejected": 0,
+    "denseGateRejected": 0,
+    "nonemptyResults": 19,
+    "targetPaperInTop50": 13
+  },
+  {
+    "group": "scope_rejection",
+    "variant": "Q",
+    "cases": 19,
+    "scopeRejected": 19,
+    "denseGateRejected": 0,
+    "nonemptyResults": 0,
+    "targetPaperInTop50": 0
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "actualFreshCalls": 158,
+  "newBCalls": 0,
+  "pairedContextsChecked": 79,
+  "fixedDevCases": 40,
+  "allRequestsMatchSavedWirePromptsAtDispatch": true,
+  "allActualPromptPlus512Fit5000": true,
+  "appAndInputHashesUnchanged": true,
+  "blindGradesHashVerified": true,
+  "CForbiddenInstructionMatches": 0,
+  "CForbiddenSourceWordOccurrences": 13,
+  "sourceWordAffectedCases": 11,
+  "refusalProofBundles": 4
+}

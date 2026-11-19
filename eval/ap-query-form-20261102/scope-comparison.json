@@ -1,0 +1,629 @@
+[
+  {
+    "caseId": "pdf/1706.08198/8ce11515634236165cdb06ba80b9a36a8b9099a2",
+    "paperId": "1706.08198",
+    "Aquestion": "Regarding the paper \"English-Japanese Neural Machine Translation with Encoder-Decoder-Reconstructor\": Is pre-training effective in their evaluation?",
+    "Pquestion": "Is pre-training effective in their evaluation?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "English-Japanese Neural Machine Translation with Encoder-Decoder-Reconstructor"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "English-Japanese Neural Machine Translation with Encoder-Decoder-Reconstructor"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": false,
+    "PmappedItems": 0,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/1706.08198/6024039bbd1118c5dab86c41cce1175d99f10a25",
+    "paperId": "1706.08198",
+    "Aquestion": "Regarding the paper \"English-Japanese Neural Machine Translation with Encoder-Decoder-Reconstructor\": What parallel corpus did they use?",
+    "Pquestion": "What parallel corpus did they use?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "English-Japanese Neural Machine Translation with Encoder-Decoder-Reconstructor"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "English-Japanese Neural Machine Translation with Encoder-Decoder-Reconstructor"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 2,
+    "PhitItemsAt50": 1
+  },
+  {
+    "caseId": "pdf/1606.03676/3ddff6b707767c3dd54d7104fe88b628765cae58",
+    "paperId": "1606.03676",
+    "Aquestion": "Regarding the paper \"External Lexical Information for Multilingual Part-of-Speech Tagging\": which datasets did they experiment with?",
+    "Pquestion": "which datasets did they experiment with?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "External Lexical Information for Multilingual Part-of-Speech Tagging"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "External Lexical Information for Multilingual Part-of-Speech Tagging"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": false,
+    "PmappedItems": 0,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/1606.03676/0a5ffe4697913a57fda1fd5a188cd5ed59bdc5c7",
+    "paperId": "1606.03676",
+    "Aquestion": "Regarding the paper \"External Lexical Information for Multilingual Part-of-Speech Tagging\": which languages are explored?",
+    "Pquestion": "which languages are explored?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "External Lexical Information for Multilingual Part-of-Speech Tagging"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "External Lexical Information for Multilingual Part-of-Speech Tagging"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": true,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 17,
+    "PhitItemsAt50": 11
+  },
+  {
+    "caseId": "pdf/1907.04433/5f2bade0881c719ab026bc2e2962e2ada96cdb25",
+    "paperId": "1907.04433",
+    "Aquestion": "Regarding the paper \"GluonCV and GluonNLP: Deep Learning in Computer Vision and Natural Language Processing\": Do they experiment with the toolkits?",
+    "Pquestion": "Do they experiment with the toolkits?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "GluonCV and GluonNLP: Deep Learning in Computer Vision and Natural Language Processing"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "GluonCV and GluonNLP: Deep Learning in Computer Vision and Natural Language Processing"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 0,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/2001.09215/bcc0cd4e262f2db4270429ab520971bcf39414cf",
+    "paperId": "2001.09215",
+    "Aquestion": "Regarding the paper \"An Iterative Approach for Identifying Complaint Based Tweets in Social Media Platforms\": How many tweets were collected?",
+    "Pquestion": "How many tweets were collected?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "An Iterative Approach for Identifying Complaint Based Tweets in Social Media Platforms"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "An Iterative Approach for Identifying Complaint Based Tweets in Social Media Platforms"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 1,
+    "PhitItemsAt50": 1
+  },
+  {
+    "caseId": "pdf/2003.11645/27275fe9f6a9004639f9ac33c3a5767fea388a98",
+    "paperId": "2003.11645",
+    "Aquestion": "Regarding the paper \"Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks\": What hyperparameters are explored?",
+    "Pquestion": "What hyperparameters are explored?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 0,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/2003.11645/ef3567ce7301b28e34377e7b62c4ec9b496f00bf",
+    "paperId": "2003.11645",
+    "Aquestion": "Regarding the paper \"Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks\": What Named Entity Recognition dataset is used?",
+    "Pquestion": "What Named Entity Recognition dataset is used?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": false,
+    "PmappedItems": 2,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/2003.11645/7595260c5747aede0b32b7414e13899869209506",
+    "paperId": "2003.11645",
+    "Aquestion": "Regarding the paper \"Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks\": What sentiment analysis dataset is used?",
+    "Pquestion": "What sentiment analysis dataset is used?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 1,
+    "PhitItemsAt50": 1
+  },
+  {
+    "caseId": "pdf/2003.11645/c2d1387e08cf25cb6b1f482178cca58030e85b70",
+    "paperId": "2003.11645",
+    "Aquestion": "Regarding the paper \"Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks\": Do they test both skipgram and c-bow?",
+    "Pquestion": "Do they test both skipgram and c-bow?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Word2Vec: Optimal Hyper-Parameters and Their Impact on NLP Downstream Tasks"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": true,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 0,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/1610.09225/4c07c33dfaf4f3e6db55e377da6fa69825d0ba15",
+    "paperId": "1610.09225",
+    "Aquestion": "Regarding the paper \"Sentiment Analysis of Twitter Data for Predicting Stock Market Movements\": What is the dimension of the embeddings?",
+    "Pquestion": "What is the dimension of the embeddings?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Sentiment Analysis of Twitter Data for Predicting Stock Market Movements"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Sentiment Analysis of Twitter Data for Predicting Stock Market Movements"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": false,
+    "PmappedItems": 1,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/1610.09225/b1ce129678e37070e69f01332f1a8587e18e06b0",
+    "paperId": "1610.09225",
+    "Aquestion": "Regarding the paper \"Sentiment Analysis of Twitter Data for Predicting Stock Market Movements\": What dataset is used to train the model?",
+    "Pquestion": "What dataset is used to train the model?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Sentiment Analysis of Twitter Data for Predicting Stock Market Movements"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Sentiment Analysis of Twitter Data for Predicting Stock Market Movements"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 2,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/1611.03599/37a79be0148e1751ffb2daabe4c8ec6680036106",
+    "paperId": "1611.03599",
+    "Aquestion": "Regarding the paper \"UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text\": What topic is covered in the Chinese Facebook data? ",
+    "Pquestion": "What topic is covered in the Chinese Facebook data? ",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": true,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 1,
+    "PhitItemsAt50": 1
+  },
+  {
+    "caseId": "pdf/1611.03599/e44a6bf67ce3fde0c6608b150030e44d87eb25e3",
+    "paperId": "1611.03599",
+    "Aquestion": "Regarding the paper \"UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text\": What topics are included in the debate data?",
+    "Pquestion": "What topics are included in the debate data?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 5,
+    "PhitItemsAt50": 5
+  },
+  {
+    "caseId": "pdf/1611.03599/6a31db1aca57a818f36bba9002561724655372a7",
+    "paperId": "1611.03599",
+    "Aquestion": "Regarding the paper \"UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text\": What is the size of the Chinese data?",
+    "Pquestion": "What is the size of the Chinese data?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": false,
+    "PmappedItems": 2,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/1611.03599/d3093062aebff475b4deab90815004051e802aa6",
+    "paperId": "1611.03599",
+    "Aquestion": "Regarding the paper \"UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text\": What are the baselines?",
+    "Pquestion": "What are the baselines?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "UTCNN: a Deep Learning Model of Stance Classificationon on Social Media Text"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": false,
+    "PtargetPaperInTop50": false,
+    "PmappedItems": 6,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/1807.07279/17a1eff7993c47c54eddc7344e7454fbe64191cd",
+    "paperId": "1807.07279",
+    "Aquestion": "Regarding the paper \"Imparting Interpretability to Word Embeddings while Preserving Semantic Structure\": What experiments do they use to quantify the extent of interpretability?",
+    "Pquestion": "What experiments do they use to quantify the extent of interpretability?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Imparting Interpretability to Word Embeddings while Preserving Semantic Structure"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Imparting Interpretability to Word Embeddings while Preserving Semantic Structure"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": true,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 1,
+    "PhitItemsAt50": 1
+  },
+  {
+    "caseId": "pdf/1807.07279/a5e5cda1f6195ab1336855f1e39a609d61326d62",
+    "paperId": "1807.07279",
+    "Aquestion": "Regarding the paper \"Imparting Interpretability to Word Embeddings while Preserving Semantic Structure\": Along which dimension do the semantically related words take larger values?",
+    "Pquestion": "Along which dimension do the semantically related words take larger values?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Imparting Interpretability to Word Embeddings while Preserving Semantic Structure"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Imparting Interpretability to Word Embeddings while Preserving Semantic Structure"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": true,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 1,
+    "PhitItemsAt50": 0
+  },
+  {
+    "caseId": "pdf/1807.07279/32d99dcd8d46e2cda04a9a9fa0e6693d2349a7a9",
+    "paperId": "1807.07279",
+    "Aquestion": "Regarding the paper \"Imparting Interpretability to Word Embeddings while Preserving Semantic Structure\": What is the additive modification to the objective function?",
+    "Pquestion": "What is the additive modification to the objective function?",
+    "capturedScopeA": {
+      "status": "missing",
+      "references": [
+        "Imparting Interpretability to Word Embeddings while Preserving Semantic Structure"
+      ],
+      "documentIds": []
+    },
+    "devSnapshotScopeA": {
+      "status": "missing",
+      "references": [
+        "Imparting Interpretability to Word Embeddings while Preserving Semantic Structure"
+      ],
+      "documentIds": []
+    },
+    "executedScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "devSnapshotScopeP": {
+      "status": "unrestricted",
+      "references": []
+    },
+    "Pnonempty": true,
+    "PtargetPaperTop1": true,
+    "PtargetPaperInTop50": true,
+    "PmappedItems": 0,
+    "PhitItemsAt50": 0
+  }
+]

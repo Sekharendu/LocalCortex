@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {args,readJson,normalize,writeNew} from './common.mjs';
+const options=args();if(!options.word||!options.data||!options.out)throw Error('Required --word --data --out');
+// Loader checks only. No ingestion, vector writes, database or generation imports.
+const {app}=await import('./bootstrap.mjs');const {loadDocument}=await app('src/ingest/loader.ts');
+const raw=readJson(path.join(options.data,'validation-records.derived.json')),byId=new Map(raw.map(p=>[p.id,p]));const manifest=readJson(path.join(options.word,'word-manifest.json'));
+const results=[];
+for(const source of manifest){const paper=byId.get(source.paperId);const loaded=await loadDocument(source.file);const expected=[paper.title,paper.abstract,...paper.full_text.paragraphs.flat()].filter(Boolean);const missing=expected.filter(text=>!normalize(loaded.text).includes(normalize(text)));results.push({paperId:paper.id,status:missing.length?'fail':'pass',expectedParagraphs:expected.length,missingParagraphs:missing.length,headingMarkerPreserved:/^# Abstract/m.test(loaded.text),characters:loaded.text.length});}
+const structures=await loadDocument(path.join(options.word,'synthetic/structures.docx'));const structureChecks={heading:/^# Policy/m.test(structures.text),list:structures.text.includes('- Verify approval'),actualTableCells:['Batch A','10 mg','twice daily','Batch B','5 mg','once daily'].every(t=>structures.text.includes(t)),pageBreakHeaderFooter:'OOXML parts structurally validated; loader header/footer/page-layout preservation not claimed',visualQA:'unverified'};
+const malformed=[];for(const name of ['empty.pdf','damaged.pdf','empty.docx','damaged.docx']){try{await loadDocument(path.join(options.word,'synthetic',name));malformed.push({file:name,rejected:false});}catch(error){malformed.push({file:name,rejected:true,errorType:error.name});}}
+const pdf=await loadDocument(path.join(options.word,'synthetic/facts.pdf'));
+const report={wordPapers:results.length,allParagraphsPreserved:results.every(r=>r.status==='pass'),allHeadingMarkersPreserved:results.every(r=>r.headingMarkerPreserved),results,structureChecks,malformed,syntheticPdf:{nonempty:pdf.text.trim().length>0,pages:pdf.pages},networkOrGenerationCalls:0,limitations:['Offline loader/structure checks only; no rendered-page QA or semantic evaluation','PDF multi-column/table/OCR quality needs original-PDF evaluation']};writeNew(options.out,report);console.log(JSON.stringify({...report,results:undefined}));if(!report.allParagraphsPreserved||!report.allHeadingMarkersPreserved||!structureChecks.heading||!structureChecks.list||!structureChecks.actualTableCells||malformed.some(r=>!r.rejected))process.exitCode=1;

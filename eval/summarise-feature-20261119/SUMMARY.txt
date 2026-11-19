@@ -1,0 +1,60 @@
+Summarise-a-document feature: check results (2026-11-19)
+=========================================================
+
+What it does
+- "summarise <document>" / "give me an overview of X" / "tl;dr X" / "what is X about?"
+  is matched against the names and titles of the documents in the collection that the
+  route searches. One clear match: the document is summarised with no 0.63 gate. It uses
+  one whole call if it fits the context budget, otherwise two stages (partial summaries
+  of chunk groups in reading order, then one combine). The cap is 12 calls, and the
+  answer adds a coverage note if the cap is hit. The citation is that one document.
+- Several matches: a numbered "Which one would you like me to summarise?" list.
+  No match: the same list of all documents, capped at 10.
+- The next message ("the second one", "2", "eval-corpus.txt", "pfizer", "the pdf") is
+  resolved against that list. Zero documents gets a plain message.
+- Normal questions still go through the normal path.
+
+Code: src/summarise.ts (new), src/rag.ts (summary path at the top of answerQuestion and
+answerQuestionStream). server.ts and web/ are unchanged.
+
+Offline checks
+- pnpm run typecheck: pass. pnpm run typecheck:test: pass.
+- tests/summarise.test.ts + tests/summariseRag.test.ts: 62/62 pass.
+- Full pnpm test (before the final prompt-wording edit): 290 tests, 273 passed,
+  12 skipped, 5 failed.
+  - The 5 failures: Ollama timeouts under parallel load, plus rag.test.ts needing the
+    Cloudflare env vars, which tests don't load. All are pre-existing and environmental.
+  - Rerun in isolation: chunker/context/pipeline/retriever had 1/31 fail
+    (the countTokens-vs-Ollama 120 s timeout).
+
+Live check (throwaway collection tmp-summarise-20261119, temp doc store; both deleted)
+- Docs:
+  - eval-corpus.txt: 20 chunks
+  - eval-corpus.docx: 20 chunks
+  - large-corpus-all.txt: 117 chunks, the 4 data/large-corpus files joined, 41.5k chars
+- Run 1 found a bug: the whole-document summary was cut off mid-sentence at the
+  512-token output limit. Fixed by asking for "under about 250 words / at most 10
+  bullets, from the whole document" in the final prompts. Run 2 is the result below.
+- Run 2 results (8/8 steps HTTP 200):
+  1. Clear match, long doc, /query: two-stage, 3 calls (2 partials + combine), 62.7
+     neurons, 7.4 s, citation large-corpus-all.txt. Complete answer, 10 bullets.
+  2. Ambiguous, conversation route: "summarise the eval corpus" -> "1. eval-corpus.docx /
+     2. eval-corpus.txt". 0 calls.
+  3. Reply "the second one": whole-document summary of eval-corpus.txt. 1 call, 15.5
+     neurons, citation eval-corpus.txt. Saved assistant status is null (ok).
+  4. No match, /query stream: 'I couldn't find a document called "pfizer report"' plus
+     a list of all 3. 0 calls.
+  5. Normal questions: "15 days ... 20 after five years"; "up to three days per week".
+     Unchanged path.
+  6. Off-topic (France, cake): both refused, no citations.
+- Neurons: run 1 = 117.98, run 2 = 105.61, total 223.59 of the 1,500 allowed.
+  Every call reported its usage (16/16).
+- Logs: live-check-run1.log/.json (before the fix) and live-check.log/.json (after).
+  Script: live-check.mts.
+
+Limits seen
+- The two-stage combine favours the earlier parts. In run 2 the 10 bullets cover the
+  handbook, engineering, IT security and data classification, but nothing from the last
+  part (the legal compliance manual).
+- Two-stage partial calls run before the first streamed byte (about 5 s here). A failure
+  there shows as the mid-stream error footer, not a 503.

@@ -1,0 +1,837 @@
+[
+  {
+    "caseId": "pdf/1909.11687/d087539e6a38c42f0a521ff2173ef42c0733878e",
+    "paperId": "1909.11687",
+    "question": "Why are prior knowledge distillation techniques models are ineffective in producing student models with vocabularies different from the original teacher models?  ",
+    "previousVerdict": "acceptable",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      1,
+      16,
+      10,
+      6,
+      19,
+      21,
+      2,
+      38,
+      26,
+      27,
+      9,
+      65,
+      40,
+      29,
+      7
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "distillation techniques cannot utilize these, since they require the student and teacher models to share the same vocabulary and output space. This profoundly limits their potential to further reduce model sizes.",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 9,
+        "contextTextTokens": 1170,
+        "promptSha256": "33b57a19e532dd541e4b6fec7be7d4b2d302913df2accb3c2e9c13b36514ca6f"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "distillation techniques cannot utilize these, since they require the student and teacher models to share the same vocabulary and output space. This profoundly limits their potential to further reduce model sizes.",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 8,
+        "contextTextTokens": 2357,
+        "promptSha256": "cd99297192a35eaca430c4a468fa6115c3339c6dda1997a12c6b4c0b14c320b0"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1802.06024/8f16dc7d7be0d284069841e456ebb2c69575b32b",
+    "paperId": "1802.06024",
+    "question": "What baseline is used in the experiments?",
+    "previousVerdict": "failed",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      89,
+      95,
+      100,
+      78,
+      94,
+      76,
+      87,
+      61,
+      91,
+      77,
+      16,
+      88,
+      41,
+      38,
+      84
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "various versions of LiLi as baselines",
+                "present": true
+              },
+              {
+                "quote": "Single",
+                "present": true
+              },
+              {
+                "quote": "Sep",
+                "present": true
+              },
+              {
+                "quote": "F-th",
+                "present": false
+              },
+              {
+                "quote": "BG",
+                "present": false
+              },
+              {
+                "quote": "w/o PTS",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 8,
+        "contextTextTokens": 1134,
+        "promptSha256": "95cc022db20c97084034ae186d7ba9bd96f1ed5daca244dd4699a7b2fcdfdb14"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "various versions of LiLi as baselines",
+                "present": true
+              },
+              {
+                "quote": "Single",
+                "present": true
+              },
+              {
+                "quote": "Sep",
+                "present": true
+              },
+              {
+                "quote": "F-th",
+                "present": true
+              },
+              {
+                "quote": "BG",
+                "present": true
+              },
+              {
+                "quote": "w/o PTS",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 10,
+        "contextTextTokens": 2304,
+        "promptSha256": "a93a00ab158f7da4d010402f2650ed3e0b0eb05c636c988e36031d064d698166"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",
+    "paperId": "1710.03348",
+    "question": "In what cases is attention different from alignment?",
+    "previousVerdict": "acceptable",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      9,
+      10,
+      1,
+      11,
+      16,
+      2,
+      32,
+      62,
+      8,
+      42,
+      46,
+      25,
+      31,
+      38,
+      63
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "most word alignments only involve one or a few words, attention can be distributed more freely",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 7,
+        "contextTextTokens": 1180,
+        "promptSha256": "1375b0b70c67ecfbb47a17fc9f2a48780f6b0f150fdf6e56dede98cb998c89be"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "most word alignments only involve one or a few words, attention can be distributed more freely",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 9,
+        "contextTextTokens": 2374,
+        "promptSha256": "bc4a41d85c5e29ae14de8675216ca90556fae88801d13e486398928cbb43fd2a"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+    "paperId": "1909.13104",
+    "question": "What types of online harassment are studied?",
+    "previousVerdict": "acceptable",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      7,
+      4,
+      0,
+      19,
+      11,
+      2,
+      48,
+      14,
+      25,
+      36,
+      49,
+      20,
+      1,
+      41,
+      8
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "indirect harassment, sexual and physical harassment",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 10,
+        "contextTextTokens": 1164,
+        "promptSha256": "4df6e49d3b694a98701195dbaf28a08e25676875444eefbcc995a990290900de"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "indirect harassment, sexual and physical harassment",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 7,
+        "contextTextTokens": 2367,
+        "promptSha256": "c12b5695417c0effc21acebb70e60a1d7f233c49f39cab758692d4f696a71bb5"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1912.00667/3941401a182a3d6234894a5c8a75d48c6116c45c",
+    "paperId": "1912.00667",
+    "question": "Which real-world datasets are used?",
+    "previousVerdict": "failed",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      48,
+      4,
+      77,
+      50,
+      84,
+      15,
+      78,
+      6,
+      3,
+      5,
+      59,
+      74,
+      89,
+      54,
+      91
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "cyber security (CyberAttack)",
+                "present": false
+              },
+              {
+                "quote": "death of politicians (PoliticianDeath)",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 7,
+        "contextTextTokens": 1124,
+        "promptSha256": "acc64607adf93a26723f402eec9abe7481be2d2de88da037d1fc5fe4d61b9d84"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "cyber security (CyberAttack)",
+                "present": true
+              },
+              {
+                "quote": "death of politicians (PoliticianDeath)",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 11,
+        "contextTextTokens": 2368,
+        "promptSha256": "4bcc41dbec3c8c1be5028aae782a7ba1cf7e56e6b8b630997480ccdc001580e2"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1910.06592/d3ff2986ca8cb85a9a5cec039c266df756947b43",
+    "paperId": "1910.06592",
+    "question": "Based on this paper, what is the more predictive set of features to detect fake news?",
+    "previousVerdict": "failed",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      12,
+      38,
+      41,
+      48,
+      43,
+      8,
+      5,
+      1,
+      44,
+      47,
+      33,
+      26,
+      7,
+      34,
+      0
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "words embeddings, style, and morality features",
+                "present": false
+              }
+            ]
+          },
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "words embeddings, style, and morality features",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 9,
+        "contextTextTokens": 1141,
+        "promptSha256": "eece6dadb5cb1701affdff1c88db19763116b72ddc6acda3dd5e40f04b22d6b7"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "words embeddings, style, and morality features",
+                "present": true
+              }
+            ]
+          },
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "words embeddings, style, and morality features",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 8,
+        "contextTextTokens": 2377,
+        "promptSha256": "338d3e28fe49ac9670d14fe6c16c2d5cf97449c2cb464bb7f4711ab57bea2653"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1908.09246/15e481e668114e4afe0c78eefb716ffe1646b494",
+    "paperId": "1908.09246",
+    "question": "What alternative to Gibbs sampling is used?",
+    "previousVerdict": "acceptable",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      24,
+      8,
+      68,
+      1,
+      43,
+      44,
+      42,
+      41,
+      11,
+      63,
+      19,
+      50,
+      39,
+      20,
+      64
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "generator network to capture the event-related patterns",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 7,
+        "contextTextTokens": 1145,
+        "promptSha256": "3edf5d95551d1cf01d47db7ebea62e96c58ff83a37b86072c99aee233976b48f"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "generator network to capture the event-related patterns",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 9,
+        "contextTextTokens": 2367,
+        "promptSha256": "579c8e69322a7f81be0485998a3d3f05dfad9e7180b8fa7a191155284f25f0c9"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",
+    "paperId": "1601.02403",
+    "question": "How is the data in the new corpus come sourced?",
+    "previousVerdict": "failed",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      29,
+      349,
+      100,
+      107,
+      1,
+      101,
+      166,
+      59,
+      28,
+      76,
+      31,
+      173,
+      118,
+      299,
+      70
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "refer to each article, blog post, comment, or forum posts as a document",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 9,
+        "contextTextTokens": 1159,
+        "promptSha256": "94daf587a6fb8bdbaaba3e85375a381726b4885dbae140da75cf39ac789f7914"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "refer to each article, blog post, comment, or forum posts as a document",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 12,
+        "contextTextTokens": 2318,
+        "promptSha256": "47067477bb1513b30f0ef0f16599fbfbeab3edbc5db30eac2e1f5444c671c99b"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/2001.01269/0d34c0812f1e69ea33f76ca8c24c23b0415ebc8d",
+    "paperId": "2001.01269",
+    "question": "Which hand-crafted features are combined with word2vec?",
+    "previousVerdict": "acceptable",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      14,
+      2,
+      51,
+      16,
+      59,
+      7,
+      47,
+      62,
+      6,
+      13,
+      8,
+      46,
+      53,
+      39,
+      37
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "three hand-crafted polarity scores, which are minimum, mean, and maximum polarity scores",
+                "present": false
+              }
+            ]
+          },
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "polarity scores, which are minimum, mean, and maximum polarity scores, from each review",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 8,
+        "contextTextTokens": 1159,
+        "promptSha256": "eb290897f6c7ca01d3f224a8dc84787912db058ff02a6fd3f5359150db949f42"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "three hand-crafted polarity scores, which are minimum, mean, and maximum polarity scores",
+                "present": true
+              }
+            ]
+          },
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "polarity scores, which are minimum, mean, and maximum polarity scores, from each review",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 8,
+        "contextTextTokens": 2363,
+        "promptSha256": "1f127322b5065952aef7e446d6a773cea45da1fd55936f9371863ab6cd6b7e3a"
+      }
+    ]
+  },
+  {
+    "caseId": "pdf/1705.01265/a4a1fcef760b133e9aa876ac28145ad98a609927",
+    "paperId": "1705.01265",
+    "question": "Which other hyperparameters, other than number of clusters are typically evaluated in this type of research?",
+    "previousVerdict": "failed",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      22,
+      27,
+      21,
+      31,
+      36,
+      35,
+      45,
+      51,
+      14,
+      6,
+      10,
+      33,
+      38,
+      26,
+      7
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "selection of word vectors",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 7,
+        "contextTextTokens": 1173,
+        "promptSha256": "a94ccd13cbc2a39b28eb7df5a30126f95c435be6892d01178dbf3454f0c930f0"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "selection of word vectors",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 12,
+        "contextTextTokens": 2366,
+        "promptSha256": "1a297375ba54c83c0525e40c5343185fc949c52b98ea1d89793bc247dc74dbdd"
+      }
+    ]
+  },
+  {
+    "caseId": "docx/1610.08815/fabf6fdcfb4c4c7affaa1e4336658c1e6635b1bf",
+    "paperId": "1610.08815",
+    "question": "Which benchmark datasets are used?",
+    "previousVerdict": "failed",
+    "availableHits": 15,
+    "hitChunkIndices": [
+      32,
+      70,
+      74,
+      76,
+      47,
+      66,
+      64,
+      57,
+      58,
+      20,
+      79,
+      17,
+      2,
+      50,
+      80
+    ],
+    "change": "gained",
+    "arms": [
+      {
+        "cap": 1200,
+        "covered": false,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "Semeval 2014 BIBREF34 Twitter Sentiment Analysis Dataset ",
+                "present": true
+              },
+              {
+                "quote": " dataset was created by BIBREF8",
+                "present": true
+              },
+              {
+                "quote": " English dataset from BIBREF8",
+                "present": true
+              },
+              {
+                "quote": " dataset from The Sarcasm Detector",
+                "present": false
+              }
+            ]
+          },
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "This dataset was created by BIBREF8",
+                "present": true
+              },
+              {
+                "quote": "another English dataset from BIBREF8 ",
+                "present": true
+              },
+              {
+                "quote": " dataset from The Sarcasm Detector",
+                "present": false
+              }
+            ]
+          }
+        ],
+        "passageCount": 11,
+        "contextTextTokens": 1164,
+        "promptSha256": "2fe8660b5b54f0ea61cc890fbbfe76392b67a7f173bcfd87ef987f67de1b0fa6"
+      },
+      {
+        "cap": 2400,
+        "covered": true,
+        "references": [
+          {
+            "referenceIndex": 0,
+            "items": [
+              {
+                "quote": "Semeval 2014 BIBREF34 Twitter Sentiment Analysis Dataset ",
+                "present": true
+              },
+              {
+                "quote": " dataset was created by BIBREF8",
+                "present": true
+              },
+              {
+                "quote": " English dataset from BIBREF8",
+                "present": true
+              },
+              {
+                "quote": " dataset from The Sarcasm Detector",
+                "present": true
+              }
+            ]
+          },
+          {
+            "referenceIndex": 1,
+            "items": [
+              {
+                "quote": "This dataset was created by BIBREF8",
+                "present": true
+              },
+              {
+                "quote": "another English dataset from BIBREF8 ",
+                "present": true
+              },
+              {
+                "quote": " dataset from The Sarcasm Detector",
+                "present": true
+              }
+            ]
+          }
+        ],
+        "passageCount": 12,
+        "contextTextTokens": 2361,
+        "promptSha256": "84087220daa4b7f42d05c21c31408be0254db9e23130624d4299e2767a90a728"
+      }
+    ]
+  }
+]

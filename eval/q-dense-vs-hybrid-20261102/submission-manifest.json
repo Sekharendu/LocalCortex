@@ -1,0 +1,99 @@
+{
+  "status": "complete",
+  "files": [
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/case-changes.json",
+      "sha256": "c50f6b0d1d841b77c4d43a7ddc8b6db17ebb80e2cf72a2159f9df4a06f93b85a"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/case-plan.jsonl",
+      "sha256": "b4a68b2d4ac9f44be5a55f3494c451212b32c4548022f5231e6ca8bbf734dbb1"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/common.mjs",
+      "sha256": "389446b76bdfdef90e6affec50ead65a3af84b3461830ef58393570e8a2d29a0"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/dev-sources.jsonl",
+      "sha256": "a409da1ebd95a6e4a446b51e4b4b6b145f7c0c491825aa04d72a44d2273e0e31"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/docx.results.jsonl",
+      "sha256": "135865fbcacfc05ca471e3a55eae0bca5420369922d7649dea8e486714d38db0"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/docx.summary.json",
+      "sha256": "c2505bb9b786cd4c4225b453aeb3c14e152af573754835565ebe4e6665aaad01"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/docx.traces.jsonl",
+      "sha256": "0f1221de60d47e66c6426397da982dbef21c868ccd2df5684ca5df6e8d81a10d"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/eval.test.mjs",
+      "sha256": "3fdac74d931300cb5f43a024d9bf9e560b494ca9c32a14335236d11e596756d6"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/execution-status.json",
+      "sha256": "18ddb7b5e02c437df9e3d5504edb974648beba04e833ed7a23c1e6122eebeb8e"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/final-summary.json",
+      "sha256": "1e5389fb36a0fd8c3362fa77b75ae3a1acb6f3eb79beb911d0e2becae8e0604c"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/item-first-ranks.jsonl",
+      "sha256": "c99413853d4a37491490b5056a8c2565f4210c71aafdc41738f1342f2dafa73a"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/item-recall.json",
+      "sha256": "72e571c84cd511ac8a755db4f259579e77b4a5fcd411340a1aed7c25bfb55749"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/pdf.results.jsonl",
+      "sha256": "542a4fcddcb641789ba9b16c816a48ccca8b5a9a41061e15df7d1e581806b635"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/pdf.summary.json",
+      "sha256": "63896e1c13f0f9d805c5ed4859ab3d1d1d67ab151e0812cb727b90c92bb71d95"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/pdf.traces.jsonl",
+      "sha256": "b4c8d11d40af4d665c5a754f34c060b15cea2ad7fb557907c93e7f8098d2c9c1"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/preflight.json",
+      "sha256": "47865a1b4c83292fb983082a424d455c6cce84d6f69dab06123d98a1b3d20d3e"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/prepare.mjs",
+      "sha256": "5294a72758e82d347223267fff04fbf384bffb579fd74b8880cbd98fcac57a6b"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/preservation-check.json",
+      "sha256": "19b4f4809a7b0dbf40918414429456a2008c35813a421bb187db379ec2ce7ae3"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/report.mjs",
+      "sha256": "7cba558ce26dc96d2cf37d4b8480482128d3d09abb0e8b8850caf3353ed152aa"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/RESULTS.md",
+      "sha256": "bf600b8c428157e6430fcaf102e14dc288834c7dd04c32d6d0418d9d9b7ccc28"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/retrieval-behavior.json",
+      "sha256": "6f95063b43d4264c9db7892bf6cb3e0180b9f970ef935f746db9c31f6cc2ffe3"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/run.mjs",
+      "sha256": "afe5885d126bc18d44dc6588adf1fc0ecbf880d324f1e39e0d5926909783f265"
+    },
+    {
+      "file": "eval/q-dense-vs-hybrid-20261102/worker.mjs",
+      "sha256": "ec082c28ec86a7d5990dec53233b10e72e1a3a7a9b39f0e09cb0df6927a553ed"
+    }
+  ],
+  "splitSha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8",
+  "productionSourceMismatches": []
+}

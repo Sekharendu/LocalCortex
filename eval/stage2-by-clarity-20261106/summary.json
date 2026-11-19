@@ -1,0 +1,228 @@
+{
+  "cohort": "dev200",
+  "caseUnits": 200,
+  "paperSelected": true,
+  "dev200": [
+    {
+      "group": "standalone",
+      "label": "Standalone",
+      "caseUnits": 13,
+      "uniqueQuestionIds": 13,
+      "fewerThan20CaseUnits": true,
+      "old": {
+        "adequate": 5,
+        "partial": 4,
+        "wrong": 0,
+        "refused": 4
+      },
+      "new": {
+        "adequate": 7,
+        "partial": 2,
+        "wrong": 0,
+        "refused": 4
+      },
+      "gates": {
+        "old": 1,
+        "new": 1
+      },
+      "missingEvidenceOf57": 5,
+      "ranks16to50Of14": 2
+    },
+    {
+      "group": "topical_missing_context",
+      "label": "Topic given; context missing",
+      "caseUnits": 77,
+      "uniqueQuestionIds": 74,
+      "fewerThan20CaseUnits": false,
+      "old": {
+        "adequate": 32,
+        "partial": 7,
+        "wrong": 11,
+        "refused": 27
+      },
+      "new": {
+        "adequate": 47,
+        "partial": 10,
+        "wrong": 8,
+        "refused": 12
+      },
+      "gates": {
+        "old": 4,
+        "new": 4
+      },
+      "missingEvidenceOf57": 15,
+      "ranks16to50Of14": 3
+    },
+    {
+      "group": "generic_missing_context",
+      "label": "Too general",
+      "caseUnits": 110,
+      "uniqueQuestionIds": 101,
+      "fewerThan20CaseUnits": false,
+      "old": {
+        "adequate": 46,
+        "partial": 14,
+        "wrong": 1,
+        "refused": 49
+      },
+      "new": {
+        "adequate": 62,
+        "partial": 11,
+        "wrong": 6,
+        "refused": 31
+      },
+      "gates": {
+        "old": 20,
+        "new": 20
+      },
+      "missingEvidenceOf57": 37,
+      "ranks16to50Of14": 9
+    }
+  ],
+  "totals": {
+    "old": {
+      "adequate": 83,
+      "partial": 25,
+      "wrong": 12,
+      "refused": 80
+    },
+    "new": {
+      "adequate": 116,
+      "partial": 23,
+      "wrong": 14,
+      "refused": 47
+    }
+  },
+  "earlier40Separate": [
+    {
+      "group": "standalone",
+      "label": "Standalone",
+      "caseUnits": 3,
+      "uniqueQuestionIds": 3,
+      "fewerThan20CaseUnits": true,
+      "old": {
+        "adequate": 3,
+        "partial": 0,
+        "wrong": 0,
+        "refused": 0
+      },
+      "new": {
+        "adequate": 3,
+        "partial": 0,
+        "wrong": 0,
+        "refused": 0
+      },
+      "gates": {
+        "old": 0,
+        "new": 0
+      },
+      "missingEvidenceOf57": null,
+      "ranks16to50Of14": null
+    },
+    {
+      "group": "topical_missing_context",
+      "label": "Topic given; context missing",
+      "caseUnits": 15,
+      "uniqueQuestionIds": 14,
+      "fewerThan20CaseUnits": true,
+      "old": {
+        "adequate": 9,
+        "partial": 2,
+        "wrong": 0,
+        "refused": 4
+      },
+      "new": {
+        "adequate": 12,
+        "partial": 1,
+        "wrong": 1,
+        "refused": 1
+      },
+      "gates": {
+        "old": 0,
+        "new": 0
+      },
+      "missingEvidenceOf57": null,
+      "ranks16to50Of14": null
+    },
+    {
+      "group": "generic_missing_context",
+      "label": "Too general",
+      "caseUnits": 22,
+      "uniqueQuestionIds": 21,
+      "fewerThan20CaseUnits": false,
+      "old": {
+        "adequate": 14,
+        "partial": 2,
+        "wrong": 0,
+        "refused": 6
+      },
+      "new": {
+        "adequate": 17,
+        "partial": 1,
+        "wrong": 1,
+        "refused": 3
+      },
+      "gates": {
+        "old": 1,
+        "new": 1
+      },
+      "missingEvidenceOf57": null,
+      "ranks16to50Of14": null
+    }
+  ],
+  "diagnosticTotals": {
+    "relevanceGateRejected": 25,
+    "savedMissingEvidenceSet": 57,
+    "foundRanks16to50": 14
+  },
+  "fewerThan20": {
+    "dev200": [
+      {
+        "group": "standalone",
+        "cases": 13
+      }
+    ],
+    "earlier40": [
+      {
+        "group": "standalone",
+        "cases": 3
+      },
+      {
+        "group": "topical_missing_context",
+        "cases": 15
+      }
+    ]
+  },
+  "preservedHistorical57Categories": {
+    "c": 29,
+    "already-present": 3,
+    "unresolved": 11,
+    "b": 14
+  },
+  "searches": 0,
+  "embeddingCalls": 0,
+  "generationCalls": 0,
+  "heldOutPaperContentRead": false,
+  "hashes": [
+    {
+      "file": "eval/stage2-end-to-end-20261105/judgments.jsonl",
+      "sha256": "8fc4b06f7acc6fdcd202bb5be8a90c2308f4b0b32faeb316ccd27615041b13fd"
+    },
+    {
+      "file": "eval/stage2-end-to-end-20261105/gate-rejections.jsonl",
+      "sha256": "2efa2f1c439b8dff97bdc104002021572177fba9489cac09f4958f7fcc17e9cf"
+    },
+    {
+      "file": "eval/stage2-evidence-gaps-20261105/cases.jsonl",
+      "sha256": "0a1f06d0057ef45e3d8132f840ebe8697811c96b6d61b6761d456f66f71ccc8a"
+    },
+    {
+      "file": "eval/dev-question-clarity-20261106/cases.jsonl",
+      "sha256": "d58bee8511d508efe17c60b1e9980cbf7e975d00db625dd783c24efe411278b8"
+    },
+    {
+      "file": "eval/split.json",
+      "sha256": "8b9d27fdca32d319355d92da0cce5f430b4725bb0cdc00faa7140b218da560c8"
+    }
+  ]
+}

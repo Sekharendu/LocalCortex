@@ -1,0 +1,99 @@
+Fix A test (table headers in the embedded text), dev set only - 2026-11-18
+=========================================================================
+
+VERDICT
+- A alone:  FAIL. FinanceBench top 10 went 79 -> 76 of 111 (-3; the rule needs +5). feta lost 3 (rule allows 2).
+- A + D:    FAIL. FinanceBench top 10 went 79 -> 83 of 111 (+4; needs +5). feta lost 3.
+- D alone (for reference, same as the earlier D test): FinanceBench 79 -> 83 (+4 net: 5 fixed, 1 broke), no other source lost anything.
+- A adds almost nothing on top of D for FinanceBench (both 83 at top 10), helps tat (+7 at top 10), and costs feta 3.
+
+WHAT WAS DONE
+- Collections: read-only source eval-ragbench-dev-20261115 (never written).
+  New collection eval-ragbench-dev-tablehdr-20261118 (same Qdrant, http://127.0.0.1:36333), left in place.
+- Copy: all 122,443 points copied with identical vectors and payloads (100/100 spot checks identical,
+  same config: dense 768 Cosine, sparse with idf modifier, on_disk_payload). 406 s.
+- Recipe (Fix A): for every chunk where the frozen detector (eval/table-detection-20261118/tableHeaders.mts,
+  run on ALL docs) gives a table header:
+    header    = section ? section + " › " + tableHeader : tableHeader
+    embedText = header + "\n\n" + text
+  dense = nomic-embed-text with "search_document: ", sparse = sparseVectorFor(embedText, that document's
+  ingest-time average doc length, replayed exactly). payload.text and payload.section unchanged; new payload
+  fields tableHeader and embedHeader. Sparse stats file not modified (queries use avg 43.47 as before).
+- Gate before re-embedding: re-built 200 random unchanged chunks with the same code -> 200/200 identical
+  (dense cosine min 1.000000, sparse identical). Prep: stored text and section matched 100% for all chunks.
+- Re-embedded 7,385 of 122,443 chunks (FinanceBench 5,167; tat 1,566; feta 409; nq 243), 48.2 min.
+- Runs: hybrid, topK 20, scoreThreshold -1, documentScope = the question's own document. 541 dev questions
+  (FinanceBench 111, tat 124, nq 154, feta 152). Baseline = old collection re-run. D = frozen
+  eval/filing-term-expansion-20261118/terms.mts, no bank special case.
+
+NOISE CHECK (copy before re-embedding vs baseline)
+- Same top-20 list 378/541, same top-10 set 530/541. Only one top-10 hit changed: feta-0454 broke.
+- Baseline re-run vs stored candidates: same top 20 for 394/541; top-10 counts identical for every source.
+  So: about 1 top-10 flip in 541 is HNSW/copy noise.
+
+RESULTS (hits in top 1 / 5 / 10 / 15 / 20, MRR; fixed/broke at top 10 vs baseline)
+FinanceBench (n=111)
+  baseline  38 / 64 / 79 / 82 / 85   MRR 0.4436
+  A         40 / 65 / 76 / 83 / 87   MRR 0.4628   +2 / -5
+  D         46 / 70 / 83 / 86 / 88   MRR 0.5115   +5 / -1
+  A+D       45 / 75 / 83 / 88 / 91   MRR 0.5184   +8 / -4
+tat (n=124)
+  baseline  63 / 100 / 108 / 113 / 115  MRR 0.6336
+  A         59 / 101 / 115 / 116 / 117  MRR 0.6244   +7 / -0
+  D         60 / 100 / 109 / 113 / 115  MRR 0.6197   +1 / -0
+  A+D       58 / 100 / 115 / 116 / 117  MRR 0.6171   +7 / -0
+nq (n=154)
+  baseline  58 / 123 / 132 / 136 / 141  MRR 0.5475
+  A         58 / 123 / 132 / 136 / 141  MRR 0.5494   0 / 0
+  D         62 / 123 / 132 / 136 / 141  MRR 0.5594   0 / 0
+  A+D       63 / 123 / 132 / 136 / 141  MRR 0.5645   0 / 0
+feta (n=152)
+  baseline  72 / 120 / 133 / 138 / 143  MRR 0.6137
+  A         72 / 120 / 130 / 137 / 142  MRR 0.6146   0 / -3
+  D         75 / 120 / 133 / 138 / 143  MRR 0.6236   0 / 0
+  A+D       71 / 120 / 130 / 137 / 142  MRR 0.6112   0 / -3
+
+FINANCEBENCH FIXED / BROKE AT TOP 10
+- A    fixed 0114, 0145; broke 0029, 0062, 0077, 0110, 0148.
+- A+D  fixed 0005, 0016, 0031, 0040, 0050, 0114, 0144, 0145; broke 0029, 0077, 0096, 0148.
+- A's breaks are mostly at the edge: 0029 rank 10->11, 0077 10->12, 0110 10->13, 0148 7->11.
+  0062 (Boeing gross margin) 4->14 is a real push-out: 5 header chunks entered its top 10, none of its
+  7 relevant chunks has a header.
+- feta breaks under A: 0454 (4 -> not in top 20) is copy noise (also broke in the noise check);
+  0587 9->12 and 0597 10->11 are edge cases (0597 has no header chunk in its top 10: IDF shift or noise).
+  Without the noise case feta's loss would be 2, but the rule was applied as written.
+
+CASE 0096 (JPM gross margin; D's "gross margin" term fires)
+- Rank 7 in baseline and A; not in top 20 under D and A+D (noise check rank 5, stored rank 7).
+  A does not rescue it.
+
+THE 32 BASELINE MISSES (from causes.json / diagnose.py)
+- Fixed at top 10: A 2 of 32 (0114, 0145; both primary cause c), D 5 of 32 (0005, 0016, 0031, 0040, 0144),
+  A+D 8 of 32 (D's five + 0050, 0114, 0145; the three extra are cause c).
+- "A alone should fix" list (0043, 0055, 0111): 0 of 3 fixed. Their answer chunks did get sensible headers
+  (0043 chunk 881 "CONSOLIDATED BALANCE SHEETS December 31 ...", 0055 chunk 117 "Domestic segment revenue
+  mix ...", 0111 chunk 503 "BALANCE SHEETS (In millions) June 30, 2023 2022") but 0043/0055 stay outside
+  the top 20 and 0111 only reaches rank 19.
+- "A needs D too" list (7): A+D fixed 4 (0005, 0031, 0144, 0145), but D alone already fixes 0005/0031/0144,
+  so only 0145 needed A. 0075 18->12, 0076 none->18, 0130 still missed. 0032 stays 11, 0108 stays 17.
+
+BLEND (optional; 0.5/(60+rerank rank) + 0.5/(60+search rank) over each run's top 20, FinanceBench and tat)
+  Reranker: the existing RAGBench reranker; 1,028 new (question, chunk) pairs scored. Hits top 1 / 5 / 10.
+  FinanceBench (n=111): baseline 42 / 70 / 80; A 46 / 70 / 81 (+1: fixed 0145, broke none);
+    D 47 / 75 / 83 (fixed 0005, 0016, 0031, 0144; broke 0096); A+D 55 / 75 / 84 (D's four + 0145; broke 0096).
+  tat (n=124): baseline 70 / 104 / 115; A 67 / 107 / 117 (fixed 0636, 0643, 0752; broke 0712);
+    D 67 / 104 / 114 (broke 0684); A+D 67 / 106 / 115 (fixed 0643, 0752; broke 0684, 0712).
+  With the blend on top, A adds +1 for FinanceBench (80 -> 81; A+D 84 vs D 83) and +2 for tat; the cut-off
+  breaks from plain A disappear, but the gain is still far below +5. feta/nq were not blended.
+
+UNCERTAINTIES
+- HNSW/copy noise: about 1 top-10 flip per 541 questions (feta-0454).
+- Adding header text changes collection-wide IDF a little (Qdrant recomputes it); that is part of A.
+- Header quality: only about a third of detected titles are fully right; wrong headers can pull
+  unrelated table chunks up (as in 0062).
+- payload.section left unchanged (header kept only in embedHeader); nq/feta headers applied as frozen.
+
+FILES
+- prep.mts, recipe.mts, gate.mts, copy.mts, reembed.mts, runs.mts, score.py, blend.py
+- gate.json, copy.json, run-{baseline,A,D,AD,copycheck}.jsonl, summary.json, results.jsonl,
+  blend-results.jsonl, blend-summary.json, logs (*.log)

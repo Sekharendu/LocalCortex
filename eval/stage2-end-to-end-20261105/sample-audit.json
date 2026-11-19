@@ -1,0 +1,32 @@
+{
+  "newCases": 200,
+  "newUniqueOriginalQuestionIDs": 188,
+  "earlierCases": 40,
+  "overlapOriginalQuestionIDs": 0,
+  "fullDevStrata": {
+    "pdf/failed": 236,
+    "pdf/acceptable": 170,
+    "pdf/ambiguous": 90,
+    "docx/failed": 51,
+    "docx/acceptable": 34,
+    "docx/ambiguous": 29
+  },
+  "eligiblePoolStrata": {
+    "pdf/failed": 214,
+    "pdf/acceptable": 154,
+    "pdf/ambiguous": 90,
+    "docx/failed": 41,
+    "docx/acceptable": 28,
+    "docx/ambiguous": 29
+  },
+  "sampleStrata": {
+    "pdf/failed": 77,
+    "pdf/acceptable": 55,
+    "pdf/ambiguous": 32,
+    "docx/failed": 15,
+    "docx/acceptable": 10,
+    "docx/ambiguous": 11
+  },
+  "stratificationTarget": "Eligible556dev case units after excluding all earlier-question IDs; largest remainder, no outcome-driven resampling",
+  "sampleFileModifiedUtc": "2026-11-04T18:44:56.303992+00:00"
+}

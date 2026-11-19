@@ -82,6 +82,11 @@ export function selectPassages(
     }
     if (scoreAt.size === 0) return;
     const bestScore = Math.max(...scoreAt.values());
+    const priorityAt = new Map<number, number>();
+    for (const h of hits) {
+      const i = h.chunkIndex === undefined ? undefined : position.get(h.chunkIndex);
+      if (i !== undefined && !priorityAt.has(i)) priorityAt.set(i, h.rerankScore ?? h.score);
+    }
 
     // Consecutive positions become one merged passage.
     const passagesFor = (positions: Iterable<number>): Passage[] => {
@@ -119,7 +124,7 @@ export function selectPassages(
     // chunk edge), best hit first, while they fit the budget and chunkedMaxTokens. Past
     // that, more text buried the answer (48-page PDF, SESSION-LOG §26) and doubled latency.
     const limit = Math.min(remaining, chunkedMaxTokens);
-    const byScore = [...scoreAt.entries()].sort((a, b) => b[1] - a[1]).map(([i]) => i);
+    const byScore = [...priorityAt.entries()].sort((a, b) => b[1] - a[1]).map(([i]) => i);
     const candidates = [...byScore, ...(titleChunk ? [0] : []), ...byScore.flatMap((i) => [i - 1, i + 1])];
     const picked: number[] = [];
     for (const i of candidates) {

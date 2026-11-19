@@ -1,0 +1,57 @@
+[
+  {
+    "file": "src/config.ts",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/src/config.ts",
+    "sha256": "8e307394fd0efc397ab12e5db42e0dcac4177267e91aa5110c05087541bc0e64"
+  },
+  {
+    "file": "src/rag.ts",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/src/rag.ts",
+    "sha256": "8576f129dafb6495e1294e7c60523769c966b0b02b2942a055c3cbbed1534244"
+  },
+  {
+    "file": "src/generation/llm.ts",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/src/generation/llm.ts",
+    "sha256": "29a18e52b0f0ed46baa73b1994098db7f6ae95e7099de672396a7e648c13a30e"
+  },
+  {
+    "file": "src/generation/promptBuilder.ts",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/src/generation/promptBuilder.ts",
+    "sha256": "fcbd3fe2133ec48343f3d8fba2986ae0affcef600f451a2b4499633af4778cc5"
+  },
+  {
+    "file": "src/generation/promptVariants.ts",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/src/generation/promptVariants.ts",
+    "sha256": "5cec2e527a8c08c57521349b2e5d1154cfe2920572311f3367d0807413c15f8a"
+  },
+  {
+    "file": "tests/promptVariants.test.ts",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/tests/promptVariants.test.ts",
+    "sha256": "9c6c021822f71003146be25d71a3e43d2bce0949ddac2fe5d3f44798fbed14c2"
+  },
+  {
+    "file": "tests/promptBuilder.test.ts",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/tests/promptBuilder.test.ts",
+    "sha256": "cf26c229da9c754be39455c26d56d8a7380233368784c34d115c5caa897fe028"
+  },
+  {
+    "file": "tests/rerankIntegration.test.ts",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/tests/rerankIntegration.test.ts",
+    "sha256": "4ab527d9d10d0c7f8b9a578cc2df68221e286a09d575bb80079c9ab5ca1e4c75"
+  },
+  {
+    "file": "README.md",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/README.md",
+    "sha256": "5bac34a6d6741a2b6e596bd0db0035129ee6e688b21d8aa1fcf4361059b2b3a9"
+  },
+  {
+    "file": "docker-compose.yml",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/docker-compose.yml",
+    "sha256": "3502feaf82d10a218bd6a1ccca5257be6695c5e333ceb4d23a926527a33da97d"
+  },
+  {
+    "file": "docs/decisions.md",
+    "snapshot": "eval/stage2-end-to-end-20261105/implementation-snapshot/docs/decisions.md",
+    "sha256": "7520883fb309893ab38aa108aa7a4f32ad4df563c85a8d3867d149531fb3365a"
+  }
+]

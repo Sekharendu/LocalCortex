@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-05T11:54:09.153Z",
+  "plannedCases": 4,
+  "plannedMaximumSearches": 8,
+  "searchRequests": 0,
+  "embeddingRequests": 1,
+  "generationCalls": 0,
+  "unscopedSearches": 0,
+  "deniedEndpoints": [],
+  "error": "Failed to reach Ollama embed endpoint at http://127.0.0.1:11434/api/embed"
+}

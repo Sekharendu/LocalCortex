@@ -1,0 +1,1108 @@
+[
+  {
+    "blindId": "R01",
+    "caseId": "offtopic/02",
+    "arm": "A",
+    "pair": 2,
+    "attempt": 83
+  },
+  {
+    "blindId": "R02",
+    "caseId": "offtopic/08",
+    "arm": "B",
+    "pair": 8,
+    "attempt": 96
+  },
+  {
+    "blindId": "R03",
+    "caseId": "offtopic/23",
+    "arm": "B",
+    "pair": 23,
+    "attempt": 125
+  },
+  {
+    "blindId": "R04",
+    "caseId": "docx/1703.10344/2ee715c7c6289669f11a79743a6b2b696073805d",
+    "arm": "B",
+    "pair": 10,
+    "attempt": 20
+  },
+  {
+    "blindId": "R05",
+    "caseId": "pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",
+    "arm": "B",
+    "pair": 19,
+    "attempt": 37
+  },
+  {
+    "blindId": "R06",
+    "caseId": "pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",
+    "arm": "B",
+    "pair": 23,
+    "attempt": 45
+  },
+  {
+    "blindId": "R07",
+    "caseId": "offtopic/20",
+    "arm": "A",
+    "pair": 20,
+    "attempt": 119
+  },
+  {
+    "blindId": "R08",
+    "caseId": "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",
+    "arm": "A",
+    "pair": 14,
+    "attempt": 27
+  },
+  {
+    "blindId": "R09",
+    "caseId": "offtopic/31",
+    "arm": "B",
+    "pair": 31,
+    "attempt": 141
+  },
+  {
+    "blindId": "R10",
+    "caseId": "offtopic/24",
+    "arm": "B",
+    "pair": 24,
+    "attempt": 128
+  },
+  {
+    "blindId": "R11",
+    "caseId": "offtopic/27",
+    "arm": "A",
+    "pair": 27,
+    "attempt": 134
+  },
+  {
+    "blindId": "R12",
+    "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+    "arm": "A",
+    "pair": 34,
+    "attempt": 67
+  },
+  {
+    "blindId": "R13",
+    "caseId": "offtopic/16",
+    "arm": "B",
+    "pair": 16,
+    "attempt": 112
+  },
+  {
+    "blindId": "R14",
+    "caseId": "pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",
+    "arm": "A",
+    "pair": 13,
+    "attempt": 26
+  },
+  {
+    "blindId": "R15",
+    "caseId": "offtopic/24",
+    "arm": "A",
+    "pair": 24,
+    "attempt": 127
+  },
+  {
+    "blindId": "R16",
+    "caseId": "docx/1705.04153/ef396a34436072cb3c40b0c9bc9179fee4a168ae",
+    "arm": "B",
+    "pair": 12,
+    "attempt": 24
+  },
+  {
+    "blindId": "R17",
+    "caseId": "offtopic/30",
+    "arm": "A",
+    "pair": 30,
+    "attempt": 139
+  },
+  {
+    "blindId": "R18",
+    "caseId": "offtopic/11",
+    "arm": "A",
+    "pair": 11,
+    "attempt": 102
+  },
+  {
+    "blindId": "R19",
+    "caseId": "offtopic/25",
+    "arm": "B",
+    "pair": 25,
+    "attempt": 129
+  },
+  {
+    "blindId": "R20",
+    "caseId": "offtopic/13",
+    "arm": "B",
+    "pair": 13,
+    "attempt": 105
+  },
+  {
+    "blindId": "R21",
+    "caseId": "offtopic/32",
+    "arm": "A",
+    "pair": 32,
+    "attempt": 143
+  },
+  {
+    "blindId": "R22",
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "arm": "A",
+    "pair": 31,
+    "attempt": 62
+  },
+  {
+    "blindId": "R23",
+    "caseId": "docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",
+    "arm": "A",
+    "pair": 1,
+    "attempt": 2
+  },
+  {
+    "blindId": "R24",
+    "caseId": "offtopic/13",
+    "arm": "A",
+    "pair": 13,
+    "attempt": 106
+  },
+  {
+    "blindId": "R25",
+    "caseId": "offtopic/28",
+    "arm": "B",
+    "pair": 28,
+    "attempt": 136
+  },
+  {
+    "blindId": "R26",
+    "caseId": "pdf/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",
+    "arm": "B",
+    "pair": 17,
+    "attempt": 33
+  },
+  {
+    "blindId": "R27",
+    "caseId": "offtopic/25",
+    "arm": "A",
+    "pair": 25,
+    "attempt": 130
+  },
+  {
+    "blindId": "R28",
+    "caseId": "offtopic/11",
+    "arm": "B",
+    "pair": 11,
+    "attempt": 101
+  },
+  {
+    "blindId": "R29",
+    "caseId": "pdf/1708.01464/55c8f7acbfd4f5cde634aaecd775b3bb32e9ffa3",
+    "arm": "B",
+    "pair": 21,
+    "attempt": 41
+  },
+  {
+    "blindId": "R30",
+    "caseId": "pdf/1601.02403/1cb100182508cf55b3509283c0e2bbcd527d625e",
+    "arm": "B",
+    "pair": 13,
+    "attempt": 25
+  },
+  {
+    "blindId": "R31",
+    "caseId": "docx/1603.01514/6bf5620f295b5243230bc97b340fae6e92304595",
+    "arm": "B",
+    "pair": 2,
+    "attempt": 4
+  },
+  {
+    "blindId": "R32",
+    "caseId": "offtopic/21",
+    "arm": "A",
+    "pair": 21,
+    "attempt": 122
+  },
+  {
+    "blindId": "R33",
+    "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+    "arm": "B",
+    "pair": 25,
+    "attempt": 49
+  },
+  {
+    "blindId": "R34",
+    "caseId": "pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",
+    "arm": "A",
+    "pair": 22,
+    "attempt": 43
+  },
+  {
+    "blindId": "R35",
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "arm": "B",
+    "pair": 11,
+    "attempt": 21
+  },
+  {
+    "blindId": "R36",
+    "caseId": "docx/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",
+    "arm": "A",
+    "pair": 3,
+    "attempt": 6
+  },
+  {
+    "blindId": "R37",
+    "caseId": "offtopic/10",
+    "arm": "A",
+    "pair": 10,
+    "attempt": 99
+  },
+  {
+    "blindId": "R38",
+    "caseId": "pdf/1809.01541/5cb610d3d5d7d447b4cd5736d6a7d8262140af58",
+    "arm": "A",
+    "pair": 26,
+    "attempt": 51
+  },
+  {
+    "blindId": "R39",
+    "caseId": "pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f",
+    "arm": "A",
+    "pair": 29,
+    "attempt": 58
+  },
+  {
+    "blindId": "R40",
+    "caseId": "offtopic/16",
+    "arm": "A",
+    "pair": 16,
+    "attempt": 111
+  },
+  {
+    "blindId": "R41",
+    "caseId": "offtopic/03",
+    "arm": "A",
+    "pair": 3,
+    "attempt": 86
+  },
+  {
+    "blindId": "R42",
+    "caseId": "pdf/1710.03348/044f922604b4b3f42ae381419fd5cd5624fa0637",
+    "arm": "B",
+    "pair": 22,
+    "attempt": 44
+  },
+  {
+    "blindId": "R43",
+    "caseId": "offtopic/26",
+    "arm": "B",
+    "pair": 26,
+    "attempt": 132
+  },
+  {
+    "blindId": "R44",
+    "caseId": "offtopic/18",
+    "arm": "A",
+    "pair": 18,
+    "attempt": 115
+  },
+  {
+    "blindId": "R45",
+    "caseId": "offtopic/37",
+    "arm": "B",
+    "pair": 37,
+    "attempt": 153
+  },
+  {
+    "blindId": "R46",
+    "caseId": "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",
+    "arm": "B",
+    "pair": 15,
+    "attempt": 29
+  },
+  {
+    "blindId": "R47",
+    "caseId": "offtopic/09",
+    "arm": "A",
+    "pair": 9,
+    "attempt": 98
+  },
+  {
+    "blindId": "R48",
+    "caseId": "pdf/1903.03530/2c85865a65acd429508f50b5e4db9674813d67f2",
+    "arm": "B",
+    "pair": 28,
+    "attempt": 56
+  },
+  {
+    "blindId": "R49",
+    "caseId": "offtopic/05",
+    "arm": "B",
+    "pair": 5,
+    "attempt": 89
+  },
+  {
+    "blindId": "R50",
+    "caseId": "offtopic/39",
+    "arm": "A",
+    "pair": 39,
+    "attempt": 158
+  },
+  {
+    "blindId": "R51",
+    "caseId": "pdf/1710.03348/beac555c4aea76c88f19db7cc901fa638765c250",
+    "arm": "A",
+    "pair": 23,
+    "attempt": 46
+  },
+  {
+    "blindId": "R52",
+    "caseId": "offtopic/06",
+    "arm": "A",
+    "pair": 6,
+    "attempt": 91
+  },
+  {
+    "blindId": "R53",
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "arm": "B",
+    "pair": 37,
+    "attempt": 73
+  },
+  {
+    "blindId": "R54",
+    "caseId": "offtopic/14",
+    "arm": "B",
+    "pair": 14,
+    "attempt": 108
+  },
+  {
+    "blindId": "R55",
+    "caseId": "offtopic/36",
+    "arm": "A",
+    "pair": 36,
+    "attempt": 151
+  },
+  {
+    "blindId": "R56",
+    "caseId": "offtopic/15",
+    "arm": "A",
+    "pair": 15,
+    "attempt": 110
+  },
+  {
+    "blindId": "R57",
+    "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+    "arm": "B",
+    "pair": 32,
+    "attempt": 64
+  },
+  {
+    "blindId": "R58",
+    "caseId": "pdf/1809.01202/a4d115220438c0ded06a91ad62337061389a6747",
+    "arm": "A",
+    "pair": 25,
+    "attempt": 50
+  },
+  {
+    "blindId": "R59",
+    "caseId": "docx/1605.07333/30eacb4595014c9c0e5ee9669103d003cfdfe1e5",
+    "arm": "B",
+    "pair": 3,
+    "attempt": 5
+  },
+  {
+    "blindId": "R60",
+    "caseId": "offtopic/09",
+    "arm": "B",
+    "pair": 9,
+    "attempt": 97
+  },
+  {
+    "blindId": "R61",
+    "caseId": "offtopic/05",
+    "arm": "A",
+    "pair": 5,
+    "attempt": 90
+  },
+  {
+    "blindId": "R62",
+    "caseId": "docx/1703.10344/2ee715c7c6289669f11a79743a6b2b696073805d",
+    "arm": "A",
+    "pair": 10,
+    "attempt": 19
+  },
+  {
+    "blindId": "R63",
+    "caseId": "offtopic/06",
+    "arm": "B",
+    "pair": 6,
+    "attempt": 92
+  },
+  {
+    "blindId": "R64",
+    "caseId": "pdf/1912.00667/3941401a182a3d6234894a5c8a75d48c6116c45c",
+    "arm": "A",
+    "pair": 36,
+    "attempt": 71
+  },
+  {
+    "blindId": "R65",
+    "caseId": "pdf/1708.01464/55c8f7acbfd4f5cde634aaecd775b3bb32e9ffa3",
+    "arm": "A",
+    "pair": 21,
+    "attempt": 42
+  },
+  {
+    "blindId": "R66",
+    "caseId": "docx/1704.04452/e9cfbfdf30e48cffdeca58d4ac6fdd66a8b27d7a",
+    "arm": "A",
+    "pair": 11,
+    "attempt": 22
+  },
+  {
+    "blindId": "R67",
+    "caseId": "offtopic/35",
+    "arm": "A",
+    "pair": 35,
+    "attempt": 150
+  },
+  {
+    "blindId": "R68",
+    "caseId": "offtopic/03",
+    "arm": "B",
+    "pair": 3,
+    "attempt": 85
+  },
+  {
+    "blindId": "R69",
+    "caseId": "offtopic/15",
+    "arm": "B",
+    "pair": 15,
+    "attempt": 109
+  },
+  {
+    "blindId": "R70",
+    "caseId": "offtopic/33",
+    "arm": "A",
+    "pair": 33,
+    "attempt": 146
+  },
+  {
+    "blindId": "R71",
+    "caseId": "docx/1611.01576/a130306c6662ff489df13fb3f8faa7cba8c52a21",
+    "arm": "B",
+    "pair": 7,
+    "attempt": 13
+  },
+  {
+    "blindId": "R72",
+    "caseId": "pdf/1802.07862/1591068b747c94f45b948e12edafe74b5e721047",
+    "arm": "A",
+    "pair": 24,
+    "attempt": 47
+  },
+  {
+    "blindId": "R73",
+    "caseId": "offtopic/20",
+    "arm": "B",
+    "pair": 20,
+    "attempt": 120
+  },
+  {
+    "blindId": "R74",
+    "caseId": "pdf/1810.04428/ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb",
+    "arm": "B",
+    "pair": 27,
+    "attempt": 53
+  },
+  {
+    "blindId": "R75",
+    "caseId": "pdf/2002.01664/4bc2784be43d599000cb71d31928908250d4cef3",
+    "arm": "A",
+    "pair": 38,
+    "attempt": 75
+  },
+  {
+    "blindId": "R76",
+    "caseId": "pdf/1601.02403/eac9dae3492e17bc49c842fb566f464ff18c049b",
+    "arm": "B",
+    "pair": 14,
+    "attempt": 28
+  },
+  {
+    "blindId": "R77",
+    "caseId": "docx/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",
+    "arm": "A",
+    "pair": 6,
+    "attempt": 11
+  },
+  {
+    "blindId": "R78",
+    "caseId": "offtopic/04",
+    "arm": "A",
+    "pair": 4,
+    "attempt": 87
+  },
+  {
+    "blindId": "R79",
+    "caseId": "pdf/1909.06200/5c3e98e3cebaecd5d3e75ec2c9fc3dd267ac3c83",
+    "arm": "A",
+    "pair": 33,
+    "attempt": 66
+  },
+  {
+    "blindId": "R80",
+    "caseId": "offtopic/08",
+    "arm": "A",
+    "pair": 8,
+    "attempt": 95
+  },
+  {
+    "blindId": "R81",
+    "caseId": "offtopic/39",
+    "arm": "B",
+    "pair": 39,
+    "attempt": 157
+  },
+  {
+    "blindId": "R82",
+    "caseId": "offtopic/28",
+    "arm": "A",
+    "pair": 28,
+    "attempt": 135
+  },
+  {
+    "blindId": "R83",
+    "caseId": "pdf/2002.01664/4bc2784be43d599000cb71d31928908250d4cef3",
+    "arm": "B",
+    "pair": 38,
+    "attempt": 76
+  },
+  {
+    "blindId": "R84",
+    "caseId": "pdf/1912.06262/4477bb513d56e57732fba126944073d414d1f75f",
+    "arm": "A",
+    "pair": 37,
+    "attempt": 74
+  },
+  {
+    "blindId": "R85",
+    "caseId": "offtopic/22",
+    "arm": "B",
+    "pair": 22,
+    "attempt": 124
+  },
+  {
+    "blindId": "R86",
+    "caseId": "docx/1705.04153/ef396a34436072cb3c40b0c9bc9179fee4a168ae",
+    "arm": "A",
+    "pair": 12,
+    "attempt": 23
+  },
+  {
+    "blindId": "R87",
+    "caseId": "docx/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "arm": "A",
+    "pair": 9,
+    "attempt": 18
+  },
+  {
+    "blindId": "R88",
+    "caseId": "offtopic/21",
+    "arm": "B",
+    "pair": 21,
+    "attempt": 121
+  },
+  {
+    "blindId": "R89",
+    "caseId": "offtopic/29",
+    "arm": "B",
+    "pair": 29,
+    "attempt": 137
+  },
+  {
+    "blindId": "R90",
+    "caseId": "offtopic/38",
+    "arm": "A",
+    "pair": 38,
+    "attempt": 155
+  },
+  {
+    "blindId": "R91",
+    "caseId": "pdf/1909.06200/5c3e98e3cebaecd5d3e75ec2c9fc3dd267ac3c83",
+    "arm": "B",
+    "pair": 33,
+    "attempt": 65
+  },
+  {
+    "blindId": "R92",
+    "caseId": "offtopic/22",
+    "arm": "A",
+    "pair": 22,
+    "attempt": 123
+  },
+  {
+    "blindId": "R93",
+    "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+    "arm": "B",
+    "pair": 20,
+    "attempt": 40
+  },
+  {
+    "blindId": "R94",
+    "caseId": "pdf/1610.00956/e5bc73974c79d96eee2b688e578a9de1d0eb38fd",
+    "arm": "B",
+    "pair": 16,
+    "attempt": 32
+  },
+  {
+    "blindId": "R95",
+    "caseId": "offtopic/10",
+    "arm": "B",
+    "pair": 10,
+    "attempt": 100
+  },
+  {
+    "blindId": "R96",
+    "caseId": "docx/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "arm": "B",
+    "pair": 9,
+    "attempt": 17
+  },
+  {
+    "blindId": "R97",
+    "caseId": "pdf/1909.13104/f0b2289cb887740f9255909018f400f028b1ef26",
+    "arm": "B",
+    "pair": 34,
+    "attempt": 68
+  },
+  {
+    "blindId": "R98",
+    "caseId": "docx/1701.08229/82642d3111287abf736b781043d49536fe48c350",
+    "arm": "A",
+    "pair": 8,
+    "attempt": 15
+  },
+  {
+    "blindId": "R99",
+    "caseId": "offtopic/23",
+    "arm": "A",
+    "pair": 23,
+    "attempt": 126
+  },
+  {
+    "blindId": "R100",
+    "caseId": "offtopic/26",
+    "arm": "A",
+    "pair": 26,
+    "attempt": 131
+  },
+  {
+    "blindId": "R101",
+    "caseId": "offtopic/18",
+    "arm": "B",
+    "pair": 18,
+    "attempt": 116
+  },
+  {
+    "blindId": "R102",
+    "caseId": "offtopic/01",
+    "arm": "B",
+    "pair": 1,
+    "attempt": 81
+  },
+  {
+    "blindId": "R103",
+    "caseId": "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",
+    "arm": "B",
+    "pair": 35,
+    "attempt": 69
+  },
+  {
+    "blindId": "R104",
+    "caseId": "offtopic/12",
+    "arm": "B",
+    "pair": 12,
+    "attempt": 104
+  },
+  {
+    "blindId": "R105",
+    "caseId": "offtopic/37",
+    "arm": "A",
+    "pair": 37,
+    "attempt": 154
+  },
+  {
+    "blindId": "R106",
+    "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+    "arm": "B",
+    "pair": 39,
+    "attempt": 77
+  },
+  {
+    "blindId": "R107",
+    "caseId": "docx/1603.01514/6bf5620f295b5243230bc97b340fae6e92304595",
+    "arm": "A",
+    "pair": 2,
+    "attempt": 3
+  },
+  {
+    "blindId": "R108",
+    "caseId": "docx/1611.01576/a130306c6662ff489df13fb3f8faa7cba8c52a21",
+    "arm": "A",
+    "pair": 7,
+    "attempt": 14
+  },
+  {
+    "blindId": "R109",
+    "caseId": "pdf/1906.00790/4aa9b60c0ccd379c6fb089c84a6c7b872ee9ec4f",
+    "arm": "B",
+    "pair": 29,
+    "attempt": 57
+  },
+  {
+    "blindId": "R110",
+    "caseId": "offtopic/17",
+    "arm": "B",
+    "pair": 17,
+    "attempt": 113
+  },
+  {
+    "blindId": "R111",
+    "caseId": "offtopic/01",
+    "arm": "A",
+    "pair": 1,
+    "attempt": 82
+  },
+  {
+    "blindId": "R112",
+    "caseId": "docx/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",
+    "arm": "B",
+    "pair": 6,
+    "attempt": 12
+  },
+  {
+    "blindId": "R113",
+    "caseId": "offtopic/19",
+    "arm": "A",
+    "pair": 19,
+    "attempt": 118
+  },
+  {
+    "blindId": "R114",
+    "caseId": "offtopic/38",
+    "arm": "B",
+    "pair": 38,
+    "attempt": 156
+  },
+  {
+    "blindId": "R115",
+    "caseId": "pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "arm": "B",
+    "pair": 18,
+    "attempt": 36
+  },
+  {
+    "blindId": "R116",
+    "caseId": "offtopic/19",
+    "arm": "B",
+    "pair": 19,
+    "attempt": 117
+  },
+  {
+    "blindId": "R117",
+    "caseId": "offtopic/35",
+    "arm": "B",
+    "pair": 35,
+    "attempt": 149
+  },
+  {
+    "blindId": "R118",
+    "caseId": "pdf/1610.00956/e5bc73974c79d96eee2b688e578a9de1d0eb38fd",
+    "arm": "A",
+    "pair": 16,
+    "attempt": 31
+  },
+  {
+    "blindId": "R119",
+    "caseId": "pdf/1908.04042/b4f881331b975e6e4cab1868267211ed729d782d",
+    "arm": "B",
+    "pair": 31,
+    "attempt": 61
+  },
+  {
+    "blindId": "R120",
+    "caseId": "offtopic/29",
+    "arm": "A",
+    "pair": 29,
+    "attempt": 138
+  },
+  {
+    "blindId": "R121",
+    "caseId": "offtopic/32",
+    "arm": "B",
+    "pair": 32,
+    "attempt": 144
+  },
+  {
+    "blindId": "R122",
+    "caseId": "pdf/2002.01984/ff338921e34c15baf1eae0074938bf79ee65fdd2",
+    "arm": "A",
+    "pair": 39,
+    "attempt": 78
+  },
+  {
+    "blindId": "R123",
+    "caseId": "offtopic/33",
+    "arm": "B",
+    "pair": 33,
+    "attempt": 145
+  },
+  {
+    "blindId": "R124",
+    "caseId": "pdf/1907.09369/132f752169adf6dc5ade3e4ca773c11044985da4",
+    "arm": "B",
+    "pair": 30,
+    "attempt": 60
+  },
+  {
+    "blindId": "R125",
+    "caseId": "pdf/1605.03481/792f6d76d2befba2af07198584aac1b189583ae4",
+    "arm": "A",
+    "pair": 15,
+    "attempt": 30
+  },
+  {
+    "blindId": "R126",
+    "caseId": "pdf/1702.03856/53aa07cc4cc4e7107789ae637dbda8c9f6c1e6aa",
+    "arm": "A",
+    "pair": 18,
+    "attempt": 35
+  },
+  {
+    "blindId": "R127",
+    "caseId": "offtopic/31",
+    "arm": "A",
+    "pair": 31,
+    "attempt": 142
+  },
+  {
+    "blindId": "R128",
+    "caseId": "pdf/1706.01678/b65a83a24fc66728451bb063cf6ec50134c8bfb0",
+    "arm": "A",
+    "pair": 19,
+    "attempt": 38
+  },
+  {
+    "blindId": "R129",
+    "caseId": "pdf/2002.02070/29f2954098f055fb19d9502572f085862d75bf61",
+    "arm": "A",
+    "pair": 40,
+    "attempt": 79
+  },
+  {
+    "blindId": "R130",
+    "caseId": "docx/1606.02891/642e8cf1d39faa1cd985d16750cdc6696c52db2f",
+    "arm": "B",
+    "pair": 4,
+    "attempt": 8
+  },
+  {
+    "blindId": "R131",
+    "caseId": "offtopic/34",
+    "arm": "B",
+    "pair": 34,
+    "attempt": 148
+  },
+  {
+    "blindId": "R132",
+    "caseId": "pdf/1910.10781/12c50dea84f9a8845795fa8b8c1679328bd66246",
+    "arm": "A",
+    "pair": 35,
+    "attempt": 70
+  },
+  {
+    "blindId": "R133",
+    "caseId": "offtopic/27",
+    "arm": "B",
+    "pair": 27,
+    "attempt": 133
+  },
+  {
+    "blindId": "R134",
+    "caseId": "pdf/1909.00326/93beae291b455e5d3ecea6ac73b83632a3ae7ec7",
+    "arm": "A",
+    "pair": 32,
+    "attempt": 63
+  },
+  {
+    "blindId": "R135",
+    "caseId": "pdf/1903.03530/2c85865a65acd429508f50b5e4db9674813d67f2",
+    "arm": "A",
+    "pair": 28,
+    "attempt": 55
+  },
+  {
+    "blindId": "R136",
+    "caseId": "docx/1606.02891/642e8cf1d39faa1cd985d16750cdc6696c52db2f",
+    "arm": "A",
+    "pair": 4,
+    "attempt": 7
+  },
+  {
+    "blindId": "R137",
+    "caseId": "pdf/1907.09369/132f752169adf6dc5ade3e4ca773c11044985da4",
+    "arm": "A",
+    "pair": 30,
+    "attempt": 59
+  },
+  {
+    "blindId": "R138",
+    "caseId": "pdf/1809.01541/5cb610d3d5d7d447b4cd5736d6a7d8262140af58",
+    "arm": "B",
+    "pair": 26,
+    "attempt": 52
+  },
+  {
+    "blindId": "R139",
+    "caseId": "docx/1606.03676/3ddff6b707767c3dd54d7104fe88b628765cae58",
+    "arm": "A",
+    "pair": 5,
+    "attempt": 10
+  },
+  {
+    "blindId": "R140",
+    "caseId": "pdf/1802.07862/1591068b747c94f45b948e12edafe74b5e721047",
+    "arm": "B",
+    "pair": 24,
+    "attempt": 48
+  },
+  {
+    "blindId": "R141",
+    "caseId": "pdf/1810.04428/ebf0d9f9260ed61cbfd79b962df3899d05f9ebfb",
+    "arm": "A",
+    "pair": 27,
+    "attempt": 54
+  },
+  {
+    "blindId": "R142",
+    "caseId": "offtopic/36",
+    "arm": "B",
+    "pair": 36,
+    "attempt": 152
+  },
+  {
+    "blindId": "R143",
+    "caseId": "offtopic/34",
+    "arm": "A",
+    "pair": 34,
+    "attempt": 147
+  },
+  {
+    "blindId": "R144",
+    "caseId": "offtopic/02",
+    "arm": "B",
+    "pair": 2,
+    "attempt": 84
+  },
+  {
+    "blindId": "R145",
+    "caseId": "offtopic/30",
+    "arm": "B",
+    "pair": 30,
+    "attempt": 140
+  },
+  {
+    "blindId": "R146",
+    "caseId": "offtopic/04",
+    "arm": "B",
+    "pair": 4,
+    "attempt": 88
+  },
+  {
+    "blindId": "R147",
+    "caseId": "docx/1601.02403/7697baf8d8d582c1f664a614f6332121061f87db",
+    "arm": "B",
+    "pair": 1,
+    "attempt": 1
+  },
+  {
+    "blindId": "R148",
+    "caseId": "offtopic/14",
+    "arm": "A",
+    "pair": 14,
+    "attempt": 107
+  },
+  {
+    "blindId": "R149",
+    "caseId": "pdf/1707.06806/ddb23a71113cbc092cbc158066d891cae261e2c6",
+    "arm": "A",
+    "pair": 20,
+    "attempt": 39
+  },
+  {
+    "blindId": "R150",
+    "caseId": "offtopic/12",
+    "arm": "A",
+    "pair": 12,
+    "attempt": 103
+  },
+  {
+    "blindId": "R151",
+    "caseId": "docx/1606.03676/3ddff6b707767c3dd54d7104fe88b628765cae58",
+    "arm": "B",
+    "pair": 5,
+    "attempt": 9
+  },
+  {
+    "blindId": "R152",
+    "caseId": "pdf/1610.07809/06eb9f2320451df83e27362c22eb02f4a426a018",
+    "arm": "A",
+    "pair": 17,
+    "attempt": 34
+  },
+  {
+    "blindId": "R153",
+    "caseId": "offtopic/17",
+    "arm": "A",
+    "pair": 17,
+    "attempt": 114
+  },
+  {
+    "blindId": "R154",
+    "caseId": "offtopic/07",
+    "arm": "B",
+    "pair": 7,
+    "attempt": 93
+  },
+  {
+    "blindId": "R155",
+    "caseId": "pdf/1912.00667/3941401a182a3d6234894a5c8a75d48c6116c45c",
+    "arm": "B",
+    "pair": 36,
+    "attempt": 72
+  },
+  {
+    "blindId": "R156",
+    "caseId": "docx/1701.08229/82642d3111287abf736b781043d49536fe48c350",
+    "arm": "B",
+    "pair": 8,
+    "attempt": 16
+  },
+  {
+    "blindId": "R157",
+    "caseId": "pdf/2002.02070/29f2954098f055fb19d9502572f085862d75bf61",
+    "arm": "B",
+    "pair": 40,
+    "attempt": 80
+  },
+  {
+    "blindId": "R158",
+    "caseId": "offtopic/07",
+    "arm": "A",
+    "pair": 7,
+    "attempt": 94
+  }
+]

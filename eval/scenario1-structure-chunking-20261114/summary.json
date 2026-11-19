@@ -1,0 +1,89 @@
+{
+ "settings": {
+  "K": 5,
+  "PREFETCH": 20,
+  "GATE": 0.63,
+  "RRF_K": 60,
+  "RRF_BASE": 1
+ },
+ "check": {
+  "labelsSame": 116,
+  "dense5Same": 97,
+  "hybrid5Same": 8,
+  "n": 116
+ },
+ "base": {
+  "chunks": 3797,
+  "medianChunkChars": 470,
+  "questions": 116,
+  "unlocated": 0,
+  "hybridTop5": 57.8,
+  "denseTop5": 50.9,
+  "hybridTop5GateOn": 49.1,
+  "denseTop5GateOn": 44,
+  "hybridTop1": 22.4,
+  "denseTop1": 26.7,
+  "gateRefused": 16.4,
+  "medianCharsTop5": 2350
+ },
+ "clean500": {
+  "chunks": 4507,
+  "medianChunkChars": 375,
+  "questions": 116,
+  "unlocated": 0,
+  "hybridTop5": 56,
+  "denseTop5": 51.7,
+  "hybridTop5GateOn": 50.9,
+  "denseTop5GateOn": 47.4,
+  "hybridTop1": 33.6,
+  "denseTop1": 28.4,
+  "gateRefused": 15.5,
+  "medianCharsTop5": 1890
+ },
+ "clean1200": {
+  "chunks": 1832,
+  "medianChunkChars": 944,
+  "questions": 116,
+  "unlocated": 0,
+  "hybridTop5": 69,
+  "denseTop5": 61.2,
+  "hybridTop5GateOn": 55.2,
+  "denseTop5GateOn": 50,
+  "hybridTop1": 30.2,
+  "denseTop1": 25.9,
+  "gateRefused": 23.3,
+  "medianCharsTop5": 4457
+ },
+ "struct": {
+  "chunks": 2996,
+  "medianChunkChars": 393,
+  "questions": 116,
+  "unlocated": 0,
+  "hybridTop5": 58.6,
+  "denseTop5": 54.3,
+  "hybridTop5GateOn": 51.7,
+  "denseTop5GateOn": 47.4,
+  "hybridTop1": 28.4,
+  "denseTop1": 27.6,
+  "gateRefused": 17.2,
+  "medianCharsTop5": 2700
+ },
+ "structSec": {
+  "chunks": 2996,
+  "medianChunkChars": 393,
+  "questions": 116,
+  "unlocated": 0,
+  "hybridTop5": 62.9,
+  "denseTop5": 55.2,
+  "hybridTop5GateOn": 54.3,
+  "denseTop5GateOn": 49.1,
+  "hybridTop1": 30.2,
+  "denseTop1": 28.4,
+  "gateRefused": 17.2,
+  "medianCharsTop5": 2679
+ },
+ "storedBase": {
+  "hybridTop5": 48.3,
+  "denseTop5": 44
+ }
+}

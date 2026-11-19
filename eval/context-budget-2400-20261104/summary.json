@@ -1,0 +1,59 @@
+{
+  "cases": 119,
+  "mode": "hybrid",
+  "hitCount": 15,
+  "baselineCap": 1200,
+  "expandedCap": 2400,
+  "baselineCovered": 87,
+  "expandedCovered": 98,
+  "baselinePercent": 73.10924369747899,
+  "expandedPercent": 82.3529411764706,
+  "gained": 11,
+  "lost": 0,
+  "bothCovered": 87,
+  "neitherCovered": 21,
+  "unchangedBaselineCases": 119,
+  "tokenAudit": {
+    "requestsChecked": 238,
+    "sampleRequests": 20,
+    "sampleCases": 10,
+    "reserveTokens": 512,
+    "appWindow": 4096,
+    "allFit": true,
+    "allStrictlyUnder": true,
+    "stats": [
+      {
+        "cap": 1200,
+        "cases": 119,
+        "covered": 87,
+        "minTotalPromptTokens": 333,
+        "maxTotalPromptTokens": 1604,
+        "minWithReserve": 845,
+        "maxWithReserve": 2116,
+        "maxContextTextTokens": 1185,
+        "allUnder4096WithReserve": true
+      },
+      {
+        "cap": 2400,
+        "cases": 119,
+        "covered": 98,
+        "minTotalPromptTokens": 333,
+        "maxTotalPromptTokens": 2819,
+        "minWithReserve": 845,
+        "maxWithReserve": 3331,
+        "maxContextTextTokens": 2388,
+        "allUnder4096WithReserve": true
+      }
+    ],
+    "maxBudgetCase": "pdf/1911.02855/72f7ef55e150e16dcf97fe443aff9971a32414ef",
+    "histories": "All cases are standalone questions, so history is empty and its token contribution is0.",
+    "counting": "Existing application tokenizer and32-token template estimate; not provider-exact Qwen tokens."
+  },
+  "changedApplicationFiles": [],
+  "networkCalls": 0,
+  "blockedNetworkAttempts": 0,
+  "retrievalCalls": 0,
+  "generationCalls": 0,
+  "scope": "Same selected dev paper and saved top50 ranking sliced to15; not a fresh retrieve(k15) search.",
+  "metric": "All literal reference-answer quotes from at least one eligible alternative in the FINAL assembled passages; not final answer quality or full evidence-paragraph recall."
+}

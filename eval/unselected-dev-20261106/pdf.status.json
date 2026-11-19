@@ -1,0 +1,15 @@
+{
+  "completedTotal": 496,
+  "expected": 496,
+  "error": null,
+  "counts": {
+    "embeddingCalls": 496,
+    "reusedEmbeddings": 170,
+    "queryCalls": 1331,
+    "scrollCalls": 3921,
+    "generationCalls": 0
+  },
+  "changedInputs": [],
+  "generationCalls": 0,
+  "heldOutPayloadsRead": false
+}
