@@ -1,0 +1,268 @@
+{
+ "frozenAt": "2026-11-18T06:24:47Z",
+ "note": "Written from standard textbook definitions before looking at any dev/test question or miss list. Triggers are JS regex sources, matched case-insensitively. Expansion words are appended to the search query once per term.",
+ "terms": [
+  {
+   "name": "current ratio",
+   "triggers": [
+    "\\bcurrent ratio\\b"
+   ],
+   "expansion": "total current assets total current liabilities balance sheet"
+  },
+  {
+   "name": "quick ratio",
+   "triggers": [
+    "\\bquick ratio\\b",
+    "\\bacid[- ]test\\b"
+   ],
+   "expansion": "current assets cash and cash equivalents marketable securities accounts receivable inventories current liabilities balance sheet"
+  },
+  {
+   "name": "cash ratio",
+   "triggers": [
+    "\\bcash ratio\\b"
+   ],
+   "expansion": "cash and cash equivalents marketable securities total current liabilities balance sheet"
+  },
+  {
+   "name": "working capital",
+   "triggers": [
+    "\\bworking capital\\b"
+   ],
+   "expansion": "total current assets total current liabilities balance sheet"
+  },
+  {
+   "name": "gross margin",
+   "triggers": [
+    "\\bgross (profit )?margins?\\b",
+    "\\bgross profit\\b"
+   ],
+   "expansion": "net revenue sales cost of revenue cost of goods sold gross profit income statement"
+  },
+  {
+   "name": "operating margin",
+   "triggers": [
+    "\\boperating (profit )?margins?\\b",
+    "\\boperating income margin\\b",
+    "\\bEBIT margin\\b"
+   ],
+   "expansion": "operating income net revenue sales income statement"
+  },
+  {
+   "name": "net margin",
+   "triggers": [
+    "\\bnet (profit |income )?margins?\\b",
+    "\\bprofit margins?\\b"
+   ],
+   "expansion": "net income net revenue sales income statement"
+  },
+  {
+   "name": "EBITDA",
+   "triggers": [
+    "\\bEBITDA\\b"
+   ],
+   "expansion": "operating income depreciation and amortization income statement cash flow statement"
+  },
+  {
+   "name": "return on assets",
+   "triggers": [
+    "\\breturn on (total )?assets\\b",
+    "\\bROA\\b"
+   ],
+   "expansion": "net income total assets income statement balance sheet"
+  },
+  {
+   "name": "return on equity",
+   "triggers": [
+    "\\breturn on (shareholders'? |stockholders'? |common )?equity\\b",
+    "\\bROE\\b"
+   ],
+   "expansion": "net income total shareholders equity income statement balance sheet"
+  },
+  {
+   "name": "return on invested capital",
+   "triggers": [
+    "\\breturn on invested capital\\b",
+    "\\bROIC\\b",
+    "\\breturn on capital( employed)?\\b",
+    "\\bROCE\\b"
+   ],
+   "expansion": "operating income income taxes total debt shareholders equity balance sheet"
+  },
+  {
+   "name": "inventory turnover",
+   "triggers": [
+    "\\binventory turnover\\b",
+    "\\binventory turns\\b",
+    "\\bdays inventory outstanding\\b",
+    "\\bDIO\\b",
+    "\\bdays (of |in )?inventory\\b"
+   ],
+   "expansion": "cost of goods sold cost of sales inventories income statement balance sheet"
+  },
+  {
+   "name": "receivables turnover",
+   "triggers": [
+    "\\breceivables? turnover\\b",
+    "\\bdays sales outstanding\\b",
+    "\\bDSO\\b"
+   ],
+   "expansion": "net revenue sales accounts receivable net income statement balance sheet"
+  },
+  {
+   "name": "payables",
+   "triggers": [
+    "\\bpayables? turnover\\b",
+    "\\bdays payables? outstanding\\b",
+    "\\bDPO\\b"
+   ],
+   "expansion": "cost of goods sold accounts payable income statement balance sheet"
+  },
+  {
+   "name": "cash conversion cycle",
+   "triggers": [
+    "\\bcash conversion cycle\\b",
+    "\\bCCC\\b"
+   ],
+   "expansion": "inventories accounts receivable accounts payable cost of sales revenue balance sheet"
+  },
+  {
+   "name": "asset turnover",
+   "triggers": [
+    "\\b(total )?asset turnover\\b"
+   ],
+   "expansion": "net revenue sales total assets income statement balance sheet"
+  },
+  {
+   "name": "fixed asset turnover",
+   "triggers": [
+    "\\bfixed asset turnover\\b"
+   ],
+   "expansion": "net revenue sales property plant and equipment net balance sheet"
+  },
+  {
+   "name": "capex",
+   "triggers": [
+    "\\bcapex\\b",
+    "\\bcapital expenditures?\\b",
+    "\\bcapital spending\\b",
+    "\\bcapital intensity\\b"
+   ],
+   "expansion": "purchases of property plant and equipment cash flow statement investing activities"
+  },
+  {
+   "name": "PP&E",
+   "triggers": [
+    "\\bPP&E\\b",
+    "\\bPPE\\b",
+    "\\bPP and E\\b"
+   ],
+   "expansion": "property plant and equipment net balance sheet"
+  },
+  {
+   "name": "free cash flow",
+   "triggers": [
+    "\\bfree cash flows?\\b",
+    "\\bFCF\\b"
+   ],
+   "expansion": "net cash provided by operating activities purchases of property plant and equipment cash flow statement"
+  },
+  {
+   "name": "operating cash flow",
+   "triggers": [
+    "\\boperating cash flows?\\b",
+    "\\bcash flows? from operations\\b",
+    "\\bcash from operations\\b",
+    "\\bOCF\\b",
+    "\\bCFO\\b"
+   ],
+   "expansion": "net cash provided by operating activities cash flow statement"
+  },
+  {
+   "name": "dividend payout",
+   "triggers": [
+    "\\bdividend payout( ratio)?\\b",
+    "\\bpayout ratio\\b"
+   ],
+   "expansion": "cash dividends paid net income cash flow statement income statement"
+  },
+  {
+   "name": "debt to equity",
+   "triggers": [
+    "\\bdebt[- ]to[- ]equity\\b",
+    "\\bD/E\\b",
+    "\\bleverage ratio\\b",
+    "\\bgearing\\b"
+   ],
+   "expansion": "long-term debt short-term borrowings total shareholders equity balance sheet"
+  },
+  {
+   "name": "debt to EBITDA",
+   "triggers": [
+    "\\bdebt[- ]to[- ]EBITDA\\b",
+    "\\bnet debt\\b"
+   ],
+   "expansion": "long-term debt current portion cash and cash equivalents balance sheet"
+  },
+  {
+   "name": "interest coverage",
+   "triggers": [
+    "\\binterest coverage\\b",
+    "\\btimes interest earned\\b"
+   ],
+   "expansion": "operating income interest expense income statement"
+  },
+  {
+   "name": "EPS",
+   "triggers": [
+    "\\bEPS\\b",
+    "\\bearnings per share\\b"
+   ],
+   "expansion": "net income per share basic diluted weighted average shares outstanding income statement"
+  },
+  {
+   "name": "revenue growth",
+   "triggers": [
+    "\\brevenue growth\\b",
+    "\\bsales growth\\b",
+    "\\btop[- ]line growth\\b"
+   ],
+   "expansion": "total net revenue net sales prior year income statement"
+  },
+  {
+   "name": "effective tax rate",
+   "triggers": [
+    "\\beffective tax rate\\b"
+   ],
+   "expansion": "provision for income taxes income before income taxes income statement"
+  },
+  {
+   "name": "COGS",
+   "triggers": [
+    "\\bCOGS\\b"
+   ],
+   "expansion": "cost of goods sold cost of sales cost of revenue income statement"
+  },
+  {
+   "name": "SG&A",
+   "triggers": [
+    "\\bSG&A\\b",
+    "\\bSGA\\b"
+   ],
+   "expansion": "selling general and administrative expenses income statement"
+  },
+  {
+   "name": "D&A",
+   "triggers": [
+    "\\bD&A\\b"
+   ],
+   "expansion": "depreciation and amortization cash flow statement"
+  }
+ ],
+ "fixes": [
+  {
+   "at": "2026-11-18 (before any retrieval was run or any question was matched)",
+   "what": "When the file was first written, the shell turned every doubled backslash into a single one, so each regex word boundary was stored as a JSON backspace escape and no trigger could ever match (self-check: 0 of 31 terms matched their own name). Restored the word boundary in all 70 trigger patterns. No term, trigger wording or expansion changed. Found by a self-check before any question was matched or any retrieval was run."
+  }
+ ]
+}
