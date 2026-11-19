@@ -1,14 +1,22 @@
 import { retrieve, type RetrievedChunk, type RetrieveOptions } from "./retrieval/retriever.js";
 import { buildPrompt, type HistoryMessage } from "./generation/promptBuilder.js";
-import { generate, generateStream, RAG_SYSTEM_PROMPT } from "./generation/llm.js";
+import { generate, generateStream, LEGACY_RAG_SYSTEM_PROMPT } from "./generation/llm.js";
+import { PARTIAL_ANSWER_SYSTEM_PROMPT, C_SYSTEM_PROMPT, type PromptVariant } from "./generation/promptVariants.js";
 import { rewriteFollowUp } from "./generation/rewrite.js";
 import { countTokens } from "./generation/tokens.js";
 import { assembleContext } from "./retrieval/context.js";
-import { contextConfig, retrievalConfig, rewriteConfig } from "./config.js";
+import { contextConfig, retrievalConfig, rewriteConfig, rerankConfig, answerSettings, answerConfig, type AnswerProfile } from "./config.js";
+import { rerank } from "./retrieval/reranker.js";
+import { expandAcronyms } from "./retrieval/acronyms.js";
 import type { Citation } from "./types.js";
+import { resolveDocumentScope, scopeQuestion, type DocumentScope } from "./retrieval/documentScope.js";
+import { planSummary, prepareSummary, messageSetup, type SummarySetup } from "./summarise.js";
 
 export interface RetrieveForQuestionResult {
+  documentScope: DocumentScope;
   prompt: string;
+  /** Selected with the user template so generation cannot mix prompt variants. */
+  systemPrompt: string;
   chunks: RetrievedChunk[];
   /** What the prompt's Context block holds (src/retrieval/context.ts). */
   passages: RetrievedChunk[];
@@ -20,7 +28,13 @@ export interface AskOptions extends Omit<RetrieveOptions, "previousQuestion"> {
   /** Earlier turns of the conversation, oldest first. Follow-ups are rewritten into a
    * standalone question for retrieval, and the model sees the history to resolve "it". */
   history?: HistoryMessage[];
-  /** Cancels generation (streaming only), e.g. when the user presses Stop. */
+  /** Experimental answer instructions; omitted preserves the production prompt. */
+  promptVariant?: PromptVariant;
+  /** Request-local old/new presets; no shared config mutation. */
+  answerProfile?: AnswerProfile;
+  /** Evaluation may pin temperature without changing the provider default. */
+  temperature?: number;
+  /** Cancels rewriting, reranking and generation, e.g. when the user presses Stop. */
   signal?: AbortSignal;
 }
 
@@ -73,21 +87,45 @@ export async function retrieveForQuestion(
   question: string,
   options: AskOptions = {},
 ): Promise<RetrieveForQuestionResult> {
-  const { history = [], signal: _signal, ...retrieveOptions } = options;
+  const { history = [], signal, answerProfile, temperature: _temperature, promptVariant: requestedVariant, ...retrieveOptions } = options;
+  const settings = answerSettings(answerProfile);
+  const promptVariant = requestedVariant ?? settings.promptVariant;
+  retrieveOptions.topK ??= settings.topK;
+  signal?.throwIfAborted();
   const previousQuestion = [...history].reverse().find((m) => m.role === "user")?.content;
-
+  const documentScope = retrieveOptions.documentScope ?? await resolveDocumentScope(
+    scopeQuestion(question, history.filter(m => m.role === "user").map(m => m.content)),
+    retrieveOptions.collection ?? retrievalConfig.collection,
+  );
+  retrieveOptions.documentScope = documentScope;
+  const finalTopK = retrieveOptions.topK ?? retrievalConfig.topK;
+  if (rerankConfig.enabled) retrieveOptions.topK = rerankConfig.candidateLimit;
+  signal?.throwIfAborted();
   let chunks: RetrievedChunk[];
   let searchQuestion: string | undefined;
-  if (previousQuestion === undefined) {
+  if (documentScope.documentIds?.length === 0) {
+    chunks = [];
+  } else if (previousQuestion === undefined) {
     chunks = await retrieve(question, retrieveOptions);
   } else {
     // A follow-up: search with its standalone form, gated like any first question. If
     // rewriting is off or fails, fall back to previous + current question with the
     // follow-up floor.
-    searchQuestion = rewriteConfig.enabled ? ((await rewriteFollowUp(history, question)) ?? undefined) : undefined;
+    searchQuestion = rewriteConfig.enabled ? ((await rewriteFollowUp(history, question, signal)) ?? undefined) : undefined;
+    signal?.throwIfAborted();
     chunks = searchQuestion
       ? await retrieve(searchQuestion, retrieveOptions)
       : await retrieve(question, { ...retrieveOptions, previousQuestion });
+  }
+  signal?.throwIfAborted();
+  if (rerankConfig.enabled && chunks.length > 0) {
+    const rerankQuestion = searchQuestion
+      ? expandAcronyms(searchQuestion)
+      : previousQuestion?.trim()
+        ? `${expandAcronyms(previousQuestion)}\n${expandAcronyms(question)}`
+        : expandAcronyms(question);
+    chunks = await rerank(rerankQuestion, chunks, finalTopK, signal);
+    signal?.throwIfAborted();
   }
   // The model still sees the user's own words plus the history. It reads the assembled
   // passages (whole small documents, or hits plus neighbours); citations still come from
@@ -96,27 +134,33 @@ export async function retrieveForQuestion(
     contextConfig.expand && chunks.length > 0
       ? await assembleContext(chunks, {
           collection: retrieveOptions.collection ?? retrievalConfig.collection,
-          budgetTokens: contextBudget(question, history),
+          budgetTokens: contextBudget(question, history, promptVariant, settings.numCtx),
           wholeMaxTokens: contextConfig.wholeDocMaxTokens,
-          chunkedMaxTokens: contextConfig.chunkedDocMaxTokens,
+          chunkedMaxTokens: settings.chunkedDocMaxTokens,
           titleChunk: contextConfig.titleChunk,
         })
       : chunks;
-  const prompt = buildPrompt(question, passages, history);
-  return { prompt, chunks, passages, searchQuestion };
+  signal?.throwIfAborted();
+  const prompt = buildPrompt(question, passages, history, promptVariant);
+  const systemPrompt = systemForVariant(promptVariant);
+  return { prompt, systemPrompt, chunks, passages, searchQuestion, documentScope };
 }
 
-/** Ollama's llama3 chat template around system + prompt (header tokens, BOS, EOT). */
+/** Retained llama3 template overhead estimate; approximate for hosted Qwen generation. */
 const TEMPLATE_OVERHEAD_TOKENS = 32;
+function systemForVariant(variant: PromptVariant): string {
+  return variant === "concise" ? C_SYSTEM_PROMPT : variant === "partial" ? PARTIAL_ANSWER_SYSTEM_PROMPT : LEGACY_RAG_SYSTEM_PROMPT;
+}
 
 /** llama3 tokens left for context passages in this request's num_ctx window. */
-export function contextBudget(question: string, history: HistoryMessage[]): number {
+export function contextBudget(question: string, history: HistoryMessage[], variant: PromptVariant = answerSettings().promptVariant, numCtx = contextConfig.numCtx): number {
   // The prompt with one empty passage is everything except the passages themselves.
-  const skeleton = buildPrompt(question, [{ text: "", source: "", score: 0 }], history);
+  const skeleton = buildPrompt(question, [{ text: "", source: "", score: 0 }], history, variant);
+  const systemPrompt = systemForVariant(variant);
   return (
-    contextConfig.numCtx -
+    numCtx -
     TEMPLATE_OVERHEAD_TOKENS -
-    countTokens(RAG_SYSTEM_PROMPT) -
+    countTokens(systemPrompt) -
     countTokens(skeleton) -
     contextConfig.answerReserveTokens
   );
@@ -138,8 +182,14 @@ export async function answerQuestion(
   question: string,
   opts: AskOptions = {},
 ): Promise<AnswerResult> {
-  const { prompt, chunks } = await retrieveForQuestion(question, opts);
-  const answer = await generate(prompt);
+  const summary = await summarySetup(question, opts, false);
+  if (summary) {
+    let answer = "";
+    for await (const t of summary.tokens) answer += t;
+    return { answer: answer.trim(), chunks: [], citations: summary.citations };
+  }
+  const { prompt, systemPrompt, chunks } = await retrieveForQuestion(question, opts);
+  const answer = await generate(prompt, { signal: opts.signal, system: systemPrompt, maxTokens: answerConfig.maxOutputTokens, ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}) });
   return { answer, chunks, citations: buildCitations(chunks) };
 }
 
@@ -163,9 +213,28 @@ export async function answerQuestionStream(
   question: string,
   opts: AskOptions = {},
 ): Promise<StreamSetup> {
-  const { prompt, chunks } = await retrieveForQuestion(question, opts);
+  const summary = await summarySetup(question, opts, true);
+  if (summary) return summary;
+  const { prompt, systemPrompt, chunks } = await retrieveForQuestion(question, opts);
   return {
-    tokens: generateStream(prompt, opts.signal),
+    tokens: generateStream(prompt, opts.signal, { system: systemPrompt, maxTokens: answerConfig.maxOutputTokens, ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}) }),
     citations: buildCitations(chunks),
   };
+}
+
+/**
+ * "Summarise <document>" requests (src/summarise.ts), handled before retrieval: they name
+ * a document, so the relevance gate does not apply. null for every other message, which
+ * then takes the normal path unchanged. Eager like retrieveForQuestion: the document
+ * listing and chunk reads happen here, so a Qdrant outage is a pre-stream failure.
+ * An explicit documentScope (evaluation) is a retrieval constraint: skip summaries then.
+ */
+async function summarySetup(question: string, opts: AskOptions, stream: boolean): Promise<SummarySetup | null> {
+  if (opts.documentScope) return null;
+  const collection = opts.collection ?? retrievalConfig.collection;
+  opts.signal?.throwIfAborted();
+  const plan = await planSummary(question, opts.history ?? [], { collection });
+  if (!plan) return null;
+  if (plan.kind === "message") return messageSetup(plan.text);
+  return prepareSummary(plan.doc, question, { collection, stream, signal: opts.signal });
 }

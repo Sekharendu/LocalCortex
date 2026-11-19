@@ -43,7 +43,7 @@ function Arrowhead({ id }: { id: string }) {
 }
 
 const STORES = [
-  { title: "Ollama", lines: ["runs the AI models", "nomic-embed-text · llama3", "port 11434"], narrow: ["runs the AI models", "port 11434"] },
+  { title: "Ollama", lines: ["local embeddings", "nomic-embed-text", "port 11434"], narrow: ["local embeddings", "port 11434"] },
   { title: "Qdrant", lines: ["stores chunk vectors", "for search", "port 6333"], narrow: ["chunk vectors", "port 6333"] },
   { title: "Postgres", lines: ["stores your chats", "and messages", "port 5433"], narrow: ["chats, messages", "port 5433"] },
   { title: "documents.json", lines: ["list of the files", "you uploaded", "file on disk"], narrow: ["uploaded files", "file on disk"] },
@@ -56,18 +56,18 @@ function Wide() {
   return (
     <svg className="arch-svg arch-wide" viewBox="0 0 736 360" role="img" aria-labelledby="arch-wide-title">
       <title id="arch-wide-title">
-        The web UI talks to the Express API, which uses Ollama, Qdrant, Postgres and documents.json. Everything runs on your machine.
+        The web UI talks to the Express API, which uses Ollama, Qdrant, Postgres and documents.json. Storage and embeddings run locally; Cloudflare generates answers and rewrites from selected evidence and relevant conversation inputs.
       </title>
       <defs>
         <Arrowhead id="arch-arrow-w" />
       </defs>
       <rect className="arch-boundary" x={4} y={4} width={728} height={352} rx={14} />
       <text className="arch-boundary-label" x={22} y={30}>
-        YOUR MACHINE · NOTHING LEAVES IT
+        LOCAL STORAGE · HOSTED INFERENCE
       </text>
 
       <Box x={64} y={54} w={224} h={78} title="Web UI" lines={["React chat app", "port 5173"]} />
-      <Box x={448} y={54} w={224} h={78} title="Express API" lines={["src/server.ts", "port 3000"]} />
+      <Box x={448} y={54} w={224} h={78} title="Express API" lines={["Cloudflare inference client", "port 3000"]} />
 
       <line className="arch-line" x1={290} y1={80} x2={446} y2={80} markerEnd="url(#arch-arrow-w)" />
       <text className="arch-edge" x={368} y={71} textAnchor="middle">
@@ -102,7 +102,7 @@ function Narrow() {
   return (
     <svg className="arch-svg arch-narrow" viewBox="0 0 360 524" role="img" aria-labelledby="arch-narrow-title">
       <title id="arch-narrow-title">
-        The web UI talks to the Express API, which uses Ollama, Qdrant, Postgres and documents.json. Everything runs on your machine.
+        The web UI talks to the Express API, which uses Ollama, Qdrant, Postgres and documents.json. Storage and embeddings run locally; Cloudflare generates answers and rewrites from selected evidence and relevant conversation inputs.
       </title>
       <defs>
         <Arrowhead id="arch-arrow-n" />
@@ -113,7 +113,7 @@ function Narrow() {
       </text>
 
       <Box x={70} y={44} w={220} h={64} title="Web UI" lines={["React chat app · port 5173"]} />
-      <Box x={70} y={180} w={220} h={64} title="Express API" lines={["src/server.ts · port 3000"]} />
+      <Box x={70} y={180} w={220} h={64} title="Express API" lines={["Cloudflare inference client"]} />
 
       <line className="arch-line" x1={160} y1={110} x2={160} y2={178} markerEnd="url(#arch-arrow-n)" />
       <text className="arch-edge" x={150} y={148} textAnchor="end">

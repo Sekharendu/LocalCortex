@@ -2,8 +2,20 @@
 // can tune without code edits, but this file is the single source of truth for "what are
 // the defaults." Add new categories here as new components grow knobs.
 
+export type AnswerProfile = "new" | "legacy";
+export const answerConfig = {
+  profile: (process.env.RAG_PROFILE === "legacy" ? "legacy" : "new") as AnswerProfile,
+  maxOutputTokens: 512,
+};
+const legacyDefaults = answerConfig.profile === "legacy";
+
+export const rerankConfig = {
+  enabled: process.env.RERANK_ENABLED === "1",
+  candidateLimit: 50,
+};
+
 export const retrievalConfig = {
-  topK: Number(process.env.RETRIEVE_TOP_K ?? 5),
+  topK: Number(process.env.RETRIEVE_TOP_K ?? (legacyDefaults ? 5 : 15)),
   // Chosen by scripts/calibrate-threshold.ts: general-knowledge questions top out at
   // 0.567 and answerable ones start at 0.640, so 0.63 blocks the former and refuses none
   // of the latter (0.7 refused 9/113). Company-sounding questions the corpus can't answer
@@ -14,10 +26,11 @@ export const retrievalConfig = {
   // own: 0.57 is just above the highest general-knowledge score in calibration (0.567).
   followupFloor: Number(process.env.RETRIEVE_FOLLOWUP_FLOOR ?? 0.57),
   collection: process.env.QDRANT_COLLECTION ?? "rag",
-  // Dense is the default: with task prefixes on, dense and hybrid tie on the eval sets
-  // (105/113 each), and dense needs no sparse fusion or relevance probe. Set
-  // RETRIEVE_MODE=hybrid to fuse dense + BM25 sparse instead.
-  mode: (process.env.RETRIEVE_MODE === "hybrid" ? "hybrid" : "dense") as "dense" | "hybrid",
+  // Hybrid (dense + BM25 sparse, fused in Qdrant) is the default: on the QASPER dev set
+  // (570 answerable questions, top 15, assembled context) it put the answer chunk in the
+  // context 90.4% vs dense 88.2% at the same context size (SESSION-LOG §7). The handbook
+  // eval sets tie (105/113 each). Set RETRIEVE_MODE=dense for dense-only search.
+  mode: (process.env.RETRIEVE_MODE === "dense" ? "dense" : "hybrid") as "dense" | "hybrid",
   // Hybrid-mode fusion: "rrf" (rank-only) or "dbsf" (score-magnitude-aware).
   fusion: (process.env.RETRIEVE_FUSION === "dbsf" ? "dbsf" : "rrf") as "rrf" | "dbsf",
 };
@@ -36,12 +49,11 @@ export const contextConfig = {
   // Most a longer document may add (hits first, then its title chunk, then neighbours).
   // Uncapped, 48-page PDFs sent 2,000-2,650 tokens: 2x the latency, and one answer buried.
   // 0 = no cap.
-  chunkedDocMaxTokens: Number(process.env.CHUNKED_DOC_MAX_TOKENS ?? 1200) || Infinity,
+  chunkedDocMaxTokens: Number(process.env.CHUNKED_DOC_MAX_TOKENS ?? (legacyDefaults ? 1200 : 3200)) || Infinity,
   // CONTEXT_TITLE_CHUNK=0: don't add a chunked document's first chunk (title, authors).
   titleChunk: process.env.CONTEXT_TITLE_CHUNK !== "0",
-  // Pinned rather than left to Ollama's default (4096 on 0.31, llama3 supports 8192) so the
-  // context budget can't silently change with an Ollama upgrade.
-  numCtx: Number(process.env.OLLAMA_NUM_CTX ?? 4096),
+  // Retained legacy context budget, estimated with llama3 tokens; not the hosted model window.
+  numCtx: Number(process.env.OLLAMA_NUM_CTX ?? (legacyDefaults ? 4096 : 5000)),
   answerReserveTokens: Number(process.env.ANSWER_RESERVE_TOKENS ?? 512),
 };
 
@@ -68,6 +80,20 @@ export const rewriteConfig = {
   // retrieval, so the subject named turns ago carries through. QUERY_REWRITE=0 falls back
   // to embedding the previous question + the new one, gated by RETRIEVE_FOLLOWUP_FLOOR.
   enabled: process.env.QUERY_REWRITE !== "0",
-  model: process.env.OLLAMA_REWRITE_MODEL ?? process.env.OLLAMA_GEN_MODEL ?? "llama3",
   timeoutMs: Number(process.env.REWRITE_TIMEOUT_MS ?? 60_000),
 };
+
+/** Explicit profiles are immutable request-local presets; omitted preserves env tuning. */
+export function answerSettings(profile?: AnswerProfile) {
+  if (profile) return {
+    topK: profile === "legacy" ? 5 : 15,
+    numCtx: profile === "legacy" ? 4096 : 5000,
+    chunkedDocMaxTokens: profile === "legacy" ? 1200 : 3200,
+    promptVariant: profile === "legacy" ? "legacy" as const : "concise" as const,
+  };
+  return {
+    topK: retrievalConfig.topK, numCtx: contextConfig.numCtx,
+    chunkedDocMaxTokens: contextConfig.chunkedDocMaxTokens,
+    promptVariant: legacyDefaults ? "legacy" as const : "concise" as const,
+  };
+}

@@ -22,7 +22,7 @@ export const nav: NavGroup[] = [
     section: "User guide",
     label: "Get started",
     pages: [
-      { path: "/", title: "Overview", description: "Chat with your documents. Every model, vector and message stays on your machine." },
+      { path: "/", title: "Overview", description: "Chat with your documents. Local retrieval and storage, Cloudflare answers." },
       { path: "/quickstart", title: "Quickstart", description: "Clone, start the stack, upload a file, and ask it a question — about ten minutes." },
       { path: "/using-the-app", title: "Using the app", description: "A tour of the chat app: conversations, streaming answers, sources and the Documents panel." },
     ],

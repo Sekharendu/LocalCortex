@@ -38,3 +38,8 @@ launch/
 
 .vercel
 .env*
+
+# Local agent instructions and role configuration
+/AGENTS.md
+/.codex/
+/docs/development/three-agent-workflow.md

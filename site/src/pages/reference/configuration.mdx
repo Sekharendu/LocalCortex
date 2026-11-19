@@ -1,7 +1,7 @@
 import { EnvTable } from "../../components/EnvTable";
 import { Callout } from "../../components/Callout";
 
-Every variable is optional. The defaults work with the standard `docker compose up -d` setup, so most people never need this page. Set variables in the shell before running `pnpm dev` (there is no `.env` file loading).
+Cloudflare generation requires backend `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` with Workers AI access. Never expose them in frontend code or commit them. Other settings have defaults for the standard local infrastructure setup. Set variables in the shell before running `pnpm dev` (there is no `.env` file loading).
 
 ## Core
 
@@ -18,10 +18,15 @@ Every variable is optional. The defaults work with the standard `docker compose 
   { name: "OLLAMA_EMBED_MODEL", default: "nomic-embed-text", purpose: "Embedding model name" },
   { name: "OLLAMA_EMBED_DIM", default: "768", purpose: "Expected embedding dimension — a cross-layer integrity gate" },
   { name: "OLLAMA_EMBED_PREFIXES", default: "on", purpose: "Prepend the search_query:/search_document: task prefixes" },
-  { name: "OLLAMA_GEN_MODEL", default: "llama3", purpose: "Generation model name" },
-  { name: "OLLAMA_GEN_TIMEOUT_MS", default: "180000", purpose: "Generation request timeout" },
-  { name: "OLLAMA_NUM_CTX", default: "4096", purpose: "Context window pinned for generation, in tokens; the prompt budget is computed from it" },
+  { name: "CLOUDFLARE_ACCOUNT_ID", default: "required", purpose: "Backend Cloudflare account ID" },
+  { name: "CLOUDFLARE_API_TOKEN", default: "required", purpose: "Backend token with Workers AI access" },
+  { name: "CLOUDFLARE_GEN_TIMEOUT_MS", default: "180000", purpose: "Generation timeout covering headers and body" },
+  { name: "OLLAMA_NUM_CTX", default: "4096", purpose: "Legacy context budget estimate; does not configure the Cloudflare window" },
 ]} />
+
+The fixed model is `@cf/qwen/qwen3-30b-a3b-fp8` for answers and rewriting. Answers use the documented Cloudflare default of 2000 output tokens; rewrites request 48 with temperature 0. The 512-token reserve below is not a generation limit. Thinking uses raw prompting with Qwen's closed empty thinking prefill; no undocumented API flag is sent.
+
+Questions, selected passages (possibly whole small documents), relevant history and rewrite inputs go to Cloudflare. Storage and embeddings remain local in the standard setup. The retained llama3 tokenizer is approximate for Qwen. No provider retention/training guarantees are asserted.
 
 ## Retrieval
 
@@ -55,7 +60,6 @@ These control [context assembly](/how-it-works/answering#what-the-model-reads): 
 
 <EnvTable rows={[
   { name: "QUERY_REWRITE", default: "on", purpose: "Rewrite referring follow-ups into standalone questions" },
-  { name: "OLLAMA_REWRITE_MODEL", default: "OLLAMA_GEN_MODEL", purpose: "Model used for the rewrite" },
   { name: "REWRITE_TIMEOUT_MS", default: "60000", purpose: "Rewrite timeout; falls back on timeout" },
   { name: "RETRIEVE_FOLLOWUP_FLOOR", default: "0.57", purpose: "Minimum standalone score for the fallback follow-up path" },
 ]} />

@@ -9,6 +9,10 @@ import { CardGroup, Card } from "../components/Card";
   <Card title="curl + jq">For the manual smoke checks below</Card>
 </CardGroup>
 
+## Cloudflare credentials
+
+Set `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` securely in the backend shell before `pnpm dev` or Compose. The token needs Workers AI access. Never put them in frontend code or commit secret files. The development API does not load `.env` files automatically. Questions, selected passages (possibly whole small documents), and relevant conversation/rewrite history go to Cloudflare. See [configuration](/reference/configuration).
+
 ## Set up and run
 
 <Steps>
@@ -35,13 +39,12 @@ docker compose ps
 
 </Step>
 
-<Step title="Pull the two models">
+<Step title="Pull the embedding model">
 
-This downloads about 5 GB once. The models are kept in a Docker volume, so restarting the containers doesn't download them again.
+This downloads nomic-embed-text (roughly 274 MB) once and keeps it in a Docker volume. Cloudflare handles generation; no llama3 download is needed.
 
 ```bash
 docker exec -it local-rag-ollama ollama pull nomic-embed-text   # turns text into vectors
-docker exec -it local-rag-ollama ollama pull llama3             # writes the answers
 ```
 
 </Step>
