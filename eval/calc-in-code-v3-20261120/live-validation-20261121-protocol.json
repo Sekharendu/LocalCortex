@@ -1,0 +1,16 @@
+{
+  "cap": 300,
+  "maxCalls": 3,
+  "ids": [
+    "tat-0723",
+    "tat-0751",
+    "financebench-0102"
+  ],
+  "promptHashes": [
+    "4131130ce9f058323a7b26dde17168a50cb0952f47703a1cd71c763ff1b7ed5f",
+    "8e4a56f4c9c2447a911ad070bbeb0b3da8a55581921ac48b74d2d56d93638146",
+    "3899ceb30030daeb6d1af54c11ae0acdaff64fc420832774237beea76a9aa25d"
+  ],
+  "evaluatorHash": "0592359316db37e77012fd3469f8e456836bada4081a7a2e47cc140952ebdea9",
+  "runnerHash": "b7710ca9e46f1c453869de97f4dfcf42eb7d719f1369c041a04f138982bdea6a"
+}

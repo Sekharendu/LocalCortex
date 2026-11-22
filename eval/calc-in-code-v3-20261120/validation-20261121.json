@@ -1,0 +1,80 @@
+{
+  "at": "2026-11-20T20:58:25.196Z",
+  "tests": [
+    {
+      "name": "power precedence and right association",
+      "passed": true
+    },
+    {
+      "name": "power domain and finite result checks",
+      "passed": true
+    },
+    {
+      "name": "CAGR with real historical inputs",
+      "passed": true
+    },
+    {
+      "name": "missing power input refused",
+      "passed": true
+    },
+    {
+      "name": "question-only number cannot authorize calculation literal",
+      "passed": true
+    },
+    {
+      "name": "calculation lines and placeholders are removed",
+      "passed": true
+    },
+    {
+      "name": "valid calculation uses one v3 call",
+      "passed": true
+    },
+    {
+      "name": "format retry accepted once",
+      "passed": true
+    },
+    {
+      "name": "retry with missing literal rejected",
+      "passed": true
+    },
+    {
+      "name": "retry without a calculation rejected without a third v3 call",
+      "passed": true
+    },
+    {
+      "name": "retry with unused CALC rejected",
+      "passed": true
+    },
+    {
+      "name": "direct lookup has no format retry",
+      "passed": true
+    },
+    {
+      "name": "explicit refusal has no retry",
+      "passed": true
+    },
+    {
+      "name": "missing calculation input has no retry",
+      "passed": true
+    },
+    {
+      "name": "mixed prose and CALC retains known false refusal",
+      "passed": true
+    },
+    {
+      "name": "provider HTTP failure stops with no retry",
+      "passed": true
+    },
+    {
+      "name": "provider transport failure stops with no retry",
+      "passed": true
+    },
+    {
+      "name": "missing usage stops for reconciliation",
+      "passed": true
+    }
+  ],
+  "passed": 18,
+  "failed": 0,
+  "provider": "mock only"
+}
