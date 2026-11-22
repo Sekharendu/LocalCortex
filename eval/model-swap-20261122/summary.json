@@ -1,0 +1,453 @@
+{
+  "generatedAt": "2026-11-22T13:13:31.967Z",
+  "usdPer1kNeurons": 0.011,
+  "questions": 100,
+  "qwenIdenticalPrompts": 90,
+  "goldAddedPrompts": 10,
+  "goldAddedIds": [
+    "tat-0711",
+    "financebench-0011",
+    "nq-0231",
+    "feta-0462",
+    "nq-0308",
+    "financebench-0121",
+    "financebench-0047",
+    "financebench-0024",
+    "nq-0280",
+    "feta-0386"
+  ],
+  "models": {
+    "qwen": {
+      "label": "Qwen3-30B-A3B-FP8 (original)",
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "answered": 100,
+      "callsMade": 100,
+      "errorRows": 0,
+      "http429": 0,
+      "accuracy": {
+        "all": {
+          "n": 100,
+          "C": 66,
+          "P": 7,
+          "W": 17,
+          "R": 10,
+          "ungraded": 0,
+          "accuracyPct": 66,
+          "partialCreditPct": 69.5
+        },
+        "qwenIdentical": {
+          "n": 90,
+          "C": 65,
+          "P": 6,
+          "W": 13,
+          "R": 6,
+          "ungraded": 0,
+          "accuracyPct": 72.2,
+          "partialCreditPct": 75.6
+        },
+        "goldAdded": {
+          "n": 10,
+          "C": 1,
+          "P": 1,
+          "W": 4,
+          "R": 4,
+          "ungraded": 0,
+          "accuracyPct": 10,
+          "partialCreditPct": 15
+        },
+        "bySource": {
+          "tat": {
+            "n": 22,
+            "C": 14,
+            "P": 1,
+            "W": 4,
+            "R": 3,
+            "ungraded": 0,
+            "accuracyPct": 63.6,
+            "partialCreditPct": 65.9
+          },
+          "nq": {
+            "n": 29,
+            "C": 23,
+            "P": 0,
+            "W": 4,
+            "R": 2,
+            "ungraded": 0,
+            "accuracyPct": 79.3,
+            "partialCreditPct": 79.3
+          },
+          "feta": {
+            "n": 30,
+            "C": 21,
+            "P": 4,
+            "W": 5,
+            "R": 0,
+            "ungraded": 0,
+            "accuracyPct": 70,
+            "partialCreditPct": 76.7
+          },
+          "financebench": {
+            "n": 19,
+            "C": 8,
+            "P": 2,
+            "W": 4,
+            "R": 5,
+            "ungraded": 0,
+            "accuracyPct": 42.1,
+            "partialCreditPct": 47.4
+          }
+        }
+      },
+      "latencyMs": {
+        "mean": 875,
+        "median": 771,
+        "p90": 1305,
+        "max": 3312
+      },
+      "promptTokensMean": 3341,
+      "outputTokens": {
+        "mean": 37.6,
+        "max": 292,
+        "total": 3760
+      },
+      "neurons": {
+        "meanPerRequest": 16.6,
+        "total": 1659.8
+      },
+      "usd": {
+        "per100Requests": 0.0183,
+        "per1000Requests": 0.183
+      },
+      "requestsPerDayOnFree10kNeurons": 602,
+      "finishReasons": {
+        "stop": 100
+      },
+      "reasoningCharsTotal": 0,
+      "refusals": 9
+    },
+    "glm": {
+      "label": "GLM-4.7-Flash",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "answered": 100,
+      "callsMade": 100,
+      "errorRows": 0,
+      "http429": 0,
+      "accuracy": {
+        "all": {
+          "n": 100,
+          "C": 62,
+          "P": 9,
+          "W": 22,
+          "R": 7,
+          "ungraded": 0,
+          "accuracyPct": 62,
+          "partialCreditPct": 66.5
+        },
+        "qwenIdentical": {
+          "n": 90,
+          "C": 58,
+          "P": 7,
+          "W": 18,
+          "R": 7,
+          "ungraded": 0,
+          "accuracyPct": 64.4,
+          "partialCreditPct": 68.3
+        },
+        "goldAdded": {
+          "n": 10,
+          "C": 4,
+          "P": 2,
+          "W": 4,
+          "R": 0,
+          "ungraded": 0,
+          "accuracyPct": 40,
+          "partialCreditPct": 50
+        },
+        "bySource": {
+          "tat": {
+            "n": 22,
+            "C": 12,
+            "P": 3,
+            "W": 5,
+            "R": 2,
+            "ungraded": 0,
+            "accuracyPct": 54.5,
+            "partialCreditPct": 61.4
+          },
+          "nq": {
+            "n": 29,
+            "C": 20,
+            "P": 1,
+            "W": 7,
+            "R": 1,
+            "ungraded": 0,
+            "accuracyPct": 69,
+            "partialCreditPct": 70.7
+          },
+          "feta": {
+            "n": 30,
+            "C": 21,
+            "P": 3,
+            "W": 4,
+            "R": 2,
+            "ungraded": 0,
+            "accuracyPct": 70,
+            "partialCreditPct": 75
+          },
+          "financebench": {
+            "n": 19,
+            "C": 9,
+            "P": 2,
+            "W": 6,
+            "R": 2,
+            "ungraded": 0,
+            "accuracyPct": 47.4,
+            "partialCreditPct": 52.6
+          }
+        }
+      },
+      "latencyMs": {
+        "mean": 17896,
+        "median": 6780,
+        "p90": 52164,
+        "max": 104750
+      },
+      "promptTokensMean": 2995,
+      "outputTokens": {
+        "mean": 44.5,
+        "max": 295,
+        "total": 4446
+      },
+      "neurons": {
+        "meanPerRequest": 18.09,
+        "total": 1809.1
+      },
+      "usd": {
+        "per100Requests": 0.0199,
+        "per1000Requests": 0.199
+      },
+      "requestsPerDayOnFree10kNeurons": 553,
+      "finishReasons": {
+        "stop": 100
+      },
+      "reasoningCharsTotal": 0,
+      "refusals": 7
+    },
+    "gemma": {
+      "label": "Gemma-4-26B-A4B-it",
+      "model": "@cf/google/gemma-4-26b-a4b-it",
+      "answered": 100,
+      "callsMade": 100,
+      "errorRows": 0,
+      "http429": 0,
+      "accuracy": {
+        "all": {
+          "n": 100,
+          "C": 70,
+          "P": 10,
+          "W": 7,
+          "R": 13,
+          "ungraded": 0,
+          "accuracyPct": 70,
+          "partialCreditPct": 75
+        },
+        "qwenIdentical": {
+          "n": 90,
+          "C": 66,
+          "P": 7,
+          "W": 6,
+          "R": 11,
+          "ungraded": 0,
+          "accuracyPct": 73.3,
+          "partialCreditPct": 77.2
+        },
+        "goldAdded": {
+          "n": 10,
+          "C": 4,
+          "P": 3,
+          "W": 1,
+          "R": 2,
+          "ungraded": 0,
+          "accuracyPct": 40,
+          "partialCreditPct": 55
+        },
+        "bySource": {
+          "tat": {
+            "n": 22,
+            "C": 9,
+            "P": 4,
+            "W": 2,
+            "R": 7,
+            "ungraded": 0,
+            "accuracyPct": 40.9,
+            "partialCreditPct": 50
+          },
+          "nq": {
+            "n": 29,
+            "C": 25,
+            "P": 1,
+            "W": 1,
+            "R": 2,
+            "ungraded": 0,
+            "accuracyPct": 86.2,
+            "partialCreditPct": 87.9
+          },
+          "feta": {
+            "n": 30,
+            "C": 25,
+            "P": 3,
+            "W": 1,
+            "R": 1,
+            "ungraded": 0,
+            "accuracyPct": 83.3,
+            "partialCreditPct": 88.3
+          },
+          "financebench": {
+            "n": 19,
+            "C": 11,
+            "P": 2,
+            "W": 3,
+            "R": 3,
+            "ungraded": 0,
+            "accuracyPct": 57.9,
+            "partialCreditPct": 63.2
+          }
+        }
+      },
+      "latencyMs": {
+        "mean": 2433,
+        "median": 1620,
+        "p90": 4755,
+        "max": 13292
+      },
+      "promptTokensMean": 3375,
+      "outputTokens": {
+        "mean": 51.4,
+        "max": 244,
+        "total": 5142
+      },
+      "neurons": {
+        "meanPerRequest": 31.82,
+        "total": 3182.1
+      },
+      "usd": {
+        "per100Requests": 0.035,
+        "per1000Requests": 0.35
+      },
+      "requestsPerDayOnFree10kNeurons": 314,
+      "finishReasons": {
+        "stop": 100
+      },
+      "reasoningCharsTotal": 0,
+      "refusals": 13
+    },
+    "granite": {
+      "label": "Granite-4.0-H-Micro",
+      "model": "@cf/ibm-granite/granite-4.0-h-micro",
+      "answered": 100,
+      "callsMade": 100,
+      "errorRows": 0,
+      "http429": 0,
+      "accuracy": {
+        "all": {
+          "n": 100,
+          "C": 54,
+          "P": 8,
+          "W": 31,
+          "R": 7,
+          "ungraded": 0,
+          "accuracyPct": 54,
+          "partialCreditPct": 58
+        },
+        "qwenIdentical": {
+          "n": 90,
+          "C": 53,
+          "P": 4,
+          "W": 27,
+          "R": 6,
+          "ungraded": 0,
+          "accuracyPct": 58.9,
+          "partialCreditPct": 61.1
+        },
+        "goldAdded": {
+          "n": 10,
+          "C": 1,
+          "P": 4,
+          "W": 4,
+          "R": 1,
+          "ungraded": 0,
+          "accuracyPct": 10,
+          "partialCreditPct": 30
+        },
+        "bySource": {
+          "tat": {
+            "n": 22,
+            "C": 9,
+            "P": 0,
+            "W": 9,
+            "R": 4,
+            "ungraded": 0,
+            "accuracyPct": 40.9,
+            "partialCreditPct": 40.9
+          },
+          "nq": {
+            "n": 29,
+            "C": 23,
+            "P": 1,
+            "W": 5,
+            "R": 0,
+            "ungraded": 0,
+            "accuracyPct": 79.3,
+            "partialCreditPct": 81
+          },
+          "feta": {
+            "n": 30,
+            "C": 17,
+            "P": 4,
+            "W": 8,
+            "R": 1,
+            "ungraded": 0,
+            "accuracyPct": 56.7,
+            "partialCreditPct": 63.3
+          },
+          "financebench": {
+            "n": 19,
+            "C": 5,
+            "P": 3,
+            "W": 9,
+            "R": 2,
+            "ungraded": 0,
+            "accuracyPct": 26.3,
+            "partialCreditPct": 34.2
+          }
+        }
+      },
+      "latencyMs": {
+        "mean": 2749,
+        "median": 2173,
+        "p90": 4043,
+        "max": 12369
+      },
+      "promptTokensMean": 2946,
+      "outputTokens": {
+        "mean": 42.1,
+        "max": 392,
+        "total": 4213
+      },
+      "neurons": {
+        "meanPerRequest": 4.97,
+        "total": 497
+      },
+      "usd": {
+        "per100Requests": 0.0055,
+        "per1000Requests": 0.055
+      },
+      "requestsPerDayOnFree10kNeurons": 2012,
+      "finishReasons": {
+        "stop": 100
+      },
+      "reasoningCharsTotal": 0,
+      "refusals": 7
+    }
+  }
+}
