@@ -9,35 +9,53 @@ const BUSY_ELSEWHERE = "Answering in another chat…";
 // Within this many pixels of the bottom counts as "reading the latest".
 const STICK_THRESHOLD = 80;
 
-export function EmptyState({ onSend }: { onSend(content: string): void }) {
-  const { stream } = useChat();
+export function EmptyState({ spaceName, onSend }: { spaceName: string; onSend(content: string, model: string): void }) {
+  const { stream, models, model, setModel } = useChat();
   const docs = useDocuments();
   const noDocuments = docs.loaded && docs.documents.length === 0;
   return (
     <div className="empty">
-      <div className="empty-inner">
-        <h1>What do you want to know?</h1>
+      <div className="empty-inner new-chat-intro">
+        <p className="new-chat-greeting">{spaceName}</p>
+        <h1>Explore your <span>documents</span></h1>
+        <Composer
+          onSend={(content) => onSend(content, model)}
+          disabledReason={stream ? BUSY_ELSEWHERE : null}
+          focusKey={`new-${spaceName}`}
+          models={models}
+          model={model}
+          onModelChange={setModel}
+        />
         {noDocuments ? (
           <p className="empty-sub">
-            There's nothing to search yet.{" "}
+            This Space has no files yet, so answers have nothing to draw on.{" "}
             <button className="link-btn" onClick={() => docs.setPanelOpen(true)}>
-              Add a document
+              Add files
             </button>{" "}
             to get started.
           </p>
         ) : (
           <p className="empty-sub">Answers use your documents. Questions, selected passages and relevant chat history are sent to Cloudflare.</p>
         )}
-        <Composer onSend={onSend} disabledReason={stream ? BUSY_ELSEWHERE : null} focusKey="new" />
       </div>
     </div>
   );
 }
 
 export function ChatView({ id, onNewChat }: { id: string; onNewChat(): void }) {
-  const { conversations, loadState, loadError, stream, failures, send, retry, stop, open } = useChat();
+  const { conversations, loadState, loadError, stream, failures, send, retry, actOnStream, open, models, model: lastPicked, setModel } = useChat();
   const conversation = conversations[id];
   const live = stream?.conversationId === id ? stream : null;
+
+  // A chat keeps answering with the model of its last answer until the user picks another.
+  const [picked, setPicked] = useState<string | null>(null);
+  const lastAnswerModel = conversation?.messages.findLast((m) => m.role === "assistant" && m.model)?.model ?? null;
+  const known = (key: string | null) => (key && (models.length === 0 || models.some((m) => m.key === key)) ? key : null);
+  const model = known(picked) ?? known(lastAnswerModel) ?? lastPicked;
+  const pickModel = (key: string) => {
+    setPicked(key);
+    setModel(key);
+  };
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const stick = useRef(true);
@@ -116,13 +134,13 @@ export function ChatView({ id, onNewChat }: { id: string; onNewChat(): void }) {
             <MessageView
               key={m.id}
               message={m}
-              onRetry={!live && !failure && m === last && m.status === "error" ? () => retry(id) : undefined}
+              onRetry={!live && !failure && m === last && m.status === "error" ? () => retry(id, model) : undefined}
             />
           ))}
           {live && <LiveAnswer stream={live} />}
           {failure && !live && (
             <div className="turn turn-assistant">
-              <ErrorLine text={failure} onRetry={() => retry(id)} />
+              <ErrorLine text={failure} onRetry={() => retry(id, model)} />
             </div>
           )}
         </div>
@@ -134,11 +152,14 @@ export function ChatView({ id, onNewChat }: { id: string; onNewChat(): void }) {
           </button>
         )}
         <Composer
-          onSend={(content) => void send(id, content)}
-          onStop={stop}
-          streaming={live !== null}
+          onSend={(content) => void send(id, content, model)}
+          onStreamAction={actOnStream}
+          streamPhase={live?.phase}
           disabledReason={stream && !live ? BUSY_ELSEWHERE : null}
           focusKey={id}
+          models={models}
+          model={model}
+          onModelChange={pickModel}
         />
         <p className="disclaimer">Cloudflare receives questions, selected passages and relevant chat history. Answers can still be wrong.</p>
       </div>

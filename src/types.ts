@@ -53,6 +53,8 @@ export interface ChunkPayload {
   page?: number;
   chunkIndex: number;
   documentId: string;
+  /** Space the document belongs to (src/spaceStore.ts). Searches pass it as a filter. */
+  spaceId?: string;
   /** "Title › Section" embedded above the text when ingested with contextHeaders. */
   section?: string;
 }

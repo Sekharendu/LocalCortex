@@ -12,6 +12,9 @@ export interface DocumentRecord {
   /** Qdrant collection holding the document's chunks. Missing on records written before
    * this field existed; scripts/reconcile-documents.ts fills it in. */
   collection?: string;
+  /** Space the document belongs to. Missing on records from before Spaces (and on
+   * evaluation collections); the server assigns default-collection ones to General. */
+  spaceId?: string;
 }
 
 /**
@@ -95,5 +98,39 @@ export async function deleteDocument(id: string): Promise<DocumentRecord | null>
       await writeStoreAtomic(store);
     }
     return removed;
+  });
+}
+/** Applies `change` to every record in one serialized write; returns the records it changed. */
+export async function updateDocuments(change: (r: DocumentRecord) => DocumentRecord | null): Promise<DocumentRecord[]> {
+  return serialize(async () => {
+    const store = await readStore();
+    const changed: DocumentRecord[] = [];
+    for (const [id, r] of Object.entries(store)) {
+      const next = change(r);
+      if (next) { store[id] = next; changed.push(next); }
+    }
+    if (changed.length) await writeStoreAtomic(store);
+    return changed;
+  });
+}
+
+/** Removes every record matching `match` in one serialized write; returns the removed records. */
+export async function deleteDocumentsWhere(match: (r: DocumentRecord) => boolean): Promise<DocumentRecord[]> {
+  return serialize(async () => {
+    const store = await readStore();
+    const removed = Object.values(store).filter(match);
+    for (const r of removed) delete store[r.id];
+    if (removed.length) await writeStoreAtomic(store);
+    return removed;
+  });
+}
+
+/** Puts records back (rollback of deleteDocumentsWhere). */
+export async function restoreDocuments(records: DocumentRecord[]): Promise<void> {
+  if (!records.length) return;
+  return serialize(async () => {
+    const store = await readStore();
+    for (const r of records) store[r.id] = r;
+    await writeStoreAtomic(store);
   });
 }

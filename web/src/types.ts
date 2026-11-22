@@ -15,11 +15,14 @@ export interface Message {
   content: string;
   citations: Citation[] | null;
   status: MessageStatus;
+  /** Answer model key for assistant messages; null for questions and older answers. */
+  model: string | null;
   createdAt: string;
 }
 
 export interface ConversationSummary {
   id: string;
+  spaceId: string;
   title: string;
   createdAt: string;
   updatedAt: string;
@@ -41,6 +44,24 @@ export interface DocumentRecord {
   ingestedAt: string;
   chunkCount: number;
   collection?: string;
+  spaceId?: string;
+}
+
+/** A Space holds files and chats; its chats only search its own files. */
+export interface Space {
+  id: string;
+  name: string;
+  isDefault: boolean;
+  createdAt: string;
+  updatedAt: string;
+  chatCount: number;
+  documentCount: number;
+}
+
+export interface AnswerModel {
+  key: string;
+  label: string;
+  description: string;
 }
 
 /** What the loader can read (src/ingest/loader.ts SUPPORTED_EXTENSIONS). */

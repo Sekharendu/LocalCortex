@@ -11,11 +11,14 @@ export interface Message {
   citations: Citation[] | null;
   /** null = complete */
   status: MessageStatus | null;
+  /** Answer model key for assistant messages (null for user messages and older answers). */
+  model: string | null;
   createdAt: string;
 }
 
 export interface ConversationSummary {
   id: string;
+  spaceId: string;
   title: string;
   createdAt: string;
   updatedAt: string;
@@ -31,6 +34,7 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 
 interface ConversationRow {
   id: string;
+  space_id: string;
   title: string;
   created_at: Date;
   updated_at: Date;
@@ -42,11 +46,12 @@ interface MessageRow {
   content: string;
   citations: Citation[] | null;
   status: MessageStatus | null;
+  model: string | null;
   created_at: Date;
 }
 
 function toSummary(r: ConversationRow): ConversationSummary {
-  return { id: r.id, title: r.title, createdAt: r.created_at.toISOString(), updatedAt: r.updated_at.toISOString() };
+  return { id: r.id, spaceId: r.space_id, title: r.title, createdAt: r.created_at.toISOString(), updatedAt: r.updated_at.toISOString() };
 }
 
 function toMessage(r: MessageRow): Message {
@@ -56,34 +61,42 @@ function toMessage(r: MessageRow): Message {
     content: r.content,
     citations: r.citations,
     status: r.status,
+    model: r.model,
     createdAt: r.created_at.toISOString(),
   };
 }
 
-export async function createConversation(title: string): Promise<ConversationSummary> {
+const CONV_COLUMNS = "id, space_id, title, created_at, updated_at";
+
+export async function createConversation(title: string, spaceId: string): Promise<ConversationSummary> {
   const { rows } = await pool.query<ConversationRow>(
-    "INSERT INTO conversations (title) VALUES ($1) RETURNING id, title, created_at, updated_at",
-    [title],
+    `INSERT INTO conversations (title, space_id) VALUES ($1, $2) RETURNING ${CONV_COLUMNS}`,
+    [title, spaceId],
   );
   return toSummary(rows[0]);
 }
 
-export async function listConversations(): Promise<ConversationSummary[]> {
-  const { rows } = await pool.query<ConversationRow>(
-    "SELECT id, title, created_at, updated_at FROM conversations ORDER BY updated_at DESC",
-  );
+/** Most recently active first; only one Space's chats when `spaceId` is given. */
+export async function listConversations(spaceId?: string): Promise<ConversationSummary[]> {
+  if (spaceId !== undefined && !UUID_RE.test(spaceId)) return [];
+  const { rows } = spaceId === undefined
+    ? await pool.query<ConversationRow>(`SELECT ${CONV_COLUMNS} FROM conversations ORDER BY updated_at DESC`)
+    : await pool.query<ConversationRow>(
+        `SELECT ${CONV_COLUMNS} FROM conversations WHERE space_id = $1 ORDER BY updated_at DESC`,
+        [spaceId],
+      );
   return rows.map(toSummary);
 }
 
 export async function getConversation(id: string): Promise<Conversation | null> {
   if (!UUID_RE.test(id)) return null;
   const conv = await pool.query<ConversationRow>(
-    "SELECT id, title, created_at, updated_at FROM conversations WHERE id = $1",
+    `SELECT ${CONV_COLUMNS} FROM conversations WHERE id = $1`,
     [id],
   );
   if (conv.rows.length === 0) return null;
   const msgs = await pool.query<MessageRow>(
-    "SELECT id, role, content, citations, status, created_at FROM messages WHERE conversation_id = $1 ORDER BY created_at, id",
+    "SELECT id, role, content, citations, status, model, created_at FROM messages WHERE conversation_id = $1 ORDER BY created_at, id",
     [id],
   );
   return { ...toSummary(conv.rows[0]), messages: msgs.rows.map(toMessage) };
@@ -92,19 +105,20 @@ export async function getConversation(id: string): Promise<Conversation | null> 
 /** Appends a message and bumps the conversation's updated_at in one transaction. */
 export async function appendMessage(
   conversationId: string,
-  message: { role: MessageRole; content: string; citations?: Citation[] | null; status?: MessageStatus | null },
+  message: { role: MessageRole; content: string; citations?: Citation[] | null; status?: MessageStatus | null; model?: string | null },
 ): Promise<Message> {
   return withTransaction(async (client) => {
     const { rows } = await client.query<MessageRow>(
-      `INSERT INTO messages (conversation_id, role, content, citations, status)
-       VALUES ($1, $2, $3, $4, $5)
-       RETURNING id, role, content, citations, status, created_at`,
+      `INSERT INTO messages (conversation_id, role, content, citations, status, model)
+       VALUES ($1, $2, $3, $4, $5, $6)
+       RETURNING id, role, content, citations, status, model, created_at`,
       [
         conversationId,
         message.role,
         message.content,
         message.citations ? JSON.stringify(message.citations) : null,
         message.status ?? null,
+        message.model ?? null,
       ],
     );
     await client.query("UPDATE conversations SET updated_at = now() WHERE id = $1", [conversationId]);
@@ -115,7 +129,7 @@ export async function appendMessage(
 export async function renameConversation(id: string, title: string): Promise<ConversationSummary | null> {
   if (!UUID_RE.test(id)) return null;
   const { rows } = await pool.query<ConversationRow>(
-    "UPDATE conversations SET title = $2, updated_at = now() WHERE id = $1 RETURNING id, title, created_at, updated_at",
+    `UPDATE conversations SET title = $2, updated_at = now() WHERE id = $1 RETURNING ${CONV_COLUMNS}`,
     [id, title],
   );
   return rows.length ? toSummary(rows[0]) : null;

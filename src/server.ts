@@ -7,8 +7,35 @@ import { answerQuestion, answerQuestionStream } from "./rag.js";
 import { ingestDocument } from "./ingest/pipeline.js";
 import { isSupportedFile, SUPPORTED_EXTENSIONS } from "./ingest/loader.js";
 import { UnsupportedFileTypeError } from "./errors.js";
-import { listDocuments, deleteDocument, getDocument, addDocument, type DocumentRecord } from "./documentStore.js";
-import { deleteByDocumentId } from "./retrieval/vectorStore.js";
+import {
+  listDocuments,
+  deleteDocument,
+  getDocument,
+  addDocument,
+  updateDocuments,
+  deleteDocumentsWhere,
+  restoreDocuments,
+  type DocumentRecord,
+} from "./documentStore.js";
+import {
+  deleteByDocumentId,
+  deleteBySpaceId,
+  ensureSpaceIndex,
+  assignUnscopedPoints,
+  countUnscopedPoints,
+} from "./retrieval/vectorStore.js";
+import { ANSWER_MODELS, DEFAULT_MODEL, isModelKey, type ModelKey } from "./generation/models.js";
+import {
+  createSpace,
+  deleteSpace,
+  getOrCreateDefaultSpace,
+  getSpace,
+  listSpaces,
+  renameSpace,
+  countChats,
+  touchSpace,
+  type Space,
+} from "./spaceStore.js";
 import { retrievalConfig } from "./config.js";
 import { postgresReachable } from "./db.js";
 import {
@@ -28,6 +55,7 @@ const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
 const MAX_INGEST_BYTES = Number(process.env.MAX_INGEST_BYTES ?? 50 * 1024 * 1024); // 50 MB (50 * 1024 * 1024 bytes)
 
 const app: Express = express();
+const DEFAULT_COLLECTION = retrievalConfig.collection;
 
 app.use(express.json());
 app.use(searchRouter);
@@ -81,7 +109,18 @@ app.get("/health", async (_req, res) => {
 });
 
 // ----- POST /ingest ------------------------------------------------------------
-app.post("/ingest", upload.single("file"), async (req: Request, res: Response) => {
+// Legacy route: files go to the General Space. The UI uploads to /spaces/:id/ingest.
+app.post("/ingest", upload.single("file"), (req, res, next) => {
+  getOrCreateDefaultSpace()
+    .then((space) => ingestInto(space.id, req, res))
+    .catch(async (e) => {
+      if (req.file) await unlink(req.file.path).catch(() => {});
+      next(e);
+    });
+});
+
+/** Ingests the uploaded file into a Space. Always removes the temp upload. */
+async function ingestInto(spaceId: string, req: Request, res: Response): Promise<void> {
   if (!req.file) {
     res.status(400).json({ error: "file upload required (multipart field 'file')" });
     return;
@@ -97,17 +136,27 @@ app.post("/ingest", upload.single("file"), async (req: Request, res: Response) =
     const result = await ingestDocument(req.file.path, {
       strategy,
       originalName: req.file.originalname,
+      spaceId,
     });
     if (!result.success) {
       res.status(502).json({ error: `Ingest failed at stage '${result.stage}': ${result.error}` });
       return;
     }
+    // The Space may have been deleted while this file was being indexed; its delete
+    // couldn't see these chunks yet, so remove them here rather than leave orphans.
+    if (!(await getSpace(spaceId))) {
+      await deleteDocument(result.documentId).catch(() => null);
+      await deleteByDocumentId(DEFAULT_COLLECTION, result.documentId).catch(() => {});
+      res.status(404).json({ error: `space not found: ${spaceId}` });
+      return;
+    }
+    await touchSpace(spaceId);
     res.json({ documentId: result.documentId, chunkCount: result.chunkCount });
   } finally {
     // always clean the temp upload; never let failed ingests leave garbage on disk
     await unlink(req.file.path).catch(() => {});
   }
-});
+}
 
 // ----- POST /query -------------------------------------------------------------
 interface QueryBody {
@@ -116,6 +165,8 @@ interface QueryBody {
   topK?: unknown;
   scoreThreshold?: unknown;
   collection?: unknown;
+  spaceId?: unknown;
+  model?: unknown;
 }//declared everything as unknown so as to handle the creash gracefully when user gives an invalid input.
 // i first accept everything as it is and manually check for types. this prevents creash.
 
@@ -126,6 +177,10 @@ app.post("/query", async (req: Request, res: Response) => {
     res.status(400).json({ error: "question is required and must be a non-empty string" });
     return;
   }
+  if (body.model !== undefined && !isModelKey(body.model)) {
+    res.status(400).json({ error: `unknown model (expected one of: ${Object.keys(ANSWER_MODELS).join(", ")})` });
+    return;
+  }
 
   const controller = new AbortController();
   res.once("close", () => { if (!res.writableEnded) controller.abort(); });
@@ -134,6 +189,9 @@ app.post("/query", async (req: Request, res: Response) => {
     topK: typeof body.topK === "number" ? body.topK : undefined,
     scoreThreshold: typeof body.scoreThreshold === "number" ? body.scoreThreshold : undefined,
     collection: typeof body.collection === "string" ? body.collection : undefined,
+    // Without a spaceId the search covers every Space (evaluation scripts rely on this).
+    spaceId: typeof body.spaceId === "string" ? body.spaceId : undefined,
+    model: body.model as ModelKey | undefined,
   };
 
   const wantStream = body.stream === true;
@@ -294,7 +352,8 @@ app.post(
   route(async (req, res) => {
     const raw = (req.body as { title?: unknown } | undefined)?.title;
     const title = typeof raw === "string" && raw.trim() ? titleFrom(raw) : DEFAULT_TITLE;
-    res.status(201).json({ conversation: await createConversation(title) });
+    const space = await getOrCreateDefaultSpace();
+    res.status(201).json({ conversation: await createConversation(title, space.id) });
   }),
 );
 
@@ -343,11 +402,17 @@ app.delete(
 app.post(
   "/conversations/:id/messages",
   route(async (req, res) => {
-    const content = (req.body as { content?: unknown } | undefined)?.content;
+    const body = req.body as { content?: unknown; model?: unknown } | undefined;
+    const content = body?.content;
     if (typeof content !== "string" || content.trim().length === 0) {
       res.status(400).json({ error: "content is required and must be a non-empty string" });
       return;
     }
+    if (body?.model !== undefined && !isModelKey(body.model)) {
+      res.status(400).json({ error: `unknown model (expected one of: ${Object.keys(ANSWER_MODELS).join(", ")})` });
+      return;
+    }
+    const model: ModelKey = body?.model ?? DEFAULT_MODEL;
     const controller = new AbortController();
     res.once("close", () => { if (!res.writableEnded) controller.abort(); });
     const conversation = await getConversation(req.params.id);
@@ -371,14 +436,19 @@ app.post(
     let tokens: AsyncGenerator<string>;
     let citations: Citation[];
     try {
-      ({ tokens, citations } = await answerQuestionStream(content, { history, signal: controller.signal }));
+      ({ tokens, citations } = await answerQuestionStream(content, {
+        history,
+        signal: controller.signal,
+        spaceId: conversation.spaceId,
+        model,
+      }));
     } catch (e) {
       if (controller.signal.aborted) {
-        await appendMessage(conversation.id, { role: "assistant", content: "", citations: [], status: "interrupted" });
+        await appendMessage(conversation.id, { role: "assistant", content: "", citations: [], status: "interrupted", model });
         return;
       }
       const msg = e instanceof Error ? e.message : String(e);
-      await appendMessage(conversation.id, { role: "assistant", content: msg, status: "error" });
+      await appendMessage(conversation.id, { role: "assistant", content: msg, status: "error", model });
       res.status(503).json({ error: `Failed to answer question: ${msg}` });
       return;
     }
@@ -410,7 +480,7 @@ app.post(
       }
     } finally {
       try {
-        await appendMessage(conversation.id, { role: "assistant", content: answer, citations, status });
+        await appendMessage(conversation.id, { role: "assistant", content: answer, citations, status, model });
       } catch (e) {
         // e.g. the chat was deleted while answering. The response is already under way,
         // so there's no status left to report this with.
@@ -419,6 +489,166 @@ app.post(
       }
       if (!res.writableEnded) res.end();
     }
+  }),
+);
+
+// ----- models --------------------------------------------------------------------
+app.get("/models", (_req, res) => {
+  res.json({
+    models: Object.entries(ANSWER_MODELS).map(([key, m]) => ({ key, label: m.label, description: m.description })),
+    default: DEFAULT_MODEL,
+  });
+});
+
+// ----- spaces ------------------------------------------------------------------------
+// A Space holds files and chats; a chat only searches its own Space's files.
+const SPACE_NAME_MAX_CHARS = 80;
+
+function spaceNameFrom(raw: unknown): string | null {
+  if (typeof raw !== "string") return null;
+  const name = raw.trim().replace(/\s+/g, " ");
+  return name ? name.slice(0, SPACE_NAME_MAX_CHARS) : null;
+}
+
+/** The Space's documents in the collection answers use, newest first. */
+async function spaceDocuments(spaceId: string): Promise<DocumentRecord[]> {
+  const docs = (await listDocuments()).filter(
+    (d) => d.spaceId === spaceId && (d.collection ?? DEFAULT_COLLECTION) === DEFAULT_COLLECTION,
+  );
+  return docs.sort((a, b) => (a.ingestedAt < b.ingestedAt ? 1 : -1));
+}
+
+async function withCounts(space: Space, chatCount?: number) {
+  return {
+    ...space,
+    chatCount: chatCount ?? (await countChats(space.id)),
+    documentCount: (await spaceDocuments(space.id)).length,
+  };
+}
+
+function spaceNotFound(res: Response, id: string) {
+  res.status(404).json({ error: `space not found: ${id}` });
+}
+
+app.get(
+  "/spaces",
+  route(async (_req, res) => {
+    const [spaces, docs] = await Promise.all([listSpaces(), listDocuments()]);
+    const docCounts = new Map<string, number>();
+    for (const d of docs) {
+      if (!d.spaceId || (d.collection ?? DEFAULT_COLLECTION) !== DEFAULT_COLLECTION) continue;
+      docCounts.set(d.spaceId, (docCounts.get(d.spaceId) ?? 0) + 1);
+    }
+    res.json({ spaces: spaces.map((s) => ({ ...s, documentCount: docCounts.get(s.id) ?? 0 })) });
+  }),
+);
+
+app.post(
+  "/spaces",
+  route(async (req, res) => {
+    const name = spaceNameFrom((req.body as { name?: unknown } | undefined)?.name);
+    if (!name) {
+      res.status(400).json({ error: "name is required and must be a non-empty string" });
+      return;
+    }
+    res.status(201).json({ space: { ...(await createSpace(name)), chatCount: 0, documentCount: 0 } });
+  }),
+);
+
+app.get(
+  "/spaces/:id",
+  route(async (req, res) => {
+    const space = await getSpace(req.params.id);
+    if (!space) return spaceNotFound(res, req.params.id);
+    res.json({ space: await withCounts(space) });
+  }),
+);
+
+app.patch(
+  "/spaces/:id",
+  route(async (req, res) => {
+    const name = spaceNameFrom((req.body as { name?: unknown } | undefined)?.name);
+    if (!name) {
+      res.status(400).json({ error: "name is required and must be a non-empty string" });
+      return;
+    }
+    const space = await renameSpace(req.params.id, name);
+    if (!space) return spaceNotFound(res, req.params.id);
+    res.json({ space: await withCounts(space) });
+  }),
+);
+
+// Deletes the Space, its chats, its files and their chunks. If the chunks can't be
+// deleted, nothing is: the file records are put back and the Space and chats are kept.
+app.delete(
+  "/spaces/:id",
+  route(async (req, res) => {
+    const id = req.params.id;
+    const space = await getSpace(id);
+    if (!space) return spaceNotFound(res, id);
+    const chats = await countChats(id);
+    let removed: DocumentRecord[] = [];
+    let vectorError: unknown = null;
+    let found: boolean;
+    try {
+      found = await deleteSpace(id, async () => {
+        removed = await deleteDocumentsWhere((d) => d.spaceId === id);
+        const collections = new Set([DEFAULT_COLLECTION, ...removed.map((d) => d.collection ?? DEFAULT_COLLECTION)]);
+        try {
+          for (const c of collections) await deleteBySpaceId(c, id);
+        } catch (e) {
+          vectorError = e;
+          await restoreDocuments(removed).catch(() => {});
+          throw e;
+        }
+      });
+    } catch (e) {
+      if (!vectorError) throw e;
+      const msg = e instanceof Error ? e.message : String(e);
+      res.status(502).json({ error: `Vector store delete failed; space kept: ${msg}` });
+      return;
+    }
+    if (!found) return spaceNotFound(res, id);
+    res.json({ deleted: id, chats, documents: removed.length });
+  }),
+);
+
+app.get(
+  "/spaces/:id/conversations",
+  route(async (req, res) => {
+    if (!(await getSpace(req.params.id))) return spaceNotFound(res, req.params.id);
+    res.json({ conversations: await listConversations(req.params.id) });
+  }),
+);
+
+app.post(
+  "/spaces/:id/conversations",
+  route(async (req, res) => {
+    const space = await getSpace(req.params.id);
+    if (!space) return spaceNotFound(res, req.params.id);
+    const raw = (req.body as { title?: unknown } | undefined)?.title;
+    const title = typeof raw === "string" && raw.trim() ? titleFrom(raw) : DEFAULT_TITLE;
+    res.status(201).json({ conversation: await createConversation(title, space.id) });
+  }),
+);
+
+app.get(
+  "/spaces/:id/documents",
+  route(async (req, res) => {
+    if (!(await getSpace(req.params.id))) return spaceNotFound(res, req.params.id);
+    res.json({ documents: await spaceDocuments(req.params.id) });
+  }),
+);
+
+app.post(
+  "/spaces/:id/ingest",
+  upload.single("file"),
+  route(async (req, res) => {
+    if (!(await getSpace(req.params.id))) {
+      if (req.file) await unlink(req.file.path).catch(() => {});
+      return spaceNotFound(res, req.params.id);
+    }
+    await ingestInto(req.params.id, req, res);
   }),
 );
 
@@ -466,9 +696,31 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
 // Re-export getDocument for completeness/tests if needed elsewhere
 export { getDocument };
 
+/**
+ * Files indexed before Spaces existed have no spaceId: put their chunks and records in the
+ * General Space (created here if needed). Idempotent; runs on every start.
+ */
+async function assignPreSpaceData(): Promise<void> {
+  const collection = DEFAULT_COLLECTION;
+  const isUnscoped = (d: DocumentRecord) => !d.spaceId && (d.collection ?? collection) === collection;
+  const [records, points] = await Promise.all([listDocuments(), countUnscopedPoints(collection)]);
+  await ensureSpaceIndex(collection);
+  const unscopedRecords = records.filter(isUnscoped).length;
+  if (!unscopedRecords && !points) return;
+  const general = await getOrCreateDefaultSpace();
+  const moved = await assignUnscopedPoints(collection, general.id);
+  await updateDocuments((d) => (isUnscoped(d) ? { ...d, spaceId: general.id } : null));
+  // eslint-disable-next-line no-console
+  console.log(`[spaces] moved ${unscopedRecords} file(s) and ${moved} chunk(s) from before Spaces into "${general.name}"`);
+}
+
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`local-rag API listening on http://localhost:${PORT}`);
+  assignPreSpaceData().catch((e) => {
+    // eslint-disable-next-line no-console
+    console.error("[spaces] could not assign files from before Spaces (retried on next start):", e);
+  });
 });
 
 export { app };

@@ -7,6 +7,8 @@ export type UploadStatus = "queued" | "indexing" | "done" | "failed";
 
 export interface Upload {
   key: string;
+  /** The Space the file goes into, fixed when it's queued. */
+  spaceId: string;
   file: File;
   status: UploadStatus;
   startedAt?: number;
@@ -15,9 +17,14 @@ export interface Upload {
 }
 
 interface DocumentsStore {
+  /** The Space whose files are listed (the one open in the app). */
+  spaceId: string | null;
+  setSpaceId(id: string | null): void;
+  /** The current Space's files. */
   documents: DocumentRecord[];
   loaded: boolean;
   loadError: string | null;
+  /** Every Space's uploads; filter by `spaceId`. */
   uploads: Upload[];
   panelOpen: boolean;
   setPanelOpen(open: boolean): void;
@@ -72,6 +79,8 @@ function describeUploadError(name: string, e: unknown): string {
 let uploadKeys = 0;
 
 export function DocumentsProvider({ children }: { children: ReactNode }) {
+  const [spaceId, setSpaceIdState] = useState<string | null>(null);
+  const spaceRef = useRef(spaceId);
   const [documents, setDocuments] = useState<DocumentRecord[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -92,14 +101,31 @@ export function DocumentsProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const refresh = useCallback(async () => {
+    const id = spaceRef.current;
+    if (!id) return;
     try {
-      setDocuments(await api.listDocuments());
+      const docs = await api.listDocuments(id);
+      if (spaceRef.current !== id) return; // switched Spaces meanwhile
+      setDocuments(docs);
       setLoaded(true);
       setLoadError(null);
     } catch (e) {
-      setLoadError(e instanceof Error ? e.message : String(e));
+      if (spaceRef.current === id) setLoadError(e instanceof Error ? e.message : String(e));
     }
   }, []);
+
+  const setSpaceId = useCallback(
+    (id: string | null) => {
+      if (spaceRef.current === id) return;
+      spaceRef.current = id;
+      setSpaceIdState(id);
+      setDocuments([]);
+      setLoaded(false);
+      setLoadError(null);
+      void refresh();
+    },
+    [refresh],
+  );
 
   // One upload at a time: Ollama embeds one request at a time, so parallel uploads would
   // only queue up server-side and make every progress timer misleading.
@@ -114,10 +140,10 @@ export function DocumentsProvider({ children }: { children: ReactNode }) {
         uploadsRef.current = uploadsRef.current.map((u) => (u.key === next.key ? { ...u, status: "indexing" } : u));
         patch(next.key, { status: "indexing", startedAt: Date.now() });
         try {
-          const { chunkCount } = await api.uploadDocument(next.file);
+          const { chunkCount } = await api.uploadDocument(next.spaceId, next.file);
           patch(next.key, { status: "done", chunkCount });
           setTimeout(() => dismissUpload(next.key), DONE_VISIBLE_MS);
-          void refresh();
+          if (spaceRef.current === next.spaceId) void refresh();
         } catch (e) {
           patch(next.key, { status: "failed", error: describeUploadError(next.file.name, e) });
         }
@@ -129,9 +155,11 @@ export function DocumentsProvider({ children }: { children: ReactNode }) {
 
   const enqueue = useCallback(
     (files: File[]) => {
+      const target = spaceRef.current;
+      if (!target) return;
       const added: Upload[] = files.map((file) => {
         const reason = unsupportedReason(file.name);
-        return { key: `u${++uploadKeys}`, file, status: reason ? "failed" : "queued", error: reason ?? undefined };
+        return { key: `u${++uploadKeys}`, spaceId: target, file, status: reason ? "failed" : "queued", error: reason ?? undefined };
       });
       uploadsRef.current = [...uploadsRef.current, ...added];
       setUploads((list) => [...list, ...added]);
@@ -162,6 +190,8 @@ export function DocumentsProvider({ children }: { children: ReactNode }) {
 
   const store = useMemo<DocumentsStore>(
     () => ({
+      spaceId,
+      setSpaceId,
       documents,
       loaded,
       loadError,
@@ -174,7 +204,7 @@ export function DocumentsProvider({ children }: { children: ReactNode }) {
       dismissUpload,
       remove,
     }),
-    [documents, loaded, loadError, uploads, panelOpen, refresh, enqueue, retryUpload, dismissUpload, remove],
+    [spaceId, setSpaceId, documents, loaded, loadError, uploads, panelOpen, refresh, enqueue, retryUpload, dismissUpload, remove],
   );
 
   return <DocumentsContext.Provider value={store}>{children}</DocumentsContext.Provider>;

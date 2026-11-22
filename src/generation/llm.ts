@@ -1,9 +1,11 @@
 import { answerConfig } from "../config.js";
 import { C_SYSTEM_PROMPT } from "./promptVariants.js";
 import { GenerationError } from "../errors.js";
+import { answerModel, DEFAULT_MODEL, type ModelKey } from "./models.js";
 export { PARTIAL_ANSWER_SYSTEM_PROMPT } from "./promptVariants.js";
 
-export const GENERATION_MODEL = "@cf/qwen/qwen3-30b-a3b-fp8";
+/** Cloudflare id of the default answer model. */
+export const GENERATION_MODEL = answerModel(DEFAULT_MODEL).id;
 const GEN_TIMEOUT_MS = Number(process.env.CLOUDFLARE_GEN_TIMEOUT_MS ?? 180_000);
 
 // Baseline instructions are unchanged; the provider template keeps them in the system role.
@@ -89,21 +91,18 @@ export interface GenerateOptions {
   /** Explicit API cap; defaults to 512. Shorter rewrite/custom limits remain supported. */
   maxTokens?: number;
   temperature?: number;
+  /** Answer model key (src/generation/models.ts); the default model when omitted. */
+  model?: ModelKey;
 }
 
-/** Cloudflare raw:true bypasses its chat template. This is Qwen's official template
- * with enable_thinking=false rendered locally, not an unsupported API parameter.
- * https://developers.cloudflare.com/workers-ai/features/prompting/
- * https://huggingface.co/Qwen/Qwen3-30B-A3B-FP8/blob/main/tokenizer_config.json */
-function formatPrompt(system: string, prompt: string): string {
-  return `<|im_start|>system\n${system}<|im_end|>\n<|im_start|>user\n${prompt}<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n`;
-}
+/** Leftover reasoning, if a model emits it despite enable_thinking=false. */
+const stripThink = (text: string) => text.replace(/<think>[\s\S]*?<\/think>/g, "").replace(/^[\s\S]*?<\/think>/, "");
 
 type Completion = {
   success?: boolean;
   error?: unknown;
   errors?: unknown[];
-  choices?: { text?: unknown; finish_reason?: string | null }[];
+  choices?: { message?: { content?: unknown }; delta?: { content?: unknown }; finish_reason?: string | null }[];
   usage?: unknown;
   response?: unknown;
 };
@@ -143,13 +142,20 @@ function request(prompt: string, stream: boolean, opts: GenerateOptions) {
     signal,
     dispose() { clearTimeout(timer); controller.abort(); },
     async fetch() {
-      const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${GENERATION_MODEL}`, {
+      // Messages API: Cloudflare applies each model's own chat template.
+      const model = answerModel(opts.model);
+      const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${model.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({
-          prompt: formatPrompt(opts.system ?? RAG_SYSTEM_PROMPT, prompt), raw: true, stream,
+          messages: [
+            { role: "system", content: opts.system ?? RAG_SYSTEM_PROMPT },
+            { role: "user", content: prompt },
+          ],
+          stream,
           max_tokens: opts.maxTokens ?? answerConfig.maxOutputTokens,
           ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}),
+          ...model.extra,
         }),
         signal,
       });
@@ -178,9 +184,11 @@ export async function generate(prompt: string, opts: GenerateOptions = {}): Prom
   try {
     const response = await call.fetch();
     const data = completion(await response.json());
-    const text = data.choices?.[0]?.text;
-    if (typeof text !== "string" || !text.trim()) throw new GenerationError("Cloudflare returned no generated text");
-    return text.trim();
+    const content = data.choices?.[0]?.message?.content;
+    const raw = typeof content === "string" ? content : typeof data.response === "string" ? data.response : "";
+    const text = stripThink(raw).trim();
+    if (!text) throw new GenerationError("Cloudflare returned no generated text");
+    return text;
   } catch (error) {
     return generationFailure(error, opts.signal, call.controller.signal);
   } finally {
@@ -232,11 +240,14 @@ async function* sseEvents(body: ReadableStream<Uint8Array>): AsyncGenerator<{ ev
 export async function* generateStream(
   prompt: string,
   signal?: AbortSignal,
-  options: Pick<GenerateOptions, "system" | "maxTokens" | "temperature"> = {},
+  options: Pick<GenerateOptions, "system" | "maxTokens" | "temperature" | "model"> = {},
 ): AsyncGenerator<string> {
   const call = request(prompt, true, { ...options, signal });
   let hasText = false;
   let finished = false;
+  // Holds back the start of the answer until it's clear it isn't a <think> block.
+  let head = "";
+  let headDone = false;
   try {
     const response = await call.fetch();
     if (!response.body || !response.headers.get("content-type")?.includes("text/event-stream")) {
@@ -251,25 +262,39 @@ export async function* generateStream(
       try { value = JSON.parse(frame.data); }
       catch { throw new GenerationError("Cloudflare returned malformed stream JSON"); }
       const data = completion(value);
-      // Native raw completions carry text directly; usage-only frames are metadata.
-      const hasUsage = data.usage !== null && typeof data.usage === "object" && !Array.isArray(data.usage);
-      if (hasUsage && (
-        (Array.isArray(data.choices) && data.choices.length === 0 && (data.response === undefined || data.response === "")) ||
-        (data.choices === undefined && data.response === "")
-      )) continue;
-      if (!Array.isArray(data.choices) || data.choices.length === 0) throw new GenerationError("Cloudflare returned an invalid stream completion");
-      const choice = data.choices[0];
-      const text = choice?.text;
-      if (choice?.finish_reason !== undefined && choice.finish_reason !== null && typeof choice.finish_reason !== "string") {
-        throw new GenerationError("Cloudflare returned an invalid stream finish reason");
+      // Text is in choices[0].delta.content. Frames with no choices carry usage, and the
+      // last one is {"response":"","usage":…}; finish_reason may stay null, so [DONE] ends it.
+      let text: string | undefined;
+      if (Array.isArray(data.choices) && data.choices.length > 0) {
+        const choice = data.choices[0];
+        if (choice?.finish_reason !== undefined && choice.finish_reason !== null && typeof choice.finish_reason !== "string") {
+          throw new GenerationError("Cloudflare returned an invalid stream finish reason");
+        }
+        const content = choice?.delta?.content;
+        if (content !== undefined && content !== null && typeof content !== "string") {
+          throw new GenerationError("Cloudflare returned invalid stream text");
+        }
+        text = content ?? undefined;
+      } else if (typeof data.response === "string") {
+        text = data.response;
+      } else if (data.usage === undefined) {
+        throw new GenerationError("Cloudflare returned an invalid stream completion");
       }
-      if (typeof text !== "string" && !(text === undefined && choice?.finish_reason)) {
-        throw new GenerationError("Cloudflare returned invalid stream text");
+      if (!text) continue;
+      if (!headDone) {
+        head += text;
+        const trimmed = head.trimStart();
+        if ("<think>".startsWith(trimmed) || (trimmed.startsWith("<think>") && !trimmed.includes("</think>"))) continue;
+        text = trimmed.startsWith("<think>") ? stripThink(trimmed).trimStart() : head;
+        headDone = true;
+        if (!text) continue;
       }
-      if (typeof text === "string" && text.length) { hasText ||= text.trim().length > 0; yield text; }
-      if (choice?.finish_reason) finished = true;
+      hasText ||= text.trim().length > 0;
+      yield text;
     }
     if (!finished) throw new GenerationError("Cloudflare generation stream ended before completion");
+    // A very short answer that looked like the start of "<think>" (e.g. "<") is still an answer.
+    if (!headDone && head.trim() && !head.trimStart().startsWith("<think>")) { hasText = true; yield head; }
     if (!hasText) throw new GenerationError("Cloudflare returned no generated text");
   } catch (error) {
     generationFailure(error, signal, call.controller.signal);

@@ -159,7 +159,7 @@ export function resolveFromHeaders(question: string, headers: ChunkPayload[]): D
   return { status: "resolved", references, documentIds: [...new Set(ids)] };
 }
 
-export async function resolveDocumentScope(question: string, collection: string): Promise<DocumentScope> {
+export async function resolveDocumentScope(question: string, collection: string, spaceId?: string): Promise<DocumentScope> {
   if (!explicitReferences(question).length) return { status: "unrestricted", references: [] };
-  return resolveFromHeaders(question, await documentHeaders(collection));
+  return resolveFromHeaders(question, await documentHeaders(collection, spaceId));
 }

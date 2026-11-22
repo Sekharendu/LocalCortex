@@ -1,29 +1,28 @@
-/* LocalCortex: dark only, deliberately quiet. Same palette and fonts as the
-   docs site's dark theme: warm charcoal, off-white text, one oxblood accent. */
-
 :root {
-  --bg-sidebar: #1a1816;
-  --bg-main: #1f1d1a;
-  --bg-surface: #2b2825;
-  --bg-hover: rgba(244, 239, 230, 0.06);
-  --bg-active: rgba(244, 239, 230, 0.1);
-  --bg-code: #171614;
-  --text: #e4dfd5;
-  --text-muted: #9a9387;
-  --text-faint: #756f66;
-  --border: rgba(244, 239, 230, 0.08);
-  --border-strong: rgba(244, 239, 230, 0.14);
-  --accent: #e08f7c;
-  --accent-hover: #eba796;
-  --accent-fg: #1f1d1a;
-  --accent-soft: rgba(224, 143, 124, 0.22);
+  --bg-sidebar: #090b0c;
+  --bg-main: #090b0e;
+  --bg-surface: #14171c;
+  --bg-hover: #181a1c;
+  --bg-active: #191b1d;
+  --bg-code: #101216;
+  --bg-composer: #0a0c10;
+  --text: #eff1f5;
+  --text-muted: #a3a4ac;
+  --text-faint: #85878f;
+  --text-placeholder: #5c5e62;
+  --border: rgba(239, 241, 245, 0.08);
+  --border-strong: rgba(239, 241, 245, 0.14);
+  --accent: #d2c5a8;
+  --accent-hover: #e1d5bb;
+  --accent-fg: #090b0e;
+  --accent-soft: rgba(210, 197, 168, 0.22);
+  --accent-cool: #c8cbf1;
   --danger: #f28b82;
   --danger-bg: rgba(242, 139, 130, 0.08);
   --ok: #6fcf97;
   --warn: #f2c94c;
 
   --radius: 12px;
-  --radius-lg: 26px;
   --column: 48rem;
   --sidebar-w: 260px;
   --ease: cubic-bezier(0.2, 0, 0, 1);
@@ -325,14 +324,14 @@ button:disabled {
   gap: 2px;
   padding: 0 4px 0 28px;
   border-radius: 0 8px 8px 0;
-  background: linear-gradient(to right, transparent, #272522 24px);
+  background: linear-gradient(to right, transparent, var(--bg-hover) 24px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 150ms var(--ease);
 }
 
 .chat-item.active .chat-actions {
-  background: linear-gradient(to right, transparent, #302d2a 24px);
+  background: linear-gradient(to right, transparent, var(--bg-active) 24px);
 }
 
 .chat-item:hover .chat-actions,
@@ -432,6 +431,52 @@ button:disabled {
 .empty-sub {
   margin: 0 0 28px;
   color: var(--text-muted);
+}
+
+.new-chat-intro {
+  width: min(100%, 33rem);
+}
+
+.new-chat-greeting {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font: 12px/1.5 var(--mono);
+}
+
+.new-chat-greeting::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.new-chat-intro h1 {
+  margin: 0 0 20px;
+  font-family: var(--font);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.new-chat-intro h1 span {
+  background: linear-gradient(90deg, var(--accent), var(--accent-cool));
+  background-clip: text;
+  color: transparent;
+}
+
+@media (forced-colors: active) {
+  .new-chat-intro h1 span {
+    color: CanvasText;
+  }
+}
+
+.new-chat-intro .empty-sub {
+  margin: 12px 0 0;
+  font-size: 13px;
 }
 
 .empty .composer {
@@ -696,13 +741,12 @@ button:disabled {
 
 .composer {
   display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  padding: 10px 10px 10px 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--bg-surface);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  flex-direction: column;
+  gap: 18px;
+  padding: 14px 10px 10px 16px;
+  border: 1px solid #171a1e;
+  border-radius: 18px;
+  background: var(--bg-composer);
   transition: border-color 150ms var(--ease);
 }
 
@@ -711,10 +755,10 @@ button:disabled {
 }
 
 .composer textarea {
-  flex: 1;
+  width: 100%;
   min-height: 24px;
   max-height: 200px;
-  margin: 5px 0;
+  margin: 0;
   padding: 0;
   border: 0;
   outline: none;
@@ -724,23 +768,38 @@ button:disabled {
 }
 
 .composer textarea::placeholder {
-  color: var(--text-muted);
+  color: var(--text-placeholder);
+}
+
+.composer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.composer-hint {
+  color: var(--text-faint);
+  font: 11px/1.4 var(--mono);
 }
 
 .send-btn {
   flex: none;
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--accent-fg);
-  transition: background 150ms var(--ease), transform 150ms var(--ease);
+  width: 36px;
+  height: 36px;
+  border: 1px solid #323439;
+  border-radius: 10px;
+  background: #202226;
+  color: var(--text);
+  font: 15px/1 var(--mono);
+  transition: background 150ms var(--ease), border-color 150ms var(--ease), transform 150ms var(--ease);
 }
 
 .send-btn:hover:not(:disabled) {
-  background: var(--accent-hover);
+  border-color: var(--border-strong);
+  background: #2b2d34;
 }
 
 .send-btn:active:not(:disabled) {
@@ -748,8 +807,15 @@ button:disabled {
 }
 
 .send-btn:disabled {
-  background: #3d3833;
+  border-color: #1e2023;
+  background: #17191c;
   color: var(--text-faint);
+}
+
+.reveal-btn {
+  width: auto;
+  padding: 0 12px;
+  font-size: 13px;
 }
 
 .jump-btn {
@@ -1165,4 +1231,324 @@ button:disabled {
   .empty h1 {
     font-size: 24px;
   }
+}
+
+@media (max-width: 480px) {
+  .composer textarea {
+    min-height: 48px;
+  }
+}
+
+/* ----- spaces ---------------------------------------------------------------- */
+
+.spaces-label {
+  padding-top: 0;
+}
+
+.space {
+  margin-bottom: 6px;
+}
+
+.space-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.space-head:hover,
+.space-head:focus-within {
+  background: var(--bg-hover);
+}
+
+.space-toggle {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 28px;
+  margin-left: 2px;
+  border-radius: 6px;
+  color: var(--text-faint);
+}
+
+.space-toggle:hover {
+  color: var(--text);
+}
+
+.chevron {
+  transition: transform 150ms var(--ease);
+}
+
+.chevron.open {
+  transform: rotate(90deg);
+}
+
+.space-name {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding-right: 6px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.space-name svg {
+  flex: none;
+}
+
+.space-name span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.space.active .space-name {
+  color: var(--text);
+}
+
+.space-actions {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding-right: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms var(--ease);
+}
+
+.space-head:hover .space-actions,
+.space-head:focus-within .space-actions,
+.space.active .space-actions,
+.space-actions:has(.menu-root.open) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Sidebar menus hang from the row, not the button, so they stay inside the sidebar. */
+.space-head .menu-root {
+  position: static;
+}
+
+.space-head .menu {
+  right: 4px;
+  left: auto;
+}
+
+.space-chats {
+  padding-left: 14px;
+}
+
+.space-chats ul {
+  margin-bottom: 6px;
+}
+
+.space-chats .group-label {
+  padding-top: 4px;
+  padding-bottom: 2px;
+  font-size: 11px;
+}
+
+/* ----- menus ----------------------------------------------------------------- */
+
+.menu-root {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  z-index: 40;
+  min-width: 200px;
+  padding: 4px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--bg-surface);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  animation: fade-in 120ms var(--ease);
+}
+
+.menu-root .menu {
+  top: calc(100% + 4px);
+}
+
+.menu-right {
+  right: 0;
+}
+
+.menu-left {
+  left: 0;
+}
+
+.menu-heading {
+  padding: 6px 10px 2px;
+  color: var(--text-faint);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  text-align: left;
+}
+
+.menu-item:hover,
+.menu-item:focus-visible {
+  background: var(--bg-hover);
+}
+
+.menu-item.danger {
+  color: var(--danger);
+}
+
+.menu-item .menu-label {
+  flex: 1;
+}
+
+.menu-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.menu-desc {
+  color: var(--text-faint);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* ----- model picker ---------------------------------------------------------- */
+
+.composer-actions .model-picker {
+  margin-right: auto;
+}
+
+.model-picker {
+  position: relative;
+}
+
+.model-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 13px;
+  transition: background 150ms var(--ease), color 150ms var(--ease);
+}
+
+.model-btn:hover,
+.model-btn[aria-expanded="true"] {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.model-menu {
+  bottom: calc(100% + 6px);
+  left: 0;
+  width: 280px;
+}
+
+/* ----- forms ----------------------------------------------------------------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.field input,
+.first-space-row input {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--bg-main);
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+}
+
+.field input:focus,
+.first-space-row input:focus {
+  border-color: var(--accent);
+}
+
+.field-error {
+  margin: 8px 0 0;
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.sheet-title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sheet-sub {
+  overflow: hidden;
+  color: var(--text-faint);
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.first-space h1 {
+  font-family: var(--font);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+}
+
+.first-space h1 span {
+  background: linear-gradient(90deg, var(--accent), var(--accent-cool));
+  background-clip: text;
+  color: transparent;
+}
+
+.first-space .empty-sub {
+  max-width: 30rem;
+  margin: 6px 0 20px;
+  font-size: 14px;
+}
+
+.first-space-row {
+  display: flex;
+  gap: 8px;
+  width: min(100%, 30rem);
+}
+
+.first-space-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.first-space-row .btn {
+  height: 38px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
 }

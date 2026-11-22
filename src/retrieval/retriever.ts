@@ -31,6 +31,8 @@ export interface RetrieveOptions {
   topK?: number;
   scoreThreshold?: number;
   collection?: string;
+  /** Only search this Space's chunks (payload.spaceId). Undefined: the whole collection. */
+  spaceId?: string;
   /** "dense" (default, per retrievalConfig.mode) is pure cosine-similarity search;
    * "hybrid" fuses dense + BM25 sparse in Qdrant (see scripts/evaluate-retrieval.ts's
    * --mode flag for comparing the two).
@@ -79,13 +81,13 @@ export interface RetrieveOptions {
  */
 export async function retrieve(
   question: string,
-  { topK, scoreThreshold, collection, mode, previousQuestion, followupFloor, documentScope }: RetrieveOptions = {},
+  { topK, scoreThreshold, collection, spaceId, mode, previousQuestion, followupFloor, documentScope }: RetrieveOptions = {},
 ): Promise<RetrievedChunk[]> {
   const effectiveTopK = topK ?? retrievalConfig.topK;
   const effectiveThreshold = scoreThreshold ?? retrievalConfig.scoreThreshold;
   const effectiveCollection = collection ?? retrievalConfig.collection;
   const effectiveMode = mode ?? retrievalConfig.mode;
-  const scope = documentScope ?? await resolveDocumentScope(question, effectiveCollection);
+  const scope = documentScope ?? await resolveDocumentScope(question, effectiveCollection, spaceId);
   const documentIds = scope.documentIds;
   if (documentIds?.length === 0) return [];
 
@@ -105,6 +107,7 @@ export async function retrieve(
         limit: 1,
         scoreThreshold: floor,
         documentIds,
+        spaceId,
       });
       if (own.length === 0) return [];
     }
@@ -116,6 +119,7 @@ export async function retrieve(
       limit: effectiveTopK,
       scoreThreshold: effectiveThreshold,
       documentIds,
+      spaceId,
     });
     // Same-document expansion. The threshold decides WHETHER there is relevant material
     // (it was calibrated on the best chunk per question), but applied to every chunk it
@@ -132,6 +136,7 @@ export async function retrieve(
         scoreThreshold: 0,
         documentId: bestDoc,
         documentIds,
+        spaceId,
       });
       const seen = new Set(hits.map((h) => h.id));
       for (const h of sameDoc) {
@@ -144,6 +149,7 @@ export async function retrieve(
       limit: 1,
       scoreThreshold: effectiveThreshold,
       documentIds,
+      spaceId,
     });
     hits =
       probe.length === 0
@@ -152,7 +158,7 @@ export async function retrieve(
             effectiveCollection,
             queryVector,
             sparseVectorFor(queryText, await getAvgDocLength()),
-            { limit: effectiveTopK, fusion: retrievalConfig.fusion, documentIds },
+            { limit: effectiveTopK, fusion: retrievalConfig.fusion, documentIds, spaceId },
           );
   }
 
