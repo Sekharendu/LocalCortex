@@ -4,6 +4,7 @@ import { App } from "./App";
 import { ChatProvider } from "./state/chat";
 import { DocumentsProvider } from "./state/documents";
 // Fonts are bundled (not fetched from Google), so the app still works offline.
+import "@fontsource/ibm-plex-sans/300.css";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans/600.css";
