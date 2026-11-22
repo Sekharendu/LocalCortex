@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="900" viewBox="0 0 1800 900">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ebe7de" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto">
+      <path d="M2 1L10 6L2 11" fill="none" stroke="#1c1b19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-soft" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M2 1L10 6L2 11" fill="none" stroke="#6b665c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "Segoe UI", system-ui, sans-serif; fill: #1c1b19; }
+    .box { fill: #fffdf8; stroke: #1c1b19; stroke-width: 3; }
+    .planned { stroke-dasharray: 12 8; }
+    .pill { fill: #fffdf8; stroke: #8a857b; stroke-width: 2; }
+    .pill.on { stroke: #1c1b19; stroke-width: 2.5; }
+    .rule { stroke: #8a857b; stroke-width: 2; }
+    .ico { fill: none; stroke: #1c1b19; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .line { fill: none; stroke: #1c1b19; stroke-width: 3; stroke-linecap: round; }
+    .soft { fill: none; stroke: #6b665c; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 8 7; }
+    .head { font-size: 34px; font-weight: 600; }
+    .title { font-size: 30px; font-weight: 600; }
+    .body { font-size: 22px; }
+    .small { font-size: 18px; fill: #5f5b53; }
+    .note { font-size: 18px; fill: #5f5b53; font-style: italic; }
+    .tag { font-size: 15px; font-weight: 600; fill: #5f5b53; letter-spacing: 0.04em; }
+  </style>
+
+  <rect width="1800" height="900" fill="#faf8f3"/>
+  <rect width="1800" height="900" fill="url(#grid)"/>
+
+  <!-- heading + key -->
+  <text class="head" x="40" y="92">How a question flows in LocalCortex</text>
+  <rect class="box" x="1440" y="66" width="44" height="30" rx="7"/>
+  <text class="small" x="1496" y="88">live</text>
+  <rect class="box planned" x="1570" y="66" width="44" height="30" rx="7"/>
+  <text class="small" x="1626" y="88">planned</text>
+
+  <!-- 1. User -->
+  <rect class="box" x="40" y="370" width="160" height="150" rx="16"/>
+  <circle class="ico" cx="120" cy="412" r="14"/>
+  <path class="ico" d="M96 452c0-14 10-22 24-22s24 8 24 22"/>
+  <text class="title" x="120" y="495" text-anchor="middle">User</text>
+
+  <path class="line" d="M200 445H262" marker-end="url(#arrow)"/>
+
+  <!-- 2. Sign in (planned) -->
+  <rect class="box planned" x="270" y="320" width="340" height="250" rx="16"/>
+  <path class="ico" d="M306 352l18-7 18 7v13c0 12-8 20-18 24-10-4-18-12-18-24z"/>
+  <path class="ico" d="M316 367l6 6 10-11"/>
+  <text class="title" x="358" y="379">Sign in</text>
+  <line class="rule" x1="298" y1="408" x2="582" y2="408"/>
+  <path class="ico" d="M300 440l7 7 13-14"/>
+  <text class="body" x="334" y="448">Google or email</text>
+  <path class="ico" d="M300 485l7 7 13-14"/>
+  <text class="body" x="334" y="493">Your Spaces &amp; chats</text>
+  <path class="ico" d="M300 530l7 7 13-14"/>
+  <text class="body" x="334" y="538">Your default model</text>
+
+  <path class="line" d="M610 445H672" marker-end="url(#arrow)"/>
+
+  <!-- 3. Pick a model (live) -->
+  <rect class="box" x="680" y="290" width="330" height="310" rx="16"/>
+  <text class="title" x="845" y="342" text-anchor="middle">Pick a model</text>
+  <rect class="pill on" x="705" y="368" width="280" height="54" rx="12"/>
+  <text class="body" x="725" y="403" font-weight="600">Gemma 4 26B</text>
+  <text class="tag" x="965" y="401" text-anchor="end">DEFAULT</text>
+  <rect class="pill" x="705" y="434" width="280" height="54" rx="12"/>
+  <text class="body" x="725" y="469">GLM 4.7 Flash</text>
+  <rect class="pill" x="705" y="500" width="280" height="54" rx="12"/>
+  <text class="body" x="725" y="535">Granite 4.0 Micro</text>
+  <text class="small" x="845" y="585" text-anchor="middle">Free tier on Cloudflare Workers AI</text>
+  <text class="note" x="845" y="632" text-anchor="middle">chosen with a 100-question benchmark</text>
+
+  <!-- fallback (planned) -->
+  <path class="soft" d="M965 286C945 214 745 214 725 286" marker-end="url(#arrow-soft)"/>
+  <text class="note" x="845" y="206" text-anchor="middle">planned: busy or over quota → next model</text>
+
+  <path class="line" d="M1010 445H1072" marker-end="url(#arrow)"/>
+
+  <!-- 4. Fair usage (planned) -->
+  <rect class="box planned" x="1080" y="340" width="300" height="210" rx="16"/>
+  <path class="ico" d="M1108 392v-14M1120 392v-24M1132 392v-34M1104 392h34"/>
+  <text class="title" x="1152" y="389">Fair usage</text>
+  <line class="rule" x1="1106" y1="410" x2="1354" y2="410"/>
+  <text class="body" x="1230" y="462" text-anchor="middle">Daily question limit</text>
+  <text class="body" x="1230" y="494" text-anchor="middle">per account</text>
+  <text class="note" x="1230" y="584" text-anchor="middle">checked before the model runs,</text>
+  <text class="note" x="1230" y="608" text-anchor="middle">counted after it answers</text>
+
+  <path class="line" d="M1380 445H1442" marker-end="url(#arrow)"/>
+
+  <!-- 5. Answer (live) -->
+  <rect class="box" x="1450" y="320" width="310" height="250" rx="16"/>
+  <path class="ico" d="M1494 346c2 12 6 16 18 18-12 2-16 6-18 18-2-12-6-16-18-18 12-2 16-6 18-18z"/>
+  <text class="title" x="1526" y="375">Answer</text>
+  <line class="rule" x1="1476" y1="404" x2="1734" y2="404"/>
+  <text class="body" x="1478" y="444">1. Search your files</text>
+  <text class="small" x="1504" y="472">scoped to you + this Space</text>
+  <text class="body" x="1478" y="514">2. Your model answers</text>
+  <text class="body" x="1504" y="544">with sources</text>
+
+  <!-- loop back -->
+  <path class="line" d="M1605 570V680q0 22-22 22H142q-22 0-22-22V528" stroke-dasharray="12 10" marker-end="url(#arrow)"/>
+  <text class="small" x="862" y="736" text-anchor="middle">ask a follow-up</text>
+</svg>

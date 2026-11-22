@@ -1,8 +1,9 @@
 // Brings data/documents.json back in line with Qdrant. For every record it finds the
 // collection that actually holds the document's chunks and records it; records whose
 // chunks exist nowhere (e.g. left by tests whose collections were dropped) are removed.
-// It also reports chunks in the default collection that have no record (orphans) but
-// never deletes points.
+// Chunks in the default collection with no record (orphans, e.g. ingested from another
+// checkout sharing the collection) get a record rebuilt from their chunk #0, so the
+// Files panel lists them. It never deletes points.
 //
 // Dry run by default. --apply backs up the file to documents.json.bak and writes.
 // Don't ingest or delete documents while applying.
@@ -11,7 +12,7 @@
 import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { addDocument, deleteDocument, listDocuments, type DocumentRecord } from "../src/documentStore.js";
-import { countByDocumentId, documentIdCounts, listCollections } from "../src/retrieval/vectorStore.js";
+import { countByDocumentId, documentHeaders, documentIdCounts, listCollections } from "../src/retrieval/vectorStore.js";
 import { retrievalConfig } from "../src/config.js";
 
 const DOC_STORE_PATH = process.env.DOC_STORE_PATH ?? "./data/documents.json";
@@ -66,17 +67,29 @@ async function main(): Promise<void> {
 
   // Chunks in the default collection with no record: answers use them, but the UI can't
   // list or delete them.
+  // A record is rebuilt from the orphan's chunk #0 (file name, Space); ingestedAt is
+  // unknown, so it gets the time of the reconcile.
   const known = new Set(records.map((r) => r.id));
-  const orphans = [...(await documentIdCounts(retrievalConfig.collection))].filter(([id]) => !known.has(id));
-  console.log(
-    orphans.length === 0
-      ? `No orphan chunks in '${retrievalConfig.collection}'.`
-      : `Orphan chunks in '${retrievalConfig.collection}' (no record; left untouched):\n${orphans.map(([id, n]) => `  ${id}  ${n} chunks`).join("\n")}`,
-  );
+  const collection = retrievalConfig.collection;
+  const orphans = [...(await documentIdCounts(collection))].filter(([id]) => !known.has(id));
+  const headers = new Map((await documentHeaders(collection)).map((h) => [h.documentId, h]));
+  const now = new Date().toISOString();
+  const adopted: DocumentRecord[] = [];
+  if (orphans.length === 0) console.log(`No orphan chunks in '${collection}'.`);
+  else console.log(`Orphan chunks in '${collection}' (no record):`);
+  for (const [id, chunkCount] of orphans) {
+    const header = headers.get(id);
+    if (!header) {
+      console.log(`  ${id}  ${chunkCount} chunks  (no chunk #0, can't name it; left untouched)`);
+      continue;
+    }
+    console.log(`  ${id}  ${header.source.padEnd(48)} ${chunkCount} chunks  space ${header.spaceId ?? "(none)"}  [add record]`);
+    adopted.push({ id, source: header.source, ingestedAt: now, chunkCount, collection, ...(header.spaceId ? { spaceId: header.spaceId } : {}) });
+  }
 
   const removals = verdicts.filter((v) => v.action === "remove");
   const updates = verdicts.filter((v): v is Extract<Verdict, { action: "keep" }> => v.action === "keep" && v.changed);
-  console.log(`\nPlan: remove ${removals.length} dead records, set collection on ${updates.length}, keep ${verdicts.length - removals.length}.`);
+  console.log(`\nPlan: remove ${removals.length} dead records, set collection on ${updates.length}, add ${adopted.length} for orphans, keep ${verdicts.length - removals.length}.`);
 
   if (!apply) {
     console.log("Dry run -- nothing written. Re-run with --apply to write.");
@@ -85,6 +98,7 @@ async function main(): Promise<void> {
   if (existsSync(DOC_STORE_PATH)) await fs.copyFile(DOC_STORE_PATH, `${DOC_STORE_PATH}.bak`);
   for (const v of removals) await deleteDocument(v.record.id);
   for (const v of updates) await addDocument({ ...v.record, collection: v.collection });
+  for (const record of adopted) await addDocument(record);
   console.log(`Applied. Backup: ${DOC_STORE_PATH}.bak`);
 }
 

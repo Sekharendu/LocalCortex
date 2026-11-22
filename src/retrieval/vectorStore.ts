@@ -8,21 +8,26 @@ const QDRANT_URL = process.env.QDRANT_URL ?? "http://localhost:6333";
 
 const client = new QdrantClient({ url: QDRANT_URL, checkCompatibility: false });
 
-/** Undefined is unrestricted; an empty allowlist deliberately matches nothing. */
-function documentFilter(ids: string[] | undefined) {
-  return ids === undefined ? {} : { filter: { must: [{ key: "documentId", match: { any: ids } }] } };
+/** Undefined is unrestricted; an empty allowlist deliberately matches nothing. A Space
+ * id limits the search to that Space's chunks (payload.spaceId). */
+function documentFilter(ids: string[] | undefined, spaceId?: string) {
+  const must: Record<string, unknown>[] = [];
+  if (ids !== undefined) must.push({ key: "documentId", match: { any: ids } });
+  if (spaceId !== undefined) must.push({ key: "spaceId", match: { value: spaceId } });
+  return must.length ? { filter: { must } } : {};
 }
 
 /** Request-local, payload-only catalog. A hard ceiling bounds both memory and work;
  * exceeding it is an infrastructure error, never an incomplete identity decision. */
-export async function documentHeaders(collection: string): Promise<ChunkPayload[]> {
+export async function documentHeaders(collection: string, spaceId?: string): Promise<ChunkPayload[]> {
   const out: ChunkPayload[] = [];
   let offset: string | number | null | undefined;
   try {
     do {
       const page = await client.scroll(collection, {
-        limit: 128, offset, filter: { must: [{ key: "chunkIndex", match: { value: 0 } }] },
-        with_payload: ["documentId", "source", "text", "section", "chunkIndex"], with_vector: false,
+        limit: 128, offset,
+        filter: { must: [{ key: "chunkIndex", match: { value: 0 } }, ...(spaceId !== undefined ? [{ key: "spaceId", match: { value: spaceId } }] : [])] },
+        with_payload: ["documentId", "source", "text", "section", "chunkIndex", "spaceId"], with_vector: false,
       });
       for (const point of page.points) {
         if (point.payload) {
@@ -68,10 +73,13 @@ export interface SearchOptions {
   /** Only search chunks of this document. */
   documentId?: string;
   documentIds?: string[];
+  /** Only search chunks of this Space. */
+  spaceId?: string;
 }
 
 export interface HybridSearchOptions {
   documentIds?: string[];
+  spaceId?: string;
   limit?: number;
   /** Candidates each of the dense/sparse prefetches ranks before fusion. Defaults to
    * max(20, limit * 4) -- Qdrant recommends prefetching meaningfully more than the
@@ -111,6 +119,7 @@ export async function ensureCollection(name: string): Promise<void> {
       vectors: { [DENSE_VECTOR_NAME]: { size: embedConfig.dim, distance: "Cosine" } },
       sparse_vectors: { [SPARSE_VECTOR_NAME]: { modifier: "idf" } },
     });
+    await ensureSpaceIndex(name);
   } catch (e) {
     throw new CollectionError(`Failed to ensure collection '${name}'`, { cause: e });
   }
@@ -178,7 +187,7 @@ export const UPSERT_BATCH_SIZE = 256;
 export async function searchSimilar(
   collection: string,
   queryVector: number[],
-  { limit = 5, scoreThreshold = 0.7, documentId, documentIds }: SearchOptions = {},
+  { limit = 5, scoreThreshold = 0.7, documentId, documentIds, spaceId }: SearchOptions = {},
 ): Promise<SearchMatch[]> {
   if (!Array.isArray(queryVector) || queryVector.length !== embedConfig.dim) {
     const got = Array.isArray(queryVector) ? queryVector.length : typeof queryVector;
@@ -196,7 +205,7 @@ export async function searchSimilar(
       score_threshold: scoreThreshold,// passing the threshold to the qdrant server-> to ignore the graph nodes and skip distance computations that falls below threshold.
       // Other opt was to bring all the relevant datas in the client side then filtering, but that will be less computatievely optimise. cuz we fetch all, bring all from server to client then throw the irrelevant ones off.
       with_payload: true,
-      ...(documentFilter(documentId ? (documentIds === undefined ? [documentId] : documentIds.filter(id => id === documentId)) : documentIds)),
+      ...(documentFilter(documentId ? (documentIds === undefined ? [documentId] : documentIds.filter(id => id === documentId)) : documentIds, spaceId)),
     });
   } catch (e) {
     throw new CollectionError(`Failed to search '${collection}'`, { cause: e });
@@ -227,7 +236,7 @@ export async function hybridSearch(
   collection: string,
   denseVector: number[],
   sparseVector: SparseVector,
-  { limit = 5, prefetchLimit, weights, fusion = "rrf", documentIds }: HybridSearchOptions = {},
+  { limit = 5, prefetchLimit, weights, fusion = "rrf", documentIds, spaceId }: HybridSearchOptions = {},
 ): Promise<SearchMatch[]> {
   if (!Array.isArray(denseVector) || denseVector.length !== embedConfig.dim) {
     const got = Array.isArray(denseVector) ? denseVector.length : typeof denseVector;
@@ -238,7 +247,7 @@ export async function hybridSearch(
   }
   const effectivePrefetchLimit = prefetchLimit ?? Math.max(20, limit * 4);
 
-  const filter = documentFilter(documentIds);
+  const filter = documentFilter(documentIds, spaceId);
   const prefetch = [
     { query: denseVector as number[] | SparseVector, using: DENSE_VECTOR_NAME, limit: effectivePrefetchLimit, ...filter },
   ];
@@ -358,4 +367,48 @@ export async function documentIdCounts(collection: string): Promise<Map<string, 
     throw new CollectionError(`Failed to scan documentIds in '${collection}'`, { cause: e });
   }
   return counts;
+}
+
+/** Keyword index on payload.spaceId (tenant-style filtering). Idempotent; no-op without the collection. */
+export async function ensureSpaceIndex(collection: string): Promise<void> {
+  try {
+    if (!(await client.collectionExists(collection)).exists) return;
+    await client.createPayloadIndex(collection, { field_name: "spaceId", field_schema: "keyword", wait: true });
+  } catch (e) {
+    throw new CollectionError(`Failed to index spaceId in '${collection}'`, { cause: e });
+  }
+}
+
+/** Tags every point that has no spaceId yet with `spaceId` (pre-Space data). Returns how many. */
+export async function assignUnscopedPoints(collection: string, spaceId: string): Promise<number> {
+  const filter = { must: [{ is_empty: { key: "spaceId" } }] };
+  try {
+    if (!(await client.collectionExists(collection)).exists) return 0;
+    const { count } = await client.count(collection, { filter, exact: true });
+    if (count > 0) await client.setPayload(collection, { payload: { spaceId }, filter, wait: true });
+    return count;
+  } catch (e) {
+    throw new CollectionError(`Failed to assign unscoped points in '${collection}'`, { cause: e });
+  }
+}
+
+/** Number of points that have no spaceId yet. */
+export async function countUnscopedPoints(collection: string): Promise<number> {
+  try {
+    if (!(await client.collectionExists(collection)).exists) return 0;
+    const { count } = await client.count(collection, { filter: { must: [{ is_empty: { key: "spaceId" } }] }, exact: true });
+    return count;
+  } catch (e) {
+    throw new CollectionError(`Failed to count unscoped points in '${collection}'`, { cause: e });
+  }
+}
+
+/** Deletes every chunk of a Space. */
+export async function deleteBySpaceId(collection: string, spaceId: string): Promise<void> {
+  try {
+    if (!(await client.collectionExists(collection)).exists) return;
+    await client.delete(collection, { filter: { must: [{ key: "spaceId", match: { value: spaceId } }] }, wait: true });
+  } catch (e) {
+    throw new CollectionError(`Failed to delete spaceId='${spaceId}' from '${collection}'`, { cause: e });
+  }
 }

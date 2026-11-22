@@ -18,6 +18,10 @@ const hash = (s: string) => createHash("sha256").update(s).digest("hex");
 const original = { expand: contextConfig.expand, rerank: rerankConfig.enabled };
 const fetchMock = vi.fn<typeof fetch>();
 
+type Body = { messages: { role: string; content: string }[] };
+const system = (b: Body) => b.messages.find(m => m.role === "system")!.content;
+const user = (b: Body) => b.messages.find(m => m.role === "user")!.content;
+
 beforeEach(() => {
   vi.clearAllMocks();
   vi.stubEnv("CLOUDFLARE_ACCOUNT_ID", "a".repeat(32));
@@ -26,7 +30,7 @@ beforeEach(() => {
   contextConfig.expand = true; rerankConfig.enabled = false;
   mocks.scope.mockResolvedValue({ status: "resolved", documentIds: ["paper"] });
   mocks.retrieve.mockResolvedValue([chunk]); mocks.assemble.mockResolvedValue([chunk]);
-  fetchMock.mockImplementation(async () => Response.json({ result: { choices: [{ text: "A supported answer." }] }, success: true }));
+  fetchMock.mockImplementation(async () => Response.json({ result: { choices: [{ message: { content: "A supported answer." } }] }, success: true }));
 });
 afterEach(() => {
   vi.unstubAllGlobals(); vi.unstubAllEnvs();
@@ -72,33 +76,33 @@ describe("opt-in partial answer prompts", () => {
 
   test("overlapping default and partial requests send their own system and user prompts", async () => {
     await Promise.all([answerQuestion("Partial?", { promptVariant: "partial" }), answerQuestion("Default?", { answerProfile: "legacy" })]);
-    const bodies = fetchMock.mock.calls.map(([, init]) => JSON.parse(String(init?.body)) as { prompt: string });
-    const partial = bodies.find(b => b.prompt.includes("Question: Partial?"))!.prompt;
-    const legacy = bodies.find(b => b.prompt.includes("Question: Default?"))!.prompt;
-    expect(partial).toContain(`<|im_start|>system\n${PARTIAL_ANSWER_SYSTEM_PROMPT}<|im_end|>`);
-    expect(partial).not.toContain("answer fully");
-    expect(legacy).toContain(`<|im_start|>system\n${RAG_SYSTEM_PROMPT}<|im_end|>`);
-    expect(legacy).toContain("answer fully");
-    expect(legacy).not.toContain(PARTIAL_ANSWER_REMINDER);
+    const bodies = fetchMock.mock.calls.map(([, init]) => JSON.parse(String(init?.body)) as Body);
+    const partial = bodies.find(b => user(b).includes("Question: Partial?"))!;
+    const legacy = bodies.find(b => user(b).includes("Question: Default?"))!;
+    expect(system(partial)).toBe(PARTIAL_ANSWER_SYSTEM_PROMPT);
+    expect(user(partial)).not.toContain("answer fully");
+    expect(system(legacy)).toBe(RAG_SYSTEM_PROMPT);
+    expect(system(legacy) + user(legacy)).toContain("answer fully");
+    expect(user(legacy)).not.toContain(PARTIAL_ANSWER_REMINDER);
   });
 
   test.each(["legacy", "partial", "concise"] as const)("streaming forwards the %s system variant", async variant => {
-    fetchMock.mockResolvedValue(new Response('data: {"choices":[{"text":"Supported answer.","finish_reason":"stop"}]}\n\ndata: [DONE]\n\n', { headers: { "Content-Type": "text/event-stream" } }));
+    fetchMock.mockResolvedValue(new Response('data: {"choices":[{"delta":{"role":"assistant","content":""}}]}\n\ndata: {"choices":[{"delta":{"content":"Supported "}}]}\n\ndata: {"choices":[{"delta":{"content":"answer."},"finish_reason":null}]}\n\ndata: {"choices":[],"usage":{"prompt_tokens":1}}\n\ndata: {"response":"","usage":{"prompt_tokens":1}}\n\ndata: [DONE]\n\n', { headers: { "Content-Type": "text/event-stream" } }));
     const setup = await answerQuestionStream("Question?", { promptVariant: variant });
     let text = "";
     for await (const token of setup.tokens) text += token;
     expect(text).toBe("Supported answer.");
     const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
     expect(body.stream).toBe(true);
-    expect(body.prompt).toContain(`<|im_start|>system\n${variant === "concise" ? C_SYSTEM_PROMPT : variant === "partial" ? PARTIAL_ANSWER_SYSTEM_PROMPT : RAG_SYSTEM_PROMPT}<|im_end|>`);
+    expect(system(body)).toBe(variant === "concise" ? C_SYSTEM_PROMPT : variant === "partial" ? PARTIAL_ANSWER_SYSTEM_PROMPT : RAG_SYSTEM_PROMPT);
   });
 
   test("new default uses C,512 output and15hits while legacy stays per-request", async () => {
     await answerQuestion("New defaults?");
     const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
     expect(body.max_tokens).toBe(512);
-    expect(body.prompt).toContain(C_SYSTEM_PROMPT);
-    expect(body.prompt).toContain("Context passages:");
+    expect(system(body)).toBe(C_SYSTEM_PROMPT);
+    expect(user(body)).toContain("Context passages:");
     expect(mocks.retrieve.mock.calls[0][1].topK).toBe(15);
     expect(mocks.assemble.mock.calls[0][1].chunkedMaxTokens).toBe(3200);
     await answerQuestion("Old defaults?", { answerProfile: "legacy" });
@@ -116,8 +120,8 @@ describe("opt-in partial answer prompts", () => {
   test("an explicit rewrite/custom system override is still honored", async () => {
     await generate("Rewrite this.", { system: "Custom rewrite rules.", maxTokens: 48 });
     const body = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
-    expect(body.prompt).toContain("<|im_start|>system\nCustom rewrite rules.<|im_end|>");
+    expect(system(body)).toBe("Custom rewrite rules.");
     expect(body.max_tokens).toBe(48);
-    expect(body.prompt).not.toContain(PARTIAL_ANSWER_SYSTEM_PROMPT);
+    expect(user(body)).toBe("Rewrite this.");
   });
 });

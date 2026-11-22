@@ -106,3 +106,35 @@ export const LibraryIcon = (p: P) => (
     <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H19v-3" />
   </Icon>
 );
+export const PlusIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="M12 5v14M5 12h14" />
+  </Icon>
+);
+export const FilterIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="M4 6h16M7 12h10M10 18h4" />
+  </Icon>
+);
+export const ChevronIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="m9 6 6 6-6 6" />
+  </Icon>
+);
+export const ChevronDownIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="m6 9 6 6 6-6" />
+  </Icon>
+);
+export const MoreIcon = (p: P) => (
+  <Icon {...p}>
+    <circle cx="5" cy="12" r="1" />
+    <circle cx="12" cy="12" r="1" />
+    <circle cx="19" cy="12" r="1" />
+  </Icon>
+);
+export const SpaceIcon = (p: P) => (
+  <Icon {...p}>
+    <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+  </Icon>
+);

@@ -7,20 +7,24 @@ import {
   renameConversation,
   deleteConversation,
 } from "../src/conversationStore.js";
+import { createSpace, deleteSpace } from "../src/spaceStore.js";
 import { pool } from "../src/db.js";
 import { postgresUp } from "./helpers/stack.js";
 
 // Live against the real Postgres (migrations applied). Every test creates its own
 // conversations and removes them, so real chats are never touched.
 const created: string[] = [];
+let spaceId: string | undefined;
 
 afterAll(async () => {
   if (postgresUp) for (const id of created) await deleteConversation(id);
+  if (postgresUp && spaceId) await deleteSpace(spaceId, async () => {});
   await pool.end();
 });
 
 async function newConversation(title: string) {
-  const c = await createConversation(title);
+  spaceId ??= (await createSpace("conversationStore test")).id;
+  const c = await createConversation(title, spaceId);
   created.push(c.id);
   return c;
 }

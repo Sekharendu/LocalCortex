@@ -7,6 +7,8 @@ const searchInput = z.object({
   topK: z.number().int().min(1).max(20).optional(),
   scoreThreshold: z.number().min(0).max(1).optional(),
   mode: z.enum(["dense", "hybrid"]).optional(),
+  /** Only this Space's files; omitted searches every Space. */
+  spaceId: z.string().uuid().optional(),
 });
 
 /** Retrieval only: MCP clients can use their own model to answer from these passages. */

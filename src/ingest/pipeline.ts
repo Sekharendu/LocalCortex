@@ -33,6 +33,8 @@ export interface IngestOptions {
   collection?: string;
   concurrency?: number;     // embedBatch
   originalName?: string;    // original filename (used in citations + document record)
+  /** Space the document belongs to: stored on every chunk (payload.spaceId) and the record. */
+  spaceId?: string;
   /** Embed "Title › Section" above each chunk's text; stored as payload.section.
    * Defaults to ingestConfig.contextHeaders ("auto": only when the document has fewer
    * than 2 markdown headings of its own). Pass true/false to force it either way. */
@@ -191,6 +193,7 @@ export async function ingestDocument(
       page: c.page,
       chunkIndex: c.chunkIndex,
       documentId,
+      ...(options.spaceId ? { spaceId: options.spaceId } : {}),
       ...(c.section ? { section: c.section } : {}),
     },
   }));
@@ -215,6 +218,7 @@ export async function ingestDocument(
       ingestedAt: new Date().toISOString(),
       chunkCount: chunks.length,
       collection,
+      ...(options.spaceId ? { spaceId: options.spaceId } : {}),
     });
     await recordChunks(chunks.map((c) => c.text));
   } catch (e) {

@@ -15,6 +15,7 @@
 import { chunksByDocumentId, documentHeaders } from "./retrieval/vectorStore.js";
 import { mergeChunkTexts } from "./retrieval/context.js";
 import { generate, generateStream } from "./generation/llm.js";
+import type { ModelKey } from "./generation/models.js";
 import { countTokens } from "./generation/tokens.js";
 import type { HistoryMessage } from "./generation/promptBuilder.js";
 import { answerConfig, answerSettings, contextConfig } from "./config.js";
@@ -34,9 +35,11 @@ export interface AvailableDocument {
   title: string;
 }
 
-/** Options for listAvailableDocuments; a folder filter will plug in here later. */
+/** Options for listAvailableDocuments. */
 export interface DocumentListOptions {
   collection: string;
+  /** Only this Space's documents (payload.spaceId). */
+  spaceId?: string;
 }
 
 /**
@@ -44,10 +47,10 @@ export interface DocumentListOptions {
  * every document with a chunk #0 in the collection the question is answered from
  * (QDRANT_COLLECTION for chats; POST /query's `collection` when given). Qdrant, not the
  * JSON document store, is the source of truth here, because it is what answers read.
- * This is the single place to add a folder filter.
+ * A chat in a Space only sees that Space's documents.
  */
-export async function listAvailableDocuments({ collection }: DocumentListOptions): Promise<AvailableDocument[]> {
-  const headers = await documentHeaders(collection);
+export async function listAvailableDocuments({ collection, spaceId }: DocumentListOptions): Promise<AvailableDocument[]> {
+  const headers = await documentHeaders(collection, spaceId);
   return toAvailableDocuments(headers);
 }
 
@@ -551,6 +554,8 @@ export interface SummariseOptions {
   /** true: stream the final call token by token; false: one generate() call per step. */
   stream: boolean;
   signal?: AbortSignal;
+  /** Answer model key (src/generation/models.ts); default model when omitted. */
+  model?: ModelKey;
 }
 
 /**
@@ -563,7 +568,7 @@ export interface SummariseOptions {
 export async function prepareSummary(
   doc: AvailableDocument,
   question: string,
-  { collection, stream, signal }: SummariseOptions,
+  { collection, stream, signal, model }: SummariseOptions,
 ): Promise<SummarySetup> {
   signal?.throwIfAborted();
   const chunks = await chunksByDocumentId(collection, doc.documentId);
@@ -571,7 +576,7 @@ export async function prepareSummary(
   const citations: Citation[] = [{ source: doc.source }];
   if (chunks.length === 0) return { tokens: once(`"${doc.name}" has no text to summarise.`), citations };
   const plan = planCalls(doc.name, chunks, question);
-  return { tokens: runSummary(doc.name, question, plan, stream, signal), citations };
+  return { tokens: runSummary(doc.name, question, plan, stream, signal, model), citations };
 }
 
 async function* runSummary(
@@ -580,12 +585,13 @@ async function* runSummary(
   plan: SummaryPlanOfCalls,
   stream: boolean,
   signal?: AbortSignal,
+  model?: ModelKey,
 ): AsyncGenerator<string> {
   const final = (prompt: string): AsyncGenerator<string> =>
     stream
-      ? generateStream(prompt, signal, { system: SUMMARY_SYSTEM_PROMPT, maxTokens: answerConfig.maxOutputTokens })
+      ? generateStream(prompt, signal, { system: SUMMARY_SYSTEM_PROMPT, maxTokens: answerConfig.maxOutputTokens, model })
       : (async function* () {
-          yield await generate(prompt, { signal, system: SUMMARY_SYSTEM_PROMPT, maxTokens: answerConfig.maxOutputTokens });
+          yield await generate(prompt, { signal, system: SUMMARY_SYSTEM_PROMPT, maxTokens: answerConfig.maxOutputTokens, model });
         })();
 
   if (plan.mode === "whole") {
@@ -603,7 +609,7 @@ async function* runSummary(
       ? g.firstPage === g.lastPage ? ` (page ${g.firstPage})` : ` (pages ${g.firstPage}-${g.lastPage})`
       : "";
     notes.push(await generate(partialPrompt(name, i + 1, plan.groups.length, where, g.text), {
-      signal, system: SUMMARY_SYSTEM_PROMPT, maxTokens: partialMax,
+      signal, system: SUMMARY_SYSTEM_PROMPT, maxTokens: partialMax, model,
     }));
   }
   signal?.throwIfAborted();

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type DragEvent } from "react";
+import { useChat } from "../state/chat";
 import { useDocuments, type Upload } from "../state/documents";
 import { SUPPORTED_EXTENSIONS, type DocumentRecord } from "../types";
 import { AlertIcon, CheckIcon, CloseIcon, FileIcon, RetryIcon, TrashIcon, UploadIcon } from "./Icons";
@@ -69,7 +70,9 @@ function UploadRow({ upload }: { upload: Upload }) {
 }
 
 export function DocumentsPanel() {
-  const { documents, loaded, loadError, uploads, setPanelOpen, refresh, enqueue, remove } = useDocuments();
+  const { spaceId, documents, loaded, loadError, uploads: allUploads, setPanelOpen, refresh, enqueue, remove } = useDocuments();
+  const spaceName = useChat().spaces.find((s) => s.id === spaceId)?.name;
+  const uploads = allUploads.filter((u) => u.spaceId === spaceId);
   const [dragging, setDragging] = useState(false);
   const [pendingDelete, setPendingDelete] = useState<DocumentRecord | null>(null);
   const [duplicates, setDuplicates] = useState<{ all: File[]; dupes: string[] } | null>(null);
@@ -130,8 +133,11 @@ export function DocumentsPanel() {
         onDrop={onDrop}
       >
         <header className="sheet-head">
-          <h2 id="docs-title">Documents</h2>
-          <button className="icon-btn" onClick={() => setPanelOpen(false)} aria-label="Close documents">
+          <div className="sheet-title">
+            <h2 id="docs-title">Files</h2>
+            {spaceName && <span className="sheet-sub">Only chats in {spaceName} search these</span>}
+          </div>
+          <button className="icon-btn" onClick={() => setPanelOpen(false)} aria-label="Close files">
             <CloseIcon />
           </button>
         </header>
@@ -179,7 +185,7 @@ export function DocumentsPanel() {
               </button>
             </div>
           ) : loaded && documents.length === 0 ? (
-            <p className="list-empty">No documents yet. Drop a file above to start.</p>
+            <p className="list-empty">No files in this Space yet. Drop a file above to start.</p>
           ) : (
             <ul className="doc-list">
               {documents.map((d) => (
@@ -237,7 +243,7 @@ export function DocumentsPanel() {
           }}
         >
           <p>
-            <strong>{duplicates.dupes.join(", ")}</strong> {duplicates.dupes.length === 1 ? "is" : "are"} already indexed.
+            <strong>{duplicates.dupes.join(", ")}</strong> {duplicates.dupes.length === 1 ? "is" : "are"} already in this Space.
             Uploading again adds a second copy.
             {duplicates.all.length > duplicates.dupes.length && " Cancel uploads only the new files."}
           </p>

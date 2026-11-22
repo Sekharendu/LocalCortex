@@ -1,4 +1,4 @@
-import type { Citation, Conversation, ConversationSummary, DocumentRecord, Health } from "./types";
+import type { AnswerModel, Citation, Conversation, ConversationSummary, DocumentRecord, Health, Space } from "./types";
 
 const BASE = "/api";
 
@@ -42,16 +42,16 @@ export async function listConversations(): Promise<ConversationSummary[]> {
   return (await request<{ conversations: ConversationSummary[] }>("/conversations")).conversations;
 }
 
-export async function createConversation(): Promise<Conversation> {
-  const { conversation } = await request<{ conversation: ConversationSummary }>("/conversations", {
+export async function createConversation(spaceId: string): Promise<Conversation> {
+  const { conversation } = await request<{ conversation: ConversationSummary }>(`/spaces/${encodeURIComponent(spaceId)}/conversations`, {
     method: "POST",
     body: "{}",
   });
   return { ...conversation, messages: [] };
 }
 
-export async function getConversation(id: string): Promise<Conversation> {
-  return (await request<{ conversation: Conversation }>(`/conversations/${encodeURIComponent(id)}`)).conversation;
+export async function getConversation(id: string, signal?: AbortSignal): Promise<Conversation> {
+  return (await request<{ conversation: Conversation }>(`/conversations/${encodeURIComponent(id)}`, { signal })).conversation;
 }
 
 export async function renameConversation(id: string, title: string): Promise<ConversationSummary> {
@@ -77,11 +77,11 @@ export interface MessageStream {
  * stream starts (400/404/503) reject with an ApiError; aborting `signal` stops the
  * answer server-side too (the server cancels generation when the connection drops).
  */
-export async function sendMessage(id: string, content: string, signal: AbortSignal): Promise<MessageStream> {
+export async function sendMessage(id: string, content: string, model: string, signal: AbortSignal): Promise<MessageStream> {
   const res = await fetch(`${BASE}/conversations/${encodeURIComponent(id)}/messages`, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ content }),
+    body: JSON.stringify({ content, model }),
     signal,
   });
   if (!res.ok) throw await errorFrom(res);
@@ -114,19 +114,46 @@ export async function sendMessage(id: string, content: string, signal: AbortSign
   return { citations, tokens: tokens() };
 }
 
-export async function listDocuments(): Promise<DocumentRecord[]> {
-  return (await request<{ documents: DocumentRecord[] }>("/documents")).documents;
+export async function listDocuments(spaceId: string): Promise<DocumentRecord[]> {
+  return (await request<{ documents: DocumentRecord[] }>(`/spaces/${encodeURIComponent(spaceId)}/documents`)).documents;
 }
 
 /** Uploads and indexes one file. Resolves when indexing is done, which can take a while. */
-export async function uploadDocument(file: File): Promise<{ documentId: string; chunkCount: number }> {
+export async function uploadDocument(spaceId: string, file: File): Promise<{ documentId: string; chunkCount: number }> {
   const form = new FormData();
   form.append("file", file);
-  const res = await fetch(`${BASE}/ingest`, { method: "POST", body: form });
+  const res = await fetch(`${BASE}/spaces/${encodeURIComponent(spaceId)}/ingest`, { method: "POST", body: form });
   if (!res.ok) throw await errorFrom(res);
   return (await res.json()) as { documentId: string; chunkCount: number };
 }
 
 export async function deleteDocument(id: string): Promise<void> {
   await request(`/documents/${encodeURIComponent(id)}`, { method: "DELETE" });
+}
+
+export async function listModels(): Promise<{ models: AnswerModel[]; default: string }> {
+  return request<{ models: AnswerModel[]; default: string }>("/models");
+}
+
+export async function listSpaces(): Promise<Space[]> {
+  return (await request<{ spaces: Space[] }>("/spaces")).spaces;
+}
+
+export async function getSpace(id: string): Promise<Space> {
+  return (await request<{ space: Space }>(`/spaces/${encodeURIComponent(id)}`)).space;
+}
+
+export async function createSpace(name: string): Promise<Space> {
+  return (await request<{ space: Space }>("/spaces", { method: "POST", body: JSON.stringify({ name }) })).space;
+}
+
+export async function renameSpace(id: string, name: string): Promise<Space> {
+  return (
+    await request<{ space: Space }>(`/spaces/${encodeURIComponent(id)}`, { method: "PATCH", body: JSON.stringify({ name }) })
+  ).space;
+}
+
+/** Deletes the Space with its chats, files and their chunks. */
+export async function deleteSpace(id: string): Promise<{ chats: number; documents: number }> {
+  return request<{ chats: number; documents: number }>(`/spaces/${encodeURIComponent(id)}`, { method: "DELETE" });
 }

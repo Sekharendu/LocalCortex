@@ -10,6 +10,7 @@ import { rerank } from "./retrieval/reranker.js";
 import { expandAcronyms } from "./retrieval/acronyms.js";
 import type { Citation } from "./types.js";
 import { resolveDocumentScope, scopeQuestion, type DocumentScope } from "./retrieval/documentScope.js";
+import type { ModelKey } from "./generation/models.js";
 import { planSummary, prepareSummary, messageSetup, type SummarySetup } from "./summarise.js";
 
 export interface RetrieveForQuestionResult {
@@ -36,6 +37,8 @@ export interface AskOptions extends Omit<RetrieveOptions, "previousQuestion"> {
   temperature?: number;
   /** Cancels rewriting, reranking and generation, e.g. when the user presses Stop. */
   signal?: AbortSignal;
+  /** Answer model key (src/generation/models.ts); the default model when omitted. */
+  model?: ModelKey;
 }
 
 export interface AnswerResult {
@@ -87,7 +90,7 @@ export async function retrieveForQuestion(
   question: string,
   options: AskOptions = {},
 ): Promise<RetrieveForQuestionResult> {
-  const { history = [], signal, answerProfile, temperature: _temperature, promptVariant: requestedVariant, ...retrieveOptions } = options;
+  const { history = [], signal, answerProfile, temperature: _temperature, promptVariant: requestedVariant, model: _model, ...retrieveOptions } = options;
   const settings = answerSettings(answerProfile);
   const promptVariant = requestedVariant ?? settings.promptVariant;
   retrieveOptions.topK ??= settings.topK;
@@ -96,6 +99,7 @@ export async function retrieveForQuestion(
   const documentScope = retrieveOptions.documentScope ?? await resolveDocumentScope(
     scopeQuestion(question, history.filter(m => m.role === "user").map(m => m.content)),
     retrieveOptions.collection ?? retrievalConfig.collection,
+    retrieveOptions.spaceId,
   );
   retrieveOptions.documentScope = documentScope;
   const finalTopK = retrieveOptions.topK ?? retrievalConfig.topK;
@@ -189,7 +193,7 @@ export async function answerQuestion(
     return { answer: answer.trim(), chunks: [], citations: summary.citations };
   }
   const { prompt, systemPrompt, chunks } = await retrieveForQuestion(question, opts);
-  const answer = await generate(prompt, { signal: opts.signal, system: systemPrompt, maxTokens: answerConfig.maxOutputTokens, ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}) });
+  const answer = await generate(prompt, { signal: opts.signal, system: systemPrompt, maxTokens: answerConfig.maxOutputTokens, model: opts.model, ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}) });
   return { answer, chunks, citations: buildCitations(chunks) };
 }
 
@@ -217,7 +221,7 @@ export async function answerQuestionStream(
   if (summary) return summary;
   const { prompt, systemPrompt, chunks } = await retrieveForQuestion(question, opts);
   return {
-    tokens: generateStream(prompt, opts.signal, { system: systemPrompt, maxTokens: answerConfig.maxOutputTokens, ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}) }),
+    tokens: generateStream(prompt, opts.signal, { system: systemPrompt, maxTokens: answerConfig.maxOutputTokens, model: opts.model, ...(opts.temperature !== undefined ? { temperature: opts.temperature } : {}) }),
     citations: buildCitations(chunks),
   };
 }
@@ -233,8 +237,8 @@ async function summarySetup(question: string, opts: AskOptions, stream: boolean)
   if (opts.documentScope) return null;
   const collection = opts.collection ?? retrievalConfig.collection;
   opts.signal?.throwIfAborted();
-  const plan = await planSummary(question, opts.history ?? [], { collection });
+  const plan = await planSummary(question, opts.history ?? [], { collection, spaceId: opts.spaceId });
   if (!plan) return null;
   if (plan.kind === "message") return messageSetup(plan.text);
-  return prepareSummary(plan.doc, question, { collection, stream, signal: opts.signal });
+  return prepareSummary(plan.doc, question, { collection, stream, signal: opts.signal, model: opts.model });
 }
